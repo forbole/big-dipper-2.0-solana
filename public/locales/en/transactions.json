@@ -1,0 +1,14 @@
+{
+  "slot": "Slot",
+  "signature": "Signature",
+  "type": "Type",
+  "time": "Time",
+  "amount": "Amount",
+  "result": "Result",
+  "transactions": "Transactions",
+  "transactionDetails": "Transaction Details",
+  "overview": "Overview",
+  "confirmations": "Confirmations",
+  "fee": "Fee",
+  "instructions": "Instructions"
+}
