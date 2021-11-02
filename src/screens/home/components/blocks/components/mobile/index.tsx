@@ -24,22 +24,22 @@ const Mobile: React.FC<{
     <div className={classnames(className)}>
       {items.map((x, i) => {
         return (
-          <React.Fragment key={`${x.height}-${i}`}>
+          <React.Fragment key={`${x.slot}-${i}`}>
             <SingleBlockMobile
-              height={(
-                <Link href={BLOCK_DETAILS(x.height)} passHref>
+              slot={(
+                <Link href={BLOCK_DETAILS(x.slot)} passHref>
                   <Typography variant="body1" className="value" component="a">
-                    {numeral(x.height).format('0,0')}
+                    {numeral(x.slot).format('0,0')}
                   </Typography>
                 </Link>
               )}
               txs={numeral(x.txs).format('0,0')}
               time={dayjs.utc(x.timestamp).fromNow()}
-              proposer={(
+              leader={(
                 <AvatarName
-                  address={x.proposer.address}
-                  imageUrl={x.proposer.imageUrl}
-                  name={x.proposer.name}
+                  address={x.leader.address}
+                  imageUrl={x.leader.imageUrl}
+                  name={x.leader.name}
                 />
               )}
               hash={getMiddleEllipsis(x.hash, {

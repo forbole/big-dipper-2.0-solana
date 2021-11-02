@@ -3,10 +3,10 @@ export const columns:{
   align?: 'left' | 'center' | 'right' | 'justify' | 'inherit';
 }[] = [
   {
-    key: 'height',
+    key: 'slot',
   },
   {
-    key: 'proposer',
+    key: 'leader',
   },
   {
     key: 'hash',

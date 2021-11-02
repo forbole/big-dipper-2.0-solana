@@ -38,7 +38,7 @@ export const useStyles = () => {
             height: '375px',
           },
         },
-        tokenomics: {
+        epoch: {
           height: '375px',
           [theme.breakpoints.up('md')]: {
             gridColumn: '1 / 2',
@@ -48,7 +48,7 @@ export const useStyles = () => {
             height: '100%',
           },
         },
-        consensus: {
+        stakeWeight: {
           height: '375px',
           [theme.breakpoints.up('md')]: {
             gridColumn: '2 / 3',

@@ -5,6 +5,8 @@ import Tokenomics from './tokenomics';
 import Blocks from './blocks';
 import Transactions from './transactions';
 import ActiveStake from './active_stake';
+import Epoch from './epoch';
+import StakeWeight from './stake_weight';
 
 export {
   DataBlocks,
@@ -14,4 +16,6 @@ export {
   Blocks,
   Transactions,
   ActiveStake,
+  Epoch,
+  StakeWeight,
 };

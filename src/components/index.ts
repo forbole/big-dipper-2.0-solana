@@ -18,6 +18,7 @@ import LinearLoading from './linear_loading';
 import Name from './name';
 import LoadAndExist from './load_and_exist';
 import CustomToolTip from './custom_tool_tip';
+import SingleBlockMobile from './single_block_mobile';
 
 export {
   Layout,
@@ -40,4 +41,5 @@ export {
   Name,
   LoadAndExist,
   CustomToolTip,
+  SingleBlockMobile,
 };

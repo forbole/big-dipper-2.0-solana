@@ -4,6 +4,8 @@ import { useStyles } from './styles';
 import {
   DataBlocks,
   ActiveStake,
+  Epoch,
+  StakeWeight,
   OnlineVotingPower,
   Consensus,
   Tokenomics,
@@ -18,10 +20,9 @@ const Home = () => {
     <Layout className={classes.root}>
       <DataBlocks className={classes.dataBlocks} />
       <ActiveStake className={classes.activeStake} />
-      {/* <OnlineVotingPower className={classes.onlineVotingPower} /> */}
-      {/* <Tokenomics className={classes.tokenomics} /> */}
-      {/* <Consensus className={classes.consensus} /> */}
-      {/* <Blocks className={classes.blocks} /> */}
+      <Epoch className={classes.epoch} />
+      <StakeWeight className={classes.stakeWeight} />
+      <Blocks className={classes.blocks} />
       {/* <Transactions className={classes.transactions} /> */}
     </Layout>
   );
