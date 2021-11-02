@@ -4,11 +4,11 @@ export const columns:{
   width: number,
 }[] = [
   {
-    key: 'block',
+    key: 'slot',
     width: 25,
   },
   {
-    key: 'hash',
+    key: 'signature',
     width: 25,
   },
   {

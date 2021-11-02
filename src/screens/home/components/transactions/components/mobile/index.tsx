@@ -25,17 +25,17 @@ const Mobile:React.FC<{
 }) => {
   const formattedData = items.map((x) => {
     return ({
-      block: (
-        <Link href={BLOCK_DETAILS(x.height)} passHref>
+      slot: (
+        <Link href={BLOCK_DETAILS(x.slot)} passHref>
           <Typography variant="body1" component="a">
-            {numeral(x.height).format('0,0')}
+            {numeral(x.slot).format('0,0')}
           </Typography>
         </Link>
       ),
-      hash: (
-        <Link href={TRANSACTION_DETAILS(x.hash)} passHref>
+      signature: (
+        <Link href={TRANSACTION_DETAILS(x.signature)} passHref>
           <Typography variant="body1" component="a">
-            {getMiddleEllipsis(x.hash, {
+            {getMiddleEllipsis(x.signature, {
               beginning: 15, ending: 5,
             })}
           </Typography>
@@ -53,7 +53,7 @@ const Mobile:React.FC<{
     <div className={classnames(className)}>
       {formattedData.map((x, i) => {
         return (
-          <React.Fragment key={`${x.block}-${i}`}>
+          <React.Fragment key={`${x.slot}-${i}`}>
             <SingleTransactionMobile {...x} />
             {i !== formattedData.length - 1 && <Divider />}
           </React.Fragment>

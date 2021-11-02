@@ -6,9 +6,6 @@ import {
   ActiveStake,
   Epoch,
   StakeWeight,
-  OnlineVotingPower,
-  Consensus,
-  Tokenomics,
   Blocks,
   Transactions,
 } from './components';
@@ -23,7 +20,7 @@ const Home = () => {
       <Epoch className={classes.epoch} />
       <StakeWeight className={classes.stakeWeight} />
       <Blocks className={classes.blocks} />
-      {/* <Transactions className={classes.transactions} /> */}
+      <Transactions className={classes.transactions} />
     </Layout>
   );
 };

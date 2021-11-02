@@ -1,6 +1,6 @@
 export type TransactionType = {
-  height: number;
-  hash: string;
+  slot: number;
+  signature: string;
   success: boolean;
   timestamp: string;
   messages: number;

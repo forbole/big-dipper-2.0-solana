@@ -49,6 +49,10 @@ declare module '@material-ui/core/styles/createPalette' {
             three: string;
             four: string;
             five: string;
+        },
+        results: {
+            pass: string;
+            fail: string;
         }
     }
 

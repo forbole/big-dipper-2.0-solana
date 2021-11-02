@@ -165,6 +165,10 @@ export const common: ThemeOptions = {
         four: '#E85BEA',
         five: '#21B6CC',
       },
+      results: {
+        pass: '#198a65',
+        fail: '#b12a34',
+      },
     },
   },
   overrides: {
