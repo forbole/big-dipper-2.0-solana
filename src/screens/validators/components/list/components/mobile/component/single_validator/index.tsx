@@ -10,16 +10,22 @@ const SingleValidator: React.FC<{
   className?: string;
   idx: string;
   validator: React.ReactNode;
-  commission: string;
-  self: string;
-  votingPower: React.ReactNode;
+  stake: string;
+  fee: string;
+  lastVote: string;
+  skipRate: React.ReactNode;
+  condition: React.ReactNode;
+  delegators: string;
 }> = ({
   className,
-  validator,
-  self,
-  commission,
-  votingPower,
   idx,
+  validator,
+  stake,
+  fee,
+  lastVote,
+  skipRate,
+  condition,
+  delegators,
 }) => {
   const { t } = useTranslation('validators');
   const classes = useStyles();
