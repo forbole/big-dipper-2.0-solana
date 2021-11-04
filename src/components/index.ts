@@ -22,6 +22,8 @@ import SingleBlockMobile from './single_block_mobile';
 import SingleTransactionMobile from './single_transaction_mobile';
 import InfoPopover from './info_popover';
 import ConditionExplanation from './condition_explanation';
+import TransactionsList from './transactions_list';
+import TransactionListDetails from './transactions_list_details';
 
 export {
   Layout,
@@ -48,4 +50,6 @@ export {
   SingleTransactionMobile,
   InfoPopover,
   ConditionExplanation,
+  TransactionsList,
+  TransactionListDetails,
 };
