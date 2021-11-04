@@ -15,7 +15,7 @@ import { useStyles } from './styles';
 import { fetchColumns } from './utils';
 import { ItemType } from '../../types';
 import {
-  Condition, VotingPower,
+  Condition, SkipRate,
 } from '..';
 
 const Desktop: React.FC<{
@@ -41,7 +41,6 @@ const Desktop: React.FC<{
     const condition = x.status === 3 ? getValidatorConditionClass(x.condition) : undefined;
     return ({
       idx: `#${i + 1}`,
-      delegators: numeral(x.delegators).format('0,0'),
       validator: (
         <AvatarName
           address={x.validator.address}
@@ -49,17 +48,17 @@ const Desktop: React.FC<{
           name={x.validator.name}
         />
       ),
-      commission: `${numeral(x.commission).format('0.[00]')}%`,
-      self: `${numeral(x.selfPercent).format('0.[00]')}%`,
+      stake: `${x.stake} (${x.stakePercent}%)`,
+      fee: `${x.fee}%`,
+      lastVote: numeral(x.lastVote).format('0,0'),
+      skipRate: (
+        <SkipRate
+          percentage={x.skipPercent}
+          content={`${x.skipRate} / ${x.skipTotal}`}
+        />
+      ),
       condition: (
         <Condition className={condition} />
-      ),
-      votingPower: (
-        <VotingPower
-          percentDisplay={`${numeral(x.votingPowerPercent).format('0.[00]')}%`}
-          percentage={x.votingPowerPercent}
-          content={numeral(x.votingPower).format('0,0')}
-        />
       ),
     });
   });

@@ -157,6 +157,12 @@ export const common: ThemeOptions = {
         four: '#1BA6BC',
         five: '#686868',
       },
+      condition: {
+        zero: '#E8E8E8',
+        one: '#1EC490',
+        two: '#FF961B',
+        three: '#FC6A8A',
+      },
       tags: {
         zero: '#C4C4C4',
         one: '#3DCBA5',

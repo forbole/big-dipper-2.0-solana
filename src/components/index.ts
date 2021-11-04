@@ -20,6 +20,8 @@ import LoadAndExist from './load_and_exist';
 import CustomToolTip from './custom_tool_tip';
 import SingleBlockMobile from './single_block_mobile';
 import SingleTransactionMobile from './single_transaction_mobile';
+import InfoPopover from './info_popover';
+import ConditionExplanation from './condition_explanation';
 
 export {
   Layout,
@@ -44,4 +46,6 @@ export {
   CustomToolTip,
   SingleBlockMobile,
   SingleTransactionMobile,
+  InfoPopover,
+  ConditionExplanation,
 };

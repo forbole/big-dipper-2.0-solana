@@ -1,5 +1,5 @@
 export const tabLabels = [
   'active',
-  'inactive',
+  'delinquent',
   'allValidators',
 ];

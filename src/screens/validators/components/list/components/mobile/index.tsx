@@ -33,8 +33,8 @@ const Mobile: React.FC<{
     return ({
       idx: `#${i + 1}`,
       stake: `${x.stake} (${x.stakePercent}%)`,
-      fee: x.fee,
-      lastVote: x.lastVote,
+      fee: `${x.fee}%`,
+      lastVote: numeral(x.lastVote).format('0,0'),
       validator: (
         <AvatarName
           address={x.validator.address}

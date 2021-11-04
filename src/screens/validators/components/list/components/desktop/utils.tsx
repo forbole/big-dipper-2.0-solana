@@ -26,36 +26,37 @@ export const fetchColumns = (t): {
       sort: true,
     },
     {
-      key: 'votingPower',
-      sortKey: 'votingPower',
-      width: 20,
-      sort: true,
-    },
-    {
-      key: 'commission',
-      sortKey: 'commission',
+      key: 'stake',
+      sortKey: 'stake',
       align: 'right',
       width: 15,
       sort: true,
     },
     {
-      key: 'self',
-      sortKey: 'selfPercent',
+      key: 'fee',
+      sortKey: 'fee',
       align: 'right',
       width: 10,
       sort: true,
     },
     {
-      key: 'delegators',
-      sortKey: 'delegators',
+      key: 'lastVote',
+      sortKey: 'lastVote',
       align: 'right',
-      width: 15,
+      width: 10,
+      sort: true,
+    },
+    {
+      key: 'skipRate',
+      sortKey: 'skipRate',
+      align: 'right',
+      width: 25,
       sort: true,
     },
     {
       key: 'condition',
       align: 'center',
-      width: 14,
+      width: 15,
       component: (
         <Typography variant="h4" className="label popover">
           {t('condition')}

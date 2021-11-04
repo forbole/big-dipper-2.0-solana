@@ -53,7 +53,13 @@ declare module '@material-ui/core/styles/createPalette' {
         results: {
             pass: string;
             fail: string;
-        }
+        },
+        condition: {
+            zero: string;
+            one: string;
+            two: string;
+            three: string;
+        },
     }
 
     interface PaletteOptions {

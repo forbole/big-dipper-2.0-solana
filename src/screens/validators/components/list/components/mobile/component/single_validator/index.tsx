@@ -14,8 +14,6 @@ const SingleValidator: React.FC<{
   fee: string;
   lastVote: string;
   skipRate: React.ReactNode;
-  condition: React.ReactNode;
-  delegators: string;
 }> = ({
   className,
   idx,
@@ -24,8 +22,6 @@ const SingleValidator: React.FC<{
   fee,
   lastVote,
   skipRate,
-  condition,
-  delegators,
 }) => {
   const { t } = useTranslation('validators');
   const classes = useStyles();
@@ -49,25 +45,31 @@ const SingleValidator: React.FC<{
       </div>
       <div className={classes.item}>
         <Typography variant="h4" className="label">
-          {t('votingPower')}
+          {t('stake')}
         </Typography>
-        {votingPower}
+        {stake}
+      </div>
+      <div className={classes.item}>
+        <Typography variant="h4" className="label">
+          {t('skipRate')}
+        </Typography>
+        {skipRate}
       </div>
       <div className={classes.flex}>
         <div className={classes.item}>
           <Typography variant="h4" className="label">
-            {t('self')}
+            {t('fee')}
           </Typography>
           <Typography variant="body1" className="value">
-            {self}
+            {fee}
           </Typography>
         </div>
         <div className={classes.item}>
           <Typography variant="h4" className="label">
-            {t('commission')}
+            {t('lastVote')}
           </Typography>
           <Typography variant="body1" className="value">
-            {commission}
+            {lastVote}
           </Typography>
         </div>
       </div>
