@@ -19,14 +19,14 @@ interface AvatarName {
 }
 
 type Transactions = {
-  height: number;
-  hash: string;
+  slot: number;
+  signature: string;
   success: boolean;
   timestamp: string;
   messages: {
     count: number;
     items: any[];
-  };
+  }
 }
 
 type TokenUnit = {

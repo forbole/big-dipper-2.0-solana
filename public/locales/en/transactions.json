@@ -10,5 +10,6 @@
   "overview": "Overview",
   "confirmations": "Confirmations",
   "fee": "Fee",
-  "instructions": "Instructions"
+  "instructions": "Instructions",
+  "messages": "Messages"
 }
