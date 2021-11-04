@@ -5,10 +5,10 @@ module.exports = {
   pages: {
     '*': ['common'],
     '/': ['home', 'blocks', 'transactions'],
-    'rgx:^/blocks': ['blocks', 'transactions', 'message_labels', 'message_contents'],
+    'rgx:^/blocks': ['blocks'],
     'rgx:^/transactions': ['transactions', 'message_labels', 'message_contents'],
     'rgx:^/proposals': ['proposals'],
-    'rgx:^/validators': ['validators', 'transactions', 'accounts', 'message_labels', 'message_contents'],
+    'rgx:^/validators': ['validators', 'transactions'],
     'rgx:^/accounts': ['accounts', 'transactions', 'validators', 'message_labels', 'message_contents'],
     'rgx:^/params': ['params'],
   },
