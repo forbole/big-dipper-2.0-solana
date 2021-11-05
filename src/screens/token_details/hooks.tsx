@@ -39,6 +39,14 @@ const dummyHolder = {
   value: 234243,
 };
 
+const dummyMarket = {
+  price: 4.01,
+  marketCap: 7363,
+  supply: 435365,
+  holders: 20,
+  transactions: 0,
+};
+
 export const useBlockDetails = () => {
   const router = useRouter();
   const [state, setState] = useState<TokenDetailState>({
@@ -46,6 +54,7 @@ export const useBlockDetails = () => {
     loading: false,
     exists: true,
     overview: dummyOverview,
+    market: dummyMarket,
     transactions: {
       hasNextPage: false,
       isNextPageLoading: false,

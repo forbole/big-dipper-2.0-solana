@@ -6,8 +6,12 @@ export type OverviewType = {
   officialSite: string;
 }
 
-export type Market = {
-
+export type MarketType = {
+  price: number;
+  marketCap: number;
+  supply: number;
+  holders: number;
+  transactions: number;
 }
 
 export type HolderType = {
@@ -21,6 +25,7 @@ export type TokenDetailState = {
   loading: boolean;
   exists: boolean;
   overview: OverviewType;
+  market: MarketType;
   holders: {
     hasNextPage: boolean;
     isNextPageLoading: boolean;

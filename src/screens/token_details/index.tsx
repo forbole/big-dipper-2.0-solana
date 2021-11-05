@@ -22,9 +22,6 @@ const TokenDetails = () => {
     loadNextPageTx,
     loadNextPageHolders,
   } = useBlockDetails();
-  const {
-    overview,
-  } = state;
 
   return (
     <>
@@ -42,9 +39,12 @@ const TokenDetails = () => {
           <span className={classes.root}>
             <Overview
               className={classes.overview}
-              {...overview}
+              {...state.overview}
             />
-            <Market className={classes.market} />
+            <Market
+              className={classes.market}
+              {...state.market}
+            />
             <Holders
               className={classes.holders}
               loadNextPage={loadNextPageHolders}
