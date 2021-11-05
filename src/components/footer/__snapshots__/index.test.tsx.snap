@@ -211,7 +211,7 @@ exports[`component: layout/footer matches snapshot 1`] = `
             target="_blank"
           >
             <button
-              className="MuiButtonBase-root MuiButton-root MuiButton-contained footer__donate-button MuiButton-containedPrimary MuiButton-disableElevation"
+              className="MuiButtonBase-root MuiButton-root MuiButton-contained footer__donate-button MuiButton-containedPrimary"
               disabled={false}
               onBlur={[Function]}
               onDragLeave={[Function]}

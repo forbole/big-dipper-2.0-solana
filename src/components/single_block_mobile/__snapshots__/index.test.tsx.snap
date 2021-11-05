@@ -10,11 +10,8 @@ exports[`component: SingleSlotMobile matches snapshot 1`] = `
     <h4
       className="MuiTypography-root label MuiTypography-h4"
     >
-      height
+      slot
     </h4>
-    <div
-      id="height"
-    />
   </div>
   <div
     className="makeStyles-item"
@@ -22,11 +19,8 @@ exports[`component: SingleSlotMobile matches snapshot 1`] = `
     <h4
       className="MuiTypography-root label MuiTypography-h4"
     >
-      proposer
+      leader
     </h4>
-    <div
-      id="proposer"
-    />
   </div>
   <div
     className="makeStyles-item"
