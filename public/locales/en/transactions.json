@@ -11,5 +11,8 @@
   "confirmations": "Confirmations",
   "fee": "Fee",
   "instructions": "Instructions",
-  "messages": "Messages"
+  "messages": "Messages",
+  "raw": "Raw",
+  "filterBy": "Filter By",
+  "none": "None"
 }

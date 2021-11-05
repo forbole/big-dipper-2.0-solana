@@ -24,6 +24,7 @@ import InfoPopover from './info_popover';
 import ConditionExplanation from './condition_explanation';
 import TransactionsList from './transactions_list';
 import TransactionListDetails from './transactions_list_details';
+import TransactionMessagesFilter from './transaction_messages_filter';
 
 export {
   Layout,
@@ -52,4 +53,5 @@ export {
   ConditionExplanation,
   TransactionsList,
   TransactionListDetails,
+  TransactionMessagesFilter,
 };

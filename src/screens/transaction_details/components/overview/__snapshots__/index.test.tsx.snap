@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`screen: BlockDetails/Overview matches snapshot 1`] = `
+<div
+  className="makeStyles-root"
+  details={
+    Array [
+      Object {
+        "detail": <Link
+          href="/blocks/undefined"
+          passHref={true}
+        >
+          <WithStyles(ForwardRef(Typography))
+            className="value"
+            component="a"
+            variant="body1"
+          >
+            0
+          </WithStyles(ForwardRef(Typography))>
+        </Link>,
+        "label": "transactions:slot",
+      },
+      Object {
+        "detail": <Result
+          success={false}
+        />,
+        "label": "transactions:result",
+      },
+      Object {
+        "detail": undefined,
+        "label": "transactions:confirmations",
+      },
+      Object {
+        "detail": Object {
+          "denom": "daric",
+          "format": "",
+          "value": 5000,
+        },
+        "label": "transactions:fee",
+      },
+      Object {
+        "detail": undefined,
+        "label": "transactions:signature",
+      },
+      Object {
+        "detail": "2020-08-10 12:00:00",
+        "label": "transactions:time",
+      },
+    ]
+  }
+  id="BoxDetails"
+  title="transactions:overview"
+/>
+`;
