@@ -33,9 +33,9 @@ const dummyTransaction = {
 };
 
 const dummyHolder = {
-  address: 'desmosvaloper124xa66ghhq5hrgv28slhmszgvcqa0skchrfrar',
+  address: 'desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467',
   quantity: 4534,
-  percentage: 0.70,
+  percentage: 70,
   value: 234243,
 };
 
@@ -46,14 +46,6 @@ export const useBlockDetails = () => {
     loading: false,
     exists: true,
     overview: dummyOverview,
-    // overview: {
-    //   height: 0,
-    //   hash: '',
-    //   txs: 0,
-    //   timestamp: '',
-    //   proposer: '',
-    // },
-    // transactions: [],
     transactions: {
       hasNextPage: false,
       isNextPageLoading: false,

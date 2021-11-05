@@ -10,7 +10,7 @@ export type Market = {
 
 }
 
-export type Holder = {
+export type HolderType = {
   address: string;
   quantity: number;
   percentage: number;
@@ -25,7 +25,7 @@ export type TokenDetailState = {
     hasNextPage: boolean;
     isNextPageLoading: boolean;
     offsetCount: number;
-    data: Holder[];
+    data: HolderType[];
   };
   transactions: {
     hasNextPage: boolean;

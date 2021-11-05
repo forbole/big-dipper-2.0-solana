@@ -1,29 +1,42 @@
 import React from 'react';
+import dynamic from 'next/dynamic';
 import classnames from 'classnames';
 import { Typography } from '@material-ui/core';
 import useTranslation from 'next-translate/useTranslation';
-import { useRecoilValue } from 'recoil';
-import { readTx } from '@recoil/settings';
 import {
-  TransactionListDetails,
-  TransactionsList,
   Box,
+  NoData,
 } from '@components';
+import { useScreenSize } from '@hooks';
+import { useProfilesRecoil } from '@recoil/profiles';
 import { useStyles } from './styles';
+import { HolderType } from '../../types';
 
-const Transactions: React.FC<{
+const Desktop = dynamic(() => import('./components/desktop'));
+const Mobile = dynamic(() => import('./components/mobile'));
+
+const Holders: React.FC<{
   className?: string;
-  data: Transactions[];
+  data: HolderType[];
   loadNextPage: () => void;
   hasNextPage: boolean;
   isNextPageLoading: boolean;
 }> = (props) => {
-  const txListFormat = useRecoilValue(readTx);
   const classes = useStyles();
   const { t } = useTranslation('tokens');
+  const { isDesktop } = useScreenSize();
+
   const loadMoreItems = props.isNextPageLoading ? () => null : props.loadNextPage;
   const isItemLoaded = (index) => !props.hasNextPage || index < props.data.length;
   const itemCount = props.hasNextPage ? props.data.length + 1 : props.data.length;
+
+  const dataProfiles = useProfilesRecoil(props.data.map((x) => x.address));
+  const mergedDataWithProfiles = props.data.map((x, i) => {
+    return ({
+      ...x,
+      address: dataProfiles[i],
+    });
+  });
 
   return (
     <Box className={classnames(props.className, classes.root)}>
@@ -31,30 +44,30 @@ const Transactions: React.FC<{
         {t('holders')}
       </Typography>
       <div className={classes.list}>
-        {txListFormat === 'compact' ? (
-          <TransactionsList
-            transactions={props.data}
-            itemCount={itemCount}
-            hasNextPage={props.hasNextPage}
-            isNextPageLoading={props.isNextPageLoading}
-            loadNextPage={props.loadNextPage}
-            loadMoreItems={loadMoreItems}
-            isItemLoaded={isItemLoaded}
-          />
+        {!props.data.length ? (
+          <NoData />
         ) : (
-          <TransactionListDetails
-            transactions={props.data}
-            itemCount={itemCount}
-            hasNextPage={props.hasNextPage}
-            isNextPageLoading={props.isNextPageLoading}
-            loadNextPage={props.loadNextPage}
-            loadMoreItems={loadMoreItems}
-            isItemLoaded={isItemLoaded}
-          />
+          <>
+            {isDesktop ? (
+              <Desktop
+                items={mergedDataWithProfiles}
+                itemCount={itemCount}
+                loadMoreItems={loadMoreItems}
+                isItemLoaded={isItemLoaded}
+              />
+            ) : (
+              <Mobile
+                items={mergedDataWithProfiles}
+                itemCount={itemCount}
+                loadMoreItems={loadMoreItems}
+                isItemLoaded={isItemLoaded}
+              />
+            )}
+          </>
         )}
       </div>
     </Box>
   );
 };
 
-export default Transactions;
+export default Holders;

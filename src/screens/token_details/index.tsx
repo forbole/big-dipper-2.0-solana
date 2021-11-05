@@ -48,7 +48,7 @@ const TokenDetails = () => {
             <Holders
               className={classes.holders}
               loadNextPage={loadNextPageHolders}
-              data={state.transactions.data}
+              data={state.holders.data}
               hasNextPage={state.transactions.hasNextPage}
               isNextPageLoading={state.transactions.isNextPageLoading}
             />
