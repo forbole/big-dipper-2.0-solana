@@ -36,14 +36,14 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
             "position": "absolute",
             "right": undefined,
             "top": 0,
-            "width": 90,
+            "width": 60,
           }
         }
       >
         <h4
           className="MuiTypography-root MuiTypography-h4"
         >
-          height
+          idx
         </h4>
       </div>
       <div
@@ -51,18 +51,37 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
         style={
           Object {
             "height": 50,
-            "left": 90,
+            "left": 60,
             "position": "absolute",
             "right": undefined,
             "top": 0,
-            "width": 150,
+            "width": 120,
           }
         }
       >
         <h4
           className="MuiTypography-root MuiTypography-h4"
         >
-          proposer
+          token
+        </h4>
+      </div>
+      <div
+        className="makeStyles-cell"
+        style={
+          Object {
+            "height": 50,
+            "left": 180,
+            "position": "absolute",
+            "right": undefined,
+            "top": 0,
+            "width": 60,
+          }
+        }
+      >
+        <h4
+          className="MuiTypography-root MuiTypography-h4 MuiTypography-alignRight"
+        >
+          price
         </h4>
       </div>
       <div
@@ -74,14 +93,14 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
             "position": "absolute",
             "right": undefined,
             "top": 0,
-            "width": 150,
+            "width": 90,
           }
         }
       >
         <h4
-          className="MuiTypography-root MuiTypography-h4"
+          className="MuiTypography-root MuiTypography-h4 MuiTypography-alignRight"
         >
-          hash
+          change
         </h4>
       </div>
       <div
@@ -89,7 +108,7 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
         style={
           Object {
             "height": 50,
-            "left": 390,
+            "left": 330,
             "position": "absolute",
             "right": undefined,
             "top": 0,
@@ -100,7 +119,7 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
         <h4
           className="MuiTypography-root MuiTypography-h4 MuiTypography-alignRight"
         >
-          txs
+          volume
         </h4>
       </div>
       <div
@@ -108,18 +127,37 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
         style={
           Object {
             "height": 50,
-            "left": 480,
+            "left": 420,
             "position": "absolute",
             "right": undefined,
             "top": 0,
-            "width": 120,
+            "width": 90,
           }
         }
       >
         <h4
           className="MuiTypography-root MuiTypography-h4 MuiTypography-alignRight"
         >
-          time
+          marketCap
+        </h4>
+      </div>
+      <div
+        className="makeStyles-cell"
+        style={
+          Object {
+            "height": 50,
+            "left": 510,
+            "position": "absolute",
+            "right": undefined,
+            "top": 0,
+            "width": 90,
+          }
+        }
+      >
+        <h4
+          className="MuiTypography-root MuiTypography-h4 MuiTypography-alignRight"
+        >
+          holders
         </h4>
       </div>
     </div>
@@ -157,7 +195,26 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
             "position": "absolute",
             "right": undefined,
             "top": 0,
-            "width": 90,
+            "width": 60,
+          }
+        }
+      >
+        <div
+          className="MuiTypography-root MuiTypography-body1"
+        >
+          #1
+        </div>
+      </div>
+      <div
+        className="makeStyles-cell makeStyles-body odd"
+        style={
+          Object {
+            "height": 50,
+            "left": 60,
+            "position": "absolute",
+            "right": undefined,
+            "top": 0,
+            "width": 120,
           }
         }
       >
@@ -166,12 +223,10 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
         >
           <a
             className="MuiTypography-root value MuiTypography-body1"
-            href="/blocks/300"
+            href="/tokens/undefined"
             onClick={[Function]}
             onMouseEnter={[Function]}
-          >
-            300
-          </a>
+          />
         </div>
       </div>
       <div
@@ -179,22 +234,18 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
         style={
           Object {
             "height": 50,
-            "left": 90,
+            "left": 180,
             "position": "absolute",
             "right": undefined,
             "top": 0,
-            "width": 150,
+            "width": 60,
           }
         }
       >
         <div
-          className="MuiTypography-root MuiTypography-body1"
+          className="MuiTypography-root MuiTypography-body1 MuiTypography-alignRight"
         >
-          <div
-            address="address"
-            id="AvatarName"
-            name="proposer"
-          />
+          $0
         </div>
       </div>
       <div
@@ -206,14 +257,16 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
             "position": "absolute",
             "right": undefined,
             "top": 0,
-            "width": 150,
+            "width": 90,
           }
         }
       >
         <div
-          className="MuiTypography-root MuiTypography-body1"
+          className="MuiTypography-root MuiTypography-body1 MuiTypography-alignRight"
         >
-          hash
+          <p
+            className="MuiTypography-root makeStyles-price MuiTypography-body1"
+          />
         </div>
       </div>
       <div
@@ -221,7 +274,7 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
         style={
           Object {
             "height": 50,
-            "left": 390,
+            "left": 330,
             "position": "absolute",
             "right": undefined,
             "top": 0,
@@ -232,7 +285,7 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
         <div
           className="MuiTypography-root MuiTypography-body1 MuiTypography-alignRight"
         >
-          2
+          $0
         </div>
       </div>
       <div
@@ -240,18 +293,37 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
         style={
           Object {
             "height": 50,
-            "left": 480,
+            "left": 420,
             "position": "absolute",
             "right": undefined,
             "top": 0,
-            "width": 120,
+            "width": 90,
           }
         }
       >
         <div
           className="MuiTypography-root MuiTypography-body1 MuiTypography-alignRight"
         >
-          1 day ago
+          $0
+        </div>
+      </div>
+      <div
+        className="makeStyles-cell makeStyles-body odd"
+        style={
+          Object {
+            "height": 50,
+            "left": 510,
+            "position": "absolute",
+            "right": undefined,
+            "top": 0,
+            "width": 90,
+          }
+        }
+      >
+        <div
+          className="MuiTypography-root MuiTypography-body1 MuiTypography-alignRight"
+        >
+          0
         </div>
       </div>
       <div
@@ -263,7 +335,26 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
             "position": "absolute",
             "right": undefined,
             "top": 50,
-            "width": 90,
+            "width": 60,
+          }
+        }
+      >
+        <div
+          className="MuiTypography-root MuiTypography-body1"
+        >
+          #2
+        </div>
+      </div>
+      <div
+        className="makeStyles-cell makeStyles-body"
+        style={
+          Object {
+            "height": 50,
+            "left": 60,
+            "position": "absolute",
+            "right": undefined,
+            "top": 50,
+            "width": 120,
           }
         }
       >
@@ -272,12 +363,10 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
         >
           <a
             className="MuiTypography-root value MuiTypography-body1"
-            href="/blocks/301"
+            href="/tokens/undefined"
             onClick={[Function]}
             onMouseEnter={[Function]}
-          >
-            301
-          </a>
+          />
         </div>
       </div>
       <div
@@ -285,22 +374,18 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
         style={
           Object {
             "height": 50,
-            "left": 90,
+            "left": 180,
             "position": "absolute",
             "right": undefined,
             "top": 50,
-            "width": 150,
+            "width": 60,
           }
         }
       >
         <div
-          className="MuiTypography-root MuiTypography-body1"
+          className="MuiTypography-root MuiTypography-body1 MuiTypography-alignRight"
         >
-          <div
-            address="address"
-            id="AvatarName"
-            name="proposer"
-          />
+          $0
         </div>
       </div>
       <div
@@ -312,14 +397,16 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
             "position": "absolute",
             "right": undefined,
             "top": 50,
-            "width": 150,
+            "width": 90,
           }
         }
       >
         <div
-          className="MuiTypography-root MuiTypography-body1"
+          className="MuiTypography-root MuiTypography-body1 MuiTypography-alignRight"
         >
-          hash
+          <p
+            className="MuiTypography-root makeStyles-price MuiTypography-body1"
+          />
         </div>
       </div>
       <div
@@ -327,7 +414,7 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
         style={
           Object {
             "height": 50,
-            "left": 390,
+            "left": 330,
             "position": "absolute",
             "right": undefined,
             "top": 50,
@@ -338,7 +425,7 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
         <div
           className="MuiTypography-root MuiTypography-body1 MuiTypography-alignRight"
         >
-          2
+          $0
         </div>
       </div>
       <div
@@ -346,18 +433,37 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
         style={
           Object {
             "height": 50,
-            "left": 480,
+            "left": 420,
             "position": "absolute",
             "right": undefined,
             "top": 50,
-            "width": 120,
+            "width": 90,
           }
         }
       >
         <div
           className="MuiTypography-root MuiTypography-body1 MuiTypography-alignRight"
         >
-          1 day ago
+          $0
+        </div>
+      </div>
+      <div
+        className="makeStyles-cell makeStyles-body"
+        style={
+          Object {
+            "height": 50,
+            "left": 510,
+            "position": "absolute",
+            "right": undefined,
+            "top": 50,
+            "width": 90,
+          }
+        }
+      >
+        <div
+          className="MuiTypography-root MuiTypography-body1 MuiTypography-alignRight"
+        >
+          0
         </div>
       </div>
     </div>

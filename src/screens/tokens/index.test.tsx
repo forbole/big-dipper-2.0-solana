@@ -16,6 +16,7 @@ import Proposals from '.';
 // ==================================
 jest.mock('@components', () => ({
   Layout: (props) => <div id="Layout" {...props} />,
+  LoadAndExist: (props) => <div id="LoadAndExist" {...props} />,
 }));
 
 jest.mock('./components', () => ({

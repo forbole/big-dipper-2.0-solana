@@ -28,15 +28,12 @@ const mockBlocksListenerDocument = {
   data: {
     blocks: [
       {
-        height: 379643,
+        slot: 812768640,
+        leader: 'desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467',
+        hash: '76nwV8zz8tLz97SBRXH6uwHvgHXtqJDLQfF66jZhQ857',
+        parentHash: '76nwV8zz8tLz97SBRXH6uwHvgHXtqJDLQfF66jZhQ857',
         txs: 2,
-        hash: 'D0243447726B8BD7AE94BF4F98E536A647959194E870AB8566CB833A3CC847F6',
-        timestamp: '2021-05-24T05:28:05.839448',
-        validator: {
-          validatorInfo: {
-            operatorAddress: 'desmosvaloper1h5f3dywec65v9qulxkmcv3e6yujyh3zm0ghhl3',
-          },
-        },
+        timestamp: '2021-09-13T20:06:17.363145',
       },
     ],
   },
@@ -44,25 +41,14 @@ const mockBlocksListenerDocument = {
 
 const mockBlocksDocument = jest.fn().mockResolvedValue({
   data: {
-    blocks: [
-      {
-        height: 379634,
-        txs: 2,
-        hash: '017E26F5C11E4C140AA1836E40315C00253EDBC9D69A475A4ABEDDD1FF0FE967',
-        timestamp: '2021-05-24T05:27:11.092332',
-        validator: {
-          validatorInfo: {
-            operatorAddress: 'desmosvaloper1zm3l7p8n5dxqeadsfxy3rd0j3c2knnx3chg77a',
-            self_delegate_address: 'desmos1zm3l7p8n5dxqeadsfxy3rd0j3c2knnx3x6q250',
-          },
-          validatorDescriptions: [
-            {
-              moniker: 'Simply Staking',
-              identity: null,
-            },
-          ],
-        },
-      },
+    blocks: [{
+      slot: 812768640,
+      leader: 'desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467',
+      hash: '76nwV8zz8tLz97SBRXH6uwHvgHXtqJDLQfF66jZhQ857',
+      parentHash: '76nwV8zz8tLz97SBRXH6uwHvgHXtqJDLQfF66jZhQ857',
+      txs: 2,
+      timestamp: '2021-09-13T20:06:17.363145',
+    },
     ],
     total: {
       aggregate: {

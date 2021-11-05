@@ -6,9 +6,16 @@ exports[`screen: Home/Blocks/Mobile matches snapshot 1`] = `
 >
   <div
     hash="76nwV8zz8tLz9...F66jZhQ857"
-    height={
+    id="SingleBlockMobile"
+    leader={
+      <AvatarName
+        address="desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467"
+        name="desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467"
+      />
+    }
+    slot={
       <Link
-        href="/blocks/4000"
+        href="/blocks/812768640"
         passHref={true}
       >
         <WithStyles(ForwardRef(Typography))
@@ -16,20 +23,12 @@ exports[`screen: Home/Blocks/Mobile matches snapshot 1`] = `
           component="a"
           variant="body1"
         >
-          4,000
+          812,768,640
         </WithStyles(ForwardRef(Typography))>
       </Link>
     }
-    id="SingleBlockMobile"
-    proposer={
-      <AvatarName
-        address="desmosvalcons1why72hjk945yhckcy5hzk2z2w9d5h65t9am0kd"
-        imageUrl=""
-        name="name"
-      />
-    }
     time="1 day ago"
-    txs="12"
+    txs="2"
   />
 </div>
 `;
