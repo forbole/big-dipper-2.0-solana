@@ -1,0 +1,237 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`screen: BlockDetails matches snapshot 1`] = `
+<div
+  id="Layout"
+  navTitle="blocks:blockDetails"
+>
+  <div
+    exists={true}
+    id="LoadAndExist"
+    loading={false}
+  >
+    <span
+      className="makeStyles-root"
+    >
+      <div
+        hash="35SD2SaqLUvPBnEBRFUxQjjvS6tmzaPvLeJYQC1QV5E1"
+        id="Overview"
+        leader="desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467"
+        parentHash="35SD2SaqLUvPBnEBRFUxQjjvS6tmzaPvLeJYQC1QV5E1"
+        parentSlot={60000}
+        processedTx={300}
+        slot={40000}
+        successfulTx={249}
+        timestamp="2021-09-13T20:06:17.363145"
+      />
+      <div
+        id="Transactions"
+        transactions={
+          Array [
+            Object {
+              "messages": Object {
+                "count": 0,
+                "items": Array [],
+              },
+              "signature": "4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB",
+              "slot": 123548722,
+              "success": true,
+              "timestamp": "2021-09-13T20:06:17.363145",
+            },
+            Object {
+              "messages": Object {
+                "count": 0,
+                "items": Array [],
+              },
+              "signature": "4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB",
+              "slot": 123548722,
+              "success": true,
+              "timestamp": "2021-09-13T20:06:17.363145",
+            },
+            Object {
+              "messages": Object {
+                "count": 0,
+                "items": Array [],
+              },
+              "signature": "4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB",
+              "slot": 123548722,
+              "success": true,
+              "timestamp": "2021-09-13T20:06:17.363145",
+            },
+            Object {
+              "messages": Object {
+                "count": 0,
+                "items": Array [],
+              },
+              "signature": "4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB",
+              "slot": 123548722,
+              "success": true,
+              "timestamp": "2021-09-13T20:06:17.363145",
+            },
+            Object {
+              "messages": Object {
+                "count": 0,
+                "items": Array [],
+              },
+              "signature": "4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB",
+              "slot": 123548722,
+              "success": true,
+              "timestamp": "2021-09-13T20:06:17.363145",
+            },
+            Object {
+              "messages": Object {
+                "count": 0,
+                "items": Array [],
+              },
+              "signature": "4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB",
+              "slot": 123548722,
+              "success": true,
+              "timestamp": "2021-09-13T20:06:17.363145",
+            },
+            Object {
+              "messages": Object {
+                "count": 0,
+                "items": Array [],
+              },
+              "signature": "4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB",
+              "slot": 123548722,
+              "success": true,
+              "timestamp": "2021-09-13T20:06:17.363145",
+            },
+            Object {
+              "messages": Object {
+                "count": 0,
+                "items": Array [],
+              },
+              "signature": "4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB",
+              "slot": 123548722,
+              "success": true,
+              "timestamp": "2021-09-13T20:06:17.363145",
+            },
+            Object {
+              "messages": Object {
+                "count": 0,
+                "items": Array [],
+              },
+              "signature": "4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB",
+              "slot": 123548722,
+              "success": true,
+              "timestamp": "2021-09-13T20:06:17.363145",
+            },
+            Object {
+              "messages": Object {
+                "count": 0,
+                "items": Array [],
+              },
+              "signature": "4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB",
+              "slot": 123548722,
+              "success": true,
+              "timestamp": "2021-09-13T20:06:17.363145",
+            },
+            Object {
+              "messages": Object {
+                "count": 0,
+                "items": Array [],
+              },
+              "signature": "4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB",
+              "slot": 123548722,
+              "success": true,
+              "timestamp": "2021-09-13T20:06:17.363145",
+            },
+            Object {
+              "messages": Object {
+                "count": 0,
+                "items": Array [],
+              },
+              "signature": "4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB",
+              "slot": 123548722,
+              "success": true,
+              "timestamp": "2021-09-13T20:06:17.363145",
+            },
+            Object {
+              "messages": Object {
+                "count": 0,
+                "items": Array [],
+              },
+              "signature": "4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB",
+              "slot": 123548722,
+              "success": true,
+              "timestamp": "2021-09-13T20:06:17.363145",
+            },
+            Object {
+              "messages": Object {
+                "count": 0,
+                "items": Array [],
+              },
+              "signature": "4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB",
+              "slot": 123548722,
+              "success": true,
+              "timestamp": "2021-09-13T20:06:17.363145",
+            },
+            Object {
+              "messages": Object {
+                "count": 0,
+                "items": Array [],
+              },
+              "signature": "4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB",
+              "slot": 123548722,
+              "success": true,
+              "timestamp": "2021-09-13T20:06:17.363145",
+            },
+            Object {
+              "messages": Object {
+                "count": 0,
+                "items": Array [],
+              },
+              "signature": "4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB",
+              "slot": 123548722,
+              "success": true,
+              "timestamp": "2021-09-13T20:06:17.363145",
+            },
+            Object {
+              "messages": Object {
+                "count": 0,
+                "items": Array [],
+              },
+              "signature": "4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB",
+              "slot": 123548722,
+              "success": true,
+              "timestamp": "2021-09-13T20:06:17.363145",
+            },
+            Object {
+              "messages": Object {
+                "count": 0,
+                "items": Array [],
+              },
+              "signature": "4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB",
+              "slot": 123548722,
+              "success": true,
+              "timestamp": "2021-09-13T20:06:17.363145",
+            },
+            Object {
+              "messages": Object {
+                "count": 0,
+                "items": Array [],
+              },
+              "signature": "4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB",
+              "slot": 123548722,
+              "success": true,
+              "timestamp": "2021-09-13T20:06:17.363145",
+            },
+            Object {
+              "messages": Object {
+                "count": 0,
+                "items": Array [],
+              },
+              "signature": "4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB",
+              "slot": 123548722,
+              "success": true,
+              "timestamp": "2021-09-13T20:06:17.363145",
+            },
+          ]
+        }
+      />
+    </span>
+  </div>
+</div>
+`;

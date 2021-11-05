@@ -7,7 +7,7 @@ module.exports = {
     '/': ['home', 'blocks', 'transactions'],
     'rgx:^/blocks': ['blocks', 'transactions', 'message_labels', 'message_contents'],
     'rgx:^/transactions': ['transactions', 'message_labels', 'message_contents'],
-    'rgx:^/tokens': ['tokens'],
+    'rgx:^/tokens': ['tokens', 'transactions', 'message_labels', 'message_contents'],
     'rgx:^/validators': ['validators', 'transactions'],
     'rgx:^/accounts': ['accounts', 'transactions', 'validators', 'message_labels', 'message_contents'],
     'rgx:^/params': ['params'],
