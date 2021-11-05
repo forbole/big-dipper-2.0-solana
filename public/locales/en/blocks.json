@@ -9,6 +9,6 @@
   "time": "Time",
   "overview": "Overview",
   "parentSlot": "Parent Slot",
-  "blockHash": "Blockhash",
-  "parentBlockHash": "Parent Blockhash"
+  "processedTx": "Processed Txs",
+  "successfulTx": "Successful Txs"
 }

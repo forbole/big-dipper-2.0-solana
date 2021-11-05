@@ -29,6 +29,7 @@ jest.mock('@components', () => ({
 jest.mock('./components', () => ({
   Overview: (props) => <div id="Overview" {...props} />,
   Transactions: (props) => <div id="Transactions" {...props} />,
+  Signatures: (props) => <div id="Signatures" {...props} />,
 }));
 
 const mockAverageBlockTime = jest.fn().mockResolvedValue({
