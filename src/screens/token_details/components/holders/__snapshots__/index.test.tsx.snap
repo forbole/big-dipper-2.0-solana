@@ -8,34 +8,10 @@ exports[`screen: Transactions/List matches snapshot 1`] = `
   <h2
     className="MuiTypography-root MuiTypography-h2"
   >
-    accounts:transactions
+    tokens:holders
   </h2>
   <div
     className="makeStyles-list"
-  >
-    <div
-      hasNextPage={false}
-      id="TransactionsList"
-      isItemLoaded={[Function]}
-      isNextPageLoading={false}
-      itemCount={1}
-      loadMoreItems={[MockFunction]}
-      loadNextPage={[MockFunction]}
-      transactions={
-        Array [
-          Object {
-            "hash": "hash1",
-            "height": 300,
-            "messages": Object {
-              "count": 4,
-              "items": Array [],
-            },
-            "success": true,
-            "timestamp": "",
-          },
-        ]
-      }
-    />
-  </div>
+  />
 </div>
 `;

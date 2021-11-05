@@ -22,7 +22,7 @@ exports[`screen: Home/Blocks/Mobile matches snapshot 1`] = `
     <div
       style={
         Object {
-          "height": 200,
+          "height": 100,
           "pointerEvents": undefined,
           "width": "100%",
         }
@@ -42,77 +42,91 @@ exports[`screen: Home/Blocks/Mobile matches snapshot 1`] = `
       >
         <div>
           <div
-            hash="76nwV8zz8tLz9...F66jZhQ857"
-            id="SingleBlockMobile"
-            leader={
-              <AvatarName
+            className="makeStyles-list"
+          >
+            <div
+              className="makeStyles-item"
+            >
+              <h4
+                className="MuiTypography-root label MuiTypography-h4"
+              >
+                tokens:rank
+              </h4>
+              <p
+                className="MuiTypography-root value MuiTypography-body1"
+              >
+                # 1
+              </p>
+            </div>
+            <div
+              className="makeStyles-item"
+            >
+              <h4
+                className="MuiTypography-root label MuiTypography-h4"
+              >
+                tokens:address
+              </h4>
+              <div
                 address="desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467"
+                id="AvatarName"
                 name="desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467"
               />
-            }
-            parentHash="76nwV8zz8tLz9...F66jZhQ857"
-            slot={
-              <Link
-                href="/blocks/812768640"
-                passHref={true}
+            </div>
+            <div
+              className="makeStyles-item"
+            >
+              <h4
+                className="MuiTypography-root label MuiTypography-h4"
               >
-                <WithStyles(ForwardRef(Typography))
-                  className="value"
-                  component="a"
-                  variant="body1"
-                >
-                  812,768,640
-                </WithStyles(ForwardRef(Typography))>
-              </Link>
-            }
-            time="1 day ago"
-            txs="2"
-          />
-          <hr
-            className="MuiDivider-root"
-          />
-        </div>
-      </div>
-      <div
-        style={
-          Object {
-            "height": 100,
-            "left": 0,
-            "position": "absolute",
-            "right": undefined,
-            "top": 100,
-            "width": "100%",
-          }
-        }
-      >
-        <div>
-          <div
-            hash="76nwV8zz8tLz9...F66jZhQ857"
-            id="SingleBlockMobile"
-            leader={
-              <AvatarName
-                address="desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467"
-                name="desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467"
-              />
-            }
-            parentHash="76nwV8zz8tLz9...F66jZhQ857"
-            slot={
-              <Link
-                href="/blocks/812768640"
-                passHref={true}
+                tokens:quantity
+              </h4>
+              <p
+                className="MuiTypography-root value MuiTypography-body1"
               >
-                <WithStyles(ForwardRef(Typography))
-                  className="value"
-                  component="a"
-                  variant="body1"
+                4534
+              </p>
+            </div>
+            <div
+              className="makeStyles-item"
+            >
+              <h4
+                className="MuiTypography-root label MuiTypography-h4"
+              >
+                tokens:percentage
+              </h4>
+              <div
+                className="makeStyles-root"
+              >
+                <p
+                  className="MuiTypography-root MuiTypography-body1"
                 >
-                  812,768,640
-                </WithStyles(ForwardRef(Typography))>
-              </Link>
-            }
-            time="1 day ago"
-            txs="2"
-          />
+                  70
+                  %
+                </p>
+                <div
+                  className="makeStyles-chart"
+                >
+                  <div
+                    className="makeStyles-active"
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              className="makeStyles-item"
+            >
+              <h4
+                className="MuiTypography-root label MuiTypography-h4"
+              >
+                tokens:value
+              </h4>
+              <p
+                className="MuiTypography-root value MuiTypography-body1"
+              >
+                234243
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>

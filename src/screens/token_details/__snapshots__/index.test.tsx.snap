@@ -3,7 +3,7 @@
 exports[`screen: BlockDetails matches snapshot 1`] = `
 <div
   id="Layout"
-  navTitle="blocks:blockDetails"
+  navTitle="tokens:tokenDetails"
 >
   <div
     exists={true}
@@ -14,19 +14,157 @@ exports[`screen: BlockDetails matches snapshot 1`] = `
       className="makeStyles-root"
     >
       <div
-        hash="35SD2SaqLUvPBnEBRFUxQjjvS6tmzaPvLeJYQC1QV5E1"
+        address="9n4nbM75f5Ui33ZbPYXn59EwSgE8CGsHtAeTH5YFeJ9E"
+        className="makeStyles-overview"
+        decimals={6}
+        freezeAuthority="9n4nbM75f5Ui33ZbPYXn59EwSgE8CGsHtAeTH5YFeJ9E"
         id="Overview"
-        leader="desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467"
-        parentHash="35SD2SaqLUvPBnEBRFUxQjjvS6tmzaPvLeJYQC1QV5E1"
-        parentSlot={60000}
-        processedTx={300}
-        slot={40000}
-        successfulTx={249}
-        timestamp="2021-09-13T20:06:17.363145"
+        mintAuthority="9n4nbM75f5Ui33ZbPYXn59EwSgE8CGsHtAeTH5YFeJ9E"
+        officialSite="www.solana.com"
       />
       <div
-        id="Transactions"
-        transactions={
+        className="makeStyles-market"
+        holders={20}
+        id="Market"
+        marketCap={7363}
+        price={4.01}
+        supply={435365}
+        transactions={0}
+      />
+      <div
+        className="makeStyles-holders"
+        data={
+          Array [
+            Object {
+              "address": "desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467",
+              "percentage": 70,
+              "quantity": 4534,
+              "value": 234243,
+            },
+            Object {
+              "address": "desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467",
+              "percentage": 70,
+              "quantity": 4534,
+              "value": 234243,
+            },
+            Object {
+              "address": "desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467",
+              "percentage": 70,
+              "quantity": 4534,
+              "value": 234243,
+            },
+            Object {
+              "address": "desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467",
+              "percentage": 70,
+              "quantity": 4534,
+              "value": 234243,
+            },
+            Object {
+              "address": "desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467",
+              "percentage": 70,
+              "quantity": 4534,
+              "value": 234243,
+            },
+            Object {
+              "address": "desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467",
+              "percentage": 70,
+              "quantity": 4534,
+              "value": 234243,
+            },
+            Object {
+              "address": "desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467",
+              "percentage": 70,
+              "quantity": 4534,
+              "value": 234243,
+            },
+            Object {
+              "address": "desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467",
+              "percentage": 70,
+              "quantity": 4534,
+              "value": 234243,
+            },
+            Object {
+              "address": "desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467",
+              "percentage": 70,
+              "quantity": 4534,
+              "value": 234243,
+            },
+            Object {
+              "address": "desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467",
+              "percentage": 70,
+              "quantity": 4534,
+              "value": 234243,
+            },
+            Object {
+              "address": "desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467",
+              "percentage": 70,
+              "quantity": 4534,
+              "value": 234243,
+            },
+            Object {
+              "address": "desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467",
+              "percentage": 70,
+              "quantity": 4534,
+              "value": 234243,
+            },
+            Object {
+              "address": "desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467",
+              "percentage": 70,
+              "quantity": 4534,
+              "value": 234243,
+            },
+            Object {
+              "address": "desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467",
+              "percentage": 70,
+              "quantity": 4534,
+              "value": 234243,
+            },
+            Object {
+              "address": "desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467",
+              "percentage": 70,
+              "quantity": 4534,
+              "value": 234243,
+            },
+            Object {
+              "address": "desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467",
+              "percentage": 70,
+              "quantity": 4534,
+              "value": 234243,
+            },
+            Object {
+              "address": "desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467",
+              "percentage": 70,
+              "quantity": 4534,
+              "value": 234243,
+            },
+            Object {
+              "address": "desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467",
+              "percentage": 70,
+              "quantity": 4534,
+              "value": 234243,
+            },
+            Object {
+              "address": "desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467",
+              "percentage": 70,
+              "quantity": 4534,
+              "value": 234243,
+            },
+            Object {
+              "address": "desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467",
+              "percentage": 70,
+              "quantity": 4534,
+              "value": 234243,
+            },
+          ]
+        }
+        hasNextPage={false}
+        id="Holders"
+        isNextPageLoading={false}
+        loadNextPage={[Function]}
+      />
+      <div
+        className="makeStyles-transactions"
+        data={
           Array [
             Object {
               "messages": Object {
@@ -230,6 +368,10 @@ exports[`screen: BlockDetails matches snapshot 1`] = `
             },
           ]
         }
+        hasNextPage={false}
+        id="Transactions"
+        isNextPageLoading={false}
+        loadNextPage={[Function]}
       />
     </span>
   </div>

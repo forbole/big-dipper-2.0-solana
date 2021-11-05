@@ -26,29 +26,16 @@ describe('screen: Home/Blocks/Mobile', () => {
         <Mobile
           items={[
             {
-              slot: 812768640,
-              leader: {
+              address: {
                 name: 'desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467',
                 address: 'desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467',
               },
-              hash: '76nwV8zz8tLz97SBRXH6uwHvgHXtqJDLQfF66jZhQ857',
-              parentHash: '76nwV8zz8tLz97SBRXH6uwHvgHXtqJDLQfF66jZhQ857',
-              txs: 2,
-              timestamp: '2021-09-13T20:06:17.363145',
-            },
-            {
-              slot: 812768640,
-              leader: {
-                name: 'desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467',
-                address: 'desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467',
-              },
-              hash: '76nwV8zz8tLz97SBRXH6uwHvgHXtqJDLQfF66jZhQ857',
-              parentHash: '76nwV8zz8tLz97SBRXH6uwHvgHXtqJDLQfF66jZhQ857',
-              txs: 2,
-              timestamp: '2021-09-13T20:06:17.363145',
+              quantity: 4534,
+              percentage: 70,
+              value: 234243,
             },
           ]}
-          itemCount={2}
+          itemCount={1}
           loadMoreItems={() => jest.fn()}
           isItemLoaded={() => true}
         />
