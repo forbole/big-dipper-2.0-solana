@@ -1,0 +1,269 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
+<div
+  className="makeStyles-root"
+>
+  <div
+    onScroll={[Function]}
+    style={
+      Object {
+        "WebkitOverflowScrolling": "touch",
+        "direction": "ltr",
+        "height": 50,
+        "overflow": "auto",
+        "position": "relative",
+        "width": 600,
+        "willChange": "transform",
+      }
+    }
+  >
+    <div
+      style={
+        Object {
+          "height": 50,
+          "pointerEvents": undefined,
+          "width": 600,
+        }
+      }
+    >
+      <div
+        className="makeStyles-cell"
+        style={
+          Object {
+            "height": 50,
+            "left": 0,
+            "position": "absolute",
+            "right": undefined,
+            "top": 0,
+            "width": 60,
+          }
+        }
+      >
+        <h4
+          className="MuiTypography-root MuiTypography-h4"
+        >
+          rank
+        </h4>
+      </div>
+      <div
+        className="makeStyles-cell"
+        style={
+          Object {
+            "height": 50,
+            "left": 60,
+            "position": "absolute",
+            "right": undefined,
+            "top": 0,
+            "width": 210,
+          }
+        }
+      >
+        <h4
+          className="MuiTypography-root MuiTypography-h4"
+        >
+          address
+        </h4>
+      </div>
+      <div
+        className="makeStyles-cell"
+        style={
+          Object {
+            "height": 50,
+            "left": 270,
+            "position": "absolute",
+            "right": undefined,
+            "top": 0,
+            "width": 120,
+          }
+        }
+      >
+        <h4
+          className="MuiTypography-root MuiTypography-h4 MuiTypography-alignRight"
+        >
+          quantity
+        </h4>
+      </div>
+      <div
+        className="makeStyles-cell"
+        style={
+          Object {
+            "height": 50,
+            "left": 390,
+            "position": "absolute",
+            "right": undefined,
+            "top": 0,
+            "width": 120,
+          }
+        }
+      >
+        <h4
+          className="MuiTypography-root MuiTypography-h4 MuiTypography-alignRight"
+        >
+          percentage
+        </h4>
+      </div>
+      <div
+        className="makeStyles-cell"
+        style={
+          Object {
+            "height": 50,
+            "left": 510,
+            "position": "absolute",
+            "right": undefined,
+            "top": 0,
+            "width": 90,
+          }
+        }
+      >
+        <h4
+          className="MuiTypography-root MuiTypography-h4 MuiTypography-alignRight"
+        >
+          value
+        </h4>
+      </div>
+    </div>
+  </div>
+  <div
+    className="scrollbar"
+    onScroll={[Function]}
+    style={
+      Object {
+        "WebkitOverflowScrolling": "touch",
+        "direction": "ltr",
+        "height": 550,
+        "overflow": "auto",
+        "position": "relative",
+        "width": 600,
+        "willChange": "transform",
+      }
+    }
+  >
+    <div
+      style={
+        Object {
+          "height": 50,
+          "pointerEvents": undefined,
+          "width": 600,
+        }
+      }
+    >
+      <div
+        className="makeStyles-cell makeStyles-body odd"
+        style={
+          Object {
+            "height": 50,
+            "left": 0,
+            "position": "absolute",
+            "right": undefined,
+            "top": 0,
+            "width": 60,
+          }
+        }
+      >
+        <div
+          className="MuiTypography-root MuiTypography-body1"
+        >
+          # 1
+        </div>
+      </div>
+      <div
+        className="makeStyles-cell makeStyles-body odd"
+        style={
+          Object {
+            "height": 50,
+            "left": 60,
+            "position": "absolute",
+            "right": undefined,
+            "top": 0,
+            "width": 210,
+          }
+        }
+      >
+        <div
+          className="MuiTypography-root MuiTypography-body1"
+        >
+          <div
+            address="desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467"
+            id="AvatarName"
+            name="desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467"
+          />
+        </div>
+      </div>
+      <div
+        className="makeStyles-cell makeStyles-body odd"
+        style={
+          Object {
+            "height": 50,
+            "left": 270,
+            "position": "absolute",
+            "right": undefined,
+            "top": 0,
+            "width": 120,
+          }
+        }
+      >
+        <div
+          className="MuiTypography-root MuiTypography-body1 MuiTypography-alignRight"
+        >
+          4534
+        </div>
+      </div>
+      <div
+        className="makeStyles-cell makeStyles-body odd"
+        style={
+          Object {
+            "height": 50,
+            "left": 390,
+            "position": "absolute",
+            "right": undefined,
+            "top": 0,
+            "width": 120,
+          }
+        }
+      >
+        <div
+          className="MuiTypography-root MuiTypography-body1 MuiTypography-alignRight"
+        >
+          <div
+            className="makeStyles-root"
+          >
+            <p
+              className="MuiTypography-root MuiTypography-body1"
+            >
+              70
+              %
+            </p>
+            <div
+              className="makeStyles-chart"
+            >
+              <div
+                className="makeStyles-active"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="makeStyles-cell makeStyles-body odd"
+        style={
+          Object {
+            "height": 50,
+            "left": 510,
+            "position": "absolute",
+            "right": undefined,
+            "top": 0,
+            "width": 90,
+          }
+        }
+      >
+        <div
+          className="MuiTypography-root MuiTypography-body1 MuiTypography-alignRight"
+        >
+          234243
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
