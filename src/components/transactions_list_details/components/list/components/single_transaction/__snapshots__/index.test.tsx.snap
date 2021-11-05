@@ -9,11 +9,7 @@ exports[`components: SingleTransaction matches snapshot 1`] = `
   >
     <p
       className="MuiTypography-root value MuiTypography-body1"
-    >
-      <div>
-        hash
-      </div>
-    </p>
+    />
   </div>
   <div
     className="makeStyles-itemContainer"
@@ -27,11 +23,8 @@ exports[`components: SingleTransaction matches snapshot 1`] = `
         <h4
           className="MuiTypography-root label MuiTypography-h4"
         >
-          transactions:block
+          transactions:slot
         </h4>
-        <div>
-          block
-        </div>
       </div>
       <div
         className="makeStyles-item time"

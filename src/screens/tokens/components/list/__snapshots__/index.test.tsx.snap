@@ -18,13 +18,20 @@ exports[`screen: Proposals/List matches snapshot 1`] = `
     className="makeStyles-list"
   >
     <div
-      style={
-        Object {
-          "height": 0,
-          "overflow": "visible",
-          "width": 0,
-        }
+      id="Mobile"
+      isItemLoaded={[Function]}
+      itemCount={1}
+      items={
+        Array [
+          Object {
+            "description": "Update max validators",
+            "id": 7,
+            "status": "PROPOSAL_STATUS_REJECTED",
+            "title": "Staking Param Change Part Two",
+          },
+        ]
       }
+      loadMoreItems={[Function]}
     />
   </div>
 </div>

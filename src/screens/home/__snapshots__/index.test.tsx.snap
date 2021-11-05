@@ -10,16 +10,16 @@ exports[`screen: Home matches snapshot 1`] = `
     id="DataBlocks"
   />
   <div
-    className="makeStyles-onlineVotingPower"
-    id="OnlineVotingPower"
+    className="makeStyles-activeStake"
+    id="ActiveStake"
   />
   <div
-    className="makeStyles-tokenomics"
-    id="Tokenomics"
+    className="makeStyles-epoch"
+    id="Epoch"
   />
   <div
-    className="makeStyles-consensus"
-    id="Consensus"
+    className="makeStyles-stakeWeight"
+    id="StakeWeight"
   />
   <div
     className="makeStyles-blocks"

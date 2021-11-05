@@ -4,42 +4,204 @@ exports[`screen: Proposals matches snapshot 1`] = `
 <div
   className="makeStyles-root"
   id="Layout"
-  navTitle="proposals:proposals"
+  navTitle="tokens:tokens"
 >
   <div
-    id="List"
-    isItemLoaded={[Function]}
-    itemCount={4}
-    items={
-      Array [
-        Object {
-          "description": "Update max validators",
-          "id": 7,
-          "status": "PROPOSAL_STATUS_REJECTED",
-          "title": "Staking Param Change Part Two",
-        },
-        Object {
-          "description": "software upgrade description",
-          "id": 6,
-          "status": "PROPOSAL_STATUS_INVALID",
-          "title": "upgrading the software",
-        },
-        Object {
-          "description": "Update max validators",
-          "id": 5,
-          "status": "PROPOSAL_STATUS_INVALID",
-          "title": "Staking Param Change",
-        },
-        Object {
-          "description": "My not so awesome proposal",
-          "id": 4,
-          "status": "PROPOSAL_STATUS_REJECTED",
-          "title": "BD Proposal",
-        },
-      ]
-    }
-    loadMoreItems={[Function]}
-    rawDataTotal={4}
-  />
+    exists={true}
+    id="LoadAndExist"
+    loading={false}
+  >
+    <div
+      id="List"
+      isItemLoaded={[Function]}
+      itemCount={20}
+      items={
+        Array [
+          Object {
+            "address": "9n4nbM75f5Ui33ZbPYXn59EwSgE8CGsHtAeTH5YFeJ9E",
+            "change": 10,
+            "holders": 2178994,
+            "marketCap": 515912496,
+            "price": 1802,
+            "token": "BTC",
+            "volume": 15902496558,
+          },
+          Object {
+            "address": "9n4nbM75f5Ui33ZbPYXn59EwSgE8CGsHtAeTH5YFeJ9E",
+            "change": 10,
+            "holders": 2178994,
+            "marketCap": 515912496,
+            "price": 1802,
+            "token": "BTC",
+            "volume": 15902496558,
+          },
+          Object {
+            "address": "9n4nbM75f5Ui33ZbPYXn59EwSgE8CGsHtAeTH5YFeJ9E",
+            "change": 10,
+            "holders": 2178994,
+            "marketCap": 515912496,
+            "price": 1802,
+            "token": "BTC",
+            "volume": 15902496558,
+          },
+          Object {
+            "address": "9n4nbM75f5Ui33ZbPYXn59EwSgE8CGsHtAeTH5YFeJ9E",
+            "change": 10,
+            "holders": 2178994,
+            "marketCap": 515912496,
+            "price": 1802,
+            "token": "BTC",
+            "volume": 15902496558,
+          },
+          Object {
+            "address": "9n4nbM75f5Ui33ZbPYXn59EwSgE8CGsHtAeTH5YFeJ9E",
+            "change": 10,
+            "holders": 2178994,
+            "marketCap": 515912496,
+            "price": 1802,
+            "token": "BTC",
+            "volume": 15902496558,
+          },
+          Object {
+            "address": "9n4nbM75f5Ui33ZbPYXn59EwSgE8CGsHtAeTH5YFeJ9E",
+            "change": 10,
+            "holders": 2178994,
+            "marketCap": 515912496,
+            "price": 1802,
+            "token": "BTC",
+            "volume": 15902496558,
+          },
+          Object {
+            "address": "9n4nbM75f5Ui33ZbPYXn59EwSgE8CGsHtAeTH5YFeJ9E",
+            "change": 10,
+            "holders": 2178994,
+            "marketCap": 515912496,
+            "price": 1802,
+            "token": "BTC",
+            "volume": 15902496558,
+          },
+          Object {
+            "address": "9n4nbM75f5Ui33ZbPYXn59EwSgE8CGsHtAeTH5YFeJ9E",
+            "change": 10,
+            "holders": 2178994,
+            "marketCap": 515912496,
+            "price": 1802,
+            "token": "BTC",
+            "volume": 15902496558,
+          },
+          Object {
+            "address": "9n4nbM75f5Ui33ZbPYXn59EwSgE8CGsHtAeTH5YFeJ9E",
+            "change": 10,
+            "holders": 2178994,
+            "marketCap": 515912496,
+            "price": 1802,
+            "token": "BTC",
+            "volume": 15902496558,
+          },
+          Object {
+            "address": "9n4nbM75f5Ui33ZbPYXn59EwSgE8CGsHtAeTH5YFeJ9E",
+            "change": 10,
+            "holders": 2178994,
+            "marketCap": 515912496,
+            "price": 1802,
+            "token": "BTC",
+            "volume": 15902496558,
+          },
+          Object {
+            "address": "9n4nbM75f5Ui33ZbPYXn59EwSgE8CGsHtAeTH5YFeJ9E",
+            "change": 10,
+            "holders": 2178994,
+            "marketCap": 515912496,
+            "price": 1802,
+            "token": "BTC",
+            "volume": 15902496558,
+          },
+          Object {
+            "address": "9n4nbM75f5Ui33ZbPYXn59EwSgE8CGsHtAeTH5YFeJ9E",
+            "change": 10,
+            "holders": 2178994,
+            "marketCap": 515912496,
+            "price": 1802,
+            "token": "BTC",
+            "volume": 15902496558,
+          },
+          Object {
+            "address": "9n4nbM75f5Ui33ZbPYXn59EwSgE8CGsHtAeTH5YFeJ9E",
+            "change": 10,
+            "holders": 2178994,
+            "marketCap": 515912496,
+            "price": 1802,
+            "token": "BTC",
+            "volume": 15902496558,
+          },
+          Object {
+            "address": "9n4nbM75f5Ui33ZbPYXn59EwSgE8CGsHtAeTH5YFeJ9E",
+            "change": 10,
+            "holders": 2178994,
+            "marketCap": 515912496,
+            "price": 1802,
+            "token": "BTC",
+            "volume": 15902496558,
+          },
+          Object {
+            "address": "9n4nbM75f5Ui33ZbPYXn59EwSgE8CGsHtAeTH5YFeJ9E",
+            "change": 10,
+            "holders": 2178994,
+            "marketCap": 515912496,
+            "price": 1802,
+            "token": "BTC",
+            "volume": 15902496558,
+          },
+          Object {
+            "address": "9n4nbM75f5Ui33ZbPYXn59EwSgE8CGsHtAeTH5YFeJ9E",
+            "change": 10,
+            "holders": 2178994,
+            "marketCap": 515912496,
+            "price": 1802,
+            "token": "BTC",
+            "volume": 15902496558,
+          },
+          Object {
+            "address": "9n4nbM75f5Ui33ZbPYXn59EwSgE8CGsHtAeTH5YFeJ9E",
+            "change": 10,
+            "holders": 2178994,
+            "marketCap": 515912496,
+            "price": 1802,
+            "token": "BTC",
+            "volume": 15902496558,
+          },
+          Object {
+            "address": "9n4nbM75f5Ui33ZbPYXn59EwSgE8CGsHtAeTH5YFeJ9E",
+            "change": 10,
+            "holders": 2178994,
+            "marketCap": 515912496,
+            "price": 1802,
+            "token": "BTC",
+            "volume": 15902496558,
+          },
+          Object {
+            "address": "9n4nbM75f5Ui33ZbPYXn59EwSgE8CGsHtAeTH5YFeJ9E",
+            "change": 10,
+            "holders": 2178994,
+            "marketCap": 515912496,
+            "price": 1802,
+            "token": "BTC",
+            "volume": 15902496558,
+          },
+          Object {
+            "address": "9n4nbM75f5Ui33ZbPYXn59EwSgE8CGsHtAeTH5YFeJ9E",
+            "change": 10,
+            "holders": 2178994,
+            "marketCap": 515912496,
+            "price": 1802,
+            "token": "BTC",
+            "volume": 15902496558,
+          },
+        ]
+      }
+      loadMoreItems={[Function]}
+      rawDataTotal={20}
+    />
+  </div>
 </div>
 `;

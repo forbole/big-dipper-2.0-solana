@@ -8,26 +8,26 @@ exports[`screen: Home/DataBlocks matches snapshot 1`] = `
     className="makeStyles-slotHeight"
     id="SingleBlock"
     label="latestSlot"
-    value="0"
+    value="1,000"
   />
   <div
     className="makeStyles-slotTime"
     id="SingleBlock"
     label="averageSlotTime"
-    value="0 s"
+    value="6.20 s"
   />
   <div
     className="makeStyles-price"
     id="SingleBlock"
     label="price"
-    value="$5.00"
+    value="$5.66"
   />
   <div
     className="makeStyles-validators"
     description="outOfValidators"
     id="SingleBlock"
     label="activeValidators"
-    value="1000"
+    value="1,000"
   />
 </div>
 `;

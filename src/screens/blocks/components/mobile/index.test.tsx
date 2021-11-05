@@ -26,24 +26,26 @@ describe('screen: Home/Blocks/Mobile', () => {
         <Mobile
           items={[
             {
-              height: 300,
-              txs: 2,
-              timestamp: '',
-              proposer: {
-                name: 'proposer',
-                address: 'address',
+              slot: 812768640,
+              leader: {
+                name: 'desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467',
+                address: 'desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467',
               },
-              hash: 'hash',
+              hash: '76nwV8zz8tLz97SBRXH6uwHvgHXtqJDLQfF66jZhQ857',
+              parentHash: '76nwV8zz8tLz97SBRXH6uwHvgHXtqJDLQfF66jZhQ857',
+              txs: 2,
+              timestamp: '2021-09-13T20:06:17.363145',
             },
             {
-              height: 301,
-              txs: 2,
-              timestamp: '',
-              proposer: {
-                name: 'proposer',
-                address: 'address',
+              slot: 812768640,
+              leader: {
+                name: 'desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467',
+                address: 'desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467',
               },
-              hash: 'hash',
+              hash: '76nwV8zz8tLz97SBRXH6uwHvgHXtqJDLQfF66jZhQ857',
+              parentHash: '76nwV8zz8tLz97SBRXH6uwHvgHXtqJDLQfF66jZhQ857',
+              txs: 2,
+              timestamp: '2021-09-13T20:06:17.363145',
             },
           ]}
           itemCount={2}

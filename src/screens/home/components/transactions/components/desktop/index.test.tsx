@@ -26,11 +26,11 @@ describe('screen: Home/Transactions/Desktop', () => {
         <Desktop
           items={[
             {
-              height: 2000,
-              timestamp: '2021-02-18T09:02:28.668623',
-              hash: '76nwV8zz8tLz97SBRXH6uwHvgHXtqJDLQfF66jZhQ857',
-              messages: 12,
+              slot: 812768640,
               success: true,
+              messages: 5,
+              signature: '76nwV8zz8tLz97SBRXH6uwHvgHXtqJDLQfF66jZhQ857',
+              timestamp: '2021-09-13T20:06:17.363145',
             },
           ]}
         />
