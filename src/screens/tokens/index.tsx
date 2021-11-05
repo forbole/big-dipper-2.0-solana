@@ -28,7 +28,7 @@ const Tokens = () => {
         }}
       />
       <Layout
-        navTitle={t('proposals')}
+        navTitle={t('tokens')}
         className={classes.root}
       >
         <LoadAndExist

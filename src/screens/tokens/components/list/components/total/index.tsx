@@ -9,10 +9,10 @@ const Total: React.FC<{
 }> = ({
   className, total,
 }) => {
-  const { t } = useTranslation('proposals');
+  const { t } = useTranslation('tokens');
   return (
     <Typography variant="body1" className={classnames(className)}>
-      {t('totalProposals', {
+      {t('totalTokensAmount', {
         amount: total,
       })}
     </Typography>

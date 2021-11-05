@@ -42,7 +42,7 @@ const Mobile: React.FC<{
 
   const formattedItems = items.map((x, i) => {
     return ({
-      id: `#${numeral(i + 1).format('0,0')}`,
+      idx: `#${numeral(i + 1).format('0,0')}`,
       token: (
         <Link href={TOKEN_DETAILS(x.address)} passHref>
           <Typography variant="body1" className="value" component="a">
