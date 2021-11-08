@@ -26,6 +26,7 @@ import TransactionsList from './transactions_list';
 import TransactionListDetails from './transactions_list_details';
 import TransactionMessagesFilter from './transaction_messages_filter';
 import Markdown from './markdown';
+import DesmosProfile from './desmos_profile';
 
 export {
   Layout,
@@ -56,4 +57,5 @@ export {
   TransactionListDetails,
   TransactionMessagesFilter,
   Markdown,
+  DesmosProfile,
 };

@@ -40,8 +40,7 @@ const initialTokenDenom = {
 };
 
 const initialState: ValidatorDetailsState = {
-  // loading: true,
-  loading: false,
+  loading: true,
   exists: true,
   desmosProfile: null,
   overview: dummyOverview,
@@ -85,8 +84,15 @@ export const useValidatorDetails = () => {
   const router = useRouter();
   const [state, setState] = useState<ValidatorDetailsState>(initialState);
 
+  // const handleSetState = (stateChange: any) => {
+  //   setState((prevState) => R.mergeDeepLeft(stateChange, prevState));
+  // };
   const handleSetState = (stateChange: any) => {
-    setState((prevState) => R.mergeDeepLeft(stateChange, prevState));
+    setState((prevState) => {
+      const newState = R.mergeDeepLeft(stateChange, prevState);
+      newState.loading = false;
+      return newState;
+    });
   };
 
   // ==========================
@@ -103,11 +109,11 @@ export const useValidatorDetails = () => {
   });
 
   useEffect(() => {
-    // handleSetState(initialState);
-    // if (chainConfig.extra.profile) {
-    //   const address = validatorToDelegatorAddress(R.pathOr('', ['query', 'address'], router));
-    //   fetchDesmosProfile(address);
-    // }
+    handleSetState(initialState);
+    if (chainConfig.extra.profile) {
+      const address = validatorToDelegatorAddress(R.pathOr('', ['query', 'address'], router));
+      fetchDesmosProfile(address);
+    }
   }, [R.pathOr('', ['query', 'address'], router)]);
 
   // ==========================
