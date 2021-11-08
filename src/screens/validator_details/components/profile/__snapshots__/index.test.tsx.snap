@@ -9,7 +9,6 @@ exports[`screen: ValidatorDetails/Profile matches snapshot 1`] = `
     className="makeStyles-bio"
   >
     <div
-      address="operatorAddress"
       className="makeStyles-avatar makeStyles-desktopAvatar"
       id="Avatar"
       imageUrl=""
@@ -22,7 +21,6 @@ exports[`screen: ValidatorDetails/Profile matches snapshot 1`] = `
           className="makeStyles-header"
         >
           <div
-            address="operatorAddress"
             className="makeStyles-avatar makeStyles-mobile"
             id="Avatar"
             imageUrl=""
