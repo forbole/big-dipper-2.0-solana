@@ -62,15 +62,15 @@ const ValidatorDetails = () => {
                 className={classes.profile}
                 validator={overview.validator}
                 identity={overview.identity}
-                voteAccount={overview.voteAccount}
+                voteKey={overview.voteKey}
                 description={overview.description}
                 website={overview.website}
               />
             )}
-            {/* <ValidatorOverview
+            <ValidatorOverview
               className={classes.address}
-              operatorAddress={overview.operatorAddress}
-              selfDelegateAddress={overview.selfDelegateAddress}
+              identity={overview.identity}
+              voteKey={overview.voteKey}
               status={status.status}
               jailed={status.jailed}
               condition={status.condition}
@@ -78,7 +78,7 @@ const ValidatorDetails = () => {
               signedBlockWindow={status.signedBlockWindow}
               missedBlockCounter={status.missedBlockCounter}
               lastSeen={status.lastSeen}
-            /> */}
+            />
             {/* <VotingPower
               className={classes.votingPower}
               data={state.votingPower}

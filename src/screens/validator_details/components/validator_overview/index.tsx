@@ -27,12 +27,12 @@ import { useAddress } from './hooks';
 
 const ValidatorOverview: React.FC<StatusType &{
   className?: string;
-  operatorAddress: string;
-  selfDelegateAddress: string;
+  identity: string;
+  voteKey: string;
 }> = ({
   className,
-  operatorAddress,
-  selfDelegateAddress,
+  identity,
+  voteKey,
   ...data
 }) => {
   const { isDesktop } = useScreenSize();
@@ -144,21 +144,21 @@ const ValidatorOverview: React.FC<StatusType &{
         <div className={classes.addressRoot}>
           <div className={classnames(classes.copyText, classes.item)}>
             <Typography variant="body1" className="label">
-              {t('operatorAddress')}
+              {t('identity')}
             </Typography>
             <div className="detail">
               <CopyIcon
-                onClick={() => handleCopyToClipboard(operatorAddress)}
+                onClick={() => handleCopyToClipboard(identity)}
                 className={classes.actionIcons}
               />
               <Typography variant="body1" className="value">
                 {
                 !isDesktop ? (
-                  getMiddleEllipsis(operatorAddress, {
+                  getMiddleEllipsis(identity, {
                     beginning: 15, ending: 5,
                   })
                 ) : (
-                  operatorAddress
+                  identity
                 )
               }
               </Typography>
@@ -167,22 +167,22 @@ const ValidatorOverview: React.FC<StatusType &{
 
           <div className={classnames(classes.copyText, classes.item)}>
             <Typography variant="body1" className="label">
-              {t('selfDelegateAddress')}
+              {t('voteKey')}
             </Typography>
             <div className="detail">
               <CopyIcon
                 className={classes.actionIcons}
-                onClick={() => handleCopyToClipboard(selfDelegateAddress)}
+                onClick={() => handleCopyToClipboard(identity)}
               />
-              <Link href={ACCOUNT_DETAILS(selfDelegateAddress)} passHref>
+              <Link href={ACCOUNT_DETAILS(identity)} passHref>
                 <Typography variant="body1" className="value" component="a">
                   {
                 !isDesktop ? (
-                  getMiddleEllipsis(selfDelegateAddress, {
+                  getMiddleEllipsis(voteKey, {
                     beginning: 15, ending: 5,
                   })
                 ) : (
-                  selfDelegateAddress
+                  voteKey
                 )
               }
                 </Typography>

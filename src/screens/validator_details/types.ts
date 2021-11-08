@@ -1,7 +1,7 @@
 export type OverviewType = {
   validator: string;
   identity: string;
-  voteAccount: string;
+  voteKey: string;
   description: string;
   website: string;
 }

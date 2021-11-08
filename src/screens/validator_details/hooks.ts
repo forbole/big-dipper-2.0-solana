@@ -28,7 +28,7 @@ import { ValidatorDetailsState } from './types';
 const dummyOverview = {
   validator: 'desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467',
   identity: 'desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467',
-  voteAccount: 'desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467',
+  voteKey: '7VGU4ZwR1e1AFekqbqv2gvjeg47e1PwMPm4BfLt6rxNk',
   website: 'https://www.forbole.com',
   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et quam vestibulum, ullamcorper mauris ut, imperdiet quam. Donec sed fermentum ligula. Quisque et est sit amet augue cursus varius vitae in tortor.',
 };

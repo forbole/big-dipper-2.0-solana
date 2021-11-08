@@ -13,5 +13,18 @@
   "conditionExplanation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ut ex et leo aliquet lacinia. Donec finibus eros in consectetur porta. Aenean ut erat eu nunc pulvinar ullamcorper non non quam.",
   "searchValidator": "Search Validator",
   "validatorDetails": "Validator Details",
-  "website": "Website"
+  "website": "Website",
+  "identity": "Identity",
+  "voteKey": "Vote Key",
+  "status": "Status",
+  "commission": "Comission",
+  "na": "N/A",
+  "lastSeen": "Last Seen",
+  "good": "Good",
+  "moderate": "Moderate",
+  "bad": "Bad",
+  "unbonding": "Unbonding",
+  "jailed": "Jailed",
+  "unbonded": "Unbonded",
+  "unknown": "Unknown"
 }
