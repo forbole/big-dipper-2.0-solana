@@ -74,13 +74,13 @@ const initialState: ValidatorDetailsState = {
     signedBlockWindow: 0,
     lastSeen: '',
   },
-  // votingPower: {
-  //   height: 0,
-  //   overall: initialTokenDenom,
-  //   self: 0,
-  //   selfDelegatePercent: 0,
-  //   selfDelegate: initialTokenDenom,
-  // },
+  votingPower: {
+    height: 0,
+    overall: initialTokenDenom,
+    self: 0,
+    selfDelegatePercent: 0,
+    selfDelegate: initialTokenDenom,
+  },
   activeStake: {
     // count: 0,
     // data: [],

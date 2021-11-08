@@ -13,6 +13,8 @@ import {
   Staking,
   ValidatorOverview,
   SkipRate,
+  VotingPower,
+  Blocks,
 } from './components';
 import { useValidatorDetails } from './hooks';
 
@@ -80,6 +82,11 @@ const ValidatorDetails = () => {
             <SkipRate
               className={classes.skipRate}
             />
+            <VotingPower
+              className={classes.votingPower}
+              data={state.votingPower}
+            />
+            <Blocks className={classes.blocks} />
             <Staking
               className={classes.staking}
               activeStake={activeStake}

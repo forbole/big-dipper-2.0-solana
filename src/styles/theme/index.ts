@@ -203,6 +203,11 @@ export const common: ThemeOptions = {
         },
       },
     },
+    MuiTooltip: {
+      tooltip: {
+        backgroundColor: 'transparent',
+      },
+    },
     MuiTabs: {
       root: {
         '&.MuiTabs-root, & .MuiTab-root': {
@@ -210,15 +215,22 @@ export const common: ThemeOptions = {
         },
         '& .MuiTab-textColorInherit': {
           opacity: 1,
-          color: '#818181',
           fontSize: '1rem',
         },
-        '& .MuiTab-textColorInherit.Mui-selected': {
-          color: '#E3E3E3',
-        },
-        '& .MuiTabs-indicator': {
-          backgroundColor: '#E3E3E3',
-        },
+        // '&.MuiTabs-root, & .MuiTab-root': {
+        //   minHeight: '40px',
+        // },
+        // '& .MuiTab-textColorInherit': {
+        //   opacity: 1,
+        //   color: '#818181',
+        //   fontSize: '1rem',
+        // },
+        // '& .MuiTab-textColorInherit.Mui-selected': {
+        //   color: '#E3E3E3',
+        // },
+        // '& .MuiTabs-indicator': {
+        //   backgroundColor: '#E3E3E3',
+        // },
       },
     },
   },

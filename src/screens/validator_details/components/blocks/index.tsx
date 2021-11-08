@@ -24,13 +24,6 @@ const Blocks: React.FC<{
 }) => {
   const { t } = useTranslation('validators');
   const { state } = useBlocks();
-  const dataProfiles = useProfilesRecoil(state.map((x) => x.proposer));
-  const mergedDataWithProfiles = state.map((x, i) => {
-    return ({
-      ...x,
-      proposer: dataProfiles[i],
-    });
-  });
 
   const classes = useStyles();
   return (
@@ -39,7 +32,7 @@ const Blocks: React.FC<{
         {t('lastBlocks')}
       </Typography>
       <div className={classes.blocks}>
-        {mergedDataWithProfiles.map((x, i) => {
+        {state.map((x, i) => {
           return (
             <Tooltip
               key={`blocks-tooltip-${i}`}
@@ -48,28 +41,10 @@ const Blocks: React.FC<{
                 <Box className={classes.toolTip}>
                   <div className={classes.item}>
                     <Typography variant="h4" className="label">
-                      {t('proposer')}
-                    </Typography>
-                    <AvatarName
-                      address={x.proposer.address}
-                      imageUrl={x.proposer.imageUrl}
-                      name={x.proposer.name}
-                    />
-                  </div>
-                  <div className={classes.item}>
-                    <Typography variant="h4" className="label">
                       {t('block')}
                     </Typography>
                     <Typography variant="body1" className="value">
                       {numeral(x.height).format('0,0')}
-                    </Typography>
-                  </div>
-                  <div className={classes.item}>
-                    <Typography variant="h4" className="label">
-                      {t('txs')}
-                    </Typography>
-                    <Typography variant="body1" className="value">
-                      {numeral(x.txs).format('0,0')}
                     </Typography>
                   </div>
                   <div className={classes.item}>

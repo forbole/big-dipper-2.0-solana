@@ -36,7 +36,7 @@ export type ValidatorDetailsState = {
   desmosProfile: DesmosProfile | null;
   overview: OverviewType;
   status: StatusType;
-  // votingPower: VotingPowerType;
+  votingPower: VotingPowerType;
   activeStake: {
     data: StakeType[];
     count: number;

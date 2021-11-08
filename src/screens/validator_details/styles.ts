@@ -33,18 +33,28 @@ export const useStyles = () => {
             gridColumn: '1 / 4',
           },
         },
+        votingPower: {
+          [theme.breakpoints.up('lg')]: {
+            gridColumn: '1 / 3',
+          },
+        },
+        blocks: {
+          [theme.breakpoints.up('lg')]: {
+            gridColumn: '3 / 4',
+          },
+        },
         staking: {
           [theme.breakpoints.up('lg')]: {
             gridColumn: '1 / 4',
           },
         },
         skipRate: {
-          background: '#31326f',
           [theme.breakpoints.up('lg')]: {
             gridColumn: '1 / 4',
           },
         },
         transactions: {
+          background: '#31326f',
           [theme.breakpoints.up('lg')]: {
             gridColumn: '1 / 4',
           },
