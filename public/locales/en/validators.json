@@ -12,5 +12,6 @@
   "condition": "Condition",
   "conditionExplanation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ut ex et leo aliquet lacinia. Donec finibus eros in consectetur porta. Aenean ut erat eu nunc pulvinar ullamcorper non non quam.",
   "searchValidator": "Search Validator",
-  "validatorDetails": "Validator Details"
+  "validatorDetails": "Validator Details",
+  "website": "Website"
 }

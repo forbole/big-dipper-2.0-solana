@@ -58,17 +58,14 @@ const ValidatorDetails = () => {
                 connections={desmosProfile.connections}
               />
             ) : (
-              <div>
-                no profile
-              </div>
-            // <Profile
-            //   className={classes.profile}
-            //   validator={overview.validator}
-            //   identity={overview.identity}
-            //   voteAccount={overview.voteAccount}
-            //   description={overview.description}
-            //   website={overview.website}
-            // />
+              <Profile
+                className={classes.profile}
+                validator={overview.validator}
+                identity={overview.identity}
+                voteAccount={overview.voteAccount}
+                description={overview.description}
+                website={overview.website}
+              />
             )}
             {/* <ValidatorOverview
               className={classes.address}
