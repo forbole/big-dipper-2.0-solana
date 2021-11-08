@@ -63,5 +63,7 @@
   "signedBlockWindow": "Signed Block Window: {{amount}}",
   "activeStake": "Active Stake",
   "deactiveStake": "Deactive Stake",
-  "activationEpoch": "Activation Epoch"
+  "activationEpoch": "Activation Epoch",
+  "lastEpoch": "Last Epoch",
+  "numEpoch": "{{num}} Epochs"
 }

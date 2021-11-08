@@ -9,11 +9,10 @@ import {
 import { useStyles } from './styles';
 import {
   Profile,
-  VotingPower,
   Transactions,
   Staking,
-  Blocks,
   ValidatorOverview,
+  SkipRate,
 } from './components';
 import { useValidatorDetails } from './hooks';
 
@@ -78,11 +77,9 @@ const ValidatorDetails = () => {
               missedBlockCounter={status.missedBlockCounter}
               lastSeen={status.lastSeen}
             />
-            {/* <VotingPower
-              className={classes.votingPower}
-              data={state.votingPower}
-            /> */}
-            {/* <Blocks className={classes.blocks} /> */}
+            <SkipRate
+              className={classes.skipRate}
+            />
             <Staking
               className={classes.staking}
               activeStake={activeStake}
