@@ -26,10 +26,9 @@ const ValidatorDetails = () => {
   } = useValidatorDetails();
   const {
     overview,
-    delegations,
-    redelegations,
-    undelegations,
     desmosProfile,
+    activeStake,
+    deactiveStake,
     status,
   } = state;
 
@@ -84,19 +83,18 @@ const ValidatorDetails = () => {
               data={state.votingPower}
             /> */}
             {/* <Blocks className={classes.blocks} /> */}
-            {/* <Staking
+            <Staking
               className={classes.staking}
-              delegations={delegations}
-              redelegations={redelegations}
-              undelegations={undelegations}
-            /> */}
-            {/* <Transactions
+              activeStake={activeStake}
+              deactiveStake={deactiveStake}
+            />
+            <Transactions
               className={classes.transactions}
               loadNextPage={loadNextPage}
               data={state.transactions.data}
               hasNextPage={state.transactions.hasNextPage}
               isNextPageLoading={state.transactions.isNextPageLoading}
-            /> */}
+            />
           </span>
         </LoadAndExist>
       </Layout>

@@ -24,23 +24,10 @@ export type VotingPowerType = {
   selfDelegate: TokenUnit;
 }
 
-export type DelegationType = {
-  delegator: string;
+export type StakeType = {
+  account: string;
+  activationEpoch: number;
   amount: TokenUnit;
-}
-
-export type RedelegationType = {
-  to: string;
-  from: string;
-  delegator: string;
-  linkedUntil: string;
-  amount: TokenUnit;
-}
-
-export type UndelegationType = {
-  delegator: string;
-  amount: TokenUnit;
-  linkedUntil: string;
 }
 
 export type ValidatorDetailsState = {
@@ -50,18 +37,14 @@ export type ValidatorDetailsState = {
   overview: OverviewType;
   status: StatusType;
   // votingPower: VotingPowerType;
-  // delegations: {
-  //   data: DelegationType[];
-  //   count: number;
-  // }
-  // redelegations: {
-  //   data: RedelegationType[];
-  //   count: number;
-  // }
-  // undelegations: {
-  //   data: UndelegationType[];
-  //   count: number;
-  // }
+  activeStake: {
+    data: StakeType[];
+    count: number;
+  }
+  deactiveStake: {
+    data: StakeType[];
+    count: number;
+  }
   transactions: {
     hasNextPage: boolean;
     isNextPageLoading: boolean;

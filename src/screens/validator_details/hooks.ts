@@ -33,6 +33,16 @@ const dummyOverview = {
   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et quam vestibulum, ullamcorper mauris ut, imperdiet quam. Donec sed fermentum ligula. Quisque et est sit amet augue cursus varius vitae in tortor.',
 };
 
+const dummyStake = {
+  account: 'desmos1fh8dr93y2wvq49wx982qj9kjjdraqzq55n0zsd',
+  activationEpoch: 1524,
+  amount: {
+    value: 23425123434,
+    denom: 'udsm',
+    format: '0,0.[000000]',
+  },
+};
+
 const initialTokenDenom = {
   value: 0,
   denom: '',
@@ -60,18 +70,18 @@ const initialState: ValidatorDetailsState = {
   //   selfDelegatePercent: 0,
   //   selfDelegate: initialTokenDenom,
   // },
-  // delegations: {
-  //   count: 0,
-  //   data: [],
-  // },
-  // redelegations: {
-  //   count: 0,
-  //   data: [],
-  // },
-  // undelegations: {
-  //   count: 0,
-  //   data: [],
-  // },
+  activeStake: {
+    // count: 0,
+    // data: [],
+    count: 20,
+    data: Array(20).fill(dummyStake),
+  },
+  deactiveStake: {
+    // count: 0,
+    // data: [],
+    count: 10,
+    data: Array(10).fill(dummyStake),
+  },
   transactions: {
     data: [],
     hasNextPage: false,

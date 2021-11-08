@@ -7,26 +7,18 @@ import {
 import { Tabs } from './components';
 import { useStaking } from './hooks';
 import { useStyles } from './styles';
-import {
-  RedelegationType, UndelegationType, DelegationType,
-} from '../../types';
+import { StakeType } from '../../types';
 
-const Delegations = dynamic(() => import('./components/delegations'));
-const Redelgations = dynamic(() => import('./components/redelegations'));
-const Undelegations = dynamic(() => import('./components/undelegations'));
+const Stake = dynamic(() => import('./components/stake'));
 
 const Staking: React.FC<{
   className?: string;
-  delegations: {
-    data: DelegationType[];
+  activeStake: {
+    data: StakeType[];
     count: number;
   }
-  redelegations: {
-    data: RedelegationType[];
-    count: number;
-  }
-  undelegations: {
-    data: UndelegationType[];
+  deactiveStake: {
+    data: StakeType[];
     count: number;
   }
 }> = (props) => {
@@ -39,37 +31,26 @@ const Staking: React.FC<{
   const tabs = [
     {
       id: 0,
-      key: 'delegations',
+      key: 'activeStake',
       component: (
-        <Delegations
-          data={props.delegations.data}
-          count={props.delegations.count}
+        <Stake
+          data={props.activeStake.data}
+          count={props.activeStake.count}
         />
       ),
-      count: props.delegations.count,
+      count: props.activeStake.count,
     },
     {
       id: 1,
-      key: 'redelegations',
+      key: 'deactiveStake',
       component: (
-        <Redelgations
-          data={props.redelegations.data}
-          count={props.redelegations.count}
+        <Stake
+          data={props.deactiveStake.data}
+          count={props.deactiveStake.count}
         />
       ),
-      data: props.redelegations,
-      count: props.redelegations.count,
-    },
-    {
-      id: 2,
-      key: 'undelegations',
-      component: (
-        <Undelegations
-          data={props.undelegations.data}
-          count={props.undelegations.count}
-        />
-      ),
-      count: props.undelegations.count,
+      data: props.deactiveStake,
+      count: props.deactiveStake.count,
     },
   ];
 

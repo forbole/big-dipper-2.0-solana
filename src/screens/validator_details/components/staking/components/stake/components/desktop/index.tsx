@@ -27,13 +27,14 @@ const Desktop: React.FC<{
     return ({
       address: (
         <AvatarName
-          address={x.delegator.address}
-          imageUrl={x.delegator.imageUrl}
-          name={x.delegator.name.length > 20 ? getMiddleEllipsis(x.delegator.name, {
+          address={x.account.address}
+          imageUrl={x.account.imageUrl}
+          name={x.account.name.length > 20 ? getMiddleEllipsis(x.account.name, {
             beginning: 12, ending: 10,
-          }) : x.delegator.name}
+          }) : x.account.name}
         />
       ),
+      activationEpoch: numeral(x.activationEpoch).format('0,0'),
       amount: `${numeral(x.amount.value).format(x.amount.format)} ${x.amount.denom.toUpperCase()}`,
     });
   });

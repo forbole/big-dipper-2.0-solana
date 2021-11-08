@@ -26,13 +26,21 @@ const Mobile: React.FC<{
             <div className={classes.list}>
               <div className={classes.item}>
                 <Typography variant="h4" className="label">
-                  {t('address')}
+                  {t('account')}
                 </Typography>
                 <AvatarName
-                  address={x.delegator.address}
-                  imageUrl={x.delegator.imageUrl}
-                  name={x.delegator.name}
+                  address={x.account.address}
+                  imageUrl={x.account.imageUrl}
+                  name={x.account.name}
                 />
+              </div>
+              <div className={classes.item}>
+                <Typography variant="h4" className="label">
+                  {t('activationEpoch')}
+                </Typography>
+                <Typography variant="body1" className="value">
+                  {numeral(x.activationEpoch).format('0,0')}
+                </Typography>
               </div>
               <div className={classes.item}>
                 <Typography variant="h4" className="label">

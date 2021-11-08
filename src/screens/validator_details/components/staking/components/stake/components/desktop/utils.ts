@@ -5,16 +5,16 @@ export const columns:{
 }[] = [
   {
     key: 'address',
-    width: 34,
+    width: 50,
   },
   {
-    key: 'amount',
-    width: 33,
+    key: 'activationEpoch',
+    width: 25,
     align: 'right',
   },
   {
-    key: 'linkedUntil',
-    width: 33,
+    key: 'amount',
+    width: 25,
     align: 'right',
   },
 ];

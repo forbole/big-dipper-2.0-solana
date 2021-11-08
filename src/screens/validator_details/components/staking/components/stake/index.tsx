@@ -10,14 +10,14 @@ import {
 } from '@components';
 import { useProfilesRecoil } from '@recoil/profiles';
 import { useStyles } from './styles';
-import { DelegationType } from '../../../../types';
+import { StakeType } from '../../../../types';
 
 const Desktop = dynamic(() => import('./components/desktop'));
 const Mobile = dynamic(() => import('./components/mobile'));
 
-const Delegations: React.FC<{
+const Stake: React.FC<{
   className?: string;
-  data: DelegationType[];
+  data: StakeType[];
   count: number;
 }> = ({
   className,
@@ -34,11 +34,11 @@ const Delegations: React.FC<{
     sliceItems,
   } = usePagination({});
 
-  const dataProfiles = useProfilesRecoil(data.map((x) => x.delegator));
+  const dataProfiles = useProfilesRecoil(data.map((x) => x.account));
   const mergedDataWithProfiles = data.map((x, i) => {
     return ({
       ...x,
-      delegator: dataProfiles[i],
+      account: dataProfiles[i],
     });
   });
 
@@ -70,4 +70,4 @@ const Delegations: React.FC<{
   );
 };
 
-export default Delegations;
+export default Stake;

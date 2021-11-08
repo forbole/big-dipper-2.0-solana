@@ -1,11 +1,7 @@
 import Tabs from './tabs';
-import Undelegations from './undelegations';
-import Redelgations from './redelegations';
-import Delegations from './delegations';
+import Stake from './stake';
 
 export {
   Tabs,
-  Undelegations,
-  Redelgations,
-  Delegations,
+  Stake,
 };
