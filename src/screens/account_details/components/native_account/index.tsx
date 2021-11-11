@@ -3,9 +3,11 @@ import {
   Overview,
   Balance,
   Accounts,
+} from './components';
+import {
   Tokens,
   Transactions,
-} from './components';
+} from '..';
 import { useStyles } from './styles';
 
 const NativeAccount = () => {
