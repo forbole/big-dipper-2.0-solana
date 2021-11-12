@@ -58,7 +58,13 @@ const NativeAccount = () => {
       <Balance className={classes.balance} {...data.balance} />
       <Accounts className={classes.accounts} {...data.accounts} />
       <Tokens className={classes.tokens} />
-      <Transactions className={classes.transactions} />
+      <Transactions
+        className={classes.transactions}
+        loadNextPage={() => null}
+        data={[]}
+        hasNextPage={false}
+        isNextPageLoading={false}
+      />
     </>
   );
 };

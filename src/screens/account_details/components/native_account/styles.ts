@@ -26,7 +26,6 @@ export const useStyles = () => {
           },
         },
         transactions: {
-          height: '200px',
           [theme.breakpoints.up('lg')]: {
             gridColumn: '1 / 3',
           },
