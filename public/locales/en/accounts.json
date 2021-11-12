@@ -28,5 +28,9 @@
   "creationTime": "Creation Time",
   "bio": "Bio",
   "status": "Status",
-  "nativeAccount": "Native Account"
+  "nativeAccount": "Native Account",
+  "accountStake": "Stake ({{count}})",
+  "accountVote": "Vote ({{count}})",
+  "accountNonce": "Nonce ({{count}})",
+  "accountToken": "Token ({{count}})"
 }

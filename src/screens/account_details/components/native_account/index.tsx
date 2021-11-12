@@ -44,13 +44,19 @@ const NativeAccount = () => {
         format: '0,0.[000000]',
       },
     },
+    accounts: {
+      stake: Array(10).fill('desmos1rzhewpmmdl72lhnxj6zmxr4v94f522s4ff2psv'),
+      vote: Array(10).fill('desmos1rzhewpmmdl72lhnxj6zmxr4v94f522s4ff2psv'),
+      nonce: Array(10).fill('desmos1rzhewpmmdl72lhnxj6zmxr4v94f522s4ff2psv'),
+      token: Array(10).fill('desmos1rzhewpmmdl72lhnxj6zmxr4v94f522s4ff2psv'),
+    },
   };
 
   return (
     <>
       <Overview className={classes.overview} {...data.overview} />
       <Balance className={classes.balance} {...data.balance} />
-      <Accounts className={classes.accounts} />
+      <Accounts className={classes.accounts} {...data.accounts} />
       <Tokens className={classes.tokens} />
       <Transactions className={classes.transactions} />
     </>
