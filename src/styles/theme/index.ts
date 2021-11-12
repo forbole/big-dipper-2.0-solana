@@ -175,6 +175,14 @@ export const common: ThemeOptions = {
         pass: '#198a65',
         fail: '#b12a34',
       },
+      charts: {
+        zero: '#E8E8E8',
+        one: '#EB3AA4',
+        two: '#497BFF',
+        three: '#FF961B',
+        four: '#1EC490',
+        five: '#9F46EC',
+      },
     },
   },
   overrides: {

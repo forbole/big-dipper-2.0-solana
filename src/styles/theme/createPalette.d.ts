@@ -60,6 +60,14 @@ declare module '@material-ui/core/styles/createPalette' {
             two: string;
             three: string;
         },
+        charts: {
+            zero: string;
+            one: string;
+            two: string;
+            three: string;
+            four: string;
+            five: string;
+        },
     }
 
     interface PaletteOptions {

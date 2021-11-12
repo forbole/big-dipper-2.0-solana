@@ -5,13 +5,11 @@ export const useStyles = () => {
     (theme) => {
       return ({
         overview: {
-          height: '75px',
           [theme.breakpoints.up('lg')]: {
             gridColumn: '1 / 3',
           },
         },
         balance: {
-          height: '200px',
           [theme.breakpoints.up('lg')]: {
             gridColumn: '1 / 3',
           },
