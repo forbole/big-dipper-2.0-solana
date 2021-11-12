@@ -1,6 +1,8 @@
+export type AddressesType = string[];
+
 export type AccountsType = {
-  stake: string[];
-  nonce: string[];
-  vote: string[];
-  token: string[];
+  stake: AddressesType;
+  nonce: AddressesType;
+  vote: AddressesType;
+  token: AddressesType;
 }
