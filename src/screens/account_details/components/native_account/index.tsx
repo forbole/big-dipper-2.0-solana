@@ -12,10 +12,15 @@ import { useStyles } from './styles';
 
 const NativeAccount = () => {
   const classes = useStyles();
+  const data = {
+    overview: {
+      address: 'desmos1hfhkduejung7g29wv863x369rndf3hu5xj4g93',
+    },
+  };
 
   return (
     <>
-      <Overview className={classes.overview} />
+      <Overview className={classes.overview} {...data.overview} />
       <Balance className={classes.balance} />
       <Accounts className={classes.accounts} />
       <Tokens className={classes.tokens} />
