@@ -38,5 +38,11 @@
   "nonceAccount": "Nonce Account",
   "authority": "Authority",
   "blockhash": "Blockhash",
-  "fee": "Fee"
+  "fee": "Fee",
+  "stakeAccount": "Stake Account",
+  "rentReserve": "Rent Reserve",
+  "stakeAuthority": "Stake Authority",
+  "withdrawAuthority": "Withdraw Authority",
+  "delegated": "Delegated",
+  "rewards": "Rewards"
 }

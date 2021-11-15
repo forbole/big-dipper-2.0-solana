@@ -9,6 +9,16 @@ export const useStyles = () => {
             gridColumn: '1 / 3',
           },
         },
+        balance: {
+          [theme.breakpoints.up('lg')]: {
+            gridColumn: '1 / 3',
+          },
+        },
+        accounts: {
+          [theme.breakpoints.up('lg')]: {
+            gridColumn: '1 / 3',
+          },
+        },
         tokens: {
           [theme.breakpoints.up('lg')]: {
             gridColumn: '1 / 3',

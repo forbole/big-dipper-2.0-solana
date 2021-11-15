@@ -16,7 +16,7 @@ import {
 import { useStyles } from './styles';
 import { useAccountDetails } from './hooks';
 
-const ACCOUNT_TYPE = 'nonce' as string;
+const ACCOUNT_TYPE = 'stake' as string;
 
 const AccountDetails = () => {
   const { t } = useTranslation('accounts');
