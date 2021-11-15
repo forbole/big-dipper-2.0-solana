@@ -34,5 +34,6 @@
   "accountNonce": "Nonce ({{count}})",
   "accountToken": "Token ({{count}})",
   "tokens": "Tokens",
-  "tokensTx": "Tokens Transactions"
+  "tokensTx": "Tokens Transactions",
+  "nonceAccount": "Nonce Account"
 }
