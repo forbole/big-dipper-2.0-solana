@@ -32,5 +32,7 @@
   "accountStake": "Stake ({{count}})",
   "accountVote": "Vote ({{count}})",
   "accountNonce": "Nonce ({{count}})",
-  "accountToken": "Token ({{count}})"
+  "accountToken": "Token ({{count}})",
+  "tokens": "Tokens",
+  "tokensTx": "Tokens Transactions"
 }

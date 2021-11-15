@@ -20,7 +20,6 @@ export const useStyles = () => {
           },
         },
         tokens: {
-          height: '200px',
           [theme.breakpoints.up('lg')]: {
             gridColumn: '1 / 3',
           },

@@ -50,6 +50,12 @@ const NativeAccount = () => {
       nonce: Array(100).fill('desmos1rzhewpmmdl72lhnxj6zmxr4v94f522s4ff2psv'),
       token: Array(10).fill('desmos1rzhewpmmdl72lhnxj6zmxr4v94f522s4ff2psv'),
     },
+    tokens: {
+      tokens: Array(14).fill({
+        token: 'ETH',
+        amount: 243530,
+      }),
+    },
   };
 
   return (
@@ -57,7 +63,10 @@ const NativeAccount = () => {
       <Overview className={classes.overview} {...data.overview} />
       <Balance className={classes.balance} {...data.balance} />
       <Accounts className={classes.accounts} {...data.accounts} />
-      <Tokens className={classes.tokens} />
+      <Tokens
+        className={classes.tokens}
+        {...data.tokens}
+      />
       <Transactions
         className={classes.transactions}
         loadNextPage={() => null}
