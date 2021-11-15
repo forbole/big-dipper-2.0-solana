@@ -9,12 +9,12 @@ import {
   TableCell,
   TableBody,
 } from '@material-ui/core';
-import { Name } from '@components';
 import { columns } from './utils';
+import { TokenType } from '../../../../types';
 
 const Desktop: React.FC<{
   className?: string;
-  items?: AddressesType;
+  items?: TokenType[];
 }> = ({
   className,
   items,
