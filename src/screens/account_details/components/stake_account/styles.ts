@@ -14,7 +14,7 @@ export const useStyles = () => {
             gridColumn: '1 / 3',
           },
         },
-        accounts: {
+        delegation: {
           [theme.breakpoints.up('lg')]: {
             gridColumn: '1 / 3',
           },

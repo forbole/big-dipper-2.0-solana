@@ -1,6 +1,9 @@
 import React from 'react';
+import { chainConfig } from '@configs';
 import {
   Overview,
+  Delegation,
+  Accounts,
 } from './components';
 import { useStyles } from './styles';
 import {
@@ -21,6 +24,23 @@ const StakeAccount = () => {
       balance: 23435,
       rentReserve: 3453,
     },
+    delegation: {
+      activated: {
+        value: 15000,
+        denom: chainConfig.tokenUnits[chainConfig.primaryTokenUnit].display,
+        format: '0,0.[000000]',
+      },
+      activating: {
+        value: 5000,
+        denom: chainConfig.tokenUnits[chainConfig.primaryTokenUnit].display,
+        format: '0,0.[000000]',
+      },
+      total: {
+        value: 20000,
+        denom: chainConfig.tokenUnits[chainConfig.primaryTokenUnit].display,
+        format: '0,0.[000000]',
+      },
+    },
     accounts: {
       stake: Array(15).fill('desmos1rzhewpmmdl72lhnxj6zmxr4v94f522s4ff2psv'),
       vote: Array(3).fill('desmos1rzhewpmmdl72lhnxj6zmxr4v94f522s4ff2psv'),
@@ -37,6 +57,8 @@ const StakeAccount = () => {
   return (
     <>
       <Overview className={classes.overview} {...data.overview} />
+      <Delegation className={classes.delegation} {...data.delegation} />
+      <Accounts />
       <Tokens
         className={classes.tokens}
         {...data.tokens}

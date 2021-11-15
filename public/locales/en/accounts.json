@@ -44,5 +44,8 @@
   "stakeAuthority": "Stake Authority",
   "withdrawAuthority": "Withdraw Authority",
   "delegated": "Delegated",
-  "rewards": "Rewards"
+  "rewards": "Rewards",
+  "balanceActivated": "Activated",
+  "balanceActivating": "Activating",
+  "delegation": "Delegation"
 }
