@@ -21,18 +21,29 @@ export const useStyles = () => {
             height: theme.spacing(4.5),
           },
         },
-        copyText: {
-          '& .detail': {
-            display: 'flex',
-            alignItems: 'center',
-            flexDirection: 'row-reverse',
-            justifyContent: 'flex-end',
-            '& svg': {
-              width: '1rem',
-              marginLeft: theme.spacing(1),
-            },
+        actionIcons: {
+          '&:hover': {
+            cursor: 'pointer',
           },
         },
+        copyText: { '& .detail': {
+          display: 'flex',
+          alignItems: 'center',
+          flexDirection: 'row-reverse',
+          justifyContent: 'flex-end',
+          '& svg': {
+            width: '1rem',
+            marginLeft: theme.spacing(1),
+          },
+          [theme.breakpoints.up('md')]: {
+            flexDirection: 'row',
+            justifyContent: 'flex-start',
+            '& svg': {
+              marginLeft: 0,
+              marginRight: theme.spacing(1),
+            },
+          },
+        } },
       });
     },
   )();

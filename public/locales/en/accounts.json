@@ -35,5 +35,8 @@
   "accountToken": "Token ({{count}})",
   "tokens": "Tokens",
   "tokensTx": "Tokens Transactions",
-  "nonceAccount": "Nonce Account"
+  "nonceAccount": "Nonce Account",
+  "authority": "Authority",
+  "blockhash": "Blockhash",
+  "fee": "Fee"
 }
