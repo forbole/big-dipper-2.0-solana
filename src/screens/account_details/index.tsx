@@ -33,7 +33,7 @@ const AccountDetails = () => {
   if (ACCOUNT_TYPE === 'stake') { // done
     component = <StakeAccount />;
   }
-  if (ACCOUNT_TYPE === 'token') {
+  if (ACCOUNT_TYPE === 'token') { // done
     component = <TokenAccount />;
   }
   if (ACCOUNT_TYPE === 'vote') {
