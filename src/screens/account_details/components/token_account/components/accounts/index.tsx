@@ -14,7 +14,7 @@ const Accounts: React.FC<AccountsType & ComponentDefault> = (props) => {
   return (
     <Box className={classnames(props.className)}>
       <Typography variant="h2">
-        {t('otherStakeAccounts')}
+        {t('otherTokenAccounts')}
       </Typography>
       <AccountsList
         data={props.addresses}

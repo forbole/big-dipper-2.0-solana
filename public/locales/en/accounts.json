@@ -51,5 +51,6 @@
   "otherStakeAccounts": "Other Stake Accounts",
   "idx": "Idx",
   "tokenAccount": "Token Account",
-  "mint": "Mint"
+  "mint": "Mint",
+  "otherTokenAccounts": "Other Token Accounts"
 }
