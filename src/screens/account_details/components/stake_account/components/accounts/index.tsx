@@ -1,10 +1,26 @@
 import React from 'react';
+import classnames from 'classnames';
+import { Box } from '@components';
+import useTranslation from 'next-translate/useTranslation';
+import { Typography } from '@material-ui/core';
+import {
+  AccountsList,
+} from './components';
+import { AccountsType } from './types';
 
-const Accounts = () => {
+const Accounts: React.FC<AccountsType & ComponentDefault> = (props) => {
+  const { t } = useTranslation('accounts');
+
   return (
-    <div>
-      other stake accounts
-    </div>
+    <Box className={classnames(props.className)}>
+      <Typography variant="h2">
+        {t('otherStakeAccounts')}
+      </Typography>
+      <AccountsList
+        data={props.addresses}
+        count={props.addresses.length}
+      />
+    </Box>
   );
 };
 

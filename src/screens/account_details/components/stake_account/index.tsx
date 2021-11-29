@@ -43,9 +43,6 @@ const StakeAccount = () => {
     },
     accounts: {
       stake: Array(15).fill('desmos1rzhewpmmdl72lhnxj6zmxr4v94f522s4ff2psv'),
-      vote: Array(3).fill('desmos1rzhewpmmdl72lhnxj6zmxr4v94f522s4ff2psv'),
-      nonce: Array(100).fill('desmos1rzhewpmmdl72lhnxj6zmxr4v94f522s4ff2psv'),
-      token: Array(10).fill('desmos1rzhewpmmdl72lhnxj6zmxr4v94f522s4ff2psv'),
     },
     tokens: {
       tokens: Array(14).fill({
@@ -58,7 +55,10 @@ const StakeAccount = () => {
     <>
       <Overview className={classes.overview} {...data.overview} />
       <Delegation className={classes.delegation} {...data.delegation} />
-      <Accounts />
+      <Accounts
+        className={classes.accounts}
+        addresses={data.accounts.stake}
+      />
       <Tokens
         className={classes.tokens}
         {...data.tokens}

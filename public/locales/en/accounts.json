@@ -47,5 +47,7 @@
   "rewards": "Rewards",
   "balanceActivated": "Activated",
   "balanceActivating": "Activating",
-  "delegation": "Delegation"
+  "delegation": "Delegation",
+  "otherStakeAccounts": "Other Stake Accounts",
+  "idx": "Idx"
 }
