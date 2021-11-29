@@ -16,7 +16,7 @@ import {
 import { useStyles } from './styles';
 import { useAccountDetails } from './hooks';
 
-const ACCOUNT_TYPE = 'stake' as string;
+const ACCOUNT_TYPE = 'token' as string;
 
 const AccountDetails = () => {
   const { t } = useTranslation('accounts');
@@ -24,13 +24,13 @@ const AccountDetails = () => {
   const { state } = useAccountDetails();
 
   let component = null;
-  if (ACCOUNT_TYPE === 'native') {
+  if (ACCOUNT_TYPE === 'native') { // done
     component = <NativeAccount />;
   }
-  if (ACCOUNT_TYPE === 'nonce') {
+  if (ACCOUNT_TYPE === 'nonce') { // done
     component = <NonceAccount />;
   }
-  if (ACCOUNT_TYPE === 'stake') {
+  if (ACCOUNT_TYPE === 'stake') { // done
     component = <StakeAccount />;
   }
   if (ACCOUNT_TYPE === 'token') {

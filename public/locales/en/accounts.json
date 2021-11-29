@@ -49,5 +49,7 @@
   "balanceActivating": "Activating",
   "delegation": "Delegation",
   "otherStakeAccounts": "Other Stake Accounts",
-  "idx": "Idx"
+  "idx": "Idx",
+  "tokenAccount": "Token Account",
+  "mint": "Mint"
 }
