@@ -7,11 +7,11 @@ import {
   Tooltip,
 } from '@material-ui/core';
 import {
-  useProfilesRecoil,
+// useProfilesRecoil,
 } from '@recoil/profiles';
 import {
   Box,
-  AvatarName,
+  // AvatarName,
   Result,
 } from '@components';
 import { useStyles } from './styles';

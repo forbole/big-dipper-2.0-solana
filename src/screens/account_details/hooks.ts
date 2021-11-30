@@ -1,33 +1,34 @@
+/* eslint-disable max-len */
 import {
   useState, useEffect,
 } from 'react';
 import * as R from 'ramda';
-import numeral from 'numeral';
-import dayjs from '@utils/dayjs';
+// import numeral from 'numeral';
+// import dayjs from '@utils/dayjs';
 import { useRouter } from 'next/router';
-import {
-  AccountQuery,
-  useAccountQuery,
-  useGetMessagesByAddressQuery,
-  GetMessagesByAddressQuery,
-} from '@graphql/types';
-import { convertMsgsToModels } from '@msg';
-import {
-  StakingParams,
-} from '@models';
-import { getDenom } from '@utils/get_denom';
-import {
-  formatDenom, getNumeralDenomFormat,
-} from '@utils/format_denom';
+// import {
+//   AccountQuery,
+//   useAccountQuery,
+//   useGetMessagesByAddressQuery,
+//   GetMessagesByAddressQuery,
+// } from '@graphql/types';
+// import { convertMsgsToModels } from '@msg';
+// import {
+//   StakingParams,
+// } from '@models';
+// import { getDenom } from '@utils/get_denom';
+// import {
+//   formatDenom, getNumeralDenomFormat,
+// } from '@utils/format_denom';
 import { chainConfig } from '@src/configs';
 import { useDesmosProfile } from '@hooks';
 import { AccountDetailState } from './types';
 
-const defaultTokenUnit = {
-  value: 0,
-  denom: '',
-  format: '',
-};
+// const defaultTokenUnit = {
+//   value: 0,
+//   denom: '',
+//   format: '',
+// };
 
 const initialState: AccountDetailState = {
   // loading: true,
