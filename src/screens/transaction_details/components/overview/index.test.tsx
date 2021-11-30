@@ -23,19 +23,12 @@ describe('screen: BlockDetails/Overview', () => {
           <Overview
             data={
           {
-            hash: '',
-            height: 0,
-            timestamp: '',
-            fee: {
-              denom: 'daric',
-              value: 5000,
-              format: '',
-            },
-            gasUsed: 0,
-            gasWanted: 0,
-            success: false,
-            memo: '',
-            error: '',
+            slot: 2343354,
+            success: true,
+            confirmations: 'MAX',
+            fee: 0.4,
+            signature: '2mGBpvVcxhLXpnTEeDj4aV1SvVCnXcPKroj3idjnri7TwcR4W2UVUkjEUAHk5fL4Wh3EXiwXLw3cDBe6Rbn8sjUU',
+            timestamp: '2021-09-13T20:06:17.363145',
           }
         }
           />

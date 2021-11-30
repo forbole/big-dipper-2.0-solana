@@ -24,14 +24,14 @@ exports[`screen: Transactions/List matches snapshot 1`] = `
       transactions={
         Array [
           Object {
-            "hash": "hash1",
-            "height": 300,
             "messages": Object {
-              "count": 4,
+              "count": 0,
               "items": Array [],
             },
+            "signature": "4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB",
+            "slot": 123548722,
             "success": true,
-            "timestamp": "",
+            "timestamp": "2021-09-13T20:06:17.363145",
           },
         ]
       }

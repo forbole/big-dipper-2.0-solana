@@ -29,12 +29,12 @@ describe('screen: Transactions/List', () => {
             <Transactions
               data={[
                 {
-                  height: 300,
-                  hash: 'hash1',
+                  slot: 123548722,
+                  signature: '4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB',
                   success: true,
-                  timestamp: '',
+                  timestamp: '2021-09-13T20:06:17.363145',
                   messages: {
-                    count: 10,
+                    count: 0,
                     items: [],
                   },
                 },

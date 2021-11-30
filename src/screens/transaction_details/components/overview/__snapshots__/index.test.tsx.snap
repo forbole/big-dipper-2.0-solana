@@ -7,7 +7,7 @@ exports[`screen: BlockDetails/Overview matches snapshot 1`] = `
     Array [
       Object {
         "detail": <Link
-          href="/blocks/undefined"
+          href="/blocks/2343354"
           passHref={true}
         >
           <WithStyles(ForwardRef(Typography))
@@ -15,31 +15,27 @@ exports[`screen: BlockDetails/Overview matches snapshot 1`] = `
             component="a"
             variant="body1"
           >
-            0
+            2,343,354
           </WithStyles(ForwardRef(Typography))>
         </Link>,
         "label": "transactions:slot",
       },
       Object {
         "detail": <Result
-          success={false}
+          success={true}
         />,
         "label": "transactions:result",
       },
       Object {
-        "detail": undefined,
+        "detail": "MAX",
         "label": "transactions:confirmations",
       },
       Object {
-        "detail": Object {
-          "denom": "daric",
-          "format": "",
-          "value": 5000,
-        },
+        "detail": 0.4,
         "label": "transactions:fee",
       },
       Object {
-        "detail": undefined,
+        "detail": "2mGBpvVcxhLXpnTEeDj4aV1SvVCnXcPKroj3idjnri7TwcR4W2UVUkjEUAHk5fL4Wh3EXiwXLw3cDBe6Rbn8sjUU",
         "label": "transactions:signature",
       },
       Object {

@@ -1,5 +1,5 @@
 import { formatNumber } from '@utils/format_token';
-import { BalanceType } from './types';
+import { BalanceType } from '../../../../types';
 
 export const formatBalanceData = (data: BalanceType) => {
   const balanceChart = [

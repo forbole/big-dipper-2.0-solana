@@ -35,10 +35,13 @@ describe('screen: Proposals/List', () => {
           <List
             items={[
               {
-                title: 'Staking Param Change Part Two',
-                id: 7,
-                status: 'PROPOSAL_STATUS_REJECTED',
-                description: 'Update max validators',
+                token: 'BTC',
+                price: 1802,
+                change: 10,
+                volume: 15902496558,
+                marketCap: 515912496,
+                holders: 2178994,
+                address: '9n4nbM75f5Ui33ZbPYXn59EwSgE8CGsHtAeTH5YFeJ9E',
               },
             ]}
             rawDataTotal={1}

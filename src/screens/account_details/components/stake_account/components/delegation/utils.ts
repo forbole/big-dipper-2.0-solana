@@ -1,16 +1,16 @@
-import numeral from 'numeral';
+import { formatNumber } from '@utils/format_token';
 import { DelegationType } from './types';
 
 export const formatBalanceData = (data: DelegationType) => {
   const balanceChart = [
     {
       key: 'balanceActivated',
-      display: `${numeral(data.activated.value).format(data.activated.format)} ${data.activated.denom.toUpperCase()}`,
+      display: `${formatNumber(data.activated.value, data.activated.exponent)} ${data.activated.displayDenom.toUpperCase()}`,
       value: data.activated.value,
     },
     {
       key: 'balanceActivating',
-      display: `${numeral(data.activating.value).format(data.activating.format)} ${data.activating.denom.toUpperCase()}`,
+      display: `${formatNumber(data.activating.value, data.activating.exponent)} ${data.activating.displayDenom.toUpperCase()}`,
       value: data.activating.value,
     },
   ];

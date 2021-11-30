@@ -45,8 +45,16 @@ exports[`screen: Home/ActiveStake matches snapshot 1`] = `
     className="makeStyles-chart"
   >
     <div
-      id="ResponsiveContainer"
-      width="99%"
+      className="recharts-responsive-container"
+      style={
+        Object {
+          "height": "100%",
+          "maxHeight": undefined,
+          "minHeight": undefined,
+          "minWidth": undefined,
+          "width": "99%",
+        }
+      }
     />
   </div>
 </div>

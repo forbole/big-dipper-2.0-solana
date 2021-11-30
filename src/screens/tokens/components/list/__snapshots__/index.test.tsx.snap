@@ -24,10 +24,13 @@ exports[`screen: Proposals/List matches snapshot 1`] = `
       items={
         Array [
           Object {
-            "description": "Update max validators",
-            "id": 7,
-            "status": "PROPOSAL_STATUS_REJECTED",
-            "title": "Staking Param Change Part Two",
+            "address": "9n4nbM75f5Ui33ZbPYXn59EwSgE8CGsHtAeTH5YFeJ9E",
+            "change": 10,
+            "holders": 2178994,
+            "marketCap": 515912496,
+            "price": 1802,
+            "token": "BTC",
+            "volume": 15902496558,
           },
         ]
       }

@@ -29,14 +29,10 @@ describe('screen: Transactions/List', () => {
             <Transactions
               data={[
                 {
-                  height: 300,
-                  hash: 'hash1',
-                  success: true,
-                  timestamp: '',
-                  messages: {
-                    count: 4,
-                    items: [],
-                  },
+                  address: 'address',
+                  quantity: 5,
+                  percentage: 30,
+                  value: 24534,
                 },
               ]}
               loadNextPage={jest.fn()}
