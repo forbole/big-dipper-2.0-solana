@@ -11,8 +11,8 @@ describe('components: SingleTransaction', () => {
     const component = renderer.create(
       <MockTheme>
         <SingleTransaction
-          block={<div>block</div>}
-          hash={<div>hash</div>}
+          slot={<div>slot</div>}
+          signature={<div>signature</div>}
           time="2021-07-13T08:00:00"
           messageCount="1,000"
           messages={[

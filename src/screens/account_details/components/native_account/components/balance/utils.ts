@@ -1,26 +1,26 @@
-import numeral from 'numeral';
+import { formatNumber } from '@utils/format_token';
 import { BalanceType } from './types';
 
 export const formatBalanceData = (data: BalanceType) => {
   const balanceChart = [
     {
       key: 'balanceNative',
-      display: `${numeral(data.native.value).format(data.native.format)} ${data.native.denom.toUpperCase()}`,
+      display: `${formatNumber(data.native.value, data.native.exponent)} ${data.native.displayDenom.toUpperCase()}`,
       value: data.native.value,
     },
     {
       key: 'balanceStake',
-      display: `${numeral(data.stake.value).format(data.stake.format)} ${data.stake.denom.toUpperCase()}`,
+      display: `${formatNumber(data.stake.value, data.stake.exponent)} ${data.stake.displayDenom.toUpperCase()}`,
       value: data.stake.value,
     },
     {
       key: 'balanceNonce',
-      display: `${numeral(data.nonce.value).format(data.nonce.format)} ${data.nonce.denom.toUpperCase()}`,
+      display: `${formatNumber(data.nonce.value, data.nonce.exponent)} ${data.nonce.displayDenom.toUpperCase()}`,
       value: data.nonce.value,
     },
     {
       key: 'balanceVote',
-      display: `${numeral(data.vote.value).format(data.vote.format)} ${data.vote.denom.toUpperCase()}`,
+      display: `${formatNumber(data.vote.value, data.vote.exponent)} ${data.vote.displayDenom.toUpperCase()}`,
       value: data.vote.value,
     },
   ];
