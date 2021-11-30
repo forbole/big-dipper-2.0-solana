@@ -52,5 +52,11 @@
   "idx": "Idx",
   "tokenAccount": "Token Account",
   "mint": "Mint",
-  "otherTokenAccounts": "Other Token Accounts"
+  "otherTokenAccounts": "Other Token Accounts",
+  "voteAccount": "Vote Account",
+  "authorizedVoter": "Authorized Voter",
+  "authorizedWithdrawer": "Authorized Withdrawer",
+  "lastTimestamp": "Last Timestamp",
+  "rootSlot": "Root Slot",
+  "otherVoteAccounts": "Other Vote Accounts"
 }

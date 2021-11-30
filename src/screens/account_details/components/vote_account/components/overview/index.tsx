@@ -1,6 +1,9 @@
 import React from 'react';
+import { useRecoilValue } from 'recoil';
+import { readDate } from '@recoil/settings';
 import classnames from 'classnames';
 import useTranslation from 'next-translate/useTranslation';
+import dayjs, { formatDayJs } from '@utils/dayjs';
 import { Typography } from '@material-ui/core';
 import Link from 'next/link';
 import { getMiddleEllipsis } from '@utils/get_middle_ellipsis';
@@ -10,9 +13,11 @@ import {
   BoxDetails,
   AvatarName,
 } from '@components';
-import { ACCOUNT_DETAILS } from '@utils/go_to_page';
+import {
+  ACCOUNT_DETAILS, BLOCK_DETAILS,
+} from '@utils/go_to_page';
 import { useScreenSize } from '@hooks';
-import StakeAccountLogo from '@assets/stake-account.svg';
+import VoteAccountLogo from '@assets/vote-account.svg';
 import { useStyles } from './styles';
 import { useOverview } from './hooks';
 import { OverviewType } from './types';
@@ -24,13 +29,15 @@ const Overview: React.FC<OverviewType & ComponentDefault> = (props) => {
   const {
     handleCopyToClipboard,
   } = useOverview(t);
-  const validator = useProfileRecoil(props.validator);
+  const dateFormat = useRecoilValue(readDate);
+  const authorizedVoter = useProfileRecoil(props.authorizedVoter);
+
   const data = {
     title: (
       <div className={classes.header}>
-        <StakeAccountLogo />
+        <VoteAccountLogo />
         <Typography variant="h2">
-          {t('stakeAccount')}
+          {t('voteAccount')}
         </Typography>
       </div>
     ),
@@ -59,38 +66,38 @@ const Overview: React.FC<OverviewType & ComponentDefault> = (props) => {
         ),
       },
       {
-        label: t('rentReserve'),
-        detail: props.rentReserve,
+        label: t('balance'),
+        detail: props.balance,
       },
       {
-        label: t('validator'),
+        label: t('authorizedVoter'),
         className: classes.copyText,
         detail: (
           <AvatarName
-            address={props.validator}
-            imageUrl={validator.imageUrl}
-            name={validator.name}
+            address={props.authorizedVoter}
+            imageUrl={authorizedVoter.imageUrl}
+            name={authorizedVoter.name}
           />
         ),
       },
       {
-        label: t('stakeAuthority'),
+        label: t('authorizedWithdrawer'),
         className: classes.copyText,
         detail: (
           <>
             <CopyIcon
               className={classes.actionIcons}
-              onClick={() => handleCopyToClipboard(props.stakeAuthority)}
+              onClick={() => handleCopyToClipboard(props.authorizedWithdrawer)}
             />
-            <Link href={ACCOUNT_DETAILS(props.stakeAuthority)} passHref>
+            <Link href={ACCOUNT_DETAILS(props.authorizedWithdrawer)} passHref>
               <Typography variant="body1" className="value" component="a">
                 {
                 isMobile ? (
-                  getMiddleEllipsis(props.stakeAuthority, {
+                  getMiddleEllipsis(props.authorizedWithdrawer, {
                     beginning: 15, ending: 5,
                   })
                 ) : (
-                  props.stakeAuthority
+                  props.authorizedWithdrawer
                 )
               }
               </Typography>
@@ -99,41 +106,22 @@ const Overview: React.FC<OverviewType & ComponentDefault> = (props) => {
         ),
       },
       {
-        label: t('withdrawAuthority'),
-        className: classes.copyText,
+        label: t('lastTimestamp'),
+        detail: formatDayJs(dayjs.utc(props.lastTimestamp), dateFormat),
+      },
+      {
+        label: t('commission'),
+        detail: props.commission,
+      },
+      {
+        label: t('rootSlot'),
         detail: (
-          <>
-            <CopyIcon
-              className={classes.actionIcons}
-              onClick={() => handleCopyToClipboard(props.withdrawAuthority)}
-            />
-            <Link href={ACCOUNT_DETAILS(props.withdrawAuthority)} passHref>
-              <Typography variant="body1" className="value" component="a">
-                {
-                isMobile ? (
-                  getMiddleEllipsis(props.withdrawAuthority, {
-                    beginning: 15, ending: 5,
-                  })
-                ) : (
-                  props.withdrawAuthority
-                )
-              }
-              </Typography>
-            </Link>
-          </>
+          <Link href={BLOCK_DETAILS(props.rootSlot)} passHref>
+            <Typography variant="body1" className="value" component="a">
+              {props.rootSlot}
+            </Typography>
+          </Link>
         ),
-      },
-      {
-        label: t('delegated'),
-        detail: props.delegated,
-      },
-      {
-        label: t('rewards'),
-        detail: props.rewards,
-      },
-      {
-        label: t('balance'),
-        detail: props.balance,
       },
     ],
   };

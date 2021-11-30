@@ -16,7 +16,7 @@ import {
 import { useStyles } from './styles';
 import { useAccountDetails } from './hooks';
 
-const ACCOUNT_TYPE = 'token' as string;
+const ACCOUNT_TYPE = 'stake' as string;
 
 const AccountDetails = () => {
   const { t } = useTranslation('accounts');
@@ -54,7 +54,7 @@ const AccountDetails = () => {
           exists={state.exists}
         >
           <span className={classes.root}>
-            {!!state.desmosProfile && (
+            {(!!state.desmosProfile && ACCOUNT_TYPE === 'native') && (
             <DesmosProfile
               className={classes.profile}
               dtag={state.desmosProfile.dtag}
