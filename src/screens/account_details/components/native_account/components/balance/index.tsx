@@ -20,7 +20,7 @@ import { Box } from '@components';
 import { formatNumber } from '@utils/format_token';
 import { chainConfig } from '@configs';
 import { useStyles } from './styles';
-import { BalanceType } from './types';
+import { BalanceType } from '../../../../types';
 import { formatBalanceData } from './utils';
 
 const Balance: React.FC<BalanceType & ComponentDefault> = (props) => {

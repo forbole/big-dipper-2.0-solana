@@ -4,11 +4,10 @@ export type OverviewType = {
 }
 
 export type BalanceType = {
-  available: TokenUnit;
-  delegate: TokenUnit;
-  unbonding: TokenUnit;
-  reward: TokenUnit;
-  commission?: TokenUnit;
+  native: TokenUnit;
+  stake: TokenUnit;
+  nonce: TokenUnit;
+  vote: TokenUnit;
   total: TokenUnit;
 }
 

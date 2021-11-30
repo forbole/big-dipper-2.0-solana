@@ -1,5 +1,4 @@
 import React from 'react';
-import { chainConfig } from '@configs';
 import {
   Overview,
   Balance,
@@ -19,29 +18,34 @@ const NativeAccount = () => {
     },
     balance: {
       native: {
-        value: 5000,
-        denom: chainConfig.tokenUnits[chainConfig.primaryTokenUnit].display,
-        format: '0,0.[000000]',
+        value: '5000',
+        baseDenom: 'sol',
+        displayDenom: 'sol',
+        exponent: 6,
       },
       stake: {
-        value: 5000,
-        denom: chainConfig.tokenUnits[chainConfig.primaryTokenUnit].display,
-        format: '0,0.[000000]',
+        value: '5000',
+        baseDenom: 'sol',
+        displayDenom: 'sol',
+        exponent: 6,
       },
       nonce: {
-        value: 5000,
-        denom: chainConfig.tokenUnits[chainConfig.primaryTokenUnit].display,
-        format: '0,0.[000000]',
+        value: '5000',
+        baseDenom: 'sol',
+        displayDenom: 'sol',
+        exponent: 6,
       },
       vote: {
-        value: 5000,
-        denom: chainConfig.tokenUnits[chainConfig.primaryTokenUnit].display,
-        format: '0,0.[000000]',
+        value: '5000',
+        baseDenom: 'sol',
+        displayDenom: 'sol',
+        exponent: 6,
       },
       total: {
-        value: 20000,
-        denom: chainConfig.tokenUnits[chainConfig.primaryTokenUnit].display,
-        format: '0,0.[000000]',
+        value: '20000',
+        baseDenom: 'sol',
+        displayDenom: 'sol',
+        exponent: 6,
       },
     },
     accounts: {
