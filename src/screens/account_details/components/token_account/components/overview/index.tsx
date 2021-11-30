@@ -62,7 +62,6 @@ const Overview: React.FC<OverviewType & ComponentDefault> = (props) => {
       },
       {
         label: t('mint'),
-        className: classes.copyText,
         detail: (
           <AvatarName
             address={props.mint}

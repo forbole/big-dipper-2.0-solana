@@ -64,7 +64,6 @@ const Overview: React.FC<OverviewType & ComponentDefault> = (props) => {
       },
       {
         label: t('validator'),
-        className: classes.copyText,
         detail: (
           <AvatarName
             address={props.validator}

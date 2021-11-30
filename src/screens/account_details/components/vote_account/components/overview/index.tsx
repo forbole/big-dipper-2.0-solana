@@ -71,7 +71,6 @@ const Overview: React.FC<OverviewType & ComponentDefault> = (props) => {
       },
       {
         label: t('authorizedVoter'),
-        className: classes.copyText,
         detail: (
           <AvatarName
             address={props.authorizedVoter}
