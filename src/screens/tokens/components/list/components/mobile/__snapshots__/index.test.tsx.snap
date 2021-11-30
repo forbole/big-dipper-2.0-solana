@@ -54,10 +54,12 @@ exports[`screen: Home/Blocks/Mobile matches snapshot 1`] = `
               </h4>
               <a
                 className="MuiTypography-root value MuiTypography-body1"
-                href="/tokens/undefined"
+                href="/tokens/9n4nbM75f5Ui33ZbPYXn59EwSgE8CGsHtAeTH5YFeJ9E"
                 onClick={[Function]}
                 onMouseEnter={[Function]}
-              />
+              >
+                BTC
+              </a>
             </div>
             <div
               className="makeStyles-flex"
@@ -73,7 +75,7 @@ exports[`screen: Home/Blocks/Mobile matches snapshot 1`] = `
                 <p
                   className="MuiTypography-root value MuiTypography-body1"
                 >
-                  $0
+                  $1,802
                 </p>
               </div>
               <div
@@ -85,8 +87,10 @@ exports[`screen: Home/Blocks/Mobile matches snapshot 1`] = `
                   tokens:change
                 </h4>
                 <p
-                  className="MuiTypography-root change MuiTypography-body1"
-                />
+                  className="MuiTypography-root change positive MuiTypography-body1"
+                >
+                  10
+                </p>
               </div>
             </div>
             <div
@@ -100,7 +104,7 @@ exports[`screen: Home/Blocks/Mobile matches snapshot 1`] = `
               <p
                 className="MuiTypography-root value MuiTypography-body1"
               >
-                $0
+                $15,902,496,558
               </p>
             </div>
             <div
@@ -114,7 +118,7 @@ exports[`screen: Home/Blocks/Mobile matches snapshot 1`] = `
               <p
                 className="MuiTypography-root value MuiTypography-body1"
               >
-                $0
+                $515,912,496
               </p>
             </div>
             <div
@@ -128,7 +132,7 @@ exports[`screen: Home/Blocks/Mobile matches snapshot 1`] = `
               <p
                 className="MuiTypography-root value MuiTypography-body1"
               >
-                0
+                2,178,994
               </p>
             </div>
           </div>
@@ -161,12 +165,6 @@ exports[`screen: Home/Blocks/Mobile matches snapshot 1`] = `
               >
                 tokens:token
               </h4>
-              <a
-                className="MuiTypography-root value MuiTypography-body1"
-                href="/tokens/undefined"
-                onClick={[Function]}
-                onMouseEnter={[Function]}
-              />
             </div>
             <div
               className="makeStyles-flex"
@@ -181,9 +179,7 @@ exports[`screen: Home/Blocks/Mobile matches snapshot 1`] = `
                 </h4>
                 <p
                   className="MuiTypography-root value MuiTypography-body1"
-                >
-                  $0
-                </p>
+                />
               </div>
               <div
                 className="makeStyles-item"
@@ -193,9 +189,6 @@ exports[`screen: Home/Blocks/Mobile matches snapshot 1`] = `
                 >
                   tokens:change
                 </h4>
-                <p
-                  className="MuiTypography-root change MuiTypography-body1"
-                />
               </div>
             </div>
             <div
@@ -208,9 +201,7 @@ exports[`screen: Home/Blocks/Mobile matches snapshot 1`] = `
               </h4>
               <p
                 className="MuiTypography-root value MuiTypography-body1"
-              >
-                $0
-              </p>
+              />
             </div>
             <div
               className="makeStyles-item"
@@ -222,9 +213,7 @@ exports[`screen: Home/Blocks/Mobile matches snapshot 1`] = `
               </h4>
               <p
                 className="MuiTypography-root value MuiTypography-body1"
-              >
-                $0
-              </p>
+              />
             </div>
             <div
               className="makeStyles-item"
@@ -236,9 +225,7 @@ exports[`screen: Home/Blocks/Mobile matches snapshot 1`] = `
               </h4>
               <p
                 className="MuiTypography-root value MuiTypography-body1"
-              >
-                0
-              </p>
+              />
             </div>
           </div>
         </div>

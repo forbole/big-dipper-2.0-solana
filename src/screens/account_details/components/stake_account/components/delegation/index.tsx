@@ -4,6 +4,7 @@ import numeral from 'numeral';
 import * as R from 'ramda';
 import { useRecoilValue } from 'recoil';
 import { readMarket } from '@recoil/market';
+import Big from 'big.js';
 import {
   Typography,
   Divider,
@@ -14,6 +15,7 @@ import {
   ResponsiveContainer,
   Cell,
 } from 'recharts';
+import { formatNumber } from '@utils/format_token';
 import useTranslation from 'next-translate/useTranslation';
 import { Box } from '@components';
 import { chainConfig } from '@configs';
@@ -46,11 +48,11 @@ const Delegation: React.FC<DelegationType & ComponentDefault> = (props) => {
     background: backgrounds[i],
   }));
 
-  const notEmpty = formatData.some((x) => x.value > 0);
+  const notEmpty = formatData.some((x) => Big(x.value).gt(0));
 
-  const dataCount = formatData.filter((x) => x.value > 0).length;
+  const dataCount = formatData.filter((x) => Big(x.value).gt(0)).length;
   const data = notEmpty ? formatData : [...formatData, empty];
-  const totalAmount = `$${numeral(market.price * props.total.value).format('0,0.00')}`;
+  const totalAmount = `$${numeral(market.price * numeral(props.total.value).value()).format('0,0.00')}`;
 
   return (
     <Box className={classnames(props.className, classes.root)}>
@@ -111,11 +113,11 @@ const Delegation: React.FC<DelegationType & ComponentDefault> = (props) => {
           <div className="total__single--container">
             <Typography variant="h3" className="label">
               {t('total', {
-                unit: props.total.denom.toUpperCase(),
+                unit: props.total.displayDenom.toUpperCase(),
               })}
             </Typography>
             <Typography variant="h3">
-              {numeral(props.total.value).format(props.total.format)}
+              {formatNumber(props.total.value, props.total.exponent)}
             </Typography>
           </div>
           <div className="total__secondary--container total__single--container">

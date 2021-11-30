@@ -39,8 +39,6 @@ const Redelegations: React.FC<{
     return ({
       ...x,
       from: fromProfiles[i],
-      to: toProfiles[i],
-      delegator: delegator[i],
     });
   });
   const items = sliceItems(mergedDataWithProfiles);

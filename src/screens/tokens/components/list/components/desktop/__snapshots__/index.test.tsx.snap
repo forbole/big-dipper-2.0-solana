@@ -180,7 +180,7 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
     <div
       style={
         Object {
-          "height": 100,
+          "height": 50,
           "pointerEvents": undefined,
           "width": 600,
         }
@@ -223,10 +223,12 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
         >
           <a
             className="MuiTypography-root value MuiTypography-body1"
-            href="/tokens/undefined"
+            href="/tokens/9n4nbM75f5Ui33ZbPYXn59EwSgE8CGsHtAeTH5YFeJ9E"
             onClick={[Function]}
             onMouseEnter={[Function]}
-          />
+          >
+            BTC
+          </a>
         </div>
       </div>
       <div
@@ -245,7 +247,7 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
         <div
           className="MuiTypography-root MuiTypography-body1 MuiTypography-alignRight"
         >
-          $0
+          $1,802
         </div>
       </div>
       <div
@@ -265,8 +267,10 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
           className="MuiTypography-root MuiTypography-body1 MuiTypography-alignRight"
         >
           <p
-            className="MuiTypography-root makeStyles-price MuiTypography-body1"
-          />
+            className="MuiTypography-root makeStyles-price positive MuiTypography-body1"
+          >
+            10
+          </p>
         </div>
       </div>
       <div
@@ -285,7 +289,7 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
         <div
           className="MuiTypography-root MuiTypography-body1 MuiTypography-alignRight"
         >
-          $0
+          $15,902,496,558
         </div>
       </div>
       <div
@@ -304,7 +308,7 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
         <div
           className="MuiTypography-root MuiTypography-body1 MuiTypography-alignRight"
         >
-          $0
+          $515,912,496
         </div>
       </div>
       <div
@@ -323,147 +327,7 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
         <div
           className="MuiTypography-root MuiTypography-body1 MuiTypography-alignRight"
         >
-          0
-        </div>
-      </div>
-      <div
-        className="makeStyles-cell makeStyles-body"
-        style={
-          Object {
-            "height": 50,
-            "left": 0,
-            "position": "absolute",
-            "right": undefined,
-            "top": 50,
-            "width": 60,
-          }
-        }
-      >
-        <div
-          className="MuiTypography-root MuiTypography-body1"
-        >
-          #2
-        </div>
-      </div>
-      <div
-        className="makeStyles-cell makeStyles-body"
-        style={
-          Object {
-            "height": 50,
-            "left": 60,
-            "position": "absolute",
-            "right": undefined,
-            "top": 50,
-            "width": 120,
-          }
-        }
-      >
-        <div
-          className="MuiTypography-root MuiTypography-body1"
-        >
-          <a
-            className="MuiTypography-root value MuiTypography-body1"
-            href="/tokens/undefined"
-            onClick={[Function]}
-            onMouseEnter={[Function]}
-          />
-        </div>
-      </div>
-      <div
-        className="makeStyles-cell makeStyles-body"
-        style={
-          Object {
-            "height": 50,
-            "left": 180,
-            "position": "absolute",
-            "right": undefined,
-            "top": 50,
-            "width": 60,
-          }
-        }
-      >
-        <div
-          className="MuiTypography-root MuiTypography-body1 MuiTypography-alignRight"
-        >
-          $0
-        </div>
-      </div>
-      <div
-        className="makeStyles-cell makeStyles-body"
-        style={
-          Object {
-            "height": 50,
-            "left": 240,
-            "position": "absolute",
-            "right": undefined,
-            "top": 50,
-            "width": 90,
-          }
-        }
-      >
-        <div
-          className="MuiTypography-root MuiTypography-body1 MuiTypography-alignRight"
-        >
-          <p
-            className="MuiTypography-root makeStyles-price MuiTypography-body1"
-          />
-        </div>
-      </div>
-      <div
-        className="makeStyles-cell makeStyles-body"
-        style={
-          Object {
-            "height": 50,
-            "left": 330,
-            "position": "absolute",
-            "right": undefined,
-            "top": 50,
-            "width": 90,
-          }
-        }
-      >
-        <div
-          className="MuiTypography-root MuiTypography-body1 MuiTypography-alignRight"
-        >
-          $0
-        </div>
-      </div>
-      <div
-        className="makeStyles-cell makeStyles-body"
-        style={
-          Object {
-            "height": 50,
-            "left": 420,
-            "position": "absolute",
-            "right": undefined,
-            "top": 50,
-            "width": 90,
-          }
-        }
-      >
-        <div
-          className="MuiTypography-root MuiTypography-body1 MuiTypography-alignRight"
-        >
-          $0
-        </div>
-      </div>
-      <div
-        className="makeStyles-cell makeStyles-body"
-        style={
-          Object {
-            "height": 50,
-            "left": 510,
-            "position": "absolute",
-            "right": undefined,
-            "top": 50,
-            "width": 90,
-          }
-        }
-      >
-        <div
-          className="MuiTypography-root MuiTypography-body1 MuiTypography-alignRight"
-        >
-          0
+          2,178,994
         </div>
       </div>
     </div>

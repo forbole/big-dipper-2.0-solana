@@ -12,6 +12,9 @@ exports[`component: SingleSlotMobile matches snapshot 1`] = `
     >
       slot
     </h4>
+    <div>
+      slot
+    </div>
   </div>
   <div
     className="makeStyles-item"
@@ -21,6 +24,9 @@ exports[`component: SingleSlotMobile matches snapshot 1`] = `
     >
       leader
     </h4>
+    <div>
+      leader
+    </div>
   </div>
   <div
     className="makeStyles-item"
@@ -64,7 +70,7 @@ exports[`component: SingleSlotMobile matches snapshot 1`] = `
       <p
         className="MuiTypography-root value MuiTypography-body1"
       >
-        txs
+        100,000
       </p>
     </div>
     <div

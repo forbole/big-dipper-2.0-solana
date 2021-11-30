@@ -9,14 +9,14 @@ import {
   Pagination, NoData,
 } from '@components';
 import { useStyles } from './styles';
-import { TokenType } from '../../types';
+import { AccountType } from '../../types';
 
 const Desktop = dynamic(() => import('./components/desktop'));
 const Mobile = dynamic(() => import('./components/mobile'));
 
 const List: React.FC<{
   className?: string;
-  data: TokenType[];
+  data: AccountType[];
   count: number;
 }> = ({
   className,

@@ -30,27 +30,16 @@ describe('screen: Home/Blocks/Desktop', () => {
         <Desktop
           items={[
             {
-              height: 300,
-              txs: 2,
-              timestamp: '',
-              proposer: {
-                name: 'proposer',
-                address: 'address',
-              },
-              hash: 'hash',
-            },
-            {
-              height: 301,
-              txs: 2,
-              timestamp: '',
-              proposer: {
-                name: 'proposer',
-                address: 'address',
-              },
-              hash: 'hash',
+              token: 'BTC',
+              price: 1802,
+              change: 10,
+              volume: 15902496558,
+              marketCap: 515912496,
+              holders: 2178994,
+              address: '9n4nbM75f5Ui33ZbPYXn59EwSgE8CGsHtAeTH5YFeJ9E',
             },
           ]}
-          itemCount={2}
+          itemCount={1}
           loadMoreItems={() => jest.fn()}
           isItemLoaded={() => true}
         />

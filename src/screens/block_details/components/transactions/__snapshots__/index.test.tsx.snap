@@ -20,30 +20,20 @@ exports[`screen: BlockDetails/Transactions matches snapshot 1`] = `
     id="TransactionsList"
     isItemLoaded={[Function]}
     isNextPageLoading={false}
-    itemCount={2}
+    itemCount={1}
     loadMoreItems={[Function]}
     loadNextPage={[Function]}
     transactions={
       Array [
         Object {
-          "hash": "hash",
-          "height": 300,
           "messages": Object {
-            "count": 3,
+            "count": 0,
             "items": Array [],
           },
-          "success": false,
-          "timestamp": "",
-        },
-        Object {
-          "hash": "hash1",
-          "height": 300,
-          "messages": Object {
-            "count": 13,
-            "items": Array [],
-          },
+          "signature": "4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB",
+          "slot": 123548722,
           "success": true,
-          "timestamp": "",
+          "timestamp": "2021-09-13T20:06:17.363145",
         },
       ]
     }
