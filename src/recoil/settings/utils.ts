@@ -1,8 +1,8 @@
 import {
   lightTemplate,
   darkTemplate,
-  deuteranopiaTemplate,
-  tritanopiaTemplate,
+  // deuteranopiaTemplate,
+  // tritanopiaTemplate,
 } from '@styles';
 import {
   Theme,

@@ -30,9 +30,10 @@ type Transactions = {
 }
 
 type TokenUnit = {
-  value: number;
-  denom: string;
-  format: string;
+  displayDenom: string;
+  baseDenom: string;
+  exponent: number;
+  value: string;
 }
 
 type DesmosProfile = {

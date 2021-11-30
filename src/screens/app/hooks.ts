@@ -19,16 +19,15 @@ export const useApp = () => {
     }
     // jdenticon theme
     jdenticon.configure({
-      hues: [207],
       lightness: {
-        color: [0.84, 0.84],
-        grayscale: [0.84, 0.84],
+        color: [0.47, 0.67],
+        grayscale: [0.28, 0.48],
       },
       saturation: {
-        color: 0.48,
-        grayscale: 0.48,
+        color: 0.10,
+        grayscale: 0.02,
       },
-      backColor: '#2a4766',
+      backColor: '#6b80342e',
     });
   }, []);
 

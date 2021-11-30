@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import * as R from 'ramda';
-import {
-  useTransactionsQuery,
-  useTransactionsListenerSubscription,
-  TransactionsListenerSubscription,
-} from '@graphql/types';
-import { convertMsgsToModels } from '@msg';
+// import {
+//   useTransactionsQuery,
+//   useTransactionsListenerSubscription,
+//   TransactionsListenerSubscription,
+// } from '@graphql/types';
+// import { convertMsgsToModels } from '@msg';
 import { TransactionsState } from './types';
 
 const fakeData = {

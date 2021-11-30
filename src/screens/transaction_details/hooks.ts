@@ -3,12 +3,12 @@ import {
 } from 'react';
 import { useRouter } from 'next/router';
 import * as R from 'ramda';
-import {
-  useTransactionDetailsQuery,
-  TransactionDetailsQuery,
-} from '@graphql/types';
-import { formatDenom } from '@utils/format_denom';
-import { convertMsgsToModels } from '@msg';
+// import {
+//   useTransactionDetailsQuery,
+//   TransactionDetailsQuery,
+// } from '@graphql/types';
+// import { formatDenom } from '@utils/format_denom';
+// import { convertMsgsToModels } from '@msg';
 import {
   TransactionState,
 } from './types';

@@ -17,12 +17,12 @@ describe('component: SingleSlotMobile', () => {
     const component = renderer.create(
       <MockTheme>
         <SingleSlotMobile
+          slot={<div>slot</div>}
+          txs="100,000"
+          leader={<div>leader</div>}
           hash="hash"
           parentHash="parentHash"
-          txs="txs"
           time="time"
-          proposer={<div id="proposer" />}
-          height={<div id="height" />}
         />
       </MockTheme>,
     );
