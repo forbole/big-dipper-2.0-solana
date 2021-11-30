@@ -92,11 +92,11 @@ export const getMessageByType = (message: any, viewRaw: boolean, t:any) => {
 export const convertMsgsToModels = (transaction: any) => {
   const messages = R.pathOr([], ['messages'], transaction).map((msg, i) => {
     const model = getMessageModelByType(msg?.['@type']);
-    if (model === MODELS.MsgWithdrawDelegatorReward
-      || model === MODELS.MsgWithdrawValidatorCommission) {
-      const log = R.pathOr(null, ['logs', i], transaction);
-      return model.fromJson(msg, log);
-    }
+    // if (model === MODELS.MsgWithdrawDelegatorReward
+    //   || model === MODELS.MsgWithdrawValidatorCommission) {
+    //   const log = R.pathOr(null, ['logs', i], transaction);
+    //   return model.fromJson(msg, log);
+    // }
     return model.fromJson(msg);
   });
 

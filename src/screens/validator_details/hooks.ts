@@ -56,9 +56,10 @@ const dummyTx = {
 };
 
 const initialTokenDenom = {
-  value: 0,
-  denom: '',
-  format: '',
+  value: '0',
+  displayDenom: '',
+  baseDenom: '',
+  exponent: 0,
 };
 
 const initialState: ValidatorDetailsState = {

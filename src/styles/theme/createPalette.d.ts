@@ -49,6 +49,21 @@ declare module '@material-ui/core/styles/createPalette' {
             three: string;
             four: string;
             five: string;
+            six: string;
+            seven: string;
+            eight: string;
+            nine: string;
+            ten: string;
+            eleven: string;
+            twelve: string;
+            thirteen: string;
+            fourteen: string;
+            fifteen: string;
+            sixteen: string;
+            seventeen: string;
+            eighteen: string;
+            nineteen: string;
+            twenty: string;
         },
         results: {
             pass: string;

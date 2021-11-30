@@ -6,6 +6,7 @@ import {
   Divider, Typography,
 } from '@material-ui/core';
 import { AvatarName } from '@components';
+import { formatNumber } from '@utils/format_token';
 import { useStyles } from './styles';
 import { ItemType } from '../../types';
 
@@ -47,7 +48,7 @@ const Mobile: React.FC<{
                   {t('amount')}
                 </Typography>
                 <Typography variant="body1" className="value">
-                  {`${numeral(x.amount.value).format(x.amount.format)} ${x.amount.denom.toUpperCase()}`}
+                  {`${formatNumber(x.amount.value, x.amount.exponent)} ${x.amount.displayDenom.toUpperCase()}`}
                 </Typography>
               </div>
             </div>

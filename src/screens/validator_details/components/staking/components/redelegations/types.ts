@@ -1,6 +1,6 @@
-import { RedelegationType } from '../../../../types';
+import { StakeType } from '../../../../types';
 
-export type ItemType = Override<RedelegationType, {
+export type ItemType = Override<StakeType, {
   delegator: AvatarName,
   to:AvatarName,
   from: AvatarName

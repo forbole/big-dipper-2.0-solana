@@ -19,20 +19,21 @@ interface AvatarName {
 }
 
 type Transactions = {
-  slot: number;
-  signature: string;
+  height: number;
+  hash: string;
   success: boolean;
   timestamp: string;
   messages: {
     count: number;
     items: any[];
-  }
+  };
 }
 
 type TokenUnit = {
-  value: number;
-  denom: string;
-  format: string;
+  displayDenom: string;
+  baseDenom: string;
+  exponent: number;
+  value: string;
 }
 
 type DesmosProfile = {
@@ -85,5 +86,5 @@ type TagTheme = 'zero' |
 
 type MsgCoin = {
   denom: string;
-  amount: string | number;
+  amount: string;
 }

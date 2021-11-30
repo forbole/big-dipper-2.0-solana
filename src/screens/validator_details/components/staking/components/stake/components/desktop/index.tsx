@@ -10,6 +10,7 @@ import {
   TableBody,
 } from '@material-ui/core';
 import { AvatarName } from '@components';
+import { formatNumber } from '@utils/format_token';
 import { getMiddleEllipsis } from '@utils/get_middle_ellipsis';
 import { columns } from './utils';
 import { ItemType } from '../../types';
@@ -35,7 +36,7 @@ const Desktop: React.FC<{
         />
       ),
       activationEpoch: numeral(x.activationEpoch).format('0,0'),
-      amount: `${numeral(x.amount.value).format(x.amount.format)} ${x.amount.denom.toUpperCase()}`,
+      amount: `${formatNumber(x.amount.value, x.amount.exponent)} ${x.amount.displayDenom.toUpperCase()}`,
     });
   });
 

@@ -35,18 +35,19 @@ describe('screen: Validators/Desktop', () => {
           items={[
             {
               validator: {
-                name: '',
-                address: '',
-                imageUrl: '',
+                address: 'desmosvaloper19dzz3wqakz7d0s550mvtjcdsde8nlhs4se98mt',
+                name: 'moniker',
               },
-              votingPower: 0,
-              votingPowerPercent: 0,
-              commission: 0,
-              selfPercent: 0,
-              condition: 0,
-              jailed: true,
-              delegators: 4,
+              stake: 121212,
+              stakePercent: 12,
+              fee: 0.9,
+              lastVote: 56969523,
+              skipRate: 80,
+              skipTotal: 100, // idk what this is atm,
+              skipPercent: 55,
+              condition: 90,
               status: 3,
+              delegators: 100,
             },
           ]}
         />
