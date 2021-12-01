@@ -39,8 +39,9 @@ const dummyStake = {
   activationEpoch: 1524,
   amount: {
     value: 23425123434,
-    denom: 'udsm',
-    format: '0,0.[000000]',
+    displayDenom: 'udsm',
+    baseDenom: 'dsm',
+    exponent: 6,
   },
 };
 
