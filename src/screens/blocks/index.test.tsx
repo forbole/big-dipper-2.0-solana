@@ -9,8 +9,8 @@ import {
   MockTheme, wait,
 } from '@tests/utils';
 import {
-  BlocksListenerDocument,
-  BlocksDocument,
+// BlocksListenerDocument,
+// BlocksDocument,
 } from '@graphql/types';
 import Blocks from '.';
 
@@ -66,15 +66,15 @@ describe('screen: Blocks', () => {
     const mockClient = createMockClient();
     const mockSubscription = createMockSubscription();
 
-    mockClient.setRequestHandler(
-      BlocksListenerDocument,
-      () => mockSubscription,
-    );
+    // mockClient.setRequestHandler(
+    //   BlocksListenerDocument,
+    //   () => mockSubscription,
+    // );
 
-    mockClient.setRequestHandler(
-      BlocksDocument,
-      mockBlocksDocument,
-    );
+    // mockClient.setRequestHandler(
+    //   BlocksDocument,
+    //   mockBlocksDocument,
+    // );
 
     let component;
 

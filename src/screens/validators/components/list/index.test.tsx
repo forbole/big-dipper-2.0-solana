@@ -6,7 +6,7 @@ import {
 } from '@tests/utils';
 import { createMockClient } from 'mock-apollo-client';
 import { ApolloProvider } from '@apollo/client';
-import { ValidatorsDocument } from '@graphql/types';
+// import { ValidatorsDocument } from '@graphql/types';
 import List from '.';
 
 // ==================================
@@ -98,10 +98,10 @@ const mockValidatorsDocument = jest.fn().mockResolvedValue({
 describe('screen: Validators/List', () => {
   it('matches snapshot', async () => {
     const mockClient = createMockClient();
-    mockClient.setRequestHandler(
-      ValidatorsDocument,
-      mockValidatorsDocument,
-    );
+    // mockClient.setRequestHandler(
+    //   ValidatorsDocument,
+    //   mockValidatorsDocument,
+    // );
 
     let component;
 

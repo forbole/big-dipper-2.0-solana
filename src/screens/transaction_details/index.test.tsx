@@ -6,7 +6,7 @@ import {
   MockTheme, wait,
 } from '@tests/utils';
 import {
-  TransactionDetailsDocument,
+// TransactionDetailsDocument,
 } from '@graphql/types';
 import TransactionDetails from '.';
 
@@ -140,10 +140,10 @@ const mockTransactionDetailsDocument = jest.fn().mockResolvedValue({
 describe('screen: Blocks/List', () => {
   it('matches snapshot', async () => {
     const mockClient = createMockClient();
-    mockClient.setRequestHandler(
-      TransactionDetailsDocument,
-      mockTransactionDetailsDocument,
-    );
+    // mockClient.setRequestHandler(
+    //   TransactionDetailsDocument,
+    //   mockTransactionDetailsDocument,
+    // );
 
     let component;
     renderer.act(() => {

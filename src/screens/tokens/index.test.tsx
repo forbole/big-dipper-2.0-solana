@@ -7,7 +7,7 @@ import {
 import { ApolloProvider } from '@apollo/client';
 import { createMockClient } from 'mock-apollo-client';
 import {
-  ProposalsDocument,
+// ProposalsDocument,
 } from '@graphql/types';
 import Proposals from '.';
 
@@ -66,10 +66,10 @@ describe('screen: Proposals', () => {
   it('matches snapshot', async () => {
     const mockClient = createMockClient();
 
-    mockClient.setRequestHandler(
-      ProposalsDocument,
-      mockProposals,
-    );
+    // mockClient.setRequestHandler(
+    //   ProposalsDocument,
+    //   mockProposals,
+    // );
     let component;
     renderer.act(() => {
       component = renderer.create(
