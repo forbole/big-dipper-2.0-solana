@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import { createMockClient } from 'mock-apollo-client';
 import { ApolloProvider } from '@apollo/client';

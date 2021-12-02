@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import { RecoilRoot } from 'recoil';
 import renderer from 'react-test-renderer';
