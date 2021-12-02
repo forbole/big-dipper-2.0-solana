@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import { RecoilRoot } from 'recoil';
 import renderer from 'react-test-renderer';
@@ -9,8 +10,8 @@ import {
   MockTheme, wait,
 } from '@tests/utils';
 import {
-  TransactionsListenerDocument,
-  TransactionsDocument,
+// TransactionsListenerDocument,
+// TransactionsDocument,
 } from '@graphql/types';
 import Transactions from '.';
 
@@ -92,15 +93,15 @@ describe('screen: Transactions', () => {
     const mockClient = createMockClient();
     const mockSubscription = createMockSubscription();
 
-    mockClient.setRequestHandler(
-      TransactionsListenerDocument,
-      () => mockSubscription,
-    );
+    // mockClient.setRequestHandler(
+    //   TransactionsListenerDocument,
+    //   () => mockSubscription,
+    // );
 
-    mockClient.setRequestHandler(
-      TransactionsDocument,
-      mockTransactionsDocument,
-    );
+    // mockClient.setRequestHandler(
+    //   TransactionsDocument,
+    //   mockTransactionsDocument,
+    // );
 
     let component;
 

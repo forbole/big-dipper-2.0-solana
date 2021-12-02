@@ -5,7 +5,7 @@ config:
 generates:
   ./src/graphql/types.tsx:
     documents:
-      - './src/**/*.graphql'
+      - './src/graphql/*.graphql'
       - '!./src/**/desmos_profile.graphql'
     schema: https://gql.mainnet.desmos.network/v1/graphql
     plugins:

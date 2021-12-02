@@ -8,7 +8,7 @@ import {
 } from 'mock-apollo-client';
 import { ApolloProvider } from '@apollo/client';
 import {
-  TransactionsListenerDocument,
+// TransactionsListenerDocument,
 } from '@graphql/types';
 import Transactions from '.';
 
@@ -53,10 +53,10 @@ describe('screen: Home/Blocks/Mobile', () => {
     const mockClient = createMockClient();
     const mockSubscription = createMockSubscription();
 
-    mockClient.setRequestHandler(
-      TransactionsListenerDocument,
-      () => mockSubscription,
-    );
+    // mockClient.setRequestHandler(
+    //   TransactionsListenerDocument,
+    //   () => mockSubscription,
+    // );
 
     let component;
 

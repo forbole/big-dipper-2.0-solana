@@ -14,11 +14,11 @@
     "time": "2021-07-13T08:00:00",
     "height": 1
   },
-  "primaryTokenUnit": "udsm",
+  "primaryTokenUnit": "sol",
   "tokenUnits": {
-    "udsm": {
-      "display": "dsm",
-      "exponent": 6
+    "sol": {
+      "display": "sol",
+      "exponent": 9
     }
   },
   "extra": {

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import { RecoilRoot } from 'recoil';
 import renderer from 'react-test-renderer';
@@ -9,7 +10,7 @@ import {
 } from 'mock-apollo-client';
 import { ApolloProvider } from '@apollo/client';
 import {
-  BlocksListenerDocument,
+  // BlocksListenerDocument,
 } from '@graphql/types';
 import Blocks from '.';
 
@@ -56,10 +57,10 @@ describe('screen: Home/Blocks/Mobile', () => {
   it('matches snapshot', async () => {
     const mockClient = createMockClient();
     const mockSubscription = createMockSubscription();
-    mockClient.setRequestHandler(
-      BlocksListenerDocument,
-      () => mockSubscription,
-    );
+    // mockClient.setRequestHandler(
+    //   BlocksListenerDocument,
+    //   () => mockSubscription,
+    // );
 
     let component;
 
