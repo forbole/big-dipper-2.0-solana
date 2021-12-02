@@ -56,10 +56,10 @@ describe('screen: Home/Blocks/Mobile', () => {
   it('matches snapshot', async () => {
     const mockClient = createMockClient();
     const mockSubscription = createMockSubscription();
-    mockClient.setRequestHandler(
-      BlocksListenerDocument,
-      () => mockSubscription,
-    );
+    // mockClient.setRequestHandler(
+    //   BlocksListenerDocument,
+    //   () => mockSubscription,
+    // );
 
     let component;
 
