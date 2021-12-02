@@ -215,6 +215,121 @@ export type Account_Balance_Variance_Fields = {
   balance?: Maybe<Scalars['Float']>;
 };
 
+/** columns and relationships of "average_slot_time_per_hour" */
+export type Average_Slot_Time_Per_Hour = {
+  __typename?: 'average_slot_time_per_hour';
+  average_time: Scalars['numeric'];
+};
+
+/** aggregated selection of "average_slot_time_per_hour" */
+export type Average_Slot_Time_Per_Hour_Aggregate = {
+  __typename?: 'average_slot_time_per_hour_aggregate';
+  aggregate?: Maybe<Average_Slot_Time_Per_Hour_Aggregate_Fields>;
+  nodes: Array<Average_Slot_Time_Per_Hour>;
+};
+
+/** aggregate fields of "average_slot_time_per_hour" */
+export type Average_Slot_Time_Per_Hour_Aggregate_Fields = {
+  __typename?: 'average_slot_time_per_hour_aggregate_fields';
+  avg?: Maybe<Average_Slot_Time_Per_Hour_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<Average_Slot_Time_Per_Hour_Max_Fields>;
+  min?: Maybe<Average_Slot_Time_Per_Hour_Min_Fields>;
+  stddev?: Maybe<Average_Slot_Time_Per_Hour_Stddev_Fields>;
+  stddev_pop?: Maybe<Average_Slot_Time_Per_Hour_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Average_Slot_Time_Per_Hour_Stddev_Samp_Fields>;
+  sum?: Maybe<Average_Slot_Time_Per_Hour_Sum_Fields>;
+  var_pop?: Maybe<Average_Slot_Time_Per_Hour_Var_Pop_Fields>;
+  var_samp?: Maybe<Average_Slot_Time_Per_Hour_Var_Samp_Fields>;
+  variance?: Maybe<Average_Slot_Time_Per_Hour_Variance_Fields>;
+};
+
+
+/** aggregate fields of "average_slot_time_per_hour" */
+export type Average_Slot_Time_Per_Hour_Aggregate_FieldsCountArgs = {
+  columns?: Maybe<Array<Average_Slot_Time_Per_Hour_Select_Column>>;
+  distinct?: Maybe<Scalars['Boolean']>;
+};
+
+/** aggregate avg on columns */
+export type Average_Slot_Time_Per_Hour_Avg_Fields = {
+  __typename?: 'average_slot_time_per_hour_avg_fields';
+  average_time?: Maybe<Scalars['Float']>;
+};
+
+/** Boolean expression to filter rows from the table "average_slot_time_per_hour". All fields are combined with a logical 'AND'. */
+export type Average_Slot_Time_Per_Hour_Bool_Exp = {
+  _and?: Maybe<Array<Average_Slot_Time_Per_Hour_Bool_Exp>>;
+  _not?: Maybe<Average_Slot_Time_Per_Hour_Bool_Exp>;
+  _or?: Maybe<Array<Average_Slot_Time_Per_Hour_Bool_Exp>>;
+  average_time?: Maybe<Numeric_Comparison_Exp>;
+};
+
+/** aggregate max on columns */
+export type Average_Slot_Time_Per_Hour_Max_Fields = {
+  __typename?: 'average_slot_time_per_hour_max_fields';
+  average_time?: Maybe<Scalars['numeric']>;
+};
+
+/** aggregate min on columns */
+export type Average_Slot_Time_Per_Hour_Min_Fields = {
+  __typename?: 'average_slot_time_per_hour_min_fields';
+  average_time?: Maybe<Scalars['numeric']>;
+};
+
+/** Ordering options when selecting data from "average_slot_time_per_hour". */
+export type Average_Slot_Time_Per_Hour_Order_By = {
+  average_time?: Maybe<Order_By>;
+};
+
+/** select columns of table "average_slot_time_per_hour" */
+export enum Average_Slot_Time_Per_Hour_Select_Column {
+  /** column name */
+  AverageTime = 'average_time'
+}
+
+/** aggregate stddev on columns */
+export type Average_Slot_Time_Per_Hour_Stddev_Fields = {
+  __typename?: 'average_slot_time_per_hour_stddev_fields';
+  average_time?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Average_Slot_Time_Per_Hour_Stddev_Pop_Fields = {
+  __typename?: 'average_slot_time_per_hour_stddev_pop_fields';
+  average_time?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Average_Slot_Time_Per_Hour_Stddev_Samp_Fields = {
+  __typename?: 'average_slot_time_per_hour_stddev_samp_fields';
+  average_time?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate sum on columns */
+export type Average_Slot_Time_Per_Hour_Sum_Fields = {
+  __typename?: 'average_slot_time_per_hour_sum_fields';
+  average_time?: Maybe<Scalars['numeric']>;
+};
+
+/** aggregate var_pop on columns */
+export type Average_Slot_Time_Per_Hour_Var_Pop_Fields = {
+  __typename?: 'average_slot_time_per_hour_var_pop_fields';
+  average_time?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate var_samp on columns */
+export type Average_Slot_Time_Per_Hour_Var_Samp_Fields = {
+  __typename?: 'average_slot_time_per_hour_var_samp_fields';
+  average_time?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate variance on columns */
+export type Average_Slot_Time_Per_Hour_Variance_Fields = {
+  __typename?: 'average_slot_time_per_hour_variance_fields';
+  average_time?: Maybe<Scalars['Float']>;
+};
+
 
 /** Boolean expression to compare columns of type "bigint". All fields are combined with logical 'AND'. */
 export type Bigint_Comparison_Exp = {
@@ -1189,6 +1304,10 @@ export type Query_Root = {
   account_balance_aggregate: Account_Balance_Aggregate;
   /** fetch data from the table: "account_balance" using primary key columns */
   account_balance_by_pk?: Maybe<Account_Balance>;
+  /** fetch data from the table: "average_slot_time_per_hour" */
+  average_slot_time_per_hour: Array<Average_Slot_Time_Per_Hour>;
+  /** fetch aggregated fields from the table: "average_slot_time_per_hour" */
+  average_slot_time_per_hour_aggregate: Average_Slot_Time_Per_Hour_Aggregate;
   /** fetch data from the table: "block" */
   block: Array<Block>;
   /** fetch aggregated fields from the table: "block" */
@@ -1314,6 +1433,24 @@ export type Query_RootAccount_Balance_AggregateArgs = {
 
 export type Query_RootAccount_Balance_By_PkArgs = {
   address: Scalars['String'];
+};
+
+
+export type Query_RootAverage_Slot_Time_Per_HourArgs = {
+  distinct_on?: Maybe<Array<Average_Slot_Time_Per_Hour_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Average_Slot_Time_Per_Hour_Order_By>>;
+  where?: Maybe<Average_Slot_Time_Per_Hour_Bool_Exp>;
+};
+
+
+export type Query_RootAverage_Slot_Time_Per_Hour_AggregateArgs = {
+  distinct_on?: Maybe<Array<Average_Slot_Time_Per_Hour_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Average_Slot_Time_Per_Hour_Order_By>>;
+  where?: Maybe<Average_Slot_Time_Per_Hour_Bool_Exp>;
 };
 
 
@@ -1726,6 +1863,10 @@ export type Subscription_Root = {
   account_balance_aggregate: Account_Balance_Aggregate;
   /** fetch data from the table: "account_balance" using primary key columns */
   account_balance_by_pk?: Maybe<Account_Balance>;
+  /** fetch data from the table: "average_slot_time_per_hour" */
+  average_slot_time_per_hour: Array<Average_Slot_Time_Per_Hour>;
+  /** fetch aggregated fields from the table: "average_slot_time_per_hour" */
+  average_slot_time_per_hour_aggregate: Average_Slot_Time_Per_Hour_Aggregate;
   /** fetch data from the table: "block" */
   block: Array<Block>;
   /** fetch aggregated fields from the table: "block" */
@@ -1851,6 +1992,24 @@ export type Subscription_RootAccount_Balance_AggregateArgs = {
 
 export type Subscription_RootAccount_Balance_By_PkArgs = {
   address: Scalars['String'];
+};
+
+
+export type Subscription_RootAverage_Slot_Time_Per_HourArgs = {
+  distinct_on?: Maybe<Array<Average_Slot_Time_Per_Hour_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Average_Slot_Time_Per_Hour_Order_By>>;
+  where?: Maybe<Average_Slot_Time_Per_Hour_Bool_Exp>;
+};
+
+
+export type Subscription_RootAverage_Slot_Time_Per_Hour_AggregateArgs = {
+  distinct_on?: Maybe<Array<Average_Slot_Time_Per_Hour_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Average_Slot_Time_Per_Hour_Order_By>>;
+  where?: Maybe<Average_Slot_Time_Per_Hour_Bool_Exp>;
 };
 
 
@@ -3963,6 +4122,24 @@ export type LatestBlockTimestampQuery = { block: Array<(
     & Pick<Block, 'timestamp'>
   )> };
 
+export type BlocksListenerSubscriptionVariables = Exact<{
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+}>;
+
+
+export type BlocksListenerSubscription = { blocks: Array<(
+    { __typename?: 'block' }
+    & Pick<Block, 'slot' | 'proposer' | 'hash' | 'timestamp'>
+    & { transactionsAggregate: (
+      { __typename?: 'transaction_aggregate' }
+      & { aggregate?: Maybe<(
+        { __typename?: 'transaction_aggregate_fields' }
+        & Pick<Transaction_Aggregate_Fields, 'count'>
+      )> }
+    ) }
+  )> };
+
 export type TokenPriceListenerSubscriptionVariables = Exact<{
   denom?: Maybe<Scalars['String']>;
 }>;
@@ -4081,6 +4258,45 @@ export function useLatestBlockTimestampLazyQuery(baseOptions?: Apollo.LazyQueryH
 export type LatestBlockTimestampQueryHookResult = ReturnType<typeof useLatestBlockTimestampQuery>;
 export type LatestBlockTimestampLazyQueryHookResult = ReturnType<typeof useLatestBlockTimestampLazyQuery>;
 export type LatestBlockTimestampQueryResult = Apollo.QueryResult<LatestBlockTimestampQuery, LatestBlockTimestampQueryVariables>;
+export const BlocksListenerDocument = gql`
+    subscription BlocksListener($limit: Int = 7, $offset: Int = 0) {
+  blocks: block(limit: $limit, offset: $offset, order_by: {slot: desc}) {
+    slot
+    proposer
+    hash
+    timestamp
+    transactionsAggregate: transactions_aggregate {
+      aggregate {
+        count
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useBlocksListenerSubscription__
+ *
+ * To run a query within a React component, call `useBlocksListenerSubscription` and pass it any options that fit your needs.
+ * When your component renders, `useBlocksListenerSubscription` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the subscription, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useBlocksListenerSubscription({
+ *   variables: {
+ *      limit: // value for 'limit'
+ *      offset: // value for 'offset'
+ *   },
+ * });
+ */
+export function useBlocksListenerSubscription(baseOptions?: Apollo.SubscriptionHookOptions<BlocksListenerSubscription, BlocksListenerSubscriptionVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useSubscription<BlocksListenerSubscription, BlocksListenerSubscriptionVariables>(BlocksListenerDocument, options);
+      }
+export type BlocksListenerSubscriptionHookResult = ReturnType<typeof useBlocksListenerSubscription>;
+export type BlocksListenerSubscriptionResult = Apollo.SubscriptionResult<BlocksListenerSubscription>;
 export const TokenPriceListenerDocument = gql`
     subscription TokenPriceListener($denom: String) {
   tokenPrice: token_price(where: {unit_name: {_eq: $denom}}) {
