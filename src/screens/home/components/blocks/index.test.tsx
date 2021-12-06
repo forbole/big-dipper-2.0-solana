@@ -10,7 +10,7 @@ import {
 } from 'mock-apollo-client';
 import { ApolloProvider } from '@apollo/client';
 import {
-  // BlocksListenerDocument,
+  BlocksListenerDocument,
 } from '@graphql/types';
 import Blocks from '.';
 
@@ -36,15 +36,15 @@ const mockBlocksListenerDocument = {
   data: {
     blocks: [
       {
-        height: 379643,
-        txs: 2,
-        hash: 'D0243447726B8BD7AE94BF4F98E536A647959194E870AB8566CB833A3CC847F6',
-        timestamp: '2021-05-24T05:28:05.839448',
-        validator: {
-          validatorInfo: {
-            operatorAddress: 'desmosvaloper1h5f3dywec65v9qulxkmcv3e6yujyh3zm0ghhl3',
-          },
-        },
+        "slot": 109782707,
+        "proposer": "B2KjdiHYy2rRQZxT3CckhhSxFQdTsCobd1sZkSXqMDwM",
+        "hash": "BBj6jSFyRZNNY2SPcfTcHjMHzAWdBtZewtonV29Fn2Y",
+        "timestamp": "2021-12-02T23:33:46",
+        "transactionsAggregate": {
+          "aggregate": {
+            "count": 0
+          }
+        }
       },
     ],
   },
@@ -57,10 +57,10 @@ describe('screen: Home/Blocks/Mobile', () => {
   it('matches snapshot', async () => {
     const mockClient = createMockClient();
     const mockSubscription = createMockSubscription();
-    // mockClient.setRequestHandler(
-    //   BlocksListenerDocument,
-    //   () => mockSubscription,
-    // );
+    mockClient.setRequestHandler(
+      BlocksListenerDocument,
+      () => mockSubscription,
+    );
 
     let component;
 
