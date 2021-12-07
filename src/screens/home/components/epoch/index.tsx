@@ -75,7 +75,8 @@ const Epoch: React.FC<{
             className="progress-label"
           >
             <tspan className={classes.chartPercentLabel}>
-              73%
+              {state.epochRate}
+              %
             </tspan>
           </text>
 
@@ -83,7 +84,7 @@ const Epoch: React.FC<{
             <tspan className={classes.chartLabel}>
               {t('epoch')}
               {' '}
-              143
+              {state.epochNumber}
             </tspan>
           </text>
         </RadialBarChart>
