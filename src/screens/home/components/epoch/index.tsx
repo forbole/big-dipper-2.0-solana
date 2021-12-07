@@ -11,6 +11,7 @@ import {
   Tooltip,
 } from 'recharts';
 import { useStyles } from './styles';
+import { useEpoch } from './hooks';
 
 const Epoch: React.FC<{
   className?: string;
@@ -19,6 +20,9 @@ const Epoch: React.FC<{
     classes, theme,
   } = useStyles();
   const { t } = useTranslation('home');
+  const { state } = useEpoch();
+
+  console.log('state', state);
 
   const data = [
     {
