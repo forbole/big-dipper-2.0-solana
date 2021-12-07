@@ -34,8 +34,9 @@ export const useEpoch = () => {
     results.epochNumber = numeral(epochNumber).value();
     const epochTime = 432000 - (slot % 432000) * averageSlotTime;
     results.epochTime = numeral(epochTime).value();
-    const epochRate = epochTime / 432000;
+    const epochRate = (432000 - (slot % 432000)) / 432000;
     results.epochRate = numeral(epochRate).value() * 100;
+    console.log('slot % 432000', slot % 432000);
 
     return results;
   };
