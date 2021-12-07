@@ -95,7 +95,8 @@ const Epoch: React.FC<{
               <span className="highlight" />,
             ]}
             values={{
-              time: '18h 36m',
+              // time: '18h 36m',
+              time: state.epochTime,
             }}
           />
         </Typography>

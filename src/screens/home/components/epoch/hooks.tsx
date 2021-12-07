@@ -12,11 +12,11 @@ export const useEpoch = () => {
   const [state, setState] = useState<{
     epochRate: string;
     epochNumber: string;
-    epochTime: number;
+    epochTime: string;
   }>({
     epochRate: '0',
     epochNumber: '0',
-    epochTime: 0,
+    epochTime: '0',
   });
 
   useEpochQuery({
@@ -36,13 +36,20 @@ export const useEpoch = () => {
     const epochNumber = slot / 432000;
     results.epochNumber = formatNumber(Big(epochNumber).toPrecision(), 0);
 
-    const epochTime = 432000 - (slot % 432000) * averageSlotTime;
-    results.epochTime = numeral(epochTime).value();
-
     const epochRate = (432000 - (slot % 432000)) / 432000;
     results.epochRate = formatNumber(Big(epochRate).times(100).toPrecision(), 2);
 
-    console.log('slot % 432000', slot % 432000);
+    const epochTimeRaw = 432000 - (slot % 432000) * averageSlotTime;
+    const epochTimeParsing = numeral(epochTimeRaw).format('0,0');
+    const epochTimeParsed = numeral(epochTimeParsing).value();
+
+    const epochTimeHour = epochTimeParsed / (60 * 60);
+    const epochTimeHourMinute = (epochTimeParsed % (60 * 60)) / 60;
+    const time = `${numeral(epochTimeHour).format('0,0')}h ${numeral(epochTimeHourMinute).format('0,0')}m`;
+    console.log('time => ', time);
+    results.epochTime = time;
+
+    // 讓小時跟秒都不要四捨五入
 
     return results;
   };
