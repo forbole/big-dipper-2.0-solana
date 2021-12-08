@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import * as R from 'ramda';
-import numeral from 'numeral';
 import {
   useEpochQuery,
   EpochQuery,
@@ -28,8 +27,6 @@ export const useEpoch = () => {
   const formatEpoch = (data: EpochQuery) => {
     const results = { ...state };
 
-    console.log('data', data);
-
     const averageSlotTime = R.pathOr(0, ['average_slot_time_per_hour', 0, 'average_time'], data);
     const slot = R.pathOr(0, ['block', 0, 'slot'], data);
 
@@ -40,16 +37,10 @@ export const useEpoch = () => {
     results.epochRate = formatNumber(Big(epochRate).times(100).toPrecision(), 0);
 
     const epochTimeRaw = (432000 - (slot % 432000)) * averageSlotTime;
-    const epochTimeParsing = numeral(epochTimeRaw).format('0,0');
-    const epochTimeParsed = numeral(epochTimeParsing).value();
-
-    const epochTimeHour = Math.floor(epochTimeParsed / (60 * 60));
-    const epochTimeHourMinute = Math.floor((epochTimeParsed % (60 * 60)) / 60);
-    const time = `${epochTimeHour}h ${epochTimeHourMinute}m`;
+    const epochTimeHour = Math.floor(epochTimeRaw / (60 * 60));
+    const epochTimeMinute = Math.floor((epochTimeRaw % (60 * 60)) / 60);
+    const time = `${epochTimeHour}h ${epochTimeMinute}m`;
     results.epochTime = time;
-
-    console.log('1 epoch = 432000 slots  =  ', 432000 * averageSlotTime, ' seconds = ', (432000 * averageSlotTime) / 3600, ' hours');
-    console.log('averageSlotTime, slot, epochTimeParsed, epochTimeHourMinute =>', averageSlotTime, slot, epochTimeParsed, (epochTimeParsed % (60 * 60)) / 60);
 
     return results;
   };
