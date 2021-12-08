@@ -1969,7 +1969,6 @@ export type Stake_Account = {
   withdrawer: Scalars['String'];
 };
 
-
 /** aggregated selection of "stake_account" */
 export type Stake_Account_Aggregate = {
   __typename?: 'stake_account_aggregate';
@@ -2709,29 +2708,6 @@ export type Subscription_RootStake_Account_By_PkArgs = {
 };
 
 
-export type Subscription_RootStake_LockupArgs = {
-  distinct_on?: Maybe<Array<Stake_Lockup_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Stake_Lockup_Order_By>>;
-  where?: Maybe<Stake_Lockup_Bool_Exp>;
-};
-
-
-export type Subscription_RootStake_Lockup_AggregateArgs = {
-  distinct_on?: Maybe<Array<Stake_Lockup_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Stake_Lockup_Order_By>>;
-  where?: Maybe<Stake_Lockup_Bool_Exp>;
-};
-
-
-export type Subscription_RootStake_Lockup_By_PkArgs = {
-  address: Scalars['String'];
-};
-
-
 export type Subscription_RootStake_DelegationArgs = {
   distinct_on?: Maybe<Array<Stake_Delegation_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -2751,6 +2727,29 @@ export type Subscription_RootStake_Delegation_AggregateArgs = {
 
 
 export type Subscription_RootStake_Delegation_By_PkArgs = {
+  address: Scalars['String'];
+};
+
+
+export type Subscription_RootStake_LockupArgs = {
+  distinct_on?: Maybe<Array<Stake_Lockup_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Stake_Lockup_Order_By>>;
+  where?: Maybe<Stake_Lockup_Bool_Exp>;
+};
+
+
+export type Subscription_RootStake_Lockup_AggregateArgs = {
+  distinct_on?: Maybe<Array<Stake_Lockup_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Stake_Lockup_Order_By>>;
+  where?: Maybe<Stake_Lockup_Bool_Exp>;
+};
+
+
+export type Subscription_RootStake_Lockup_By_PkArgs = {
   address: Scalars['String'];
 };
 
@@ -4718,17 +4717,6 @@ export type LatestBlockTimestampQuery = { block: Array<(
     & Pick<Block, 'timestamp'>
   )> };
 
-export type EpochQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type EpochQuery = { average_slot_time_per_hour: Array<(
-    { __typename?: 'average_slot_time_per_hour' }
-    & Pick<Average_Slot_Time_Per_Hour, 'average_time'>
-  )>, block: Array<(
-    { __typename?: 'block' }
-    & Pick<Block, 'slot'>
-  )> };
-
 export type BlocksListenerSubscriptionVariables = Exact<{
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
@@ -4745,6 +4733,17 @@ export type BlocksListenerSubscription = { blocks: Array<(
         & Pick<Transaction_Aggregate_Fields, 'count'>
       )> }
     ) }
+  )> };
+
+export type EpochQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type EpochQuery = { average_slot_time_per_hour: Array<(
+    { __typename?: 'average_slot_time_per_hour' }
+    & Pick<Average_Slot_Time_Per_Hour, 'average_time'>
+  )>, block: Array<(
+    { __typename?: 'block' }
+    & Pick<Block, 'slot'>
   )> };
 
 export type TokenPriceListenerSubscriptionVariables = Exact<{
@@ -4878,18 +4877,6 @@ export function useLatestBlockTimestampLazyQuery(baseOptions?: Apollo.LazyQueryH
 export type LatestBlockTimestampQueryHookResult = ReturnType<typeof useLatestBlockTimestampQuery>;
 export type LatestBlockTimestampLazyQueryHookResult = ReturnType<typeof useLatestBlockTimestampLazyQuery>;
 export type LatestBlockTimestampQueryResult = Apollo.QueryResult<LatestBlockTimestampQuery, LatestBlockTimestampQueryVariables>;
-
-export const EpochDocument = gql`
-    query Epoch {
-  average_slot_time_per_hour {
-    average_time
-  }
-  block(order_by: {slot: desc}, limit: 1) {
-    slot
-  }
-}
-    `;
-
 export const BlocksListenerDocument = gql`
     subscription BlocksListener($limit: Int = 7, $offset: Int = 0) {
   blocks: block(limit: $limit, offset: $offset, order_by: {slot: desc}) {
@@ -4902,6 +4889,40 @@ export const BlocksListenerDocument = gql`
         count
       }
     }
+  }
+}
+    `;
+
+/**
+ * __useBlocksListenerSubscription__
+ *
+ * To run a query within a React component, call `useBlocksListenerSubscription` and pass it any options that fit your needs.
+ * When your component renders, `useBlocksListenerSubscription` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the subscription, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useBlocksListenerSubscription({
+ *   variables: {
+ *      limit: // value for 'limit'
+ *      offset: // value for 'offset'
+ *   },
+ * });
+ */
+export function useBlocksListenerSubscription(baseOptions?: Apollo.SubscriptionHookOptions<BlocksListenerSubscription, BlocksListenerSubscriptionVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useSubscription<BlocksListenerSubscription, BlocksListenerSubscriptionVariables>(BlocksListenerDocument, options);
+      }
+export type BlocksListenerSubscriptionHookResult = ReturnType<typeof useBlocksListenerSubscription>;
+export type BlocksListenerSubscriptionResult = Apollo.SubscriptionResult<BlocksListenerSubscription>;
+export const EpochDocument = gql`
+    query Epoch {
+  average_slot_time_per_hour {
+    average_time
+  }
+  block(order_by: {slot: desc}, limit: 1) {
+    slot
   }
 }
     `;
@@ -4932,31 +4953,6 @@ export function useEpochLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<Epoc
 export type EpochQueryHookResult = ReturnType<typeof useEpochQuery>;
 export type EpochLazyQueryHookResult = ReturnType<typeof useEpochLazyQuery>;
 export type EpochQueryResult = Apollo.QueryResult<EpochQuery, EpochQueryVariables>;
-
-/**
- * __useBlocksListenerSubscription__
- *
- * To run a query within a React component, call `useBlocksListenerSubscription` and pass it any options that fit your needs.
- * When your component renders, `useBlocksListenerSubscription` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the subscription, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useBlocksListenerSubscription({
- *   variables: {
- *      limit: // value for 'limit'
- *      offset: // value for 'offset'
- *   },
- * });
- */
-export function useBlocksListenerSubscription(baseOptions?: Apollo.SubscriptionHookOptions<BlocksListenerSubscription, BlocksListenerSubscriptionVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useSubscription<BlocksListenerSubscription, BlocksListenerSubscriptionVariables>(BlocksListenerDocument, options);
-      }
-export type BlocksListenerSubscriptionHookResult = ReturnType<typeof useBlocksListenerSubscription>;
-export type BlocksListenerSubscriptionResult = Apollo.SubscriptionResult<BlocksListenerSubscription>;
-
 export const TokenPriceListenerDocument = gql`
     subscription TokenPriceListener($denom: String) {
   tokenPrice: token_price(where: {unit_name: {_eq: $denom}}) {
