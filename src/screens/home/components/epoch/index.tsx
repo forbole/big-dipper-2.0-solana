@@ -22,8 +22,6 @@ const Epoch: React.FC<{
   const { t } = useTranslation('home');
   const { state } = useEpoch();
 
-  console.log('state', state);
-
   const data = [
     {
       value: 73,
