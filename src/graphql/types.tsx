@@ -1968,7 +1968,7 @@ export type Stake_Account = {
   staker: Scalars['String'];
   withdrawer: Scalars['String'];
 };
-<<<<<<< HEAD
+
 
 /** aggregated selection of "stake_account" */
 export type Stake_Account_Aggregate = {
@@ -1983,28 +1983,9 @@ export type Stake_Account_Aggregate_Fields = {
   count: Scalars['Int'];
   max?: Maybe<Stake_Account_Max_Fields>;
   min?: Maybe<Stake_Account_Min_Fields>;
-=======
-
-/** aggregated selection of "stake_account" */
-export type Stake_Account_Aggregate = {
-  __typename?: 'stake_account_aggregate';
-  aggregate?: Maybe<Stake_Account_Aggregate_Fields>;
-  nodes: Array<Stake_Account>;
->>>>>>> master
 };
 
-/** aggregate fields of "stake_account" */
-export type Stake_Account_Aggregate_Fields = {
-  __typename?: 'stake_account_aggregate_fields';
-  count: Scalars['Int'];
-  max?: Maybe<Stake_Account_Max_Fields>;
-  min?: Maybe<Stake_Account_Min_Fields>;
-};
 
-<<<<<<< HEAD
-=======
-
->>>>>>> master
 /** aggregate fields of "stake_account" */
 export type Stake_Account_Aggregate_FieldsCountArgs = {
   columns?: Maybe<Array<Stake_Account_Select_Column>>;
@@ -2198,7 +2179,6 @@ export type Stake_Delegation_Stddev_Samp_Fields = {
   deactivation_epoch?: Maybe<Scalars['Float']>;
   stake?: Maybe<Scalars['Float']>;
   warmup_cooldown_rate?: Maybe<Scalars['Float']>;
-<<<<<<< HEAD
 };
 
 /** aggregate sum on columns */
@@ -2219,28 +2199,6 @@ export type Stake_Delegation_Var_Pop_Fields = {
   warmup_cooldown_rate?: Maybe<Scalars['Float']>;
 };
 
-=======
-};
-
-/** aggregate sum on columns */
-export type Stake_Delegation_Sum_Fields = {
-  __typename?: 'stake_delegation_sum_fields';
-  activation_epoch?: Maybe<Scalars['numeric']>;
-  deactivation_epoch?: Maybe<Scalars['numeric']>;
-  stake?: Maybe<Scalars['bigint']>;
-  warmup_cooldown_rate?: Maybe<Scalars['float8']>;
-};
-
-/** aggregate var_pop on columns */
-export type Stake_Delegation_Var_Pop_Fields = {
-  __typename?: 'stake_delegation_var_pop_fields';
-  activation_epoch?: Maybe<Scalars['Float']>;
-  deactivation_epoch?: Maybe<Scalars['Float']>;
-  stake?: Maybe<Scalars['Float']>;
-  warmup_cooldown_rate?: Maybe<Scalars['Float']>;
-};
-
->>>>>>> master
 /** aggregate var_samp on columns */
 export type Stake_Delegation_Var_Samp_Fields = {
   __typename?: 'stake_delegation_var_samp_fields';
@@ -2751,29 +2709,6 @@ export type Subscription_RootStake_Account_By_PkArgs = {
 };
 
 
-export type Subscription_RootStake_DelegationArgs = {
-  distinct_on?: Maybe<Array<Stake_Delegation_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Stake_Delegation_Order_By>>;
-  where?: Maybe<Stake_Delegation_Bool_Exp>;
-};
-
-
-export type Subscription_RootStake_Delegation_AggregateArgs = {
-  distinct_on?: Maybe<Array<Stake_Delegation_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Stake_Delegation_Order_By>>;
-  where?: Maybe<Stake_Delegation_Bool_Exp>;
-};
-
-
-export type Subscription_RootStake_Delegation_By_PkArgs = {
-  address: Scalars['String'];
-};
-
-
 export type Subscription_RootStake_LockupArgs = {
   distinct_on?: Maybe<Array<Stake_Lockup_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -2797,29 +2732,6 @@ export type Subscription_RootStake_Lockup_By_PkArgs = {
 };
 
 
-export type Subscription_RootStake_AccountArgs = {
-  distinct_on?: Maybe<Array<Stake_Account_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Stake_Account_Order_By>>;
-  where?: Maybe<Stake_Account_Bool_Exp>;
-};
-
-
-export type Subscription_RootStake_Account_AggregateArgs = {
-  distinct_on?: Maybe<Array<Stake_Account_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Stake_Account_Order_By>>;
-  where?: Maybe<Stake_Account_Bool_Exp>;
-};
-
-
-export type Subscription_RootStake_Account_By_PkArgs = {
-  address: Scalars['String'];
-};
-
-
 export type Subscription_RootStake_DelegationArgs = {
   distinct_on?: Maybe<Array<Stake_Delegation_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -2839,29 +2751,6 @@ export type Subscription_RootStake_Delegation_AggregateArgs = {
 
 
 export type Subscription_RootStake_Delegation_By_PkArgs = {
-  address: Scalars['String'];
-};
-
-
-export type Subscription_RootStake_LockupArgs = {
-  distinct_on?: Maybe<Array<Stake_Lockup_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Stake_Lockup_Order_By>>;
-  where?: Maybe<Stake_Lockup_Bool_Exp>;
-};
-
-
-export type Subscription_RootStake_Lockup_AggregateArgs = {
-  distinct_on?: Maybe<Array<Stake_Lockup_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Stake_Lockup_Order_By>>;
-  where?: Maybe<Stake_Lockup_Bool_Exp>;
-};
-
-
-export type Subscription_RootStake_Lockup_By_PkArgs = {
   address: Scalars['String'];
 };
 
@@ -3042,29 +2931,6 @@ export type Subscription_RootTransaction_AggregateArgs = {
 
 export type Subscription_RootTransaction_By_PkArgs = {
   hash: Scalars['String'];
-};
-
-
-export type Subscription_RootValidatorArgs = {
-  distinct_on?: Maybe<Array<Validator_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Validator_Order_By>>;
-  where?: Maybe<Validator_Bool_Exp>;
-};
-
-
-export type Subscription_RootValidator_AggregateArgs = {
-  distinct_on?: Maybe<Array<Validator_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Validator_Order_By>>;
-  where?: Maybe<Validator_Bool_Exp>;
-};
-
-
-export type Subscription_RootValidator_By_PkArgs = {
-  address: Scalars['String'];
 };
 
 
@@ -5012,7 +4878,7 @@ export function useLatestBlockTimestampLazyQuery(baseOptions?: Apollo.LazyQueryH
 export type LatestBlockTimestampQueryHookResult = ReturnType<typeof useLatestBlockTimestampQuery>;
 export type LatestBlockTimestampLazyQueryHookResult = ReturnType<typeof useLatestBlockTimestampLazyQuery>;
 export type LatestBlockTimestampQueryResult = Apollo.QueryResult<LatestBlockTimestampQuery, LatestBlockTimestampQueryVariables>;
-<<<<<<< HEAD
+
 export const EpochDocument = gql`
     query Epoch {
   average_slot_time_per_hour {
@@ -5020,7 +4886,10 @@ export const EpochDocument = gql`
   }
   block(order_by: {slot: desc}, limit: 1) {
     slot
-=======
+  }
+}
+    `;
+
 export const BlocksListenerDocument = gql`
     subscription BlocksListener($limit: Int = 7, $offset: Int = 0) {
   blocks: block(limit: $limit, offset: $offset, order_by: {slot: desc}) {
@@ -5033,13 +4902,11 @@ export const BlocksListenerDocument = gql`
         count
       }
     }
->>>>>>> master
   }
 }
     `;
 
 /**
-<<<<<<< HEAD
  * __useEpochQuery__
  *
  * To run a query within a React component, call `useEpochQuery` and pass it any options that fit your needs.
@@ -5065,7 +4932,8 @@ export function useEpochLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<Epoc
 export type EpochQueryHookResult = ReturnType<typeof useEpochQuery>;
 export type EpochLazyQueryHookResult = ReturnType<typeof useEpochLazyQuery>;
 export type EpochQueryResult = Apollo.QueryResult<EpochQuery, EpochQueryVariables>;
-=======
+
+/**
  * __useBlocksListenerSubscription__
  *
  * To run a query within a React component, call `useBlocksListenerSubscription` and pass it any options that fit your needs.
@@ -5088,7 +4956,7 @@ export function useBlocksListenerSubscription(baseOptions?: Apollo.SubscriptionH
       }
 export type BlocksListenerSubscriptionHookResult = ReturnType<typeof useBlocksListenerSubscription>;
 export type BlocksListenerSubscriptionResult = Apollo.SubscriptionResult<BlocksListenerSubscription>;
->>>>>>> master
+
 export const TokenPriceListenerDocument = gql`
     subscription TokenPriceListener($denom: String) {
   tokenPrice: token_price(where: {unit_name: {_eq: $denom}}) {
