@@ -1,7 +1,7 @@
-import { chainConfig } from '@configs';
+import numeral from 'numeral';
 import { useRouter } from 'next/router';
+import bs58 from 'bs58';
 import {
-  VALIDATOR_DETAILS,
   ACCOUNT_DETAILS,
   BLOCK_DETAILS,
   TRANSACTION_DETAILS,
@@ -9,32 +9,23 @@ import {
 import {
   useRecoilCallback,
 } from 'recoil';
-import { readValidator } from '@recoil/validators';
-import { toast } from 'react-toastify';
 
-export const useSearchBar = (t) => {
+export const useSearchBar = () => {
   const router = useRouter();
 
-  const handleOnSubmit = useRecoilCallback(({ snapshot }) => (
+  const handleOnSubmit = useRecoilCallback(() => (
     async (value: string, clear?: () => void) => {
-      const consensusRegex = `^(${chainConfig.prefix.consensus})`;
-      const validatorRegex = `^(${chainConfig.prefix.validator})`;
-      const userRegex = `^(${chainConfig.prefix.account})`;
+      // account check
+      const decoded = bs58.decode(value);
+      const bytes = Buffer.byteLength(decoded);
 
-      // consensus
-      if (new RegExp(consensusRegex).test(value)) {
-        const validatorAddress = await snapshot.getPromise(readValidator(value));
-        if (validatorAddress) {
-          router.push(VALIDATOR_DETAILS(validatorAddress.validator));
-        } else {
-          toast(t('common:useValidatorAddress'));
-        }
-      } else if (new RegExp(validatorRegex).test(value)) {
-        router.push(VALIDATOR_DETAILS(value));
-      } else if (new RegExp(userRegex).test(value)) {
+      // block check
+      const parsedValue = value.replace(/\s+/g, '');
+
+      if (bytes === 32) {
         router.push(ACCOUNT_DETAILS(value));
-      } else if (/^-?\d+$/.test(value)) {
-        router.push(BLOCK_DETAILS(value));
+      } else if (/^-?\d+$/.test(numeral(parsedValue).value())) {
+        router.push(BLOCK_DETAILS(numeral(parsedValue).value()));
       } else {
         router.push(TRANSACTION_DETAILS(value));
       }

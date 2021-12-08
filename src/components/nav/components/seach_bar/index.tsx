@@ -8,7 +8,7 @@ const SearchBar: React.FC<{className?: string}> = ({ className }) => {
 
   const {
     handleOnSubmit,
-  } = useSearchBar(t);
+  } = useSearchBar();
 
   return (
     <Search
