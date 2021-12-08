@@ -8,7 +8,7 @@ import InitialLoad from '@screens/initial_load';
 import { useSettingsRecoil } from '@recoil/settings';
 import { useBigDipperNetworksRecoil } from '@recoil/big_dipper_networks';
 // import { useMarketRecoil } from '@recoil/market';
-// import { useValidatorRecoil } from '@recoil/validators';
+import { useValidatorRecoil } from '@recoil/validators';
 import { InnerApp } from '..';
 import {
   useTheme,
@@ -22,8 +22,8 @@ const Main = (props: AppProps) => {
   useSettingsRecoil();
   useBigDipperNetworksRecoil();
   // useMarketRecoil();
-  // const { loading } = useValidatorRecoil();
-  const loading = false;
+  const { loading } = useValidatorRecoil();
+
   // =====================================
   // general setup
   // =====================================

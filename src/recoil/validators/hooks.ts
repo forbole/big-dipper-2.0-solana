@@ -6,8 +6,8 @@ import {
 } from 'recoil';
 import * as R from 'ramda';
 import {
-// useValidatorAddressesQuery,
-// ValidatorAddressesQuery,
+  useValidatorAddressesQuery,
+  ValidatorAddressesQuery,
 } from '@graphql/types';
 import { chainConfig } from '@configs';
 import { useDesmosProfile } from '@hooks';
@@ -19,8 +19,7 @@ import {
 } from '@recoil/profiles';
 
 export const useValidatorRecoil = () => {
-  const [loading, setLoading] = useState(false);
-  // const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
 
   const {
     fetchDesmosProfile,
@@ -31,59 +30,58 @@ export const useValidatorRecoil = () => {
     },
   });
 
-  // useValidatorAddressesQuery({
-  //   onError: (error) => {
-  //     console.error(error.message);
-  //     setLoading(false);
-  //   },
-  //   onCompleted: async (data) => {
-  //     await formatValidatorsAddressList(data);
-  //     await setProfiles(data);
-  //     setLoading(false);
-  //   },
-  // });
+  useValidatorAddressesQuery({
+    onError: (error) => {
+      console.error(error.message);
+      setLoading(false);
+    },
+    onCompleted: async (data) => {
+      await formatValidatorsAddressList(data);
+      await setProfiles(data);
+      setLoading(false);
+    },
+  });
 
-  // const formatValidatorsAddressList = useRecoilCallback(({ set }) => async (data: ValidatorAddressesQuery) => {
-  //   data?.validator?.filter((x) => x.validatorInfo).forEach((x) => {
-  //     const validatorAddress = x.validatorInfo.operatorAddress;
-  //     const delegatorAddress = x.validatorInfo.selfDelegateAddress;
-  //     const { consensusAddress } = x.validatorInfo;
+  const formatValidatorsAddressList = useRecoilCallback(({ set }) => async (data: ValidatorAddressesQuery) => {
+    data?.validator?.filter((x) => x.address).forEach((x) => {
+      const { address, node } = x;
+      set(validatorAtomState(address), {
+        address,
+        owner: node
+      });
+    });
+  });
 
-  //     set(validatorAtomState(consensusAddress), {
-  //       delegator: delegatorAddress,
-  //       validator: validatorAddress,
-  //     });
-  //   });
-  // });
+  const setProfiles = useRecoilCallback(({ set }) => async (data: ValidatorAddressesQuery) => {
+    let profiles = [];
+    if (chainConfig.extra.profile) {
+      data?.validator?.filter((x) => x.address).forEach((x) => {
+        const { address } = x;
+        profiles.push(fetchDesmosProfile(address));
+      });
+    }
 
-  // const setProfiles = useRecoilCallback(({ set }) => async (data: ValidatorAddressesQuery) => {
-  //   let profiles = [];
-  //   if (chainConfig.extra.profile) {
-  //     data?.validator?.filter((x) => x.validatorInfo).forEach((x) => {
-  //       const delegatorAddress = x.validatorInfo.selfDelegateAddress;
-  //       profiles.push(fetchDesmosProfile(delegatorAddress));
-  //     });
-  //   }
+    profiles = await Promise.allSettled(profiles);
+    data?.validator?.filter((x) => x.address).forEach((x, i) => {
+      const { address } = x;
 
-  //   profiles = await Promise.allSettled(profiles);
-  //   data?.validator?.filter((x) => x.validatorInfo).forEach((x, i) => {
-  //     const delegatorAddress = x.validatorInfo.selfDelegateAddress;
-  //     const profile = R.pathOr(undefined, [i, 'value'], profiles);
+      const profile = R.pathOr(undefined, [i, 'value'], profiles);
 
-  //     // sets profile priority
-  //     const moniker = R.pathOr(undefined, ['nickname'], profile)
-  //     || R.pathOr('', ['validatorDescriptions', 0, 'moniker'], x);
-  //     const imageUrl = (
-  //       R.pathOr('', ['imageUrl'], profile)
-  //       || R.pathOr('', ['validatorDescriptions', 0, 'avatarUrl'], x)
-  //     );
+      // sets profile priority
+      const moniker = R.pathOr(undefined, ['nickname'], profile)
+      || R.pathOr('', ['validatorConfig', 'name'], x);
 
-  //     set(profileAtomFamilyState(delegatorAddress), {
-  //       moniker,
-  //       imageUrl,
-  //     });
-  //   });
-  // });
+      const imageUrl = (
+        R.pathOr('', ['imageUrl'], profile)
+        || R.pathOr('', ['validatorConfig', 'avatarUrl'], x)
+      );
+
+      set(profileAtomFamilyState(address), {
+        moniker,
+        imageUrl,
+      });
+    });
+  });
 
   return {
     loading,
