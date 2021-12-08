@@ -37,19 +37,19 @@ export const useEpoch = () => {
     results.epochNumber = formatNumber(Big(epochNumber).toPrecision(), 0);
 
     const epochRate = (432000 - (slot % 432000)) / 432000;
-    results.epochRate = formatNumber(Big(epochRate).times(100).toPrecision(), 2);
+    results.epochRate = formatNumber(Big(epochRate).times(100).toPrecision(), 0);
 
-    const epochTimeRaw = 432000 - (slot % 432000) * averageSlotTime;
+    const epochTimeRaw = (432000 - (slot % 432000)) * averageSlotTime;
     const epochTimeParsing = numeral(epochTimeRaw).format('0,0');
     const epochTimeParsed = numeral(epochTimeParsing).value();
 
-    const epochTimeHour = epochTimeParsed / (60 * 60);
-    const epochTimeHourMinute = (epochTimeParsed % (60 * 60)) / 60;
-    const time = `${numeral(epochTimeHour).format('0,0')}h ${numeral(epochTimeHourMinute).format('0,0')}m`;
-    console.log('time => ', time);
+    const epochTimeHour = Math.floor(epochTimeParsed / (60 * 60));
+    const epochTimeHourMinute = Math.floor((epochTimeParsed % (60 * 60)) / 60);
+    const time = `${epochTimeHour}h ${epochTimeHourMinute}m`;
     results.epochTime = time;
 
-    // 讓小時跟秒都不要四捨五入
+    console.log('1 epoch = 432000 slots  =  ', 432000 * averageSlotTime, ' seconds = ', (432000 * averageSlotTime) / 3600, ' hours');
+    console.log('averageSlotTime, slot, epochTimeParsed, epochTimeHourMinute =>', averageSlotTime, slot, epochTimeParsed, (epochTimeParsed % (60 * 60)) / 60);
 
     return results;
   };
