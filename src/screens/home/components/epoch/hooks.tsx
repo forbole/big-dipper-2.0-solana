@@ -32,10 +32,10 @@ export const useEpoch = () => {
     const slot = R.pathOr(0, ['block', 0, 'slot'], data);
 
     const epochNumber = slot / slotsPerEpoch;
-    results.epochNumber = formatNumber(Big(epochNumber).toPrecision());
+    results.epochNumber = formatNumber(Big(epochNumber).toPrecision(), 0);
 
     const epochRate = (slotsPerEpoch - (slot % slotsPerEpoch)) / slotsPerEpoch;
-    results.epochRate = formatNumber(Big(epochRate).times(100).toPrecision());
+    results.epochRate = formatNumber(Big(epochRate).times(100).toPrecision(), 0);
 
     const epochTimeRaw = (slotsPerEpoch - (slot % slotsPerEpoch)) * averageSlotTime;
     const epochTimeHour = Math.floor(epochTimeRaw / (60 * 60));
