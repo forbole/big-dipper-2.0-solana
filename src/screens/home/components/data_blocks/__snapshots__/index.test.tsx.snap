@@ -14,7 +14,7 @@ exports[`screen: Home/DataBlocks matches snapshot 1`] = `
     className="makeStyles-slotTime"
     id="SingleBlock"
     label="averageSlotTime"
-    value="6.20 s"
+    value="0.55 s"
   />
   <div
     className="makeStyles-price"

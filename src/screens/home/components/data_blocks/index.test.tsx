@@ -9,7 +9,7 @@ import {
 } from 'mock-apollo-client';
 import {
   LatestBlockHeightListenerDocument,
-  // AverageBlockTimeDocument,
+  AverageBlockTimeDocument,
   TokenPriceListenerDocument,
   ActiveValidatorCountDocument,
 } from '@graphql/types';
@@ -37,15 +37,15 @@ const mockLatestBlockHeight = {
   },
 };
 
-// const mockAverageBlockTime = jest.fn().mockResolvedValue({
-//   data: {
-//     averageBlockTime: [
-//       {
-//         averageTime: 6.540624503709312,
-//       },
-//     ],
-//   },
-// });
+const mockAverageBlockTime = jest.fn().mockResolvedValue({
+  data: {
+    averageSlotTimePerHour: [
+      {
+        averageTime: 0.5512172714745062,
+      },
+    ],
+  },
+});
 
 const mockTokenPrice = {
   data: {
@@ -94,10 +94,10 @@ describe('screen: Home/DataBlocks', () => {
       () => mockSubscriptionTwo,
     );
 
-    // mockClient.setRequestHandler(
-    //   AverageBlockTimeDocument,
-    //   mockAverageBlockTime,
-    // );
+    mockClient.setRequestHandler(
+      AverageBlockTimeDocument,
+      mockAverageBlockTime,
+    );
 
     mockClient.setRequestHandler(
       ActiveValidatorCountDocument,
@@ -132,6 +132,10 @@ describe('screen: Home/DataBlocks', () => {
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
     expect(mockActiveValidatorsCount).toBeCalledTimes(1);
+    expect(component.root.findByProps({ label: 'averageSlotTime' }).props.value).toEqual('0.55 s');
+    expect(component.root.findByProps({ label: 'latestSlot' }).props.value).toEqual('953,992');
+    expect(component.root.findByProps({ label: 'price' }).props.value).toEqual('$223.65');
+    expect(component.root.findByProps({ description: 'outOfValidators' }).props.value).toEqual('200');
   });
 
   afterEach(() => {
