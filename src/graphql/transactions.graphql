@@ -1,0 +1,27 @@
+subscription TransactionsListener($limit: Int = 7, $offset: Int = 0) {
+  transactions: transaction(limit: $limit, offset: $offset) {
+    slot
+    hash
+    error
+    block {
+      timestamp
+    }
+  }
+}
+
+
+query Transactions($limit: Int = 7, $offset: Int = 0) {
+  transactions: transaction(limit: $limit, offset: $offset) {
+    slot
+    hash
+    error
+    block {
+      timestamp
+    }
+  }
+  total: transaction_aggregate {
+    aggregate {
+      count
+    }
+  }
+}

@@ -1,6 +1,6 @@
 {
   "slot": "Slot",
-  "signature": "Signature",
+  "hash": "Hash",
   "type": "Type",
   "time": "Time",
   "amount": "Amount",

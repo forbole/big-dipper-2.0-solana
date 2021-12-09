@@ -8,7 +8,7 @@ export const columns:{
     width: 25,
   },
   {
-    key: 'signature',
+    key: 'hash',
     width: 25,
   },
   {

@@ -8,7 +8,7 @@ import {
 } from 'mock-apollo-client';
 import { ApolloProvider } from '@apollo/client';
 import {
-// TransactionsListenerDocument,
+  TransactionsListenerDocument,
 } from '@graphql/types';
 import Transactions from '.';
 
@@ -37,8 +37,7 @@ const mockTxsListenerDocument = {
       {
         slot: 812768640,
         success: true,
-        messages: 5,
-        signature: '76nwV8zz8tLz97SBRXH6uwHvgHXtqJDLQfF66jZhQ857',
+        hash: '76nwV8zz8tLz97SBRXH6uwHvgHXtqJDLQfF66jZhQ857',
         timestamp: '2021-09-13T20:06:17.363145',
       },
     ],
@@ -53,10 +52,10 @@ describe('screen: Home/Blocks/Mobile', () => {
     const mockClient = createMockClient();
     const mockSubscription = createMockSubscription();
 
-    // mockClient.setRequestHandler(
-    //   TransactionsListenerDocument,
-    //   () => mockSubscription,
-    // );
+    mockClient.setRequestHandler(
+      TransactionsListenerDocument,
+      () => mockSubscription,
+    );
 
     let component;
 

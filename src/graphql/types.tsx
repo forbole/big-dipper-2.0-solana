@@ -4788,6 +4788,42 @@ export type TokenPriceListenerSubscription = { tokenPrice: Array<(
     & { marketCap: Token_Price['market_cap'], unitName: Token_Price['unit_name'] }
   )> };
 
+export type TransactionsListenerSubscriptionVariables = Exact<{
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+}>;
+
+
+export type TransactionsListenerSubscription = { transactions: Array<(
+    { __typename?: 'transaction' }
+    & Pick<Transaction, 'slot' | 'hash' | 'error'>
+    & { block: (
+      { __typename?: 'block' }
+      & Pick<Block, 'timestamp'>
+    ) }
+  )> };
+
+export type TransactionsQueryVariables = Exact<{
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+}>;
+
+
+export type TransactionsQuery = { transactions: Array<(
+    { __typename?: 'transaction' }
+    & Pick<Transaction, 'slot' | 'hash' | 'error'>
+    & { block: (
+      { __typename?: 'block' }
+      & Pick<Block, 'timestamp'>
+    ) }
+  )>, total: (
+    { __typename?: 'transaction_aggregate' }
+    & { aggregate?: Maybe<(
+      { __typename?: 'transaction_aggregate_fields' }
+      & Pick<Transaction_Aggregate_Fields, 'count'>
+    )> }
+  ) };
+
 export type ValidatorAddressesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -5017,6 +5053,88 @@ export function useTokenPriceListenerSubscription(baseOptions?: Apollo.Subscript
       }
 export type TokenPriceListenerSubscriptionHookResult = ReturnType<typeof useTokenPriceListenerSubscription>;
 export type TokenPriceListenerSubscriptionResult = Apollo.SubscriptionResult<TokenPriceListenerSubscription>;
+export const TransactionsListenerDocument = gql`
+    subscription TransactionsListener($limit: Int = 7, $offset: Int = 0) {
+  transactions: transaction(limit: $limit, offset: $offset) {
+    slot
+    hash
+    error
+    block {
+      timestamp
+    }
+  }
+}
+    `;
+
+/**
+ * __useTransactionsListenerSubscription__
+ *
+ * To run a query within a React component, call `useTransactionsListenerSubscription` and pass it any options that fit your needs.
+ * When your component renders, `useTransactionsListenerSubscription` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the subscription, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useTransactionsListenerSubscription({
+ *   variables: {
+ *      limit: // value for 'limit'
+ *      offset: // value for 'offset'
+ *   },
+ * });
+ */
+export function useTransactionsListenerSubscription(baseOptions?: Apollo.SubscriptionHookOptions<TransactionsListenerSubscription, TransactionsListenerSubscriptionVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useSubscription<TransactionsListenerSubscription, TransactionsListenerSubscriptionVariables>(TransactionsListenerDocument, options);
+      }
+export type TransactionsListenerSubscriptionHookResult = ReturnType<typeof useTransactionsListenerSubscription>;
+export type TransactionsListenerSubscriptionResult = Apollo.SubscriptionResult<TransactionsListenerSubscription>;
+export const TransactionsDocument = gql`
+    query Transactions($limit: Int = 7, $offset: Int = 0) {
+  transactions: transaction(limit: $limit, offset: $offset) {
+    slot
+    hash
+    error
+    block {
+      timestamp
+    }
+  }
+  total: transaction_aggregate {
+    aggregate {
+      count
+    }
+  }
+}
+    `;
+
+/**
+ * __useTransactionsQuery__
+ *
+ * To run a query within a React component, call `useTransactionsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useTransactionsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useTransactionsQuery({
+ *   variables: {
+ *      limit: // value for 'limit'
+ *      offset: // value for 'offset'
+ *   },
+ * });
+ */
+export function useTransactionsQuery(baseOptions?: Apollo.QueryHookOptions<TransactionsQuery, TransactionsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<TransactionsQuery, TransactionsQueryVariables>(TransactionsDocument, options);
+      }
+export function useTransactionsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<TransactionsQuery, TransactionsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<TransactionsQuery, TransactionsQueryVariables>(TransactionsDocument, options);
+        }
+export type TransactionsQueryHookResult = ReturnType<typeof useTransactionsQuery>;
+export type TransactionsLazyQueryHookResult = ReturnType<typeof useTransactionsLazyQuery>;
+export type TransactionsQueryResult = Apollo.QueryResult<TransactionsQuery, TransactionsQueryVariables>;
 export const ValidatorAddressesDocument = gql`
     query ValidatorAddresses {
   validator {

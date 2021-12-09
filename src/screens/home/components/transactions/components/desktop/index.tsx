@@ -39,10 +39,10 @@ const Desktop: React.FC<{
           </Typography>
         </Link>
       ),
-      signature: (
-        <Link href={TRANSACTION_DETAILS(x.signature)} passHref>
+      hash: (
+        <Link href={TRANSACTION_DETAILS(x.hash)} passHref>
           <Typography variant="body1" component="a">
-            {getMiddleEllipsis(x.signature, {
+            {getMiddleEllipsis(x.hash, {
               beginning: 15, ending: 5,
             })}
           </Typography>
@@ -52,7 +52,6 @@ const Desktop: React.FC<{
         <Result success={x.success} />
       ),
       time: dayjs.utc(x.timestamp).fromNow(),
-      messages: numeral(x.messages).format('0,0'),
     });
   });
 
