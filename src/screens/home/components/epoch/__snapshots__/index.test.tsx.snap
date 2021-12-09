@@ -306,7 +306,7 @@ exports[`screen: Home/Epoch matches snapshot 1`] = `
           <tspan
             className="makeStyles-chartPercentLabel"
           >
-            100
+            0
             %
           </tspan>
         </text>
