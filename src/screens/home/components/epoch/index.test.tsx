@@ -25,8 +25,8 @@ jest.mock('@components', () => ({
 
 const mockEpoch = jest.fn().mockResolvedValue({
   data: {
-    average_time: '0.535677777',
-    slot: '420000',
+    average_time: 0.535677777,
+    slot: 420000,
   },
 });
 
