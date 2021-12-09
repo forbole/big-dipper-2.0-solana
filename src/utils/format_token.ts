@@ -32,11 +32,15 @@ export const formatToken = (value: number | string, denom = ''): TokenUnit => {
 };
 
 export const formatNumber = (tokenUnit: string, toFixed?: number): string => {
+  console.log('in the formatNumber function: toFixed = ', toFixed);
   const split = `${tokenUnit}`.split('.');
   const wholeNumber = R.pathOr('', [0], split);
   const decimal = R.pathOr('', [1], split);
   const formatWholeNumber = numeral(wholeNumber).format('0,0');
-  if (decimal && toFixed !== 0) {
+  console.log('formatWholeNumber => ', formatWholeNumber);
+
+  if (decimal && toFixed !== undefined) {
+    console.log('decimal & toFixed => ', decimal, toFixed);
     if (toFixed == null) {
       toFixed = decimal.length;
     }

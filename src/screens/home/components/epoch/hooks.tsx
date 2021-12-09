@@ -37,6 +37,11 @@ export const useEpoch = () => {
     const epochNumber = slot / slotsPerEpoch;
     results.epochNumber = formatNumber(Big(epochNumber).toPrecision(), 0);
 
+    console.log('toFixed = none', formatNumber(Big(epochNumber).toPrecision()));
+    console.log('toFixed = 0', formatNumber(Big(epochNumber).toPrecision(), 0));
+    console.log('toFixed = 1', formatNumber(Big(epochNumber).toPrecision(), 1));
+    console.log('toFixed = 2', formatNumber(Big(epochNumber).toPrecision(), 2));
+
     const epochRate = (slotsPerEpoch - (slot % slotsPerEpoch)) / slotsPerEpoch;
     results.epochRate = formatNumber(Big(epochRate).times(100).toPrecision(), 0);
 
