@@ -4,8 +4,8 @@ import numeral from 'numeral';
 import { chainConfig } from '@configs';
 import {
   useLatestBlockHeightListenerSubscription,
-  // useAverageBlockTimeQuery,
-  // AverageBlockTimeQuery,
+  useAverageBlockTimeQuery,
+  AverageBlockTimeQuery,
   useTokenPriceListenerSubscription,
   TokenPriceListenerSubscription,
   useActiveValidatorCountQuery,
@@ -23,11 +23,11 @@ export const useDataBlocks = () => {
     }
   }>({
     latestSlot: 0,
-    averageSlotTime: 6.2,
+    averageSlotTime: 0,
     price: 0,
     validators: {
-      active: 1000,
-      total: 4200,
+      active: 0,
+      total: 0,
     },
   });
 
@@ -43,6 +43,22 @@ export const useDataBlocks = () => {
       }));
     },
   });
+
+  // ====================================
+  // block time
+  // ====================================
+  useAverageBlockTimeQuery({
+    onCompleted: (data) => {
+      setState((prevState) => ({
+        ...prevState,
+        averageSlotTime: formatAverageBlockTime(data),
+      }));
+    },
+  });
+
+  const formatAverageBlockTime = (data: AverageBlockTimeQuery) => {
+    return data.averageSlotTimePerHour[0]?.averageTime ?? state.averageSlotTime;
+  };
 
   // ====================================
   // token price
