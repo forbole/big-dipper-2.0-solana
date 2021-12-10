@@ -1,9 +1,8 @@
 export type TransactionType = {
   slot: number;
-  signature: string;
+  hash: string;
   success: boolean;
   timestamp: string;
-  messages: number;
 }
 
 export type TransactionsState = {

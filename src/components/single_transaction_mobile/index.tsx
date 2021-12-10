@@ -9,12 +9,12 @@ import { useStyles } from './styles';
 const SingleTransactionMobile:React.FC<{
   className?: string;
   slot: React.ReactNode;
-  signature: React.ReactNode;
+  hash: React.ReactNode;
   time: string;
-  messages: string;
+  messages?: string;
   result?: React.ReactNode;
 }> = ({
-  className, slot, signature, time, messages, result,
+  className, slot, hash, time, messages, result,
 }) => {
   const { t } = useTranslation('transactions');
   const classes = useStyles();
@@ -29,10 +29,10 @@ const SingleTransactionMobile:React.FC<{
       </div>
       <div className={classes.item}>
         <Typography variant="h4" className="label">
-          {t('signature')}
+          {t('hash')}
         </Typography>
         <Typography variant="body1" className="value">
-          {signature}
+          {hash}
         </Typography>
       </div>
       <div className={classes.flex}>

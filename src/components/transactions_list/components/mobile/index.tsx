@@ -51,7 +51,7 @@ const Mobile: React.FC<TransactionsListState> = ({
         </Typography>
       </Link>
     ),
-    signature: (
+    hash: (
       <Link href={TRANSACTION_DETAILS(x.signature)} passHref>
         <Typography variant="body1" component="a">
           {getMiddleEllipsis(x.signature, {

@@ -28,8 +28,7 @@ describe('screen: Home/Transactions/Mobile', () => {
             {
               slot: 812768640,
               success: true,
-              messages: 5,
-              signature: '76nwV8zz8tLz97SBRXH6uwHvgHXtqJDLQfF66jZhQ857',
+              hash: '76nwV8zz8tLz97SBRXH6uwHvgHXtqJDLQfF66jZhQ857',
               timestamp: '2021-09-13T20:06:17.363145',
             },
           ]}
