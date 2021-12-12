@@ -30,9 +30,9 @@ export const useEpoch = () => {
       epochNumber: string;
       epochTime: string;
     } = {
-      epochRate: '0',
-      epochNumber: '0',
-      epochTime: '0',
+      epochRate: '',
+      epochNumber: '',
+      epochTime: '',
     };
 
     const slotsPerEpoch = 432000;
