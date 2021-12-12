@@ -25,23 +25,33 @@ export const useEpoch = () => {
   });
 
   const formatEpoch = (data: EpochQuery) => {
+    const results: {
+      epochRate: string;
+      epochNumber: string;
+      epochTime: string;
+    } = {
+      epochRate: '0',
+      epochNumber: '0',
+      epochTime: '0',
+    };
+
     const slotsPerEpoch = 432000;
     const averageSlotTime = R.pathOr(0, ['average_slot_time_per_hour', 0, 'average_time'], data);
     const slot = R.pathOr(0, ['block', 0, 'slot'], data);
 
     const epochNumber = slot / slotsPerEpoch;
-    state.epochNumber = formatNumber(Big(epochNumber).toPrecision(), 0);
+    results.epochNumber = formatNumber(Big(epochNumber).toPrecision(), 0);
 
     const epochRate = (slotsPerEpoch - (slot % slotsPerEpoch)) / slotsPerEpoch;
-    state.epochRate = formatNumber(Big(epochRate).times(100).toPrecision(), 0);
+    results.epochRate = formatNumber(Big(epochRate).times(100).toPrecision(), 0);
 
     const epochTimeRaw = (slotsPerEpoch - (slot % slotsPerEpoch)) * averageSlotTime;
     const epochTimeHour = Math.floor(epochTimeRaw / (60 * 60));
     const epochTimeMinute = Math.floor((epochTimeRaw % (60 * 60)) / 60);
     const time = `${epochTimeHour}h ${epochTimeMinute}m`;
-    state.epochTime = time;
+    results.epochTime = time;
 
-    return state;
+    return results;
   };
 
   return {

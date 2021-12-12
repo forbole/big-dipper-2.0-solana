@@ -23,6 +23,10 @@ jest.mock('@components', () => ({
   Box: (props) => <div id="box" {...props} />,
 }));
 
+jest.mock('next-translate/Trans', () => (
+  (props) => <div id="Trans" {...props} />
+));
+
 const mockEpoch = jest.fn().mockResolvedValue({
   data: {
     average_time: 0.5312172714745062,
@@ -62,12 +66,13 @@ describe('screen: Home/Epoch', () => {
     // expect(component.root.findByProps({ i18nKey: 'home:untilNextEpoch' }).props.values.time).toEqual('33h 43m');
     console.log('test');
 
-    console.log(component.root.findByProps({ id: 'box' }).props);
-    console.log(component.root.findByProps({ id: 'box' }).props.children);
-    console.log(component.root.findByProps({ className: 'makeStyles-chartLabel' }));
-    console.log(component.root.findByProps({ className: 'makeStyles-chartPercentLabel' }));
-    console.log(component.root.findByProps({ i18nKey: 'home:untilNextEpoch' }));
-    expect(component.root.findByProps({ i18nKey: 'home:untilNextEpoch' }).props.values.time).toEqual('33h 43m');
+    // console.log(component.root.findByProps({ id: 'box' }).props);
+    // console.log(component.root.findByProps({ id: 'box' }).props.children);
+    // console.log(component.root.findByProps({ className: 'makeStyles-chartLabel' }));
+    // console.log(component.root.findByProps({ className: 'makeStyles-chartPercentLabel' }));
+    // console.log(component.root.findByProps({ i18nKey: 'home:untilNextEpoch' }));
+    // expect(component.root.findByProps({ i18nKey: 'home:untilNextEpoch' }).props.values.time).toEqual('33h 43m');
+    expect(component.root.findByProps({ id: 'Trans' }).props.values.time).toEqual('33h 43m');
   });
 
   afterEach(() => {

@@ -368,7 +368,22 @@ exports[`screen: Home/Epoch matches snapshot 1`] = `
     <p
       className="MuiTypography-root makeStyles-time MuiTypography-body2"
     >
-      home:untilNextEpoch
+      <div
+        components={
+          Array [
+            <span
+              className="highlight"
+            />,
+          ]
+        }
+        i18nKey="home:untilNextEpoch"
+        id="Trans"
+        values={
+          Object {
+            "time": "0",
+          }
+        }
+      />
     </p>
   </div>
 </div>
