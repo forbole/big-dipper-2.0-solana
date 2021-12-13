@@ -1,64 +1,69 @@
 /* eslint-disable max-len */
 // import * as R from 'ramda';
-// import numeral from 'numeral';
+import numeral from 'numeral';
 import {
   useRecoilState,
   SetterOrUpdater,
 } from 'recoil';
-// import {
-//   useMarketDataQuery,
-//   MarketDataQuery,
-// } from '@graphql/types';
-// import { chainConfig } from '@configs';
+import {
+  useMarketDataQuery,
+  MarketDataQuery,
+} from '@graphql/types';
+import { chainConfig } from '@configs';
 import {
   writeMarket,
 } from '@recoil/market';
 import { AtomState } from '@recoil/market/types';
-// import { formatDenom } from '@utils/format_denom';
+// import { formatToken } from '@utils/format_token';
 // import { getDenom } from '@utils/get_denom';
 
 export const useMarketRecoil = () => {
-  const [market, _setMarket] = useRecoilState(writeMarket) as [AtomState, SetterOrUpdater<AtomState>];
+  const [market, setMarket] = useRecoilState(writeMarket) as [AtomState, SetterOrUpdater<AtomState>];
 
-  // useMarketDataQuery(
-  //   {
-  //     variables: {
-  //       denom: chainConfig?.tokenUnits[chainConfig.primaryTokenUnit]?.display,
-  //     },
-  //     onCompleted: (data) => {
-  //       if (data) {
-  //         setMarket(formatUseChainIdQuery(data));
-  //       }
-  //     },
-  //   },
-  // );
+  useMarketDataQuery(
+    {
+      variables: {
+        denom: chainConfig?.tokenUnits[chainConfig.primaryTokenUnit]?.display,
+      },
+      onCompleted: (data) => {
+        if (data) {
+          setMarket(formatUseChainIdQuery(data));
+        }
+      },
+    },
+  );
 
-  // const formatUseChainIdQuery = (data: MarketDataQuery): AtomState => {
-  //   let {
-  //     price, marketCap,
-  //   } = market;
+  const formatUseChainIdQuery = (data: MarketDataQuery): AtomState => {
+    let {
+      price,
+      marketCap,
+    } = market;
 
-  //   if (data?.tokenPrice?.length) {
-  //     price = numeral(numeral(data?.tokenPrice[0]?.price).format('0.[00]', Math.floor)).value();
-  //     marketCap = data.tokenPrice[0]?.marketCap;
-  //   }
+    if (data?.tokenPrice?.length) {
+      price = numeral(numeral(data?.tokenPrice[0]?.price).format('0.[00]', Math.floor)).value();
+      marketCap = data.tokenPrice[0]?.marketCap;
+    }
 
-  //   const [communityPoolCoin] = R.pathOr([], ['communityPool', 0, 'coins'], data).filter((x) => x.denom === chainConfig.primaryTokenUnit);
-  //   const inflation = R.pathOr(0, ['inflation', 0, 'value'], data);
+    // const [communityPoolCoin] = R.pathOr([], ['communityPool', 0, 'coins'], data).filter((x) => x.denom === chainConfig.primaryTokenUnit);
+    // const inflation = R.pathOr(0, ['inflation', 0, 'value'], data);
 
-  //   const supply = formatDenom(
-  //     numeral(getDenom(
-  //       R.pathOr([], ['supply', 0, 'coins'], data),
-  //       chainConfig.primaryTokenUnit,
-  //     ).amount).value(),
-  //     chainConfig.primaryTokenUnit,
-  //   );
+    // const supply = formatDenom(
+    //   numeral(getDenom(
+    //     R.pathOr([], ['supply', 0, 'coins'], data),
+    //     chainConfig.primaryTokenUnit,
+    //   ).amount).value(),
+    //   chainConfig.primaryTokenUnit,
+    // );
 
-  // return ({
-  //   price,
-  //   marketCap,
-  //   inflation,
-  // });
+    return ({
+      price,
+      marketCap,
+      maxSupply: 0,
+      inflation: 10,
+    // inflation,
+    });
+  };
+
   return ({
     ...market,
   });

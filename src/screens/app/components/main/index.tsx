@@ -7,7 +7,7 @@ import Countdown from '@screens/countdown';
 import InitialLoad from '@screens/initial_load';
 import { useSettingsRecoil } from '@recoil/settings';
 import { useBigDipperNetworksRecoil } from '@recoil/big_dipper_networks';
-// import { useMarketRecoil } from '@recoil/market';
+import { useMarketRecoil } from '@recoil/market';
 import { useValidatorRecoil } from '@recoil/validators';
 import { InnerApp } from '..';
 import {
@@ -21,7 +21,7 @@ const Main = (props: AppProps) => {
   // =====================================
   useSettingsRecoil();
   useBigDipperNetworksRecoil();
-  // useMarketRecoil();
+  useMarketRecoil();
   const { loading } = useValidatorRecoil();
 
   // =====================================
