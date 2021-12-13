@@ -13,14 +13,6 @@ let component:renderer.ReactTestRenderer;
 // mocks
 // ==================================
 
-const mockUseNavContext = {
-  title: undefined,
-  price: 0,
-  marketCap: 0,
-  inflation: 0,
-  communityPool: 0,
-};
-
 // ==================================
 // unit tests
 // ==================================
