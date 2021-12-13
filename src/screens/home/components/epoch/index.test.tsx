@@ -40,39 +40,45 @@ const mockEpoch = jest.fn().mockResolvedValue({
 describe('screen: Home/Epoch', () => {
   it('matches snapshot', async () => {
     const mockClient = createMockClient();
-
     mockClient.setRequestHandler(
       EpochDocument,
       mockEpoch,
     );
 
-    const component = renderer.create(
-      <ApolloProvider client={mockClient}>
-        <MockTheme>
-          <Epoch />
-        </MockTheme>
-      </ApolloProvider>,
-    );
+    // const component = renderer.create(
+    //   <ApolloProvider client={mockClient}>
+    //     <MockTheme>
+    //       <Epoch />
+    //     </MockTheme>
+    //   </ApolloProvider>,
+    // );
+
+    let component;
+    renderer.act(() => {
+      component = renderer.create(
+        <ApolloProvider client={mockClient}>
+          <MockTheme>
+            <Epoch />
+          </MockTheme>
+        </ApolloProvider>,
+      );
+    });
+
     await wait();
 
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
 
     // epochNumber -> expect 256
-    // expect(component.root.findByProps({ className: 'makeStyles-chartLabel' }).props.values.nativeAssetAmount).toEqual('256');
+    // expect(component.root.findByProps({ className: 'makeStyles-chartLabel' }).children[2]).toEqual('256');
     // epochRate
-    // expect(component.root.findByProps({ className: 'makeStyles-chartPercentLabel'}).props.values.nativeAssetAmount).toEqual('4 DARIC');
+    // expect(component.root.findByProps({ className: 'makeStyles-chartPercentLabel'}).children[0]).toEqual('73');
     // epochTime
-    // expect(component.root.findByProps({ i18nKey: 'home:untilNextEpoch' }).props.values.time).toEqual('33h 43m');
-
-    // console.log(component.root.findByProps({ id: 'box' }).props);
-    // console.log(component.root.findByProps({ className: 'makeStyles-chartLabel' }));
-    // console.log(component.root.findByProps({ className: 'makeStyles-chartPercentLabel' }));
-    // console.log(component.root.findByProps({ i18nKey: 'home:untilNextEpoch' }));
-    // expect(component.root.findByProps({ i18nKey: 'home:untilNextEpoch' }).props.values.time).toEqual('33h 43m');
-    console.log('component', component.root.findByProps({ id: 'Trans' }).props.values);
-    console.log(component.root.findByProps({ className: 'makeStyles-chartLabel' }).children.values);
     // expect(component.root.findByProps({ id: 'Trans' }).props.values.time).toEqual('33h 43m');
+
+    console.log(component.root.findByProps({ id: 'Trans' }).props.values.time);
+    console.log(component.root.findByProps({ className: 'makeStyles-chartLabel' }).children[2]);
+    console.log(component.root.findByProps({ className: 'makeStyles-chartPercentLabel' }).children[0]);
   });
 
   afterEach(() => {
