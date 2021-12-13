@@ -57,7 +57,7 @@ exports[`screen: Nav/Mobile it renders 1`] = `
         <p
           className="MuiTypography-root MuiTypography-body1"
         >
-          234
+          $0
         </p>
       </div>
       <div
@@ -71,7 +71,7 @@ exports[`screen: Nav/Mobile it renders 1`] = `
         <p
           className="MuiTypography-root MuiTypography-body1"
         >
-          1000342
+          0
         </p>
       </div>
       <div
@@ -85,7 +85,7 @@ exports[`screen: Nav/Mobile it renders 1`] = `
         <p
           className="MuiTypography-root MuiTypography-body1"
         >
-          1.05
+          $0
         </p>
       </div>
       <div
@@ -99,7 +99,7 @@ exports[`screen: Nav/Mobile it renders 1`] = `
         <p
           className="MuiTypography-root MuiTypography-body1"
         >
-          0.6
+          0
         </p>
       </div>
     </div>
