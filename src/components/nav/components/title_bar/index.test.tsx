@@ -5,38 +5,24 @@ import { MockTheme } from '@tests/utils';
 import TitleBar from '.';
 
 // ==================================
-// global setup
-// ==================================
-let component:renderer.ReactTestRenderer;
-
-// ==================================
 // mocks
 // ==================================
+jest.mock('recoil', () => ({
+  ...jest.requireActual('recoil') as any,
+  useRecoilValue: jest.fn(() => ({
+    marketCap: 66851913386,
+    price: 218.98,
+    maxSupply: 324,
+    inflation: 0.14,
+  })),
+}));
 
 // ==================================
 // unit tests
 // ==================================
 describe('screen: Nav/TitleBar', () => {
-  beforeEach(() => {
-    component = renderer.create(
-      <RecoilRoot>
-        <MockTheme>
-          <TitleBar
-            title="hello world"
-          />
-        </MockTheme>
-      </RecoilRoot>,
-    );
-  });
-
-  it('it renders', () => {
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
-  });
-
   it('hook toggles correctly', () => {
-    mockUseNavContext.title = 'Validators';
-    component.update(
+    const component = renderer.create(
       <RecoilRoot>
         <MockTheme>
           <TitleBar title="hello world" />
@@ -45,10 +31,15 @@ describe('screen: Nav/TitleBar', () => {
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+
+    const pList = component.root.findAllByType('p');
+    expect(pList.some((el) => el.children.includes('0.14'))).toBe(true);
+    expect(pList.some((el) => el.children.includes('0.13'))).toBe(false);
+    expect(pList.some((el) => el.children.includes('$66,851,913,386'))).toBe(true);
+    expect(pList.some((el) => el.children.includes('common:maxSupply'))).toBe(true);
   });
 });
 
 afterEach(() => {
-  mockUseNavContext.title = undefined;
   jest.clearAllMocks();
 });
