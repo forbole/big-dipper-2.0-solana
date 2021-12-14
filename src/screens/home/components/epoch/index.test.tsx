@@ -4,8 +4,8 @@ import {
   MockTheme,
   wait,
 } from '@tests/utils';
-import { ApolloProvider } from '@apollo/client';
 import { createMockClient } from 'mock-apollo-client';
+import { ApolloProvider } from '@apollo/client';
 import {
   EpochDocument,
 } from '@graphql/types';
@@ -19,6 +19,7 @@ const mockI18n = {
   lang: 'en',
 };
 jest.mock('next-translate/useTranslation', () => () => mockI18n);
+
 jest.mock('@components', () => ({
   Box: (props) => <div id="box" {...props} />,
 }));
@@ -44,14 +45,6 @@ describe('screen: Home/Epoch', () => {
       EpochDocument,
       mockEpoch,
     );
-
-    // const component = renderer.create(
-    //   <ApolloProvider client={mockClient}>
-    //     <MockTheme>
-    //       <Epoch />
-    //     </MockTheme>
-    //   </ApolloProvider>,
-    // );
 
     let component;
     renderer.act(() => {
