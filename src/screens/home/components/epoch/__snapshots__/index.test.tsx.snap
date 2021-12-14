@@ -380,7 +380,7 @@ exports[`screen: Home/Epoch matches snapshot 1`] = `
         id="Trans"
         values={
           Object {
-            "time": "0h 0m",
+            "time": "35h 36m",
           }
         }
       />

@@ -36,7 +36,7 @@ export const useEpoch = () => {
     };
 
     const slotsPerEpoch = 432000;
-    const averageSlotTime = R.pathOr(0, ['average_slot_time_per_hour', 0, 'average_time'], data);
+    const averageSlotTime = R.pathOr(0, ['averageSlotTimePerHour', 0, 'averageTime'], data);
     const slot = R.pathOr(0, ['block', 0, 'slot'], data);
 
     const epochNumber = slot / slotsPerEpoch;
