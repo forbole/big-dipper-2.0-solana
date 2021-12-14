@@ -30,9 +30,9 @@ jest.mock('next-translate/Trans', () => (
 
 const mockEpoch = jest.fn().mockResolvedValue({
   data: {
-    average_slot_time_per_hour: [
+    averageSlotTimePerHour: [
       {
-        average_time: 0.5312172714745062,
+        averageTime: 0.5312172714745062,
       },
     ],
     block: [
