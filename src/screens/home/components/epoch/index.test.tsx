@@ -30,8 +30,16 @@ jest.mock('next-translate/Trans', () => (
 
 const mockEpoch = jest.fn().mockResolvedValue({
   data: {
-    average_time: 0.5312172714745062,
-    slot: 110782714,
+    average_slot_time_per_hour: [
+      {
+        average_time: 0.5312172714745062,
+      },
+    ],
+    block: [
+      {
+        slot: 110782714,
+      },
+    ],
   },
 });
 
@@ -63,11 +71,11 @@ describe('screen: Home/Epoch', () => {
     expect(tree).toMatchSnapshot();
 
     // epochNumber -> expect 256
-    // expect(component.root.findByProps({ className: 'makeStyles-chartLabel' }).children[2]).toEqual('256');
+    expect(component.root.findByProps({ className: 'makeStyles-chartLabel' }).children[2]).toEqual('256');
     // epochRate
-    // expect(component.root.findByProps({ className: 'makeStyles-chartPercentLabel'}).children[0]).toEqual('73');
+    expect(component.root.findByProps({ className: 'makeStyles-chartPercentLabel' }).children[0]).toEqual('55');
     // epochTime
-    // expect(component.root.findByProps({ id: 'Trans' }).props.values.time).toEqual('33h 43m');
+    expect(component.root.findByProps({ id: 'Trans' }).props.values.time).toEqual('35h 36m');
 
     console.log(component.root.findByProps({ id: 'Trans' }).props.values.time);
     console.log(component.root.findByProps({ className: 'makeStyles-chartLabel' }).children[2]);
