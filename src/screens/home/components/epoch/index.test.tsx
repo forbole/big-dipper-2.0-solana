@@ -70,16 +70,9 @@ describe('screen: Home/Epoch', () => {
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
 
-    // epochNumber -> expect 256
     expect(component.root.findByProps({ className: 'makeStyles-chartLabel' }).children[2]).toEqual('256');
-    // epochRate
     expect(component.root.findByProps({ className: 'makeStyles-chartPercentLabel' }).children[0]).toEqual('55');
-    // epochTime
     expect(component.root.findByProps({ id: 'Trans' }).props.values.time).toEqual('35h 36m');
-
-    console.log(component.root.findByProps({ id: 'Trans' }).props.values.time);
-    console.log(component.root.findByProps({ className: 'makeStyles-chartLabel' }).children[2]);
-    console.log(component.root.findByProps({ className: 'makeStyles-chartPercentLabel' }).children[0]);
   });
 
   afterEach(() => {
