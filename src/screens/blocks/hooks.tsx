@@ -1,29 +1,22 @@
 import { useState } from 'react';
 import * as R from 'ramda';
 import {
+  useBlocksListenerSubscription,
+  useBlocksQuery,
+  BlocksListenerSubscription,
+} from '@graphql/types';
+import {
   BlocksState, BlockType,
 } from './types';
 
-const fakeData: BlockType = {
-  slot: 812768640,
-  leader: 'desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467',
-  hash: '76nwV8zz8tLz97SBRXH6uwHvgHXtqJDLQfF66jZhQ857',
-  parentHash: '76nwV8zz8tLz97SBRXH6uwHvgHXtqJDLQfF66jZhQ857',
-  txs: 2,
-  timestamp: '2021-09-13T20:06:17.363145',
-};
-
 export const useBlocks = () => {
   const [state, setState] = useState<BlocksState>({
-    // loading: true,
-    loading: false,
+    loading: true,
     exists: true,
-    // items: [],
-    items: Array(20).fill(fakeData),
+    items: [],
     hasNextPage: false,
     isNextPageLoading: false,
-    // rawDataTotal: 0,
-    rawDataTotal: 20,
+    rawDataTotal: 0,
   });
 
   const handleSetState = (stateChange: any) => {
@@ -33,85 +26,84 @@ export const useBlocks = () => {
   // ================================
   // block subscription
   // ================================
-  // useBlocksListenerSubscription({
-  //   variables: {
-  //     limit: 1,
-  //     offset: 0,
-  //   },
-  //   onSubscriptionData: (data) => {
-  //     handleSetState({
-  //       loading: false,
-  //       items: [
-  //         ...formatBlocks(data.subscriptionData.data),
-  //         ...state.items,
-  //       ],
-  //     });
-  //   },
-  // });
+  useBlocksListenerSubscription({
+    variables: {
+      limit: 1,
+      offset: 0,
+    },
+    onSubscriptionData: (data) => {
+      handleSetState({
+        loading: false,
+        items: [
+          ...formatBlocks(data.subscriptionData.data),
+          ...state.items,
+        ],
+      });
+    },
+  });
 
   // ================================
   // block query
   // ================================
-  // const blockQuery = useBlocksQuery({
-  //   variables: {
-  //     limit: 50,
-  //     offset: 1,
-  //   },
-  //   onError: () => {
-  //     handleSetState({
-  //       loading: false,
-  //     });
-  //   },
-  //   onCompleted: (data) => {
-  //     const newItems = R.uniq([...state.items, ...formatBlocks(data)]);
-  //     handleSetState({
-  //       loading: false,
-  //       items: newItems,
-  //       hasNextPage: newItems.length < data.total.aggregate.count,
-  //       isNextPageLoading: false,
-  //       rawDataTotal: data.total.aggregate.count,
-  //     });
-  //   },
-  // });
+  const blockQuery = useBlocksQuery({
+    variables: {
+      limit: 50,
+      offset: 1,
+    },
+    onError: () => {
+      handleSetState({
+        loading: false,
+      });
+    },
+    onCompleted: (data) => {
+      const newItems = R.uniq([...state.items, ...formatBlocks(data)]);
+      handleSetState({
+        loading: false,
+        items: newItems,
+        hasNextPage: newItems.length < data.total.aggregate.count,
+        isNextPageLoading: false,
+        rawDataTotal: data.total.aggregate.count,
+      });
+    },
+  });
 
   const loadNextPage = async () => {
     handleSetState({
-      // isNextPageLoading: true,
-      isNextPageLoading: false,
+      isNextPageLoading: true,
     });
     // refetch query
-    // await blockQuery.fetchMore({
-    //   variables: {
-    //     offset: state.items.length,
-    //     limit: 50,
-    //   },
-    // }).then(({ data }) => {
-    //   const newItems = R.uniq([
-    //     ...state.items,
-    //     ...formatBlocks(data),
-    //   ]);
-    //   // set new state
-    //   handleSetState({
-    //     items: newItems,
-    //     isNextPageLoading: false,
-    //     hasNextPage: newItems.length < data.total.aggregate.count,
-    //     rawDataTotal: data.total.aggregate.count,
-    //   });
-    // });
+    await blockQuery.fetchMore({
+      variables: {
+        offset: state.items.length,
+        limit: 50,
+      },
+    }).then(({ data }) => {
+      const newItems = R.uniq([
+        ...state.items,
+        ...formatBlocks(data),
+      ]);
+      // set new state
+      handleSetState({
+        items: newItems,
+        isNextPageLoading: false,
+        hasNextPage: newItems.length < data.total.aggregate.count,
+        rawDataTotal: data.total.aggregate.count,
+      });
+    });
   };
 
-  // const formatBlocks = (data: BlocksListenerSubscription): BlockType[] => {
-  //   return data.blocks.map((x) => {
-  //     const proposerAddress = R.pathOr('', ['validator', 'validatorInfo', 'operatorAddress'], x);
-  //     return ({
-  //       height: x.height,
-  //       txs: x.txs,
-  //       hash: x.hash,
-  //       timestamp: x.timestamp,
-  //       proposer: proposerAddress,
-  //     });
-  //   });
-  // };
+  const formatBlocks = (data: BlocksListenerSubscription): BlockType[] => {
+    return data.blocks.map((x) => {
+      const txCounter = R.pathOr('', ['transactionsAggregate', 'aggregate', 'count'], x);
+      return ({
+        slot: x.slot,
+        txs: txCounter,
+        hash: x.hash,
+        timestamp: x.timestamp,
+        leader: x.proposer,
+      });
+    });
+  };
 
   const itemCount = state.hasNextPage ? state.items.length + 1 : state.items.length;
   const loadMoreItems = state.isNextPageLoading ? () => null : loadNextPage;

@@ -66,9 +66,6 @@ const Mobile: React.FC<{
       hash: getMiddleEllipsis(x.hash, {
         beginning: 13, ending: 10,
       }),
-      parentHash: getMiddleEllipsis(x.parentHash, {
-        beginning: 13, ending: 10,
-      }),
     });
   });
 

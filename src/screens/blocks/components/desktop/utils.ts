@@ -9,15 +9,11 @@ export const columns:{
   },
   {
     key: 'leader',
-    width: 15,
+    width: 35,
   },
   {
     key: 'hash',
-    width: 25,
-  },
-  {
-    key: 'parentHash',
-    width: 25,
+    width: 30,
   },
   {
     key: 'txs',

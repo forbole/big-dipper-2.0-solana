@@ -10,12 +10,11 @@ const SingleBlockMobile: React.FC<{
   className?: string;
   slot: React.ReactNode;
   hash: string;
-  parentHash?: string;
   txs: string;
   time: string;
   leader: React.ReactNode;
 }> = ({
-  className, slot, hash, parentHash, txs, time, leader,
+  className, slot, hash, txs, time, leader,
 }) => {
   const { t } = useTranslation('blocks');
   const classes = useStyles();
@@ -42,16 +41,6 @@ const SingleBlockMobile: React.FC<{
           {hash}
         </Typography>
       </div>
-      {parentHash && (
-        <div className={classes.item}>
-          <Typography variant="h4" className="label">
-            {t('parentHash')}
-          </Typography>
-          <Typography variant="body1" className="value">
-            {parentHash}
-          </Typography>
-        </div>
-      )}
       <div className={classes.flex}>
         <div className={classes.item}>
           <Typography variant="h4" className="label">
