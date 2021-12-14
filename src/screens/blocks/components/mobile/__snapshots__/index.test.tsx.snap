@@ -50,7 +50,6 @@ exports[`screen: Home/Blocks/Mobile matches snapshot 1`] = `
                 name="desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467"
               />
             }
-            parentHash="76nwV8zz8tLz9...F66jZhQ857"
             slot={
               <Link
                 href="/blocks/812768640"
@@ -95,7 +94,6 @@ exports[`screen: Home/Blocks/Mobile matches snapshot 1`] = `
                 name="desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467"
               />
             }
-            parentHash="76nwV8zz8tLz9...F66jZhQ857"
             slot={
               <Link
                 href="/blocks/812768640"

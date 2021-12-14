@@ -10,8 +10,8 @@ import {
   MockTheme, wait,
 } from '@tests/utils';
 import {
-// BlocksListenerDocument,
-// BlocksDocument,
+BlocksListenerDocument,
+BlocksDocument,
 } from '@graphql/types';
 import Blocks from '.';
 
@@ -29,33 +29,40 @@ const mockBlocksListenerDocument = {
   data: {
     blocks: [
       {
-        slot: 812768640,
-        leader: 'desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467',
-        hash: '76nwV8zz8tLz97SBRXH6uwHvgHXtqJDLQfF66jZhQ857',
-        parentHash: '76nwV8zz8tLz97SBRXH6uwHvgHXtqJDLQfF66jZhQ857',
-        txs: 2,
-        timestamp: '2021-09-13T20:06:17.363145',
-      },
+        "slot": 109782714,
+        "proposer": "51cbXxXHtwQ5WCSVkmjBrUcbZQUJjCWxvXP4mmoJiJGA",
+        "hash": "ADWG9wFPM94Fa2H9LMdnnz6QXfXQpky4RQrxbz2beLmd",
+        "timestamp": "2021-12-02T23:33:50",
+        "transactionsAggregate": {
+          "aggregate": {
+            "count": 0
+          }
+        }
+      }
     ],
   },
 };
 
 const mockBlocksDocument = jest.fn().mockResolvedValue({
   data: {
-    blocks: [{
-      slot: 812768640,
-      leader: 'desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467',
-      hash: '76nwV8zz8tLz97SBRXH6uwHvgHXtqJDLQfF66jZhQ857',
-      parentHash: '76nwV8zz8tLz97SBRXH6uwHvgHXtqJDLQfF66jZhQ857',
-      txs: 2,
-      timestamp: '2021-09-13T20:06:17.363145',
-    },
+    "blocks": [
+      {
+        "slot": 109782714,
+        "proposer": "51cbXxXHtwQ5WCSVkmjBrUcbZQUJjCWxvXP4mmoJiJGA",
+        "hash": "ADWG9wFPM94Fa2H9LMdnnz6QXfXQpky4RQrxbz2beLmd",
+        "timestamp": "2021-12-02T23:33:50",
+        "transactionsAggregate": {
+          "aggregate": {
+            "count": 0
+          }
+        }
+      }
     ],
-    total: {
-      aggregate: {
-        count: 379619,
-      },
-    },
+    "total": {
+      "aggregate": {
+        "count": 145223
+      }
+    }
   },
 });
 
@@ -67,15 +74,15 @@ describe('screen: Blocks', () => {
     const mockClient = createMockClient();
     const mockSubscription = createMockSubscription();
 
-    // mockClient.setRequestHandler(
-    //   BlocksListenerDocument,
-    //   () => mockSubscription,
-    // );
+    mockClient.setRequestHandler(
+      BlocksListenerDocument,
+      () => mockSubscription,
+    );
 
-    // mockClient.setRequestHandler(
-    //   BlocksDocument,
-    //   mockBlocksDocument,
-    // );
+    mockClient.setRequestHandler(
+      BlocksDocument,
+      mockBlocksDocument,
+    );
 
     let component;
 
