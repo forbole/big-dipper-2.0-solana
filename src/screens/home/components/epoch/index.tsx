@@ -11,6 +11,7 @@ import {
   Tooltip,
 } from 'recharts';
 import { useStyles } from './styles';
+import { useEpoch } from './hooks';
 
 const Epoch: React.FC<{
   className?: string;
@@ -19,6 +20,7 @@ const Epoch: React.FC<{
     classes, theme,
   } = useStyles();
   const { t } = useTranslation('home');
+  const { state } = useEpoch();
 
   const data = [
     {
@@ -71,7 +73,8 @@ const Epoch: React.FC<{
             className="progress-label"
           >
             <tspan className={classes.chartPercentLabel}>
-              73%
+              {state.epochRate}
+              %
             </tspan>
           </text>
 
@@ -79,7 +82,7 @@ const Epoch: React.FC<{
             <tspan className={classes.chartLabel}>
               {t('epoch')}
               {' '}
-              143
+              {state.epochNumber}
             </tspan>
           </text>
         </RadialBarChart>
@@ -90,7 +93,7 @@ const Epoch: React.FC<{
               <span className="highlight" />,
             ]}
             values={{
-              time: '18h 36m',
+              time: state.epochTime,
             }}
           />
         </Typography>
