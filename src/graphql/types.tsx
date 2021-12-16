@@ -4800,6 +4800,16 @@ export type BlocksQuery = { blocks: Array<(
       & Pick<Block_Aggregate_Fields, 'count'>
     )> }
   ) };
+export type EpochQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type EpochQuery = { averageSlotTimePerHour: Array<(
+    { __typename?: 'average_slot_time_per_hour' }
+    & { averageTime: Average_Slot_Time_Per_Hour['average_time'] }
+  )>, block: Array<(
+    { __typename?: 'block' }
+    & Pick<Block, 'slot'>
+  )> };
 
 export type TokenPriceListenerSubscriptionVariables = Exact<{
   denom?: Maybe<Scalars['String']>;
@@ -5061,6 +5071,13 @@ export const BlocksDocument = gql`
     aggregate {
       count
     }
+export const EpochDocument = gql`
+    query Epoch {
+  averageSlotTimePerHour: average_slot_time_per_hour {
+    averageTime: average_time
+  }
+  block(order_by: {slot: desc}, limit: 1) {
+    slot
   }
 }
     `;
@@ -5070,6 +5087,10 @@ export const BlocksDocument = gql`
  *
  * To run a query within a React component, call `useBlocksQuery` and pass it any options that fit your needs.
  * When your component renders, `useBlocksQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * __useEpochQuery__
+ *
+ * To run a query within a React component, call `useEpochQuery` and pass it any options that fit your needs.
+ * When your component renders, `useEpochQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -5093,6 +5114,22 @@ export function useBlocksLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<Blo
 export type BlocksQueryHookResult = ReturnType<typeof useBlocksQuery>;
 export type BlocksLazyQueryHookResult = ReturnType<typeof useBlocksLazyQuery>;
 export type BlocksQueryResult = Apollo.QueryResult<BlocksQuery, BlocksQueryVariables>;
+ * const { data, loading, error } = useEpochQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useEpochQuery(baseOptions?: Apollo.QueryHookOptions<EpochQuery, EpochQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<EpochQuery, EpochQueryVariables>(EpochDocument, options);
+      }
+export function useEpochLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<EpochQuery, EpochQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<EpochQuery, EpochQueryVariables>(EpochDocument, options);
+        }
+export type EpochQueryHookResult = ReturnType<typeof useEpochQuery>;
+export type EpochLazyQueryHookResult = ReturnType<typeof useEpochLazyQuery>;
+export type EpochQueryResult = Apollo.QueryResult<EpochQuery, EpochQueryVariables>;
 export const TokenPriceListenerDocument = gql`
     subscription TokenPriceListener($denom: String) {
   tokenPrice: token_price(where: {unit_name: {_eq: $denom}}) {
