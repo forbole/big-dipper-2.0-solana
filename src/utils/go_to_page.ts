@@ -1,5 +1,3 @@
-import { chainConfig } from '@configs';
-
 export const HOME = '/';
 export const BLOCKS = '/blocks';
 export const BLOCK_DETAILS = (slot:string | number): string => `/blocks/${slot}`;
@@ -13,11 +11,3 @@ export const ACCOUNT_DETAILS = (address: string): string => `/accounts/${address
 export const PARAMS = '/params';
 export const TOKENS = '/tokens';
 export const TOKEN_DETAILS = (address: string): string => `/tokens/${address}`;
-
-/**
- * Helper to determine if we are routing to validator details or account details
- * @param address
- * @returns
- */
-export const PROFILE_DETAILS = (address: string) => (address.includes(chainConfig.prefix.validator)
-  ? VALIDATOR_DETAILS(address) : ACCOUNT_DETAILS(address));

@@ -1,0 +1,11 @@
+query Epoch {
+  averageSlotTimePerHour: average_slot_time_per_hour {
+    averageTime: average_time 
+  }
+  block(order_by: {slot: desc}, limit: 1) {
+    slot
+  }
+}
+
+
+

@@ -4786,6 +4786,15 @@ export type MarketDataQuery = { tokenPrice: Array<(
     { __typename?: 'token_price' }
     & Pick<Token_Price, 'price'>
     & { marketCap: Token_Price['market_cap'] }
+export type EpochQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type EpochQuery = { averageSlotTimePerHour: Array<(
+    { __typename?: 'average_slot_time_per_hour' }
+    & { averageTime: Average_Slot_Time_Per_Hour['average_time'] }
+  )>, block: Array<(
+    { __typename?: 'block' }
+    & Pick<Block, 'slot'>
   )> };
 
 export type TokenPriceListenerSubscriptionVariables = Exact<{
@@ -5036,6 +5045,13 @@ export const MarketDataDocument = gql`
   tokenPrice: token_price(where: {unit_name: {_eq: $denom}}) {
     marketCap: market_cap
     price
+export const EpochDocument = gql`
+    query Epoch {
+  averageSlotTimePerHour: average_slot_time_per_hour {
+    averageTime: average_time
+  }
+  block(order_by: {slot: desc}, limit: 1) {
+    slot
   }
 }
     `;
@@ -5045,6 +5061,10 @@ export const MarketDataDocument = gql`
  *
  * To run a query within a React component, call `useMarketDataQuery` and pass it any options that fit your needs.
  * When your component renders, `useMarketDataQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * __useEpochQuery__
+ *
+ * To run a query within a React component, call `useEpochQuery` and pass it any options that fit your needs.
+ * When your component renders, `useEpochQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -5067,6 +5087,22 @@ export function useMarketDataLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions
 export type MarketDataQueryHookResult = ReturnType<typeof useMarketDataQuery>;
 export type MarketDataLazyQueryHookResult = ReturnType<typeof useMarketDataLazyQuery>;
 export type MarketDataQueryResult = Apollo.QueryResult<MarketDataQuery, MarketDataQueryVariables>;
+ * const { data, loading, error } = useEpochQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useEpochQuery(baseOptions?: Apollo.QueryHookOptions<EpochQuery, EpochQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<EpochQuery, EpochQueryVariables>(EpochDocument, options);
+      }
+export function useEpochLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<EpochQuery, EpochQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<EpochQuery, EpochQueryVariables>(EpochDocument, options);
+        }
+export type EpochQueryHookResult = ReturnType<typeof useEpochQuery>;
+export type EpochLazyQueryHookResult = ReturnType<typeof useEpochLazyQuery>;
+export type EpochQueryResult = Apollo.QueryResult<EpochQuery, EpochQueryVariables>;
 export const TokenPriceListenerDocument = gql`
     subscription TokenPriceListener($denom: String) {
   tokenPrice: token_price(where: {unit_name: {_eq: $denom}}) {
