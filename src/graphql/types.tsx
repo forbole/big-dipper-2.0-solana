@@ -5832,6 +5832,12 @@ export type MarketDataQuery = { tokenPrice: Array<(
     { __typename?: 'token_price' }
     & Pick<Token_Price, 'price'>
     & { marketCap: Token_Price['market_cap'] }
+  )>, supplyInfo: Array<(
+    { __typename?: 'supply_info' }
+    & Pick<Supply_Info, 'total'>
+  )>, inflationRate: Array<(
+    { __typename?: 'inflation_rate' }
+    & Pick<Inflation_Rate, 'total'>
   )> };
 
 export type TokenPriceListenerSubscriptionVariables = Exact<{
@@ -6119,6 +6125,12 @@ export const MarketDataDocument = gql`
   tokenPrice: token_price(where: {unit_name: {_eq: $denom}}) {
     marketCap: market_cap
     price
+  }
+  supplyInfo: supply_info {
+    total
+  }
+  inflationRate: inflation_rate {
+    total
   }
 }
     `;

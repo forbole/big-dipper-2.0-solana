@@ -3,4 +3,10 @@ query MarketData ($denom: String) {
     marketCap: market_cap
     price
   }
+  supplyInfo: supply_info {
+    total
+  }
+  inflationRate: inflation_rate {
+    total
+  }
 }

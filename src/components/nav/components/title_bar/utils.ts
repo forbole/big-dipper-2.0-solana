@@ -1,8 +1,9 @@
 import numeral from 'numeral';
+import { formatNumber } from '@utils/format_token';
 
 export const formatMarket = (data: {
   marketCap: number;
-  maxSupply: number;
+  maxSupply: TokenUnit;
   price: number;
   inflation: number;
 }) => {
@@ -14,7 +15,7 @@ export const formatMarket = (data: {
     },
     {
       key: 'maxSupply',
-      data: data.maxSupply,
+      data: `${formatNumber(data.maxSupply.value, 0)} ${data.maxSupply.displayDenom.toUpperCase()}`,
     },
     {
       key: 'price',

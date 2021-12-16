@@ -3,7 +3,12 @@ import { AtomState } from './types';
 
 const initialState: AtomState = {
   marketCap: 0,
-  maxSupply: 0,
+  maxSupply: {
+    value: '0',
+    exponent: 0,
+    baseDenom: '',
+    displayDenom: '',
+  },
   price: 0,
   inflation: 0,
 };

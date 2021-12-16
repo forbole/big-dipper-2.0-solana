@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-// import * as R from 'ramda';
+import * as R from 'ramda';
 import numeral from 'numeral';
 import {
   useRecoilState,
@@ -14,8 +14,8 @@ import {
   writeMarket,
 } from '@recoil/market';
 import { AtomState } from '@recoil/market/types';
-// import { formatToken } from '@utils/format_token';
-// import { getDenom } from '@utils/get_denom';
+import { formatToken } from '@utils/format_token';
+import { getDenom } from '@utils/get_denom';
 
 export const useMarketRecoil = () => {
   const [market, setMarket] = useRecoilState(writeMarket) as [AtomState, SetterOrUpdater<AtomState>];
@@ -47,18 +47,15 @@ export const useMarketRecoil = () => {
     // const [communityPoolCoin] = R.pathOr([], ['communityPool', 0, 'coins'], data).filter((x) => x.denom === chainConfig.primaryTokenUnit);
     // const inflation = R.pathOr(0, ['inflation', 0, 'value'], data);
 
-    // const supply = formatDenom(
-    //   numeral(getDenom(
-    //     R.pathOr([], ['supply', 0, 'coins'], data),
-    //     chainConfig.primaryTokenUnit,
-    //   ).amount).value(),
-    //   chainConfig.primaryTokenUnit,
-    // );
+    const supply = formatToken(
+      R.pathOr(0, ['supplyInfo', 0, 'total'], data),
+      chainConfig.primaryTokenUnit,
+    );
 
     return ({
       price,
       marketCap,
-      maxSupply: 0,
+      maxSupply: supply,
       inflation: 10,
     // inflation,
     });
