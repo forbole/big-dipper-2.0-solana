@@ -71,7 +71,7 @@ exports[`screen: Nav/Mobile it renders 1`] = `
         <p
           className="MuiTypography-root MuiTypography-body1"
         >
-          0
+          0 
         </p>
       </div>
       <div
@@ -99,7 +99,7 @@ exports[`screen: Nav/Mobile it renders 1`] = `
         <p
           className="MuiTypography-root MuiTypography-body1"
         >
-          0
+          0%
         </p>
       </div>
     </div>

@@ -12,7 +12,12 @@ jest.mock('recoil', () => ({
   useRecoilValue: jest.fn(() => ({
     marketCap: 66851913386,
     price: 218.98,
-    maxSupply: 324,
+    maxSupply: {
+      value: '11432342352345',
+      exponent: 8,
+      baseDenom: 'sol',
+      displayDenom: 'sol',
+    },
     inflation: 0.14,
   })),
 }));
@@ -33,7 +38,7 @@ describe('screen: Nav/TitleBar', () => {
     expect(tree).toMatchSnapshot();
 
     const pList = component.root.findAllByType('p');
-    expect(pList.some((el) => el.children.includes('0.14'))).toBe(true);
+    expect(pList.some((el) => el.children.includes('14%'))).toBe(true);
     expect(pList.some((el) => el.children.includes('0.13'))).toBe(false);
     expect(pList.some((el) => el.children.includes('$66,851,913,386'))).toBe(true);
     expect(pList.some((el) => el.children.includes('common:maxSupply'))).toBe(true);

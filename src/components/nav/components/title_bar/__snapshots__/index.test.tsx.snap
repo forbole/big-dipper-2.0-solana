@@ -37,7 +37,7 @@ exports[`screen: Nav/TitleBar hook toggles correctly 1`] = `
       <p
         className="MuiTypography-root MuiTypography-body1"
       >
-        324
+        11,432,342,352,345 SOL
       </p>
     </div>
     <div
@@ -65,7 +65,7 @@ exports[`screen: Nav/TitleBar hook toggles correctly 1`] = `
       <p
         className="MuiTypography-root MuiTypography-body1"
       >
-        0.14
+        14%
       </p>
     </div>
   </div>

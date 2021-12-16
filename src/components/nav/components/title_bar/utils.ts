@@ -23,7 +23,7 @@ export const formatMarket = (data: {
     },
     {
       key: 'inflation',
-      data: data.inflation,
+      data: `${numeral(data.inflation * 100).format('0.[00]')}%`,
     },
   ]);
 };
