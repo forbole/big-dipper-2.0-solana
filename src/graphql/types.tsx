@@ -542,6 +542,301 @@ export type Block_Variance_Fields = {
   slot?: Maybe<Scalars['Float']>;
 };
 
+/** columns and relationships of "epoch_info" */
+export type Epoch_Info = {
+  __typename?: 'epoch_info';
+  epoch: Scalars['bigint'];
+  transaction_count: Scalars['numeric'];
+};
+
+/** aggregated selection of "epoch_info" */
+export type Epoch_Info_Aggregate = {
+  __typename?: 'epoch_info_aggregate';
+  aggregate?: Maybe<Epoch_Info_Aggregate_Fields>;
+  nodes: Array<Epoch_Info>;
+};
+
+/** aggregate fields of "epoch_info" */
+export type Epoch_Info_Aggregate_Fields = {
+  __typename?: 'epoch_info_aggregate_fields';
+  avg?: Maybe<Epoch_Info_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<Epoch_Info_Max_Fields>;
+  min?: Maybe<Epoch_Info_Min_Fields>;
+  stddev?: Maybe<Epoch_Info_Stddev_Fields>;
+  stddev_pop?: Maybe<Epoch_Info_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Epoch_Info_Stddev_Samp_Fields>;
+  sum?: Maybe<Epoch_Info_Sum_Fields>;
+  var_pop?: Maybe<Epoch_Info_Var_Pop_Fields>;
+  var_samp?: Maybe<Epoch_Info_Var_Samp_Fields>;
+  variance?: Maybe<Epoch_Info_Variance_Fields>;
+};
+
+
+/** aggregate fields of "epoch_info" */
+export type Epoch_Info_Aggregate_FieldsCountArgs = {
+  columns?: Maybe<Array<Epoch_Info_Select_Column>>;
+  distinct?: Maybe<Scalars['Boolean']>;
+};
+
+/** aggregate avg on columns */
+export type Epoch_Info_Avg_Fields = {
+  __typename?: 'epoch_info_avg_fields';
+  epoch?: Maybe<Scalars['Float']>;
+  transaction_count?: Maybe<Scalars['Float']>;
+};
+
+/** Boolean expression to filter rows from the table "epoch_info". All fields are combined with a logical 'AND'. */
+export type Epoch_Info_Bool_Exp = {
+  _and?: Maybe<Array<Epoch_Info_Bool_Exp>>;
+  _not?: Maybe<Epoch_Info_Bool_Exp>;
+  _or?: Maybe<Array<Epoch_Info_Bool_Exp>>;
+  epoch?: Maybe<Bigint_Comparison_Exp>;
+  transaction_count?: Maybe<Numeric_Comparison_Exp>;
+};
+
+/** aggregate max on columns */
+export type Epoch_Info_Max_Fields = {
+  __typename?: 'epoch_info_max_fields';
+  epoch?: Maybe<Scalars['bigint']>;
+  transaction_count?: Maybe<Scalars['numeric']>;
+};
+
+/** aggregate min on columns */
+export type Epoch_Info_Min_Fields = {
+  __typename?: 'epoch_info_min_fields';
+  epoch?: Maybe<Scalars['bigint']>;
+  transaction_count?: Maybe<Scalars['numeric']>;
+};
+
+/** Ordering options when selecting data from "epoch_info". */
+export type Epoch_Info_Order_By = {
+  epoch?: Maybe<Order_By>;
+  transaction_count?: Maybe<Order_By>;
+};
+
+/** select columns of table "epoch_info" */
+export enum Epoch_Info_Select_Column {
+  /** column name */
+  Epoch = 'epoch',
+  /** column name */
+  TransactionCount = 'transaction_count'
+}
+
+/** aggregate stddev on columns */
+export type Epoch_Info_Stddev_Fields = {
+  __typename?: 'epoch_info_stddev_fields';
+  epoch?: Maybe<Scalars['Float']>;
+  transaction_count?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Epoch_Info_Stddev_Pop_Fields = {
+  __typename?: 'epoch_info_stddev_pop_fields';
+  epoch?: Maybe<Scalars['Float']>;
+  transaction_count?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Epoch_Info_Stddev_Samp_Fields = {
+  __typename?: 'epoch_info_stddev_samp_fields';
+  epoch?: Maybe<Scalars['Float']>;
+  transaction_count?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate sum on columns */
+export type Epoch_Info_Sum_Fields = {
+  __typename?: 'epoch_info_sum_fields';
+  epoch?: Maybe<Scalars['bigint']>;
+  transaction_count?: Maybe<Scalars['numeric']>;
+};
+
+/** aggregate var_pop on columns */
+export type Epoch_Info_Var_Pop_Fields = {
+  __typename?: 'epoch_info_var_pop_fields';
+  epoch?: Maybe<Scalars['Float']>;
+  transaction_count?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate var_samp on columns */
+export type Epoch_Info_Var_Samp_Fields = {
+  __typename?: 'epoch_info_var_samp_fields';
+  epoch?: Maybe<Scalars['Float']>;
+  transaction_count?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate variance on columns */
+export type Epoch_Info_Variance_Fields = {
+  __typename?: 'epoch_info_variance_fields';
+  epoch?: Maybe<Scalars['Float']>;
+  transaction_count?: Maybe<Scalars['Float']>;
+};
+
+/** columns and relationships of "epoch_schedule_param" */
+export type Epoch_Schedule_Param = {
+  __typename?: 'epoch_schedule_param';
+  epoch: Scalars['bigint'];
+  first_normal_epoch: Scalars['Int'];
+  first_normal_slot: Scalars['Int'];
+  slots_per_epoch: Scalars['Int'];
+  warmup: Scalars['Boolean'];
+};
+
+/** aggregated selection of "epoch_schedule_param" */
+export type Epoch_Schedule_Param_Aggregate = {
+  __typename?: 'epoch_schedule_param_aggregate';
+  aggregate?: Maybe<Epoch_Schedule_Param_Aggregate_Fields>;
+  nodes: Array<Epoch_Schedule_Param>;
+};
+
+/** aggregate fields of "epoch_schedule_param" */
+export type Epoch_Schedule_Param_Aggregate_Fields = {
+  __typename?: 'epoch_schedule_param_aggregate_fields';
+  avg?: Maybe<Epoch_Schedule_Param_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<Epoch_Schedule_Param_Max_Fields>;
+  min?: Maybe<Epoch_Schedule_Param_Min_Fields>;
+  stddev?: Maybe<Epoch_Schedule_Param_Stddev_Fields>;
+  stddev_pop?: Maybe<Epoch_Schedule_Param_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Epoch_Schedule_Param_Stddev_Samp_Fields>;
+  sum?: Maybe<Epoch_Schedule_Param_Sum_Fields>;
+  var_pop?: Maybe<Epoch_Schedule_Param_Var_Pop_Fields>;
+  var_samp?: Maybe<Epoch_Schedule_Param_Var_Samp_Fields>;
+  variance?: Maybe<Epoch_Schedule_Param_Variance_Fields>;
+};
+
+
+/** aggregate fields of "epoch_schedule_param" */
+export type Epoch_Schedule_Param_Aggregate_FieldsCountArgs = {
+  columns?: Maybe<Array<Epoch_Schedule_Param_Select_Column>>;
+  distinct?: Maybe<Scalars['Boolean']>;
+};
+
+/** aggregate avg on columns */
+export type Epoch_Schedule_Param_Avg_Fields = {
+  __typename?: 'epoch_schedule_param_avg_fields';
+  epoch?: Maybe<Scalars['Float']>;
+  first_normal_epoch?: Maybe<Scalars['Float']>;
+  first_normal_slot?: Maybe<Scalars['Float']>;
+  slots_per_epoch?: Maybe<Scalars['Float']>;
+};
+
+/** Boolean expression to filter rows from the table "epoch_schedule_param". All fields are combined with a logical 'AND'. */
+export type Epoch_Schedule_Param_Bool_Exp = {
+  _and?: Maybe<Array<Epoch_Schedule_Param_Bool_Exp>>;
+  _not?: Maybe<Epoch_Schedule_Param_Bool_Exp>;
+  _or?: Maybe<Array<Epoch_Schedule_Param_Bool_Exp>>;
+  epoch?: Maybe<Bigint_Comparison_Exp>;
+  first_normal_epoch?: Maybe<Int_Comparison_Exp>;
+  first_normal_slot?: Maybe<Int_Comparison_Exp>;
+  slots_per_epoch?: Maybe<Int_Comparison_Exp>;
+  warmup?: Maybe<Boolean_Comparison_Exp>;
+};
+
+/** aggregate max on columns */
+export type Epoch_Schedule_Param_Max_Fields = {
+  __typename?: 'epoch_schedule_param_max_fields';
+  epoch?: Maybe<Scalars['bigint']>;
+  first_normal_epoch?: Maybe<Scalars['Int']>;
+  first_normal_slot?: Maybe<Scalars['Int']>;
+  slots_per_epoch?: Maybe<Scalars['Int']>;
+};
+
+/** aggregate min on columns */
+export type Epoch_Schedule_Param_Min_Fields = {
+  __typename?: 'epoch_schedule_param_min_fields';
+  epoch?: Maybe<Scalars['bigint']>;
+  first_normal_epoch?: Maybe<Scalars['Int']>;
+  first_normal_slot?: Maybe<Scalars['Int']>;
+  slots_per_epoch?: Maybe<Scalars['Int']>;
+};
+
+/** Ordering options when selecting data from "epoch_schedule_param". */
+export type Epoch_Schedule_Param_Order_By = {
+  epoch?: Maybe<Order_By>;
+  first_normal_epoch?: Maybe<Order_By>;
+  first_normal_slot?: Maybe<Order_By>;
+  slots_per_epoch?: Maybe<Order_By>;
+  warmup?: Maybe<Order_By>;
+};
+
+/** select columns of table "epoch_schedule_param" */
+export enum Epoch_Schedule_Param_Select_Column {
+  /** column name */
+  Epoch = 'epoch',
+  /** column name */
+  FirstNormalEpoch = 'first_normal_epoch',
+  /** column name */
+  FirstNormalSlot = 'first_normal_slot',
+  /** column name */
+  SlotsPerEpoch = 'slots_per_epoch',
+  /** column name */
+  Warmup = 'warmup'
+}
+
+/** aggregate stddev on columns */
+export type Epoch_Schedule_Param_Stddev_Fields = {
+  __typename?: 'epoch_schedule_param_stddev_fields';
+  epoch?: Maybe<Scalars['Float']>;
+  first_normal_epoch?: Maybe<Scalars['Float']>;
+  first_normal_slot?: Maybe<Scalars['Float']>;
+  slots_per_epoch?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Epoch_Schedule_Param_Stddev_Pop_Fields = {
+  __typename?: 'epoch_schedule_param_stddev_pop_fields';
+  epoch?: Maybe<Scalars['Float']>;
+  first_normal_epoch?: Maybe<Scalars['Float']>;
+  first_normal_slot?: Maybe<Scalars['Float']>;
+  slots_per_epoch?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Epoch_Schedule_Param_Stddev_Samp_Fields = {
+  __typename?: 'epoch_schedule_param_stddev_samp_fields';
+  epoch?: Maybe<Scalars['Float']>;
+  first_normal_epoch?: Maybe<Scalars['Float']>;
+  first_normal_slot?: Maybe<Scalars['Float']>;
+  slots_per_epoch?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate sum on columns */
+export type Epoch_Schedule_Param_Sum_Fields = {
+  __typename?: 'epoch_schedule_param_sum_fields';
+  epoch?: Maybe<Scalars['bigint']>;
+  first_normal_epoch?: Maybe<Scalars['Int']>;
+  first_normal_slot?: Maybe<Scalars['Int']>;
+  slots_per_epoch?: Maybe<Scalars['Int']>;
+};
+
+/** aggregate var_pop on columns */
+export type Epoch_Schedule_Param_Var_Pop_Fields = {
+  __typename?: 'epoch_schedule_param_var_pop_fields';
+  epoch?: Maybe<Scalars['Float']>;
+  first_normal_epoch?: Maybe<Scalars['Float']>;
+  first_normal_slot?: Maybe<Scalars['Float']>;
+  slots_per_epoch?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate var_samp on columns */
+export type Epoch_Schedule_Param_Var_Samp_Fields = {
+  __typename?: 'epoch_schedule_param_var_samp_fields';
+  epoch?: Maybe<Scalars['Float']>;
+  first_normal_epoch?: Maybe<Scalars['Float']>;
+  first_normal_slot?: Maybe<Scalars['Float']>;
+  slots_per_epoch?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate variance on columns */
+export type Epoch_Schedule_Param_Variance_Fields = {
+  __typename?: 'epoch_schedule_param_variance_fields';
+  epoch?: Maybe<Scalars['Float']>;
+  first_normal_epoch?: Maybe<Scalars['Float']>;
+  first_normal_slot?: Maybe<Scalars['Float']>;
+  slots_per_epoch?: Maybe<Scalars['Float']>;
+};
+
 
 /** Boolean expression to compare columns of type "float8". All fields are combined with logical 'AND'. */
 export type Float8_Comparison_Exp = {
@@ -554,6 +849,356 @@ export type Float8_Comparison_Exp = {
   _lte?: Maybe<Scalars['float8']>;
   _neq?: Maybe<Scalars['float8']>;
   _nin?: Maybe<Array<Scalars['float8']>>;
+};
+
+/** columns and relationships of "inflation_governor_param" */
+export type Inflation_Governor_Param = {
+  __typename?: 'inflation_governor_param';
+  epoch: Scalars['bigint'];
+  foundation: Scalars['float8'];
+  foundation_terminal: Scalars['float8'];
+  initial: Scalars['float8'];
+  taper: Scalars['float8'];
+  terminal: Scalars['float8'];
+};
+
+/** aggregated selection of "inflation_governor_param" */
+export type Inflation_Governor_Param_Aggregate = {
+  __typename?: 'inflation_governor_param_aggregate';
+  aggregate?: Maybe<Inflation_Governor_Param_Aggregate_Fields>;
+  nodes: Array<Inflation_Governor_Param>;
+};
+
+/** aggregate fields of "inflation_governor_param" */
+export type Inflation_Governor_Param_Aggregate_Fields = {
+  __typename?: 'inflation_governor_param_aggregate_fields';
+  avg?: Maybe<Inflation_Governor_Param_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<Inflation_Governor_Param_Max_Fields>;
+  min?: Maybe<Inflation_Governor_Param_Min_Fields>;
+  stddev?: Maybe<Inflation_Governor_Param_Stddev_Fields>;
+  stddev_pop?: Maybe<Inflation_Governor_Param_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Inflation_Governor_Param_Stddev_Samp_Fields>;
+  sum?: Maybe<Inflation_Governor_Param_Sum_Fields>;
+  var_pop?: Maybe<Inflation_Governor_Param_Var_Pop_Fields>;
+  var_samp?: Maybe<Inflation_Governor_Param_Var_Samp_Fields>;
+  variance?: Maybe<Inflation_Governor_Param_Variance_Fields>;
+};
+
+
+/** aggregate fields of "inflation_governor_param" */
+export type Inflation_Governor_Param_Aggregate_FieldsCountArgs = {
+  columns?: Maybe<Array<Inflation_Governor_Param_Select_Column>>;
+  distinct?: Maybe<Scalars['Boolean']>;
+};
+
+/** aggregate avg on columns */
+export type Inflation_Governor_Param_Avg_Fields = {
+  __typename?: 'inflation_governor_param_avg_fields';
+  epoch?: Maybe<Scalars['Float']>;
+  foundation?: Maybe<Scalars['Float']>;
+  foundation_terminal?: Maybe<Scalars['Float']>;
+  initial?: Maybe<Scalars['Float']>;
+  taper?: Maybe<Scalars['Float']>;
+  terminal?: Maybe<Scalars['Float']>;
+};
+
+/** Boolean expression to filter rows from the table "inflation_governor_param". All fields are combined with a logical 'AND'. */
+export type Inflation_Governor_Param_Bool_Exp = {
+  _and?: Maybe<Array<Inflation_Governor_Param_Bool_Exp>>;
+  _not?: Maybe<Inflation_Governor_Param_Bool_Exp>;
+  _or?: Maybe<Array<Inflation_Governor_Param_Bool_Exp>>;
+  epoch?: Maybe<Bigint_Comparison_Exp>;
+  foundation?: Maybe<Float8_Comparison_Exp>;
+  foundation_terminal?: Maybe<Float8_Comparison_Exp>;
+  initial?: Maybe<Float8_Comparison_Exp>;
+  taper?: Maybe<Float8_Comparison_Exp>;
+  terminal?: Maybe<Float8_Comparison_Exp>;
+};
+
+/** aggregate max on columns */
+export type Inflation_Governor_Param_Max_Fields = {
+  __typename?: 'inflation_governor_param_max_fields';
+  epoch?: Maybe<Scalars['bigint']>;
+  foundation?: Maybe<Scalars['float8']>;
+  foundation_terminal?: Maybe<Scalars['float8']>;
+  initial?: Maybe<Scalars['float8']>;
+  taper?: Maybe<Scalars['float8']>;
+  terminal?: Maybe<Scalars['float8']>;
+};
+
+/** aggregate min on columns */
+export type Inflation_Governor_Param_Min_Fields = {
+  __typename?: 'inflation_governor_param_min_fields';
+  epoch?: Maybe<Scalars['bigint']>;
+  foundation?: Maybe<Scalars['float8']>;
+  foundation_terminal?: Maybe<Scalars['float8']>;
+  initial?: Maybe<Scalars['float8']>;
+  taper?: Maybe<Scalars['float8']>;
+  terminal?: Maybe<Scalars['float8']>;
+};
+
+/** Ordering options when selecting data from "inflation_governor_param". */
+export type Inflation_Governor_Param_Order_By = {
+  epoch?: Maybe<Order_By>;
+  foundation?: Maybe<Order_By>;
+  foundation_terminal?: Maybe<Order_By>;
+  initial?: Maybe<Order_By>;
+  taper?: Maybe<Order_By>;
+  terminal?: Maybe<Order_By>;
+};
+
+/** select columns of table "inflation_governor_param" */
+export enum Inflation_Governor_Param_Select_Column {
+  /** column name */
+  Epoch = 'epoch',
+  /** column name */
+  Foundation = 'foundation',
+  /** column name */
+  FoundationTerminal = 'foundation_terminal',
+  /** column name */
+  Initial = 'initial',
+  /** column name */
+  Taper = 'taper',
+  /** column name */
+  Terminal = 'terminal'
+}
+
+/** aggregate stddev on columns */
+export type Inflation_Governor_Param_Stddev_Fields = {
+  __typename?: 'inflation_governor_param_stddev_fields';
+  epoch?: Maybe<Scalars['Float']>;
+  foundation?: Maybe<Scalars['Float']>;
+  foundation_terminal?: Maybe<Scalars['Float']>;
+  initial?: Maybe<Scalars['Float']>;
+  taper?: Maybe<Scalars['Float']>;
+  terminal?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Inflation_Governor_Param_Stddev_Pop_Fields = {
+  __typename?: 'inflation_governor_param_stddev_pop_fields';
+  epoch?: Maybe<Scalars['Float']>;
+  foundation?: Maybe<Scalars['Float']>;
+  foundation_terminal?: Maybe<Scalars['Float']>;
+  initial?: Maybe<Scalars['Float']>;
+  taper?: Maybe<Scalars['Float']>;
+  terminal?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Inflation_Governor_Param_Stddev_Samp_Fields = {
+  __typename?: 'inflation_governor_param_stddev_samp_fields';
+  epoch?: Maybe<Scalars['Float']>;
+  foundation?: Maybe<Scalars['Float']>;
+  foundation_terminal?: Maybe<Scalars['Float']>;
+  initial?: Maybe<Scalars['Float']>;
+  taper?: Maybe<Scalars['Float']>;
+  terminal?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate sum on columns */
+export type Inflation_Governor_Param_Sum_Fields = {
+  __typename?: 'inflation_governor_param_sum_fields';
+  epoch?: Maybe<Scalars['bigint']>;
+  foundation?: Maybe<Scalars['float8']>;
+  foundation_terminal?: Maybe<Scalars['float8']>;
+  initial?: Maybe<Scalars['float8']>;
+  taper?: Maybe<Scalars['float8']>;
+  terminal?: Maybe<Scalars['float8']>;
+};
+
+/** aggregate var_pop on columns */
+export type Inflation_Governor_Param_Var_Pop_Fields = {
+  __typename?: 'inflation_governor_param_var_pop_fields';
+  epoch?: Maybe<Scalars['Float']>;
+  foundation?: Maybe<Scalars['Float']>;
+  foundation_terminal?: Maybe<Scalars['Float']>;
+  initial?: Maybe<Scalars['Float']>;
+  taper?: Maybe<Scalars['Float']>;
+  terminal?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate var_samp on columns */
+export type Inflation_Governor_Param_Var_Samp_Fields = {
+  __typename?: 'inflation_governor_param_var_samp_fields';
+  epoch?: Maybe<Scalars['Float']>;
+  foundation?: Maybe<Scalars['Float']>;
+  foundation_terminal?: Maybe<Scalars['Float']>;
+  initial?: Maybe<Scalars['Float']>;
+  taper?: Maybe<Scalars['Float']>;
+  terminal?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate variance on columns */
+export type Inflation_Governor_Param_Variance_Fields = {
+  __typename?: 'inflation_governor_param_variance_fields';
+  epoch?: Maybe<Scalars['Float']>;
+  foundation?: Maybe<Scalars['Float']>;
+  foundation_terminal?: Maybe<Scalars['Float']>;
+  initial?: Maybe<Scalars['Float']>;
+  taper?: Maybe<Scalars['Float']>;
+  terminal?: Maybe<Scalars['Float']>;
+};
+
+/** columns and relationships of "inflation_rate" */
+export type Inflation_Rate = {
+  __typename?: 'inflation_rate';
+  epoch: Scalars['bigint'];
+  foundation: Scalars['float8'];
+  total: Scalars['float8'];
+  validator: Scalars['float8'];
+};
+
+/** aggregated selection of "inflation_rate" */
+export type Inflation_Rate_Aggregate = {
+  __typename?: 'inflation_rate_aggregate';
+  aggregate?: Maybe<Inflation_Rate_Aggregate_Fields>;
+  nodes: Array<Inflation_Rate>;
+};
+
+/** aggregate fields of "inflation_rate" */
+export type Inflation_Rate_Aggregate_Fields = {
+  __typename?: 'inflation_rate_aggregate_fields';
+  avg?: Maybe<Inflation_Rate_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<Inflation_Rate_Max_Fields>;
+  min?: Maybe<Inflation_Rate_Min_Fields>;
+  stddev?: Maybe<Inflation_Rate_Stddev_Fields>;
+  stddev_pop?: Maybe<Inflation_Rate_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Inflation_Rate_Stddev_Samp_Fields>;
+  sum?: Maybe<Inflation_Rate_Sum_Fields>;
+  var_pop?: Maybe<Inflation_Rate_Var_Pop_Fields>;
+  var_samp?: Maybe<Inflation_Rate_Var_Samp_Fields>;
+  variance?: Maybe<Inflation_Rate_Variance_Fields>;
+};
+
+
+/** aggregate fields of "inflation_rate" */
+export type Inflation_Rate_Aggregate_FieldsCountArgs = {
+  columns?: Maybe<Array<Inflation_Rate_Select_Column>>;
+  distinct?: Maybe<Scalars['Boolean']>;
+};
+
+/** aggregate avg on columns */
+export type Inflation_Rate_Avg_Fields = {
+  __typename?: 'inflation_rate_avg_fields';
+  epoch?: Maybe<Scalars['Float']>;
+  foundation?: Maybe<Scalars['Float']>;
+  total?: Maybe<Scalars['Float']>;
+  validator?: Maybe<Scalars['Float']>;
+};
+
+/** Boolean expression to filter rows from the table "inflation_rate". All fields are combined with a logical 'AND'. */
+export type Inflation_Rate_Bool_Exp = {
+  _and?: Maybe<Array<Inflation_Rate_Bool_Exp>>;
+  _not?: Maybe<Inflation_Rate_Bool_Exp>;
+  _or?: Maybe<Array<Inflation_Rate_Bool_Exp>>;
+  epoch?: Maybe<Bigint_Comparison_Exp>;
+  foundation?: Maybe<Float8_Comparison_Exp>;
+  total?: Maybe<Float8_Comparison_Exp>;
+  validator?: Maybe<Float8_Comparison_Exp>;
+};
+
+/** aggregate max on columns */
+export type Inflation_Rate_Max_Fields = {
+  __typename?: 'inflation_rate_max_fields';
+  epoch?: Maybe<Scalars['bigint']>;
+  foundation?: Maybe<Scalars['float8']>;
+  total?: Maybe<Scalars['float8']>;
+  validator?: Maybe<Scalars['float8']>;
+};
+
+/** aggregate min on columns */
+export type Inflation_Rate_Min_Fields = {
+  __typename?: 'inflation_rate_min_fields';
+  epoch?: Maybe<Scalars['bigint']>;
+  foundation?: Maybe<Scalars['float8']>;
+  total?: Maybe<Scalars['float8']>;
+  validator?: Maybe<Scalars['float8']>;
+};
+
+/** Ordering options when selecting data from "inflation_rate". */
+export type Inflation_Rate_Order_By = {
+  epoch?: Maybe<Order_By>;
+  foundation?: Maybe<Order_By>;
+  total?: Maybe<Order_By>;
+  validator?: Maybe<Order_By>;
+};
+
+/** select columns of table "inflation_rate" */
+export enum Inflation_Rate_Select_Column {
+  /** column name */
+  Epoch = 'epoch',
+  /** column name */
+  Foundation = 'foundation',
+  /** column name */
+  Total = 'total',
+  /** column name */
+  Validator = 'validator'
+}
+
+/** aggregate stddev on columns */
+export type Inflation_Rate_Stddev_Fields = {
+  __typename?: 'inflation_rate_stddev_fields';
+  epoch?: Maybe<Scalars['Float']>;
+  foundation?: Maybe<Scalars['Float']>;
+  total?: Maybe<Scalars['Float']>;
+  validator?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Inflation_Rate_Stddev_Pop_Fields = {
+  __typename?: 'inflation_rate_stddev_pop_fields';
+  epoch?: Maybe<Scalars['Float']>;
+  foundation?: Maybe<Scalars['Float']>;
+  total?: Maybe<Scalars['Float']>;
+  validator?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Inflation_Rate_Stddev_Samp_Fields = {
+  __typename?: 'inflation_rate_stddev_samp_fields';
+  epoch?: Maybe<Scalars['Float']>;
+  foundation?: Maybe<Scalars['Float']>;
+  total?: Maybe<Scalars['Float']>;
+  validator?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate sum on columns */
+export type Inflation_Rate_Sum_Fields = {
+  __typename?: 'inflation_rate_sum_fields';
+  epoch?: Maybe<Scalars['bigint']>;
+  foundation?: Maybe<Scalars['float8']>;
+  total?: Maybe<Scalars['float8']>;
+  validator?: Maybe<Scalars['float8']>;
+};
+
+/** aggregate var_pop on columns */
+export type Inflation_Rate_Var_Pop_Fields = {
+  __typename?: 'inflation_rate_var_pop_fields';
+  epoch?: Maybe<Scalars['Float']>;
+  foundation?: Maybe<Scalars['Float']>;
+  total?: Maybe<Scalars['Float']>;
+  validator?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate var_samp on columns */
+export type Inflation_Rate_Var_Samp_Fields = {
+  __typename?: 'inflation_rate_var_samp_fields';
+  epoch?: Maybe<Scalars['Float']>;
+  foundation?: Maybe<Scalars['Float']>;
+  total?: Maybe<Scalars['Float']>;
+  validator?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate variance on columns */
+export type Inflation_Rate_Variance_Fields = {
+  __typename?: 'inflation_rate_variance_fields';
+  epoch?: Maybe<Scalars['Float']>;
+  foundation?: Maybe<Scalars['Float']>;
+  total?: Maybe<Scalars['Float']>;
+  validator?: Maybe<Scalars['Float']>;
 };
 
 
@@ -587,6 +1232,7 @@ export type Message = {
   inner_index: Scalars['Int'];
   involved_accounts: Scalars['_text'];
   program: Scalars['String'];
+  raw_data: Scalars['String'];
   /** An object relationship */
   transaction: Transaction;
   transaction_hash: Scalars['String'];
@@ -667,6 +1313,7 @@ export type Message_Bool_Exp = {
   inner_index?: Maybe<Int_Comparison_Exp>;
   involved_accounts?: Maybe<_Text_Comparison_Exp>;
   program?: Maybe<String_Comparison_Exp>;
+  raw_data?: Maybe<String_Comparison_Exp>;
   transaction?: Maybe<Transaction_Bool_Exp>;
   transaction_hash?: Maybe<String_Comparison_Exp>;
   type?: Maybe<String_Comparison_Exp>;
@@ -679,6 +1326,7 @@ export type Message_Max_Fields = {
   index?: Maybe<Scalars['Int']>;
   inner_index?: Maybe<Scalars['Int']>;
   program?: Maybe<Scalars['String']>;
+  raw_data?: Maybe<Scalars['String']>;
   transaction_hash?: Maybe<Scalars['String']>;
   type?: Maybe<Scalars['String']>;
 };
@@ -688,6 +1336,7 @@ export type Message_Max_Order_By = {
   index?: Maybe<Order_By>;
   inner_index?: Maybe<Order_By>;
   program?: Maybe<Order_By>;
+  raw_data?: Maybe<Order_By>;
   transaction_hash?: Maybe<Order_By>;
   type?: Maybe<Order_By>;
 };
@@ -698,6 +1347,7 @@ export type Message_Min_Fields = {
   index?: Maybe<Scalars['Int']>;
   inner_index?: Maybe<Scalars['Int']>;
   program?: Maybe<Scalars['String']>;
+  raw_data?: Maybe<Scalars['String']>;
   transaction_hash?: Maybe<Scalars['String']>;
   type?: Maybe<Scalars['String']>;
 };
@@ -707,6 +1357,7 @@ export type Message_Min_Order_By = {
   index?: Maybe<Order_By>;
   inner_index?: Maybe<Order_By>;
   program?: Maybe<Order_By>;
+  raw_data?: Maybe<Order_By>;
   transaction_hash?: Maybe<Order_By>;
   type?: Maybe<Order_By>;
 };
@@ -717,6 +1368,7 @@ export type Message_Order_By = {
   inner_index?: Maybe<Order_By>;
   involved_accounts?: Maybe<Order_By>;
   program?: Maybe<Order_By>;
+  raw_data?: Maybe<Order_By>;
   transaction?: Maybe<Transaction_Order_By>;
   transaction_hash?: Maybe<Order_By>;
   type?: Maybe<Order_By>;
@@ -733,6 +1385,8 @@ export enum Message_Select_Column {
   InvolvedAccounts = 'involved_accounts',
   /** column name */
   Program = 'program',
+  /** column name */
+  RawData = 'raw_data',
   /** column name */
   TransactionHash = 'transaction_hash',
   /** column name */
@@ -836,6 +1490,7 @@ export type Messages_By_Address_Args = {
   addresses?: Maybe<Scalars['_text']>;
   limit?: Maybe<Scalars['bigint']>;
   offset?: Maybe<Scalars['bigint']>;
+  programs?: Maybe<Scalars['_text']>;
   types?: Maybe<Scalars['_text']>;
 };
 
@@ -1351,6 +2006,22 @@ export type Query_Root = {
   block_aggregate: Block_Aggregate;
   /** fetch data from the table: "block" using primary key columns */
   block_by_pk?: Maybe<Block>;
+  /** fetch data from the table: "epoch_info" */
+  epoch_info: Array<Epoch_Info>;
+  /** fetch aggregated fields from the table: "epoch_info" */
+  epoch_info_aggregate: Epoch_Info_Aggregate;
+  /** fetch data from the table: "epoch_schedule_param" */
+  epoch_schedule_param: Array<Epoch_Schedule_Param>;
+  /** fetch aggregated fields from the table: "epoch_schedule_param" */
+  epoch_schedule_param_aggregate: Epoch_Schedule_Param_Aggregate;
+  /** fetch data from the table: "inflation_governor_param" */
+  inflation_governor_param: Array<Inflation_Governor_Param>;
+  /** fetch aggregated fields from the table: "inflation_governor_param" */
+  inflation_governor_param_aggregate: Inflation_Governor_Param_Aggregate;
+  /** fetch data from the table: "inflation_rate" */
+  inflation_rate: Array<Inflation_Rate>;
+  /** fetch aggregated fields from the table: "inflation_rate" */
+  inflation_rate_aggregate: Inflation_Rate_Aggregate;
   /** fetch data from the table: "message" */
   message: Array<Message>;
   /** fetch aggregated fields from the table: "message" */
@@ -1401,6 +2072,10 @@ export type Query_Root = {
   stake_lockup_aggregate: Stake_Lockup_Aggregate;
   /** fetch data from the table: "stake_lockup" using primary key columns */
   stake_lockup_by_pk?: Maybe<Stake_Lockup>;
+  /** fetch data from the table: "supply_info" */
+  supply_info: Array<Supply_Info>;
+  /** fetch aggregated fields from the table: "supply_info" */
+  supply_info_aggregate: Supply_Info_Aggregate;
   /** fetch data from the table: "token" */
   token: Array<Token>;
   /** fetch data from the table: "token_account" */
@@ -1534,6 +2209,78 @@ export type Query_RootBlock_AggregateArgs = {
 
 export type Query_RootBlock_By_PkArgs = {
   slot: Scalars['bigint'];
+};
+
+
+export type Query_RootEpoch_InfoArgs = {
+  distinct_on?: Maybe<Array<Epoch_Info_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Epoch_Info_Order_By>>;
+  where?: Maybe<Epoch_Info_Bool_Exp>;
+};
+
+
+export type Query_RootEpoch_Info_AggregateArgs = {
+  distinct_on?: Maybe<Array<Epoch_Info_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Epoch_Info_Order_By>>;
+  where?: Maybe<Epoch_Info_Bool_Exp>;
+};
+
+
+export type Query_RootEpoch_Schedule_ParamArgs = {
+  distinct_on?: Maybe<Array<Epoch_Schedule_Param_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Epoch_Schedule_Param_Order_By>>;
+  where?: Maybe<Epoch_Schedule_Param_Bool_Exp>;
+};
+
+
+export type Query_RootEpoch_Schedule_Param_AggregateArgs = {
+  distinct_on?: Maybe<Array<Epoch_Schedule_Param_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Epoch_Schedule_Param_Order_By>>;
+  where?: Maybe<Epoch_Schedule_Param_Bool_Exp>;
+};
+
+
+export type Query_RootInflation_Governor_ParamArgs = {
+  distinct_on?: Maybe<Array<Inflation_Governor_Param_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Inflation_Governor_Param_Order_By>>;
+  where?: Maybe<Inflation_Governor_Param_Bool_Exp>;
+};
+
+
+export type Query_RootInflation_Governor_Param_AggregateArgs = {
+  distinct_on?: Maybe<Array<Inflation_Governor_Param_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Inflation_Governor_Param_Order_By>>;
+  where?: Maybe<Inflation_Governor_Param_Bool_Exp>;
+};
+
+
+export type Query_RootInflation_RateArgs = {
+  distinct_on?: Maybe<Array<Inflation_Rate_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Inflation_Rate_Order_By>>;
+  where?: Maybe<Inflation_Rate_Bool_Exp>;
+};
+
+
+export type Query_RootInflation_Rate_AggregateArgs = {
+  distinct_on?: Maybe<Array<Inflation_Rate_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Inflation_Rate_Order_By>>;
+  where?: Maybe<Inflation_Rate_Bool_Exp>;
 };
 
 
@@ -1733,6 +2480,24 @@ export type Query_RootStake_Lockup_AggregateArgs = {
 
 export type Query_RootStake_Lockup_By_PkArgs = {
   address: Scalars['String'];
+};
+
+
+export type Query_RootSupply_InfoArgs = {
+  distinct_on?: Maybe<Array<Supply_Info_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Supply_Info_Order_By>>;
+  where?: Maybe<Supply_Info_Bool_Exp>;
+};
+
+
+export type Query_RootSupply_Info_AggregateArgs = {
+  distinct_on?: Maybe<Array<Supply_Info_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Supply_Info_Order_By>>;
+  where?: Maybe<Supply_Info_Bool_Exp>;
 };
 
 
@@ -2403,6 +3168,22 @@ export type Subscription_Root = {
   block_aggregate: Block_Aggregate;
   /** fetch data from the table: "block" using primary key columns */
   block_by_pk?: Maybe<Block>;
+  /** fetch data from the table: "epoch_info" */
+  epoch_info: Array<Epoch_Info>;
+  /** fetch aggregated fields from the table: "epoch_info" */
+  epoch_info_aggregate: Epoch_Info_Aggregate;
+  /** fetch data from the table: "epoch_schedule_param" */
+  epoch_schedule_param: Array<Epoch_Schedule_Param>;
+  /** fetch aggregated fields from the table: "epoch_schedule_param" */
+  epoch_schedule_param_aggregate: Epoch_Schedule_Param_Aggregate;
+  /** fetch data from the table: "inflation_governor_param" */
+  inflation_governor_param: Array<Inflation_Governor_Param>;
+  /** fetch aggregated fields from the table: "inflation_governor_param" */
+  inflation_governor_param_aggregate: Inflation_Governor_Param_Aggregate;
+  /** fetch data from the table: "inflation_rate" */
+  inflation_rate: Array<Inflation_Rate>;
+  /** fetch aggregated fields from the table: "inflation_rate" */
+  inflation_rate_aggregate: Inflation_Rate_Aggregate;
   /** fetch data from the table: "message" */
   message: Array<Message>;
   /** fetch aggregated fields from the table: "message" */
@@ -2453,6 +3234,10 @@ export type Subscription_Root = {
   stake_lockup_aggregate: Stake_Lockup_Aggregate;
   /** fetch data from the table: "stake_lockup" using primary key columns */
   stake_lockup_by_pk?: Maybe<Stake_Lockup>;
+  /** fetch data from the table: "supply_info" */
+  supply_info: Array<Supply_Info>;
+  /** fetch aggregated fields from the table: "supply_info" */
+  supply_info_aggregate: Supply_Info_Aggregate;
   /** fetch data from the table: "token" */
   token: Array<Token>;
   /** fetch data from the table: "token_account" */
@@ -2586,6 +3371,78 @@ export type Subscription_RootBlock_AggregateArgs = {
 
 export type Subscription_RootBlock_By_PkArgs = {
   slot: Scalars['bigint'];
+};
+
+
+export type Subscription_RootEpoch_InfoArgs = {
+  distinct_on?: Maybe<Array<Epoch_Info_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Epoch_Info_Order_By>>;
+  where?: Maybe<Epoch_Info_Bool_Exp>;
+};
+
+
+export type Subscription_RootEpoch_Info_AggregateArgs = {
+  distinct_on?: Maybe<Array<Epoch_Info_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Epoch_Info_Order_By>>;
+  where?: Maybe<Epoch_Info_Bool_Exp>;
+};
+
+
+export type Subscription_RootEpoch_Schedule_ParamArgs = {
+  distinct_on?: Maybe<Array<Epoch_Schedule_Param_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Epoch_Schedule_Param_Order_By>>;
+  where?: Maybe<Epoch_Schedule_Param_Bool_Exp>;
+};
+
+
+export type Subscription_RootEpoch_Schedule_Param_AggregateArgs = {
+  distinct_on?: Maybe<Array<Epoch_Schedule_Param_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Epoch_Schedule_Param_Order_By>>;
+  where?: Maybe<Epoch_Schedule_Param_Bool_Exp>;
+};
+
+
+export type Subscription_RootInflation_Governor_ParamArgs = {
+  distinct_on?: Maybe<Array<Inflation_Governor_Param_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Inflation_Governor_Param_Order_By>>;
+  where?: Maybe<Inflation_Governor_Param_Bool_Exp>;
+};
+
+
+export type Subscription_RootInflation_Governor_Param_AggregateArgs = {
+  distinct_on?: Maybe<Array<Inflation_Governor_Param_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Inflation_Governor_Param_Order_By>>;
+  where?: Maybe<Inflation_Governor_Param_Bool_Exp>;
+};
+
+
+export type Subscription_RootInflation_RateArgs = {
+  distinct_on?: Maybe<Array<Inflation_Rate_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Inflation_Rate_Order_By>>;
+  where?: Maybe<Inflation_Rate_Bool_Exp>;
+};
+
+
+export type Subscription_RootInflation_Rate_AggregateArgs = {
+  distinct_on?: Maybe<Array<Inflation_Rate_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Inflation_Rate_Order_By>>;
+  where?: Maybe<Inflation_Rate_Bool_Exp>;
 };
 
 
@@ -2785,6 +3642,24 @@ export type Subscription_RootStake_Lockup_AggregateArgs = {
 
 export type Subscription_RootStake_Lockup_By_PkArgs = {
   address: Scalars['String'];
+};
+
+
+export type Subscription_RootSupply_InfoArgs = {
+  distinct_on?: Maybe<Array<Supply_Info_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Supply_Info_Order_By>>;
+  where?: Maybe<Supply_Info_Bool_Exp>;
+};
+
+
+export type Subscription_RootSupply_Info_AggregateArgs = {
+  distinct_on?: Maybe<Array<Supply_Info_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Supply_Info_Order_By>>;
+  where?: Maybe<Supply_Info_Bool_Exp>;
 };
 
 
@@ -3034,6 +3909,166 @@ export type Subscription_RootValidator_Status_AggregateArgs = {
 export type Subscription_RootValidator_Status_By_PkArgs = {
   address: Scalars['String'];
   slot: Scalars['bigint'];
+};
+
+/** columns and relationships of "supply_info" */
+export type Supply_Info = {
+  __typename?: 'supply_info';
+  circulating: Scalars['numeric'];
+  epoch: Scalars['bigint'];
+  non_circulating: Scalars['numeric'];
+  total: Scalars['numeric'];
+};
+
+/** aggregated selection of "supply_info" */
+export type Supply_Info_Aggregate = {
+  __typename?: 'supply_info_aggregate';
+  aggregate?: Maybe<Supply_Info_Aggregate_Fields>;
+  nodes: Array<Supply_Info>;
+};
+
+/** aggregate fields of "supply_info" */
+export type Supply_Info_Aggregate_Fields = {
+  __typename?: 'supply_info_aggregate_fields';
+  avg?: Maybe<Supply_Info_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<Supply_Info_Max_Fields>;
+  min?: Maybe<Supply_Info_Min_Fields>;
+  stddev?: Maybe<Supply_Info_Stddev_Fields>;
+  stddev_pop?: Maybe<Supply_Info_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Supply_Info_Stddev_Samp_Fields>;
+  sum?: Maybe<Supply_Info_Sum_Fields>;
+  var_pop?: Maybe<Supply_Info_Var_Pop_Fields>;
+  var_samp?: Maybe<Supply_Info_Var_Samp_Fields>;
+  variance?: Maybe<Supply_Info_Variance_Fields>;
+};
+
+
+/** aggregate fields of "supply_info" */
+export type Supply_Info_Aggregate_FieldsCountArgs = {
+  columns?: Maybe<Array<Supply_Info_Select_Column>>;
+  distinct?: Maybe<Scalars['Boolean']>;
+};
+
+/** aggregate avg on columns */
+export type Supply_Info_Avg_Fields = {
+  __typename?: 'supply_info_avg_fields';
+  circulating?: Maybe<Scalars['Float']>;
+  epoch?: Maybe<Scalars['Float']>;
+  non_circulating?: Maybe<Scalars['Float']>;
+  total?: Maybe<Scalars['Float']>;
+};
+
+/** Boolean expression to filter rows from the table "supply_info". All fields are combined with a logical 'AND'. */
+export type Supply_Info_Bool_Exp = {
+  _and?: Maybe<Array<Supply_Info_Bool_Exp>>;
+  _not?: Maybe<Supply_Info_Bool_Exp>;
+  _or?: Maybe<Array<Supply_Info_Bool_Exp>>;
+  circulating?: Maybe<Numeric_Comparison_Exp>;
+  epoch?: Maybe<Bigint_Comparison_Exp>;
+  non_circulating?: Maybe<Numeric_Comparison_Exp>;
+  total?: Maybe<Numeric_Comparison_Exp>;
+};
+
+/** aggregate max on columns */
+export type Supply_Info_Max_Fields = {
+  __typename?: 'supply_info_max_fields';
+  circulating?: Maybe<Scalars['numeric']>;
+  epoch?: Maybe<Scalars['bigint']>;
+  non_circulating?: Maybe<Scalars['numeric']>;
+  total?: Maybe<Scalars['numeric']>;
+};
+
+/** aggregate min on columns */
+export type Supply_Info_Min_Fields = {
+  __typename?: 'supply_info_min_fields';
+  circulating?: Maybe<Scalars['numeric']>;
+  epoch?: Maybe<Scalars['bigint']>;
+  non_circulating?: Maybe<Scalars['numeric']>;
+  total?: Maybe<Scalars['numeric']>;
+};
+
+/** Ordering options when selecting data from "supply_info". */
+export type Supply_Info_Order_By = {
+  circulating?: Maybe<Order_By>;
+  epoch?: Maybe<Order_By>;
+  non_circulating?: Maybe<Order_By>;
+  total?: Maybe<Order_By>;
+};
+
+/** select columns of table "supply_info" */
+export enum Supply_Info_Select_Column {
+  /** column name */
+  Circulating = 'circulating',
+  /** column name */
+  Epoch = 'epoch',
+  /** column name */
+  NonCirculating = 'non_circulating',
+  /** column name */
+  Total = 'total'
+}
+
+/** aggregate stddev on columns */
+export type Supply_Info_Stddev_Fields = {
+  __typename?: 'supply_info_stddev_fields';
+  circulating?: Maybe<Scalars['Float']>;
+  epoch?: Maybe<Scalars['Float']>;
+  non_circulating?: Maybe<Scalars['Float']>;
+  total?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Supply_Info_Stddev_Pop_Fields = {
+  __typename?: 'supply_info_stddev_pop_fields';
+  circulating?: Maybe<Scalars['Float']>;
+  epoch?: Maybe<Scalars['Float']>;
+  non_circulating?: Maybe<Scalars['Float']>;
+  total?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Supply_Info_Stddev_Samp_Fields = {
+  __typename?: 'supply_info_stddev_samp_fields';
+  circulating?: Maybe<Scalars['Float']>;
+  epoch?: Maybe<Scalars['Float']>;
+  non_circulating?: Maybe<Scalars['Float']>;
+  total?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate sum on columns */
+export type Supply_Info_Sum_Fields = {
+  __typename?: 'supply_info_sum_fields';
+  circulating?: Maybe<Scalars['numeric']>;
+  epoch?: Maybe<Scalars['bigint']>;
+  non_circulating?: Maybe<Scalars['numeric']>;
+  total?: Maybe<Scalars['numeric']>;
+};
+
+/** aggregate var_pop on columns */
+export type Supply_Info_Var_Pop_Fields = {
+  __typename?: 'supply_info_var_pop_fields';
+  circulating?: Maybe<Scalars['Float']>;
+  epoch?: Maybe<Scalars['Float']>;
+  non_circulating?: Maybe<Scalars['Float']>;
+  total?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate var_samp on columns */
+export type Supply_Info_Var_Samp_Fields = {
+  __typename?: 'supply_info_var_samp_fields';
+  circulating?: Maybe<Scalars['Float']>;
+  epoch?: Maybe<Scalars['Float']>;
+  non_circulating?: Maybe<Scalars['Float']>;
+  total?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate variance on columns */
+export type Supply_Info_Variance_Fields = {
+  __typename?: 'supply_info_variance_fields';
+  circulating?: Maybe<Scalars['Float']>;
+  epoch?: Maybe<Scalars['Float']>;
+  non_circulating?: Maybe<Scalars['Float']>;
+  total?: Maybe<Scalars['Float']>;
 };
 
 
@@ -4800,6 +5835,7 @@ export type BlocksQuery = { blocks: Array<(
       & Pick<Block_Aggregate_Fields, 'count'>
     )> }
   ) };
+
 export type EpochQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -5071,13 +6107,6 @@ export const BlocksDocument = gql`
     aggregate {
       count
     }
-export const EpochDocument = gql`
-    query Epoch {
-  averageSlotTimePerHour: average_slot_time_per_hour {
-    averageTime: average_time
-  }
-  block(order_by: {slot: desc}, limit: 1) {
-    slot
   }
 }
     `;
@@ -5087,10 +6116,6 @@ export const EpochDocument = gql`
  *
  * To run a query within a React component, call `useBlocksQuery` and pass it any options that fit your needs.
  * When your component renders, `useBlocksQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * __useEpochQuery__
- *
- * To run a query within a React component, call `useEpochQuery` and pass it any options that fit your needs.
- * When your component renders, `useEpochQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -5114,6 +6139,27 @@ export function useBlocksLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<Blo
 export type BlocksQueryHookResult = ReturnType<typeof useBlocksQuery>;
 export type BlocksLazyQueryHookResult = ReturnType<typeof useBlocksLazyQuery>;
 export type BlocksQueryResult = Apollo.QueryResult<BlocksQuery, BlocksQueryVariables>;
+export const EpochDocument = gql`
+    query Epoch {
+  averageSlotTimePerHour: average_slot_time_per_hour {
+    averageTime: average_time
+  }
+  block(order_by: {slot: desc}, limit: 1) {
+    slot
+  }
+}
+    `;
+
+/**
+ * __useEpochQuery__
+ *
+ * To run a query within a React component, call `useEpochQuery` and pass it any options that fit your needs.
+ * When your component renders, `useEpochQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
  * const { data, loading, error } = useEpochQuery({
  *   variables: {
  *   },

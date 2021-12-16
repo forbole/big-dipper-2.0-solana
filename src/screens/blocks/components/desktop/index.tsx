@@ -61,7 +61,6 @@ const Desktop: React.FC<{
         />
       ),
       hash: getMiddleEllipsis(x.hash, {
-        // beginning: 13, ending: 15,
         beginning: 20, ending: 20,
       }),
     });
