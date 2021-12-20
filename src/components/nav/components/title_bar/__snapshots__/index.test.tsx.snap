@@ -23,7 +23,7 @@ exports[`screen: Nav/TitleBar hook toggles correctly 1`] = `
       <p
         className="MuiTypography-root MuiTypography-body1"
       >
-        234
+        $66,851,913,386
       </p>
     </div>
     <div
@@ -37,7 +37,7 @@ exports[`screen: Nav/TitleBar hook toggles correctly 1`] = `
       <p
         className="MuiTypography-root MuiTypography-body1"
       >
-        1000342
+        11,432,342,352,345 SOL
       </p>
     </div>
     <div
@@ -51,7 +51,7 @@ exports[`screen: Nav/TitleBar hook toggles correctly 1`] = `
       <p
         className="MuiTypography-root MuiTypography-body1"
       >
-        1.05
+        $218.98
       </p>
     </div>
     <div
@@ -65,79 +65,7 @@ exports[`screen: Nav/TitleBar hook toggles correctly 1`] = `
       <p
         className="MuiTypography-root MuiTypography-body1"
       >
-        0.6
-      </p>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`screen: Nav/TitleBar it renders 1`] = `
-<div
-  className="makeStyles-root"
->
-  <h1
-    className="MuiTypography-root MuiTypography-h1"
-  >
-    hello world
-  </h1>
-  <div
-    className="makeStyles-content"
-  >
-    <div
-      className="makeStyles-item"
-    >
-      <p
-        className="MuiTypography-root label MuiTypography-body1"
-      >
-        common:marketCap
-      </p>
-      <p
-        className="MuiTypography-root MuiTypography-body1"
-      >
-        234
-      </p>
-    </div>
-    <div
-      className="makeStyles-item"
-    >
-      <p
-        className="MuiTypography-root label MuiTypography-body1"
-      >
-        common:maxSupply
-      </p>
-      <p
-        className="MuiTypography-root MuiTypography-body1"
-      >
-        1000342
-      </p>
-    </div>
-    <div
-      className="makeStyles-item"
-    >
-      <p
-        className="MuiTypography-root label MuiTypography-body1"
-      >
-        common:price
-      </p>
-      <p
-        className="MuiTypography-root MuiTypography-body1"
-      >
-        1.05
-      </p>
-    </div>
-    <div
-      className="makeStyles-item"
-    >
-      <p
-        className="MuiTypography-root label MuiTypography-body1"
-      >
-        common:inflation
-      </p>
-      <p
-        className="MuiTypography-root MuiTypography-body1"
-      >
-        0.6
+        14%
       </p>
     </div>
   </div>

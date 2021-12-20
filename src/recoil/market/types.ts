@@ -1,6 +1,6 @@
 export type AtomState = {
   marketCap: number;
-  maxSupply: number;
+  maxSupply: TokenUnit;
   price: number;
   inflation: number;
 }

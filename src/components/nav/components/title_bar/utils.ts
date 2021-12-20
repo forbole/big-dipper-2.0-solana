@@ -1,25 +1,29 @@
+import numeral from 'numeral';
+import { formatNumber } from '@utils/format_token';
+
 export const formatMarket = (data: {
   marketCap: number;
-  maxSupply: number;
+  maxSupply: TokenUnit;
   price: number;
   inflation: number;
 }) => {
+  const marketCap = data.marketCap !== null ? `$${numeral(data.marketCap).format('0,0.[00]')}` : 'N/A';
   return ([
     {
       key: 'marketCap',
-      data: data.marketCap,
+      data: marketCap,
     },
     {
       key: 'maxSupply',
-      data: data.maxSupply,
+      data: `${formatNumber(data.maxSupply.value, 0)} ${data.maxSupply.displayDenom.toUpperCase()}`,
     },
     {
       key: 'price',
-      data: data.price,
+      data: `$${numeral(data.price).format('0,0.[00]')}`,
     },
     {
       key: 'inflation',
-      data: data.inflation,
+      data: `${numeral(data.inflation * 100).format('0.[00]')}%`,
     },
   ]);
 };
