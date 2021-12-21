@@ -1,124 +1,125 @@
 import { useState } from 'react';
 import * as R from 'ramda';
-// import {
-//   useTransactionsQuery,
-//   useTransactionsListenerSubscription,
-//   TransactionsListenerSubscription,
-// } from '@graphql/types';
-// import { convertMsgsToModels } from '@msg';
+import {
+  useTransactionsQuery,
+  useTransactionsListenerSubscription,
+  TransactionsListenerSubscription,
+} from '@graphql/types';
+import { convertMsgsToModels } from '@msg';
 import { TransactionsState } from './types';
-
-const fakeData = {
-  slot: 123548722,
-  signature: '4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB',
-  success: true,
-  timestamp: '2021-09-13T20:06:17.363145',
-  messages: {
-    count: 0,
-    items: [],
-  },
-};
 
 export const useTransactions = () => {
   const [state, setState] = useState<TransactionsState>({
-    // loading: true,
-    loading: false,
+    loading: true,
     exists: true,
     hasNextPage: false,
     isNextPageLoading: false,
-    // rawDataTotal: 0,
-    rawDataTotal: 20,
-    // items: [],
-    items: Array(20).fill(fakeData),
+    items: [],
   });
 
   const handleSetState = (stateChange: any) => {
     setState((prevState) => R.mergeDeepLeft(stateChange, prevState));
   };
 
+  // This is a bandaid as it can get extremely
+  // expensive if there is too much data
+  /**
+   * Helps remove any possible duplication
+   * and sorts by height in case it bugs out
+   */
+  const uniqueAndSort = R.pipe(
+    R.uniqBy(R.prop('hash')),
+    R.sort(R.descend(R.prop('height'))),
+  );
+
   // ================================
   // tx subscription
   // ================================
-  // useTransactionsListenerSubscription({
-  //   variables: {
-  //     limit: 1,
-  //     offset: 0,
-  //   },
-  //   onSubscriptionData: (data) => {
-  //     handleSetState({
-  //       loading: false,
-  //       items: [
-  //         ...formatTransactions(data.subscriptionData.data),
-  //         ...state.items,
-  //       ],
-  //     });
-  //   },
-  // });
+  useTransactionsListenerSubscription({
+    variables: {
+      limit: 1,
+      offset: 0,
+    },
+    onSubscriptionData: (data) => {
+      handleSetState({
+        loading: false,
+        items: [
+          ...formatTransactions(data.subscriptionData.data),
+          ...state.items,
+        ],
+      });
+    },
+  });
 
   // ================================
   // tx query
   // ================================
-  // const transactionQuery = useTransactionsQuery({
-  //   variables: {
-  //     limit: 50,
-  //     offset: 1,
-  //   },
-  //   onError: () => {
-  //     handleSetState({
-  //       loading: false,
-  //     });
-  //   },
-  //   onCompleted: (data) => {
-  //     const newItems = R.uniq([...state.items, ...formatTransactions(data)]);
-  //     handleSetState({
-  //       items: newItems,
-  //       hasNextPage: newItems.length < data.total.aggregate.count,
-  //       isNextPageLoading: false,
-  //       rawDataTotal: data.total.aggregate.count,
-  //     });
-  //   },
-  // });
+  const LIMIT = 51;
+  const transactionQuery = useTransactionsQuery({
+    variables: {
+      limit: LIMIT,
+      offset: 1,
+    },
+    onError: () => {
+      handleSetState({
+        loading: false,
+      });
+    },
+    onCompleted: (data) => {
+      const itemsLength = data.transactions.length;
+      const newItems = uniqueAndSort([
+        ...state.items,
+        ...formatTransactions(data),
+      ]);
+      handleSetState({
+        loading: false,
+        items: newItems,
+        hasNextPage: itemsLength === 51,
+        isNextPageLoading: false,
+      });
+    },
+  });
 
   const loadNextPage = async () => {
     handleSetState({
       isNextPageLoading: true,
     });
     // refetch query
-    // await transactionQuery.fetchMore({
-    //   variables: {
-    //     offset: state.items.length,
-    //     limit: 50,
-    //   },
-    // }).then(({ data }) => {
-    //   const newItems = R.uniq([
-    //     ...state.items,
-    //     ...formatTransactions(data),
-    //   ]);
-    //   // set new state
-    //   handleSetState({
-    //     items: newItems,
-    //     isNextPageLoading: false,
-    //     hasNextPage: newItems.length < data.total.aggregate.count,
-    //     rawDataTotal: data.total.aggregate.count,
-    //   });
-    // });
+    await transactionQuery.fetchMore({
+      variables: {
+        offset: state.items.length,
+        limit: LIMIT,
+      },
+    }).then(({ data }) => {
+      const itemsLength = data.transactions.length;
+      const newItems = uniqueAndSort([
+        ...state.items,
+        ...formatTransactions(data),
+      ]);
+      // set new state
+      handleSetState({
+        items: newItems,
+        isNextPageLoading: false,
+        hasNextPage: itemsLength === 51,
+      });
+    });
   };
 
-  // const formatTransactions = (data: TransactionsListenerSubscription) => {
-  //   return data.transactions.map((x) => {
-  //     const messages = convertMsgsToModels(x);
-  //     return ({
-  //       height: x.height,
-  //       hash: x.hash,
-  //       messages: {
-  //         count: x.messages.length,
-  //         items: messages,
-  //       },
-  //       success: x.success,
-  //       timestamp: x.block.timestamp,
-  //     });
-  //   });
-  // };
+  const formatTransactions = (data: TransactionsListenerSubscription) => {
+    return data.transactions.map((x) => {
+      const messages = convertMsgsToModels(x);
+      return ({
+        height: x.slot,
+        hash: x.hash,
+        messages: {
+          count: x.messages.length,
+          items: messages,
+        },
+        success: !!x.error,
+        timestamp: x.block.timestamp,
+      });
+    });
+  };
 
   return {
     state,

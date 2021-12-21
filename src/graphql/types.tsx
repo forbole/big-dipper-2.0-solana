@@ -5887,7 +5887,10 @@ export type TransactionsListenerSubscription = { transactions: Array<(
     & { block: (
       { __typename?: 'block' }
       & Pick<Block, 'timestamp'>
-    ) }
+    ), messages: Array<(
+      { __typename?: 'message' }
+      & Pick<Message, 'type'>
+    )> }
   )> };
 
 export type TransactionsQueryVariables = Exact<{
@@ -5902,14 +5905,11 @@ export type TransactionsQuery = { transactions: Array<(
     & { block: (
       { __typename?: 'block' }
       & Pick<Block, 'timestamp'>
-    ) }
-  )>, total: (
-    { __typename?: 'transaction_aggregate' }
-    & { aggregate?: Maybe<(
-      { __typename?: 'transaction_aggregate_fields' }
-      & Pick<Transaction_Aggregate_Fields, 'count'>
+    ), messages: Array<(
+      { __typename?: 'message' }
+      & Pick<Message, 'type'>
     )> }
-  ) };
+  )> };
 
 export type ValidatorAddressesQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -6277,6 +6277,9 @@ export const TransactionsListenerDocument = gql`
     block {
       timestamp
     }
+    messages: messages_by_transaction_hash {
+      type
+    }
   }
 }
     `;
@@ -6313,10 +6316,8 @@ export const TransactionsDocument = gql`
     block {
       timestamp
     }
-  }
-  total: transaction_aggregate {
-    aggregate {
-      count
+    messages: messages_by_transaction_hash {
+      type
     }
   }
 }
