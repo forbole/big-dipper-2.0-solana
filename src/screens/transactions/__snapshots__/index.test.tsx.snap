@@ -20,210 +20,46 @@ exports[`screen: Transactions matches snapshot 1`] = `
         id="TransactionsList"
         isItemLoaded={[Function]}
         isNextPageLoading={false}
-        itemCount={20}
+        itemCount={2}
         loadMoreItems={[Function]}
         loadNextPage={[Function]}
         transactions={
           Array [
             Object {
+              "hash": "648kfnNVKfEThUtyZypcKRdTmCAJ6ZYgeqQo9Tt5K99KW2y4s7dGrmqfsuBinKiMcjK746avsSrJu4Lgizm2ebPm",
               "messages": Object {
-                "count": 0,
-                "items": Array [],
+                "count": 1,
+                "items": Array [
+                  MsgUnknown {
+                    "category": "others",
+                    "json": Object {
+                      "type": "vote",
+                    },
+                    "type": "",
+                  },
+                ],
               },
-              "signature": "4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB",
-              "slot": 123548722,
-              "success": true,
-              "timestamp": "2021-09-13T20:06:17.363145",
+              "slot": 112385912,
+              "success": false,
+              "timestamp": "2021-12-20T04:05:46",
             },
             Object {
+              "hash": "648kfnNVKfEThUtyZypcKRdTmCAJ6ZYgeqQo9Tt5K99KW2y4s7dGrmqfsuBinKiMcjK746avsSrJu4Lgizm2ebPm",
               "messages": Object {
-                "count": 0,
-                "items": Array [],
+                "count": 1,
+                "items": Array [
+                  MsgUnknown {
+                    "category": "others",
+                    "json": Object {
+                      "type": "vote",
+                    },
+                    "type": "",
+                  },
+                ],
               },
-              "signature": "4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB",
-              "slot": 123548722,
-              "success": true,
-              "timestamp": "2021-09-13T20:06:17.363145",
-            },
-            Object {
-              "messages": Object {
-                "count": 0,
-                "items": Array [],
-              },
-              "signature": "4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB",
-              "slot": 123548722,
-              "success": true,
-              "timestamp": "2021-09-13T20:06:17.363145",
-            },
-            Object {
-              "messages": Object {
-                "count": 0,
-                "items": Array [],
-              },
-              "signature": "4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB",
-              "slot": 123548722,
-              "success": true,
-              "timestamp": "2021-09-13T20:06:17.363145",
-            },
-            Object {
-              "messages": Object {
-                "count": 0,
-                "items": Array [],
-              },
-              "signature": "4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB",
-              "slot": 123548722,
-              "success": true,
-              "timestamp": "2021-09-13T20:06:17.363145",
-            },
-            Object {
-              "messages": Object {
-                "count": 0,
-                "items": Array [],
-              },
-              "signature": "4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB",
-              "slot": 123548722,
-              "success": true,
-              "timestamp": "2021-09-13T20:06:17.363145",
-            },
-            Object {
-              "messages": Object {
-                "count": 0,
-                "items": Array [],
-              },
-              "signature": "4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB",
-              "slot": 123548722,
-              "success": true,
-              "timestamp": "2021-09-13T20:06:17.363145",
-            },
-            Object {
-              "messages": Object {
-                "count": 0,
-                "items": Array [],
-              },
-              "signature": "4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB",
-              "slot": 123548722,
-              "success": true,
-              "timestamp": "2021-09-13T20:06:17.363145",
-            },
-            Object {
-              "messages": Object {
-                "count": 0,
-                "items": Array [],
-              },
-              "signature": "4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB",
-              "slot": 123548722,
-              "success": true,
-              "timestamp": "2021-09-13T20:06:17.363145",
-            },
-            Object {
-              "messages": Object {
-                "count": 0,
-                "items": Array [],
-              },
-              "signature": "4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB",
-              "slot": 123548722,
-              "success": true,
-              "timestamp": "2021-09-13T20:06:17.363145",
-            },
-            Object {
-              "messages": Object {
-                "count": 0,
-                "items": Array [],
-              },
-              "signature": "4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB",
-              "slot": 123548722,
-              "success": true,
-              "timestamp": "2021-09-13T20:06:17.363145",
-            },
-            Object {
-              "messages": Object {
-                "count": 0,
-                "items": Array [],
-              },
-              "signature": "4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB",
-              "slot": 123548722,
-              "success": true,
-              "timestamp": "2021-09-13T20:06:17.363145",
-            },
-            Object {
-              "messages": Object {
-                "count": 0,
-                "items": Array [],
-              },
-              "signature": "4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB",
-              "slot": 123548722,
-              "success": true,
-              "timestamp": "2021-09-13T20:06:17.363145",
-            },
-            Object {
-              "messages": Object {
-                "count": 0,
-                "items": Array [],
-              },
-              "signature": "4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB",
-              "slot": 123548722,
-              "success": true,
-              "timestamp": "2021-09-13T20:06:17.363145",
-            },
-            Object {
-              "messages": Object {
-                "count": 0,
-                "items": Array [],
-              },
-              "signature": "4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB",
-              "slot": 123548722,
-              "success": true,
-              "timestamp": "2021-09-13T20:06:17.363145",
-            },
-            Object {
-              "messages": Object {
-                "count": 0,
-                "items": Array [],
-              },
-              "signature": "4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB",
-              "slot": 123548722,
-              "success": true,
-              "timestamp": "2021-09-13T20:06:17.363145",
-            },
-            Object {
-              "messages": Object {
-                "count": 0,
-                "items": Array [],
-              },
-              "signature": "4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB",
-              "slot": 123548722,
-              "success": true,
-              "timestamp": "2021-09-13T20:06:17.363145",
-            },
-            Object {
-              "messages": Object {
-                "count": 0,
-                "items": Array [],
-              },
-              "signature": "4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB",
-              "slot": 123548722,
-              "success": true,
-              "timestamp": "2021-09-13T20:06:17.363145",
-            },
-            Object {
-              "messages": Object {
-                "count": 0,
-                "items": Array [],
-              },
-              "signature": "4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB",
-              "slot": 123548722,
-              "success": true,
-              "timestamp": "2021-09-13T20:06:17.363145",
-            },
-            Object {
-              "messages": Object {
-                "count": 0,
-                "items": Array [],
-              },
-              "signature": "4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB",
-              "slot": 123548722,
-              "success": true,
-              "timestamp": "2021-09-13T20:06:17.363145",
+              "slot": 112385912,
+              "success": false,
+              "timestamp": "2021-12-20T04:05:46",
             },
           ]
         }

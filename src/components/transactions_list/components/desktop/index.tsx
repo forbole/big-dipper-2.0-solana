@@ -48,10 +48,10 @@ const Desktop: React.FC<TransactionsListState> = ({
         </Typography>
       </Link>
     ),
-    signature: (
-      <Link href={TRANSACTION_DETAILS(x.signature)} passHref>
+    hash: (
+      <Link href={TRANSACTION_DETAILS(x.hash)} passHref>
         <Typography variant="body1" component="a">
-          {getMiddleEllipsis(x.signature, {
+          {getMiddleEllipsis(x.hash, {
             beginning: 20, ending: 15,
           })}
         </Typography>

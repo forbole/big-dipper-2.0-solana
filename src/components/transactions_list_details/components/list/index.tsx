@@ -40,7 +40,7 @@ const TransactionList: React.FC<TransactionsListDetailsState> = ({
   transactions,
 }) => {
   const {
-    isMobile,
+    isDesktop,
   } = useScreenSize();
   const { t } = useTranslation('transactions');
   const classes = useStyles();
@@ -60,15 +60,15 @@ const TransactionList: React.FC<TransactionsListDetailsState> = ({
         </Typography>
       </Link>
     ),
-    signature: (
-      <Link href={TRANSACTION_DETAILS(x.signature)} passHref>
+    hash: (
+      <Link href={TRANSACTION_DETAILS(x.hash)} passHref>
         <Typography variant="body1" component="a">
-          {isMobile ? (
-            getMiddleEllipsis(x.signature, {
+          {!isDesktop ? (
+            getMiddleEllipsis(x.hash, {
               beginning: 15, ending: 5,
             })
           ) : (
-            x.signature
+            x.hash
           )}
         </Typography>
       </Link>
