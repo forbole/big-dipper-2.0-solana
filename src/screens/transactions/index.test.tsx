@@ -10,8 +10,8 @@ import {
   MockTheme, wait,
 } from '@tests/utils';
 import {
-// TransactionsListenerDocument,
-// TransactionsDocument,
+  TransactionsListenerDocument,
+  TransactionsDocument,
 } from '@graphql/types';
 import Transactions from '.';
 
@@ -30,24 +30,17 @@ const mockTransactionsListenerDocument = {
   data: {
     transactions: [
       {
-        height: 432022,
-        hash: 'D223E2E4E4FD29868D1034EFE5FB162EAB78B4CCE1D53EFD4F34A40608FB6C4B',
-        success: true,
-        block: {
-          timestamp: '2021-05-28T00:08:33.700487',
+        "slot": 112385912,
+        "hash": "648kfnNVKfEThUtyZypcKRdTmCAJ6ZYgeqQo9Tt5K99KW2y4s7dGrmqfsuBinKiMcjK746avsSrJu4Lgizm2ebPm",
+        "error": true,
+        "block": {
+          "timestamp": "2021-12-20T04:05:46"
         },
-        logs: [],
-        messages: [
+        "messages": [
           {
-            '@type': '/cosmos.distribution.v1beta1.MsgWithdrawDelegatorReward',
-            delegator_address: 'desmos18kvwy5hzcu3ss08lcfcnx0eajuecg69ujmkwjr',
-            validator_address: 'desmosvaloper18kvwy5hzcu3ss08lcfcnx0eajuecg69uvk76c3',
-          },
-          {
-            '@type': '/cosmos.distribution.v1beta1.MsgWithdrawValidatorCommission',
-            validator_address: 'desmosvaloper18kvwy5hzcu3ss08lcfcnx0eajuecg69uvk76c3',
-          },
-        ],
+            "type": "vote"
+          }
+        ]
       },
     ],
   },
@@ -57,31 +50,19 @@ const mockTransactionsDocument = jest.fn().mockResolvedValue({
   data: {
     transactions: [
       {
-        height: 432022,
-        hash: 'D223E2E4E4FD29868D1034EFE5FB162EAB78B4CCE1D53EFD4F34A40608FB6C4B',
-        success: true,
-        block: {
-          timestamp: '2021-05-28T00:08:33.700487',
+        "slot": 112385912,
+        "hash": "648kfnNVKfEThUtyZypcKRdTmCAJ6ZYgeqQo9Tt5K99KW2y4s7dGrmqfsuBinKiMcjK746avsSrJu4Lgizm2ebPm",
+        "error": true,
+        "block": {
+          "timestamp": "2021-12-20T04:05:46"
         },
-        logs: [],
-        messages: [
+        "messages": [
           {
-            '@type': '/cosmos.distribution.v1beta1.MsgWithdrawDelegatorReward',
-            delegator_address: 'desmos18kvwy5hzcu3ss08lcfcnx0eajuecg69ujmkwjr',
-            validator_address: 'desmosvaloper18kvwy5hzcu3ss08lcfcnx0eajuecg69uvk76c3',
-          },
-          {
-            '@type': '/cosmos.distribution.v1beta1.MsgWithdrawValidatorCommission',
-            validator_address: 'desmosvaloper18kvwy5hzcu3ss08lcfcnx0eajuecg69uvk76c3',
-          },
-        ],
+            "type": "vote"
+          }
+        ]
       },
     ],
-    total: {
-      aggregate: {
-        count: 609406,
-      },
-    },
   },
 });
 
@@ -93,15 +74,15 @@ describe('screen: Transactions', () => {
     const mockClient = createMockClient();
     const mockSubscription = createMockSubscription();
 
-    // mockClient.setRequestHandler(
-    //   TransactionsListenerDocument,
-    //   () => mockSubscription,
-    // );
+    mockClient.setRequestHandler(
+      TransactionsListenerDocument,
+      () => mockSubscription,
+    );
 
-    // mockClient.setRequestHandler(
-    //   TransactionsDocument,
-    //   mockTransactionsDocument,
-    // );
+    mockClient.setRequestHandler(
+      TransactionsDocument,
+      mockTransactionsDocument,
+    );
 
     let component;
 

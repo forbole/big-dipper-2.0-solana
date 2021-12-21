@@ -109,13 +109,13 @@ export const useTransactions = () => {
     return data.transactions.map((x) => {
       const messages = convertMsgsToModels(x);
       return ({
-        height: x.slot,
+        slot: x.slot,
         hash: x.hash,
         messages: {
           count: x.messages.length,
           items: messages,
         },
-        success: !!x.error,
+        success: !x.error,
         timestamp: x.block.timestamp,
       });
     });

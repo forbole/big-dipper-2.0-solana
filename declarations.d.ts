@@ -20,7 +20,7 @@ interface AvatarName {
 
 type Transactions = {
   slot: number;
-  signature: string;
+  hash: string;
   success: boolean;
   timestamp: string;
   messages: {
