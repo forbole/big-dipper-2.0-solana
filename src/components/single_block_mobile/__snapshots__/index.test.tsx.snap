@@ -43,20 +43,6 @@ exports[`component: SingleSlotMobile matches snapshot 1`] = `
     </p>
   </div>
   <div
-    className="makeStyles-item"
-  >
-    <h4
-      className="MuiTypography-root label MuiTypography-h4"
-    >
-      parentHash
-    </h4>
-    <p
-      className="MuiTypography-root value MuiTypography-body1"
-    >
-      parentHash
-    </p>
-  </div>
-  <div
     className="makeStyles-flex"
   >
     <div

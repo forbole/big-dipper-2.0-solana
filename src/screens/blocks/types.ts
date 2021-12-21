@@ -2,8 +2,7 @@ export type BlockType = {
   slot: number;
   leader: string;
   hash: string;
-  parentHash: string;
-  txs: 2,
+  txs: number;
   timestamp: string;
 }
 
