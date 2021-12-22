@@ -1,0 +1,14 @@
+query TransactionDetails($hash: String) {
+  transaction(where: {hash: {_eq: $hash}}, limit: 1) {
+    slot
+    error
+    hash
+    fee
+    block {
+      timestamp
+    }
+    messages {
+      type
+    }
+  }
+}

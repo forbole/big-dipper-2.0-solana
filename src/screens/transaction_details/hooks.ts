@@ -3,31 +3,34 @@ import {
 } from 'react';
 import { useRouter } from 'next/router';
 import * as R from 'ramda';
-// import {
-//   useTransactionDetailsQuery,
-//   TransactionDetailsQuery,
-// } from '@graphql/types';
-// import { formatDenom } from '@utils/format_denom';
-// import { convertMsgsToModels } from '@msg';
+import {
+  useTransactionDetailsQuery,
+  TransactionDetailsQuery,
+} from '@graphql/types';
+import { convertMsgsToModels } from '@msg';
+import { chainConfig } from '@configs';
+import { formatToken } from '@utils/format_token';
 import {
   TransactionState,
 } from './types';
-
-const fakeOverview = {
-  slot: 2343354,
-  success: true,
-  confirmations: 'MAX',
-  fee: 0.4,
-  signature: '2mGBpvVcxhLXpnTEeDj4aV1SvVCnXcPKroj3idjnri7TwcR4W2UVUkjEUAHk5fL4Wh3EXiwXLw3cDBe6Rbn8sjUU',
-  timestamp: '2021-09-13T20:06:17.363145',
-};
 
 export const useTransactionDetails = () => {
   const router = useRouter();
   const [state, setState] = useState<TransactionState>({
     exists: true,
     loading: true,
-    overview: fakeOverview,
+    overview: {
+      slot: 0,
+      success: true,
+      fee: {
+        displayDenom: '',
+        baseDenom: '',
+        exponent: 0,
+        value: '',
+      },
+      hash: '',
+      timestamp: '',
+    },
     messages: {
       filterBy: 'none',
       viewRaw: false,
@@ -41,8 +44,7 @@ export const useTransactionDetails = () => {
 
   useEffect(() => {
     handleSetState({
-      // loading: true,
-      loading: false,
+      loading: true,
       exists: true,
     });
   }, [router.query.tx]);
@@ -50,66 +52,59 @@ export const useTransactionDetails = () => {
   // ===============================
   // Fetch data
   // ===============================
-  // useTransactionDetailsQuery({
-  //   variables: {
-  //     hash: router.query.tx as string,
-  //   },
-  //   onCompleted: (data) => {
-  //     handleSetState(formatTransactionDetails(data));
-  //   },
-  // });
+  useTransactionDetailsQuery({
+    variables: {
+      hash: router.query.tx as string,
+    },
+    onCompleted: (data) => {
+      handleSetState(formatTransactionDetails(data));
+    },
+  });
 
   // ===============================
   // Parse data
   // ===============================
-  // const formatTransactionDetails = (data: TransactionDetailsQuery) => {
-  //   const stateChange: any = {
-  //     loading: false,
-  //   };
+  const formatTransactionDetails = (data: TransactionDetailsQuery) => {
+    const stateChange: any = {
+      loading: false,
+    };
 
-  //   if (!data.transaction.length) {
-  //     stateChange.exists = false;
-  //     return stateChange;
-  //   }
+    if (!data.transaction.length) {
+      stateChange.exists = false;
+      return stateChange;
+    }
 
-  //   // =============================
-  //   // overview
-  //   // =============================
-  //   const formatOverview = () => {
-  //     const { fee } = data.transaction[0];
-  //     const feeAmount = R.pathOr({
-  //       denom: '',
-  //       amount: 0,
-  //     }, ['amount', 0], fee);
-  //     const { success } = data.transaction[0];
-  //     const overview = {
-  //       hash: data.transaction[0].hash,
-  //       height: data.transaction[0].height,
-  //       timestamp: data.transaction[0].block.timestamp,
-  //       fee: formatDenom(feeAmount.amount, feeAmount.denom),
-  //       gasUsed: data.transaction[0].gasUsed,
-  //       gasWanted: data.transaction[0].gasWanted,
-  //       success,
-  //       memo: data.transaction[0].memo,
-  //       error: success ? '' : data.transaction[0].rawLog,
-  //     };
-  //     return overview;
-  //   };
+    // =============================
+    // overview
+    // =============================
+    const formatOverview = () => {
+      const tx = data.transaction[0];
 
-  //   stateChange.overview = formatOverview();
+      const overview = {
+        slot: tx.slot,
+        success: !tx.error,
+        fee: formatToken(tx.fee, chainConfig.primaryTokenUnit),
+        hash: tx.hash,
+        timestamp: R.pathOr('', ['block', 'timestamp'], tx),
+      };
 
-  //   // =============================
-  //   // messages
-  //   // =============================
-  //   const formatMessages = () => {
-  //     const messages = convertMsgsToModels(data.transaction[0]);
-  //     return {
-  //       items: messages,
-  //     };
-  //   };
-  //   stateChange.messages = formatMessages();
-  //   return stateChange;
-  // };
+      return overview;
+    };
+
+    stateChange.overview = formatOverview();
+
+    // =============================
+    // messages
+    // =============================
+    const formatMessages = () => {
+      const messages = convertMsgsToModels(data.transaction[0]);
+      return {
+        items: messages,
+      };
+    };
+    stateChange.messages = formatMessages();
+    return stateChange;
+  };
 
   const onMessageFilterCallback = (value: string) => {
     handleSetState({

@@ -1,9 +1,8 @@
 export type OverviewType = {
   slot: number;
   success: boolean;
-  confirmations: string;
-  fee: number;
-  signature: string;
+  fee: TokenUnit;
+  hash: string;
   timestamp: string;
 }
 
