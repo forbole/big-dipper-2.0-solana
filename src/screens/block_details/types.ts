@@ -1,12 +1,9 @@
 export type OverviewType = {
   slot: number;
   hash: string;
-  leader: string;
+  proposer: string;
   timestamp: string;
-  parentSlot: number;
-  parentHash: string;
-  processedTx: number;
-  successfulTx: number;
+  txs: number;
 }
 
 export type BlockDetailState = {

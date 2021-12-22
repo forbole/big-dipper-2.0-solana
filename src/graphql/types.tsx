@@ -220,7 +220,6 @@ export type Account_Balance_Variance_Fields = {
 export type Average_Slot_Time_Per_Hour = {
   __typename?: 'average_slot_time_per_hour';
   average_time: Scalars['numeric'];
-  one_row_id: Scalars['Boolean'];
   slot: Scalars['bigint'];
 };
 
@@ -267,7 +266,6 @@ export type Average_Slot_Time_Per_Hour_Bool_Exp = {
   _not?: Maybe<Average_Slot_Time_Per_Hour_Bool_Exp>;
   _or?: Maybe<Array<Average_Slot_Time_Per_Hour_Bool_Exp>>;
   average_time?: Maybe<Numeric_Comparison_Exp>;
-  one_row_id?: Maybe<Boolean_Comparison_Exp>;
   slot?: Maybe<Bigint_Comparison_Exp>;
 };
 
@@ -288,7 +286,6 @@ export type Average_Slot_Time_Per_Hour_Min_Fields = {
 /** Ordering options when selecting data from "average_slot_time_per_hour". */
 export type Average_Slot_Time_Per_Hour_Order_By = {
   average_time?: Maybe<Order_By>;
-  one_row_id?: Maybe<Order_By>;
   slot?: Maybe<Order_By>;
 };
 
@@ -296,8 +293,6 @@ export type Average_Slot_Time_Per_Hour_Order_By = {
 export enum Average_Slot_Time_Per_Hour_Select_Column {
   /** column name */
   AverageTime = 'average_time',
-  /** column name */
-  OneRowId = 'one_row_id',
   /** column name */
   Slot = 'slot'
 }
@@ -1234,7 +1229,7 @@ export type Message = {
   program: Scalars['String'];
   raw_data: Scalars['String'];
   /** An object relationship */
-  transaction: Transaction;
+  transaction?: Maybe<Transaction>;
   transaction_hash: Scalars['String'];
   type: Scalars['String'];
   value: Scalars['jsonb'];
@@ -1998,8 +1993,6 @@ export type Query_Root = {
   average_slot_time_per_hour: Array<Average_Slot_Time_Per_Hour>;
   /** fetch aggregated fields from the table: "average_slot_time_per_hour" */
   average_slot_time_per_hour_aggregate: Average_Slot_Time_Per_Hour_Aggregate;
-  /** fetch data from the table: "average_slot_time_per_hour" using primary key columns */
-  average_slot_time_per_hour_by_pk?: Maybe<Average_Slot_Time_Per_Hour>;
   /** fetch data from the table: "block" */
   block: Array<Block>;
   /** fetch aggregated fields from the table: "block" */
@@ -2181,11 +2174,6 @@ export type Query_RootAverage_Slot_Time_Per_Hour_AggregateArgs = {
   offset?: Maybe<Scalars['Int']>;
   order_by?: Maybe<Array<Average_Slot_Time_Per_Hour_Order_By>>;
   where?: Maybe<Average_Slot_Time_Per_Hour_Bool_Exp>;
-};
-
-
-export type Query_RootAverage_Slot_Time_Per_Hour_By_PkArgs = {
-  one_row_id: Scalars['Boolean'];
 };
 
 
@@ -3160,8 +3148,6 @@ export type Subscription_Root = {
   average_slot_time_per_hour: Array<Average_Slot_Time_Per_Hour>;
   /** fetch aggregated fields from the table: "average_slot_time_per_hour" */
   average_slot_time_per_hour_aggregate: Average_Slot_Time_Per_Hour_Aggregate;
-  /** fetch data from the table: "average_slot_time_per_hour" using primary key columns */
-  average_slot_time_per_hour_by_pk?: Maybe<Average_Slot_Time_Per_Hour>;
   /** fetch data from the table: "block" */
   block: Array<Block>;
   /** fetch aggregated fields from the table: "block" */
@@ -3343,11 +3329,6 @@ export type Subscription_RootAverage_Slot_Time_Per_Hour_AggregateArgs = {
   offset?: Maybe<Scalars['Int']>;
   order_by?: Maybe<Array<Average_Slot_Time_Per_Hour_Order_By>>;
   where?: Maybe<Average_Slot_Time_Per_Hour_Bool_Exp>;
-};
-
-
-export type Subscription_RootAverage_Slot_Time_Per_Hour_By_PkArgs = {
-  one_row_id: Scalars['Boolean'];
 };
 
 
@@ -4962,15 +4943,15 @@ export type Transaction = {
   hash: Scalars['String'];
   logs?: Maybe<Scalars['_text']>;
   /** An array relationship */
-  messages_by_transaction_hash: Array<Message>;
+  messages: Array<Message>;
   /** An aggregate relationship */
-  messages_by_transaction_hash_aggregate: Message_Aggregate;
+  messages_aggregate: Message_Aggregate;
   slot: Scalars['bigint'];
 };
 
 
 /** columns and relationships of "transaction" */
-export type TransactionMessages_By_Transaction_HashArgs = {
+export type TransactionMessagesArgs = {
   distinct_on?: Maybe<Array<Message_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
@@ -4980,7 +4961,7 @@ export type TransactionMessages_By_Transaction_HashArgs = {
 
 
 /** columns and relationships of "transaction" */
-export type TransactionMessages_By_Transaction_Hash_AggregateArgs = {
+export type TransactionMessages_AggregateArgs = {
   distinct_on?: Maybe<Array<Message_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
@@ -5056,7 +5037,7 @@ export type Transaction_Bool_Exp = {
   fee?: Maybe<Int_Comparison_Exp>;
   hash?: Maybe<String_Comparison_Exp>;
   logs?: Maybe<_Text_Comparison_Exp>;
-  messages_by_transaction_hash?: Maybe<Message_Bool_Exp>;
+  messages?: Maybe<Message_Bool_Exp>;
   slot?: Maybe<Bigint_Comparison_Exp>;
 };
 
@@ -5097,7 +5078,7 @@ export type Transaction_Order_By = {
   fee?: Maybe<Order_By>;
   hash?: Maybe<Order_By>;
   logs?: Maybe<Order_By>;
-  messages_by_transaction_hash_aggregate?: Maybe<Message_Aggregate_Order_By>;
+  messages_aggregate?: Maybe<Message_Aggregate_Order_By>;
   slot?: Maybe<Order_By>;
 };
 
@@ -5766,6 +5747,26 @@ export type ActiveValidatorCountQuery = { activeTotal: (
     )> }
   ) };
 
+export type BlockDetailsQueryVariables = Exact<{
+  height?: Maybe<Scalars['bigint']>;
+}>;
+
+
+export type BlockDetailsQuery = { block: Array<(
+    { __typename?: 'block' }
+    & Pick<Block, 'slot' | 'hash' | 'proposer' | 'timestamp'>
+  )>, transaction: Array<(
+    { __typename?: 'transaction' }
+    & Pick<Transaction, 'slot' | 'hash' | 'error'>
+    & { block: (
+      { __typename?: 'block' }
+      & Pick<Block, 'timestamp'>
+    ), messages: Array<(
+      { __typename?: 'message' }
+      & Pick<Message, 'type'>
+    )> }
+  )> };
+
 export type LatestBlockHeightListenerSubscriptionVariables = Exact<{
   offset?: Maybe<Scalars['Int']>;
 }>;
@@ -5966,6 +5967,55 @@ export function useActiveValidatorCountLazyQuery(baseOptions?: Apollo.LazyQueryH
 export type ActiveValidatorCountQueryHookResult = ReturnType<typeof useActiveValidatorCountQuery>;
 export type ActiveValidatorCountLazyQueryHookResult = ReturnType<typeof useActiveValidatorCountLazyQuery>;
 export type ActiveValidatorCountQueryResult = Apollo.QueryResult<ActiveValidatorCountQuery, ActiveValidatorCountQueryVariables>;
+export const BlockDetailsDocument = gql`
+    query BlockDetails($height: bigint) {
+  block(limit: 1, where: {slot: {_eq: $height}}) {
+    slot
+    hash
+    proposer
+    timestamp
+  }
+  transaction(where: {slot: {_eq: $height}}) {
+    slot
+    hash
+    error
+    block {
+      timestamp
+    }
+    messages {
+      type
+    }
+  }
+}
+    `;
+
+/**
+ * __useBlockDetailsQuery__
+ *
+ * To run a query within a React component, call `useBlockDetailsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useBlockDetailsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useBlockDetailsQuery({
+ *   variables: {
+ *      height: // value for 'height'
+ *   },
+ * });
+ */
+export function useBlockDetailsQuery(baseOptions?: Apollo.QueryHookOptions<BlockDetailsQuery, BlockDetailsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<BlockDetailsQuery, BlockDetailsQueryVariables>(BlockDetailsDocument, options);
+      }
+export function useBlockDetailsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<BlockDetailsQuery, BlockDetailsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<BlockDetailsQuery, BlockDetailsQueryVariables>(BlockDetailsDocument, options);
+        }
+export type BlockDetailsQueryHookResult = ReturnType<typeof useBlockDetailsQuery>;
+export type BlockDetailsLazyQueryHookResult = ReturnType<typeof useBlockDetailsLazyQuery>;
+export type BlockDetailsQueryResult = Apollo.QueryResult<BlockDetailsQuery, BlockDetailsQueryVariables>;
 export const LatestBlockHeightListenerDocument = gql`
     subscription LatestBlockHeightListener($offset: Int = 0) {
   height: block(order_by: {slot: desc}, limit: 1, offset: $offset) {
@@ -6277,7 +6327,7 @@ export const TransactionsListenerDocument = gql`
     block {
       timestamp
     }
-    messages: messages_by_transaction_hash {
+    messages {
       type
     }
   }
@@ -6316,7 +6366,7 @@ export const TransactionsDocument = gql`
     block {
       timestamp
     }
-    messages: messages_by_transaction_hash {
+    messages {
       type
     }
   }

@@ -1,0 +1,19 @@
+query BlockDetails($height: bigint) {
+  block(limit: 1, where: {slot: {_eq: $height}}) {
+    slot
+    hash
+    proposer
+    timestamp
+  }
+  transaction(where: {slot: {_eq: $height}}) {
+    slot
+    hash
+    error
+    block {
+      timestamp
+    }
+    messages {
+      type
+    }
+  }
+}

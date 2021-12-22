@@ -28,11 +28,11 @@ const Blocks:React.FC<{
   const classes = useStyles();
   const { state } = useBlocks();
 
-  const proposerProfiles = useProfilesRecoil(state.items.map((x) => x.leader));
+  const proposerProfiles = useProfilesRecoil(state.items.map((x) => x.proposer));
   const mergedDataWithProfiles = state.items.map((x, i) => {
     return ({
       ...x,
-      leader: proposerProfiles[i],
+      proposer: proposerProfiles[i],
     });
   });
 

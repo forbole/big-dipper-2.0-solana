@@ -2,7 +2,7 @@
   "blocks": "Blocks",
   "blockDetails": "Block Details",
   "slot": "Slot",
-  "leader": "Leader",
+  "proposer": "Proposer",
   "hash": "Hash",
   "parentHash": "Parent Hash",
   "txs": "Txs",

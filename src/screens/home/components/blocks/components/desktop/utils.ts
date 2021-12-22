@@ -6,7 +6,7 @@ export const columns:{
     key: 'slot',
   },
   {
-    key: 'leader',
+    key: 'proposer',
   },
   {
     key: 'hash',

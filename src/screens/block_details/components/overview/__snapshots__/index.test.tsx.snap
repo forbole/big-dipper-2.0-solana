@@ -19,31 +19,17 @@ exports[`screen: BlockDetails/Overview matches snapshot 1`] = `
       },
       Object {
         "detail": <AvatarName
-          address="desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467"
           imageUrl=""
-          name="desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467"
         />,
-        "label": "blocks:leader",
+        "label": "blocks:proposer",
       },
       Object {
         "detail": "2020-08-10 12:00:00",
         "label": "blocks:time",
       },
       Object {
-        "detail": "60,000",
-        "label": "blocks:parentSlot",
-      },
-      Object {
-        "detail": "35SD2SaqLUvPBnEBRFUxQjjvS6tmzaPvLeJYQC1QV5E1",
-        "label": "blocks:parentHash",
-      },
-      Object {
-        "detail": "300",
-        "label": "blocks:processedTx",
-      },
-      Object {
-        "detail": "249",
-        "label": "blocks:successfulTx",
+        "detail": "0",
+        "label": "blocks:txs",
       },
     ]
   }
