@@ -39,11 +39,11 @@ const Desktop: React.FC<{
       ),
       txs: numeral(x.txs).format('0,0'),
       time: dayjs.utc(x.timestamp).fromNow(),
-      leader: (
+      proposer: (
         <AvatarName
-          address={x.leader.address}
-          imageUrl={x.leader.imageUrl}
-          name={x.leader.name}
+          address={x.proposer.address}
+          imageUrl={x.proposer.imageUrl}
+          name={x.proposer.name}
         />
       ),
       hash: getMiddleEllipsis(x.hash, {

@@ -6,7 +6,7 @@ subscription TransactionsListener($limit: Int = 7, $offset: Int = 0) {
     block {
       timestamp
     }
-    messages: messages_by_transaction_hash {
+    messages {
       type
     }
   }
@@ -21,7 +21,7 @@ query Transactions($limit: Int = 7, $offset: Int = 0) {
     block {
       timestamp
     }
-    messages: messages_by_transaction_hash {
+    messages {
       type
     }
   }

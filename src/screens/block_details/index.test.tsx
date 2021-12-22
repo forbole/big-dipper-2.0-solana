@@ -7,7 +7,7 @@ import {
   MockTheme, wait,
 } from '@tests/utils';
 import {
-// BlockDetailsDocument,
+BlockDetailsDocument,
 } from '@graphql/types';
 import BlockDetails from '.';
 
@@ -37,51 +37,26 @@ const mockAverageBlockTime = jest.fn().mockResolvedValue({
   data: {
     transaction: [
       {
-        height: 999,
-        hash: '393310C681CB39E09CD3AC16C600DBFDACB2DF5085277DA81E52698620C06136',
-        logs: [],
-        messages: [
+        "slot": 112673814,
+        "hash": "5uyxVvn5DsQJwm1XocYHDaY78hrgX3WcoBKY3NcU7Sipy3Gx8GmA2695E2AQA7cEK5z3hZZdzw4ganaTboMdyb22",
+        "error": true,
+        "block": {
+          "timestamp": "2021-12-22T01:56:19"
+        },
+        "messages": [
           {
-            '@type': '/cosmos.staking.v1beta1.MsgDelegate',
-            amount: {
-              denom: 'udaric',
-              amount: '27466368',
-            },
-            delegator_address: 'desmos18kvwy5hzcu3ss08lcfcnx0eajuecg69ujmkwjr',
-            validator_address: 'desmosvaloper18kvwy5hzcu3ss08lcfcnx0eajuecg69uvk76c3',
-          },
-        ],
-        success: true,
-      },
+            "type": "vote"
+          }
+        ]
+      }
     ],
     block: [
       {
-        height: 999,
-        hash: 'E568ACFE5717F79A44979563410FF7F6C3043A07307E541EF21E15FC478C3DF0',
-        timestamp: '2021-04-27T16:27:34.331769',
-        txs: 1,
-        validator: {
-          validatorInfo: {
-            operatorAddress: 'desmosvaloper18kvwy5hzcu3ss08lcfcnx0eajuecg69uvk76c3',
-          },
-        },
-      },
-    ],
-    preCommitsAggregate: {
-      aggregate: {
-        sum: {
-          votingPower: 7304,
-        },
-      },
-    },
-    preCommits: [
-      {
-        validator: {
-          validatorInfo: {
-            operatorAddress: 'desmosvaloper1qlh47ty9ah2d5e0xq6gsvqjvfulljl9602k7f9',
-          },
-        },
-      },
+        "slot": 112673814,
+        "hash": "8bti9xLpyuicxYwEPmQ4Xfb8toPeZ1t5zvNqYxkE41B5",
+        "proposer": "DDnAqxJVFo2GVTujibHt5cjevHMSE9bo8HJaydHoshdp",
+        "timestamp": "2021-12-22T01:56:19"
+      }
     ],
   },
 });
@@ -92,10 +67,10 @@ const mockAverageBlockTime = jest.fn().mockResolvedValue({
 describe('screen: BlockDetails', () => {
   it('matches snapshot', async () => {
     const mockClient = createMockClient();
-    // mockClient.setRequestHandler(
-    //   BlockDetailsDocument,
-    //   mockAverageBlockTime,
-    // );
+    mockClient.setRequestHandler(
+      BlockDetailsDocument,
+      mockAverageBlockTime,
+    );
 
     let component;
     renderer.act(() => {

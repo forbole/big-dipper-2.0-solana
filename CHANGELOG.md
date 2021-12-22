@@ -8,3 +8,4 @@
 - Add block list (home) ([\#29](https://github.com/forbole/big-dipper-2.0-solana/issues/29))
 - Add market data on navbar (home) ([\#18](https://github.com/forbole/big-dipper-2.0-solana/issues/18))
 - Add tx list ([\#28](https://github.com/forbole/big-dipper-2.0-solana/issues/28))
+- Add block details ([\#35](https://github.com/forbole/big-dipper-2.0-solana/issues/35))

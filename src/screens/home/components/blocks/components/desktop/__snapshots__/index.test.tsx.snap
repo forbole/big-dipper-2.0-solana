@@ -28,7 +28,7 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
           className="MuiTableCell-root MuiTableCell-head"
           scope="col"
         >
-          leader
+          proposer
         </th>
         <th
           aria-sort={null}
