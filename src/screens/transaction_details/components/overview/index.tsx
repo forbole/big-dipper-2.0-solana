@@ -36,22 +36,18 @@ const Overview: React.FC<{
       ),
     },
     {
+      label: t('hash'),
+      detail: data.hash,
+    },
+    {
       label: t('result'),
       detail: (
         <Result success={data.success} />
       ),
     },
     {
-      label: t('confirmations'),
-      detail: data.confirmations,
-    },
-    {
       label: t('fee'),
-      detail: data.fee,
-    },
-    {
-      label: t('signature'),
-      detail: data.signature,
+      detail: `${data.fee.value} ${data.fee.displayDenom.toUpperCase()}`,
     },
     {
       label: t('time'),
