@@ -12,9 +12,9 @@ const SingleBlockMobile: React.FC<{
   hash: string;
   txs: string;
   time: string;
-  leader: React.ReactNode;
+  proposer: React.ReactNode;
 }> = ({
-  className, slot, hash, txs, time, leader,
+  className, slot, hash, txs, time, proposer,
 }) => {
   const { t } = useTranslation('blocks');
   const classes = useStyles();
@@ -29,9 +29,9 @@ const SingleBlockMobile: React.FC<{
       </div>
       <div className={classes.item}>
         <Typography variant="h4" className="label">
-          {t('leader')}
+          {t('proposer')}
         </Typography>
-        {leader}
+        {proposer}
       </div>
       <div className={classes.item}>
         <Typography variant="h4" className="label">
