@@ -43,7 +43,7 @@ export const useMarketRecoil = () => {
       marketCap = data.tokenPrice[0]?.marketCap;
     }
 
-    const inflation = R.pathOr(0, ['inflationRate', 0, 'total'], data);
+    const inflation = R.pathOr(0, ['inflationRate', 'total'], data);
 
     const supply = formatToken(
       R.pathOr(0, ['supplyInfo', 0, 'total'], data),
