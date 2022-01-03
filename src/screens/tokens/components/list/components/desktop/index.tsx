@@ -39,6 +39,15 @@ const Desktop: React.FC<{
   } = useGrid(columns);
 
   const formattedItems = items.map((x, i) => {
+    let price = '-';
+    let marketCap = '-';
+    if (x.price !== null) {
+      price = `$${numeral(x.price).format('0,0.[00]')}`;
+    }
+    if (x.marketCap !== null) {
+      marketCap = `$${numeral(x.marketCap).format('0,0[00]')}`;
+    }
+
     return ({
       idx: `#${numeral(i + 1).format('0,0')}`,
       token: (
@@ -48,21 +57,8 @@ const Desktop: React.FC<{
           </Typography>
         </Link>
       ),
-      price: `$${numeral(x.price).format('0,0.[00]')}`,
-      change: (
-        <Typography
-          variant="body1"
-          className={classnames(classes.price, {
-            positive: x.change > 0,
-            negative: x.change < 0,
-          })}
-        >
-          {x.change}
-        </Typography>
-      ),
-      volume: `$${numeral(x.volume).format('0,0[00]')}`,
-      marketCap: `$${numeral(x.marketCap).format('0,0[00]')}`,
-      holders: numeral(x.holders).format('0,0'),
+      price,
+      marketCap,
     });
   });
 

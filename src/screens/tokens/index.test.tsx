@@ -8,7 +8,7 @@ import {
 import { ApolloProvider } from '@apollo/client';
 import { createMockClient } from 'mock-apollo-client';
 import {
-// ProposalsDocument,
+  TokensDocument
 } from '@graphql/types';
 import Proposals from '.';
 
@@ -24,40 +24,26 @@ jest.mock('./components', () => ({
   List: (props) => <div id="List" {...props} />,
 }));
 
-const mockProposals = jest.fn().mockResolvedValue({
-  data: {
-    proposals: [
+const mockTokens = jest.fn().mockResolvedValue({
+  "data": {
+    "tokenUnit": [
       {
-        title: 'Staking Param Change Part Two',
-        proposalId: 7,
-        status: 'PROPOSAL_STATUS_REJECTED',
-        description: 'Update max validators',
-      },
-      {
-        title: 'upgrading the software',
-        proposalId: 6,
-        status: 'PROPOSAL_STATUS_INVALID',
-        description: 'software upgrade description',
+        "address": "EAniGDVY2VKUtZxvpHnbazHfZgfo3bp61TxUGHzw3Cn7",
+        "unitName": "007 Exchange",
+        "logo": "https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/EAniGDVY2VKUtZxvpHnbazHfZgfo3bp61TxUGHzw3Cn7/logo.png",
+        "tokenPrice": null
       },
       {
-        title: 'Staking Param Change',
-        proposalId: 5,
-        status: 'PROPOSAL_STATUS_INVALID',
-        description: 'Update max validators',
-      },
-      {
-        title: 'BD Proposal',
-        proposalId: 4,
-        status: 'PROPOSAL_STATUS_REJECTED',
-        description: 'My not so awesome proposal',
-      },
-    ],
-    total: {
-      aggregate: {
-        count: 4,
-      },
-    },
-  },
+        "address": "G2jrxYSoCSzmohxERa2JzSJMuRM4kiNvRA3DnCv7Lzcz",
+        "unitName": "0x Protocol Token (Wormhole v1)",
+        "logo": "https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/G2jrxYSoCSzmohxERa2JzSJMuRM4kiNvRA3DnCv7Lzcz/logo.png",
+        "tokenPrice": {
+          "marketCap": 783277125,
+          "price": 0.913409
+        }
+      }
+    ]
+  }
 });
 
 // ==================================
@@ -67,10 +53,10 @@ describe('screen: Proposals', () => {
   it('matches snapshot', async () => {
     const mockClient = createMockClient();
 
-    // mockClient.setRequestHandler(
-    //   ProposalsDocument,
-    //   mockProposals,
-    // );
+    mockClient.setRequestHandler(
+      TokensDocument,
+      mockTokens,
+    );
     let component;
     renderer.act(() => {
       component = renderer.create(

@@ -14,9 +14,6 @@ const Tokens = () => {
   const classes = useStyles();
   const {
     state,
-    loadMoreItems,
-    itemCount,
-    isItemLoaded,
   } = useProposals();
 
   return (
@@ -37,10 +34,9 @@ const Tokens = () => {
         >
           <List
             items={state.items}
-            rawDataTotal={state.rawDataTotal}
-            isItemLoaded={isItemLoaded}
-            itemCount={itemCount}
-            loadMoreItems={loadMoreItems}
+            isItemLoaded={() => true}
+            itemCount={state.items.length}
+            loadMoreItems={() => null}
           />
         </LoadAndExist>
       </Layout>

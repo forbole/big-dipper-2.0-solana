@@ -10,12 +10,9 @@ const Token: React.FC<{
   className?: string;
   token: React.ReactNode;
   price: string;
-  change: React.ReactNode;
-  volume: string;
   marketCap: string;
-  holders: string;
 }> = ({
-  className, token, price, change, volume, marketCap, holders,
+  className, token, price, marketCap,
 }) => {
   const { t } = useTranslation('tokens');
   const classes = useStyles();
@@ -27,28 +24,12 @@ const Token: React.FC<{
         </Typography>
         {token}
       </div>
-      <div className={classes.flex}>
-        <div className={classes.item}>
-          <Typography variant="h4" className="label">
-            {t('price')}
-          </Typography>
-          <Typography variant="body1" className="value">
-            {price}
-          </Typography>
-        </div>
-        <div className={classes.item}>
-          <Typography variant="h4" className="label">
-            {t('change')}
-          </Typography>
-          {change}
-        </div>
-      </div>
       <div className={classes.item}>
         <Typography variant="h4" className="label">
-          {t('volume')}
+          {t('price')}
         </Typography>
         <Typography variant="body1" className="value">
-          {volume}
+          {price}
         </Typography>
       </div>
       <div className={classes.item}>
@@ -57,14 +38,6 @@ const Token: React.FC<{
         </Typography>
         <Typography variant="body1" className="value">
           {marketCap}
-        </Typography>
-      </div>
-      <div className={classes.item}>
-        <Typography variant="h4" className="label">
-          {t('holders')}
-        </Typography>
-        <Typography variant="body1" className="value">
-          {holders}
         </Typography>
       </div>
     </div>
