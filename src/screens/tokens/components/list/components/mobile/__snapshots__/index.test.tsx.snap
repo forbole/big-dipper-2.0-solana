@@ -62,49 +62,17 @@ exports[`screen: Home/Blocks/Mobile matches snapshot 1`] = `
               </a>
             </div>
             <div
-              className="makeStyles-flex"
-            >
-              <div
-                className="makeStyles-item"
-              >
-                <h4
-                  className="MuiTypography-root label MuiTypography-h4"
-                >
-                  tokens:price
-                </h4>
-                <p
-                  className="MuiTypography-root value MuiTypography-body1"
-                >
-                  $1,802
-                </p>
-              </div>
-              <div
-                className="makeStyles-item"
-              >
-                <h4
-                  className="MuiTypography-root label MuiTypography-h4"
-                >
-                  tokens:change
-                </h4>
-                <p
-                  className="MuiTypography-root change positive MuiTypography-body1"
-                >
-                  10
-                </p>
-              </div>
-            </div>
-            <div
               className="makeStyles-item"
             >
               <h4
                 className="MuiTypography-root label MuiTypography-h4"
               >
-                tokens:volume
+                tokens:price
               </h4>
               <p
                 className="MuiTypography-root value MuiTypography-body1"
               >
-                $15,902,496,558
+                $1,802
               </p>
             </div>
             <div
@@ -119,20 +87,6 @@ exports[`screen: Home/Blocks/Mobile matches snapshot 1`] = `
                 className="MuiTypography-root value MuiTypography-body1"
               >
                 $515,912,496
-              </p>
-            </div>
-            <div
-              className="makeStyles-item"
-            >
-              <h4
-                className="MuiTypography-root label MuiTypography-h4"
-              >
-                tokens:holders
-              </h4>
-              <p
-                className="MuiTypography-root value MuiTypography-body1"
-              >
-                2,178,994
               </p>
             </div>
           </div>
@@ -167,37 +121,12 @@ exports[`screen: Home/Blocks/Mobile matches snapshot 1`] = `
               </h4>
             </div>
             <div
-              className="makeStyles-flex"
-            >
-              <div
-                className="makeStyles-item"
-              >
-                <h4
-                  className="MuiTypography-root label MuiTypography-h4"
-                >
-                  tokens:price
-                </h4>
-                <p
-                  className="MuiTypography-root value MuiTypography-body1"
-                />
-              </div>
-              <div
-                className="makeStyles-item"
-              >
-                <h4
-                  className="MuiTypography-root label MuiTypography-h4"
-                >
-                  tokens:change
-                </h4>
-              </div>
-            </div>
-            <div
               className="makeStyles-item"
             >
               <h4
                 className="MuiTypography-root label MuiTypography-h4"
               >
-                tokens:volume
+                tokens:price
               </h4>
               <p
                 className="MuiTypography-root value MuiTypography-body1"
@@ -210,18 +139,6 @@ exports[`screen: Home/Blocks/Mobile matches snapshot 1`] = `
                 className="MuiTypography-root label MuiTypography-h4"
               >
                 tokens:marketCap
-              </h4>
-              <p
-                className="MuiTypography-root value MuiTypography-body1"
-              />
-            </div>
-            <div
-              className="makeStyles-item"
-            >
-              <h4
-                className="MuiTypography-root label MuiTypography-h4"
-              >
-                tokens:holders
               </h4>
               <p
                 className="MuiTypography-root value MuiTypography-body1"

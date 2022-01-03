@@ -17,47 +17,17 @@ exports[`screen: Tokens/Token matches snapshot 1`] = `
     </div>
   </div>
   <div
-    className="makeStyles-flex"
-  >
-    <div
-      className="makeStyles-item"
-    >
-      <h4
-        className="MuiTypography-root label MuiTypography-h4"
-      >
-        price
-      </h4>
-      <p
-        className="MuiTypography-root value MuiTypography-body1"
-      >
-        price
-      </p>
-    </div>
-    <div
-      className="makeStyles-item"
-    >
-      <h4
-        className="MuiTypography-root label MuiTypography-h4"
-      >
-        change
-      </h4>
-      <div>
-        change
-      </div>
-    </div>
-  </div>
-  <div
     className="makeStyles-item"
   >
     <h4
       className="MuiTypography-root label MuiTypography-h4"
     >
-      volume
+      price
     </h4>
     <p
       className="MuiTypography-root value MuiTypography-body1"
     >
-      volume
+      price
     </p>
   </div>
   <div
@@ -72,20 +42,6 @@ exports[`screen: Tokens/Token matches snapshot 1`] = `
       className="MuiTypography-root value MuiTypography-body1"
     >
       marketCap
-    </p>
-  </div>
-  <div
-    className="makeStyles-item"
-  >
-    <h4
-      className="MuiTypography-root label MuiTypography-h4"
-    >
-      holders
-    </h4>
-    <p
-      className="MuiTypography-root value MuiTypography-body1"
-    >
-      holders
     </p>
   </div>
 </div>

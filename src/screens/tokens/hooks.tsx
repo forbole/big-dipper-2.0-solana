@@ -38,7 +38,7 @@ export const useProposals = () => {
         token: x.unitName,
         address: x.address,
         price: R.pathOr(null, ['tokenPrice', 'price'], x),
-        marketCap: R.pathOr(null, ['marketCap', 'price'], x),
+        marketCap: R.pathOr(null, ['tokenPrice', 'marketCap'], x),
       });
     });
   };

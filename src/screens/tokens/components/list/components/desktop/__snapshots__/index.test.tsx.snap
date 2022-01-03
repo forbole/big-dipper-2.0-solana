@@ -36,7 +36,7 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
             "position": "absolute",
             "right": undefined,
             "top": 0,
-            "width": 60,
+            "width": 90,
           }
         }
       >
@@ -51,11 +51,11 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
         style={
           Object {
             "height": 50,
-            "left": 60,
+            "left": 90,
             "position": "absolute",
             "right": undefined,
             "top": 0,
-            "width": 120,
+            "width": 210,
           }
         }
       >
@@ -70,11 +70,11 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
         style={
           Object {
             "height": 50,
-            "left": 180,
+            "left": 300,
             "position": "absolute",
             "right": undefined,
             "top": 0,
-            "width": 60,
+            "width": 150,
           }
         }
       >
@@ -89,49 +89,11 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
         style={
           Object {
             "height": 50,
-            "left": 240,
+            "left": 450,
             "position": "absolute",
             "right": undefined,
             "top": 0,
-            "width": 90,
-          }
-        }
-      >
-        <h4
-          className="MuiTypography-root MuiTypography-h4 MuiTypography-alignRight"
-        >
-          change
-        </h4>
-      </div>
-      <div
-        className="makeStyles-cell"
-        style={
-          Object {
-            "height": 50,
-            "left": 330,
-            "position": "absolute",
-            "right": undefined,
-            "top": 0,
-            "width": 90,
-          }
-        }
-      >
-        <h4
-          className="MuiTypography-root MuiTypography-h4 MuiTypography-alignRight"
-        >
-          volume
-        </h4>
-      </div>
-      <div
-        className="makeStyles-cell"
-        style={
-          Object {
-            "height": 50,
-            "left": 420,
-            "position": "absolute",
-            "right": undefined,
-            "top": 0,
-            "width": 90,
+            "width": 150,
           }
         }
       >
@@ -139,25 +101,6 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
           className="MuiTypography-root MuiTypography-h4 MuiTypography-alignRight"
         >
           marketCap
-        </h4>
-      </div>
-      <div
-        className="makeStyles-cell"
-        style={
-          Object {
-            "height": 50,
-            "left": 510,
-            "position": "absolute",
-            "right": undefined,
-            "top": 0,
-            "width": 90,
-          }
-        }
-      >
-        <h4
-          className="MuiTypography-root MuiTypography-h4 MuiTypography-alignRight"
-        >
-          holders
         </h4>
       </div>
     </div>
@@ -195,7 +138,7 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
             "position": "absolute",
             "right": undefined,
             "top": 0,
-            "width": 60,
+            "width": 90,
           }
         }
       >
@@ -210,11 +153,11 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
         style={
           Object {
             "height": 50,
-            "left": 60,
+            "left": 90,
             "position": "absolute",
             "right": undefined,
             "top": 0,
-            "width": 120,
+            "width": 210,
           }
         }
       >
@@ -236,11 +179,11 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
         style={
           Object {
             "height": 50,
-            "left": 180,
+            "left": 300,
             "position": "absolute",
             "right": undefined,
             "top": 0,
-            "width": 60,
+            "width": 150,
           }
         }
       >
@@ -255,53 +198,11 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
         style={
           Object {
             "height": 50,
-            "left": 240,
+            "left": 450,
             "position": "absolute",
             "right": undefined,
             "top": 0,
-            "width": 90,
-          }
-        }
-      >
-        <div
-          className="MuiTypography-root MuiTypography-body1 MuiTypography-alignRight"
-        >
-          <p
-            className="MuiTypography-root makeStyles-price positive MuiTypography-body1"
-          >
-            10
-          </p>
-        </div>
-      </div>
-      <div
-        className="makeStyles-cell makeStyles-body odd"
-        style={
-          Object {
-            "height": 50,
-            "left": 330,
-            "position": "absolute",
-            "right": undefined,
-            "top": 0,
-            "width": 90,
-          }
-        }
-      >
-        <div
-          className="MuiTypography-root MuiTypography-body1 MuiTypography-alignRight"
-        >
-          $15,902,496,558
-        </div>
-      </div>
-      <div
-        className="makeStyles-cell makeStyles-body odd"
-        style={
-          Object {
-            "height": 50,
-            "left": 420,
-            "position": "absolute",
-            "right": undefined,
-            "top": 0,
-            "width": 90,
+            "width": 150,
           }
         }
       >
@@ -309,25 +210,6 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
           className="MuiTypography-root MuiTypography-body1 MuiTypography-alignRight"
         >
           $515,912,496
-        </div>
-      </div>
-      <div
-        className="makeStyles-cell makeStyles-body odd"
-        style={
-          Object {
-            "height": 50,
-            "left": 510,
-            "position": "absolute",
-            "right": undefined,
-            "top": 0,
-            "width": 90,
-          }
-        }
-      >
-        <div
-          className="MuiTypography-root MuiTypography-body1 MuiTypography-alignRight"
-        >
-          2,178,994
         </div>
       </div>
     </div>
