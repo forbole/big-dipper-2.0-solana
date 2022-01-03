@@ -6,16 +6,6 @@ import {
 } from '@graphql/types';
 import { TokensState } from './types';
 
-// const fakeData = {
-//   token: 'BTC',
-//   price: 1802,
-//   change: 10,
-//   volume: 15902496558,
-//   marketCap: 515912496,
-//   holders: 2178994,
-//   address: '9n4nbM75f5Ui33ZbPYXn59EwSgE8CGsHtAeTH5YFeJ9E',
-// };
-
 export const useProposals = () => {
   const [state, setState] = useState<TokensState>({
     loading: true,
@@ -23,7 +13,6 @@ export const useProposals = () => {
     items: [],
     hasNextPage: false,
     isNextPageLoading: false,
-    rawDataTotal: 0,
   });
 
   const handleSetState = (stateChange: any) => {
@@ -34,67 +23,27 @@ export const useProposals = () => {
   // proposals query
   // ================================
 
-  // const proposalQuery = useProposalsQuery({
-  //   variables: {
-  //     limit: 50,
-  //     offset: 0,
-  //   },
-  //   onCompleted: (data) => {
-  //     const newItems = R.uniq([...state.items, ...formatProposals(data)]);
-  //     handleSetState({
-  //       items: newItems,
-  //       hasNextPage: newItems.length < data.total.aggregate.count,
-  //       isNextPageLoading: false,
-  //       rawDataTotal: data.total.aggregate.count,
-  //     });
-  //   },
-  // });
+  useTokensQuery({
+    onCompleted: (data) => {
+      handleSetState({
+        loading: false,
+        items: formatTokens(data),
+      });
+    },
+  });
 
-  const loadNextPage = async () => {
-    handleSetState({
-      isNextPageLoading: true,
+  const formatTokens = (data:TokensQuery) => {
+    return data.tokenUnit.map((x) => {
+      return ({
+        token: x.unitName,
+        address: x.address,
+        price: R.pathOr(null, ['tokenPrice', 'price'], x),
+        marketCap: R.pathOr(null, ['marketCap', 'price'], x),
+      });
     });
-    // refetch query
-    // await proposalQuery.fetchMore({
-    //   variables: {
-    //     offset: state.items.length,
-    //     limit: 50,
-    //   },
-    // }).then(({ data }) => {
-    //   const newItems = R.uniq([
-    //     ...state.items,
-    //     ...formatProposals(data),
-    //   ]);
-    //   // set new state
-    //   handleSetState({
-    //     items: newItems,
-    //     isNextPageLoading: false,
-    //     hasNextPage: newItems.length < data.total.aggregate.count,
-    //     rawDataTotal: data.total.aggregate.count,
-    //   });
-    // });
   };
-
-  // const formatProposals = (data: ProposalsQuery) => {
-  //   return data.proposals.map((x) => {
-  //     return ({
-  //       id: x.proposalId,
-  //       title: x.title,
-  //       description: x.description,
-  //       status: x.status,
-  //     });
-  //   });
-  // };
-
-  const itemCount = state.hasNextPage ? state.items.length + 1 : state.items.length;
-  const loadMoreItems = state.isNextPageLoading ? () => null : loadNextPage;
-  const isItemLoaded = (index) => !state.hasNextPage || index < state.items.length;
 
   return {
     state,
-    loadNextPage,
-    itemCount,
-    loadMoreItems,
-    isItemLoaded,
   };
 };

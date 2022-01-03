@@ -10,6 +10,5 @@ export type TokensState = {
   exists: boolean;
   hasNextPage: boolean;
   isNextPageLoading: boolean;
-  rawDataTotal: number;
   items: TokenType[];
 }
