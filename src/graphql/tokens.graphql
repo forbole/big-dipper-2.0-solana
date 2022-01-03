@@ -1,0 +1,11 @@
+query Tokens {
+  tokenUnit: token_unit {
+    address
+    unitName: unit_name
+    logo: logo_uri
+    tokenPrice: token_price {
+      marketCap: market_cap
+      price
+    }
+  }
+}
