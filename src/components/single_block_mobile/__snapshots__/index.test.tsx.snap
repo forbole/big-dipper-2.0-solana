@@ -24,6 +24,9 @@ exports[`component: SingleSlotMobile matches snapshot 1`] = `
     >
       proposer
     </h4>
+    <div>
+      leader
+    </div>
   </div>
   <div
     className="makeStyles-item"

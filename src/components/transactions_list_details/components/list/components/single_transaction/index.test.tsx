@@ -12,7 +12,7 @@ describe('components: SingleTransaction', () => {
       <MockTheme>
         <SingleTransaction
           slot={<div>slot</div>}
-          signature={<div>signature</div>}
+          hash="hash"
           time="2021-07-13T08:00:00"
           messageCount="1,000"
           messages={[
