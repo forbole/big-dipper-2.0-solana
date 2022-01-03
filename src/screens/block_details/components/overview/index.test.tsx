@@ -24,12 +24,9 @@ describe('screen: BlockDetails/Overview', () => {
             {...{
               slot: 40000,
               hash: '35SD2SaqLUvPBnEBRFUxQjjvS6tmzaPvLeJYQC1QV5E1',
-              leader: 'desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467',
+              proposer: 'desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467',
               timestamp: '2021-09-13T20:06:17.363145',
-              parentSlot: 60000,
-              parentHash: '35SD2SaqLUvPBnEBRFUxQjjvS6tmzaPvLeJYQC1QV5E1',
-              processedTx: 300,
-              successfulTx: 249,
+              txs: 12,
             }}
           />
         </MockTheme>

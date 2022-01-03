@@ -19,7 +19,9 @@ exports[`screen: BlockDetails/Overview matches snapshot 1`] = `
       },
       Object {
         "detail": <AvatarName
+          address="desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467"
           imageUrl=""
+          name="desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467"
         />,
         "label": "blocks:proposer",
       },
@@ -28,7 +30,7 @@ exports[`screen: BlockDetails/Overview matches snapshot 1`] = `
         "label": "blocks:time",
       },
       Object {
-        "detail": "0",
+        "detail": "12",
         "label": "blocks:txs",
       },
     ]

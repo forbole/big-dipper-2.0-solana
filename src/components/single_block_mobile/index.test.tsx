@@ -19,9 +19,8 @@ describe('component: SingleSlotMobile', () => {
         <SingleSlotMobile
           slot={<div>slot</div>}
           txs="100,000"
-          leader={<div>leader</div>}
+          proposer={<div>leader</div>}
           hash="hash"
-          parentHash="parentHash"
           time="time"
         />
       </MockTheme>,
