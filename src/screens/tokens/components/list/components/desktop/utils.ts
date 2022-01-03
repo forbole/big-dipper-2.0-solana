@@ -5,35 +5,20 @@ export const columns:{
 }[] = [
   {
     key: 'idx',
-    width: 10,
+    width: 15,
   },
   {
     key: 'token',
-    width: 20,
+    width: 35,
   },
   {
     key: 'price',
-    width: 10,
+    width: 25,
     align: 'right',
-  },
-  {
-    key: 'change',
-    width: 15,
-    align: 'right',
-  },
-  {
-    key: 'volume',
-    align: 'right',
-    width: 15,
   },
   {
     key: 'marketCap',
     align: 'right',
-    width: 15,
-  },
-  {
-    key: 'holders',
-    align: 'right',
-    width: 15,
+    width: 25,
   },
 ];

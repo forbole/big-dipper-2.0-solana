@@ -1,11 +1,8 @@
 export type TokenType = {
   token: string;
-  price: number;
-  change: number;
-  volume: number;
-  marketCap: number;
-  holders: number;
   address: string;
+  price?: number;
+  marketCap?: number;
 }
 
 export type TokensState = {

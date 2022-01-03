@@ -1,5 +1,5 @@
 query Tokens {
-  tokenUnit: token_unit {
+  tokenUnit: token_unit(order_by: {unit_name: asc}) {
     address
     unitName: unit_name
     logo: logo_uri

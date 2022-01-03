@@ -1,32 +1,29 @@
 import { useState } from 'react';
 import * as R from 'ramda';
-// import {
-//   useProposalsQuery,
-//   ProposalsQuery,
-// } from '@graphql/types';
+import {
+  useTokensQuery,
+  TokensQuery,
+} from '@graphql/types';
 import { TokensState } from './types';
 
-const fakeData = {
-  token: 'BTC',
-  price: 1802,
-  change: 10,
-  volume: 15902496558,
-  marketCap: 515912496,
-  holders: 2178994,
-  address: '9n4nbM75f5Ui33ZbPYXn59EwSgE8CGsHtAeTH5YFeJ9E',
-};
+// const fakeData = {
+//   token: 'BTC',
+//   price: 1802,
+//   change: 10,
+//   volume: 15902496558,
+//   marketCap: 515912496,
+//   holders: 2178994,
+//   address: '9n4nbM75f5Ui33ZbPYXn59EwSgE8CGsHtAeTH5YFeJ9E',
+// };
 
 export const useProposals = () => {
   const [state, setState] = useState<TokensState>({
-    // loading: true,
-    loading: false,
+    loading: true,
     exists: true,
-    // items: [],
-    items: Array(20).fill(fakeData),
+    items: [],
     hasNextPage: false,
     isNextPageLoading: false,
-    // rawDataTotal: 0,
-    rawDataTotal: 20,
+    rawDataTotal: 0,
   });
 
   const handleSetState = (stateChange: any) => {

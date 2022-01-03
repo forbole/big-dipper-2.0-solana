@@ -365,6 +365,7 @@ export type Block = {
   __typename?: 'block';
   hash: Scalars['String'];
   height: Scalars['bigint'];
+  num_txs: Scalars['Int'];
   proposer?: Maybe<Scalars['String']>;
   slot: Scalars['bigint'];
   timestamp: Scalars['timestamp'];
@@ -428,6 +429,7 @@ export type Block_Aggregate_FieldsCountArgs = {
 export type Block_Avg_Fields = {
   __typename?: 'block_avg_fields';
   height?: Maybe<Scalars['Float']>;
+  num_txs?: Maybe<Scalars['Float']>;
   slot?: Maybe<Scalars['Float']>;
 };
 
@@ -438,6 +440,7 @@ export type Block_Bool_Exp = {
   _or?: Maybe<Array<Block_Bool_Exp>>;
   hash?: Maybe<String_Comparison_Exp>;
   height?: Maybe<Bigint_Comparison_Exp>;
+  num_txs?: Maybe<Int_Comparison_Exp>;
   proposer?: Maybe<String_Comparison_Exp>;
   slot?: Maybe<Bigint_Comparison_Exp>;
   timestamp?: Maybe<Timestamp_Comparison_Exp>;
@@ -449,6 +452,7 @@ export type Block_Max_Fields = {
   __typename?: 'block_max_fields';
   hash?: Maybe<Scalars['String']>;
   height?: Maybe<Scalars['bigint']>;
+  num_txs?: Maybe<Scalars['Int']>;
   proposer?: Maybe<Scalars['String']>;
   slot?: Maybe<Scalars['bigint']>;
   timestamp?: Maybe<Scalars['timestamp']>;
@@ -459,6 +463,7 @@ export type Block_Min_Fields = {
   __typename?: 'block_min_fields';
   hash?: Maybe<Scalars['String']>;
   height?: Maybe<Scalars['bigint']>;
+  num_txs?: Maybe<Scalars['Int']>;
   proposer?: Maybe<Scalars['String']>;
   slot?: Maybe<Scalars['bigint']>;
   timestamp?: Maybe<Scalars['timestamp']>;
@@ -468,6 +473,7 @@ export type Block_Min_Fields = {
 export type Block_Order_By = {
   hash?: Maybe<Order_By>;
   height?: Maybe<Order_By>;
+  num_txs?: Maybe<Order_By>;
   proposer?: Maybe<Order_By>;
   slot?: Maybe<Order_By>;
   timestamp?: Maybe<Order_By>;
@@ -481,6 +487,8 @@ export enum Block_Select_Column {
   /** column name */
   Height = 'height',
   /** column name */
+  NumTxs = 'num_txs',
+  /** column name */
   Proposer = 'proposer',
   /** column name */
   Slot = 'slot',
@@ -492,6 +500,7 @@ export enum Block_Select_Column {
 export type Block_Stddev_Fields = {
   __typename?: 'block_stddev_fields';
   height?: Maybe<Scalars['Float']>;
+  num_txs?: Maybe<Scalars['Float']>;
   slot?: Maybe<Scalars['Float']>;
 };
 
@@ -499,6 +508,7 @@ export type Block_Stddev_Fields = {
 export type Block_Stddev_Pop_Fields = {
   __typename?: 'block_stddev_pop_fields';
   height?: Maybe<Scalars['Float']>;
+  num_txs?: Maybe<Scalars['Float']>;
   slot?: Maybe<Scalars['Float']>;
 };
 
@@ -506,6 +516,7 @@ export type Block_Stddev_Pop_Fields = {
 export type Block_Stddev_Samp_Fields = {
   __typename?: 'block_stddev_samp_fields';
   height?: Maybe<Scalars['Float']>;
+  num_txs?: Maybe<Scalars['Float']>;
   slot?: Maybe<Scalars['Float']>;
 };
 
@@ -513,6 +524,7 @@ export type Block_Stddev_Samp_Fields = {
 export type Block_Sum_Fields = {
   __typename?: 'block_sum_fields';
   height?: Maybe<Scalars['bigint']>;
+  num_txs?: Maybe<Scalars['Int']>;
   slot?: Maybe<Scalars['bigint']>;
 };
 
@@ -520,6 +532,7 @@ export type Block_Sum_Fields = {
 export type Block_Var_Pop_Fields = {
   __typename?: 'block_var_pop_fields';
   height?: Maybe<Scalars['Float']>;
+  num_txs?: Maybe<Scalars['Float']>;
   slot?: Maybe<Scalars['Float']>;
 };
 
@@ -527,6 +540,7 @@ export type Block_Var_Pop_Fields = {
 export type Block_Var_Samp_Fields = {
   __typename?: 'block_var_samp_fields';
   height?: Maybe<Scalars['Float']>;
+  num_txs?: Maybe<Scalars['Float']>;
   slot?: Maybe<Scalars['Float']>;
 };
 
@@ -534,6 +548,7 @@ export type Block_Var_Samp_Fields = {
 export type Block_Variance_Fields = {
   __typename?: 'block_variance_fields';
   height?: Maybe<Scalars['Float']>;
+  num_txs?: Maybe<Scalars['Float']>;
   slot?: Maybe<Scalars['Float']>;
 };
 
@@ -1225,14 +1240,38 @@ export type Message = {
   __typename?: 'message';
   index: Scalars['Int'];
   inner_index: Scalars['Int'];
-  involved_accounts: Scalars['_text'];
+  /** An array relationship */
+  involved_accounts: Array<Message_By_Address>;
+  /** An aggregate relationship */
+  involved_accounts_aggregate: Message_By_Address_Aggregate;
   program: Scalars['String'];
   raw_data: Scalars['String'];
+  slot: Scalars['bigint'];
   /** An object relationship */
   transaction?: Maybe<Transaction>;
   transaction_hash: Scalars['String'];
   type: Scalars['String'];
   value: Scalars['jsonb'];
+};
+
+
+/** columns and relationships of "message" */
+export type MessageInvolved_AccountsArgs = {
+  distinct_on?: Maybe<Array<Message_By_Address_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Message_By_Address_Order_By>>;
+  where?: Maybe<Message_By_Address_Bool_Exp>;
+};
+
+
+/** columns and relationships of "message" */
+export type MessageInvolved_Accounts_AggregateArgs = {
+  distinct_on?: Maybe<Array<Message_By_Address_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Message_By_Address_Order_By>>;
+  where?: Maybe<Message_By_Address_Bool_Exp>;
 };
 
 
@@ -1291,12 +1330,14 @@ export type Message_Avg_Fields = {
   __typename?: 'message_avg_fields';
   index?: Maybe<Scalars['Float']>;
   inner_index?: Maybe<Scalars['Float']>;
+  slot?: Maybe<Scalars['Float']>;
 };
 
 /** order by avg() on columns of table "message" */
 export type Message_Avg_Order_By = {
   index?: Maybe<Order_By>;
   inner_index?: Maybe<Order_By>;
+  slot?: Maybe<Order_By>;
 };
 
 /** Boolean expression to filter rows from the table "message". All fields are combined with a logical 'AND'. */
@@ -1306,13 +1347,266 @@ export type Message_Bool_Exp = {
   _or?: Maybe<Array<Message_Bool_Exp>>;
   index?: Maybe<Int_Comparison_Exp>;
   inner_index?: Maybe<Int_Comparison_Exp>;
-  involved_accounts?: Maybe<_Text_Comparison_Exp>;
+  involved_accounts?: Maybe<Message_By_Address_Bool_Exp>;
   program?: Maybe<String_Comparison_Exp>;
   raw_data?: Maybe<String_Comparison_Exp>;
+  slot?: Maybe<Bigint_Comparison_Exp>;
   transaction?: Maybe<Transaction_Bool_Exp>;
   transaction_hash?: Maybe<String_Comparison_Exp>;
   type?: Maybe<String_Comparison_Exp>;
   value?: Maybe<Jsonb_Comparison_Exp>;
+};
+
+/** columns and relationships of "message_by_address" */
+export type Message_By_Address = {
+  __typename?: 'message_by_address';
+  address: Scalars['String'];
+  index: Scalars['Int'];
+  inner_index: Scalars['Int'];
+  /** An object relationship */
+  message?: Maybe<Message>;
+  slot: Scalars['bigint'];
+  transaction_hash: Scalars['String'];
+};
+
+/** aggregated selection of "message_by_address" */
+export type Message_By_Address_Aggregate = {
+  __typename?: 'message_by_address_aggregate';
+  aggregate?: Maybe<Message_By_Address_Aggregate_Fields>;
+  nodes: Array<Message_By_Address>;
+};
+
+/** aggregate fields of "message_by_address" */
+export type Message_By_Address_Aggregate_Fields = {
+  __typename?: 'message_by_address_aggregate_fields';
+  avg?: Maybe<Message_By_Address_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<Message_By_Address_Max_Fields>;
+  min?: Maybe<Message_By_Address_Min_Fields>;
+  stddev?: Maybe<Message_By_Address_Stddev_Fields>;
+  stddev_pop?: Maybe<Message_By_Address_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Message_By_Address_Stddev_Samp_Fields>;
+  sum?: Maybe<Message_By_Address_Sum_Fields>;
+  var_pop?: Maybe<Message_By_Address_Var_Pop_Fields>;
+  var_samp?: Maybe<Message_By_Address_Var_Samp_Fields>;
+  variance?: Maybe<Message_By_Address_Variance_Fields>;
+};
+
+
+/** aggregate fields of "message_by_address" */
+export type Message_By_Address_Aggregate_FieldsCountArgs = {
+  columns?: Maybe<Array<Message_By_Address_Select_Column>>;
+  distinct?: Maybe<Scalars['Boolean']>;
+};
+
+/** order by aggregate values of table "message_by_address" */
+export type Message_By_Address_Aggregate_Order_By = {
+  avg?: Maybe<Message_By_Address_Avg_Order_By>;
+  count?: Maybe<Order_By>;
+  max?: Maybe<Message_By_Address_Max_Order_By>;
+  min?: Maybe<Message_By_Address_Min_Order_By>;
+  stddev?: Maybe<Message_By_Address_Stddev_Order_By>;
+  stddev_pop?: Maybe<Message_By_Address_Stddev_Pop_Order_By>;
+  stddev_samp?: Maybe<Message_By_Address_Stddev_Samp_Order_By>;
+  sum?: Maybe<Message_By_Address_Sum_Order_By>;
+  var_pop?: Maybe<Message_By_Address_Var_Pop_Order_By>;
+  var_samp?: Maybe<Message_By_Address_Var_Samp_Order_By>;
+  variance?: Maybe<Message_By_Address_Variance_Order_By>;
+};
+
+/** aggregate avg on columns */
+export type Message_By_Address_Avg_Fields = {
+  __typename?: 'message_by_address_avg_fields';
+  index?: Maybe<Scalars['Float']>;
+  inner_index?: Maybe<Scalars['Float']>;
+  slot?: Maybe<Scalars['Float']>;
+};
+
+/** order by avg() on columns of table "message_by_address" */
+export type Message_By_Address_Avg_Order_By = {
+  index?: Maybe<Order_By>;
+  inner_index?: Maybe<Order_By>;
+  slot?: Maybe<Order_By>;
+};
+
+/** Boolean expression to filter rows from the table "message_by_address". All fields are combined with a logical 'AND'. */
+export type Message_By_Address_Bool_Exp = {
+  _and?: Maybe<Array<Message_By_Address_Bool_Exp>>;
+  _not?: Maybe<Message_By_Address_Bool_Exp>;
+  _or?: Maybe<Array<Message_By_Address_Bool_Exp>>;
+  address?: Maybe<String_Comparison_Exp>;
+  index?: Maybe<Int_Comparison_Exp>;
+  inner_index?: Maybe<Int_Comparison_Exp>;
+  message?: Maybe<Message_Bool_Exp>;
+  slot?: Maybe<Bigint_Comparison_Exp>;
+  transaction_hash?: Maybe<String_Comparison_Exp>;
+};
+
+/** aggregate max on columns */
+export type Message_By_Address_Max_Fields = {
+  __typename?: 'message_by_address_max_fields';
+  address?: Maybe<Scalars['String']>;
+  index?: Maybe<Scalars['Int']>;
+  inner_index?: Maybe<Scalars['Int']>;
+  slot?: Maybe<Scalars['bigint']>;
+  transaction_hash?: Maybe<Scalars['String']>;
+};
+
+/** order by max() on columns of table "message_by_address" */
+export type Message_By_Address_Max_Order_By = {
+  address?: Maybe<Order_By>;
+  index?: Maybe<Order_By>;
+  inner_index?: Maybe<Order_By>;
+  slot?: Maybe<Order_By>;
+  transaction_hash?: Maybe<Order_By>;
+};
+
+/** aggregate min on columns */
+export type Message_By_Address_Min_Fields = {
+  __typename?: 'message_by_address_min_fields';
+  address?: Maybe<Scalars['String']>;
+  index?: Maybe<Scalars['Int']>;
+  inner_index?: Maybe<Scalars['Int']>;
+  slot?: Maybe<Scalars['bigint']>;
+  transaction_hash?: Maybe<Scalars['String']>;
+};
+
+/** order by min() on columns of table "message_by_address" */
+export type Message_By_Address_Min_Order_By = {
+  address?: Maybe<Order_By>;
+  index?: Maybe<Order_By>;
+  inner_index?: Maybe<Order_By>;
+  slot?: Maybe<Order_By>;
+  transaction_hash?: Maybe<Order_By>;
+};
+
+/** Ordering options when selecting data from "message_by_address". */
+export type Message_By_Address_Order_By = {
+  address?: Maybe<Order_By>;
+  index?: Maybe<Order_By>;
+  inner_index?: Maybe<Order_By>;
+  message?: Maybe<Message_Order_By>;
+  slot?: Maybe<Order_By>;
+  transaction_hash?: Maybe<Order_By>;
+};
+
+/** select columns of table "message_by_address" */
+export enum Message_By_Address_Select_Column {
+  /** column name */
+  Address = 'address',
+  /** column name */
+  Index = 'index',
+  /** column name */
+  InnerIndex = 'inner_index',
+  /** column name */
+  Slot = 'slot',
+  /** column name */
+  TransactionHash = 'transaction_hash'
+}
+
+/** aggregate stddev on columns */
+export type Message_By_Address_Stddev_Fields = {
+  __typename?: 'message_by_address_stddev_fields';
+  index?: Maybe<Scalars['Float']>;
+  inner_index?: Maybe<Scalars['Float']>;
+  slot?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev() on columns of table "message_by_address" */
+export type Message_By_Address_Stddev_Order_By = {
+  index?: Maybe<Order_By>;
+  inner_index?: Maybe<Order_By>;
+  slot?: Maybe<Order_By>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Message_By_Address_Stddev_Pop_Fields = {
+  __typename?: 'message_by_address_stddev_pop_fields';
+  index?: Maybe<Scalars['Float']>;
+  inner_index?: Maybe<Scalars['Float']>;
+  slot?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_pop() on columns of table "message_by_address" */
+export type Message_By_Address_Stddev_Pop_Order_By = {
+  index?: Maybe<Order_By>;
+  inner_index?: Maybe<Order_By>;
+  slot?: Maybe<Order_By>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Message_By_Address_Stddev_Samp_Fields = {
+  __typename?: 'message_by_address_stddev_samp_fields';
+  index?: Maybe<Scalars['Float']>;
+  inner_index?: Maybe<Scalars['Float']>;
+  slot?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_samp() on columns of table "message_by_address" */
+export type Message_By_Address_Stddev_Samp_Order_By = {
+  index?: Maybe<Order_By>;
+  inner_index?: Maybe<Order_By>;
+  slot?: Maybe<Order_By>;
+};
+
+/** aggregate sum on columns */
+export type Message_By_Address_Sum_Fields = {
+  __typename?: 'message_by_address_sum_fields';
+  index?: Maybe<Scalars['Int']>;
+  inner_index?: Maybe<Scalars['Int']>;
+  slot?: Maybe<Scalars['bigint']>;
+};
+
+/** order by sum() on columns of table "message_by_address" */
+export type Message_By_Address_Sum_Order_By = {
+  index?: Maybe<Order_By>;
+  inner_index?: Maybe<Order_By>;
+  slot?: Maybe<Order_By>;
+};
+
+/** aggregate var_pop on columns */
+export type Message_By_Address_Var_Pop_Fields = {
+  __typename?: 'message_by_address_var_pop_fields';
+  index?: Maybe<Scalars['Float']>;
+  inner_index?: Maybe<Scalars['Float']>;
+  slot?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_pop() on columns of table "message_by_address" */
+export type Message_By_Address_Var_Pop_Order_By = {
+  index?: Maybe<Order_By>;
+  inner_index?: Maybe<Order_By>;
+  slot?: Maybe<Order_By>;
+};
+
+/** aggregate var_samp on columns */
+export type Message_By_Address_Var_Samp_Fields = {
+  __typename?: 'message_by_address_var_samp_fields';
+  index?: Maybe<Scalars['Float']>;
+  inner_index?: Maybe<Scalars['Float']>;
+  slot?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_samp() on columns of table "message_by_address" */
+export type Message_By_Address_Var_Samp_Order_By = {
+  index?: Maybe<Order_By>;
+  inner_index?: Maybe<Order_By>;
+  slot?: Maybe<Order_By>;
+};
+
+/** aggregate variance on columns */
+export type Message_By_Address_Variance_Fields = {
+  __typename?: 'message_by_address_variance_fields';
+  index?: Maybe<Scalars['Float']>;
+  inner_index?: Maybe<Scalars['Float']>;
+  slot?: Maybe<Scalars['Float']>;
+};
+
+/** order by variance() on columns of table "message_by_address" */
+export type Message_By_Address_Variance_Order_By = {
+  index?: Maybe<Order_By>;
+  inner_index?: Maybe<Order_By>;
+  slot?: Maybe<Order_By>;
 };
 
 /** aggregate max on columns */
@@ -1322,6 +1616,7 @@ export type Message_Max_Fields = {
   inner_index?: Maybe<Scalars['Int']>;
   program?: Maybe<Scalars['String']>;
   raw_data?: Maybe<Scalars['String']>;
+  slot?: Maybe<Scalars['bigint']>;
   transaction_hash?: Maybe<Scalars['String']>;
   type?: Maybe<Scalars['String']>;
 };
@@ -1332,6 +1627,7 @@ export type Message_Max_Order_By = {
   inner_index?: Maybe<Order_By>;
   program?: Maybe<Order_By>;
   raw_data?: Maybe<Order_By>;
+  slot?: Maybe<Order_By>;
   transaction_hash?: Maybe<Order_By>;
   type?: Maybe<Order_By>;
 };
@@ -1343,6 +1639,7 @@ export type Message_Min_Fields = {
   inner_index?: Maybe<Scalars['Int']>;
   program?: Maybe<Scalars['String']>;
   raw_data?: Maybe<Scalars['String']>;
+  slot?: Maybe<Scalars['bigint']>;
   transaction_hash?: Maybe<Scalars['String']>;
   type?: Maybe<Scalars['String']>;
 };
@@ -1353,6 +1650,7 @@ export type Message_Min_Order_By = {
   inner_index?: Maybe<Order_By>;
   program?: Maybe<Order_By>;
   raw_data?: Maybe<Order_By>;
+  slot?: Maybe<Order_By>;
   transaction_hash?: Maybe<Order_By>;
   type?: Maybe<Order_By>;
 };
@@ -1361,9 +1659,10 @@ export type Message_Min_Order_By = {
 export type Message_Order_By = {
   index?: Maybe<Order_By>;
   inner_index?: Maybe<Order_By>;
-  involved_accounts?: Maybe<Order_By>;
+  involved_accounts_aggregate?: Maybe<Message_By_Address_Aggregate_Order_By>;
   program?: Maybe<Order_By>;
   raw_data?: Maybe<Order_By>;
+  slot?: Maybe<Order_By>;
   transaction?: Maybe<Transaction_Order_By>;
   transaction_hash?: Maybe<Order_By>;
   type?: Maybe<Order_By>;
@@ -1377,11 +1676,11 @@ export enum Message_Select_Column {
   /** column name */
   InnerIndex = 'inner_index',
   /** column name */
-  InvolvedAccounts = 'involved_accounts',
-  /** column name */
   Program = 'program',
   /** column name */
   RawData = 'raw_data',
+  /** column name */
+  Slot = 'slot',
   /** column name */
   TransactionHash = 'transaction_hash',
   /** column name */
@@ -1395,12 +1694,14 @@ export type Message_Stddev_Fields = {
   __typename?: 'message_stddev_fields';
   index?: Maybe<Scalars['Float']>;
   inner_index?: Maybe<Scalars['Float']>;
+  slot?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev() on columns of table "message" */
 export type Message_Stddev_Order_By = {
   index?: Maybe<Order_By>;
   inner_index?: Maybe<Order_By>;
+  slot?: Maybe<Order_By>;
 };
 
 /** aggregate stddev_pop on columns */
@@ -1408,12 +1709,14 @@ export type Message_Stddev_Pop_Fields = {
   __typename?: 'message_stddev_pop_fields';
   index?: Maybe<Scalars['Float']>;
   inner_index?: Maybe<Scalars['Float']>;
+  slot?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev_pop() on columns of table "message" */
 export type Message_Stddev_Pop_Order_By = {
   index?: Maybe<Order_By>;
   inner_index?: Maybe<Order_By>;
+  slot?: Maybe<Order_By>;
 };
 
 /** aggregate stddev_samp on columns */
@@ -1421,12 +1724,14 @@ export type Message_Stddev_Samp_Fields = {
   __typename?: 'message_stddev_samp_fields';
   index?: Maybe<Scalars['Float']>;
   inner_index?: Maybe<Scalars['Float']>;
+  slot?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev_samp() on columns of table "message" */
 export type Message_Stddev_Samp_Order_By = {
   index?: Maybe<Order_By>;
   inner_index?: Maybe<Order_By>;
+  slot?: Maybe<Order_By>;
 };
 
 /** aggregate sum on columns */
@@ -1434,12 +1739,14 @@ export type Message_Sum_Fields = {
   __typename?: 'message_sum_fields';
   index?: Maybe<Scalars['Int']>;
   inner_index?: Maybe<Scalars['Int']>;
+  slot?: Maybe<Scalars['bigint']>;
 };
 
 /** order by sum() on columns of table "message" */
 export type Message_Sum_Order_By = {
   index?: Maybe<Order_By>;
   inner_index?: Maybe<Order_By>;
+  slot?: Maybe<Order_By>;
 };
 
 /** aggregate var_pop on columns */
@@ -1447,12 +1754,14 @@ export type Message_Var_Pop_Fields = {
   __typename?: 'message_var_pop_fields';
   index?: Maybe<Scalars['Float']>;
   inner_index?: Maybe<Scalars['Float']>;
+  slot?: Maybe<Scalars['Float']>;
 };
 
 /** order by var_pop() on columns of table "message" */
 export type Message_Var_Pop_Order_By = {
   index?: Maybe<Order_By>;
   inner_index?: Maybe<Order_By>;
+  slot?: Maybe<Order_By>;
 };
 
 /** aggregate var_samp on columns */
@@ -1460,12 +1769,14 @@ export type Message_Var_Samp_Fields = {
   __typename?: 'message_var_samp_fields';
   index?: Maybe<Scalars['Float']>;
   inner_index?: Maybe<Scalars['Float']>;
+  slot?: Maybe<Scalars['Float']>;
 };
 
 /** order by var_samp() on columns of table "message" */
 export type Message_Var_Samp_Order_By = {
   index?: Maybe<Order_By>;
   inner_index?: Maybe<Order_By>;
+  slot?: Maybe<Order_By>;
 };
 
 /** aggregate variance on columns */
@@ -1473,20 +1784,14 @@ export type Message_Variance_Fields = {
   __typename?: 'message_variance_fields';
   index?: Maybe<Scalars['Float']>;
   inner_index?: Maybe<Scalars['Float']>;
+  slot?: Maybe<Scalars['Float']>;
 };
 
 /** order by variance() on columns of table "message" */
 export type Message_Variance_Order_By = {
   index?: Maybe<Order_By>;
   inner_index?: Maybe<Order_By>;
-};
-
-export type Messages_By_Address_Args = {
-  addresses?: Maybe<Scalars['_text']>;
-  limit?: Maybe<Scalars['bigint']>;
-  offset?: Maybe<Scalars['bigint']>;
-  programs?: Maybe<Scalars['_text']>;
-  types?: Maybe<Scalars['_text']>;
+  slot?: Maybe<Order_By>;
 };
 
 /** columns and relationships of "multisig" */
@@ -2019,10 +2324,10 @@ export type Query_Root = {
   message: Array<Message>;
   /** fetch aggregated fields from the table: "message" */
   message_aggregate: Message_Aggregate;
-  /** execute function "messages_by_address" which returns "message" */
-  messages_by_address: Array<Message>;
-  /** execute function "messages_by_address" and query aggregates on result of table type "message" */
-  messages_by_address_aggregate: Message_Aggregate;
+  /** fetch data from the table: "message_by_address" */
+  message_by_address: Array<Message_By_Address>;
+  /** fetch aggregated fields from the table: "message_by_address" */
+  message_by_address_aggregate: Message_By_Address_Aggregate;
   /** fetch data from the table: "multisig" */
   multisig: Array<Multisig>;
   /** fetch aggregated fields from the table: "multisig" */
@@ -2097,8 +2402,6 @@ export type Query_Root = {
   token_price: Array<Token_Price>;
   /** fetch aggregated fields from the table: "token_price" */
   token_price_aggregate: Token_Price_Aggregate;
-  /** fetch data from the table: "token_price" using primary key columns */
-  token_price_by_pk?: Maybe<Token_Price>;
   /** fetch data from the table: "token_supply" */
   token_supply: Array<Token_Supply>;
   /** fetch aggregated fields from the table: "token_supply" */
@@ -2109,6 +2412,8 @@ export type Query_Root = {
   token_unit: Array<Token_Unit>;
   /** fetch aggregated fields from the table: "token_unit" */
   token_unit_aggregate: Token_Unit_Aggregate;
+  /** fetch data from the table: "token_unit" using primary key columns */
+  token_unit_by_pk?: Maybe<Token_Unit>;
   /** fetch data from the table: "transaction" */
   transaction: Array<Transaction>;
   /** fetch aggregated fields from the table: "transaction" */
@@ -2290,23 +2595,21 @@ export type Query_RootMessage_AggregateArgs = {
 };
 
 
-export type Query_RootMessages_By_AddressArgs = {
-  args: Messages_By_Address_Args;
-  distinct_on?: Maybe<Array<Message_Select_Column>>;
+export type Query_RootMessage_By_AddressArgs = {
+  distinct_on?: Maybe<Array<Message_By_Address_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Message_Order_By>>;
-  where?: Maybe<Message_Bool_Exp>;
+  order_by?: Maybe<Array<Message_By_Address_Order_By>>;
+  where?: Maybe<Message_By_Address_Bool_Exp>;
 };
 
 
-export type Query_RootMessages_By_Address_AggregateArgs = {
-  args: Messages_By_Address_Args;
-  distinct_on?: Maybe<Array<Message_Select_Column>>;
+export type Query_RootMessage_By_Address_AggregateArgs = {
+  distinct_on?: Maybe<Array<Message_By_Address_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Message_Order_By>>;
-  where?: Maybe<Message_Bool_Exp>;
+  order_by?: Maybe<Array<Message_By_Address_Order_By>>;
+  where?: Maybe<Message_By_Address_Bool_Exp>;
 };
 
 
@@ -2599,11 +2902,6 @@ export type Query_RootToken_Price_AggregateArgs = {
 };
 
 
-export type Query_RootToken_Price_By_PkArgs = {
-  unit_name: Scalars['String'];
-};
-
-
 export type Query_RootToken_SupplyArgs = {
   distinct_on?: Maybe<Array<Token_Supply_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -2642,6 +2940,11 @@ export type Query_RootToken_Unit_AggregateArgs = {
   offset?: Maybe<Scalars['Int']>;
   order_by?: Maybe<Array<Token_Unit_Order_By>>;
   where?: Maybe<Token_Unit_Bool_Exp>;
+};
+
+
+export type Query_RootToken_Unit_By_PkArgs = {
+  address: Scalars['String'];
 };
 
 
@@ -3174,10 +3477,10 @@ export type Subscription_Root = {
   message: Array<Message>;
   /** fetch aggregated fields from the table: "message" */
   message_aggregate: Message_Aggregate;
-  /** execute function "messages_by_address" which returns "message" */
-  messages_by_address: Array<Message>;
-  /** execute function "messages_by_address" and query aggregates on result of table type "message" */
-  messages_by_address_aggregate: Message_Aggregate;
+  /** fetch data from the table: "message_by_address" */
+  message_by_address: Array<Message_By_Address>;
+  /** fetch aggregated fields from the table: "message_by_address" */
+  message_by_address_aggregate: Message_By_Address_Aggregate;
   /** fetch data from the table: "multisig" */
   multisig: Array<Multisig>;
   /** fetch aggregated fields from the table: "multisig" */
@@ -3252,8 +3555,6 @@ export type Subscription_Root = {
   token_price: Array<Token_Price>;
   /** fetch aggregated fields from the table: "token_price" */
   token_price_aggregate: Token_Price_Aggregate;
-  /** fetch data from the table: "token_price" using primary key columns */
-  token_price_by_pk?: Maybe<Token_Price>;
   /** fetch data from the table: "token_supply" */
   token_supply: Array<Token_Supply>;
   /** fetch aggregated fields from the table: "token_supply" */
@@ -3264,6 +3565,8 @@ export type Subscription_Root = {
   token_unit: Array<Token_Unit>;
   /** fetch aggregated fields from the table: "token_unit" */
   token_unit_aggregate: Token_Unit_Aggregate;
+  /** fetch data from the table: "token_unit" using primary key columns */
+  token_unit_by_pk?: Maybe<Token_Unit>;
   /** fetch data from the table: "transaction" */
   transaction: Array<Transaction>;
   /** fetch aggregated fields from the table: "transaction" */
@@ -3445,23 +3748,21 @@ export type Subscription_RootMessage_AggregateArgs = {
 };
 
 
-export type Subscription_RootMessages_By_AddressArgs = {
-  args: Messages_By_Address_Args;
-  distinct_on?: Maybe<Array<Message_Select_Column>>;
+export type Subscription_RootMessage_By_AddressArgs = {
+  distinct_on?: Maybe<Array<Message_By_Address_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Message_Order_By>>;
-  where?: Maybe<Message_Bool_Exp>;
+  order_by?: Maybe<Array<Message_By_Address_Order_By>>;
+  where?: Maybe<Message_By_Address_Bool_Exp>;
 };
 
 
-export type Subscription_RootMessages_By_Address_AggregateArgs = {
-  args: Messages_By_Address_Args;
-  distinct_on?: Maybe<Array<Message_Select_Column>>;
+export type Subscription_RootMessage_By_Address_AggregateArgs = {
+  distinct_on?: Maybe<Array<Message_By_Address_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Message_Order_By>>;
-  where?: Maybe<Message_Bool_Exp>;
+  order_by?: Maybe<Array<Message_By_Address_Order_By>>;
+  where?: Maybe<Message_By_Address_Bool_Exp>;
 };
 
 
@@ -3754,11 +4055,6 @@ export type Subscription_RootToken_Price_AggregateArgs = {
 };
 
 
-export type Subscription_RootToken_Price_By_PkArgs = {
-  unit_name: Scalars['String'];
-};
-
-
 export type Subscription_RootToken_SupplyArgs = {
   distinct_on?: Maybe<Array<Token_Supply_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -3797,6 +4093,11 @@ export type Subscription_RootToken_Unit_AggregateArgs = {
   offset?: Maybe<Scalars['Int']>;
   order_by?: Maybe<Array<Token_Unit_Order_By>>;
   where?: Maybe<Token_Unit_Bool_Exp>;
+};
+
+
+export type Subscription_RootToken_Unit_By_PkArgs = {
+  address: Scalars['String'];
 };
 
 
@@ -4540,10 +4841,10 @@ export type Token_Price = {
   __typename?: 'token_price';
   market_cap: Scalars['bigint'];
   price: Scalars['numeric'];
+  symbol: Scalars['String'];
   timestamp: Scalars['timestamp'];
   /** An object relationship */
-  token_unit: Token_Unit;
-  unit_name: Scalars['String'];
+  token_unit?: Maybe<Token_Unit>;
 };
 
 /** aggregated selection of "token_price" */
@@ -4590,9 +4891,9 @@ export type Token_Price_Bool_Exp = {
   _or?: Maybe<Array<Token_Price_Bool_Exp>>;
   market_cap?: Maybe<Bigint_Comparison_Exp>;
   price?: Maybe<Numeric_Comparison_Exp>;
+  symbol?: Maybe<String_Comparison_Exp>;
   timestamp?: Maybe<Timestamp_Comparison_Exp>;
   token_unit?: Maybe<Token_Unit_Bool_Exp>;
-  unit_name?: Maybe<String_Comparison_Exp>;
 };
 
 /** aggregate max on columns */
@@ -4600,8 +4901,8 @@ export type Token_Price_Max_Fields = {
   __typename?: 'token_price_max_fields';
   market_cap?: Maybe<Scalars['bigint']>;
   price?: Maybe<Scalars['numeric']>;
+  symbol?: Maybe<Scalars['String']>;
   timestamp?: Maybe<Scalars['timestamp']>;
-  unit_name?: Maybe<Scalars['String']>;
 };
 
 /** aggregate min on columns */
@@ -4609,17 +4910,17 @@ export type Token_Price_Min_Fields = {
   __typename?: 'token_price_min_fields';
   market_cap?: Maybe<Scalars['bigint']>;
   price?: Maybe<Scalars['numeric']>;
+  symbol?: Maybe<Scalars['String']>;
   timestamp?: Maybe<Scalars['timestamp']>;
-  unit_name?: Maybe<Scalars['String']>;
 };
 
 /** Ordering options when selecting data from "token_price". */
 export type Token_Price_Order_By = {
   market_cap?: Maybe<Order_By>;
   price?: Maybe<Order_By>;
+  symbol?: Maybe<Order_By>;
   timestamp?: Maybe<Order_By>;
   token_unit?: Maybe<Token_Unit_Order_By>;
-  unit_name?: Maybe<Order_By>;
 };
 
 /** select columns of table "token_price" */
@@ -4629,9 +4930,9 @@ export enum Token_Price_Select_Column {
   /** column name */
   Price = 'price',
   /** column name */
-  Timestamp = 'timestamp',
+  Symbol = 'symbol',
   /** column name */
-  UnitName = 'unit_name'
+  Timestamp = 'timestamp'
 }
 
 /** aggregate stddev on columns */
@@ -4845,11 +5146,14 @@ export type Token_Supply_Variance_Fields = {
 export type Token_Unit = {
   __typename?: 'token_unit';
   address: Scalars['String'];
+  description: Scalars['String'];
+  logo_uri: Scalars['String'];
   /** An object relationship */
   token?: Maybe<Token>;
   /** An object relationship */
   token_price?: Maybe<Token_Price>;
   unit_name: Scalars['String'];
+  website: Scalars['String'];
 };
 
 /** aggregated selection of "token_unit" */
@@ -4880,31 +5184,43 @@ export type Token_Unit_Bool_Exp = {
   _not?: Maybe<Token_Unit_Bool_Exp>;
   _or?: Maybe<Array<Token_Unit_Bool_Exp>>;
   address?: Maybe<String_Comparison_Exp>;
+  description?: Maybe<String_Comparison_Exp>;
+  logo_uri?: Maybe<String_Comparison_Exp>;
   token?: Maybe<Token_Bool_Exp>;
   token_price?: Maybe<Token_Price_Bool_Exp>;
   unit_name?: Maybe<String_Comparison_Exp>;
+  website?: Maybe<String_Comparison_Exp>;
 };
 
 /** aggregate max on columns */
 export type Token_Unit_Max_Fields = {
   __typename?: 'token_unit_max_fields';
   address?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+  logo_uri?: Maybe<Scalars['String']>;
   unit_name?: Maybe<Scalars['String']>;
+  website?: Maybe<Scalars['String']>;
 };
 
 /** aggregate min on columns */
 export type Token_Unit_Min_Fields = {
   __typename?: 'token_unit_min_fields';
   address?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+  logo_uri?: Maybe<Scalars['String']>;
   unit_name?: Maybe<Scalars['String']>;
+  website?: Maybe<Scalars['String']>;
 };
 
 /** Ordering options when selecting data from "token_unit". */
 export type Token_Unit_Order_By = {
   address?: Maybe<Order_By>;
+  description?: Maybe<Order_By>;
+  logo_uri?: Maybe<Order_By>;
   token?: Maybe<Token_Order_By>;
   token_price?: Maybe<Token_Price_Order_By>;
   unit_name?: Maybe<Order_By>;
+  website?: Maybe<Order_By>;
 };
 
 /** select columns of table "token_unit" */
@@ -4912,7 +5228,13 @@ export enum Token_Unit_Select_Column {
   /** column name */
   Address = 'address',
   /** column name */
-  UnitName = 'unit_name'
+  Description = 'description',
+  /** column name */
+  LogoUri = 'logo_uri',
+  /** column name */
+  UnitName = 'unit_name',
+  /** column name */
+  Website = 'website'
 }
 
 /** aggregate var_pop on columns */
@@ -5873,7 +6195,21 @@ export type TokenPriceListenerSubscriptionVariables = Exact<{
 export type TokenPriceListenerSubscription = { tokenPrice: Array<(
     { __typename?: 'token_price' }
     & Pick<Token_Price, 'price' | 'timestamp'>
-    & { marketCap: Token_Price['market_cap'], unitName: Token_Price['unit_name'] }
+    & { marketCap: Token_Price['market_cap'], unitName: Token_Price['symbol'] }
+  )> };
+
+export type TokensQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type TokensQuery = { tokenUnit: Array<(
+    { __typename?: 'token_unit' }
+    & Pick<Token_Unit, 'address'>
+    & { unitName: Token_Unit['unit_name'], logo: Token_Unit['logo_uri'] }
+    & { tokenPrice?: Maybe<(
+      { __typename?: 'token_price' }
+      & Pick<Token_Price, 'price'>
+      & { marketCap: Token_Price['market_cap'] }
+    )> }
   )> };
 
 export type TransactionDetailsQueryVariables = Exact<{
@@ -6262,7 +6598,7 @@ export type EpochLazyQueryHookResult = ReturnType<typeof useEpochLazyQuery>;
 export type EpochQueryResult = Apollo.QueryResult<EpochQuery, EpochQueryVariables>;
 export const MarketDataDocument = gql`
     query MarketData($denom: String) {
-  tokenPrice: token_price(where: {unit_name: {_eq: $denom}}) {
+  tokenPrice: token_price(where: {symbol: {_eq: $denom}}) {
     marketCap: market_cap
     price
   }
@@ -6304,11 +6640,11 @@ export type MarketDataLazyQueryHookResult = ReturnType<typeof useMarketDataLazyQ
 export type MarketDataQueryResult = Apollo.QueryResult<MarketDataQuery, MarketDataQueryVariables>;
 export const TokenPriceListenerDocument = gql`
     subscription TokenPriceListener($denom: String) {
-  tokenPrice: token_price(where: {unit_name: {_eq: $denom}}) {
+  tokenPrice: token_price(where: {symbol: {_eq: $denom}}) {
     price
     timestamp
     marketCap: market_cap
-    unitName: unit_name
+    unitName: symbol
   }
 }
     `;
@@ -6335,6 +6671,46 @@ export function useTokenPriceListenerSubscription(baseOptions?: Apollo.Subscript
       }
 export type TokenPriceListenerSubscriptionHookResult = ReturnType<typeof useTokenPriceListenerSubscription>;
 export type TokenPriceListenerSubscriptionResult = Apollo.SubscriptionResult<TokenPriceListenerSubscription>;
+export const TokensDocument = gql`
+    query Tokens {
+  tokenUnit: token_unit(order_by: {unit_name: asc}) {
+    address
+    unitName: unit_name
+    logo: logo_uri
+    tokenPrice: token_price {
+      marketCap: market_cap
+      price
+    }
+  }
+}
+    `;
+
+/**
+ * __useTokensQuery__
+ *
+ * To run a query within a React component, call `useTokensQuery` and pass it any options that fit your needs.
+ * When your component renders, `useTokensQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useTokensQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useTokensQuery(baseOptions?: Apollo.QueryHookOptions<TokensQuery, TokensQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<TokensQuery, TokensQueryVariables>(TokensDocument, options);
+      }
+export function useTokensLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<TokensQuery, TokensQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<TokensQuery, TokensQueryVariables>(TokensDocument, options);
+        }
+export type TokensQueryHookResult = ReturnType<typeof useTokensQuery>;
+export type TokensLazyQueryHookResult = ReturnType<typeof useTokensLazyQuery>;
+export type TokensQueryResult = Apollo.QueryResult<TokensQuery, TokensQueryVariables>;
 export const TransactionDetailsDocument = gql`
     query TransactionDetails($hash: String) {
   transaction(where: {hash: {_eq: $hash}}, limit: 1) {
