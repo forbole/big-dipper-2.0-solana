@@ -60,8 +60,9 @@ export const useValidatorRecoil = () => {
         profiles.push(fetchDesmosProfile(address));
       });
     }
-
-    profiles = await Promise.allSettled(profiles);
+    // ryuash
+    profiles = await Promise.allSettled([]);
+    // profiles = await Promise.allSettled(profiles);
     data?.validator?.filter((x) => x.address).forEach((x, i) => {
       const { address } = x;
 
