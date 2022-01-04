@@ -44,6 +44,8 @@ const Tokens = () => {
             itemCount={items.length}
             loadMoreItems={() => null}
             handleSort={handleSort}
+            sortDirection={state.sortDirection}
+            sortKey={state.sortKey}
           />
         </LoadAndExist>
       </Layout>

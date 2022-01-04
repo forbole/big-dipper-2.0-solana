@@ -80,25 +80,25 @@ export const useProposals = () => {
       });
     }
 
-    // if (state.sortKey && state.sortDirection) {
-    //   sorted.sort((a, b) => {
-    //     let compareA = R.pathOr(undefined, [...state.sortKey.split('.')], a);
-    //     let compareB = R.pathOr(undefined, [...state.sortKey.split('.')], b);
+    if (state.sortKey && state.sortDirection) {
+      sorted.sort((a, b) => {
+        let compareA = R.pathOr(undefined, [...state.sortKey.split('.')], a);
+        let compareB = R.pathOr(undefined, [...state.sortKey.split('.')], b);
 
-    //     if (typeof compareA === 'string') {
-    //       compareA = compareA.toLowerCase();
-    //       compareB = compareB.toLowerCase();
-    //     }
+        if (typeof compareA === 'string') {
+          compareA = compareA.toLowerCase();
+          compareB = compareB.toLowerCase();
+        }
 
-    //     if (compareA < compareB) {
-    //       return state.sortDirection === 'asc' ? -1 : 1;
-    //     }
-    //     if (compareA > compareB) {
-    //       return state.sortDirection === 'asc' ? 1 : -1;
-    //     }
-    //     return 0;
-    //   });
-    // }
+        if (compareA < compareB) {
+          return state.sortDirection === 'asc' ? -1 : 1;
+        }
+        if (compareA > compareB) {
+          return state.sortDirection === 'asc' ? 1 : -1;
+        }
+        return 0;
+      });
+    }
 
     return sorted;
   };
