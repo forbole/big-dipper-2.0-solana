@@ -57,12 +57,12 @@ export const useValidatorRecoil = () => {
     if (chainConfig.extra.profile) {
       data?.validator?.filter((x) => x.address).forEach((x) => {
         const { address } = x;
-        profiles.push(fetchDesmosProfile(address));
+        // ryuash
+        // profiles.push(fetchDesmosProfile(address));
       });
     }
-    // ryuash
-    profiles = await Promise.allSettled([]);
-    // profiles = await Promise.allSettled(profiles);
+
+    profiles = await Promise.allSettled(profiles);
     data?.validator?.filter((x) => x.address).forEach((x, i) => {
       const { address } = x;
 

@@ -12,3 +12,4 @@
 - Add tx details ([\#36](https://github.com/forbole/big-dipper-2.0-solana/issues/36))
 - Add tokens list ([\#40](https://github.com/forbole/big-dipper-2.0-solana/issues/40))
 - Add tokens list searchbar ([\#45](https://github.com/forbole/big-dipper-2.0-solana/issues/45))
+- Add tokens list sorting ([\#46](https://github.com/forbole/big-dipper-2.0-solana/issues/46))

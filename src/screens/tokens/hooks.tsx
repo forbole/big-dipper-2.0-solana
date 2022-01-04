@@ -66,7 +66,6 @@ export const useProposals = () => {
   };
 
   const sortItems = (items: TokenType[]) => {
-    console.log('i\'v been called');
     let sorted: TokenType[] = R.clone(items);
 
     if (search) {
@@ -78,15 +77,16 @@ export const useProposals = () => {
         );
       });
     }
-    console.log(state.sortKey, 'key');
-    if (state.sortKey && state.sortDirection) {
-      sorted.sort((a, b) => {
-        let compareA = R.pathOr(undefined, [...state.sortKey.split('.')], a);
-        let compareB = R.pathOr(undefined, [...state.sortKey.split('.')], b);
 
-        // if (state.sortKey === 'price' && a.token === '007 Exchange') {
-        //   console.log(compareA, '007 Exchange');
-        // }
+    if (state.sortKey && state.sortDirection) {
+      let defaultValue;
+      const edgeCases = ['price', 'marketCap'];
+      if (edgeCases.includes(state.sortKey)) {
+        defaultValue = 0;
+      }
+      sorted.sort((a, b) => {
+        let compareA = R.pathOr(defaultValue, [...state.sortKey.split('.')], a);
+        let compareB = R.pathOr(defaultValue, [...state.sortKey.split('.')], b);
 
         if (typeof compareA === 'string') {
           compareA = compareA.toLowerCase();
