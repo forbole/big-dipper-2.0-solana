@@ -16,6 +16,8 @@ export const useProposals = () => {
     items: [],
     hasNextPage: false,
     isNextPageLoading: false,
+    sortKey: 'token',
+    sortDirection: 'asc',
   });
 
   const handleSetState = (stateChange: any) => {
@@ -50,6 +52,19 @@ export const useProposals = () => {
     setSearch(value);
   };
 
+  const handleSort = (key: string) => {
+    if (key === state.sortKey) {
+      handleSetState({
+        sortDirection: state.sortDirection === 'asc' ? 'desc' : 'asc',
+      });
+    } else {
+      handleSetState({
+        sortKey: key,
+        sortDirection: 'asc', // new key so we start the sort by asc
+      });
+    }
+  };
+
   const sortItems = (items: TokenType[]) => {
     let sorted: TokenType[] = R.clone(items);
 
@@ -63,25 +78,30 @@ export const useProposals = () => {
       });
     }
 
-    // if (state.sortKey && state.sortDirection) {
-    //   sorted.sort((a, b) => {
-    //     let compareA = R.pathOr(undefined, [...state.sortKey.split('.')], a);
-    //     let compareB = R.pathOr(undefined, [...state.sortKey.split('.')], b);
+    if (state.sortKey && state.sortDirection) {
+      let defaultValue;
+      const edgeCases = ['price', 'marketCap'];
+      if (edgeCases.includes(state.sortKey)) {
+        defaultValue = 0;
+      }
+      sorted.sort((a, b) => {
+        let compareA = R.pathOr(defaultValue, [...state.sortKey.split('.')], a);
+        let compareB = R.pathOr(defaultValue, [...state.sortKey.split('.')], b);
 
-    //     if (typeof compareA === 'string') {
-    //       compareA = compareA.toLowerCase();
-    //       compareB = compareB.toLowerCase();
-    //     }
+        if (typeof compareA === 'string') {
+          compareA = compareA.toLowerCase();
+          compareB = compareB.toLowerCase();
+        }
 
-    //     if (compareA < compareB) {
-    //       return state.sortDirection === 'asc' ? -1 : 1;
-    //     }
-    //     if (compareA > compareB) {
-    //       return state.sortDirection === 'asc' ? 1 : -1;
-    //     }
-    //     return 0;
-    //   });
-    // }
+        if (compareA < compareB) {
+          return state.sortDirection === 'asc' ? -1 : 1;
+        }
+        if (compareA > compareB) {
+          return state.sortDirection === 'asc' ? 1 : -1;
+        }
+        return 0;
+      });
+    }
 
     return sorted;
   };
@@ -90,5 +110,6 @@ export const useProposals = () => {
     state,
     handleSearch,
     sortItems,
+    handleSort,
   };
 };

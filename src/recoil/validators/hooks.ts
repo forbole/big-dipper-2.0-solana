@@ -57,7 +57,8 @@ export const useValidatorRecoil = () => {
     if (chainConfig.extra.profile) {
       data?.validator?.filter((x) => x.address).forEach((x) => {
         const { address } = x;
-        profiles.push(fetchDesmosProfile(address));
+        // ryuash
+        // profiles.push(fetchDesmosProfile(address));
       });
     }
 

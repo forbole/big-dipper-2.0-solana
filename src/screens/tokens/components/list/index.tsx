@@ -24,6 +24,9 @@ const TokensList: React.FC<{
   itemCount: number;
   loadMoreItems: () => void;
   handleSearch: (value: string) => void;
+  handleSort: (value:string) => void;
+  sortDirection: 'desc' | 'asc';
+  sortKey: string;
 }> = ({
   className,
   items,
@@ -31,6 +34,9 @@ const TokensList: React.FC<{
   itemCount,
   loadMoreItems,
   handleSearch,
+  sortDirection,
+  sortKey,
+  handleSort,
 }) => {
   const { t } = useTranslation('tokens');
   const classes = useStyles();
@@ -57,6 +63,9 @@ const TokensList: React.FC<{
                 itemCount={itemCount}
                 loadMoreItems={loadMoreItems}
                 isItemLoaded={isItemLoaded}
+                handleSort={handleSort}
+                sortDirection={sortDirection}
+                sortKey={sortKey}
               />
             ) : (
               <Mobile

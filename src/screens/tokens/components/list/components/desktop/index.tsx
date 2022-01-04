@@ -8,7 +8,9 @@ import InfiniteLoader from 'react-window-infinite-loader';
 import useTranslation from 'next-translate/useTranslation';
 import { Typography } from '@material-ui/core';
 import { VariableSizeGrid as Grid } from 'react-window';
-import { Loading } from '@components';
+import {
+  Loading, SortArrows,
+} from '@components';
 import { useGrid } from '@hooks';
 import { mergeRefs } from '@src/utils/merge_refs';
 import { useStyles } from './styles';
@@ -19,14 +21,20 @@ const Desktop: React.FC<{
   className?: string;
   items: TokenType[];
   itemCount: number;
+  sortDirection: 'desc' | 'asc';
+  sortKey: string;
   loadMoreItems: (any) => void;
   isItemLoaded?: (index: number) => boolean;
+  handleSort: (value: string) => void;
 }> = ({
   className,
   items,
   itemCount,
   loadMoreItems,
   isItemLoaded,
+  handleSort,
+  sortKey,
+  sortDirection,
 }) => {
   const { t } = useTranslation('tokens');
   const classes = useStyles();
@@ -86,20 +94,42 @@ const Desktop: React.FC<{
                   columnIndex, style,
                 }) => {
                   const {
-                    key, align,
+                    key,
+                    align,
+                    component,
+                    sort,
+                    sortKey: sortingKey,
                   } = columns[columnIndex];
 
                   return (
                     <div
                       style={style}
-                      className={classes.cell}
+                      className={classnames(
+                        classes.cell,
+                        {
+                          [classes.flexCells]: component || sort,
+                          [align]: sort || component,
+                          sort,
+                        },
+                      )}
+                      onClick={() => (sort ? handleSort(sortingKey) : null)}
+                      role="button"
                     >
+                      {component || (
                       <Typography
                         variant="h4"
                         align={align}
                       >
                         {t(key)}
+                        {!!sort && (
+                        <SortArrows
+                          sort={sortKey === sortingKey
+                            ? sortDirection
+                            : undefined}
+                        />
+                        )}
                       </Typography>
+                      )}
                     </div>
                   );
                 }}

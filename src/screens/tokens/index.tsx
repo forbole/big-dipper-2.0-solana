@@ -15,6 +15,7 @@ const Tokens = () => {
   const {
     state,
     handleSearch,
+    handleSort,
     sortItems,
   } = useProposals();
 
@@ -42,6 +43,9 @@ const Tokens = () => {
             isItemLoaded={() => true}
             itemCount={items.length}
             loadMoreItems={() => null}
+            handleSort={handleSort}
+            sortDirection={state.sortDirection}
+            sortKey={state.sortKey}
           />
         </LoadAndExist>
       </Layout>

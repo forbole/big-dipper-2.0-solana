@@ -13,7 +13,7 @@ const mockI18n = {
 jest.mock('next-translate/useTranslation', () => () => mockI18n);
 jest.mock('@components', () => ({
   Loading: (props) => <div id="Loading" {...props} />,
-  AvatarName: (props) => <div id="AvatarName" {...props} />,
+  SortArrows: (props) => <div id="SortArrows" {...props} />,
 }));
 
 jest.mock('react-virtualized-auto-sizer', () => ({ children }: any) => children({
@@ -32,16 +32,16 @@ describe('screen: Home/Blocks/Desktop', () => {
             {
               token: 'BTC',
               price: 1802,
-              change: 10,
-              volume: 15902496558,
               marketCap: 515912496,
-              holders: 2178994,
               address: '9n4nbM75f5Ui33ZbPYXn59EwSgE8CGsHtAeTH5YFeJ9E',
             },
           ]}
           itemCount={1}
           loadMoreItems={() => jest.fn()}
           isItemLoaded={() => true}
+          handleSort={jest.fn()}
+          sortDirection="asc"
+          sortKey="token"
         />
       </MockTheme>,
     );

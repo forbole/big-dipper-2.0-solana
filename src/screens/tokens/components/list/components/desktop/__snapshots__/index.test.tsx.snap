@@ -29,6 +29,8 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
     >
       <div
         className="makeStyles-cell"
+        onClick={[Function]}
+        role="button"
         style={
           Object {
             "height": 50,
@@ -47,7 +49,9 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
         </h4>
       </div>
       <div
-        className="makeStyles-cell"
+        className="makeStyles-cell makeStyles-flexCells undefined sort"
+        onClick={[Function]}
+        role="button"
         style={
           Object {
             "height": 50,
@@ -63,10 +67,16 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
           className="MuiTypography-root MuiTypography-h4"
         >
           token
+          <div
+            id="SortArrows"
+            sort="asc"
+          />
         </h4>
       </div>
       <div
-        className="makeStyles-cell"
+        className="makeStyles-cell makeStyles-flexCells right sort"
+        onClick={[Function]}
+        role="button"
         style={
           Object {
             "height": 50,
@@ -82,10 +92,15 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
           className="MuiTypography-root MuiTypography-h4 MuiTypography-alignRight"
         >
           price
+          <div
+            id="SortArrows"
+          />
         </h4>
       </div>
       <div
-        className="makeStyles-cell"
+        className="makeStyles-cell makeStyles-flexCells right sort"
+        onClick={[Function]}
+        role="button"
         style={
           Object {
             "height": 50,
@@ -101,6 +116,9 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
           className="MuiTypography-root MuiTypography-h4 MuiTypography-alignRight"
         >
           marketCap
+          <div
+            id="SortArrows"
+          />
         </h4>
       </div>
     </div>

@@ -13,6 +13,7 @@ exports[`screen: Proposals matches snapshot 1`] = `
   >
     <div
       handleSearch={[Function]}
+      handleSort={[Function]}
       id="List"
       isItemLoaded={[Function]}
       itemCount={2}
@@ -33,6 +34,8 @@ exports[`screen: Proposals matches snapshot 1`] = `
         ]
       }
       loadMoreItems={[Function]}
+      sortDirection="asc"
+      sortKey="token"
     />
   </div>
 </div>
