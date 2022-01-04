@@ -12,6 +12,7 @@ exports[`screen: Proposals matches snapshot 1`] = `
     loading={false}
   >
     <div
+      handleSearch={[Function]}
       id="List"
       isItemLoaded={[Function]}
       itemCount={2}

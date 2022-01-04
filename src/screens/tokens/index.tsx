@@ -14,7 +14,11 @@ const Tokens = () => {
   const classes = useStyles();
   const {
     state,
+    handleSearch,
+    sortItems,
   } = useProposals();
+
+  const items = sortItems(state.items);
 
   return (
     <>
@@ -33,9 +37,10 @@ const Tokens = () => {
           exists={state.exists}
         >
           <List
-            items={state.items}
+            items={items}
+            handleSearch={handleSearch}
             isItemLoaded={() => true}
-            itemCount={state.items.length}
+            itemCount={items.length}
             loadMoreItems={() => null}
           />
         </LoadAndExist>
