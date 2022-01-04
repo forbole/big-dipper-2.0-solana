@@ -1,10 +1,12 @@
 import React from 'react';
 import numeral from 'numeral';
+import useTranslation from 'next-translate/useTranslation';
 import classnames from 'classnames';
 import { useScreenSize } from '@hooks';
 import {
   Box,
   NoData,
+  Search,
 } from '@components';
 import {
   Total,
@@ -21,13 +23,16 @@ const TokensList: React.FC<{
   isItemLoaded: (index: number) => boolean;
   itemCount: number;
   loadMoreItems: () => void;
+  handleSearch: (value: string) => void;
 }> = ({
   className,
   items,
   isItemLoaded,
   itemCount,
   loadMoreItems,
+  handleSearch,
 }) => {
+  const { t } = useTranslation('tokens');
   const classes = useStyles();
   const { isDesktop } = useScreenSize();
 
@@ -35,7 +40,11 @@ const TokensList: React.FC<{
     <Box className={classnames(className, classes.root)}>
       <div className={classes.topContent}>
         <Total className={classes.total} total={numeral(items.length).format('0,0')} />
-        {/* <Search className={classes.search} /> */}
+        <Search
+          className={classes.search}
+          callback={handleSearch}
+          placeholder={t('searchTokens')}
+        />
       </div>
       <div className={classes.list}>
         {!items.length ? (

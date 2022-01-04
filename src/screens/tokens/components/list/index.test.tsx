@@ -15,6 +15,8 @@ const mockI18n = {
 jest.mock('next-translate/useTranslation', () => () => mockI18n);
 jest.mock('@components', () => ({
   Box: (props) => <div id="Box" {...props} />,
+  NoData: (props) => <div id="NoData" {...props} />,
+  Search: (props) => <div id="Search" {...props} />,
 }));
 
 jest.mock('./components', () => ({
@@ -37,17 +39,14 @@ describe('screen: Proposals/List', () => {
               {
                 token: 'BTC',
                 price: 1802,
-                change: 10,
-                volume: 15902496558,
                 marketCap: 515912496,
-                holders: 2178994,
                 address: '9n4nbM75f5Ui33ZbPYXn59EwSgE8CGsHtAeTH5YFeJ9E',
               },
             ]}
-            rawDataTotal={1}
             isItemLoaded={() => true}
             itemCount={1}
             loadMoreItems={() => null}
+            handleSearch={jest.fn()}
           />
         </MockTheme>,
       );

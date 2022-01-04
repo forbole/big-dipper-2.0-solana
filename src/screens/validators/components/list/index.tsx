@@ -37,7 +37,6 @@ const List: React.FC<{
     });
   });
   const items = sortItems(mergedDataWithProfiles);
-
   return (
     <LoadAndExist
       loading={state.loading}

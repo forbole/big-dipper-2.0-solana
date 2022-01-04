@@ -4,9 +4,12 @@ import {
   useTokensQuery,
   TokensQuery,
 } from '@graphql/types';
-import { TokensState } from './types';
+import {
+  TokensState, TokenType,
+} from './types';
 
 export const useProposals = () => {
+  const [search, setSearch] = useState('');
   const [state, setState] = useState<TokensState>({
     loading: true,
     exists: true,
@@ -43,7 +46,49 @@ export const useProposals = () => {
     });
   };
 
+  const handleSearch = (value: string) => {
+    setSearch(value);
+  };
+
+  const sortItems = (items: TokenType[]) => {
+    let sorted: TokenType[] = R.clone(items);
+
+    if (search) {
+      sorted = sorted.filter((x) => {
+        const formattedSearch = search.toLowerCase().replace(/ /g, '');
+        return (
+          x.token.toLowerCase().replace(/ /g, '').includes(formattedSearch)
+          || x.address.toLowerCase().includes(formattedSearch)
+        );
+      });
+    }
+
+    // if (state.sortKey && state.sortDirection) {
+    //   sorted.sort((a, b) => {
+    //     let compareA = R.pathOr(undefined, [...state.sortKey.split('.')], a);
+    //     let compareB = R.pathOr(undefined, [...state.sortKey.split('.')], b);
+
+    //     if (typeof compareA === 'string') {
+    //       compareA = compareA.toLowerCase();
+    //       compareB = compareB.toLowerCase();
+    //     }
+
+    //     if (compareA < compareB) {
+    //       return state.sortDirection === 'asc' ? -1 : 1;
+    //     }
+    //     if (compareA > compareB) {
+    //       return state.sortDirection === 'asc' ? 1 : -1;
+    //     }
+    //     return 0;
+    //   });
+    // }
+
+    return sorted;
+  };
+
   return {
     state,
+    handleSearch,
+    sortItems,
   };
 };

@@ -13,6 +13,12 @@ exports[`screen: Proposals/List matches snapshot 1`] = `
       id="Total"
       total="1"
     />
+    <div
+      callback={[MockFunction]}
+      className="makeStyles-search"
+      id="Search"
+      placeholder="searchTokens"
+    />
   </div>
   <div
     className="makeStyles-list"
@@ -25,12 +31,9 @@ exports[`screen: Proposals/List matches snapshot 1`] = `
         Array [
           Object {
             "address": "9n4nbM75f5Ui33ZbPYXn59EwSgE8CGsHtAeTH5YFeJ9E",
-            "change": 10,
-            "holders": 2178994,
             "marketCap": 515912496,
             "price": 1802,
             "token": "BTC",
-            "volume": 15902496558,
           },
         ]
       }
