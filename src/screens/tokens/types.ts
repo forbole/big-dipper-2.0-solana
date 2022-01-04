@@ -11,4 +11,6 @@ export type TokensState = {
   hasNextPage: boolean;
   isNextPageLoading: boolean;
   items: TokenType[];
+  sortKey: string;
+  sortDirection: 'asc' | 'desc';
 }

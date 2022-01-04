@@ -16,6 +16,8 @@ export const useProposals = () => {
     items: [],
     hasNextPage: false,
     isNextPageLoading: false,
+    sortKey: 'token',
+    sortDirection: 'asc',
   });
 
   const handleSetState = (stateChange: any) => {
@@ -48,6 +50,21 @@ export const useProposals = () => {
 
   const handleSearch = (value: string) => {
     setSearch(value);
+  };
+
+  const handleSort = (key: string) => {
+    if (key === state.sortKey) {
+      setState((prevState) => ({
+        ...prevState,
+        sortDirection: prevState.sortDirection === 'asc' ? 'desc' : 'asc',
+      }));
+    } else {
+      setState((prevState) => ({
+        ...prevState,
+        sortKey: key,
+        sortDirection: 'asc', // new key so we start the sort by asc
+      }));
+    }
   };
 
   const sortItems = (items: TokenType[]) => {
@@ -90,5 +107,6 @@ export const useProposals = () => {
     state,
     handleSearch,
     sortItems,
+    handleSort,
   };
 };

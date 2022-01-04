@@ -13,6 +13,22 @@ export const useStyles = () => {
         body: {
           color: theme.palette.custom.fonts.fontTwo,
         },
+        flexCells: {
+          '& > *': {
+            display: 'flex',
+            alignItems: 'center',
+          },
+          '&.right': {
+            '& > *': {
+              justifyContent: 'flex-end',
+            },
+          },
+          '&.center': {
+            '& > *': {
+              justifyContent: 'center',
+            },
+          },
+        },
         price: {
           '&.positive': {
             '&:before': {
