@@ -68,8 +68,7 @@ export const useBlockDetails = () => {
       const overview = {
         slot: data.block[0].slot,
         hash: data.block[0].hash,
-        txs: 0,
-        // txs: data.block[0].txs,
+        txs: data.block[0].numTxs,
         timestamp: data.block[0].timestamp,
         proposer: proposerAddress,
       };

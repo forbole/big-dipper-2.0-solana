@@ -56,7 +56,7 @@ export type EpochSchedule = {
 export type InflationGovernor = {
   __typename?: 'InflationGovernor';
   foundation: Scalars['Float'];
-  foundation_term: Scalars['Float'];
+  foundationTerm: Scalars['Float'];
   initial: Scalars['Float'];
   taper: Scalars['Float'];
   terminal: Scalars['Float'];
@@ -1695,10 +1695,10 @@ export type Query_Root = {
   block_aggregate: Block_Aggregate;
   /** fetch data from the table: "block" using primary key columns */
   block_by_pk?: Maybe<Block>;
-  epoch_info?: Maybe<EpochInfo>;
-  epoch_schedule_param?: Maybe<EpochSchedule>;
-  inflation_governor_param?: Maybe<InflationGovernor>;
-  inflation_rate?: Maybe<InflationRate>;
+  epochInfo: EpochInfo;
+  epochScheduleParam: EpochSchedule;
+  inflationGovernorParam: InflationGovernor;
+  inflationRate: InflationRate;
   /** fetch data from the table: "message" */
   message: Array<Message>;
   /** fetch aggregated fields from the table: "message" */
@@ -5324,6 +5324,7 @@ export type BlockDetailsQueryVariables = Exact<{
 export type BlockDetailsQuery = { block: Array<(
     { __typename?: 'block' }
     & Pick<Block, 'slot' | 'hash' | 'proposer' | 'timestamp'>
+    & { numTxs: Block['num_txs'] }
   )>, transaction: Array<(
     { __typename?: 'transaction' }
     & Pick<Transaction, 'slot' | 'hash' | 'error'>
@@ -5429,10 +5430,10 @@ export type MarketDataQuery = { tokenPrice: Array<(
   )>, supplyInfo: Array<(
     { __typename?: 'supply_info' }
     & Pick<Supply_Info, 'total'>
-  )>, inflationRate?: Maybe<(
+  )>, inflationRate: (
     { __typename?: 'InflationRate' }
     & Pick<InflationRate, 'total'>
-  )> };
+  ) };
 
 export type TokenPriceListenerSubscriptionVariables = Exact<{
   denom?: Maybe<Scalars['String']>;
@@ -5574,6 +5575,7 @@ export const BlockDetailsDocument = gql`
     hash
     proposer
     timestamp
+    numTxs: num_txs
   }
   transaction(where: {slot: {_eq: $height}}) {
     slot
@@ -5852,7 +5854,7 @@ export const MarketDataDocument = gql`
   supplyInfo: supply_info {
     total
   }
-  inflationRate: inflation_rate {
+  inflationRate {
     total
   }
 }
