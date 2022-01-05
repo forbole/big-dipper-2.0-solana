@@ -19,7 +19,7 @@ exports[`screen: BlockDetails matches snapshot 1`] = `
         proposer="DDnAqxJVFo2GVTujibHt5cjevHMSE9bo8HJaydHoshdp"
         slot={112673814}
         timestamp="2021-12-22T01:56:19"
-        txs={0}
+        txs={234}
       />
       <div
         id="Transactions"

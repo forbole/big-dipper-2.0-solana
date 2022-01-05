@@ -55,7 +55,8 @@ const mockAverageBlockTime = jest.fn().mockResolvedValue({
         "slot": 112673814,
         "hash": "8bti9xLpyuicxYwEPmQ4Xfb8toPeZ1t5zvNqYxkE41B5",
         "proposer": "DDnAqxJVFo2GVTujibHt5cjevHMSE9bo8HJaydHoshdp",
-        "timestamp": "2021-12-22T01:56:19"
+        "timestamp": "2021-12-22T01:56:19",
+        "numTxs": 234,
       }
     ],
   },
