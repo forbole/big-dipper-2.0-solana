@@ -1,0 +1,11 @@
+query Validators {
+  validator {
+    address
+    commission
+    validator_status {
+      active
+      activated_stake
+      last_vote
+    }
+  }
+}
