@@ -15,20 +15,6 @@ import {
   ValidatorsState, ItemType, ValidatorType,
 } from './types';
 
-// const fakeData: ValidatorType = {
-//   validator: 'desmosvaloper19dzz3wqakz7d0s550mvtjcdsde8nlhs4se98mt',
-//   stake: 121212,
-//   stakePercent: 12,
-//   fee: 0.9,
-//   lastVote: 56969523,
-//   skipRate: 80,
-//   skipTotal: 100, // idk what this is atm,
-//   skipPercent: 55,
-//   condition: 90,
-//   status: 3,
-//   delegators: 100,
-// };
-
 export const useValidators = () => {
   const [search, setSearch] = useState('');
   const [state, setState] = useState<ValidatorsState>({

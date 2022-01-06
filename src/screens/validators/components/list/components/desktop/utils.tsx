@@ -1,12 +1,12 @@
 import React from 'react';
-import {
-  Typography,
-} from '@material-ui/core';
-import {
-  InfoPopover, ConditionExplanation,
-} from '@components';
+// import {
+//   Typography,
+// } from '@material-ui/core';
+// import {
+//   InfoPopover, ConditionExplanation,
+// } from '@components';
 
-export const fetchColumns = (t): {
+export const fetchColumns = (_t): {
   key: string;
   align?: 'left' | 'center' | 'right' | 'justify' | 'inherit';
   width: number;
