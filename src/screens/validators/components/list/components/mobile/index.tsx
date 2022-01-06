@@ -10,6 +10,7 @@ import {
   useList,
   useListRow,
 } from '@hooks';
+import { formatNumber } from '@utils/format_token';
 import { SingleValidator } from './component';
 // import {
 //   Condition, SkipRate,
@@ -32,7 +33,7 @@ const Mobile: React.FC<{
     // const condition = x.status === 3 ? getValidatorConditionClass(x.condition) : undefined;
     return ({
       idx: `#${i + 1}`,
-      stake: `${numeral(x.stake).format('0,0')} (${x.stakePercent}%)`,
+      stake: `${numeral(x.stake).format('0,0')} (${formatNumber(x.stakePercent, 2)}%)`,
       commission: `${x.commission}%`,
       lastVote: numeral(x.lastVote).format('0,0'),
       validator: (

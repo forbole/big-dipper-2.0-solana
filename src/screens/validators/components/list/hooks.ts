@@ -7,6 +7,10 @@ import {
   ValidatorsQuery,
 } from '@graphql/types';
 import {
+  formatToken,
+} from '@utils/format_token';
+import { chainConfig } from '@configs';
+import {
   ValidatorsState, ItemType, ValidatorType,
 } from './types';
 
@@ -61,11 +65,16 @@ export const useValidators = () => {
     }, Big(0)).toPrecision();
 
     const formattedItems: ValidatorType[] = data.validator.map((x) => {
+      const stake = R.pathOr(0, ['validatorStatus', 'activatedStake'], x);
+      const stakePercent = Big(stake).div(totalActiveStake).times(100).toPrecision();
       return ({
         validator: x.address,
         commission: x.commission,
-        stake: R.pathOr(0, ['validatorStatus', 'activatedStake'], x),
-        stakePercent: 0, // ryuash
+        stake: formatToken(
+          stake,
+          chainConfig.primaryTokenUnit,
+        ).value,
+        stakePercent, // ryuash
         lastVote: R.pathOr(0, ['validatorStatus', 'lastVote'], x),
         status: R.pathOr(false, ['validatorStatus', 'active'], x),
       });
