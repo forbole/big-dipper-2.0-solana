@@ -5,15 +5,15 @@ import { VariableSizeList as List } from 'react-window';
 import AutoSizer from 'react-virtualized-auto-sizer';
 import { Divider } from '@material-ui/core';
 import { AvatarName } from '@components';
-import { getValidatorConditionClass } from '@utils/get_validator_condition';
+// import { getValidatorConditionClass } from '@utils/get_validator_condition';
 import {
   useList,
   useListRow,
 } from '@hooks';
 import { SingleValidator } from './component';
-import {
-  Condition, SkipRate,
-} from '..';
+// import {
+//   Condition, SkipRate,
+// } from '..';
 import { ItemType } from '../../types';
 
 const Mobile: React.FC<{
