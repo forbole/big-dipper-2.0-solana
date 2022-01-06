@@ -16,8 +16,8 @@
 export type ValidatorType = {
   validator: string;
   commission: number;
-  stake: string;
-  stakePercent: string;
+  stake: number;
+  stakePercent: number;
   lastVote: number;
   status: boolean;
 }

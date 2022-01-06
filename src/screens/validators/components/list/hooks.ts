@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import * as R from 'ramda';
 import Big from 'big.js';
+import numeral from 'numeral';
 import {
   useValidatorsQuery,
   ValidatorsQuery,
@@ -61,22 +62,28 @@ export const useValidators = () => {
   // ==========================
   const formatValidators = (data: ValidatorsQuery) => {
     const totalActiveStake = data.validator.reduce((a, b) => {
-      return a.plus(R.pathOr(0, ['validatorStatus', 'activatedStake'], b));
-    }, Big(0)).toPrecision();
+      if (R.pathOr(0, ['validatorStatus', 'active'], b)) {
+        return a.plus(R.pathOr(0, ['validatorStatus', 'activatedStake'], b));
+      }
+      return a;
+    }, Big(0)).toNumber();
 
     const formattedItems: ValidatorType[] = data.validator.map((x) => {
       const stake = R.pathOr(0, ['validatorStatus', 'activatedStake'], x);
-      const stakePercent = Big(stake).div(totalActiveStake).times(100).toPrecision();
+      const stakePercent = numeral((stake / totalActiveStake) * 100).value();
+
+      const status = R.pathOr(false, ['validatorStatus', 'active'], x);
+
       return ({
         validator: x.address,
         commission: x.commission,
-        stake: formatToken(
+        stake: numeral(formatToken(
           stake,
           chainConfig.primaryTokenUnit,
-        ).value,
-        stakePercent, // ryuash
+        ).value).value(),
+        stakePercent: status ? stakePercent : 0, // ryuash
         lastVote: R.pathOr(0, ['validatorStatus', 'lastVote'], x),
-        status: R.pathOr(false, ['validatorStatus', 'active'], x),
+        status,
       });
     });
 
@@ -116,7 +123,7 @@ export const useValidators = () => {
 
     // delinquent
     if (state.tab === 1) {
-      sorted = sorted.filter((x) => x.status !== false);
+      sorted = sorted.filter((x) => x.status === false);
     }
 
     if (search) {
