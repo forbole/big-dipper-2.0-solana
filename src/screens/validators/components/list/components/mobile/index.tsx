@@ -29,11 +29,11 @@ const Mobile: React.FC<{
   } = useList();
 
   const formattedItems = items.map((x, i) => {
-    const condition = x.status === 3 ? getValidatorConditionClass(x.condition) : undefined;
+    // const condition = x.status === 3 ? getValidatorConditionClass(x.condition) : undefined;
     return ({
       idx: `#${i + 1}`,
-      stake: `${x.stake} (${x.stakePercent}%)`,
-      fee: `${x.fee}%`,
+      stake: `${numeral(x.stake).format('0,0')} (${x.stakePercent}%)`,
+      commission: `${x.commission}%`,
       lastVote: numeral(x.lastVote).format('0,0'),
       validator: (
         <AvatarName
@@ -42,16 +42,15 @@ const Mobile: React.FC<{
           name={x.validator.name}
         />
       ),
-      delegators: x.delegators,
-      condition: (
-        <Condition className={condition} />
-      ),
-      skipRate: (
-        <SkipRate
-          percentage={x.skipPercent}
-          content={`${x.skipRate} / ${x.skipTotal}`}
-        />
-      ),
+      // condition: (
+      //   <Condition className={condition} />
+      // ),
+      // skipRate: (
+      //   <SkipRate
+      //     percentage={x.skipPercent}
+      //     content={`${x.skipRate} / ${x.skipTotal}`}
+      //   />
+      // ),
     });
   });
 

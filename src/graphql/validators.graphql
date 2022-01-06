@@ -2,10 +2,10 @@ query Validators {
   validator {
     address
     commission
-    validator_status {
+    validatorStatus: validator_status {
       active
-      activated_stake
-      last_vote
+      activatedStake: activated_stake
+      lastVote: last_vote
     }
   }
 }
