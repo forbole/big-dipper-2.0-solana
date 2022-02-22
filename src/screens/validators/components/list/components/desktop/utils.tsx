@@ -1,12 +1,12 @@
 import React from 'react';
-import {
-  Typography,
-} from '@material-ui/core';
-import {
-  InfoPopover, ConditionExplanation,
-} from '@components';
+// import {
+//   Typography,
+// } from '@material-ui/core';
+// import {
+//   InfoPopover, ConditionExplanation,
+// } from '@components';
 
-export const fetchColumns = (t): {
+export const fetchColumns = (_t): {
   key: string;
   align?: 'left' | 'center' | 'right' | 'justify' | 'inherit';
   width: number;
@@ -22,49 +22,49 @@ export const fetchColumns = (t): {
     {
       key: 'validator',
       sortKey: 'validator.name',
-      width: 20,
+      width: 30,
       sort: true,
     },
     {
       key: 'stake',
       sortKey: 'stake',
       align: 'right',
-      width: 15,
+      width: 25,
       sort: true,
     },
     {
-      key: 'fee',
-      sortKey: 'fee',
+      key: 'commission',
+      sortKey: 'commission',
       align: 'right',
-      width: 10,
+      width: 20,
       sort: true,
     },
     {
       key: 'lastVote',
       sortKey: 'lastVote',
       align: 'right',
-      width: 10,
+      width: 20,
       sort: true,
     },
-    {
-      key: 'skipRate',
-      sortKey: 'skipRate',
-      align: 'right',
-      width: 25,
-      sort: true,
-    },
-    {
-      key: 'condition',
-      align: 'center',
-      width: 15,
-      component: (
-        <Typography variant="h4" className="label popover">
-          {t('condition')}
-          <InfoPopover
-            content={<ConditionExplanation />}
-          />
-        </Typography>
-      ),
-    },
+    // {
+    //   key: 'skipRate',
+    //   sortKey: 'skipRate',
+    //   align: 'right',
+    //   width: 25,
+    //   sort: true,
+    // },
+    // {
+    //   key: 'condition',
+    //   align: 'center',
+    //   width: 15,
+    //   component: (
+    //     <Typography variant="h4" className="label popover">
+    //       {t('condition')}
+    //       <InfoPopover
+    //         content={<ConditionExplanation />}
+    //       />
+    //     </Typography>
+    //   ),
+    // },
   ]);
 };

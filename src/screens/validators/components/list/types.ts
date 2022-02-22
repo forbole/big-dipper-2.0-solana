@@ -1,15 +1,25 @@
+// ryuash
+// export type ValidatorType = {
+//   validator: string;
+//   stake: number;
+//   stakePercent: number;
+//   fee: number;
+//   lastVote: number;
+//   skipRate: number;
+//   skipTotal: number;
+//   skipPercent: number;
+//   condition: number;
+//   status: number;
+//   delegators: number;
+// }
+
 export type ValidatorType = {
   validator: string;
+  commission: number;
   stake: number;
   stakePercent: number;
-  fee: number;
   lastVote: number;
-  skipRate: number;
-  skipTotal: number;
-  skipPercent: number;
-  condition: number;
-  status: number;
-  delegators: number;
+  status: boolean;
 }
 
 export type ValidatorsState = {

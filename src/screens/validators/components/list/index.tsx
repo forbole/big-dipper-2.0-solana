@@ -30,6 +30,7 @@ const List: React.FC<{
     sortItems,
   } = useValidators();
   const dataProfiles = useProfilesRecoil(state.items.map((x) => x.validator));
+
   const mergedDataWithProfiles = state.items.map((x, i) => {
     return ({
       ...x,
@@ -37,6 +38,7 @@ const List: React.FC<{
     });
   });
   const items = sortItems(mergedDataWithProfiles);
+
   return (
     <LoadAndExist
       loading={state.loading}

@@ -78,7 +78,7 @@ export const useValidatorRecoil = () => {
       );
 
       set(profileAtomFamilyState(address), {
-        moniker,
+        moniker: moniker || address,
         imageUrl,
       });
     });

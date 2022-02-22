@@ -2351,7 +2351,6 @@ export type Query_RootValidator_Status_AggregateArgs = {
 
 export type Query_RootValidator_Status_By_PkArgs = {
   address: Scalars['String'];
-  slot: Scalars['bigint'];
 };
 
 /** columns and relationships of "stake_account" */
@@ -3423,7 +3422,6 @@ export type Subscription_RootValidator_Status_AggregateArgs = {
 
 export type Subscription_RootValidator_Status_By_PkArgs = {
   address: Scalars['String'];
-  slot: Scalars['bigint'];
 };
 
 /** columns and relationships of "supply_info" */
@@ -4764,32 +4762,10 @@ export type Validator = {
   node: Scalars['String'];
   /** An object relationship */
   validator_config?: Maybe<Validator_Config>;
-  /** An array relationship */
-  validator_statuses: Array<Validator_Status>;
-  /** An aggregate relationship */
-  validator_statuses_aggregate: Validator_Status_Aggregate;
+  /** An object relationship */
+  validator_status?: Maybe<Validator_Status>;
   voter: Scalars['String'];
   withdrawer: Scalars['String'];
-};
-
-
-/** columns and relationships of "validator" */
-export type ValidatorValidator_StatusesArgs = {
-  distinct_on?: Maybe<Array<Validator_Status_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Validator_Status_Order_By>>;
-  where?: Maybe<Validator_Status_Bool_Exp>;
-};
-
-
-/** columns and relationships of "validator" */
-export type ValidatorValidator_Statuses_AggregateArgs = {
-  distinct_on?: Maybe<Array<Validator_Status_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Validator_Status_Order_By>>;
-  where?: Maybe<Validator_Status_Bool_Exp>;
 };
 
 /** aggregated selection of "validator" */
@@ -4837,7 +4813,7 @@ export type Validator_Bool_Exp = {
   commission?: Maybe<Int_Comparison_Exp>;
   node?: Maybe<String_Comparison_Exp>;
   validator_config?: Maybe<Validator_Config_Bool_Exp>;
-  validator_statuses?: Maybe<Validator_Status_Bool_Exp>;
+  validator_status?: Maybe<Validator_Status_Bool_Exp>;
   voter?: Maybe<String_Comparison_Exp>;
   withdrawer?: Maybe<String_Comparison_Exp>;
 };
@@ -4969,7 +4945,7 @@ export type Validator_Order_By = {
   commission?: Maybe<Order_By>;
   node?: Maybe<Order_By>;
   validator_config?: Maybe<Validator_Config_Order_By>;
-  validator_statuses_aggregate?: Maybe<Validator_Status_Aggregate_Order_By>;
+  validator_status?: Maybe<Validator_Status_Order_By>;
   voter?: Maybe<Order_By>;
   withdrawer?: Maybe<Order_By>;
 };
@@ -5029,21 +5005,6 @@ export type Validator_Status_Aggregate_FieldsCountArgs = {
   distinct?: Maybe<Scalars['Boolean']>;
 };
 
-/** order by aggregate values of table "validator_status" */
-export type Validator_Status_Aggregate_Order_By = {
-  avg?: Maybe<Validator_Status_Avg_Order_By>;
-  count?: Maybe<Order_By>;
-  max?: Maybe<Validator_Status_Max_Order_By>;
-  min?: Maybe<Validator_Status_Min_Order_By>;
-  stddev?: Maybe<Validator_Status_Stddev_Order_By>;
-  stddev_pop?: Maybe<Validator_Status_Stddev_Pop_Order_By>;
-  stddev_samp?: Maybe<Validator_Status_Stddev_Samp_Order_By>;
-  sum?: Maybe<Validator_Status_Sum_Order_By>;
-  var_pop?: Maybe<Validator_Status_Var_Pop_Order_By>;
-  var_samp?: Maybe<Validator_Status_Var_Samp_Order_By>;
-  variance?: Maybe<Validator_Status_Variance_Order_By>;
-};
-
 /** aggregate avg on columns */
 export type Validator_Status_Avg_Fields = {
   __typename?: 'validator_status_avg_fields';
@@ -5051,14 +5012,6 @@ export type Validator_Status_Avg_Fields = {
   last_vote?: Maybe<Scalars['Float']>;
   root_slot?: Maybe<Scalars['Float']>;
   slot?: Maybe<Scalars['Float']>;
-};
-
-/** order by avg() on columns of table "validator_status" */
-export type Validator_Status_Avg_Order_By = {
-  activated_stake?: Maybe<Order_By>;
-  last_vote?: Maybe<Order_By>;
-  root_slot?: Maybe<Order_By>;
-  slot?: Maybe<Order_By>;
 };
 
 /** Boolean expression to filter rows from the table "validator_status". All fields are combined with a logical 'AND'. */
@@ -5084,15 +5037,6 @@ export type Validator_Status_Max_Fields = {
   slot?: Maybe<Scalars['bigint']>;
 };
 
-/** order by max() on columns of table "validator_status" */
-export type Validator_Status_Max_Order_By = {
-  activated_stake?: Maybe<Order_By>;
-  address?: Maybe<Order_By>;
-  last_vote?: Maybe<Order_By>;
-  root_slot?: Maybe<Order_By>;
-  slot?: Maybe<Order_By>;
-};
-
 /** aggregate min on columns */
 export type Validator_Status_Min_Fields = {
   __typename?: 'validator_status_min_fields';
@@ -5101,15 +5045,6 @@ export type Validator_Status_Min_Fields = {
   last_vote?: Maybe<Scalars['bigint']>;
   root_slot?: Maybe<Scalars['bigint']>;
   slot?: Maybe<Scalars['bigint']>;
-};
-
-/** order by min() on columns of table "validator_status" */
-export type Validator_Status_Min_Order_By = {
-  activated_stake?: Maybe<Order_By>;
-  address?: Maybe<Order_By>;
-  last_vote?: Maybe<Order_By>;
-  root_slot?: Maybe<Order_By>;
-  slot?: Maybe<Order_By>;
 };
 
 /** Ordering options when selecting data from "validator_status". */
@@ -5147,14 +5082,6 @@ export type Validator_Status_Stddev_Fields = {
   slot?: Maybe<Scalars['Float']>;
 };
 
-/** order by stddev() on columns of table "validator_status" */
-export type Validator_Status_Stddev_Order_By = {
-  activated_stake?: Maybe<Order_By>;
-  last_vote?: Maybe<Order_By>;
-  root_slot?: Maybe<Order_By>;
-  slot?: Maybe<Order_By>;
-};
-
 /** aggregate stddev_pop on columns */
 export type Validator_Status_Stddev_Pop_Fields = {
   __typename?: 'validator_status_stddev_pop_fields';
@@ -5162,14 +5089,6 @@ export type Validator_Status_Stddev_Pop_Fields = {
   last_vote?: Maybe<Scalars['Float']>;
   root_slot?: Maybe<Scalars['Float']>;
   slot?: Maybe<Scalars['Float']>;
-};
-
-/** order by stddev_pop() on columns of table "validator_status" */
-export type Validator_Status_Stddev_Pop_Order_By = {
-  activated_stake?: Maybe<Order_By>;
-  last_vote?: Maybe<Order_By>;
-  root_slot?: Maybe<Order_By>;
-  slot?: Maybe<Order_By>;
 };
 
 /** aggregate stddev_samp on columns */
@@ -5181,14 +5100,6 @@ export type Validator_Status_Stddev_Samp_Fields = {
   slot?: Maybe<Scalars['Float']>;
 };
 
-/** order by stddev_samp() on columns of table "validator_status" */
-export type Validator_Status_Stddev_Samp_Order_By = {
-  activated_stake?: Maybe<Order_By>;
-  last_vote?: Maybe<Order_By>;
-  root_slot?: Maybe<Order_By>;
-  slot?: Maybe<Order_By>;
-};
-
 /** aggregate sum on columns */
 export type Validator_Status_Sum_Fields = {
   __typename?: 'validator_status_sum_fields';
@@ -5196,14 +5107,6 @@ export type Validator_Status_Sum_Fields = {
   last_vote?: Maybe<Scalars['bigint']>;
   root_slot?: Maybe<Scalars['bigint']>;
   slot?: Maybe<Scalars['bigint']>;
-};
-
-/** order by sum() on columns of table "validator_status" */
-export type Validator_Status_Sum_Order_By = {
-  activated_stake?: Maybe<Order_By>;
-  last_vote?: Maybe<Order_By>;
-  root_slot?: Maybe<Order_By>;
-  slot?: Maybe<Order_By>;
 };
 
 /** aggregate var_pop on columns */
@@ -5215,14 +5118,6 @@ export type Validator_Status_Var_Pop_Fields = {
   slot?: Maybe<Scalars['Float']>;
 };
 
-/** order by var_pop() on columns of table "validator_status" */
-export type Validator_Status_Var_Pop_Order_By = {
-  activated_stake?: Maybe<Order_By>;
-  last_vote?: Maybe<Order_By>;
-  root_slot?: Maybe<Order_By>;
-  slot?: Maybe<Order_By>;
-};
-
 /** aggregate var_samp on columns */
 export type Validator_Status_Var_Samp_Fields = {
   __typename?: 'validator_status_var_samp_fields';
@@ -5232,14 +5127,6 @@ export type Validator_Status_Var_Samp_Fields = {
   slot?: Maybe<Scalars['Float']>;
 };
 
-/** order by var_samp() on columns of table "validator_status" */
-export type Validator_Status_Var_Samp_Order_By = {
-  activated_stake?: Maybe<Order_By>;
-  last_vote?: Maybe<Order_By>;
-  root_slot?: Maybe<Order_By>;
-  slot?: Maybe<Order_By>;
-};
-
 /** aggregate variance on columns */
 export type Validator_Status_Variance_Fields = {
   __typename?: 'validator_status_variance_fields';
@@ -5247,14 +5134,6 @@ export type Validator_Status_Variance_Fields = {
   last_vote?: Maybe<Scalars['Float']>;
   root_slot?: Maybe<Scalars['Float']>;
   slot?: Maybe<Scalars['Float']>;
-};
-
-/** order by variance() on columns of table "validator_status" */
-export type Validator_Status_Variance_Order_By = {
-  activated_stake?: Maybe<Order_By>;
-  last_vote?: Maybe<Order_By>;
-  root_slot?: Maybe<Order_By>;
-  slot?: Maybe<Order_By>;
 };
 
 /** aggregate stddev on columns */
@@ -5510,6 +5389,19 @@ export type TransactionsQuery = { transactions: Array<(
     ), messages: Array<(
       { __typename?: 'message' }
       & Pick<Message, 'type'>
+    )> }
+  )> };
+
+export type ValidatorsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type ValidatorsQuery = { validator: Array<(
+    { __typename?: 'validator' }
+    & Pick<Validator, 'address' | 'commission'>
+    & { validatorStatus?: Maybe<(
+      { __typename?: 'validator_status' }
+      & Pick<Validator_Status, 'active'>
+      & { activatedStake: Validator_Status['activated_stake'], lastVote: Validator_Status['last_vote'] }
     )> }
   )> };
 
@@ -6087,6 +5979,46 @@ export function useTransactionsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptio
 export type TransactionsQueryHookResult = ReturnType<typeof useTransactionsQuery>;
 export type TransactionsLazyQueryHookResult = ReturnType<typeof useTransactionsLazyQuery>;
 export type TransactionsQueryResult = Apollo.QueryResult<TransactionsQuery, TransactionsQueryVariables>;
+export const ValidatorsDocument = gql`
+    query Validators {
+  validator {
+    address
+    commission
+    validatorStatus: validator_status {
+      active
+      activatedStake: activated_stake
+      lastVote: last_vote
+    }
+  }
+}
+    `;
+
+/**
+ * __useValidatorsQuery__
+ *
+ * To run a query within a React component, call `useValidatorsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useValidatorsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useValidatorsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useValidatorsQuery(baseOptions?: Apollo.QueryHookOptions<ValidatorsQuery, ValidatorsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<ValidatorsQuery, ValidatorsQueryVariables>(ValidatorsDocument, options);
+      }
+export function useValidatorsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ValidatorsQuery, ValidatorsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<ValidatorsQuery, ValidatorsQueryVariables>(ValidatorsDocument, options);
+        }
+export type ValidatorsQueryHookResult = ReturnType<typeof useValidatorsQuery>;
+export type ValidatorsLazyQueryHookResult = ReturnType<typeof useValidatorsLazyQuery>;
+export type ValidatorsQueryResult = Apollo.QueryResult<ValidatorsQuery, ValidatorsQueryVariables>;
 export const ValidatorAddressesDocument = gql`
     query ValidatorAddresses {
   validator {
