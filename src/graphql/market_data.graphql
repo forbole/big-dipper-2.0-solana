@@ -6,7 +6,7 @@ query MarketData($denom: String) {
   supplyInfo: supply_info {
     total
   }
-  inflationRate {
+  inflationRate: actions_inflation_rate {
     total
   }
 }
