@@ -14,3 +14,4 @@
 - Add tokens list searchbar ([\#45](https://github.com/forbole/big-dipper-2.0-solana/issues/45))
 - Add tokens list sorting ([\#46](https://github.com/forbole/big-dipper-2.0-solana/issues/46))
 - Add validator list ([\#52](https://github.com/forbole/big-dipper-2.0-solana/issues/52))
+- fix graphql files after hasura update ([\#54](https://github.com/forbole/big-dipper-2.0-solana/issues/54))
