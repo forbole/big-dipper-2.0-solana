@@ -6747,7 +6747,11 @@ export type TransactionDetailsLazyQueryHookResult = ReturnType<typeof useTransac
 export type TransactionDetailsQueryResult = Apollo.QueryResult<TransactionDetailsQuery, TransactionDetailsQueryVariables>;
 export const TransactionsListenerDocument = gql`
     subscription TransactionsListener($limit: Int = 7, $offset: Int = 0) {
-  transactions: transaction(limit: $limit, offset: $offset) {
+  transactions: transaction(
+    limit: $limit
+    offset: $offset
+    order_by: {slot: desc}
+  ) {
     slot
     hash
     error
@@ -6786,7 +6790,11 @@ export type TransactionsListenerSubscriptionHookResult = ReturnType<typeof useTr
 export type TransactionsListenerSubscriptionResult = Apollo.SubscriptionResult<TransactionsListenerSubscription>;
 export const TransactionsDocument = gql`
     query Transactions($limit: Int = 7, $offset: Int = 0) {
-  transactions: transaction(limit: $limit, offset: $offset) {
+  transactions: transaction(
+    limit: $limit
+    offset: $offset
+    order_by: {slot: desc}
+  ) {
     slot
     hash
     error
