@@ -96,7 +96,7 @@ export const useBlocks = () => {
     return data.blocks.map((x) => {
       return ({
         slot: x.slot,
-        txs: x.transactionsAggregate,
+        txs: x.numTxs,
         hash: x.hash,
         timestamp: x.timestamp,
         leader: x.proposer,

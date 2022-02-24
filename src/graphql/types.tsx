@@ -6122,7 +6122,7 @@ export type BlocksListenerSubscriptionVariables = Exact<{
 export type BlocksListenerSubscription = { blocks: Array<(
     { __typename?: 'block' }
     & Pick<Block, 'slot' | 'proposer' | 'hash' | 'timestamp'>
-    & { transactionsAggregate: Block['num_txs'] }
+    & { numTxs: Block['num_txs'] }
   )> };
 
 export type BlocksQueryVariables = Exact<{
@@ -6134,7 +6134,7 @@ export type BlocksQueryVariables = Exact<{
 export type BlocksQuery = { blocks: Array<(
     { __typename?: 'block' }
     & Pick<Block, 'slot' | 'proposer' | 'hash' | 'timestamp'>
-    & { transactionsAggregate: Block['num_txs'] }
+    & { numTxs: Block['num_txs'] }
   )>, total: (
     { __typename?: 'block_aggregate' }
     & { aggregate?: Maybe<(
@@ -6476,7 +6476,7 @@ export const BlocksListenerDocument = gql`
     proposer
     hash
     timestamp
-    transactionsAggregate: num_txs
+    numTxs: num_txs
   }
 }
     `;
@@ -6511,7 +6511,7 @@ export const BlocksDocument = gql`
     proposer
     hash
     timestamp
-    transactionsAggregate: num_txs
+    numTxs: num_txs
   }
   total: block_aggregate {
     aggregate {
