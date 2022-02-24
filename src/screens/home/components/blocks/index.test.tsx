@@ -40,11 +40,7 @@ const mockBlocksListenerDocument = {
         "proposer": "B2KjdiHYy2rRQZxT3CckhhSxFQdTsCobd1sZkSXqMDwM",
         "hash": "BBj6jSFyRZNNY2SPcfTcHjMHzAWdBtZewtonV29Fn2Y",
         "timestamp": "2021-12-02T23:33:46",
-        "transactionsAggregate": {
-          "aggregate": {
-            "count": 0
-          }
-        }
+        "numTxs": 255,
       },
     ],
   },
