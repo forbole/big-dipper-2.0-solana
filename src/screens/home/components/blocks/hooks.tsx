@@ -30,10 +30,9 @@ export const useBlocks = () => {
 
   const formatBlocks = (data: BlocksListenerSubscription) => {
     return data.blocks.map((x) => {
-      const txCounter = R.pathOr('', ['transactionsAggregate', 'aggregate', 'count'], x);
       return ({
         slot: x.slot,
-        txs: txCounter,
+        txs: x.numTxs,
         hash: x.hash,
         timestamp: x.timestamp,
         proposer: x.proposer,

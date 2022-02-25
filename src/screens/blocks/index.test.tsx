@@ -33,11 +33,7 @@ const mockBlocksListenerDocument = {
         "proposer": "51cbXxXHtwQ5WCSVkmjBrUcbZQUJjCWxvXP4mmoJiJGA",
         "hash": "ADWG9wFPM94Fa2H9LMdnnz6QXfXQpky4RQrxbz2beLmd",
         "timestamp": "2021-12-02T23:33:50",
-        "transactionsAggregate": {
-          "aggregate": {
-            "count": 0
-          }
-        }
+        "numTxs": 1355,
       }
     ],
   },
@@ -51,11 +47,7 @@ const mockBlocksDocument = jest.fn().mockResolvedValue({
         "proposer": "51cbXxXHtwQ5WCSVkmjBrUcbZQUJjCWxvXP4mmoJiJGA",
         "hash": "ADWG9wFPM94Fa2H9LMdnnz6QXfXQpky4RQrxbz2beLmd",
         "timestamp": "2021-12-02T23:33:50",
-        "transactionsAggregate": {
-          "aggregate": {
-            "count": 0
-          }
-        }
+        "numTxs": 1377,
       }
     ],
     "total": {

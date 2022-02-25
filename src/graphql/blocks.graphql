@@ -4,7 +4,7 @@ subscription BlocksListener($limit: Int = 7, $offset: Int = 0) {
     proposer
     hash
     timestamp
-    transactionsAggregate: num_txs
+    numTxs: num_txs
   }
 }
 
@@ -14,7 +14,7 @@ query Blocks($limit: Int = 7, $offset: Int = 0) {
     proposer
     hash
     timestamp
-    transactionsAggregate: num_txs
+    numTxs: num_txs
   }
   total: block_aggregate {
     aggregate {

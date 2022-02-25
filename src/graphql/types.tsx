@@ -6122,7 +6122,7 @@ export type BlocksListenerSubscriptionVariables = Exact<{
 export type BlocksListenerSubscription = { blocks: Array<(
     { __typename?: 'block' }
     & Pick<Block, 'slot' | 'proposer' | 'hash' | 'timestamp'>
-    & { transactionsAggregate: Block['num_txs'] }
+    & { numTxs: Block['num_txs'] }
   )> };
 
 export type BlocksQueryVariables = Exact<{
@@ -6134,7 +6134,7 @@ export type BlocksQueryVariables = Exact<{
 export type BlocksQuery = { blocks: Array<(
     { __typename?: 'block' }
     & Pick<Block, 'slot' | 'proposer' | 'hash' | 'timestamp'>
-    & { transactionsAggregate: Block['num_txs'] }
+    & { numTxs: Block['num_txs'] }
   )>, total: (
     { __typename?: 'block_aggregate' }
     & { aggregate?: Maybe<(
@@ -6476,7 +6476,7 @@ export const BlocksListenerDocument = gql`
     proposer
     hash
     timestamp
-    transactionsAggregate: num_txs
+    numTxs: num_txs
   }
 }
     `;
@@ -6511,7 +6511,7 @@ export const BlocksDocument = gql`
     proposer
     hash
     timestamp
-    transactionsAggregate: num_txs
+    numTxs: num_txs
   }
   total: block_aggregate {
     aggregate {
@@ -6747,7 +6747,11 @@ export type TransactionDetailsLazyQueryHookResult = ReturnType<typeof useTransac
 export type TransactionDetailsQueryResult = Apollo.QueryResult<TransactionDetailsQuery, TransactionDetailsQueryVariables>;
 export const TransactionsListenerDocument = gql`
     subscription TransactionsListener($limit: Int = 7, $offset: Int = 0) {
-  transactions: transaction(limit: $limit, offset: $offset) {
+  transactions: transaction(
+    limit: $limit
+    offset: $offset
+    order_by: {slot: desc}
+  ) {
     slot
     hash
     error
@@ -6786,7 +6790,11 @@ export type TransactionsListenerSubscriptionHookResult = ReturnType<typeof useTr
 export type TransactionsListenerSubscriptionResult = Apollo.SubscriptionResult<TransactionsListenerSubscription>;
 export const TransactionsDocument = gql`
     query Transactions($limit: Int = 7, $offset: Int = 0) {
-  transactions: transaction(limit: $limit, offset: $offset) {
+  transactions: transaction(
+    limit: $limit
+    offset: $offset
+    order_by: {slot: desc}
+  ) {
     slot
     hash
     error
