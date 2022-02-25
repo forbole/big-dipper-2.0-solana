@@ -578,6 +578,10 @@ export type Block = {
   transactions: Array<Transaction>;
   /** An aggregate relationship */
   transactions_aggregate: Transaction_Aggregate;
+  /** An array relationship */
+  validator: Array<Validator>;
+  /** An aggregate relationship */
+  validator_aggregate: Validator_Aggregate;
 };
 
 
@@ -598,6 +602,26 @@ export type BlockTransactions_AggregateArgs = {
   offset?: Maybe<Scalars['Int']>;
   order_by?: Maybe<Array<Transaction_Order_By>>;
   where?: Maybe<Transaction_Bool_Exp>;
+};
+
+
+/** columns and relationships of "block" */
+export type BlockValidatorArgs = {
+  distinct_on?: Maybe<Array<Validator_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Validator_Order_By>>;
+  where?: Maybe<Validator_Bool_Exp>;
+};
+
+
+/** columns and relationships of "block" */
+export type BlockValidator_AggregateArgs = {
+  distinct_on?: Maybe<Array<Validator_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Validator_Order_By>>;
+  where?: Maybe<Validator_Bool_Exp>;
 };
 
 /** aggregated selection of "block" */
@@ -650,6 +674,7 @@ export type Block_Bool_Exp = {
   slot?: Maybe<Bigint_Comparison_Exp>;
   timestamp?: Maybe<Timestamp_Comparison_Exp>;
   transactions?: Maybe<Transaction_Bool_Exp>;
+  validator?: Maybe<Validator_Bool_Exp>;
 };
 
 /** aggregate max on columns */
@@ -683,6 +708,7 @@ export type Block_Order_By = {
   slot?: Maybe<Order_By>;
   timestamp?: Maybe<Order_By>;
   transactions_aggregate?: Maybe<Transaction_Aggregate_Order_By>;
+  validator_aggregate?: Maybe<Validator_Aggregate_Order_By>;
 };
 
 /** select columns of table "block" */
@@ -1707,9 +1733,9 @@ export type Query_Root = {
   transaction: Array<Transaction>;
   /** fetch aggregated fields from the table: "transaction" */
   transaction_aggregate: Transaction_Aggregate;
-  /** fetch data from the table: "validator" */
+  /** An array relationship */
   validator: Array<Validator>;
-  /** fetch aggregated fields from the table: "validator" */
+  /** An aggregate relationship */
   validator_aggregate: Validator_Aggregate;
   /** fetch data from the table: "validator" using primary key columns */
   validator_by_pk?: Maybe<Validator>;
@@ -2906,9 +2932,9 @@ export type Subscription_Root = {
   transaction: Array<Transaction>;
   /** fetch aggregated fields from the table: "transaction" */
   transaction_aggregate: Transaction_Aggregate;
-  /** fetch data from the table: "validator" */
+  /** An array relationship */
   validator: Array<Validator>;
-  /** fetch aggregated fields from the table: "validator" */
+  /** An aggregate relationship */
   validator_aggregate: Validator_Aggregate;
   /** fetch data from the table: "validator" using primary key columns */
   validator_by_pk?: Maybe<Validator>;
@@ -5329,10 +5355,30 @@ export type Validator_Aggregate_FieldsCountArgs = {
   distinct?: Maybe<Scalars['Boolean']>;
 };
 
+/** order by aggregate values of table "validator" */
+export type Validator_Aggregate_Order_By = {
+  avg?: Maybe<Validator_Avg_Order_By>;
+  count?: Maybe<Order_By>;
+  max?: Maybe<Validator_Max_Order_By>;
+  min?: Maybe<Validator_Min_Order_By>;
+  stddev?: Maybe<Validator_Stddev_Order_By>;
+  stddev_pop?: Maybe<Validator_Stddev_Pop_Order_By>;
+  stddev_samp?: Maybe<Validator_Stddev_Samp_Order_By>;
+  sum?: Maybe<Validator_Sum_Order_By>;
+  var_pop?: Maybe<Validator_Var_Pop_Order_By>;
+  var_samp?: Maybe<Validator_Var_Samp_Order_By>;
+  variance?: Maybe<Validator_Variance_Order_By>;
+};
+
 /** aggregate avg on columns */
 export type Validator_Avg_Fields = {
   __typename?: 'validator_avg_fields';
   commission?: Maybe<Scalars['Float']>;
+};
+
+/** order by avg() on columns of table "validator" */
+export type Validator_Avg_Order_By = {
+  commission?: Maybe<Order_By>;
 };
 
 /** Boolean expression to filter rows from the table "validator". All fields are combined with a logical 'AND'. */
@@ -5462,6 +5508,15 @@ export type Validator_Max_Fields = {
   withdrawer?: Maybe<Scalars['String']>;
 };
 
+/** order by max() on columns of table "validator" */
+export type Validator_Max_Order_By = {
+  address?: Maybe<Order_By>;
+  commission?: Maybe<Order_By>;
+  node?: Maybe<Order_By>;
+  voter?: Maybe<Order_By>;
+  withdrawer?: Maybe<Order_By>;
+};
+
 /** aggregate min on columns */
 export type Validator_Min_Fields = {
   __typename?: 'validator_min_fields';
@@ -5470,6 +5525,15 @@ export type Validator_Min_Fields = {
   node?: Maybe<Scalars['String']>;
   voter?: Maybe<Scalars['String']>;
   withdrawer?: Maybe<Scalars['String']>;
+};
+
+/** order by min() on columns of table "validator" */
+export type Validator_Min_Order_By = {
+  address?: Maybe<Order_By>;
+  commission?: Maybe<Order_By>;
+  node?: Maybe<Order_By>;
+  voter?: Maybe<Order_By>;
+  withdrawer?: Maybe<Order_By>;
 };
 
 /** Ordering options when selecting data from "validator". */
@@ -6011,10 +6075,20 @@ export type Validator_Stddev_Fields = {
   commission?: Maybe<Scalars['Float']>;
 };
 
+/** order by stddev() on columns of table "validator" */
+export type Validator_Stddev_Order_By = {
+  commission?: Maybe<Order_By>;
+};
+
 /** aggregate stddev_pop on columns */
 export type Validator_Stddev_Pop_Fields = {
   __typename?: 'validator_stddev_pop_fields';
   commission?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_pop() on columns of table "validator" */
+export type Validator_Stddev_Pop_Order_By = {
+  commission?: Maybe<Order_By>;
 };
 
 /** aggregate stddev_samp on columns */
@@ -6023,10 +6097,20 @@ export type Validator_Stddev_Samp_Fields = {
   commission?: Maybe<Scalars['Float']>;
 };
 
+/** order by stddev_samp() on columns of table "validator" */
+export type Validator_Stddev_Samp_Order_By = {
+  commission?: Maybe<Order_By>;
+};
+
 /** aggregate sum on columns */
 export type Validator_Sum_Fields = {
   __typename?: 'validator_sum_fields';
   commission?: Maybe<Scalars['Int']>;
+};
+
+/** order by sum() on columns of table "validator" */
+export type Validator_Sum_Order_By = {
+  commission?: Maybe<Order_By>;
 };
 
 /** aggregate var_pop on columns */
@@ -6035,16 +6119,31 @@ export type Validator_Var_Pop_Fields = {
   commission?: Maybe<Scalars['Float']>;
 };
 
+/** order by var_pop() on columns of table "validator" */
+export type Validator_Var_Pop_Order_By = {
+  commission?: Maybe<Order_By>;
+};
+
 /** aggregate var_samp on columns */
 export type Validator_Var_Samp_Fields = {
   __typename?: 'validator_var_samp_fields';
   commission?: Maybe<Scalars['Float']>;
 };
 
+/** order by var_samp() on columns of table "validator" */
+export type Validator_Var_Samp_Order_By = {
+  commission?: Maybe<Order_By>;
+};
+
 /** aggregate variance on columns */
 export type Validator_Variance_Fields = {
   __typename?: 'validator_variance_fields';
   commission?: Maybe<Scalars['Float']>;
+};
+
+/** order by variance() on columns of table "validator" */
+export type Validator_Variance_Order_By = {
+  commission?: Maybe<Order_By>;
 };
 
 export type ActiveValidatorCountQueryVariables = Exact<{ [key: string]: never; }>;
