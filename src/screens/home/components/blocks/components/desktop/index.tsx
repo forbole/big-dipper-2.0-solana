@@ -29,10 +29,18 @@ const Desktop: React.FC<{
   const classes = useStyles();
 
   const formattedData = items.map((x) => {
-    console.log('items', items);
-    console.log('x.leader', x.leader[0]);
-    console.log('x.leader', x.leader[0].validator_config);
-    console.log('x.leader.address', x.leader.address);
+    let addressValue = null;
+    let nameValue = null;
+    let urlValue = null;
+
+    if (x.leader[0]) {
+      addressValue = x.leader[0].address;
+      if (x.leader[0].validatorConfig) {
+        nameValue = x.leader[0].validatorConfig.name;
+        urlValue = x.leader[0].validatorConfig.avatarUrl;
+      }
+    }
+
     return ({
       slot: (
         <Link href={BLOCK_DETAILS(x.slot)} passHref>
@@ -45,9 +53,9 @@ const Desktop: React.FC<{
       time: dayjs.utc(x.timestamp).fromNow(),
       proposer: (
         <AvatarName
-          address={x.leader.address}
-          imageUrl={x.leader.url}
-          name={x.leader.name}
+          address={addressValue}
+          imageUrl={urlValue}
+          name={nameValue}
         />
       ),
       hash: getMiddleEllipsis(x.hash, {
