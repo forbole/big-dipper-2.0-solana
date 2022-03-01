@@ -30,7 +30,9 @@ const Desktop: React.FC<{
 
   const formattedData = items.map((x) => {
     console.log('items', items);
-    console.log('x.leader', x.leader);
+    console.log('x.leader', x.leader[0]);
+    console.log('x.leader', x.leader[0].validator_config);
+    console.log('x.leader.address', x.leader.address);
     return ({
       slot: (
         <Link href={BLOCK_DETAILS(x.slot)} passHref>

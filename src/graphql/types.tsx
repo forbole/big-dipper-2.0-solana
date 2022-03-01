@@ -6225,7 +6225,7 @@ export type BlocksListenerSubscription = { blocks: Array<(
     & { leader: Array<(
       { __typename?: 'validator' }
       & { address: Validator['node'] }
-      & { validator_config?: Maybe<(
+      & { validatorConfig?: Maybe<(
         { __typename?: 'validator_config' }
         & Pick<Validator_Config, 'name'>
         & { avatarUrl: Validator_Config['avatar_url'] }
@@ -6246,7 +6246,7 @@ export type BlocksQuery = { blocks: Array<(
     & { leader: Array<(
       { __typename?: 'validator' }
       & { address: Validator['node'] }
-      & { validator_config?: Maybe<(
+      & { validatorConfig?: Maybe<(
         { __typename?: 'validator_config' }
         & Pick<Validator_Config, 'name'>
         & { avatarUrl: Validator_Config['avatar_url'] }
@@ -6595,7 +6595,7 @@ export const BlocksListenerDocument = gql`
     timestamp
     numTxs: num_txs
     leader: validator {
-      validator_config {
+      validatorConfig: validator_config {
         name
         avatarUrl: avatar_url
       }
@@ -6637,7 +6637,7 @@ export const BlocksDocument = gql`
     timestamp
     numTxs: num_txs
     leader: validator {
-      validator_config {
+      validatorConfig: validator_config {
         name
         avatarUrl: avatar_url
       }

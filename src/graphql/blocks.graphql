@@ -6,7 +6,7 @@ subscription BlocksListener($limit: Int = 7, $offset: Int = 0) {
     timestamp
     numTxs: num_txs
     leader: validator {
-      validator_config {
+      validatorConfig: validator_config {
         name
         avatarUrl: avatar_url
       }
@@ -23,7 +23,7 @@ query Blocks($limit: Int = 7, $offset: Int = 0) {
     timestamp
     numTxs: num_txs
     leader: validator {
-      validator_config {
+      validatorConfig: validator_config {
         name
         avatarUrl: avatar_url
       }
