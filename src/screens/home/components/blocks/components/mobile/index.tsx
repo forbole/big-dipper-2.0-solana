@@ -23,6 +23,17 @@ const Mobile: React.FC<{
   return (
     <div className={classnames(className)}>
       {items.map((x, i) => {
+        let addressValue = null;
+        let nameValue = null;
+        let urlValue = null;
+
+        if (x.leader[0]) {
+          addressValue = x.leader[0].address;
+          if (x.leader[0].validatorConfig) {
+            nameValue = x.leader[0].validatorConfig.name;
+            urlValue = x.leader[0].validatorConfig.avatarUrl;
+          }
+        }
         return (
           <React.Fragment key={`${x.slot}-${i}`}>
             <SingleBlockMobile
@@ -37,9 +48,9 @@ const Mobile: React.FC<{
               time={dayjs.utc(x.timestamp).fromNow()}
               proposer={(
                 <AvatarName
-                  address={x.proposer.address}
-                  imageUrl={x.proposer.imageUrl}
-                  name={x.proposer.name}
+                  address={addressValue}
+                  imageUrl={urlValue}
+                  name={nameValue}
                 />
               )}
               hash={getMiddleEllipsis(x.hash, {
