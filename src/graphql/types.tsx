@@ -6222,6 +6222,15 @@ export type BlocksListenerSubscription = { blocks: Array<(
     { __typename?: 'block' }
     & Pick<Block, 'slot' | 'proposer' | 'hash' | 'timestamp'>
     & { numTxs: Block['num_txs'] }
+    & { leader: Array<(
+      { __typename?: 'validator' }
+      & { address: Validator['node'] }
+      & { validator_config?: Maybe<(
+        { __typename?: 'validator_config' }
+        & Pick<Validator_Config, 'name'>
+        & { avatarUrl: Validator_Config['avatar_url'] }
+      )> }
+    )> }
   )> };
 
 export type BlocksQueryVariables = Exact<{
@@ -6234,6 +6243,15 @@ export type BlocksQuery = { blocks: Array<(
     { __typename?: 'block' }
     & Pick<Block, 'slot' | 'proposer' | 'hash' | 'timestamp'>
     & { numTxs: Block['num_txs'] }
+    & { leader: Array<(
+      { __typename?: 'validator' }
+      & { address: Validator['node'] }
+      & { validator_config?: Maybe<(
+        { __typename?: 'validator_config' }
+        & Pick<Validator_Config, 'name'>
+        & { avatarUrl: Validator_Config['avatar_url'] }
+      )> }
+    )> }
   )>, total: (
     { __typename?: 'block_aggregate' }
     & { aggregate?: Maybe<(
@@ -6576,6 +6594,13 @@ export const BlocksListenerDocument = gql`
     hash
     timestamp
     numTxs: num_txs
+    leader: validator {
+      validator_config {
+        name
+        avatarUrl: avatar_url
+      }
+      address: node
+    }
   }
 }
     `;
@@ -6611,6 +6636,13 @@ export const BlocksDocument = gql`
     hash
     timestamp
     numTxs: num_txs
+    leader: validator {
+      validator_config {
+        name
+        avatarUrl: avatar_url
+      }
+      address: node
+    }
   }
   total: block_aggregate {
     aggregate {
