@@ -17,7 +17,7 @@ const AvatarName: React.FC<AvatarName> = ({
         <div className={classnames(className, classes.root)}>
           <Avatar address={address} imageUrl={imageUrl} />
           <Typography variant="body1">
-            {name}
+            {name || address}
           </Typography>
         </div>
       </a>
