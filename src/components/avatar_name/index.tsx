@@ -11,6 +11,8 @@ const AvatarName: React.FC<AvatarName> = ({
 }) => {
   const classes = useStyles();
 
+  console.log(address, name, imageUrl);
+
   return (
     <Link href={href(address)}>
       <a>

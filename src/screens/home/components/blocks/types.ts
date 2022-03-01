@@ -4,6 +4,11 @@ export type BlockType = {
   hash: string;
   txs: number;
   timestamp: string;
+  leader: {
+    name: string;
+    url: string;
+    address: string;
+  }
 }
 
 export type BlocksState = {
