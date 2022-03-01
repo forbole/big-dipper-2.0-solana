@@ -29,6 +29,8 @@ const Desktop: React.FC<{
   const classes = useStyles();
 
   const formattedData = items.map((x) => {
+    console.log('items', items);
+    console.log('x.leader', x.leader);
     return ({
       slot: (
         <Link href={BLOCK_DETAILS(x.slot)} passHref>

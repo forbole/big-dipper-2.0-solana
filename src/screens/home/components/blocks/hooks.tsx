@@ -36,12 +36,7 @@ export const useBlocks = () => {
         hash: x.hash,
         timestamp: x.timestamp,
         proposer: x.proposer,
-        leader: {
-          name: R.pathOr(null, ['name', 'validator_config', 0], x.leader),
-          url: R.pathOr(null, ['avatarUrl', 'validator_config', 0], x.leader),
-          // address: x.leader ? x.leader[0].address : null,
-          address: R.pathOr(null, ['address', 0, 'leader'], x),
-        },
+        leader: x.leader,
       });
     });
   };
