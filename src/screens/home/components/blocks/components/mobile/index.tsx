@@ -46,7 +46,7 @@ const Mobile: React.FC<{
               )}
               txs={numeral(x.txs).format('0,0')}
               time={dayjs.utc(x.timestamp).fromNow()}
-              proposer={(
+              leader={(
                 <AvatarName
                   address={addressValue}
                   imageUrl={urlValue}

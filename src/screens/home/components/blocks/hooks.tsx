@@ -35,7 +35,6 @@ export const useBlocks = () => {
         txs: x.numTxs,
         hash: x.hash,
         timestamp: x.timestamp,
-        proposer: x.proposer,
         leader: x.leader,
       });
     });
