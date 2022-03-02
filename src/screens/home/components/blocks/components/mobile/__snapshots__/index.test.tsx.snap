@@ -7,10 +7,11 @@ exports[`screen: Home/Blocks/Mobile matches snapshot 1`] = `
   <div
     hash="76nwV8zz8tLz9...F66jZhQ857"
     id="SingleBlockMobile"
-    proposer={
+    leader={
       <AvatarName
-        address="desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467"
-        name="desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467"
+        address="AjfUXpuPLBFwB9NbhS8vYFgvf1tU5Xt7LG7yKAQpBTNE"
+        imageUrl="https://s3.amazonaws.com/keybase_processed_uploads/9e5781946a0748087fe366f6f4189805_360_36"
+        name="tundrman"
       />
     }
     slot={

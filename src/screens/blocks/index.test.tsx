@@ -30,7 +30,11 @@ const mockBlocksListenerDocument = {
     blocks: [
       {
         "slot": 109782714,
-        "proposer": "51cbXxXHtwQ5WCSVkmjBrUcbZQUJjCWxvXP4mmoJiJGA",
+        "leader": {
+          "address": "AjfUXpuPLBFwB9NbhS8vYFgvf1tU5Xt7LG7yKAQpBTNE",
+          "name": "tundrman",
+          "url": "https://s3.amazonaws.com/keybase_processed_uploads/9e5781946a0748087fe366f6f4189805_360_36",         
+        },
         "hash": "ADWG9wFPM94Fa2H9LMdnnz6QXfXQpky4RQrxbz2beLmd",
         "timestamp": "2021-12-02T23:33:50",
         "numTxs": 1355,
@@ -44,7 +48,11 @@ const mockBlocksDocument = jest.fn().mockResolvedValue({
     "blocks": [
       {
         "slot": 109782714,
-        "proposer": "51cbXxXHtwQ5WCSVkmjBrUcbZQUJjCWxvXP4mmoJiJGA",
+        "leader": {
+          "address": "AjfUXpuPLBFwB9NbhS8vYFgvf1tU5Xt7LG7yKAQpBTNE",
+          "name": "tundrman",
+          "url": "https://s3.amazonaws.com/keybase_processed_uploads/9e5781946a0748087fe366f6f4189805_360_36",         
+        },
         "hash": "ADWG9wFPM94Fa2H9LMdnnz6QXfXQpky4RQrxbz2beLmd",
         "timestamp": "2021-12-02T23:33:50",
         "numTxs": 1377,
