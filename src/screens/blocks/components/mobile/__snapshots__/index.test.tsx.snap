@@ -44,7 +44,7 @@ exports[`screen: Home/Blocks/Mobile matches snapshot 1`] = `
           <div
             hash="76nwV8zz8tLz9...F66jZhQ857"
             id="SingleBlockMobile"
-            proposer={
+            leader={
               <AvatarName
                 address="desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467"
                 name="desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467"
@@ -88,7 +88,7 @@ exports[`screen: Home/Blocks/Mobile matches snapshot 1`] = `
           <div
             hash="76nwV8zz8tLz9...F66jZhQ857"
             id="SingleBlockMobile"
-            proposer={
+            leader={
               <AvatarName
                 address="desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467"
                 name="desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467"

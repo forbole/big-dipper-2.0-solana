@@ -28,7 +28,7 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
           className="MuiTableCell-root MuiTableCell-head"
           scope="col"
         >
-          proposer
+          leader
         </th>
         <th
           aria-sort={null}
@@ -79,9 +79,10 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
           className="MuiTableCell-root MuiTableCell-body"
         >
           <div
-            address="desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467"
+            address="AjfUXpuPLBFwB9NbhS8vYFgvf1tU5Xt7LG7yKAQpBTNE"
             id="AvatarName"
-            name="desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467"
+            imageUrl="https://s3.amazonaws.com/keybase_processed_uploads/9e5781946a0748087fe366f6f4189805_360_36"
+            name="tundrman"
           />
         </td>
         <td

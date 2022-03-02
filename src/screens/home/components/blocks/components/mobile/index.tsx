@@ -35,11 +35,11 @@ const Mobile: React.FC<{
               )}
               txs={numeral(x.txs).format('0,0')}
               time={dayjs.utc(x.timestamp).fromNow()}
-              proposer={(
+              leader={(
                 <AvatarName
-                  address={x.proposer.address}
-                  imageUrl={x.proposer.imageUrl}
-                  name={x.proposer.name}
+                  address={x.leader.address}
+                  imageUrl={x.leader.url}
+                  name={x.leader.name}
                 />
               )}
               hash={getMiddleEllipsis(x.hash, {

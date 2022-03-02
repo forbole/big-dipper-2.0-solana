@@ -27,9 +27,10 @@ describe('screen: Home/Blocks/Mobile', () => {
           items={[
             {
               slot: 812768640,
-              proposer: {
-                name: 'desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467',
-                address: 'desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467',
+              leader: {
+                address: 'AjfUXpuPLBFwB9NbhS8vYFgvf1tU5Xt7LG7yKAQpBTNE',
+                name: 'tundrman',
+                url: 'https://s3.amazonaws.com/keybase_processed_uploads/9e5781946a0748087fe366f6f4189805_360_36',
               },
               hash: '76nwV8zz8tLz97SBRXH6uwHvgHXtqJDLQfF66jZhQ857',
               txs: 2,

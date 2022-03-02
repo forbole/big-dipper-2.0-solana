@@ -11,9 +11,6 @@ import {
   Box, NoData,
 } from '@components';
 import { useScreenSize } from '@hooks';
-import {
-  useProfilesRecoil,
-} from '@recoil/profiles';
 import { useStyles } from './styles';
 import { useBlocks } from './hooks';
 
@@ -27,14 +24,6 @@ const Blocks:React.FC<{
   const { t } = useTranslation('home');
   const classes = useStyles();
   const { state } = useBlocks();
-
-  const proposerProfiles = useProfilesRecoil(state.items.map((x) => x.proposer));
-  const mergedDataWithProfiles = state.items.map((x, i) => {
-    return ({
-      ...x,
-      proposer: proposerProfiles[i],
-    });
-  });
 
   return (
     <Box className={classnames(className, classes.root)}>
@@ -55,12 +44,12 @@ const Blocks:React.FC<{
           {isDesktop ? (
             <Desktop
               className={classes.desktop}
-              items={mergedDataWithProfiles}
+              items={state.items}
             />
           ) : (
             <Mobile
               className={classes.mobile}
-              items={mergedDataWithProfiles}
+              items={state.items}
             />
           )}
           <Divider className={classes.mobile} />

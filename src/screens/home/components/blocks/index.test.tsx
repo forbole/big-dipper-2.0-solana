@@ -37,7 +37,11 @@ const mockBlocksListenerDocument = {
     blocks: [
       {
         "slot": 109782707,
-        "proposer": "B2KjdiHYy2rRQZxT3CckhhSxFQdTsCobd1sZkSXqMDwM",
+        "leader": {
+          "address": "AjfUXpuPLBFwB9NbhS8vYFgvf1tU5Xt7LG7yKAQpBTNE",
+          "name": "tundrman",
+          "url": "https://s3.amazonaws.com/keybase_processed_uploads/9e5781946a0748087fe366f6f4189805_360_36",         
+        },
         "hash": "BBj6jSFyRZNNY2SPcfTcHjMHzAWdBtZewtonV29Fn2Y",
         "timestamp": "2021-12-02T23:33:46",
         "numTxs": 1255,
