@@ -1,13 +1,13 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
-import { MockTheme } from '@tests/utils';
-import Mobile from '.';
+// import renderer from 'react-test-renderer';
+// import { MockTheme } from '@tests/utils';
+// import Mobile from '.';
 
 // ==================================
 // mocks
 // ==================================
 jest.mock('@components', () => ({
-  SingleBlockMobile: (props) => <div id="SingleBlockMobile" {...props} />,
+  // SingleBlockMobile: (props) => <div id="SingleBlockMobile" {...props} />,
   Loading: (props) => <div id="Loading" {...props} />,
   AvatarName: (props) => <div id="AvatarName" {...props} />,
 }));
