@@ -19,7 +19,7 @@ describe('component: SingleSlotMobile', () => {
         <SingleSlotMobile
           slot={<div>slot</div>}
           txs="100,000"
-          proposer={<div>leader</div>}
+          leader={<div>leader</div>}
           hash="hash"
           time="time"
         />

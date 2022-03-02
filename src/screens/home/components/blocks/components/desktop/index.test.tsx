@@ -26,7 +26,7 @@ describe('screen: Home/Blocks/Desktop', () => {
           items={[
             {
               slot: 812768640,
-              proposer: {
+              leader: {
                 name: 'desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467',
                 address: 'desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467',
               },

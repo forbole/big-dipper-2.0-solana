@@ -37,7 +37,7 @@ const mockBlocksListenerDocument = {
     blocks: [
       {
         "slot": 109782707,
-        "proposer": "B2KjdiHYy2rRQZxT3CckhhSxFQdTsCobd1sZkSXqMDwM",
+        "leader": "B2KjdiHYy2rRQZxT3CckhhSxFQdTsCobd1sZkSXqMDwM",
         "hash": "BBj6jSFyRZNNY2SPcfTcHjMHzAWdBtZewtonV29Fn2Y",
         "timestamp": "2021-12-02T23:33:46",
         "numTxs": 1255,
