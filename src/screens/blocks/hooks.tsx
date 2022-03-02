@@ -99,7 +99,11 @@ export const useBlocks = () => {
         txs: x.numTxs,
         hash: x.hash,
         timestamp: x.timestamp,
-        leader: x.proposer,
+        leader: {
+          name: x.leader[0]?.validatorConfig?.name,
+          url: x.leader[0]?.validatorConfig?.avatarUrl,
+          address: x.leader[0]?.address,
+        },
       });
     });
   };
