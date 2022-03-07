@@ -3,11 +3,11 @@ export type BlockType = {
   hash: string;
   txs: number;
   timestamp: string;
-  leader: any;
+  leader: string;
 }
 
 export type BlocksState = {
   items: BlockType[];
 }
 
-export type ItemType = BlockType
+export type ItemType = Override<BlockType, { leader: AvatarName }>
