@@ -8,7 +8,7 @@ export const columns:{
     width: 10,
   },
   {
-    key: 'proposer',
+    key: 'leader',
     width: 35,
   },
   {

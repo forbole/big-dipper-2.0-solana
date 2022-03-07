@@ -1,6 +1,6 @@
 export type BlockType = {
   slot: number;
-  leader: any;
+  leader: string;
   hash: string;
   txs: number;
   timestamp: string;
@@ -15,4 +15,4 @@ export type BlocksState = {
   items: BlockType[];
 }
 
-export type ItemType = BlockType
+export type ItemType = Override<BlockType, { leader: AvatarName }>
