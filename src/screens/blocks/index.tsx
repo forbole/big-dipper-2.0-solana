@@ -24,10 +24,11 @@ const Blocks = () => {
   const classes = useStyles();
   const {
     state,
-    loadMoreItems,
-    itemCount,
-    isItemLoaded,
+    loadNextPage,
   } = useBlocks();
+  const loadMoreItems = state.isNextPageLoading ? () => null : loadNextPage;
+  const isItemLoaded = (index) => !state.hasNextPage || index < state.items.length;
+  const itemCount = state.hasNextPage ? state.items.length + 1 : state.items.length;
 
   const proposerProfiles = useProfilesRecoil(state.items.map((x) => x.leader));
   const mergedDataWithProfiles = state.items.map((x, i) => {
