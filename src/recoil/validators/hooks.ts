@@ -9,8 +9,8 @@ import {
   useValidatorAddressesQuery,
   ValidatorAddressesQuery,
 } from '@graphql/types';
-import { chainConfig } from '@configs';
-import { useDesmosProfile } from '@hooks';
+// import { chainConfig } from '@configs';
+// import { useDesmosProfile } from '@hooks';
 import {
   atomFamilyState as validatorAtomState,
 } from '@recoil/validators';
@@ -20,15 +20,6 @@ import {
 
 export const useValidatorRecoil = () => {
   const [loading, setLoading] = useState(true);
-
-  const {
-    fetchDesmosProfile,
-    formatDesmosProfile,
-  } = useDesmosProfile({
-    onComplete: (data) => {
-      return formatDesmosProfile(data);
-    },
-  });
 
   useValidatorAddressesQuery({
     onError: (error) => {
@@ -54,15 +45,7 @@ export const useValidatorRecoil = () => {
 
   const setProfiles = useRecoilCallback(({ set }) => async (data: ValidatorAddressesQuery) => {
     let profiles = [];
-    if (chainConfig.extra.profile) {
-      data?.validator?.filter((x) => x.address).forEach((x) => {
-        const { address } = x;
-        // ryuash
-        // profiles.push(fetchDesmosProfile(address));
-      });
-    }
 
-    profiles = await Promise.allSettled(profiles);
     data?.validator?.filter((x) => x.address).forEach((x, i) => {
       const { address } = x;
 
