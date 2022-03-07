@@ -6,6 +6,7 @@ import {
   Typography, Divider,
 } from '@material-ui/core';
 import useTranslation from 'next-translate/useTranslation';
+import { useProfilesRecoil } from '@recoil/profiles';
 import { BLOCKS } from '@utils/go_to_page';
 import {
   Box, NoData,
@@ -24,6 +25,14 @@ const Blocks:React.FC<{
   const { t } = useTranslation('home');
   const classes = useStyles();
   const { state } = useBlocks();
+
+  const proposerProfiles = useProfilesRecoil(state.items.map((x) => x.leader));
+  const mergedDataWithProfiles = state.items.map((x, i) => {
+    return ({
+      ...x,
+      leader: proposerProfiles[i],
+    });
+  });
 
   return (
     <Box className={classnames(className, classes.root)}>
@@ -44,12 +53,12 @@ const Blocks:React.FC<{
           {isDesktop ? (
             <Desktop
               className={classes.desktop}
-              items={state.items}
+              items={mergedDataWithProfiles}
             />
           ) : (
             <Mobile
               className={classes.mobile}
-              items={state.items}
+              items={mergedDataWithProfiles}
             />
           )}
           <Divider className={classes.mobile} />

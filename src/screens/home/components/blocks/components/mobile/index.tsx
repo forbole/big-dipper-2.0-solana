@@ -38,7 +38,7 @@ const Mobile: React.FC<{
               leader={(
                 <AvatarName
                   address={x.leader.address}
-                  imageUrl={x.leader.url}
+                  imageUrl={x.leader.imageUrl}
                   name={x.leader.name}
                 />
               )}

@@ -1,39 +1,20 @@
 subscription BlocksListener($limit: Int = 7, $offset: Int = 0) {
   blocks: block(limit: $limit, offset: $offset, order_by: {slot: desc}) {
     slot
-    proposer
+    leader: proposer
     hash
     timestamp
     numTxs: num_txs
-    leader: validator {
-      validatorConfig: validator_config {
-        name
-        avatarUrl: avatar_url
-      }
-      address: node
-    }
   }
 }
 
 query Blocks($limit: Int = 7, $offset: Int = 0) {
 	blocks: block(limit: $limit, offset: $offset, order_by: {slot: desc}) {
     slot
-    proposer
+    leader: proposer
     hash
     timestamp
     numTxs: num_txs
-    leader: validator {
-      validatorConfig: validator_config {
-        name
-        avatarUrl: avatar_url
-      }
-      address: node
-    }
-  }
-  total: block_aggregate {
-    aggregate {
-      count
-    }
   }
 }
 

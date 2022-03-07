@@ -53,7 +53,7 @@ const Desktop: React.FC<{
       ),
       txs: numeral(x.txs).format('0,0'),
       time: dayjs.utc(x.timestamp).fromNow(),
-      proposer: (
+      leader: (
         <AvatarName
           address={x.leader.address}
           imageUrl={x.leader.imageUrl}

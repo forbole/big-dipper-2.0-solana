@@ -30,11 +30,7 @@ const mockBlocksListenerDocument = {
     blocks: [
       {
         "slot": 109782714,
-        "leader": {
-          "address": "AjfUXpuPLBFwB9NbhS8vYFgvf1tU5Xt7LG7yKAQpBTNE",
-          "name": "tundrman",
-          "url": "https://s3.amazonaws.com/keybase_processed_uploads/9e5781946a0748087fe366f6f4189805_360_36",         
-        },
+        "leader": "AjfUXpuPLBFwB9NbhS8vYFgvf1tU5Xt7LG7yKAQpBTNE",
         "hash": "ADWG9wFPM94Fa2H9LMdnnz6QXfXQpky4RQrxbz2beLmd",
         "timestamp": "2021-12-02T23:33:50",
         "numTxs": 1355,
@@ -48,21 +44,12 @@ const mockBlocksDocument = jest.fn().mockResolvedValue({
     "blocks": [
       {
         "slot": 109782714,
-        "leader": {
-          "address": "AjfUXpuPLBFwB9NbhS8vYFgvf1tU5Xt7LG7yKAQpBTNE",
-          "name": "tundrman",
-          "url": "https://s3.amazonaws.com/keybase_processed_uploads/9e5781946a0748087fe366f6f4189805_360_36",         
-        },
+        "leader": "AjfUXpuPLBFwB9NbhS8vYFgvf1tU5Xt7LG7yKAQpBTNE",
         "hash": "ADWG9wFPM94Fa2H9LMdnnz6QXfXQpky4RQrxbz2beLmd",
         "timestamp": "2021-12-02T23:33:50",
         "numTxs": 1377,
       }
-    ],
-    "total": {
-      "aggregate": {
-        "count": 145223
-      }
-    }
+    ]
   },
 });
 
@@ -70,47 +57,41 @@ const mockBlocksDocument = jest.fn().mockResolvedValue({
 // unit tests
 // ==================================
 describe('screen: Blocks', () => {
-  // it('matches snapshot', async () => {
-  //   const mockClient = createMockClient();
-  //   const mockSubscription = createMockSubscription();
+  it('matches snapshot', async () => {
+    const mockClient = createMockClient();
+    const mockSubscription = createMockSubscription();
 
-  //   mockClient.setRequestHandler(
-  //     BlocksListenerDocument,
-  //     () => mockSubscription,
-  //   );
+    mockClient.setRequestHandler(
+      BlocksListenerDocument,
+      () => mockSubscription,
+    );
 
-  //   mockClient.setRequestHandler(
-  //     BlocksDocument,
-  //     mockBlocksDocument,
-  //   );
+    mockClient.setRequestHandler(
+      BlocksDocument,
+      mockBlocksDocument,
+    );
 
-  //   let component;
+    let component;
 
-  //   renderer.act(() => {
-  //     component = renderer.create(
-  //       <RecoilRoot>
-  //         <ApolloProvider client={mockClient}>
-  //           <MockTheme>
-  //             <Blocks />
-  //           </MockTheme>
-  //         </ApolloProvider>
-  //       </RecoilRoot>,
-  //     );
-  //   });
-  //   await wait();
+    renderer.act(() => {
+      component = renderer.create(
+        <RecoilRoot>
+          <ApolloProvider client={mockClient}>
+            <MockTheme>
+              <Blocks />
+            </MockTheme>
+          </ApolloProvider>
+        </RecoilRoot>,
+      );
+    });
+    await wait();
 
-  //   renderer.act(() => {
-  //     mockSubscription.next(mockBlocksListenerDocument);
-  //   });
+    renderer.act(() => {
+      mockSubscription.next(mockBlocksListenerDocument);
+    });
 
-  //   const tree = component.toJSON();
-  //   expect(tree).toMatchSnapshot();
-  // });
-
-  it('test', ()=>{
-    const a = 2;
-    const b = 3;
-    expect(a+b).toBe(5);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
   });
 
   afterEach(() => {
