@@ -59,7 +59,7 @@ exports[`screen: Validators/Tabs matches snapshot 1`] = `
           <span
             className="MuiTab-wrapper"
           >
-            validators:active (1528)
+            validators:active (1,528)
           </span>
           <span
             className="PrivateTabIndicator-root PrivateTabIndicator-colorSecondary MuiTabs-indicator"
@@ -119,7 +119,7 @@ exports[`screen: Validators/Tabs matches snapshot 1`] = `
           <span
             className="MuiTab-wrapper"
           >
-            validators:allValidators (2897)
+            validators:allValidators (2,897)
           </span>
         </button>
       </div>

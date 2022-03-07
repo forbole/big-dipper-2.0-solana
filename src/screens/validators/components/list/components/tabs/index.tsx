@@ -15,7 +15,7 @@ const TabsHeader: React.FC<{
   tab: number;
   handleTabChange: (event:any, newvalue:number) => void;
   handleSearch: (value: string) => void;
-  validatorCount: number[];
+  validatorCount: string[];
 }> = ({
   className,
   tab,
