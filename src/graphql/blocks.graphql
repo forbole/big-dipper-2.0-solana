@@ -16,10 +16,5 @@ query Blocks($limit: Int = 7, $offset: Int = 0) {
     timestamp
     numTxs: num_txs
   }
-  total: block_aggregate {
-    aggregate {
-      count
-    }
-  }
 }
 

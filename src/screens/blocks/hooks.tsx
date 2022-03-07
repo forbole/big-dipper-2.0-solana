@@ -13,15 +13,25 @@ export const useBlocks = () => {
   const [state, setState] = useState<BlocksState>({
     loading: true,
     exists: true,
-    items: [],
     hasNextPage: false,
     isNextPageLoading: false,
-    rawDataTotal: 0,
+    items: [],
   });
 
   const handleSetState = (stateChange: any) => {
     setState((prevState) => R.mergeDeepLeft(stateChange, prevState));
   };
+
+  // This is a bandaid as it can get extremely
+  // expensive if there is too much data
+  /**
+   * Helps remove any possible duplication
+   * and sorts by height in case it bugs out
+   */
+  const uniqueAndSort = R.pipe(
+    R.uniqBy(R.prop('hash')),
+    R.sort(R.descend(R.prop('height'))),
+  );
 
   // ================================
   // block subscription
@@ -45,9 +55,10 @@ export const useBlocks = () => {
   // ================================
   // block query
   // ================================
+  const LIMIT = 51;
   const blockQuery = useBlocksQuery({
     variables: {
-      limit: 50,
+      limit: LIMIT,
       offset: 1,
     },
     onError: () => {
@@ -56,13 +67,16 @@ export const useBlocks = () => {
       });
     },
     onCompleted: (data) => {
-      const newItems = R.uniq([...state.items, ...formatBlocks(data)]);
+      const itemsLength = data.blocks.length;
+      const newItems = uniqueAndSort([
+        ...state.items,
+        ...formatBlocks(data),
+      ]);
       handleSetState({
         loading: false,
         items: newItems,
-        hasNextPage: newItems.length < data.total.aggregate.count,
+        hasNextPage: itemsLength === 51,
         isNextPageLoading: false,
-        rawDataTotal: data.total.aggregate.count,
       });
     },
   });
@@ -75,10 +89,11 @@ export const useBlocks = () => {
     await blockQuery.fetchMore({
       variables: {
         offset: state.items.length,
-        limit: 50,
+        limit: LIMIT,
       },
     }).then(({ data }) => {
-      const newItems = R.uniq([
+      const itemsLength = data.blocks.length;
+      const newItems = uniqueAndSort([
         ...state.items,
         ...formatBlocks(data),
       ]);
@@ -86,8 +101,7 @@ export const useBlocks = () => {
       handleSetState({
         items: newItems,
         isNextPageLoading: false,
-        hasNextPage: newItems.length < data.total.aggregate.count,
-        rawDataTotal: data.total.aggregate.count,
+        hasNextPage: itemsLength === 51,
       });
     });
   };
@@ -104,15 +118,8 @@ export const useBlocks = () => {
     });
   };
 
-  const itemCount = state.hasNextPage ? state.items.length + 1 : state.items.length;
-  const loadMoreItems = state.isNextPageLoading ? () => null : loadNextPage;
-  const isItemLoaded = (index) => !state.hasNextPage || index < state.items.length;
-
   return {
     state,
     loadNextPage,
-    itemCount,
-    loadMoreItems,
-    isItemLoaded,
   };
 };

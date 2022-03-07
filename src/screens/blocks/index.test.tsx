@@ -49,12 +49,7 @@ const mockBlocksDocument = jest.fn().mockResolvedValue({
         "timestamp": "2021-12-02T23:33:50",
         "numTxs": 1377,
       }
-    ],
-    "total": {
-      "aggregate": {
-        "count": 145223
-      }
-    }
+    ]
   },
 });
 

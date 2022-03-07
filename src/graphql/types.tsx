@@ -6234,13 +6234,7 @@ export type BlocksQuery = { blocks: Array<(
     { __typename?: 'block' }
     & Pick<Block, 'slot' | 'hash' | 'timestamp'>
     & { leader: Block['proposer'], numTxs: Block['num_txs'] }
-  )>, total: (
-    { __typename?: 'block_aggregate' }
-    & { aggregate?: Maybe<(
-      { __typename?: 'block_aggregate_fields' }
-      & Pick<Block_Aggregate_Fields, 'count'>
-    )> }
-  ) };
+  )> };
 
 export type EpochQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -6607,11 +6601,6 @@ export const BlocksDocument = gql`
     hash
     timestamp
     numTxs: num_txs
-  }
-  total: block_aggregate {
-    aggregate {
-      count
-    }
   }
 }
     `;
