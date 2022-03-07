@@ -6382,14 +6382,10 @@ export type ValidatorsQuery = { validator: Array<(
 export type ValidatorAddressesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type ValidatorAddressesQuery = { validator: Array<(
-    { __typename?: 'validator' }
-    & Pick<Validator, 'address' | 'node'>
-    & { validatorConfig?: Maybe<(
-      { __typename?: 'validator_config' }
-      & Pick<Validator_Config, 'name'>
-      & { avatarUrl: Validator_Config['avatar_url'] }
-    )> }
+export type ValidatorAddressesQuery = { validatorConfig: Array<(
+    { __typename?: 'validator_config' }
+    & Pick<Validator_Config, 'name' | 'owner' | 'address'>
+    & { avatarUrl: Validator_Config['avatar_url'] }
   )> };
 
 
@@ -7009,13 +7005,11 @@ export type ValidatorsLazyQueryHookResult = ReturnType<typeof useValidatorsLazyQ
 export type ValidatorsQueryResult = Apollo.QueryResult<ValidatorsQuery, ValidatorsQueryVariables>;
 export const ValidatorAddressesDocument = gql`
     query ValidatorAddresses {
-  validator {
+  validatorConfig: validator_config {
+    name
+    avatarUrl: avatar_url
+    owner
     address
-    node
-    validatorConfig: validator_config {
-      name
-      avatarUrl: avatar_url
-    }
   }
 }
     `;

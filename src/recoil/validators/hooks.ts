@@ -4,13 +4,10 @@ import { useState } from 'react';
 import {
   useRecoilCallback,
 } from 'recoil';
-import * as R from 'ramda';
 import {
   useValidatorAddressesQuery,
   ValidatorAddressesQuery,
 } from '@graphql/types';
-// import { chainConfig } from '@configs';
-// import { useDesmosProfile } from '@hooks';
 import {
   atomFamilyState as validatorAtomState,
 } from '@recoil/validators';
@@ -34,34 +31,24 @@ export const useValidatorRecoil = () => {
   });
 
   const formatValidatorsAddressList = useRecoilCallback(({ set }) => async (data: ValidatorAddressesQuery) => {
-    data?.validator?.filter((x) => x.address).forEach((x) => {
-      const { address, node } = x;
-      set(validatorAtomState(address), {
+    data?.validatorConfig?.forEach((x) => {
+      const { owner, address } = x;
+      set(validatorAtomState(owner), {
         address,
-        owner: node
+        owner
       });
-    });
+    })
   });
 
   const setProfiles = useRecoilCallback(({ set }) => async (data: ValidatorAddressesQuery) => {
-    let profiles = [];
+    data?.validatorConfig?.forEach((x, i) => {
+      const { owner, name, avatarUrl } = x;
 
-    data?.validator?.filter((x) => x.address).forEach((x, i) => {
-      const { address } = x;
+      const moniker = name || ''
+      const imageUrl = avatarUrl || ''
 
-      const profile = R.pathOr(undefined, [i, 'value'], profiles);
-
-      // sets profile priority
-      const moniker = R.pathOr(undefined, ['nickname'], profile)
-      || R.pathOr('', ['validatorConfig', 'name'], x);
-
-      const imageUrl = (
-        R.pathOr('', ['imageUrl'], profile)
-        || R.pathOr('', ['validatorConfig', 'avatarUrl'], x)
-      );
-
-      set(profileAtomFamilyState(address), {
-        moniker: moniker || address,
+      set(profileAtomFamilyState(owner), {
+        moniker: moniker || owner,
         imageUrl,
       });
     });
