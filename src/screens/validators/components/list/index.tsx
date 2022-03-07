@@ -39,6 +39,11 @@ const List: React.FC<{
   });
   const items = sortItems(mergedDataWithProfiles);
 
+  const activeTotal = mergedDataWithProfiles.filter((x) => x.status === true).length;
+  const deliquentTotal = mergedDataWithProfiles.filter((x) => x.status === false).length;
+  const total = dataProfiles.length;
+  const validatorCount = [activeTotal, deliquentTotal, total];
+
   return (
     <LoadAndExist
       loading={state.loading}
@@ -49,6 +54,7 @@ const List: React.FC<{
           tab={state.tab}
           handleTabChange={handleTabChange}
           handleSearch={handleSearch}
+          validatorCount={validatorCount}
         />
         <div className={classes.list}>
           {items.length ? (
