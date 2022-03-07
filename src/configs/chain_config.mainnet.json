@@ -22,6 +22,6 @@
     }
   },
   "extra": {
-    "profile": true
+    "profile": false
   }
 }

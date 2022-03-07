@@ -1,10 +1,10 @@
 query ValidatorAddresses {
-  validator {
+  validatorConfig: validator_config {
+    name
+    avatarUrl:avatar_url
+    owner
     address
-    node
-    validatorConfig: validator_config {
-      name
-      avatarUrl:avatar_url
-    }
   }
 }
+
+
