@@ -17,9 +17,9 @@ exports[`screen: Validators/List matches snapshot 1`] = `
       tab={0}
       validatorCount={
         Array [
-          1,
-          0,
-          undefined,
+          "1",
+          "0",
+          "0",
         ]
       }
     />
