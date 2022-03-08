@@ -16,7 +16,7 @@ import {
 import {
   Box, CustomToolTip,
 } from '@components';
-import dayjs from '@utils/dayjs';
+import dayjs, { formatDayJs } from '@utils/dayjs';
 import { useRecoilValue } from 'recoil';
 import { readDate } from '@recoil/settings';
 import { useStyles } from './styles';
@@ -37,6 +37,7 @@ const Price: React.FC<ComponentDefault> = (props) => {
   const formatItems = state.items.map((x) => {
     return ({
       time: formatTime(dayjs.utc(x.time), dateFormat),
+      fullTime: formatDayJs(dayjs.utc(x.time), dateFormat),
       value: x.value,
     });
   });
@@ -44,7 +45,7 @@ const Price: React.FC<ComponentDefault> = (props) => {
   return (
     <Box className={classnames(props.className, classes.root)}>
       <Typography variant="h2" className={classes.label}>
-        {t('price')}
+        {t('priceHistory')}
       </Typography>
       <div className={classes.chart}>
         <ResponsiveContainer width="99%">
@@ -66,8 +67,9 @@ const Price: React.FC<ComponentDefault> = (props) => {
             <YAxis
               tickLine={false}
               tickFormatter={tickPriceFormatter}
-              tickCount={10}
-              domain={['dataMin - 50', 'dataMax + 50']}
+              tickCount={9}
+              // domain={[0, 'dataMax + 40']}
+              domain={['dataMin - 10', 'dataMax + 10']}
             />
             <Tooltip
               cursor={false}
@@ -77,7 +79,7 @@ const Price: React.FC<ComponentDefault> = (props) => {
                     return (
                       <>
                         <Typography variant="caption">
-                          {x.time}
+                          {x.fullTime}
                         </Typography>
                         <Typography variant="body1">
                           $

@@ -30,7 +30,7 @@ export const usePrice = () => {
   });
 
   const formatTokenPriceHistory = (data: TokenPriceHistoryQuery) => {
-    return data.tokenPrice.filter((_x, i) => i % 2).map((x) => {
+    return data.tokenPrice.reverse().filter((_x, i) => i % 2).map((x) => {
       return ({
         time: x.timestamp,
         value: x.price,

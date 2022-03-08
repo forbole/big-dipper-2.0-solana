@@ -19,7 +19,7 @@ jest.mock('@components', () => ({
 
 jest.mock('./components', () => ({
   DataBlocks: (props) => <div id="DataBlocks" {...props} />,
-  ActiveStake: (props) => <div id="ActiveStake" {...props} />,
+  Price: (props) => <div id="Price" {...props} />,
   Epoch: (props) => <div id="Epoch" {...props} />,
   StakeWeight: (props) => <div id="StakeWeight" {...props} />,
   Blocks: (props) => <div id="Blocks" {...props} />,

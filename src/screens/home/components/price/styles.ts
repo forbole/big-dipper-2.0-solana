@@ -18,9 +18,12 @@ export const useStyles = () => {
           '& .yAxis .recharts-cartesian-axis-tick:first-child': {
             display: 'none',
           },
+          '& .recharts-cartesian-grid-horizontal line:first-child': {
+            strokeOpacity: 0,
+          },
         },
       });
-    },
+    }, { index: 1 },
   )();
 
   return {
