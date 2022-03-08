@@ -16,7 +16,7 @@ import {
 import {
   Box, CustomToolTip,
 } from '@components';
-import dayjs, { formatDayJs } from '@utils/dayjs';
+import dayjs from '@utils/dayjs';
 import { useRecoilValue } from 'recoil';
 import { readDate } from '@recoil/settings';
 import { useStyles } from './styles';
@@ -28,12 +28,15 @@ const Price: React.FC<ComponentDefault> = (props) => {
   } = useStyles();
   const { t } = useTranslation('home');
   const {
-    state, tickPriceFormatter,
+    state,
+    tickPriceFormatter,
+    formatTime,
   } = usePrice();
   const dateFormat = useRecoilValue(readDate);
+
   const formatItems = state.items.map((x) => {
     return ({
-      time: formatDayJs(dayjs.utc(x.time), dateFormat),
+      time: formatTime(dayjs.utc(x.time), dateFormat),
       value: x.value,
     });
   });
@@ -54,11 +57,11 @@ const Price: React.FC<ComponentDefault> = (props) => {
               bottom: 0,
             }}
           >
-            <CartesianGrid stroke={theme.palette.divider} vertical={false} />
+            <CartesianGrid stroke={theme.palette.divider} />
             <XAxis
-              hide
               dataKey="time"
               tickLine={false}
+              interval={5}
             />
             <YAxis
               tickLine={false}

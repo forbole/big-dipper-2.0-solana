@@ -16,7 +16,7 @@ export const useStyles = () => {
           height: '290px',
           width: '100%',
           '& .yAxis .recharts-cartesian-axis-tick:first-child': {
-            // display: 'none',
+            display: 'none',
           },
         },
       });

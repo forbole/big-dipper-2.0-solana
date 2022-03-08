@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import dayjs from '@utils/dayjs';
 import numeral from 'numeral';
 import * as R from 'ramda';
 import { chainConfig } from '@configs';
@@ -29,12 +30,20 @@ export const usePrice = () => {
   });
 
   const formatTokenPriceHistory = (data: TokenPriceHistoryQuery) => {
-    return data.tokenPrice.map((x) => {
+    return data.tokenPrice.filter((_x, i) => i % 2).map((x) => {
       return ({
         time: x.timestamp,
         value: x.price,
       });
     });
+  };
+
+  const formatTime = (time: dayjs.Dayjs, mode: 'locale' | 'utc' = 'locale') => {
+    if (mode === 'utc') {
+      return time.format('HH:mm');
+    }
+
+    return time.local().format('HH:mm');
   };
 
   const tickPriceFormatter = (num: number) => {
@@ -44,5 +53,6 @@ export const usePrice = () => {
   return {
     state,
     tickPriceFormatter,
+    formatTime,
   };
 };
