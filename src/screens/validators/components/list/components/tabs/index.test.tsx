@@ -21,6 +21,7 @@ describe('screen: Validators/Tabs', () => {
           tab={0}
           handleSearch={jest.fn()}
           handleTabChange={jest.fn()}
+          validatorCount={['1,528', '669', '2,897']}
         />
       </MockTheme>,
     );

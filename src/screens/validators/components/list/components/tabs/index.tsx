@@ -15,11 +15,13 @@ const TabsHeader: React.FC<{
   tab: number;
   handleTabChange: (event:any, newvalue:number) => void;
   handleSearch: (value: string) => void;
+  validatorCount: string[];
 }> = ({
   className,
   tab,
   handleTabChange,
   handleSearch,
+  validatorCount,
 }) => {
   const classes = useStyles();
   const { t } = useTranslation('validators');
@@ -35,7 +37,7 @@ const TabsHeader: React.FC<{
         {tabLabels.map((x, i) => (
           <Tab
             key={x}
-            label={t(x)}
+            label={`${t(x)} (${validatorCount[i]})`}
             {...a11yProps(i)}
           />
         ))}

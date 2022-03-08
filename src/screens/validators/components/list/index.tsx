@@ -10,6 +10,7 @@ import { useScreenSize } from '@hooks';
 import {
   useProfilesRecoil,
 } from '@recoil/profiles';
+import numeral from 'numeral';
 import { Tabs } from './components';
 import { useStyles } from './styles';
 import { useValidators } from './hooks';
@@ -39,6 +40,15 @@ const List: React.FC<{
   });
   const items = sortItems(mergedDataWithProfiles);
 
+  const activeTotal = mergedDataWithProfiles.filter((x) => x.status === true).length;
+  const deliquentTotal = mergedDataWithProfiles.filter((x) => x.status === false).length;
+  const total = dataProfiles.length;
+  const validatorCount = [
+    numeral(activeTotal).format('0,0'),
+    numeral(deliquentTotal).format('0,0'),
+    numeral(total).format('0,0'),
+  ];
+
   return (
     <LoadAndExist
       loading={state.loading}
@@ -49,6 +59,7 @@ const List: React.FC<{
           tab={state.tab}
           handleTabChange={handleTabChange}
           handleSearch={handleSearch}
+          validatorCount={validatorCount}
         />
         <div className={classes.list}>
           {items.length ? (

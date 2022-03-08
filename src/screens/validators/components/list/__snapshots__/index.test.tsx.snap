@@ -15,6 +15,13 @@ exports[`screen: Validators/List matches snapshot 1`] = `
       handleTabChange={[Function]}
       id="Tabs"
       tab={0}
+      validatorCount={
+        Array [
+          "1",
+          "0",
+          "0",
+        ]
+      }
     />
     <div
       className="makeStyles-list"
