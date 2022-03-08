@@ -8,6 +8,7 @@ import {
   StakeWeight,
   Blocks,
   Transactions,
+  Price,
 } from './components';
 
 const Home = () => {
@@ -16,7 +17,8 @@ const Home = () => {
   return (
     <Layout className={classes.root}>
       <DataBlocks className={classes.dataBlocks} />
-      <ActiveStake className={classes.activeStake} />
+      <Price className={classes.activeStake} />
+      {/* <ActiveStake className={classes.activeStake} /> */}
       <Epoch className={classes.epoch} />
       <StakeWeight className={classes.stakeWeight} />
       <Blocks className={classes.blocks} />
