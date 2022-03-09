@@ -1,5 +1,4 @@
 import React from 'react';
-import Color from 'color';
 import classnames from 'classnames';
 import numeral from 'numeral';
 import { Typography } from '@material-ui/core';
@@ -58,11 +57,24 @@ const Price: React.FC<ComponentDefault> = (props) => {
               bottom: 0,
             }}
           >
+            <defs>
+              <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
+                <stop
+                  offset="5%"
+                  stopColor={theme.palette.custom.primaryData.one}
+                  stopOpacity={0.8}
+                />
+                <stop
+                  offset="95%"
+                  stopColor={theme.palette.custom.primaryData.one}
+                  stopOpacity={0.1}
+                />
+              </linearGradient>
+            </defs>
             <CartesianGrid stroke={theme.palette.divider} />
             <XAxis
               dataKey="time"
               tickLine={false}
-              interval={5}
             />
             <YAxis
               tickLine={false}
@@ -95,7 +107,9 @@ const Price: React.FC<ComponentDefault> = (props) => {
               type="monotone"
               dataKey="value"
               stroke={theme.palette.custom.primaryData.one}
-              fill={Color(theme.palette.custom.primaryData.one).alpha(0.7).toString()}
+              // fill={Color(theme.palette.custom.primaryData.one).alpha(0.7).toString()}
+              fillOpacity={1}
+              fill="url(#colorUv)"
             />
           </AreaChart>
         </ResponsiveContainer>
