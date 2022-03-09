@@ -3,11 +3,11 @@ import { Layout } from '@components';
 import { useStyles } from './styles';
 import {
   DataBlocks,
-  ActiveStake,
   Epoch,
   StakeWeight,
   Blocks,
   Transactions,
+  Price,
 } from './components';
 
 const Home = () => {
@@ -16,7 +16,7 @@ const Home = () => {
   return (
     <Layout className={classes.root}>
       <DataBlocks className={classes.dataBlocks} />
-      <ActiveStake className={classes.activeStake} />
+      <Price className={classes.price} />
       <Epoch className={classes.epoch} />
       <StakeWeight className={classes.stakeWeight} />
       <Blocks className={classes.blocks} />

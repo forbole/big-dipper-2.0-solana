@@ -15,5 +15,6 @@
   "others": "others",
   "latestBlocks": "Latest Blocks",
   "seeMore": "See More",
-  "latestTransactions": "Latest Transactions"
+  "latestTransactions": "Latest Transactions",
+  "priceHistory": "Price (~24h)"
 }

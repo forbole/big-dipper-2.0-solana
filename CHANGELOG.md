@@ -17,3 +17,4 @@
 - Fix graphql files after hasura update ([\#54](https://github.com/forbole/big-dipper-2.0-solana/issues/54))
 - Update proposer to leader and add leader name avatar in latest blocks (home) ([\#66](https://github.com/forbole/big-dipper-2.0-solana/issues/66))
 - Add: show number of validators in tabs title (validators page) ([\#68](https://github.com/forbole/big-dipper-2.0-solana/issues/68))
+- Add tokens chart ([\#76](https://github.com/forbole/big-dipper-2.0-solana/issues/76))

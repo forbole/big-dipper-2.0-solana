@@ -6,3 +6,10 @@ subscription TokenPriceListener($denom: String) {
     unitName: symbol
   }
 }
+
+query TokenPriceHistory($denom: String, $limit: Int = 48) {
+  tokenPrice: token_price_history(where: {symbol: {_eq: $denom}}, limit: $limit, order_by: {timestamp: desc}) {
+    price
+    timestamp
+  }
+}
