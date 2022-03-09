@@ -2,6 +2,10 @@ query Validators {
   validator {
     address
     commission
+    validatorConfig: validator_config {
+      name
+      avatarUrl: avatar_url
+    }
     validatorStatus: validator_status {
       active
       activatedStake: activated_stake

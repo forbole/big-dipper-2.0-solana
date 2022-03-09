@@ -6359,7 +6359,11 @@ export type ValidatorsQueryVariables = Exact<{ [key: string]: never; }>;
 export type ValidatorsQuery = { validator: Array<(
     { __typename?: 'validator' }
     & Pick<Validator, 'address' | 'commission'>
-    & { validatorStatus?: Maybe<(
+    & { validatorConfig?: Maybe<(
+      { __typename?: 'validator_config' }
+      & Pick<Validator_Config, 'name'>
+      & { avatarUrl: Validator_Config['avatar_url'] }
+    )>, validatorStatus?: Maybe<(
       { __typename?: 'validator_status' }
       & Pick<Validator_Status, 'active'>
       & { activatedStake: Validator_Status['activated_stake'], lastVote: Validator_Status['last_vote'] }
@@ -6977,6 +6981,10 @@ export const ValidatorsDocument = gql`
   validator {
     address
     commission
+    validatorConfig: validator_config {
+      name
+      avatarUrl: avatar_url
+    }
     validatorStatus: validator_status {
       active
       activatedStake: activated_stake
