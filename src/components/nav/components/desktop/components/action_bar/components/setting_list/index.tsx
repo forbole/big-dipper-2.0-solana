@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import classnames from 'classnames';
 import useTranslation from 'next-translate/useTranslation';
 import SettingIcon from '@assets/icon-setting.svg';
+import { generalConfig } from '@configs';
 import {
   MenuItem,
   Typography,
@@ -16,7 +17,7 @@ import {
 } from '@material-ui/core';
 import { Close as CloseIcon } from '@material-ui/icons';
 import {
-  THEME_LIST, DATE_LIST,
+  THEME_LIST, DATE_LIST, TX_LIST,
 } from '@recoil/settings';
 import { useSettingList } from './hooks';
 import { useStyles } from './styles';
@@ -54,7 +55,16 @@ const Settings: React.FC<{
         className={classes.dialog}
       >
         <DialogTitle disableTypography className={classes.header}>
-          <Typography variant="h2">{t('settings')}</Typography>
+          <div className={classes.title}>
+            <Typography variant="h2">
+              {t('settings')}
+            </Typography>
+            <Typography variant="body2" className={classes.version}>
+              (
+              {generalConfig.version}
+              )
+            </Typography>
+          </div>
           <IconButton
             aria-label="close"
             onClick={handleCancel}
@@ -125,6 +135,30 @@ const Settings: React.FC<{
                 } }}
               >
                 {DATE_LIST
+                  .map((l) => (
+                    <MenuItem
+                      key={l}
+                      value={l}
+                    >
+                      {t(l)}
+                    </MenuItem>
+                  ))}
+              </Select>
+            </div>
+
+            <div className={classes.formItem}>
+              <Typography className="form-item--label">
+                {t('txListFormat')}
+              </Typography>
+              <Select
+                variant="outlined"
+                value={state.txListFormat}
+                onChange={(e) => handleChange('txListFormat', e?.target?.value)}
+                MenuProps={{ MenuListProps: {
+                  disablePadding: true,
+                } }}
+              >
+                {TX_LIST
                   .map((l) => (
                     <MenuItem
                       key={l}
