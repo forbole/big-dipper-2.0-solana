@@ -63,7 +63,6 @@ export const useValidators = () => {
       return ({
         validator: x.address,
         commission: x.commission,
-        node: x.node,
         stake: numeral(formatToken(
           stake,
           chainConfig.primaryTokenUnit,

@@ -35,7 +35,7 @@ export const useBlocks = () => {
         txs: x.numTxs,
         hash: x.hash,
         timestamp: x.timestamp,
-        leader: x.leader,
+        leader: R.pathOr('', ['validator', 0, 'address'], x),
       });
     });
   };

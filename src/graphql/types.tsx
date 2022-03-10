@@ -6221,7 +6221,11 @@ export type BlocksListenerSubscriptionVariables = Exact<{
 export type BlocksListenerSubscription = { blocks: Array<(
     { __typename?: 'block' }
     & Pick<Block, 'slot' | 'hash' | 'timestamp'>
-    & { leader: Block['proposer'], numTxs: Block['num_txs'] }
+    & { numTxs: Block['num_txs'] }
+    & { validator: Array<(
+      { __typename?: 'validator' }
+      & Pick<Validator, 'address'>
+    )> }
   )> };
 
 export type BlocksQueryVariables = Exact<{
@@ -6233,7 +6237,11 @@ export type BlocksQueryVariables = Exact<{
 export type BlocksQuery = { blocks: Array<(
     { __typename?: 'block' }
     & Pick<Block, 'slot' | 'hash' | 'timestamp'>
-    & { leader: Block['proposer'], numTxs: Block['num_txs'] }
+    & { numTxs: Block['num_txs'] }
+    & { validator: Array<(
+      { __typename?: 'validator' }
+      & Pick<Validator, 'address'>
+    )> }
   )> };
 
 export type EpochQueryVariables = Exact<{ [key: string]: never; }>;
@@ -6577,10 +6585,12 @@ export const BlocksListenerDocument = gql`
     subscription BlocksListener($limit: Int = 7, $offset: Int = 0) {
   blocks: block(limit: $limit, offset: $offset, order_by: {slot: desc}) {
     slot
-    leader: proposer
     hash
     timestamp
     numTxs: num_txs
+    validator {
+      address
+    }
   }
 }
     `;
@@ -6612,10 +6622,12 @@ export const BlocksDocument = gql`
     query Blocks($limit: Int = 7, $offset: Int = 0) {
   blocks: block(limit: $limit, offset: $offset, order_by: {slot: desc}) {
     slot
-    leader: proposer
     hash
     timestamp
     numTxs: num_txs
+    validator {
+      address
+    }
   }
 }
     `;

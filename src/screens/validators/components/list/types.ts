@@ -5,7 +5,6 @@ export type ValidatorType = {
   stakePercent: number;
   lastVote: number;
   status: boolean;
-  node: string;
 }
 
 export type ValidatorsState = {

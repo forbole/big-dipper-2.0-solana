@@ -29,11 +29,15 @@ const mockBlocksListenerDocument = {
   data: {
     blocks: [
       {
-        "slot": 109782714,
-        "leader": "AjfUXpuPLBFwB9NbhS8vYFgvf1tU5Xt7LG7yKAQpBTNE",
-        "hash": "ADWG9wFPM94Fa2H9LMdnnz6QXfXQpky4RQrxbz2beLmd",
-        "timestamp": "2021-12-02T23:33:50",
-        "numTxs": 1355,
+        "slot": 124253814,
+        "hash": "71YDg64otxW5ZFuUugtSLS3hpVn6fWoEZgvbP47MQEA",
+        "timestamp": "2022-03-10T02:35:25",
+        "numTxs": 839,
+        "validator": [
+          {
+            "address": "3VyAAWmYecqmzq2zzwhDRXmrLSRh3616n2zsDpWXseeb"
+          }
+        ]
       }
     ],
   },
@@ -43,11 +47,15 @@ const mockBlocksDocument = jest.fn().mockResolvedValue({
   data: {
     "blocks": [
       {
-        "slot": 109782714,
-        "leader": "AjfUXpuPLBFwB9NbhS8vYFgvf1tU5Xt7LG7yKAQpBTNE",
-        "hash": "ADWG9wFPM94Fa2H9LMdnnz6QXfXQpky4RQrxbz2beLmd",
-        "timestamp": "2021-12-02T23:33:50",
-        "numTxs": 1377,
+        "slot": 124253813,
+        "hash": "71YDg64otxW5ZFuUugtSLS3hpVn6fWoEZgvbP47MQEA",
+        "timestamp": "2022-03-10T02:35:25",
+        "numTxs": 839,
+        "validator": [
+          {
+            "address": "3VyAAWmYecqmzq2zzwhDRXmrLSRh3616n2zsDpWXseeb"
+          }
+        ]
       }
     ]
   },

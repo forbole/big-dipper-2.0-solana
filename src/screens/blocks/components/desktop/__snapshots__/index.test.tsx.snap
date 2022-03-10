@@ -193,7 +193,7 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
           <div
             address="desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467"
             id="AvatarName"
-            name="desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467"
+            name="desmosvaloper1r...v94f522s4hyz467"
           />
         </div>
       </div>
@@ -299,7 +299,7 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
           <div
             address="desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467"
             id="AvatarName"
-            name="desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467"
+            name="desmosvaloper1r...v94f522s4hyz467"
           />
         </div>
       </div>

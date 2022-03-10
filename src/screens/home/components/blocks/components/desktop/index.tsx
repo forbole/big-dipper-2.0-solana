@@ -43,7 +43,13 @@ const Desktop: React.FC<{
         <AvatarName
           address={x.leader.address}
           imageUrl={x.leader.imageUrl}
-          name={x.leader.name}
+          name={x.leader.name.length > 20 ? (
+            getMiddleEllipsis(x.leader.name, {
+              beginning: 6, ending: 5,
+            })
+          ) : (
+            x.leader.name
+          )}
         />
       ),
       hash: getMiddleEllipsis(x.hash, {

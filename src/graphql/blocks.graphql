@@ -1,20 +1,23 @@
 subscription BlocksListener($limit: Int = 7, $offset: Int = 0) {
   blocks: block(limit: $limit, offset: $offset, order_by: {slot: desc}) {
     slot
-    leader: proposer
     hash
     timestamp
     numTxs: num_txs
+    validator {
+      address
+    }
   }
 }
 
 query Blocks($limit: Int = 7, $offset: Int = 0) {
-	blocks: block(limit: $limit, offset: $offset, order_by: {slot: desc}) {
+  blocks: block(limit: $limit, offset: $offset, order_by: {slot: desc}) {
     slot
-    leader: proposer
     hash
     timestamp
     numTxs: num_txs
+    validator {
+      address
+    }
   }
 }
-
