@@ -6221,7 +6221,11 @@ export type BlocksListenerSubscriptionVariables = Exact<{
 export type BlocksListenerSubscription = { blocks: Array<(
     { __typename?: 'block' }
     & Pick<Block, 'slot' | 'hash' | 'timestamp'>
-    & { leader: Block['proposer'], numTxs: Block['num_txs'] }
+    & { numTxs: Block['num_txs'] }
+    & { validator: Array<(
+      { __typename?: 'validator' }
+      & Pick<Validator, 'address'>
+    )> }
   )> };
 
 export type BlocksQueryVariables = Exact<{
@@ -6233,7 +6237,11 @@ export type BlocksQueryVariables = Exact<{
 export type BlocksQuery = { blocks: Array<(
     { __typename?: 'block' }
     & Pick<Block, 'slot' | 'hash' | 'timestamp'>
-    & { leader: Block['proposer'], numTxs: Block['num_txs'] }
+    & { numTxs: Block['num_txs'] }
+    & { validator: Array<(
+      { __typename?: 'validator' }
+      & Pick<Validator, 'address'>
+    )> }
   )> };
 
 export type EpochQueryVariables = Exact<{ [key: string]: never; }>;
@@ -6369,10 +6377,14 @@ export type ValidatorsQuery = { validator: Array<(
 export type ValidatorAddressesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type ValidatorAddressesQuery = { validatorConfig: Array<(
-    { __typename?: 'validator_config' }
-    & Pick<Validator_Config, 'name' | 'owner' | 'address'>
-    & { avatarUrl: Validator_Config['avatar_url'] }
+export type ValidatorAddressesQuery = { validator: Array<(
+    { __typename?: 'validator' }
+    & Pick<Validator, 'address' | 'node'>
+    & { validatorConfig?: Maybe<(
+      { __typename?: 'validator_config' }
+      & Pick<Validator_Config, 'name'>
+      & { avatarUrl: Validator_Config['avatar_url'] }
+    )> }
   )> };
 
 
@@ -6573,10 +6585,12 @@ export const BlocksListenerDocument = gql`
     subscription BlocksListener($limit: Int = 7, $offset: Int = 0) {
   blocks: block(limit: $limit, offset: $offset, order_by: {slot: desc}) {
     slot
-    leader: proposer
     hash
     timestamp
     numTxs: num_txs
+    validator {
+      address
+    }
   }
 }
     `;
@@ -6608,10 +6622,12 @@ export const BlocksDocument = gql`
     query Blocks($limit: Int = 7, $offset: Int = 0) {
   blocks: block(limit: $limit, offset: $offset, order_by: {slot: desc}) {
     slot
-    leader: proposer
     hash
     timestamp
     numTxs: num_txs
+    validator {
+      address
+    }
   }
 }
     `;
@@ -7014,11 +7030,13 @@ export type ValidatorsLazyQueryHookResult = ReturnType<typeof useValidatorsLazyQ
 export type ValidatorsQueryResult = Apollo.QueryResult<ValidatorsQuery, ValidatorsQueryVariables>;
 export const ValidatorAddressesDocument = gql`
     query ValidatorAddresses {
-  validatorConfig: validator_config {
-    name
-    avatarUrl: avatar_url
-    owner
+  validator {
     address
+    node
+    validatorConfig: validator_config {
+      name
+      avatarUrl: avatar_url
+    }
   }
 }
     `;
