@@ -1,4 +1,4 @@
 export type AtomState = {
-  owner: string;
+  node: string;
   address: string;
 } | null;

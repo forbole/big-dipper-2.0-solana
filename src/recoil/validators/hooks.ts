@@ -1,4 +1,3 @@
-/* eslint-disable */
 /* eslint-disable max-len */
 import { useState } from 'react';
 import {
@@ -8,9 +7,9 @@ import {
   useValidatorAddressesQuery,
   ValidatorAddressesQuery,
 } from '@graphql/types';
-import {
-  atomFamilyState as validatorAtomState,
-} from '@recoil/validators';
+// import {
+//   atomFamilyState as validatorAtomState,
+// } from '@recoil/validators';
 import {
   atomFamilyState as profileAtomFamilyState,
 } from '@recoil/profiles';
@@ -24,33 +23,35 @@ export const useValidatorRecoil = () => {
       setLoading(false);
     },
     onCompleted: async (data) => {
-      await formatValidatorsAddressList(data);
-      await setProfiles(data);
       setLoading(false);
+      // formatValidatorsAddressList(data);
+      setProfiles(data);
     },
   });
 
-  const formatValidatorsAddressList = useRecoilCallback(({ set }) => async (data: ValidatorAddressesQuery) => {
-    data?.validatorConfig?.forEach((x) => {
-      const { owner, address } = x;
-      set(validatorAtomState(owner), {
-        address,
-        owner
-      });
-    })
-  });
+  // Don't know if we need to keep a dict of all the voter accounts yet
+  //
+  // const formatValidatorsAddressList = useRecoilCallback(({ set }) => async (data: ValidatorAddressesQuery) => {
+  //   data.validator.filter((x) => x.validatorConfig).forEach((x) => {
+  //     set(validatorAtomState(x.address), {
+  //       address: x.address,
+  //       node: x.node
+  //     });
+  //   });
+  // });
 
   const setProfiles = useRecoilCallback(({ set }) => async (data: ValidatorAddressesQuery) => {
-    data?.validatorConfig?.forEach((x, i) => {
-      const { owner, name, avatarUrl } = x;
-
-      const moniker = name || ''
-      const imageUrl = avatarUrl || ''
-
-      set(profileAtomFamilyState(owner), {
-        moniker: moniker || owner,
+    data.validator.filter((x) => x.validatorConfig).forEach((x) => {
+      const { validatorConfig } = x;
+      const {
+        name, avatarUrl,
+      } = validatorConfig;
+      const moniker = name || '';
+      const imageUrl = avatarUrl || '';
+      set(profileAtomFamilyState(x.address), {
+        moniker: moniker || x.address,
         imageUrl,
-      });
+      }); // vote account
     });
   });
 
