@@ -17,7 +17,7 @@ import {
 } from '@material-ui/core';
 import { Close as CloseIcon } from '@material-ui/icons';
 import {
-  THEME_LIST, DATE_LIST, TX_LIST,
+  THEME_LIST, DATE_LIST,
 } from '@recoil/settings';
 import { useSettingList } from './hooks';
 import { useStyles } from './styles';
@@ -135,30 +135,6 @@ const Settings: React.FC<{
                 } }}
               >
                 {DATE_LIST
-                  .map((l) => (
-                    <MenuItem
-                      key={l}
-                      value={l}
-                    >
-                      {t(l)}
-                    </MenuItem>
-                  ))}
-              </Select>
-            </div>
-
-            <div className={classes.formItem}>
-              <Typography className="form-item--label">
-                {t('txListFormat')}
-              </Typography>
-              <Select
-                variant="outlined"
-                value={state.txListFormat}
-                onChange={(e) => handleChange('txListFormat', e?.target?.value)}
-                MenuProps={{ MenuListProps: {
-                  disablePadding: true,
-                } }}
-              >
-                {TX_LIST
                   .map((l) => (
                     <MenuItem
                       key={l}
