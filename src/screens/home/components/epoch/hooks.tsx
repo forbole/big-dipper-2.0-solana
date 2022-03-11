@@ -5,17 +5,14 @@ import {
   EpochQuery,
 } from '@graphql/types';
 import Big from 'big.js';
-import { formatNumber } from '@utils/format_token';
+import { EpochState } from './types';
 
 export const useEpoch = () => {
-  const [state, setState] = useState<{
-    epochRate: string;
-    epochNumber: string;
-    epochTime: string;
-  }>({
+  const [state, setState] = useState<EpochState>({
     epochRate: '0',
     epochNumber: '0',
-    epochTime: '0',
+    epochHours: 0,
+    epochMinutes: 0,
   });
 
   useEpochQuery({
@@ -24,34 +21,31 @@ export const useEpoch = () => {
     },
   });
 
-  const formatEpoch = (data: EpochQuery) => {
-    const results: {
-      epochRate: string;
-      epochNumber: string;
-      epochTime: string;
-    } = {
-      epochRate: '',
-      epochNumber: '',
-      epochTime: '',
-    };
-
-    const slotsPerEpoch = 432000;
-    const averageSlotTime = R.pathOr(0, ['averageSlotTimePerHour', 0, 'averageTime'], data);
+  const formatEpoch = (data: EpochQuery): EpochState => {
+    const SLOTS_PER_EPOCH = 432000;
+    const averageSlotTime = Big(R.pathOr(0, ['averageSlotTimePerHour', 0, 'averageTime'], data)).toPrecision(1);
     const slot = R.pathOr(0, ['block', 0, 'slot'], data);
 
-    const epochNumber = slot / slotsPerEpoch;
-    results.epochNumber = formatNumber(Big(epochNumber).toPrecision(), 0);
+    // epoch number
+    const epochNumber = Big(slot).div(SLOTS_PER_EPOCH).toFixed(0);
 
-    const epochRate = (slotsPerEpoch - (slot % slotsPerEpoch)) / slotsPerEpoch;
-    results.epochRate = formatNumber(Big(epochRate).times(100).toPrecision(), 0);
+    // epoch %
+    const nextEpochSlot = Big(epochNumber).plus(1).times(SLOTS_PER_EPOCH).toString();
 
-    const epochTimeRaw = (slotsPerEpoch - (slot % slotsPerEpoch)) * averageSlotTime;
+    const epochDone = Big(slot).minus(Big(epochNumber).times(SLOTS_PER_EPOCH)).toString();
+    const epochRate = Big(epochDone).div(SLOTS_PER_EPOCH).times(100).toPrecision(2);
+
+    // epoch time
+    const epochTimeRaw = Big(nextEpochSlot).minus(slot).times(averageSlotTime).toNumber();
     const epochTimeHour = Math.floor(epochTimeRaw / (60 * 60));
     const epochTimeMinute = Math.floor((epochTimeRaw % (60 * 60)) / 60);
-    const time = `${epochTimeHour}h ${epochTimeMinute}m`;
-    results.epochTime = time;
 
-    return results;
+    return {
+      epochRate,
+      epochNumber,
+      epochHours: epochTimeHour,
+      epochMinutes: epochTimeMinute,
+    };
   };
 
   return {

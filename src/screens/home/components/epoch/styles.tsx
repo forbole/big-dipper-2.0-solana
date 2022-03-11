@@ -27,6 +27,9 @@ export const useStyles = () => {
           '& .recharts-radial-bar-background-sector': {
             fill: Color(theme.palette.custom.primaryData.three).alpha(0.4).toString(),
           },
+          '& .recharts-radial-bar-label': {
+            display: 'none',
+          },
         },
         chartPercentLabel: {
           fontSize: '2rem',

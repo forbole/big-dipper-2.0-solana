@@ -280,19 +280,8 @@ exports[`screen: Home/Epoch matches snapshot 1`] = `
           <g
             className="recharts-layer recharts-radial-bar-sectors"
           >
-            <path
-              className="recharts-sector recharts-radial-bar-sector"
-              cx={100}
-              cy={100}
-              d="M 100,10.138996221942861
-    A5,5,0,0,1,105.27777777777776,5.14671823427301
-    A95,95,0,1,1,6.5561456472204895,117.12442944148881
-    A5,5,0,0,1,10.84757707691368,111.26257017483809
-  L10.84757707691368,111.26257017483809
-      A5,5,0,0,1,16.392340842249908,115.3218579213321
-      A85,85,0,1,0,104.72222222222221,15.131274209612698
-      A5,5,0,0,1,100,10.138996221942861Z"
-              fill="#6D6ACF"
+            <g
+              className="recharts-layer"
             />
           </g>
         </g>
@@ -306,7 +295,7 @@ exports[`screen: Home/Epoch matches snapshot 1`] = `
           <tspan
             className="makeStyles-chartPercentLabel"
           >
-            55
+            44
             %
           </tspan>
         </text>
@@ -380,7 +369,8 @@ exports[`screen: Home/Epoch matches snapshot 1`] = `
         id="Trans"
         values={
           Object {
-            "time": "35h 36m",
+            "hours": 33,
+            "minutes": 30,
           }
         }
       />

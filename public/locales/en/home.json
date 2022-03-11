@@ -8,7 +8,7 @@
   "today": "Today",
   "lastMonth": "Last Month",
   "epoch": "Epoch",
-  "untilNextEpoch": "<0>{{time}}</0> until next epoch",
+  "untilNextEpoch": "<0>~{{hours}}h {{minutes}}m</0> until next epoch",
   "stakeWeight": "Stake Weight",
   "weighted": "Weighted",
   "nonWeighted": "Non-weighted",

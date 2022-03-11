@@ -18,7 +18,7 @@ exports[`screen: Home/StakeWeight matches snapshot 1`] = `
       <h4
         className="MuiTypography-root MuiTypography-h4"
       >
-        0 
+        384,573,204,910.14 DARIC
       </h4>
       <div
         className="MuiTypography-root MuiTypography-caption"
@@ -28,7 +28,7 @@ exports[`screen: Home/StakeWeight matches snapshot 1`] = `
       <div
         className="MuiTypography-root MuiTypography-caption"
       >
-        0%
+        74%
       </div>
     </div>
     <div
@@ -37,7 +37,7 @@ exports[`screen: Home/StakeWeight matches snapshot 1`] = `
       <h4
         className="MuiTypography-root MuiTypography-h4"
       >
-        0 
+        1.32 DARIC
       </h4>
       <div
         className="MuiTypography-root MuiTypography-caption"
@@ -47,7 +47,7 @@ exports[`screen: Home/StakeWeight matches snapshot 1`] = `
       <div
         className="MuiTypography-root MuiTypography-caption"
       >
-        0%
+        26%
       </div>
     </div>
   </div>
@@ -86,6 +86,24 @@ exports[`screen: Home/StakeWeight matches snapshot 1`] = `
             />
           </clipPath>
         </defs>
+        <g
+          className="recharts-layer recharts-pie"
+        >
+          <g
+            className="recharts-layer"
+          >
+            <g
+              className="recharts-layer recharts-pie-sector"
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+            />
+            <g
+              className="recharts-layer recharts-pie-sector"
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+            />
+          </g>
+        </g>
       </svg>
     </div>
     <div
