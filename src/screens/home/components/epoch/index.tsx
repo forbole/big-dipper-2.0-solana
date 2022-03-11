@@ -1,5 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
+import Big from 'big.js';
+import numeral from 'numeral';
 import { Typography } from '@material-ui/core';
 import Trans from 'next-translate/Trans';
 import useTranslation from 'next-translate/useTranslation';
@@ -24,7 +26,7 @@ const Epoch: React.FC<{
 
   const data = [
     {
-      value: 73,
+      value: Big(state.epochRate).toNumber(),
       fill: theme.palette.custom.primaryData.three,
     },
   ];
@@ -73,7 +75,7 @@ const Epoch: React.FC<{
             className="progress-label"
           >
             <tspan className={classes.chartPercentLabel}>
-              {state.epochRate}
+              {numeral(state.epochRate).format('0')}
               %
             </tspan>
           </text>
@@ -93,7 +95,8 @@ const Epoch: React.FC<{
               <span className="highlight" />,
             ]}
             values={{
-              time: state.epochTime,
+              hours: state.epochHours,
+              minutes: state.epochMinutes,
             }}
           />
         </Typography>

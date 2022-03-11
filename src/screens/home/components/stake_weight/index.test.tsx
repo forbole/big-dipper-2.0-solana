@@ -1,6 +1,8 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { MockTheme } from '@tests/utils';
+import {
+  MockTheme, wait,
+} from '@tests/utils';
 import { createMockClient } from 'mock-apollo-client';
 import { ApolloProvider } from '@apollo/client';
 import {
@@ -38,7 +40,7 @@ const mockStakeWeight = jest.fn().mockResolvedValue({
 // unit tests
 // ==================================
 describe('screen: Home/StakeWeight', () => {
-  it('matches snapshot', () => {
+  it('matches snapshot', async () => {
     const mockClient = createMockClient();
     mockClient.setRequestHandler(
       StakeWeightDocument,
@@ -52,6 +54,8 @@ describe('screen: Home/StakeWeight', () => {
         </MockTheme>
       </ApolloProvider>,
     );
+
+    await wait();
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });

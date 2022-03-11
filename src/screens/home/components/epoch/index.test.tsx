@@ -71,8 +71,9 @@ describe('screen: Home/Epoch', () => {
     expect(tree).toMatchSnapshot();
 
     expect(component.root.findByProps({ className: 'makeStyles-chartLabel' }).children[2]).toEqual('256');
-    expect(component.root.findByProps({ className: 'makeStyles-chartPercentLabel' }).children[0]).toEqual('55');
-    expect(component.root.findByProps({ id: 'Trans' }).props.values.time).toEqual('35h 36m');
+    expect(component.root.findByProps({ className: 'makeStyles-chartPercentLabel' }).children[0]).toEqual('44');
+    expect(component.root.findByProps({ id: 'Trans' }).props.values.hours).toEqual(33);
+    expect(component.root.findByProps({ id: 'Trans' }).props.values.minutes).toEqual(30);
   });
 
   afterEach(() => {
