@@ -21,6 +21,7 @@ export const usePrice = () => {
   useTokenPriceHistoryQuery({
     variables: {
       denom: chainConfig.primaryTokenUnit,
+      limit: 10,
     },
     onCompleted: (data) => {
       handleSetState({
