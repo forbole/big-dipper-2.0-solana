@@ -1,15 +1,18 @@
 import React from 'react';
 import classnames from 'classnames';
 import { Typography } from '@material-ui/core';
+import Big from 'big.js';
 import useTranslation from 'next-translate/useTranslation';
 import { Box } from '@components';
+import { formatNumber } from '@utils/format_token';
 import {
   PieChart,
   Pie,
   Cell,
-  Tooltip,
 } from 'recharts';
+import { chainConfig } from '@src/configs';
 import { useStyles } from './styles';
+import { useStakeWeight } from './hooks';
 
 const StakeWeight:React.FC<{
   className?: string;
@@ -18,39 +21,51 @@ const StakeWeight:React.FC<{
   const {
     classes, theme,
   } = useStyles();
+  const { state } = useStakeWeight();
 
-  // ========================
-  // fake data
-  // ========================
+  const nonWeighted = Big(state.totalSupply.value).minus(state.activatedStake.value).toPrecision(
+    chainConfig.tokenUnits[chainConfig.primaryTokenUnit].exponent,
+  );
+
+  const weightedPercent = state.totalSupply.value === '0'
+    ? '0' : Big(state.activatedStake.value).div(state.totalSupply.value).times(100).toPrecision(2);
+  const nonWeightedPercent = state.totalSupply.value === '0'
+    ? '0' : Big(nonWeighted).div(state.totalSupply.value).times(100).toPrecision(2);
 
   const data = [
     {
-      name: 'Group A', value: 400, fill: theme.palette.custom.chartData.one,
+      name: 'weighted',
+      value: Big(state.activatedStake.value).toNumber(),
+      fill: theme.palette.custom.chartData.one,
     },
     {
-      name: 'Group B', value: 300, fill: theme.palette.custom.chartData.three,
+      name: 'nonWeighted',
+      value: Big(nonWeighted).toNumber(),
+      fill: theme.palette.custom.chartData.three,
     },
   ].reverse();
 
+  const denom = state.activatedStake.displayDenom.toUpperCase();
+
   const weightData = [
     {
-      value: '29.9%',
-      key: 'weightedSkipRate',
+      percent: `${weightedPercent}%`,
+      value: `${formatNumber(state.activatedStake.value, 2)} ${denom}`,
+      key: 'weighted',
     },
     {
-      value: '30.6%',
-      key: 'nonWeightedSkipRate',
+      percent: `${nonWeightedPercent}%`,
+      value: `${formatNumber(nonWeighted, 2)} ${denom}`,
+      key: 'nonWeighted',
     },
   ];
 
   const legends = [
     {
-      version: '1.5.11',
-      percent: '60.1%',
+      key: 'weighted',
     },
     {
-      version: t('others'),
-      percent: '60.1%',
+      key: 'nonWeighted',
     },
   ];
 
@@ -65,8 +80,11 @@ const StakeWeight:React.FC<{
             <Typography variant="h4">
               {x.value}
             </Typography>
-            <Typography variant="caption">
+            <Typography variant="caption" component="div">
               {t(x.key)}
+            </Typography>
+            <Typography variant="caption" component="div">
+              {x.percent}
             </Typography>
           </div>
         ))}
@@ -95,22 +113,15 @@ const StakeWeight:React.FC<{
               <Cell key={`cell-${index}`} fill={data[index % data.length].fill} />
             ))}
           </Pie>
-          <Tooltip />
         </PieChart>
 
         <div className={classes.legends}>
           {
             legends.map((x) => {
               return (
-                <div className="legends__item" key={x.version}>
+                <div className="legends__item" key={x.key}>
                   <Typography variant="caption">
-                    {x.version}
-                    {' '}
-                    <span className="caption__percent">
-                      (
-                      {x.percent}
-                      )
-                    </span>
+                    {t(x.key)}
                   </Typography>
                 </div>
               );
