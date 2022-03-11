@@ -6272,6 +6272,23 @@ export type MarketDataQuery = { tokenPrice: Array<(
     & Pick<InflationRate, 'total'>
   ) };
 
+export type StakeWeightQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type StakeWeightQuery = { validatorStatusAggregate: (
+    { __typename?: 'validator_status_aggregate' }
+    & { aggregate?: Maybe<(
+      { __typename?: 'validator_status_aggregate_fields' }
+      & { sum?: Maybe<(
+        { __typename?: 'validator_status_sum_fields' }
+        & { activatedStake: Validator_Status_Sum_Fields['activated_stake'] }
+      )> }
+    )> }
+  ), supplyInfo: Array<(
+    { __typename?: 'supply_info' }
+    & Pick<Supply_Info, 'total'>
+  )> };
+
 export type TokenPriceListenerSubscriptionVariables = Exact<{
   denom?: Maybe<Scalars['String']>;
 }>;
@@ -6739,6 +6756,47 @@ export function useMarketDataLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions
 export type MarketDataQueryHookResult = ReturnType<typeof useMarketDataQuery>;
 export type MarketDataLazyQueryHookResult = ReturnType<typeof useMarketDataLazyQuery>;
 export type MarketDataQueryResult = Apollo.QueryResult<MarketDataQuery, MarketDataQueryVariables>;
+export const StakeWeightDocument = gql`
+    query StakeWeight {
+  validatorStatusAggregate: validator_status_aggregate {
+    aggregate {
+      sum {
+        activatedStake: activated_stake
+      }
+    }
+  }
+  supplyInfo: supply_info {
+    total
+  }
+}
+    `;
+
+/**
+ * __useStakeWeightQuery__
+ *
+ * To run a query within a React component, call `useStakeWeightQuery` and pass it any options that fit your needs.
+ * When your component renders, `useStakeWeightQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useStakeWeightQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useStakeWeightQuery(baseOptions?: Apollo.QueryHookOptions<StakeWeightQuery, StakeWeightQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<StakeWeightQuery, StakeWeightQueryVariables>(StakeWeightDocument, options);
+      }
+export function useStakeWeightLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<StakeWeightQuery, StakeWeightQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<StakeWeightQuery, StakeWeightQueryVariables>(StakeWeightDocument, options);
+        }
+export type StakeWeightQueryHookResult = ReturnType<typeof useStakeWeightQuery>;
+export type StakeWeightLazyQueryHookResult = ReturnType<typeof useStakeWeightLazyQuery>;
+export type StakeWeightQueryResult = Apollo.QueryResult<StakeWeightQuery, StakeWeightQueryVariables>;
 export const TokenPriceListenerDocument = gql`
     subscription TokenPriceListener($denom: String) {
   tokenPrice: token_price(where: {symbol: {_eq: $denom}}) {

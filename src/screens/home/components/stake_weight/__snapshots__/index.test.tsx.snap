@@ -18,13 +18,18 @@ exports[`screen: Home/StakeWeight matches snapshot 1`] = `
       <h4
         className="MuiTypography-root MuiTypography-h4"
       >
-        29.9%
+        0 
       </h4>
-      <span
+      <div
         className="MuiTypography-root MuiTypography-caption"
       >
-        weightedSkipRate
-      </span>
+        weighted
+      </div>
+      <div
+        className="MuiTypography-root MuiTypography-caption"
+      >
+        0%
+      </div>
     </div>
     <div
       className="data__item"
@@ -32,13 +37,18 @@ exports[`screen: Home/StakeWeight matches snapshot 1`] = `
       <h4
         className="MuiTypography-root MuiTypography-h4"
       >
-        30.6%
+        0 
       </h4>
-      <span
+      <div
         className="MuiTypography-root MuiTypography-caption"
       >
-        nonWeightedSkipRate
-      </span>
+        nonWeighted
+      </div>
+      <div
+        className="MuiTypography-root MuiTypography-caption"
+      >
+        0%
+      </div>
     </div>
   </div>
   <div
@@ -76,66 +86,7 @@ exports[`screen: Home/StakeWeight matches snapshot 1`] = `
             />
           </clipPath>
         </defs>
-        <g
-          className="recharts-layer recharts-pie"
-        >
-          <g
-            className="recharts-layer"
-          >
-            <g
-              className="recharts-layer recharts-pie-sector"
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
-            />
-            <g
-              className="recharts-layer recharts-pie-sector"
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
-            />
-          </g>
-        </g>
       </svg>
-      <div
-        className="recharts-tooltip-wrapper"
-        style={
-          Object {
-            "MozTransform": "translate(undefinedpx, undefinedpx)",
-            "OTransform": "translate(undefinedpx, undefinedpx)",
-            "WebkitTransform": "translate(undefinedpx, undefinedpx)",
-            "left": 0,
-            "msTransform": "translate(undefinedpx, undefinedpx)",
-            "pointerEvents": "none",
-            "position": "absolute",
-            "top": 0,
-            "transform": "translate(undefinedpx, undefinedpx)",
-            "visibility": "hidden",
-          }
-        }
-      >
-        <div
-          className="recharts-default-tooltip"
-          style={
-            Object {
-              "backgroundColor": "#fff",
-              "border": "1px solid #ccc",
-              "margin": 0,
-              "padding": 10,
-              "whiteSpace": "nowrap",
-            }
-          }
-        >
-          <p
-            className="recharts-tooltip-label"
-            style={
-              Object {
-                "margin": 0,
-              }
-            }
-          >
-            
-          </p>
-        </div>
-      </div>
     </div>
     <div
       className="makeStyles-legends"
@@ -146,15 +97,7 @@ exports[`screen: Home/StakeWeight matches snapshot 1`] = `
         <span
           className="MuiTypography-root MuiTypography-caption"
         >
-          1.5.11
-           
-          <span
-            className="caption__percent"
-          >
-            (
-            60.1%
-            )
-          </span>
+          weighted
         </span>
       </div>
       <div
@@ -163,15 +106,7 @@ exports[`screen: Home/StakeWeight matches snapshot 1`] = `
         <span
           className="MuiTypography-root MuiTypography-caption"
         >
-          others
-           
-          <span
-            className="caption__percent"
-          >
-            (
-            60.1%
-            )
-          </span>
+          nonWeighted
         </span>
       </div>
     </div>
