@@ -12,7 +12,7 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
-  Message: any;
+  Instruction: any;
   ParsedAccount: any;
   _text: any;
   bigint: any;
@@ -82,6 +82,7 @@ export type InflationRate = {
   validator: Scalars['Float'];
 };
 
+
 /** Boolean expression to compare columns of type "Int". All fields are combined with logical 'AND'. */
 export type Int_Comparison_Exp = {
   _eq?: Maybe<Scalars['Int']>;
@@ -94,7 +95,6 @@ export type Int_Comparison_Exp = {
   _neq?: Maybe<Scalars['Int']>;
   _nin?: Maybe<Array<Scalars['Int']>>;
 };
-
 
 
 /** Boolean expression to compare columns of type "String". All fields are combined with logical 'AND'. */
@@ -135,9 +135,9 @@ export type Tx = {
   accounts: Array<Scalars['String']>;
   error: Scalars['Boolean'];
   fee: Scalars['bigint'];
-  hash: Scalars['String'];
+  instructions: Array<Scalars['Instruction']>;
   logs: Array<Scalars['String']>;
-  messages: Array<Scalars['Message']>;
+  signature: Scalars['String'];
   slot: Scalars['bigint'];
 };
 
@@ -145,8 +145,8 @@ export type TxMeta = {
   __typename?: 'TxMeta';
   block_time: Scalars['bigint'];
   error: Scalars['Boolean'];
-  hash: Scalars['String'];
   memo: Scalars['String'];
+  signature: Scalars['String'];
   slot: Scalars['bigint'];
 };
 
@@ -570,8 +570,8 @@ export type Block = {
   __typename?: 'block';
   hash: Scalars['String'];
   height: Scalars['bigint'];
+  leader: Scalars['String'];
   num_txs: Scalars['Int'];
-  proposer: Scalars['String'];
   slot: Scalars['bigint'];
   timestamp: Scalars['timestamp'];
   /** An array relationship */
@@ -669,8 +669,8 @@ export type Block_Bool_Exp = {
   _or?: Maybe<Array<Block_Bool_Exp>>;
   hash?: Maybe<String_Comparison_Exp>;
   height?: Maybe<Bigint_Comparison_Exp>;
+  leader?: Maybe<String_Comparison_Exp>;
   num_txs?: Maybe<Int_Comparison_Exp>;
-  proposer?: Maybe<String_Comparison_Exp>;
   slot?: Maybe<Bigint_Comparison_Exp>;
   timestamp?: Maybe<Timestamp_Comparison_Exp>;
   transactions?: Maybe<Transaction_Bool_Exp>;
@@ -682,8 +682,8 @@ export type Block_Max_Fields = {
   __typename?: 'block_max_fields';
   hash?: Maybe<Scalars['String']>;
   height?: Maybe<Scalars['bigint']>;
+  leader?: Maybe<Scalars['String']>;
   num_txs?: Maybe<Scalars['Int']>;
-  proposer?: Maybe<Scalars['String']>;
   slot?: Maybe<Scalars['bigint']>;
   timestamp?: Maybe<Scalars['timestamp']>;
 };
@@ -693,8 +693,8 @@ export type Block_Min_Fields = {
   __typename?: 'block_min_fields';
   hash?: Maybe<Scalars['String']>;
   height?: Maybe<Scalars['bigint']>;
+  leader?: Maybe<Scalars['String']>;
   num_txs?: Maybe<Scalars['Int']>;
-  proposer?: Maybe<Scalars['String']>;
   slot?: Maybe<Scalars['bigint']>;
   timestamp?: Maybe<Scalars['timestamp']>;
 };
@@ -703,8 +703,8 @@ export type Block_Min_Fields = {
 export type Block_Order_By = {
   hash?: Maybe<Order_By>;
   height?: Maybe<Order_By>;
+  leader?: Maybe<Order_By>;
   num_txs?: Maybe<Order_By>;
-  proposer?: Maybe<Order_By>;
   slot?: Maybe<Order_By>;
   timestamp?: Maybe<Order_By>;
   transactions_aggregate?: Maybe<Transaction_Aggregate_Order_By>;
@@ -718,9 +718,9 @@ export enum Block_Select_Column {
   /** column name */
   Height = 'height',
   /** column name */
-  NumTxs = 'num_txs',
+  Leader = 'leader',
   /** column name */
-  Proposer = 'proposer',
+  NumTxs = 'num_txs',
   /** column name */
   Slot = 'slot',
   /** column name */
@@ -797,23 +797,9 @@ export type Float8_Comparison_Exp = {
   _nin?: Maybe<Array<Scalars['float8']>>;
 };
 
-
-/** Boolean expression to compare columns of type "json". All fields are combined with logical 'AND'. */
-export type Json_Comparison_Exp = {
-  _eq?: Maybe<Scalars['json']>;
-  _gt?: Maybe<Scalars['json']>;
-  _gte?: Maybe<Scalars['json']>;
-  _in?: Maybe<Array<Scalars['json']>>;
-  _is_null?: Maybe<Scalars['Boolean']>;
-  _lt?: Maybe<Scalars['json']>;
-  _lte?: Maybe<Scalars['json']>;
-  _neq?: Maybe<Scalars['json']>;
-  _nin?: Maybe<Array<Scalars['json']>>;
-};
-
-/** columns and relationships of "message" */
-export type Message = {
-  __typename?: 'message';
+/** columns and relationships of "instruction" */
+export type Instruction = {
+  __typename?: 'instruction';
   index: Scalars['Int'];
   inner_index: Scalars['Int'];
   involved_accounts: Scalars['_text'];
@@ -822,82 +808,82 @@ export type Message = {
   raw_data: Scalars['String'];
   /** An object relationship */
   transaction?: Maybe<Transaction>;
-  transaction_hash: Scalars['String'];
+  tx_signature: Scalars['String'];
   type: Scalars['String'];
   value: Scalars['json'];
 };
 
 
-/** columns and relationships of "message" */
-export type MessageValueArgs = {
+/** columns and relationships of "instruction" */
+export type InstructionValueArgs = {
   path?: Maybe<Scalars['String']>;
 };
 
-/** aggregated selection of "message" */
-export type Message_Aggregate = {
-  __typename?: 'message_aggregate';
-  aggregate?: Maybe<Message_Aggregate_Fields>;
-  nodes: Array<Message>;
+/** aggregated selection of "instruction" */
+export type Instruction_Aggregate = {
+  __typename?: 'instruction_aggregate';
+  aggregate?: Maybe<Instruction_Aggregate_Fields>;
+  nodes: Array<Instruction>;
 };
 
-/** aggregate fields of "message" */
-export type Message_Aggregate_Fields = {
-  __typename?: 'message_aggregate_fields';
-  avg?: Maybe<Message_Avg_Fields>;
+/** aggregate fields of "instruction" */
+export type Instruction_Aggregate_Fields = {
+  __typename?: 'instruction_aggregate_fields';
+  avg?: Maybe<Instruction_Avg_Fields>;
   count: Scalars['Int'];
-  max?: Maybe<Message_Max_Fields>;
-  min?: Maybe<Message_Min_Fields>;
-  stddev?: Maybe<Message_Stddev_Fields>;
-  stddev_pop?: Maybe<Message_Stddev_Pop_Fields>;
-  stddev_samp?: Maybe<Message_Stddev_Samp_Fields>;
-  sum?: Maybe<Message_Sum_Fields>;
-  var_pop?: Maybe<Message_Var_Pop_Fields>;
-  var_samp?: Maybe<Message_Var_Samp_Fields>;
-  variance?: Maybe<Message_Variance_Fields>;
+  max?: Maybe<Instruction_Max_Fields>;
+  min?: Maybe<Instruction_Min_Fields>;
+  stddev?: Maybe<Instruction_Stddev_Fields>;
+  stddev_pop?: Maybe<Instruction_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Instruction_Stddev_Samp_Fields>;
+  sum?: Maybe<Instruction_Sum_Fields>;
+  var_pop?: Maybe<Instruction_Var_Pop_Fields>;
+  var_samp?: Maybe<Instruction_Var_Samp_Fields>;
+  variance?: Maybe<Instruction_Variance_Fields>;
 };
 
 
-/** aggregate fields of "message" */
-export type Message_Aggregate_FieldsCountArgs = {
-  columns?: Maybe<Array<Message_Select_Column>>;
+/** aggregate fields of "instruction" */
+export type Instruction_Aggregate_FieldsCountArgs = {
+  columns?: Maybe<Array<Instruction_Select_Column>>;
   distinct?: Maybe<Scalars['Boolean']>;
 };
 
-/** order by aggregate values of table "message" */
-export type Message_Aggregate_Order_By = {
-  avg?: Maybe<Message_Avg_Order_By>;
+/** order by aggregate values of table "instruction" */
+export type Instruction_Aggregate_Order_By = {
+  avg?: Maybe<Instruction_Avg_Order_By>;
   count?: Maybe<Order_By>;
-  max?: Maybe<Message_Max_Order_By>;
-  min?: Maybe<Message_Min_Order_By>;
-  stddev?: Maybe<Message_Stddev_Order_By>;
-  stddev_pop?: Maybe<Message_Stddev_Pop_Order_By>;
-  stddev_samp?: Maybe<Message_Stddev_Samp_Order_By>;
-  sum?: Maybe<Message_Sum_Order_By>;
-  var_pop?: Maybe<Message_Var_Pop_Order_By>;
-  var_samp?: Maybe<Message_Var_Samp_Order_By>;
-  variance?: Maybe<Message_Variance_Order_By>;
+  max?: Maybe<Instruction_Max_Order_By>;
+  min?: Maybe<Instruction_Min_Order_By>;
+  stddev?: Maybe<Instruction_Stddev_Order_By>;
+  stddev_pop?: Maybe<Instruction_Stddev_Pop_Order_By>;
+  stddev_samp?: Maybe<Instruction_Stddev_Samp_Order_By>;
+  sum?: Maybe<Instruction_Sum_Order_By>;
+  var_pop?: Maybe<Instruction_Var_Pop_Order_By>;
+  var_samp?: Maybe<Instruction_Var_Samp_Order_By>;
+  variance?: Maybe<Instruction_Variance_Order_By>;
 };
 
 /** aggregate avg on columns */
-export type Message_Avg_Fields = {
-  __typename?: 'message_avg_fields';
+export type Instruction_Avg_Fields = {
+  __typename?: 'instruction_avg_fields';
   index?: Maybe<Scalars['Float']>;
   inner_index?: Maybe<Scalars['Float']>;
   partition_id?: Maybe<Scalars['Float']>;
 };
 
-/** order by avg() on columns of table "message" */
-export type Message_Avg_Order_By = {
+/** order by avg() on columns of table "instruction" */
+export type Instruction_Avg_Order_By = {
   index?: Maybe<Order_By>;
   inner_index?: Maybe<Order_By>;
   partition_id?: Maybe<Order_By>;
 };
 
-/** Boolean expression to filter rows from the table "message". All fields are combined with a logical 'AND'. */
-export type Message_Bool_Exp = {
-  _and?: Maybe<Array<Message_Bool_Exp>>;
-  _not?: Maybe<Message_Bool_Exp>;
-  _or?: Maybe<Array<Message_Bool_Exp>>;
+/** Boolean expression to filter rows from the table "instruction". All fields are combined with a logical 'AND'. */
+export type Instruction_Bool_Exp = {
+  _and?: Maybe<Array<Instruction_Bool_Exp>>;
+  _not?: Maybe<Instruction_Bool_Exp>;
+  _or?: Maybe<Array<Instruction_Bool_Exp>>;
   index?: Maybe<Int_Comparison_Exp>;
   inner_index?: Maybe<Int_Comparison_Exp>;
   involved_accounts?: Maybe<_Text_Comparison_Exp>;
@@ -905,59 +891,59 @@ export type Message_Bool_Exp = {
   program?: Maybe<String_Comparison_Exp>;
   raw_data?: Maybe<String_Comparison_Exp>;
   transaction?: Maybe<Transaction_Bool_Exp>;
-  transaction_hash?: Maybe<String_Comparison_Exp>;
+  tx_signature?: Maybe<String_Comparison_Exp>;
   type?: Maybe<String_Comparison_Exp>;
   value?: Maybe<Json_Comparison_Exp>;
 };
 
 /** aggregate max on columns */
-export type Message_Max_Fields = {
-  __typename?: 'message_max_fields';
+export type Instruction_Max_Fields = {
+  __typename?: 'instruction_max_fields';
   index?: Maybe<Scalars['Int']>;
   inner_index?: Maybe<Scalars['Int']>;
   partition_id?: Maybe<Scalars['Int']>;
   program?: Maybe<Scalars['String']>;
   raw_data?: Maybe<Scalars['String']>;
-  transaction_hash?: Maybe<Scalars['String']>;
+  tx_signature?: Maybe<Scalars['String']>;
   type?: Maybe<Scalars['String']>;
 };
 
-/** order by max() on columns of table "message" */
-export type Message_Max_Order_By = {
+/** order by max() on columns of table "instruction" */
+export type Instruction_Max_Order_By = {
   index?: Maybe<Order_By>;
   inner_index?: Maybe<Order_By>;
   partition_id?: Maybe<Order_By>;
   program?: Maybe<Order_By>;
   raw_data?: Maybe<Order_By>;
-  transaction_hash?: Maybe<Order_By>;
+  tx_signature?: Maybe<Order_By>;
   type?: Maybe<Order_By>;
 };
 
 /** aggregate min on columns */
-export type Message_Min_Fields = {
-  __typename?: 'message_min_fields';
+export type Instruction_Min_Fields = {
+  __typename?: 'instruction_min_fields';
   index?: Maybe<Scalars['Int']>;
   inner_index?: Maybe<Scalars['Int']>;
   partition_id?: Maybe<Scalars['Int']>;
   program?: Maybe<Scalars['String']>;
   raw_data?: Maybe<Scalars['String']>;
-  transaction_hash?: Maybe<Scalars['String']>;
+  tx_signature?: Maybe<Scalars['String']>;
   type?: Maybe<Scalars['String']>;
 };
 
-/** order by min() on columns of table "message" */
-export type Message_Min_Order_By = {
+/** order by min() on columns of table "instruction" */
+export type Instruction_Min_Order_By = {
   index?: Maybe<Order_By>;
   inner_index?: Maybe<Order_By>;
   partition_id?: Maybe<Order_By>;
   program?: Maybe<Order_By>;
   raw_data?: Maybe<Order_By>;
-  transaction_hash?: Maybe<Order_By>;
+  tx_signature?: Maybe<Order_By>;
   type?: Maybe<Order_By>;
 };
 
-/** Ordering options when selecting data from "message". */
-export type Message_Order_By = {
+/** Ordering options when selecting data from "instruction". */
+export type Instruction_Order_By = {
   index?: Maybe<Order_By>;
   inner_index?: Maybe<Order_By>;
   involved_accounts?: Maybe<Order_By>;
@@ -965,13 +951,13 @@ export type Message_Order_By = {
   program?: Maybe<Order_By>;
   raw_data?: Maybe<Order_By>;
   transaction?: Maybe<Transaction_Order_By>;
-  transaction_hash?: Maybe<Order_By>;
+  tx_signature?: Maybe<Order_By>;
   type?: Maybe<Order_By>;
   value?: Maybe<Order_By>;
 };
 
-/** select columns of table "message" */
-export enum Message_Select_Column {
+/** select columns of table "instruction" */
+export enum Instruction_Select_Column {
   /** column name */
   Index = 'index',
   /** column name */
@@ -985,7 +971,7 @@ export enum Message_Select_Column {
   /** column name */
   RawData = 'raw_data',
   /** column name */
-  TransactionHash = 'transaction_hash',
+  TxSignature = 'tx_signature',
   /** column name */
   Type = 'type',
   /** column name */
@@ -993,115 +979,129 @@ export enum Message_Select_Column {
 }
 
 /** aggregate stddev on columns */
-export type Message_Stddev_Fields = {
-  __typename?: 'message_stddev_fields';
+export type Instruction_Stddev_Fields = {
+  __typename?: 'instruction_stddev_fields';
   index?: Maybe<Scalars['Float']>;
   inner_index?: Maybe<Scalars['Float']>;
   partition_id?: Maybe<Scalars['Float']>;
 };
 
-/** order by stddev() on columns of table "message" */
-export type Message_Stddev_Order_By = {
+/** order by stddev() on columns of table "instruction" */
+export type Instruction_Stddev_Order_By = {
   index?: Maybe<Order_By>;
   inner_index?: Maybe<Order_By>;
   partition_id?: Maybe<Order_By>;
 };
 
 /** aggregate stddev_pop on columns */
-export type Message_Stddev_Pop_Fields = {
-  __typename?: 'message_stddev_pop_fields';
+export type Instruction_Stddev_Pop_Fields = {
+  __typename?: 'instruction_stddev_pop_fields';
   index?: Maybe<Scalars['Float']>;
   inner_index?: Maybe<Scalars['Float']>;
   partition_id?: Maybe<Scalars['Float']>;
 };
 
-/** order by stddev_pop() on columns of table "message" */
-export type Message_Stddev_Pop_Order_By = {
+/** order by stddev_pop() on columns of table "instruction" */
+export type Instruction_Stddev_Pop_Order_By = {
   index?: Maybe<Order_By>;
   inner_index?: Maybe<Order_By>;
   partition_id?: Maybe<Order_By>;
 };
 
 /** aggregate stddev_samp on columns */
-export type Message_Stddev_Samp_Fields = {
-  __typename?: 'message_stddev_samp_fields';
+export type Instruction_Stddev_Samp_Fields = {
+  __typename?: 'instruction_stddev_samp_fields';
   index?: Maybe<Scalars['Float']>;
   inner_index?: Maybe<Scalars['Float']>;
   partition_id?: Maybe<Scalars['Float']>;
 };
 
-/** order by stddev_samp() on columns of table "message" */
-export type Message_Stddev_Samp_Order_By = {
+/** order by stddev_samp() on columns of table "instruction" */
+export type Instruction_Stddev_Samp_Order_By = {
   index?: Maybe<Order_By>;
   inner_index?: Maybe<Order_By>;
   partition_id?: Maybe<Order_By>;
 };
 
 /** aggregate sum on columns */
-export type Message_Sum_Fields = {
-  __typename?: 'message_sum_fields';
+export type Instruction_Sum_Fields = {
+  __typename?: 'instruction_sum_fields';
   index?: Maybe<Scalars['Int']>;
   inner_index?: Maybe<Scalars['Int']>;
   partition_id?: Maybe<Scalars['Int']>;
 };
 
-/** order by sum() on columns of table "message" */
-export type Message_Sum_Order_By = {
+/** order by sum() on columns of table "instruction" */
+export type Instruction_Sum_Order_By = {
   index?: Maybe<Order_By>;
   inner_index?: Maybe<Order_By>;
   partition_id?: Maybe<Order_By>;
 };
 
 /** aggregate var_pop on columns */
-export type Message_Var_Pop_Fields = {
-  __typename?: 'message_var_pop_fields';
+export type Instruction_Var_Pop_Fields = {
+  __typename?: 'instruction_var_pop_fields';
   index?: Maybe<Scalars['Float']>;
   inner_index?: Maybe<Scalars['Float']>;
   partition_id?: Maybe<Scalars['Float']>;
 };
 
-/** order by var_pop() on columns of table "message" */
-export type Message_Var_Pop_Order_By = {
+/** order by var_pop() on columns of table "instruction" */
+export type Instruction_Var_Pop_Order_By = {
   index?: Maybe<Order_By>;
   inner_index?: Maybe<Order_By>;
   partition_id?: Maybe<Order_By>;
 };
 
 /** aggregate var_samp on columns */
-export type Message_Var_Samp_Fields = {
-  __typename?: 'message_var_samp_fields';
+export type Instruction_Var_Samp_Fields = {
+  __typename?: 'instruction_var_samp_fields';
   index?: Maybe<Scalars['Float']>;
   inner_index?: Maybe<Scalars['Float']>;
   partition_id?: Maybe<Scalars['Float']>;
 };
 
-/** order by var_samp() on columns of table "message" */
-export type Message_Var_Samp_Order_By = {
+/** order by var_samp() on columns of table "instruction" */
+export type Instruction_Var_Samp_Order_By = {
   index?: Maybe<Order_By>;
   inner_index?: Maybe<Order_By>;
   partition_id?: Maybe<Order_By>;
 };
 
 /** aggregate variance on columns */
-export type Message_Variance_Fields = {
-  __typename?: 'message_variance_fields';
+export type Instruction_Variance_Fields = {
+  __typename?: 'instruction_variance_fields';
   index?: Maybe<Scalars['Float']>;
   inner_index?: Maybe<Scalars['Float']>;
   partition_id?: Maybe<Scalars['Float']>;
 };
 
-/** order by variance() on columns of table "message" */
-export type Message_Variance_Order_By = {
+/** order by variance() on columns of table "instruction" */
+export type Instruction_Variance_Order_By = {
   index?: Maybe<Order_By>;
   inner_index?: Maybe<Order_By>;
   partition_id?: Maybe<Order_By>;
 };
 
-export type Messages_By_Address_Args = {
+export type Instructions_By_Address_Args = {
   addresses?: Maybe<Scalars['_text']>;
   limit?: Maybe<Scalars['bigint']>;
   offset?: Maybe<Scalars['bigint']>;
   programs?: Maybe<Scalars['_text']>;
+};
+
+
+/** Boolean expression to compare columns of type "json". All fields are combined with logical 'AND'. */
+export type Json_Comparison_Exp = {
+  _eq?: Maybe<Scalars['json']>;
+  _gt?: Maybe<Scalars['json']>;
+  _gte?: Maybe<Scalars['json']>;
+  _in?: Maybe<Array<Scalars['json']>>;
+  _is_null?: Maybe<Scalars['Boolean']>;
+  _lt?: Maybe<Scalars['json']>;
+  _lte?: Maybe<Scalars['json']>;
+  _neq?: Maybe<Scalars['json']>;
+  _nin?: Maybe<Array<Scalars['json']>>;
 };
 
 /** columns and relationships of "multisig" */
@@ -1625,14 +1625,14 @@ export type Query_Root = {
   block_aggregate: Block_Aggregate;
   /** fetch data from the table: "block" using primary key columns */
   block_by_pk?: Maybe<Block>;
-  /** fetch data from the table: "message" */
-  message: Array<Message>;
-  /** fetch aggregated fields from the table: "message" */
-  message_aggregate: Message_Aggregate;
-  /** execute function "messages_by_address" which returns "message" */
-  messages_by_address: Array<Message>;
-  /** execute function "messages_by_address" and query aggregates on result of table type "message" */
-  messages_by_address_aggregate: Message_Aggregate;
+  /** fetch data from the table: "instruction" */
+  instruction: Array<Instruction>;
+  /** fetch aggregated fields from the table: "instruction" */
+  instruction_aggregate: Instruction_Aggregate;
+  /** execute function "instructions_by_address" which returns "instruction" */
+  instructions_by_address: Array<Instruction>;
+  /** execute function "instructions_by_address" and query aggregates on result of table type "instruction" */
+  instructions_by_address_aggregate: Instruction_Aggregate;
   /** fetch data from the table: "multisig" */
   multisig: Array<Multisig>;
   /** fetch aggregated fields from the table: "multisig" */
@@ -1811,7 +1811,7 @@ export type Query_RootActions_Account_InfoArgs = {
 
 
 export type Query_RootActions_TxArgs = {
-  hash: Scalars['String'];
+  signature: Scalars['String'];
 };
 
 
@@ -1862,41 +1862,41 @@ export type Query_RootBlock_By_PkArgs = {
 };
 
 
-export type Query_RootMessageArgs = {
-  distinct_on?: Maybe<Array<Message_Select_Column>>;
+export type Query_RootInstructionArgs = {
+  distinct_on?: Maybe<Array<Instruction_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Message_Order_By>>;
-  where?: Maybe<Message_Bool_Exp>;
+  order_by?: Maybe<Array<Instruction_Order_By>>;
+  where?: Maybe<Instruction_Bool_Exp>;
 };
 
 
-export type Query_RootMessage_AggregateArgs = {
-  distinct_on?: Maybe<Array<Message_Select_Column>>;
+export type Query_RootInstruction_AggregateArgs = {
+  distinct_on?: Maybe<Array<Instruction_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Message_Order_By>>;
-  where?: Maybe<Message_Bool_Exp>;
+  order_by?: Maybe<Array<Instruction_Order_By>>;
+  where?: Maybe<Instruction_Bool_Exp>;
 };
 
 
-export type Query_RootMessages_By_AddressArgs = {
-  args: Messages_By_Address_Args;
-  distinct_on?: Maybe<Array<Message_Select_Column>>;
+export type Query_RootInstructions_By_AddressArgs = {
+  args: Instructions_By_Address_Args;
+  distinct_on?: Maybe<Array<Instruction_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Message_Order_By>>;
-  where?: Maybe<Message_Bool_Exp>;
+  order_by?: Maybe<Array<Instruction_Order_By>>;
+  where?: Maybe<Instruction_Bool_Exp>;
 };
 
 
-export type Query_RootMessages_By_Address_AggregateArgs = {
-  args: Messages_By_Address_Args;
-  distinct_on?: Maybe<Array<Message_Select_Column>>;
+export type Query_RootInstructions_By_Address_AggregateArgs = {
+  args: Instructions_By_Address_Args;
+  distinct_on?: Maybe<Array<Instruction_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Message_Order_By>>;
-  where?: Maybe<Message_Bool_Exp>;
+  order_by?: Maybe<Array<Instruction_Order_By>>;
+  where?: Maybe<Instruction_Bool_Exp>;
 };
 
 
@@ -2162,7 +2162,7 @@ export type Query_RootToken_AggregateArgs = {
 
 
 export type Query_RootToken_By_PkArgs = {
-  address: Scalars['String'];
+  mint: Scalars['String'];
 };
 
 
@@ -2249,7 +2249,7 @@ export type Query_RootToken_Supply_AggregateArgs = {
 
 
 export type Query_RootToken_Supply_By_PkArgs = {
-  address: Scalars['String'];
+  mint: Scalars['String'];
 };
 
 
@@ -2272,7 +2272,7 @@ export type Query_RootToken_Unit_AggregateArgs = {
 
 
 export type Query_RootToken_Unit_By_PkArgs = {
-  address: Scalars['String'];
+  mint: Scalars['String'];
 };
 
 
@@ -2824,14 +2824,14 @@ export type Subscription_Root = {
   block_aggregate: Block_Aggregate;
   /** fetch data from the table: "block" using primary key columns */
   block_by_pk?: Maybe<Block>;
-  /** fetch data from the table: "message" */
-  message: Array<Message>;
-  /** fetch aggregated fields from the table: "message" */
-  message_aggregate: Message_Aggregate;
-  /** execute function "messages_by_address" which returns "message" */
-  messages_by_address: Array<Message>;
-  /** execute function "messages_by_address" and query aggregates on result of table type "message" */
-  messages_by_address_aggregate: Message_Aggregate;
+  /** fetch data from the table: "instruction" */
+  instruction: Array<Instruction>;
+  /** fetch aggregated fields from the table: "instruction" */
+  instruction_aggregate: Instruction_Aggregate;
+  /** execute function "instructions_by_address" which returns "instruction" */
+  instructions_by_address: Array<Instruction>;
+  /** execute function "instructions_by_address" and query aggregates on result of table type "instruction" */
+  instructions_by_address_aggregate: Instruction_Aggregate;
   /** fetch data from the table: "multisig" */
   multisig: Array<Multisig>;
   /** fetch aggregated fields from the table: "multisig" */
@@ -3045,41 +3045,41 @@ export type Subscription_RootBlock_By_PkArgs = {
 };
 
 
-export type Subscription_RootMessageArgs = {
-  distinct_on?: Maybe<Array<Message_Select_Column>>;
+export type Subscription_RootInstructionArgs = {
+  distinct_on?: Maybe<Array<Instruction_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Message_Order_By>>;
-  where?: Maybe<Message_Bool_Exp>;
+  order_by?: Maybe<Array<Instruction_Order_By>>;
+  where?: Maybe<Instruction_Bool_Exp>;
 };
 
 
-export type Subscription_RootMessage_AggregateArgs = {
-  distinct_on?: Maybe<Array<Message_Select_Column>>;
+export type Subscription_RootInstruction_AggregateArgs = {
+  distinct_on?: Maybe<Array<Instruction_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Message_Order_By>>;
-  where?: Maybe<Message_Bool_Exp>;
+  order_by?: Maybe<Array<Instruction_Order_By>>;
+  where?: Maybe<Instruction_Bool_Exp>;
 };
 
 
-export type Subscription_RootMessages_By_AddressArgs = {
-  args: Messages_By_Address_Args;
-  distinct_on?: Maybe<Array<Message_Select_Column>>;
+export type Subscription_RootInstructions_By_AddressArgs = {
+  args: Instructions_By_Address_Args;
+  distinct_on?: Maybe<Array<Instruction_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Message_Order_By>>;
-  where?: Maybe<Message_Bool_Exp>;
+  order_by?: Maybe<Array<Instruction_Order_By>>;
+  where?: Maybe<Instruction_Bool_Exp>;
 };
 
 
-export type Subscription_RootMessages_By_Address_AggregateArgs = {
-  args: Messages_By_Address_Args;
-  distinct_on?: Maybe<Array<Message_Select_Column>>;
+export type Subscription_RootInstructions_By_Address_AggregateArgs = {
+  args: Instructions_By_Address_Args;
+  distinct_on?: Maybe<Array<Instruction_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Message_Order_By>>;
-  where?: Maybe<Message_Bool_Exp>;
+  order_by?: Maybe<Array<Instruction_Order_By>>;
+  where?: Maybe<Instruction_Bool_Exp>;
 };
 
 
@@ -3345,7 +3345,7 @@ export type Subscription_RootToken_AggregateArgs = {
 
 
 export type Subscription_RootToken_By_PkArgs = {
-  address: Scalars['String'];
+  mint: Scalars['String'];
 };
 
 
@@ -3432,7 +3432,7 @@ export type Subscription_RootToken_Supply_AggregateArgs = {
 
 
 export type Subscription_RootToken_Supply_By_PkArgs = {
-  address: Scalars['String'];
+  mint: Scalars['String'];
 };
 
 
@@ -3455,7 +3455,7 @@ export type Subscription_RootToken_Unit_AggregateArgs = {
 
 
 export type Subscription_RootToken_Unit_By_PkArgs = {
-  address: Scalars['String'];
+  mint: Scalars['String'];
 };
 
 
@@ -3763,9 +3763,9 @@ export type Timestamp_Comparison_Exp = {
 /** columns and relationships of "token" */
 export type Token = {
   __typename?: 'token';
-  address: Scalars['String'];
   decimals: Scalars['Int'];
   freeze_authority: Scalars['String'];
+  mint: Scalars['String'];
   mint_authority: Scalars['String'];
   /** An array relationship */
   token_accounts: Array<Token_Account>;
@@ -3799,8 +3799,8 @@ export type TokenToken_Accounts_AggregateArgs = {
 export type Token_Account = {
   __typename?: 'token_account';
   address: Scalars['String'];
+  mint: Scalars['String'];
   owner: Scalars['String'];
-  token: Scalars['String'];
   /** An object relationship */
   token_info?: Maybe<Token>;
 };
@@ -4095,8 +4095,8 @@ export type Token_Account_Bool_Exp = {
   _not?: Maybe<Token_Account_Bool_Exp>;
   _or?: Maybe<Array<Token_Account_Bool_Exp>>;
   address?: Maybe<String_Comparison_Exp>;
+  mint?: Maybe<String_Comparison_Exp>;
   owner?: Maybe<String_Comparison_Exp>;
-  token?: Maybe<String_Comparison_Exp>;
   token_info?: Maybe<Token_Bool_Exp>;
 };
 
@@ -4104,37 +4104,37 @@ export type Token_Account_Bool_Exp = {
 export type Token_Account_Max_Fields = {
   __typename?: 'token_account_max_fields';
   address?: Maybe<Scalars['String']>;
+  mint?: Maybe<Scalars['String']>;
   owner?: Maybe<Scalars['String']>;
-  token?: Maybe<Scalars['String']>;
 };
 
 /** order by max() on columns of table "token_account" */
 export type Token_Account_Max_Order_By = {
   address?: Maybe<Order_By>;
+  mint?: Maybe<Order_By>;
   owner?: Maybe<Order_By>;
-  token?: Maybe<Order_By>;
 };
 
 /** aggregate min on columns */
 export type Token_Account_Min_Fields = {
   __typename?: 'token_account_min_fields';
   address?: Maybe<Scalars['String']>;
+  mint?: Maybe<Scalars['String']>;
   owner?: Maybe<Scalars['String']>;
-  token?: Maybe<Scalars['String']>;
 };
 
 /** order by min() on columns of table "token_account" */
 export type Token_Account_Min_Order_By = {
   address?: Maybe<Order_By>;
+  mint?: Maybe<Order_By>;
   owner?: Maybe<Order_By>;
-  token?: Maybe<Order_By>;
 };
 
 /** Ordering options when selecting data from "token_account". */
 export type Token_Account_Order_By = {
   address?: Maybe<Order_By>;
+  mint?: Maybe<Order_By>;
   owner?: Maybe<Order_By>;
-  token?: Maybe<Order_By>;
   token_info?: Maybe<Token_Order_By>;
 };
 
@@ -4143,9 +4143,9 @@ export enum Token_Account_Select_Column {
   /** column name */
   Address = 'address',
   /** column name */
-  Owner = 'owner',
+  Mint = 'mint',
   /** column name */
-  Token = 'token'
+  Owner = 'owner'
 }
 
 /** aggregated selection of "token" */
@@ -4189,9 +4189,9 @@ export type Token_Bool_Exp = {
   _and?: Maybe<Array<Token_Bool_Exp>>;
   _not?: Maybe<Token_Bool_Exp>;
   _or?: Maybe<Array<Token_Bool_Exp>>;
-  address?: Maybe<String_Comparison_Exp>;
   decimals?: Maybe<Int_Comparison_Exp>;
   freeze_authority?: Maybe<String_Comparison_Exp>;
+  mint?: Maybe<String_Comparison_Exp>;
   mint_authority?: Maybe<String_Comparison_Exp>;
   token_accounts?: Maybe<Token_Account_Bool_Exp>;
   token_supply?: Maybe<Token_Supply_Bool_Exp>;
@@ -4333,26 +4333,26 @@ export type Token_Delegation_Variance_Fields = {
 /** aggregate max on columns */
 export type Token_Max_Fields = {
   __typename?: 'token_max_fields';
-  address?: Maybe<Scalars['String']>;
   decimals?: Maybe<Scalars['Int']>;
   freeze_authority?: Maybe<Scalars['String']>;
+  mint?: Maybe<Scalars['String']>;
   mint_authority?: Maybe<Scalars['String']>;
 };
 
 /** aggregate min on columns */
 export type Token_Min_Fields = {
   __typename?: 'token_min_fields';
-  address?: Maybe<Scalars['String']>;
   decimals?: Maybe<Scalars['Int']>;
   freeze_authority?: Maybe<Scalars['String']>;
+  mint?: Maybe<Scalars['String']>;
   mint_authority?: Maybe<Scalars['String']>;
 };
 
 /** Ordering options when selecting data from "token". */
 export type Token_Order_By = {
-  address?: Maybe<Order_By>;
   decimals?: Maybe<Order_By>;
   freeze_authority?: Maybe<Order_By>;
+  mint?: Maybe<Order_By>;
   mint_authority?: Maybe<Order_By>;
   token_accounts_aggregate?: Maybe<Token_Account_Aggregate_Order_By>;
   token_supply?: Maybe<Token_Supply_Order_By>;
@@ -4752,11 +4752,11 @@ export type Token_Price_Variance_Fields = {
 /** select columns of table "token" */
 export enum Token_Select_Column {
   /** column name */
-  Address = 'address',
-  /** column name */
   Decimals = 'decimals',
   /** column name */
   FreezeAuthority = 'freeze_authority',
+  /** column name */
+  Mint = 'mint',
   /** column name */
   MintAuthority = 'mint_authority'
 }
@@ -4788,7 +4788,7 @@ export type Token_Sum_Fields = {
 /** columns and relationships of "token_supply" */
 export type Token_Supply = {
   __typename?: 'token_supply';
-  address: Scalars['String'];
+  mint: Scalars['String'];
   supply: Scalars['numeric'];
 };
 
@@ -4833,34 +4833,34 @@ export type Token_Supply_Bool_Exp = {
   _and?: Maybe<Array<Token_Supply_Bool_Exp>>;
   _not?: Maybe<Token_Supply_Bool_Exp>;
   _or?: Maybe<Array<Token_Supply_Bool_Exp>>;
-  address?: Maybe<String_Comparison_Exp>;
+  mint?: Maybe<String_Comparison_Exp>;
   supply?: Maybe<Numeric_Comparison_Exp>;
 };
 
 /** aggregate max on columns */
 export type Token_Supply_Max_Fields = {
   __typename?: 'token_supply_max_fields';
-  address?: Maybe<Scalars['String']>;
+  mint?: Maybe<Scalars['String']>;
   supply?: Maybe<Scalars['numeric']>;
 };
 
 /** aggregate min on columns */
 export type Token_Supply_Min_Fields = {
   __typename?: 'token_supply_min_fields';
-  address?: Maybe<Scalars['String']>;
+  mint?: Maybe<Scalars['String']>;
   supply?: Maybe<Scalars['numeric']>;
 };
 
 /** Ordering options when selecting data from "token_supply". */
 export type Token_Supply_Order_By = {
-  address?: Maybe<Order_By>;
+  mint?: Maybe<Order_By>;
   supply?: Maybe<Order_By>;
 };
 
 /** select columns of table "token_supply" */
 export enum Token_Supply_Select_Column {
   /** column name */
-  Address = 'address',
+  Mint = 'mint',
   /** column name */
   Supply = 'supply'
 }
@@ -4910,9 +4910,9 @@ export type Token_Supply_Variance_Fields = {
 /** columns and relationships of "token_unit" */
 export type Token_Unit = {
   __typename?: 'token_unit';
-  address: Scalars['String'];
   description: Scalars['String'];
   logo_uri: Scalars['String'];
+  mint: Scalars['String'];
   price_id: Scalars['String'];
   /** An object relationship */
   token?: Maybe<Token>;
@@ -4973,9 +4973,9 @@ export type Token_Unit_Bool_Exp = {
   _and?: Maybe<Array<Token_Unit_Bool_Exp>>;
   _not?: Maybe<Token_Unit_Bool_Exp>;
   _or?: Maybe<Array<Token_Unit_Bool_Exp>>;
-  address?: Maybe<String_Comparison_Exp>;
   description?: Maybe<String_Comparison_Exp>;
   logo_uri?: Maybe<String_Comparison_Exp>;
+  mint?: Maybe<String_Comparison_Exp>;
   price_id?: Maybe<String_Comparison_Exp>;
   token?: Maybe<Token_Bool_Exp>;
   token_price?: Maybe<Token_Price_Bool_Exp>;
@@ -4987,9 +4987,9 @@ export type Token_Unit_Bool_Exp = {
 /** aggregate max on columns */
 export type Token_Unit_Max_Fields = {
   __typename?: 'token_unit_max_fields';
-  address?: Maybe<Scalars['String']>;
   description?: Maybe<Scalars['String']>;
   logo_uri?: Maybe<Scalars['String']>;
+  mint?: Maybe<Scalars['String']>;
   price_id?: Maybe<Scalars['String']>;
   unit_name?: Maybe<Scalars['String']>;
   website?: Maybe<Scalars['String']>;
@@ -4998,9 +4998,9 @@ export type Token_Unit_Max_Fields = {
 /** aggregate min on columns */
 export type Token_Unit_Min_Fields = {
   __typename?: 'token_unit_min_fields';
-  address?: Maybe<Scalars['String']>;
   description?: Maybe<Scalars['String']>;
   logo_uri?: Maybe<Scalars['String']>;
+  mint?: Maybe<Scalars['String']>;
   price_id?: Maybe<Scalars['String']>;
   unit_name?: Maybe<Scalars['String']>;
   website?: Maybe<Scalars['String']>;
@@ -5008,9 +5008,9 @@ export type Token_Unit_Min_Fields = {
 
 /** Ordering options when selecting data from "token_unit". */
 export type Token_Unit_Order_By = {
-  address?: Maybe<Order_By>;
   description?: Maybe<Order_By>;
   logo_uri?: Maybe<Order_By>;
+  mint?: Maybe<Order_By>;
   price_id?: Maybe<Order_By>;
   token?: Maybe<Token_Order_By>;
   token_price?: Maybe<Token_Price_Order_By>;
@@ -5022,11 +5022,11 @@ export type Token_Unit_Order_By = {
 /** select columns of table "token_unit" */
 export enum Token_Unit_Select_Column {
   /** column name */
-  Address = 'address',
-  /** column name */
   Description = 'description',
   /** column name */
   LogoUri = 'logo_uri',
+  /** column name */
+  Mint = 'mint',
   /** column name */
   PriceId = 'price_id',
   /** column name */
@@ -5060,33 +5060,34 @@ export type Transaction = {
   block?: Maybe<Block>;
   error: Scalars['Boolean'];
   fee: Scalars['Int'];
-  hash: Scalars['String'];
-  logs?: Maybe<Scalars['_text']>;
   /** An array relationship */
-  messages: Array<Message>;
+  instructions: Array<Instruction>;
   /** An aggregate relationship */
-  messages_aggregate: Message_Aggregate;
+  instructions_aggregate: Instruction_Aggregate;
+  logs?: Maybe<Scalars['_text']>;
+  num_instructions: Scalars['Int'];
+  signature: Scalars['String'];
   slot: Scalars['bigint'];
 };
 
 
 /** columns and relationships of "transaction" */
-export type TransactionMessagesArgs = {
-  distinct_on?: Maybe<Array<Message_Select_Column>>;
+export type TransactionInstructionsArgs = {
+  distinct_on?: Maybe<Array<Instruction_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Message_Order_By>>;
-  where?: Maybe<Message_Bool_Exp>;
+  order_by?: Maybe<Array<Instruction_Order_By>>;
+  where?: Maybe<Instruction_Bool_Exp>;
 };
 
 
 /** columns and relationships of "transaction" */
-export type TransactionMessages_AggregateArgs = {
-  distinct_on?: Maybe<Array<Message_Select_Column>>;
+export type TransactionInstructions_AggregateArgs = {
+  distinct_on?: Maybe<Array<Instruction_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Message_Order_By>>;
-  where?: Maybe<Message_Bool_Exp>;
+  order_by?: Maybe<Array<Instruction_Order_By>>;
+  where?: Maybe<Instruction_Bool_Exp>;
 };
 
 /** aggregated selection of "transaction" */
@@ -5138,12 +5139,14 @@ export type Transaction_Aggregate_Order_By = {
 export type Transaction_Avg_Fields = {
   __typename?: 'transaction_avg_fields';
   fee?: Maybe<Scalars['Float']>;
+  num_instructions?: Maybe<Scalars['Float']>;
   slot?: Maybe<Scalars['Float']>;
 };
 
 /** order by avg() on columns of table "transaction" */
 export type Transaction_Avg_Order_By = {
   fee?: Maybe<Order_By>;
+  num_instructions?: Maybe<Order_By>;
   slot?: Maybe<Order_By>;
 };
 
@@ -5155,9 +5158,10 @@ export type Transaction_Bool_Exp = {
   block?: Maybe<Block_Bool_Exp>;
   error?: Maybe<Boolean_Comparison_Exp>;
   fee?: Maybe<Int_Comparison_Exp>;
-  hash?: Maybe<String_Comparison_Exp>;
+  instructions?: Maybe<Instruction_Bool_Exp>;
   logs?: Maybe<_Text_Comparison_Exp>;
-  messages?: Maybe<Message_Bool_Exp>;
+  num_instructions?: Maybe<Int_Comparison_Exp>;
+  signature?: Maybe<String_Comparison_Exp>;
   slot?: Maybe<Bigint_Comparison_Exp>;
 };
 
@@ -5165,14 +5169,16 @@ export type Transaction_Bool_Exp = {
 export type Transaction_Max_Fields = {
   __typename?: 'transaction_max_fields';
   fee?: Maybe<Scalars['Int']>;
-  hash?: Maybe<Scalars['String']>;
+  num_instructions?: Maybe<Scalars['Int']>;
+  signature?: Maybe<Scalars['String']>;
   slot?: Maybe<Scalars['bigint']>;
 };
 
 /** order by max() on columns of table "transaction" */
 export type Transaction_Max_Order_By = {
   fee?: Maybe<Order_By>;
-  hash?: Maybe<Order_By>;
+  num_instructions?: Maybe<Order_By>;
+  signature?: Maybe<Order_By>;
   slot?: Maybe<Order_By>;
 };
 
@@ -5180,14 +5186,16 @@ export type Transaction_Max_Order_By = {
 export type Transaction_Min_Fields = {
   __typename?: 'transaction_min_fields';
   fee?: Maybe<Scalars['Int']>;
-  hash?: Maybe<Scalars['String']>;
+  num_instructions?: Maybe<Scalars['Int']>;
+  signature?: Maybe<Scalars['String']>;
   slot?: Maybe<Scalars['bigint']>;
 };
 
 /** order by min() on columns of table "transaction" */
 export type Transaction_Min_Order_By = {
   fee?: Maybe<Order_By>;
-  hash?: Maybe<Order_By>;
+  num_instructions?: Maybe<Order_By>;
+  signature?: Maybe<Order_By>;
   slot?: Maybe<Order_By>;
 };
 
@@ -5196,9 +5204,10 @@ export type Transaction_Order_By = {
   block?: Maybe<Block_Order_By>;
   error?: Maybe<Order_By>;
   fee?: Maybe<Order_By>;
-  hash?: Maybe<Order_By>;
+  instructions_aggregate?: Maybe<Instruction_Aggregate_Order_By>;
   logs?: Maybe<Order_By>;
-  messages_aggregate?: Maybe<Message_Aggregate_Order_By>;
+  num_instructions?: Maybe<Order_By>;
+  signature?: Maybe<Order_By>;
   slot?: Maybe<Order_By>;
 };
 
@@ -5209,9 +5218,11 @@ export enum Transaction_Select_Column {
   /** column name */
   Fee = 'fee',
   /** column name */
-  Hash = 'hash',
-  /** column name */
   Logs = 'logs',
+  /** column name */
+  NumInstructions = 'num_instructions',
+  /** column name */
+  Signature = 'signature',
   /** column name */
   Slot = 'slot'
 }
@@ -5220,12 +5231,14 @@ export enum Transaction_Select_Column {
 export type Transaction_Stddev_Fields = {
   __typename?: 'transaction_stddev_fields';
   fee?: Maybe<Scalars['Float']>;
+  num_instructions?: Maybe<Scalars['Float']>;
   slot?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev() on columns of table "transaction" */
 export type Transaction_Stddev_Order_By = {
   fee?: Maybe<Order_By>;
+  num_instructions?: Maybe<Order_By>;
   slot?: Maybe<Order_By>;
 };
 
@@ -5233,12 +5246,14 @@ export type Transaction_Stddev_Order_By = {
 export type Transaction_Stddev_Pop_Fields = {
   __typename?: 'transaction_stddev_pop_fields';
   fee?: Maybe<Scalars['Float']>;
+  num_instructions?: Maybe<Scalars['Float']>;
   slot?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev_pop() on columns of table "transaction" */
 export type Transaction_Stddev_Pop_Order_By = {
   fee?: Maybe<Order_By>;
+  num_instructions?: Maybe<Order_By>;
   slot?: Maybe<Order_By>;
 };
 
@@ -5246,12 +5261,14 @@ export type Transaction_Stddev_Pop_Order_By = {
 export type Transaction_Stddev_Samp_Fields = {
   __typename?: 'transaction_stddev_samp_fields';
   fee?: Maybe<Scalars['Float']>;
+  num_instructions?: Maybe<Scalars['Float']>;
   slot?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev_samp() on columns of table "transaction" */
 export type Transaction_Stddev_Samp_Order_By = {
   fee?: Maybe<Order_By>;
+  num_instructions?: Maybe<Order_By>;
   slot?: Maybe<Order_By>;
 };
 
@@ -5259,12 +5276,14 @@ export type Transaction_Stddev_Samp_Order_By = {
 export type Transaction_Sum_Fields = {
   __typename?: 'transaction_sum_fields';
   fee?: Maybe<Scalars['Int']>;
+  num_instructions?: Maybe<Scalars['Int']>;
   slot?: Maybe<Scalars['bigint']>;
 };
 
 /** order by sum() on columns of table "transaction" */
 export type Transaction_Sum_Order_By = {
   fee?: Maybe<Order_By>;
+  num_instructions?: Maybe<Order_By>;
   slot?: Maybe<Order_By>;
 };
 
@@ -5272,12 +5291,14 @@ export type Transaction_Sum_Order_By = {
 export type Transaction_Var_Pop_Fields = {
   __typename?: 'transaction_var_pop_fields';
   fee?: Maybe<Scalars['Float']>;
+  num_instructions?: Maybe<Scalars['Float']>;
   slot?: Maybe<Scalars['Float']>;
 };
 
 /** order by var_pop() on columns of table "transaction" */
 export type Transaction_Var_Pop_Order_By = {
   fee?: Maybe<Order_By>;
+  num_instructions?: Maybe<Order_By>;
   slot?: Maybe<Order_By>;
 };
 
@@ -5285,12 +5306,14 @@ export type Transaction_Var_Pop_Order_By = {
 export type Transaction_Var_Samp_Fields = {
   __typename?: 'transaction_var_samp_fields';
   fee?: Maybe<Scalars['Float']>;
+  num_instructions?: Maybe<Scalars['Float']>;
   slot?: Maybe<Scalars['Float']>;
 };
 
 /** order by var_samp() on columns of table "transaction" */
 export type Transaction_Var_Samp_Order_By = {
   fee?: Maybe<Order_By>;
+  num_instructions?: Maybe<Order_By>;
   slot?: Maybe<Order_By>;
 };
 
@@ -5298,12 +5321,14 @@ export type Transaction_Var_Samp_Order_By = {
 export type Transaction_Variance_Fields = {
   __typename?: 'transaction_variance_fields';
   fee?: Maybe<Scalars['Float']>;
+  num_instructions?: Maybe<Scalars['Float']>;
   slot?: Maybe<Scalars['Float']>;
 };
 
 /** order by variance() on columns of table "transaction" */
 export type Transaction_Variance_Order_By = {
   fee?: Maybe<Order_By>;
+  num_instructions?: Maybe<Order_By>;
   slot?: Maybe<Order_By>;
 };
 
@@ -6170,17 +6195,18 @@ export type BlockDetailsQueryVariables = Exact<{
 
 export type BlockDetailsQuery = { block: Array<(
     { __typename?: 'block' }
-    & Pick<Block, 'slot' | 'hash' | 'proposer' | 'timestamp'>
-    & { numTxs: Block['num_txs'] }
+    & Pick<Block, 'slot' | 'hash' | 'timestamp'>
+    & { proposer: Block['leader'], numTxs: Block['num_txs'] }
   )>, transaction: Array<(
     { __typename?: 'transaction' }
-    & Pick<Transaction, 'slot' | 'hash' | 'error'>
+    & Pick<Transaction, 'slot' | 'error'>
+    & { hash: Transaction['signature'] }
     & { block?: Maybe<(
       { __typename?: 'block' }
       & Pick<Block, 'timestamp'>
     )>, messages: Array<(
-      { __typename?: 'message' }
-      & Pick<Message, 'type'>
+      { __typename?: 'instruction' }
+      & Pick<Instruction, 'type'>
     )> }
   )> };
 
@@ -6316,8 +6342,7 @@ export type TokensQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type TokensQuery = { tokenUnit: Array<(
     { __typename?: 'token_unit' }
-    & Pick<Token_Unit, 'address'>
-    & { unitName: Token_Unit['unit_name'], logo: Token_Unit['logo_uri'] }
+    & { address: Token_Unit['mint'], unitName: Token_Unit['unit_name'], logo: Token_Unit['logo_uri'] }
     & { tokenPrice?: Maybe<(
       { __typename?: 'token_price' }
       & Pick<Token_Price, 'price'>
@@ -6332,13 +6357,14 @@ export type TransactionDetailsQueryVariables = Exact<{
 
 export type TransactionDetailsQuery = { transaction: Array<(
     { __typename?: 'transaction' }
-    & Pick<Transaction, 'slot' | 'error' | 'hash' | 'fee'>
+    & Pick<Transaction, 'slot' | 'error' | 'fee'>
+    & { hash: Transaction['signature'] }
     & { block?: Maybe<(
       { __typename?: 'block' }
       & Pick<Block, 'timestamp'>
     )>, messages: Array<(
-      { __typename?: 'message' }
-      & Pick<Message, 'type'>
+      { __typename?: 'instruction' }
+      & Pick<Instruction, 'type'>
     )> }
   )> };
 
@@ -6350,13 +6376,14 @@ export type TransactionsListenerSubscriptionVariables = Exact<{
 
 export type TransactionsListenerSubscription = { transactions: Array<(
     { __typename?: 'transaction' }
-    & Pick<Transaction, 'slot' | 'hash' | 'error'>
+    & Pick<Transaction, 'slot' | 'error'>
+    & { hash: Transaction['signature'] }
     & { block?: Maybe<(
       { __typename?: 'block' }
       & Pick<Block, 'timestamp'>
     )>, messages: Array<(
-      { __typename?: 'message' }
-      & Pick<Message, 'type'>
+      { __typename?: 'instruction' }
+      & Pick<Instruction, 'type'>
     )> }
   )> };
 
@@ -6368,13 +6395,14 @@ export type TransactionsQueryVariables = Exact<{
 
 export type TransactionsQuery = { transactions: Array<(
     { __typename?: 'transaction' }
-    & Pick<Transaction, 'slot' | 'hash' | 'error'>
+    & Pick<Transaction, 'slot' | 'error'>
+    & { hash: Transaction['signature'] }
     & { block?: Maybe<(
       { __typename?: 'block' }
       & Pick<Block, 'timestamp'>
     )>, messages: Array<(
-      { __typename?: 'message' }
-      & Pick<Message, 'type'>
+      { __typename?: 'instruction' }
+      & Pick<Instruction, 'type'>
     )> }
   )> };
 
@@ -6451,18 +6479,18 @@ export const BlockDetailsDocument = gql`
   block(limit: 1, where: {slot: {_eq: $height}}) {
     slot
     hash
-    proposer
+    proposer: leader
     timestamp
     numTxs: num_txs
   }
   transaction(where: {slot: {_eq: $height}}) {
     slot
-    hash
+    hash: signature
     error
     block {
       timestamp
     }
-    messages {
+    messages: instructions {
       type
     }
   }
@@ -6874,7 +6902,7 @@ export type TokenPriceHistoryQueryResult = Apollo.QueryResult<TokenPriceHistoryQ
 export const TokensDocument = gql`
     query Tokens {
   tokenUnit: token_unit(order_by: {unit_name: asc}) {
-    address
+    address: mint
     unitName: unit_name
     logo: logo_uri
     tokenPrice: token_price {
@@ -6913,15 +6941,15 @@ export type TokensLazyQueryHookResult = ReturnType<typeof useTokensLazyQuery>;
 export type TokensQueryResult = Apollo.QueryResult<TokensQuery, TokensQueryVariables>;
 export const TransactionDetailsDocument = gql`
     query TransactionDetails($hash: String) {
-  transaction(where: {hash: {_eq: $hash}}, limit: 1) {
+  transaction(where: {signature: {_eq: $hash}}, limit: 1) {
     slot
     error
-    hash
+    hash: signature
     fee
     block {
       timestamp
     }
-    messages {
+    messages: instructions {
       type
     }
   }
@@ -6963,12 +6991,12 @@ export const TransactionsListenerDocument = gql`
     order_by: {slot: desc}
   ) {
     slot
-    hash
+    hash: signature
     error
     block {
       timestamp
     }
-    messages {
+    messages: instructions {
       type
     }
   }
@@ -7006,12 +7034,12 @@ export const TransactionsDocument = gql`
     order_by: {slot: desc}
   ) {
     slot
-    hash
+    hash: signature
     error
     block {
       timestamp
     }
-    messages {
+    messages: instructions {
       type
     }
   }

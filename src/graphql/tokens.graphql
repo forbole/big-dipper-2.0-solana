@@ -1,6 +1,6 @@
 query Tokens {
   tokenUnit: token_unit(order_by: {unit_name: asc}) {
-    address
+    address: mint
     unitName: unit_name
     logo: logo_uri
     tokenPrice: token_price {

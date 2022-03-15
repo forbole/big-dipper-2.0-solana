@@ -1,13 +1,13 @@
 query TransactionDetails($hash: String) {
-  transaction(where: {hash: {_eq: $hash}}, limit: 1) {
+  transaction(where: {signature: {_eq: $hash}}, limit: 1) {
     slot
     error
-    hash
+    hash: signature
     fee
     block {
       timestamp
     }
-    messages {
+    messages: instructions {
       type
     }
   }
