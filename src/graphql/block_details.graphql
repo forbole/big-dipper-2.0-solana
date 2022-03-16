@@ -2,18 +2,18 @@ query BlockDetails($height: bigint) {
   block(limit: 1, where: {slot: {_eq: $height}}) {
     slot
     hash
-    proposer
+    proposer: leader
     timestamp
     numTxs: num_txs
   }
   transaction(where: {slot: {_eq: $height}}) {
     slot
-    hash
+    hash: signature
     error
     block {
       timestamp
     }
-    messages {
+    messages: instructions {
       type
     }
   }
