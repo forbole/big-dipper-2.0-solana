@@ -1,12 +1,12 @@
 subscription TransactionsListener($limit: Int = 7, $offset: Int = 0) {
   transactions: transaction(limit: $limit, offset: $offset, order_by: {slot: desc}) {
     slot
-    hash
+    hash: signature
     error
     block {
       timestamp
     }
-    messages {
+    messages: instructions {
       type
     }
   }
@@ -16,12 +16,12 @@ subscription TransactionsListener($limit: Int = 7, $offset: Int = 0) {
 query Transactions($limit: Int = 7, $offset: Int = 0) {
   transactions: transaction(limit: $limit, offset: $offset, order_by: {slot: desc}) {
     slot
-    hash
+    hash: signature
     error
     block {
       timestamp
     }
-    messages {
+    messages: instructions {
       type
     }
   }
