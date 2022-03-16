@@ -6,9 +6,7 @@ subscription TransactionsListener($limit: Int = 7, $offset: Int = 0) {
     block {
       timestamp
     }
-    messages: instructions {
-      type
-    }
+    numInstructions: num_instructions
   }
 }
 
@@ -21,8 +19,6 @@ query Transactions($limit: Int = 7, $offset: Int = 0) {
     block {
       timestamp
     }
-    messages: instructions {
-      type
-    }
+    numInstructions: num_instructions
   }
 }

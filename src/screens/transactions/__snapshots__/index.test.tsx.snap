@@ -26,40 +26,18 @@ exports[`screen: Transactions matches snapshot 1`] = `
         transactions={
           Array [
             Object {
-              "hash": "648kfnNVKfEThUtyZypcKRdTmCAJ6ZYgeqQo9Tt5K99KW2y4s7dGrmqfsuBinKiMcjK746avsSrJu4Lgizm2ebPm",
-              "messages": Object {
-                "count": 1,
-                "items": Array [
-                  MsgUnknown {
-                    "category": "others",
-                    "json": Object {
-                      "type": "vote",
-                    },
-                    "type": "",
-                  },
-                ],
-              },
-              "slot": 112385912,
+              "numInstructions": 1,
+              "signature": "AxVwePxYYKqGHSwrrpjwptp9km4N91fYtQcHgYvLNRKPEMp6ZNdQJd6wxA4KF3LHRbKS7iZwMWckmnT9YdATE2Y",
+              "slot": 125056600,
               "success": false,
-              "timestamp": "2021-12-20T04:05:46",
+              "timestamp": "2022-03-15T13:13:45",
             },
             Object {
-              "hash": "648kfnNVKfEThUtyZypcKRdTmCAJ6ZYgeqQo9Tt5K99KW2y4s7dGrmqfsuBinKiMcjK746avsSrJu4Lgizm2ebPm",
-              "messages": Object {
-                "count": 1,
-                "items": Array [
-                  MsgUnknown {
-                    "category": "others",
-                    "json": Object {
-                      "type": "vote",
-                    },
-                    "type": "",
-                  },
-                ],
-              },
-              "slot": 112385912,
+              "numInstructions": 1,
+              "signature": "AxVwePxYYKqGHSwrrpjwptp9km4N91fYtQcHgYvLNRKPEMp6ZNdQJd6wxA4KF3LHRbKS7iZwMWckmnT9YdATE2Y",
+              "slot": 125056600,
               "success": false,
-              "timestamp": "2021-12-20T04:05:46",
+              "timestamp": "2022-03-15T13:13:45",
             },
           ]
         }

@@ -6377,12 +6377,10 @@ export type TransactionsListenerSubscriptionVariables = Exact<{
 export type TransactionsListenerSubscription = { transactions: Array<(
     { __typename?: 'transaction' }
     & Pick<Transaction, 'slot' | 'signature' | 'error'>
+    & { numInstructions: Transaction['num_instructions'] }
     & { block?: Maybe<(
       { __typename?: 'block' }
       & Pick<Block, 'timestamp'>
-    )>, messages: Array<(
-      { __typename?: 'instruction' }
-      & Pick<Instruction, 'type'>
     )> }
   )> };
 
@@ -6395,12 +6393,10 @@ export type TransactionsQueryVariables = Exact<{
 export type TransactionsQuery = { transactions: Array<(
     { __typename?: 'transaction' }
     & Pick<Transaction, 'slot' | 'signature' | 'error'>
+    & { numInstructions: Transaction['num_instructions'] }
     & { block?: Maybe<(
       { __typename?: 'block' }
       & Pick<Block, 'timestamp'>
-    )>, messages: Array<(
-      { __typename?: 'instruction' }
-      & Pick<Instruction, 'type'>
     )> }
   )> };
 
@@ -6994,9 +6990,7 @@ export const TransactionsListenerDocument = gql`
     block {
       timestamp
     }
-    messages: instructions {
-      type
-    }
+    numInstructions: num_instructions
   }
 }
     `;
@@ -7037,9 +7031,7 @@ export const TransactionsDocument = gql`
     block {
       timestamp
     }
-    messages: instructions {
-      type
-    }
+    numInstructions: num_instructions
   }
 }
     `;

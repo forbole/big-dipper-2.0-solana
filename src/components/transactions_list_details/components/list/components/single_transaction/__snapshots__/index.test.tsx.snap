@@ -10,7 +10,7 @@ exports[`components: SingleTransaction matches snapshot 1`] = `
     <p
       className="MuiTypography-root value MuiTypography-body1"
     >
-      hash
+      signature
     </p>
   </div>
   <div

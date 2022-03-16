@@ -38,7 +38,7 @@ exports[`screen: Home/Transactions/Desktop matches snapshot 1`] = `
             }
           }
         >
-          hash
+          signature
         </th>
         <th
           aria-sort={null}

@@ -5,7 +5,13 @@ exports[`screen: Home/Transactions/Mobile matches snapshot 1`] = `
   className=""
 >
   <div
-    hash={
+    id="SingleTransactionMobile"
+    result={
+      <Result
+        success={true}
+      />
+    }
+    signature={
       <Link
         href="/transactions/76nwV8zz8tLz97SBRXH6uwHvgHXtqJDLQfF66jZhQ857"
         passHref={true}
@@ -17,12 +23,6 @@ exports[`screen: Home/Transactions/Mobile matches snapshot 1`] = `
           76nwV8zz8tLz97S...hQ857
         </WithStyles(ForwardRef(Typography))>
       </Link>
-    }
-    id="SingleTransactionMobile"
-    result={
-      <Result
-        success={true}
-      />
     }
     slot={
       <Link

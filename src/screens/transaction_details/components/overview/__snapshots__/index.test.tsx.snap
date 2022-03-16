@@ -22,7 +22,7 @@ exports[`screen: BlockDetails/Overview matches snapshot 1`] = `
       },
       Object {
         "detail": "2mGBpvVcxhLXpnTEeDj4aV1SvVCnXcPKroj3idjnri7TwcR4W2UVUkjEUAHk5fL4Wh3EXiwXLw3cDBe6Rbn8sjUU",
-        "label": "transactions:hash",
+        "label": "transactions:signature",
       },
       Object {
         "detail": <Result

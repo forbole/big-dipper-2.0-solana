@@ -5,7 +5,6 @@ import {
   useTransactionsListenerSubscription,
   TransactionsListenerSubscription,
 } from '@graphql/types';
-import { convertMsgsToModels } from '@msg';
 import { TransactionsState } from './types';
 
 export const useTransactions = () => {
@@ -28,8 +27,8 @@ export const useTransactions = () => {
    * and sorts by height in case it bugs out
    */
   const uniqueAndSort = R.pipe(
-    R.uniqBy(R.prop('hash')),
-    R.sort(R.descend(R.prop('height'))),
+    R.uniqBy(R.prop('signature')),
+    R.sort(R.descend(R.prop('slot'))),
   );
 
   // ================================
@@ -107,14 +106,10 @@ export const useTransactions = () => {
 
   const formatTransactions = (data: TransactionsListenerSubscription) => {
     return data.transactions.map((x) => {
-      const messages = convertMsgsToModels(x);
       return ({
         slot: x.slot,
         signature: x.signature,
-        messages: {
-          count: x.messages.length,
-          items: messages,
-        },
+        numInstructions: x.numInstructions,
         success: !x.error,
         timestamp: x.block.timestamp,
       });

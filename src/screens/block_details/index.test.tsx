@@ -50,13 +50,13 @@ const mockAverageBlockTime = jest.fn().mockResolvedValue({
     ],
     "transaction": [
       {
-        "slot": 125048761,
-        "hash": "58HLKDvyHw7yrE9ZDp9RfZdf2muzWzbF5zqoB6QAiN5L6pNuFMbWvW7MkUbhqKXTLZJhEDcWggtST2nciixxBbr8",
-        "error": false,
+        "slot": 125056600,
+        "signature": "AxVwePxYYKqGHSwrrpjwptp9km4N91fYtQcHgYvLNRKPEMp6ZNdQJd6wxA4KF3LHRbKS7iZwMWckmnT9YdATE2Y",
+        "error": true,
         "block": {
-          "timestamp": "2022-03-15T11:57:26"
+          "timestamp": "2022-03-15T13:13:45"
         },
-        "numInstructions": 2
+        "numInstructions": 1
       }
     ]
   }

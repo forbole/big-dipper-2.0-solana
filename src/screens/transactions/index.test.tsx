@@ -27,43 +27,35 @@ jest.mock('@components', () => ({
 }));
 
 const mockTransactionsListenerDocument = {
-  data: {
-    transactions: [
+  "data": {
+    "transactions": [
       {
-        "slot": 112385912,
-        "hash": "648kfnNVKfEThUtyZypcKRdTmCAJ6ZYgeqQo9Tt5K99KW2y4s7dGrmqfsuBinKiMcjK746avsSrJu4Lgizm2ebPm",
+        "slot": 125056600,
+        "signature": "AxVwePxYYKqGHSwrrpjwptp9km4N91fYtQcHgYvLNRKPEMp6ZNdQJd6wxA4KF3LHRbKS7iZwMWckmnT9YdATE2Y",
         "error": true,
         "block": {
-          "timestamp": "2021-12-20T04:05:46"
+          "timestamp": "2022-03-15T13:13:45"
         },
-        "messages": [
-          {
-            "type": "vote"
-          }
-        ]
-      },
-    ],
-  },
+        "numInstructions": 1
+      }
+    ]
+  }
 };
 
 const mockTransactionsDocument = jest.fn().mockResolvedValue({
-  data: {
-    transactions: [
+  "data": {
+    "transactions": [
       {
-        "slot": 112385912,
-        "hash": "648kfnNVKfEThUtyZypcKRdTmCAJ6ZYgeqQo9Tt5K99KW2y4s7dGrmqfsuBinKiMcjK746avsSrJu4Lgizm2ebPm",
+        "slot": 125056600,
+        "signature": "AxVwePxYYKqGHSwrrpjwptp9km4N91fYtQcHgYvLNRKPEMp6ZNdQJd6wxA4KF3LHRbKS7iZwMWckmnT9YdATE2Y",
         "error": true,
         "block": {
-          "timestamp": "2021-12-20T04:05:46"
+          "timestamp": "2022-03-15T13:13:45"
         },
-        "messages": [
-          {
-            "type": "vote"
-          }
-        ]
-      },
-    ],
-  },
+        "numInstructions": 1
+      }
+    ]
+  }
 });
 
 // ==================================
