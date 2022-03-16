@@ -12,11 +12,11 @@ const SingleTransaction:React.FC<{
   slot: React.ReactNode;
   hash: React.ReactNode;
   time: string;
-  messageCount: string;
-  messages: any[];
+  numInstructions: string;
+  instructions: any[];
   result?: React.ReactNode;
 }> = ({
-  className, slot, hash, time, messages, result, messageCount,
+  className, slot, hash, time, instructions, result, numInstructions,
 }) => {
   const { t } = useTranslation('transactions');
   const classes = useStyles();
@@ -46,10 +46,10 @@ const SingleTransaction:React.FC<{
           </div>
           <div className={classnames(classes.item, 'messages')}>
             <Typography variant="h4" className="label">
-              {t('messages')}
+              {t('instructions')}
             </Typography>
             <Typography variant="body1" className="value">
-              {messageCount}
+              {numInstructions}
             </Typography>
           </div>
           <div className={classnames(classes.item, 'result')}>
@@ -62,7 +62,7 @@ const SingleTransaction:React.FC<{
         <Divider />
         <div className={classes.item}>
           <div className={classes.msgListContainer}>
-            {messages.map((x, i) => (
+            {instructions.map((x, i) => (
               <div className={classes.msg} key={`${x.type}-${i}`}>
                 <div className={classes.tags}>
                   {x.type}

@@ -47,6 +47,9 @@ describe('screen: Proposals/List', () => {
             itemCount={1}
             loadMoreItems={() => null}
             handleSearch={jest.fn()}
+            handleSort={jest.fn()}
+            sortDirection="desc"
+            sortKey="address"
           />
         </MockTheme>,
       );

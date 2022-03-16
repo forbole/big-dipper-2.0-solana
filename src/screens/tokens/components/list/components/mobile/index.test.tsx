@@ -28,10 +28,7 @@ describe('screen: Home/Blocks/Mobile', () => {
             {
               token: 'BTC',
               price: 1802,
-              change: 10,
-              volume: 15902496558,
               marketCap: 515912496,
-              holders: 2178994,
               address: '9n4nbM75f5Ui33ZbPYXn59EwSgE8CGsHtAeTH5YFeJ9E',
             },
           ]}

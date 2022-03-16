@@ -27,10 +27,7 @@ exports[`screen: BlockDetails/Transactions matches snapshot 1`] = `
       Array [
         Object {
           "hash": "4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB",
-          "messages": Object {
-            "count": 0,
-            "items": Array [],
-          },
+          "numInstructions": 13,
           "slot": 123548722,
           "success": true,
           "timestamp": "2021-09-13T20:06:17.363145",

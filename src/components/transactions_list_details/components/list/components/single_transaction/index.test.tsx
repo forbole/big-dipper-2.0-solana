@@ -14,8 +14,8 @@ describe('components: SingleTransaction', () => {
           slot={<div>slot</div>}
           hash="hash"
           time="2021-07-13T08:00:00"
-          messageCount="1,000"
-          messages={[
+          numInstructions="1,000"
+          instructions={[
             {
               type: <div>type</div>,
               message: <div>message</div>,

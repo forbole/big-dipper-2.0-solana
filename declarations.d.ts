@@ -24,10 +24,9 @@ type Transactions = {
   success: boolean;
   timestamp: string;
   numInstructions: number;
-  // messages: {
-  //   count: number;
-  //   items: any[];
-  // }
+  messages?: {
+    items: any[];
+  }
 }
 
 type TokenUnit = {

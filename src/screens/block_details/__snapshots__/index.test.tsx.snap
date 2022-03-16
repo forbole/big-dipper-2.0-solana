@@ -14,34 +14,23 @@ exports[`screen: BlockDetails matches snapshot 1`] = `
       className="makeStyles-root"
     >
       <div
-        hash="8bti9xLpyuicxYwEPmQ4Xfb8toPeZ1t5zvNqYxkE41B5"
+        hash="6G2U5iuU56dZS8nmHvv7n5RgYm8wTEdDm1srx5ZGdHy5"
         id="Overview"
-        proposer="DDnAqxJVFo2GVTujibHt5cjevHMSE9bo8HJaydHoshdp"
-        slot={112673814}
-        timestamp="2021-12-22T01:56:19"
-        txs={234}
+        proposer="7Gjec4iDbTxLvVYNsRbZrrHdtyLByzdDJ1C5BmcMMBks"
+        slot={125042260}
+        timestamp="2022-03-15T10:55:19"
+        txs={713}
       />
       <div
         id="Transactions"
         transactions={
           Array [
             Object {
-              "hash": "5uyxVvn5DsQJwm1XocYHDaY78hrgX3WcoBKY3NcU7Sipy3Gx8GmA2695E2AQA7cEK5z3hZZdzw4ganaTboMdyb22",
-              "messages": Object {
-                "count": 1,
-                "items": Array [
-                  MsgUnknown {
-                    "category": "others",
-                    "json": Object {
-                      "type": "vote",
-                    },
-                    "type": "",
-                  },
-                ],
-              },
-              "slot": 112673814,
+              "hash": "3FZ3GH7QcwvcQgdF8r6Ap6UHMgY49ga4aYfFzy2nEADKajLLzzYhUwvcvdLqMeYQaAYiDf3JnJpyVRYoMCb1Zv7u",
+              "numInstructions": 1,
+              "slot": 125042260,
               "success": false,
-              "timestamp": "2021-12-22T01:56:19",
+              "timestamp": "2022-03-15T10:55:19",
             },
           ]
         }

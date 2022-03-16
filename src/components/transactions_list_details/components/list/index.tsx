@@ -77,8 +77,8 @@ const TransactionList: React.FC<TransactionsListDetailsState> = ({
       <Result success={x.success} />
     ),
     time: formatDayJs(dayjs.utc(x.timestamp), dateFormat),
-    messageCount: numeral(x.messages.count).format('0,0'),
-    messages: x.messages.items.map((message) => {
+    numInstructions: numeral(x.numInstructions).format('0,0'),
+    instructions: x.messages.items.map((message) => {
       return getMessageByType(message, false, t);
     }),
   }));
