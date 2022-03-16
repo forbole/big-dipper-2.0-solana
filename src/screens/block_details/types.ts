@@ -1,7 +1,7 @@
 export type OverviewType = {
   slot: number;
   hash: string;
-  proposer: string;
+  leader: string;
   timestamp: string;
   txs: number;
 }

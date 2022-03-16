@@ -2,7 +2,7 @@ query BlockDetails($height: bigint) {
   block(limit: 1, where: {slot: {_eq: $height}}) {
     slot
     hash
-    proposer: leader
+    leader
     timestamp
     numTxs: num_txs
   }

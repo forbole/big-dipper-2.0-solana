@@ -12,7 +12,7 @@ import {
 import { OverviewType } from '../../types';
 
 const Overview: React.FC<OverviewType & ComponentDefault> = (props, { className }) => {
-  const proposer = useProfileRecoil(props.proposer);
+  const leader = useProfileRecoil(props.leader);
   const { t } = useTranslation('blocks');
   const dateFormat = useRecoilValue(readDate);
 
@@ -34,12 +34,12 @@ const Overview: React.FC<OverviewType & ComponentDefault> = (props, { className 
           detail: props.hash,
         },
         {
-          label: t('proposer'),
+          label: t('leader'),
           detail: (
             <AvatarName
-              address={props.proposer}
-              imageUrl={proposer.imageUrl}
-              name={proposer.name}
+              address={props.leader}
+              imageUrl={leader.imageUrl}
+              name={leader.name}
             />
           ),
         },

@@ -6195,8 +6195,8 @@ export type BlockDetailsQueryVariables = Exact<{
 
 export type BlockDetailsQuery = { block: Array<(
     { __typename?: 'block' }
-    & Pick<Block, 'slot' | 'hash' | 'timestamp'>
-    & { proposer: Block['leader'], numTxs: Block['num_txs'] }
+    & Pick<Block, 'slot' | 'hash' | 'leader' | 'timestamp'>
+    & { numTxs: Block['num_txs'] }
   )>, transaction: Array<(
     { __typename?: 'transaction' }
     & Pick<Transaction, 'slot' | 'error'>
@@ -6476,7 +6476,7 @@ export const BlockDetailsDocument = gql`
   block(limit: 1, where: {slot: {_eq: $height}}) {
     slot
     hash
-    proposer: leader
+    leader
     timestamp
     numTxs: num_txs
   }
