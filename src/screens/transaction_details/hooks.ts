@@ -28,7 +28,7 @@ export const useTransactionDetails = () => {
         exponent: 0,
         value: '',
       },
-      hash: '',
+      signature: '',
       timestamp: '',
     },
     messages: {
@@ -54,7 +54,7 @@ export const useTransactionDetails = () => {
   // ===============================
   useTransactionDetailsQuery({
     variables: {
-      hash: router.query.tx as string,
+      signature: router.query.tx as string,
     },
     onCompleted: (data) => {
       handleSetState(formatTransactionDetails(data));
@@ -84,7 +84,7 @@ export const useTransactionDetails = () => {
         slot: tx.slot,
         success: !tx.error,
         fee: formatToken(tx.fee, chainConfig.primaryTokenUnit),
-        hash: tx.hash,
+        signature: tx.signature,
         timestamp: R.pathOr('', ['block', 'timestamp'], tx),
       };
 

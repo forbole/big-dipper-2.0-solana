@@ -10,5 +10,6 @@
   "overview": "Overview",
   "parentSlot": "Parent Slot",
   "processedTx": "Processed Txs",
-  "successfulTx": "Successful Txs"
+  "successfulTx": "Successful Txs",
+  "instructions": "Instructions"
 }

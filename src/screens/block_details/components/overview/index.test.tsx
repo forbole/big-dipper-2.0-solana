@@ -24,7 +24,7 @@ describe('screen: BlockDetails/Overview', () => {
             {...{
               slot: 40000,
               hash: '35SD2SaqLUvPBnEBRFUxQjjvS6tmzaPvLeJYQC1QV5E1',
-              proposer: 'desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467',
+              leader: '7Gjec4iDbTxLvVYNsRbZrrHdtyLByzdDJ1C5BmcMMBks',
               timestamp: '2021-09-13T20:06:17.363145',
               txs: 12,
             }}

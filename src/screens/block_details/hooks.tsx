@@ -9,7 +9,6 @@ import {
   useBlockDetailsQuery,
   BlockDetailsQuery,
 } from '@graphql/types';
-import { convertMsgsToModels } from '@msg';
 import { BlockDetailState } from './types';
 
 export const useBlockDetails = () => {
@@ -22,7 +21,7 @@ export const useBlockDetails = () => {
       hash: '',
       txs: 0,
       timestamp: '',
-      proposer: '',
+      leader: '',
     },
     transactions: [],
   });
@@ -64,13 +63,13 @@ export const useBlockDetails = () => {
     // Overview
     // ==========================
     const formatOverview = () => {
-      const proposerAddress = R.pathOr('', ['block', 0, 'proposer'], data);
+      const leaderAddress = R.pathOr('', ['block', 0, 'validator', 0, 'address'], data);
       const overview = {
         slot: data.block[0].slot,
         hash: data.block[0].hash,
         txs: data.block[0].numTxs,
         timestamp: data.block[0].timestamp,
-        proposer: proposerAddress,
+        leader: leaderAddress,
       };
       return overview;
     };
@@ -82,16 +81,12 @@ export const useBlockDetails = () => {
     // ==========================
     const formatTransactions = () => {
       const transactions = data.transaction.map((x) => {
-        const messages = convertMsgsToModels(x);
         return ({
           slot: x.slot,
-          hash: x.hash,
+          signature: x.signature,
           success: !x.error,
           timestamp: stateChange.overview.timestamp,
-          messages: {
-            count: x.messages.length,
-            items: messages,
-          },
+          numInstructions: R.pathOr(0, ['numInstructions'], x),
         });
       });
 

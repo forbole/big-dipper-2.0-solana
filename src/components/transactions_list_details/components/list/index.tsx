@@ -60,15 +60,15 @@ const TransactionList: React.FC<TransactionsListDetailsState> = ({
         </Typography>
       </Link>
     ),
-    hash: (
-      <Link href={TRANSACTION_DETAILS(x.hash)} passHref>
+    signature: (
+      <Link href={TRANSACTION_DETAILS(x.signature)} passHref>
         <Typography variant="body1" component="a">
           {!isDesktop ? (
-            getMiddleEllipsis(x.hash, {
+            getMiddleEllipsis(x.signature, {
               beginning: 15, ending: 5,
             })
           ) : (
-            x.hash
+            x.signature
           )}
         </Typography>
       </Link>
@@ -77,8 +77,8 @@ const TransactionList: React.FC<TransactionsListDetailsState> = ({
       <Result success={x.success} />
     ),
     time: formatDayJs(dayjs.utc(x.timestamp), dateFormat),
-    messageCount: numeral(x.messages.count).format('0,0'),
-    messages: x.messages.items.map((message) => {
+    numInstructions: numeral(x.numInstructions).format('0,0'),
+    instructions: x.messages.items.map((message) => {
       return getMessageByType(message, false, t);
     }),
   }));

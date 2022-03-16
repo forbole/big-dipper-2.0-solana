@@ -1,6 +1,6 @@
 export type TransactionType = {
   slot: number;
-  hash: string;
+  signature: string;
   success: boolean;
   timestamp: string;
 }

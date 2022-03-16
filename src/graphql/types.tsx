@@ -6196,17 +6196,18 @@ export type BlockDetailsQueryVariables = Exact<{
 export type BlockDetailsQuery = { block: Array<(
     { __typename?: 'block' }
     & Pick<Block, 'slot' | 'hash' | 'timestamp'>
-    & { proposer: Block['leader'], numTxs: Block['num_txs'] }
+    & { numTxs: Block['num_txs'] }
+    & { validator: Array<(
+      { __typename?: 'validator' }
+      & Pick<Validator, 'address'>
+    )> }
   )>, transaction: Array<(
     { __typename?: 'transaction' }
-    & Pick<Transaction, 'slot' | 'error'>
-    & { hash: Transaction['signature'] }
+    & Pick<Transaction, 'slot' | 'signature' | 'error'>
+    & { numInstructions: Transaction['num_instructions'] }
     & { block?: Maybe<(
       { __typename?: 'block' }
       & Pick<Block, 'timestamp'>
-    )>, messages: Array<(
-      { __typename?: 'instruction' }
-      & Pick<Instruction, 'type'>
     )> }
   )> };
 
@@ -6351,14 +6352,13 @@ export type TokensQuery = { tokenUnit: Array<(
   )> };
 
 export type TransactionDetailsQueryVariables = Exact<{
-  hash?: Maybe<Scalars['String']>;
+  signature?: Maybe<Scalars['String']>;
 }>;
 
 
 export type TransactionDetailsQuery = { transaction: Array<(
     { __typename?: 'transaction' }
-    & Pick<Transaction, 'slot' | 'error' | 'fee'>
-    & { hash: Transaction['signature'] }
+    & Pick<Transaction, 'slot' | 'error' | 'signature' | 'fee'>
     & { block?: Maybe<(
       { __typename?: 'block' }
       & Pick<Block, 'timestamp'>
@@ -6376,14 +6376,11 @@ export type TransactionsListenerSubscriptionVariables = Exact<{
 
 export type TransactionsListenerSubscription = { transactions: Array<(
     { __typename?: 'transaction' }
-    & Pick<Transaction, 'slot' | 'error'>
-    & { hash: Transaction['signature'] }
+    & Pick<Transaction, 'slot' | 'signature' | 'error'>
+    & { numInstructions: Transaction['num_instructions'] }
     & { block?: Maybe<(
       { __typename?: 'block' }
       & Pick<Block, 'timestamp'>
-    )>, messages: Array<(
-      { __typename?: 'instruction' }
-      & Pick<Instruction, 'type'>
     )> }
   )> };
 
@@ -6395,14 +6392,11 @@ export type TransactionsQueryVariables = Exact<{
 
 export type TransactionsQuery = { transactions: Array<(
     { __typename?: 'transaction' }
-    & Pick<Transaction, 'slot' | 'error'>
-    & { hash: Transaction['signature'] }
+    & Pick<Transaction, 'slot' | 'signature' | 'error'>
+    & { numInstructions: Transaction['num_instructions'] }
     & { block?: Maybe<(
       { __typename?: 'block' }
       & Pick<Block, 'timestamp'>
-    )>, messages: Array<(
-      { __typename?: 'instruction' }
-      & Pick<Instruction, 'type'>
     )> }
   )> };
 
@@ -6479,20 +6473,20 @@ export const BlockDetailsDocument = gql`
   block(limit: 1, where: {slot: {_eq: $height}}) {
     slot
     hash
-    proposer: leader
     timestamp
+    validator {
+      address
+    }
     numTxs: num_txs
   }
   transaction(where: {slot: {_eq: $height}}) {
     slot
-    hash: signature
+    signature
     error
     block {
       timestamp
     }
-    messages: instructions {
-      type
-    }
+    numInstructions: num_instructions
   }
 }
     `;
@@ -6940,11 +6934,11 @@ export type TokensQueryHookResult = ReturnType<typeof useTokensQuery>;
 export type TokensLazyQueryHookResult = ReturnType<typeof useTokensLazyQuery>;
 export type TokensQueryResult = Apollo.QueryResult<TokensQuery, TokensQueryVariables>;
 export const TransactionDetailsDocument = gql`
-    query TransactionDetails($hash: String) {
-  transaction(where: {signature: {_eq: $hash}}, limit: 1) {
+    query TransactionDetails($signature: String) {
+  transaction(where: {signature: {_eq: $signature}}, limit: 1) {
     slot
     error
-    hash: signature
+    signature
     fee
     block {
       timestamp
@@ -6968,7 +6962,7 @@ export const TransactionDetailsDocument = gql`
  * @example
  * const { data, loading, error } = useTransactionDetailsQuery({
  *   variables: {
- *      hash: // value for 'hash'
+ *      signature: // value for 'signature'
  *   },
  * });
  */
@@ -6991,14 +6985,12 @@ export const TransactionsListenerDocument = gql`
     order_by: {slot: desc}
   ) {
     slot
-    hash: signature
+    signature
     error
     block {
       timestamp
     }
-    messages: instructions {
-      type
-    }
+    numInstructions: num_instructions
   }
 }
     `;
@@ -7034,14 +7026,12 @@ export const TransactionsDocument = gql`
     order_by: {slot: desc}
   ) {
     slot
-    hash: signature
+    signature
     error
     block {
       timestamp
     }
-    messages: instructions {
-      type
-    }
+    numInstructions: num_instructions
   }
 }
     `;
