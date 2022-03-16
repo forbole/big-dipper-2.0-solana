@@ -25,7 +25,7 @@ export const useTransactions = () => {
     return data.transactions.map((x) => {
       return ({
         slot: x.slot,
-        hash: x.hash,
+        signature: x.signature,
         success: !x.error,
         timestamp: x.block.timestamp,
       });

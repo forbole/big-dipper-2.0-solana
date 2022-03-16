@@ -110,7 +110,7 @@ export const useTransactions = () => {
       const messages = convertMsgsToModels(x);
       return ({
         slot: x.slot,
-        hash: x.hash,
+        signature: x.signature,
         messages: {
           count: x.messages.length,
           items: messages,

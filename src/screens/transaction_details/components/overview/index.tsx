@@ -36,8 +36,8 @@ const Overview: React.FC<{
       ),
     },
     {
-      label: t('hash'),
-      detail: data.hash,
+      label: t('signature'),
+      detail: data.signature,
     },
     {
       label: t('result'),

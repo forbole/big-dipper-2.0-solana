@@ -1,8 +1,8 @@
-query TransactionDetails($hash: String) {
-  transaction(where: {signature: {_eq: $hash}}, limit: 1) {
+query TransactionDetails($signature: String) {
+  transaction(where: {signature: {_eq: $signature}}, limit: 1) {
     slot
     error
-    hash: signature
+    signature
     fee
     block {
       timestamp

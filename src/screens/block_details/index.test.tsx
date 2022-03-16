@@ -37,22 +37,26 @@ const mockAverageBlockTime = jest.fn().mockResolvedValue({
   "data": {
     "block": [
       {
-        "slot": 125042260,
-        "hash": "6G2U5iuU56dZS8nmHvv7n5RgYm8wTEdDm1srx5ZGdHy5",
-        "leader": "7Gjec4iDbTxLvVYNsRbZrrHdtyLByzdDJ1C5BmcMMBks",
-        "timestamp": "2022-03-15T10:55:19",
-        "numTxs": 713
+        "slot": 125048761,
+        "hash": "4YJBguXbyjWNQ6o9SCCmUWab9KbxgAkmKdopCikRNSd7",
+        "timestamp": "2022-03-15T11:57:26",
+        "validator": [
+          {
+            "address": "9QU2QSxhb24FUX3Tu2FpczXjpK3VYrvRudywSZaM29mF"
+          }
+        ],
+        "numTxs": 1421
       }
     ],
     "transaction": [
       {
-        "slot": 125042260,
-        "hash": "3FZ3GH7QcwvcQgdF8r6Ap6UHMgY49ga4aYfFzy2nEADKajLLzzYhUwvcvdLqMeYQaAYiDf3JnJpyVRYoMCb1Zv7u",
-        "error": true,
+        "slot": 125048761,
+        "hash": "58HLKDvyHw7yrE9ZDp9RfZdf2muzWzbF5zqoB6QAiN5L6pNuFMbWvW7MkUbhqKXTLZJhEDcWggtST2nciixxBbr8",
+        "error": false,
         "block": {
-          "timestamp": "2022-03-15T10:55:19"
+          "timestamp": "2022-03-15T11:57:26"
         },
-        "numInstructions": 1
+        "numInstructions": 2
       }
     ]
   }

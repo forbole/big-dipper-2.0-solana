@@ -2,13 +2,15 @@ query BlockDetails($height: bigint) {
   block(limit: 1, where: {slot: {_eq: $height}}) {
     slot
     hash
-    leader
     timestamp
+    validator {
+      address
+    }
     numTxs: num_txs
   }
   transaction(where: {slot: {_eq: $height}}) {
     slot
-    hash: signature
+    signature
     error
     block {
       timestamp

@@ -10,13 +10,13 @@ import { useStyles } from './styles';
 const SingleTransaction:React.FC<{
   className?: string;
   slot: React.ReactNode;
-  hash: React.ReactNode;
+  signature: React.ReactNode;
   time: string;
   numInstructions: string;
   instructions: any[];
   result?: React.ReactNode;
 }> = ({
-  className, slot, hash, time, instructions, result, numInstructions,
+  className, slot, signature, time, instructions, result, numInstructions,
 }) => {
   const { t } = useTranslation('transactions');
   const classes = useStyles();
@@ -25,7 +25,7 @@ const SingleTransaction:React.FC<{
     <div className={classnames(className, classes.root)}>
       <div className={classes.timeContainer}>
         <Typography variant="body1" className="value">
-          {hash}
+          {signature}
         </Typography>
       </div>
       <div className={classes.itemContainer}>

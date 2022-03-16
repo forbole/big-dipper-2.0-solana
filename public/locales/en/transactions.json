@@ -14,5 +14,6 @@
   "messages": "Messages",
   "raw": "Raw",
   "filterBy": "Filter By",
-  "none": "None"
+  "none": "None",
+  "signature": "Signature"
 }

@@ -63,10 +63,10 @@ export const useBlockDetails = () => {
     // Overview
     // ==========================
     const formatOverview = () => {
-      const leaderAddress = R.pathOr('', ['block', 0, 'leader'], data);
+      const leaderAddress = R.pathOr('', ['block', 0, 'validator', 0, 'address'], data);
       const overview = {
         slot: data.block[0].slot,
-        hash: data.block[0].hash,
+        signature: data.block[0].hash,
         txs: data.block[0].numTxs,
         timestamp: data.block[0].timestamp,
         leader: leaderAddress,
@@ -83,7 +83,7 @@ export const useBlockDetails = () => {
       const transactions = data.transaction.map((x) => {
         return ({
           slot: x.slot,
-          hash: x.hash,
+          signature: x.signature,
           success: !x.error,
           timestamp: stateChange.overview.timestamp,
           numInstructions: R.pathOr(0, ['numInstructions'], x),
