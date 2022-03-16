@@ -6200,13 +6200,10 @@ export type BlockDetailsQuery = { block: Array<(
   )>, transaction: Array<(
     { __typename?: 'transaction' }
     & Pick<Transaction, 'slot' | 'error'>
-    & { hash: Transaction['signature'] }
+    & { hash: Transaction['signature'], numInstructions: Transaction['num_instructions'] }
     & { block?: Maybe<(
       { __typename?: 'block' }
       & Pick<Block, 'timestamp'>
-    )>, messages: Array<(
-      { __typename?: 'instruction' }
-      & Pick<Instruction, 'type'>
     )> }
   )> };
 
@@ -6490,9 +6487,7 @@ export const BlockDetailsDocument = gql`
     block {
       timestamp
     }
-    messages: instructions {
-      type
-    }
+    numInstructions: num_instructions
   }
 }
     `;

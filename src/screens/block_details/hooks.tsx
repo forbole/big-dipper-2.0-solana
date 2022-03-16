@@ -9,7 +9,6 @@ import {
   useBlockDetailsQuery,
   BlockDetailsQuery,
 } from '@graphql/types';
-import { convertMsgsToModels } from '@msg';
 import { BlockDetailState } from './types';
 
 export const useBlockDetails = () => {
@@ -82,16 +81,12 @@ export const useBlockDetails = () => {
     // ==========================
     const formatTransactions = () => {
       const transactions = data.transaction.map((x) => {
-        const messages = convertMsgsToModels(x);
         return ({
           slot: x.slot,
           hash: x.hash,
           success: !x.error,
           timestamp: stateChange.overview.timestamp,
-          messages: {
-            count: x.messages.length,
-            items: messages,
-          },
+          numInstructions: R.pathOr(0, ['numInstructions'], x),
         });
       });
 

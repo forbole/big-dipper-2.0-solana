@@ -13,8 +13,6 @@ query BlockDetails($height: bigint) {
     block {
       timestamp
     }
-    messages: instructions {
-      type
-    }
+    numInstructions: num_instructions
   }
 }

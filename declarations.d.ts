@@ -23,10 +23,11 @@ type Transactions = {
   hash: string;
   success: boolean;
   timestamp: string;
-  messages: {
-    count: number;
-    items: any[];
-  }
+  numInstructions: number;
+  // messages: {
+  //   count: number;
+  //   items: any[];
+  // }
 }
 
 type TokenUnit = {
