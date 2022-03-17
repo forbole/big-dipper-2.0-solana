@@ -1,42 +1,46 @@
 import React from 'react';
-import dynamic from 'next/dynamic';
 import useTranslation from 'next-translate/useTranslation';
 import { NextSeo } from 'next-seo';
 import {
+  usePagination,
+} from '@hooks';
+import {
   Layout,
   Box,
-  LoadAndExist,
   NoData,
+  Loading,
+  Pagination,
 } from '@components';
-import { useScreenSize } from '@hooks';
-import {
-  useProfilesRecoil,
-} from '@recoil/profiles';
+import { useProfilesRecoil } from '@recoil/profiles';
 import { useStyles } from './styles';
-import { useBlocks } from './hooks';
-
-// const Desktop = dynamic(() => import('./components/desktop'));
-// const Mobile = dynamic(() => import('./components/mobile'));
+import {
+  useBlocks, PAGE_SIZE,
+} from './hooks';
+import { BlocksList } from './components';
 
 const Blocks = () => {
   const { t } = useTranslation('blocks');
-  // const { isDesktop } = useScreenSize();
   const classes = useStyles();
   const {
-    state,
-    loadNextPage,
+    state, handlePageChangeCallback,
   } = useBlocks();
-  const loadMoreItems = state.isNextPageLoading ? () => null : loadNextPage;
-  const isItemLoaded = (index) => !state.hasNextPage || index < state.items.length;
-  const itemCount = state.hasNextPage ? state.items.length + 1 : state.items.length;
+  const {
+    page,
+    rowsPerPage,
+    handleChangePage,
+    handleChangeRowsPerPage,
+  } = usePagination({
+    rowsPage: PAGE_SIZE,
+    pageChangeCallback: handlePageChangeCallback,
+  });
 
-  // const proposerProfiles = useProfilesRecoil(state.items.map((x) => x.leader));
-  // const mergedDataWithProfiles = state.items.map((x, i) => {
-  //   return ({
-  //     ...x,
-  //     leader: proposerProfiles[i],
-  //   });
-  // });
+  const proposerProfiles = useProfilesRecoil(state.items.map((x) => x.leader));
+  const mergedDataWithProfiles = state.items.map((x, i) => {
+    return ({
+      ...x,
+      leader: proposerProfiles[i],
+    });
+  });
 
   let component = null;
 
@@ -45,7 +49,7 @@ const Blocks = () => {
   } else if (!state.items.length) {
     component = <NoData />;
   } else {
-    component = <BlocksList items={state.items} />;
+    component = <BlocksList items={mergedDataWithProfiles} />;
   }
 
   return (
@@ -60,22 +64,22 @@ const Blocks = () => {
         navTitle={t('blocks')}
         className={classes.root}
       >
-        <LoadAndExist
+        {/* <LoadAndExist
           loading={state.loading}
           exists={state.exists}
-        >
-          <Box className={classes.box}>
-            {component}
-            <Pagination
-              className={classes.paginate}
-              total={state.total}
-              rowsPerPage={rowsPerPage}
-              page={page}
-              handleChangePage={handleChangePage}
-              handleChangeRowsPerPage={handleChangeRowsPerPage}
-            />
-          </Box>
-        </LoadAndExist>
+        > */}
+        <Box className={classes.box}>
+          {component}
+          <Pagination
+            className={classes.paginate}
+            total={state.total}
+            rowsPerPage={rowsPerPage}
+            page={page}
+            handleChangePage={handleChangePage}
+            handleChangeRowsPerPage={handleChangeRowsPerPage}
+          />
+        </Box>
+        {/* </LoadAndExist> */}
       </Layout>
     </>
   );

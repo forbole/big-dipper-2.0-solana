@@ -10,6 +10,9 @@ export const useStyles = () => {
             color: theme.palette.custom.fonts.highlight,
           },
         },
+        paginate: {
+          marginTop: theme.spacing(3),
+        },
         box: {
           minHeight: '500px',
           height: '50vh',
