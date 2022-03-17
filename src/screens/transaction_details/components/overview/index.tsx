@@ -55,14 +55,6 @@ const Overview: React.FC<{
     },
   ];
 
-  // if (!data.success) {
-  //   details.push({
-  //     className: 'memo',
-  //     label: t('error'),
-  //     detail: data.error,
-  //   });
-  // }
-
   return (
     <BoxDetails
       className={classnames(className, classes.root)}
