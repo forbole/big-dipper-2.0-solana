@@ -1,5 +1,5 @@
-import { BlockType } from '../../types';
+import { ItemType } from '../../types';
 
 export type BlockListType = {
-  items: BlockType[];
+  items: ItemType[];
 }

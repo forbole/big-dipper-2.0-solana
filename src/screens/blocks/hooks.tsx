@@ -1,125 +1,88 @@
-import { useState } from 'react';
+import {
+  useEffect, useState,
+} from 'react';
 import * as R from 'ramda';
-import {
-  useBlocksListenerSubscription,
-  useBlocksQuery,
-  BlocksListenerSubscription,
-} from '@graphql/types';
-import {
-  BlocksState, BlockType,
-} from './types';
+import axios from 'axios';
+import { POLLING_INTERVAL } from '@utils/constants';
+import { useInterval } from '@hooks';
+import { BlocksState } from './types';
+
+export const PAGE_SIZE = 25;
 
 export const useBlocks = () => {
   const [state, setState] = useState<BlocksState>({
+    page: 0,
     loading: true,
-    exists: true,
-    hasNextPage: false,
-    isNextPageLoading: false,
     items: [],
+    total: 0,
   });
+
+  useEffect(() => {
+    getLatestBlockHeight();
+  }, []);
 
   const handleSetState = (stateChange: any) => {
     setState((prevState) => R.mergeDeepLeft(stateChange, prevState));
   };
 
-  // This is a bandaid as it can get extremely
-  // expensive if there is too much data
-  /**
-   * Helps remove any possible duplication
-   * and sorts by height in case it bugs out
-   */
-  const uniqueAndSort = R.pipe(
-    R.uniqBy(R.prop('hash')),
-    R.sort(R.descend(R.prop('height'))),
-  );
-
-  // ================================
-  // block subscription
-  // ================================
-  useBlocksListenerSubscription({
-    variables: {
-      limit: 1,
-      offset: 0,
-    },
-    onSubscriptionData: (data) => {
-      handleSetState({
-        loading: false,
-        items: [
-          ...formatBlocks(data.subscriptionData.data),
-          ...state.items,
-        ],
-      });
-    },
-  });
-
-  // ================================
-  // block query
-  // ================================
-  const LIMIT = 51;
-  const blockQuery = useBlocksQuery({
-    variables: {
-      limit: LIMIT,
-      offset: 1,
-    },
-    onError: () => {
-      handleSetState({
-        loading: false,
-      });
-    },
-    onCompleted: (data) => {
-      const itemsLength = data.blocks.length;
-      const newItems = uniqueAndSort([
-        ...state.items,
-        ...formatBlocks(data),
-      ]);
-      handleSetState({
-        loading: false,
-        items: newItems,
-        hasNextPage: itemsLength === 51,
-        isNextPageLoading: false,
-      });
-    },
-  });
-
-  const loadNextPage = async () => {
+  const handlePageChangeCallback = async (page: number, _rowsPerPage: number) => {
     handleSetState({
-      isNextPageLoading: true,
+      page,
+      loading: true,
     });
-    // refetch query
-    await blockQuery.fetchMore({
-      variables: {
-        offset: state.items.length,
-        limit: LIMIT,
-      },
-    }).then(({ data }) => {
-      const itemsLength = data.blocks.length;
-      const newItems = uniqueAndSort([
-        ...state.items,
-        ...formatBlocks(data),
-      ]);
-      // set new state
+    await getBlocksByPage(page);
+  };
+
+  const getLatestBlockHeight = async () => {
+    try {
+      const { data: total } = await axios.get(LATEST_BLOCK_HEIGHT);
       handleSetState({
-        items: newItems,
-        isNextPageLoading: false,
-        hasNextPage: itemsLength === 51,
+        total,
       });
-    });
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
-  const formatBlocks = (data: BlocksListenerSubscription): BlockType[] => {
-    return data.blocks.map((x) => {
-      return ({
-        slot: x.slot,
-        txs: x.numTxs,
-        hash: x.hash,
-        timestamp: x.timestamp,
-        leader: R.pathOr('', ['validator', 0, 'address'], x),
+  const getBlocksByPage = async (page: number) => {
+    try {
+      const { data: blocksData } = await axios.get(BLOCKS, {
+        params: {
+          from: page * PAGE_SIZE,
+          size: PAGE_SIZE,
+        },
       });
-    });
+
+      const items = blocksData.map((x) => {
+        return ({
+          block: x.round,
+          timestamp: x.timestamp,
+          hash: x.hash,
+          txs: x.txCount,
+          shard: x.shard,
+          size: x.sizeTxs,
+        });
+      });
+
+      handleSetState({
+        loading: false,
+        items,
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
-  return {
+  const getBlocksInterval = async () => {
+    if (state.page === 0) {
+      await getBlocksByPage(0);
+    }
+  };
+
+  useInterval(getBlocksInterval, POLLING_INTERVAL);
+
+  return ({
     state,
-    loadNextPage,
-  };
+    handlePageChangeCallback,
+  });
 };

@@ -15,12 +15,12 @@ import {
 import { useStyles } from './styles';
 import { useBlocks } from './hooks';
 
-const Desktop = dynamic(() => import('./components/desktop'));
-const Mobile = dynamic(() => import('./components/mobile'));
+// const Desktop = dynamic(() => import('./components/desktop'));
+// const Mobile = dynamic(() => import('./components/mobile'));
 
 const Blocks = () => {
   const { t } = useTranslation('blocks');
-  const { isDesktop } = useScreenSize();
+  // const { isDesktop } = useScreenSize();
   const classes = useStyles();
   const {
     state,
@@ -30,13 +30,23 @@ const Blocks = () => {
   const isItemLoaded = (index) => !state.hasNextPage || index < state.items.length;
   const itemCount = state.hasNextPage ? state.items.length + 1 : state.items.length;
 
-  const proposerProfiles = useProfilesRecoil(state.items.map((x) => x.leader));
-  const mergedDataWithProfiles = state.items.map((x, i) => {
-    return ({
-      ...x,
-      leader: proposerProfiles[i],
-    });
-  });
+  // const proposerProfiles = useProfilesRecoil(state.items.map((x) => x.leader));
+  // const mergedDataWithProfiles = state.items.map((x, i) => {
+  //   return ({
+  //     ...x,
+  //     leader: proposerProfiles[i],
+  //   });
+  // });
+
+  let component = null;
+
+  if (state.loading) {
+    component = <Loading />;
+  } else if (!state.items.length) {
+    component = <NoData />;
+  } else {
+    component = <BlocksList items={state.items} />;
+  }
 
   return (
     <>
@@ -55,27 +65,15 @@ const Blocks = () => {
           exists={state.exists}
         >
           <Box className={classes.box}>
-            {!state.items.length ? (
-              <NoData />
-            ) : (
-              <>
-                {isDesktop ? (
-                  <Desktop
-                    items={mergedDataWithProfiles}
-                    itemCount={itemCount}
-                    loadMoreItems={loadMoreItems}
-                    isItemLoaded={isItemLoaded}
-                  />
-                ) : (
-                  <Mobile
-                    items={mergedDataWithProfiles}
-                    itemCount={itemCount}
-                    loadMoreItems={loadMoreItems}
-                    isItemLoaded={isItemLoaded}
-                  />
-                )}
-              </>
-            )}
+            {component}
+            <Pagination
+              className={classes.paginate}
+              total={state.total}
+              rowsPerPage={rowsPerPage}
+              page={page}
+              handleChangePage={handleChangePage}
+              handleChangeRowsPerPage={handleChangeRowsPerPage}
+            />
           </Box>
         </LoadAndExist>
       </Layout>

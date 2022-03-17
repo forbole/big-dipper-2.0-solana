@@ -2,42 +2,45 @@ import React from 'react';
 import numeral from 'numeral';
 import dayjs from '@utils/dayjs';
 import Link from 'next/link';
-import useTranslation from 'next-translate/useTranslation';
 import { getMiddleEllipsis } from '@utils/get_middle_ellipsis';
-import { getShardDisplay } from '@utils/get_shard_display';
 import {
   Divider, Typography,
 } from '@material-ui/core';
 import { BLOCK_DETAILS } from '@utils/go_to_page';
-import { SingleBlockMobile } from '@components';
+import {
+  SingleBlockMobile, AvatarName,
+} from '@components';
+import { BlockListType } from '../../types';
 
-const Mobile: React.FC<{items: BlockType[]} & ComponentDefault> = (props) => {
-  const { t } = useTranslation('blocks');
+const Mobile: React.FC<BlockListType & ComponentDefault> = (props) => {
   const formattedItems = props.items.map((x) => {
-    const shard = getShardDisplay(x.shard);
     return ({
-      block: numeral(x.block).format('0,0'),
-      shard: t(shard.key, {
-        num: shard.num,
-      }),
-      hash: (
-        <Link href={BLOCK_DETAILS(x.hash)} passHref>
+      slot: (
+        <Link href={BLOCK_DETAILS(x.slot)} passHref>
           <Typography variant="body1" className="value" component="a">
-            {getMiddleEllipsis(x.hash, {
-              beginning: 13, ending: 15,
-            })}
+            {numeral(x.slot).format('0,0')}
           </Typography>
         </Link>
       ),
       txs: numeral(x.txs).format('0,0'),
-      time: dayjs.utc(dayjs.unix(x.timestamp)).fromNow(),
+      time: dayjs.utc(x.timestamp).fromNow(),
+      leader: (
+        <AvatarName
+          address={x.leader.address}
+          imageUrl={x.leader.imageUrl}
+          name={x.leader.name}
+        />
+      ),
+      hash: getMiddleEllipsis(x.hash, {
+        beginning: 13, ending: 10,
+      }),
     });
   });
   return (
     <div className={props.className}>
       {formattedItems.map((x, i) => {
         return (
-          <React.Fragment key={`${x.block}-${i}`}>
+          <React.Fragment key={`${x.hash}-${i}`}>
             <SingleBlockMobile {...x} />
             {i !== formattedItems.length - 1 && <Divider />}
           </React.Fragment>

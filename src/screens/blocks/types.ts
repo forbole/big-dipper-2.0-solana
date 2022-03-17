@@ -7,11 +7,18 @@ export type BlockType = {
 }
 
 export type BlocksState = {
+  page: number;
   loading: boolean;
-  exists: boolean;
-  hasNextPage: boolean;
-  isNextPageLoading: boolean;
+  total: number;
   items: BlockType[];
 }
+
+// export type BlocksState = {
+//   loading: boolean;
+//   exists: boolean;
+//   hasNextPage: boolean;
+//   isNextPageLoading: boolean;
+//   items: BlockType[];
+// }
 
 export type ItemType = Override<BlockType, { leader: AvatarName }>
