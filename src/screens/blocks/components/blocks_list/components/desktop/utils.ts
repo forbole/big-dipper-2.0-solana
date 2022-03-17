@@ -4,12 +4,12 @@ export const columns:{
   width: number;
 }[] = [
   {
-    key: 'block',
-    width: 15,
+    key: 'slot',
+    width: 10,
   },
   {
-    key: 'shard',
-    width: 15,
+    key: 'leader',
+    width: 35,
   },
   {
     key: 'hash',
@@ -17,12 +17,12 @@ export const columns:{
   },
   {
     key: 'txs',
-    width: 25,
     align: 'right',
+    width: 10,
   },
   {
     key: 'time',
-    width: 15,
     align: 'right',
+    width: 15,
   },
 ];

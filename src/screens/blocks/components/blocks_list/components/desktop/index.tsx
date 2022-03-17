@@ -10,29 +10,42 @@ import {
   TableBody,
   Typography,
 } from '@material-ui/core';
+import { getMiddleEllipsis } from '@utils/get_middle_ellipsis';
+import { AvatarName } from '@components';
 import dayjs from '@utils/dayjs';
 import { BLOCK_DETAILS } from '@utils/go_to_page';
-import { getShardDisplay } from '@utils/get_shard_display';
 import { columns } from './utils';
+import { BlockListType } from '../../types';
 
-const Desktop: React.FC<{items: BlockType[]} & ComponentDefault> = (props) => {
+const Desktop: React.FC<BlockListType & ComponentDefault> = (props) => {
   const { t } = useTranslation('blocks');
   const formattedItems = props.items.map((x) => {
-    const shard = getShardDisplay(x.shard);
     return ({
-      block: numeral(x.block).format('0,0'),
-      shard: t(shard.key, {
-        num: shard.num,
-      }),
-      hash: (
-        <Link href={BLOCK_DETAILS(x.hash)} passHref>
+      slot: (
+        <Link href={BLOCK_DETAILS(x.slot)} passHref>
           <Typography variant="body1" className="value" component="a">
-            {x.hash}
+            {numeral(x.slot).format('0,0')}
           </Typography>
         </Link>
       ),
       txs: numeral(x.txs).format('0,0'),
-      time: dayjs.utc(dayjs.unix(x.timestamp)).fromNow(),
+      time: dayjs.utc(x.timestamp).fromNow(),
+      leader: (
+        <AvatarName
+          address={x.leader.address}
+          imageUrl={x.leader.imageUrl}
+          name={x.leader.name.length > 20 ? (
+            getMiddleEllipsis(x.leader.name, {
+              beginning: 15, ending: 15,
+            })
+          ) : (
+            x.leader.name
+          )}
+        />
+      ),
+      hash: getMiddleEllipsis(x.hash, {
+        beginning: 20, ending: 20,
+      }),
     });
   });
   return (

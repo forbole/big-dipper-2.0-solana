@@ -13,8 +13,7 @@ const BlocksList: React.FC<BlockListType & ComponentDefault> = (props) => {
   let component = null;
 
   if (isDesktop) {
-    // component = <Desktop items={props.items} />;
-    component = <Mobile items={props.items} />;
+    component = <Desktop items={props.items} />;
   } else {
     component = <Mobile items={props.items} />;
   }
