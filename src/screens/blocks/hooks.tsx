@@ -1,11 +1,15 @@
-import {
-  useEffect, useState,
-} from 'react';
+import { useState } from 'react';
 import * as R from 'ramda';
-import axios from 'axios';
 import { POLLING_INTERVAL } from '@utils/constants';
 import { useInterval } from '@hooks';
-import { BlocksState } from './types';
+import {
+  useBlocksQuery,
+  BlocksQuery,
+  useLatestBlockHeightQuery,
+} from '@graphql/types';
+import {
+  BlocksState, BlockType,
+} from './types';
 
 export const PAGE_SIZE = 25;
 
@@ -16,10 +20,6 @@ export const useBlocks = () => {
     items: [],
     total: 0,
   });
-
-  useEffect(() => {
-    getLatestBlockHeight();
-  }, []);
 
   const handleSetState = (stateChange: any) => {
     setState((prevState) => R.mergeDeepLeft(stateChange, prevState));
@@ -33,44 +33,53 @@ export const useBlocks = () => {
     await getBlocksByPage(page);
   };
 
-  const getLatestBlockHeight = async () => {
-    try {
-      const { data: total } = await axios.get(LATEST_BLOCK_HEIGHT);
+  useLatestBlockHeightQuery({
+    onCompleted: (data) => {
       handleSetState({
-        total,
+        total: data.height[0].slot,
       });
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
+    },
+  });
+
+  const blockQuery = useBlocksQuery({
+    variables: {
+      offset: 0,
+      limit: PAGE_SIZE,
+    },
+    onCompleted: (data) => {
+      handleSetState({
+        items: formatBlocks(data),
+        page: 0,
+        loading: false,
+      });
+    },
+  });
 
   const getBlocksByPage = async (page: number) => {
-    try {
-      const { data: blocksData } = await axios.get(BLOCKS, {
-        params: {
-          from: page * PAGE_SIZE,
-          size: PAGE_SIZE,
-        },
-      });
-
-      const items = blocksData.map((x) => {
-        return ({
-          block: x.round,
-          timestamp: x.timestamp,
-          hash: x.hash,
-          txs: x.txCount,
-          shard: x.shard,
-          size: x.sizeTxs,
-        });
-      });
-
+    await blockQuery.fetchMore({
+      variables: {
+        offset: page * PAGE_SIZE,
+        limit: PAGE_SIZE,
+      },
+    }).then(({ data }) => {
       handleSetState({
+        items: formatBlocks(data),
         loading: false,
-        items,
+        page,
       });
-    } catch (error) {
-      console.log(error.message);
-    }
+    });
+  };
+
+  const formatBlocks = (data: BlocksQuery): BlockType[] => {
+    return data.blocks.map((x) => {
+      return ({
+        slot: x.slot,
+        txs: x.numTxs,
+        hash: x.hash,
+        timestamp: x.timestamp,
+        leader: R.pathOr('', ['validator', 0, 'address'], x),
+      });
+    });
   };
 
   const getBlocksInterval = async () => {
