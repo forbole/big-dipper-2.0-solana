@@ -9,9 +9,9 @@ export const useStyles = () => {
         },
         cell: {
           ...theme.mixins.tableCell,
-        },
-        body: {
-          color: theme.palette.custom.fonts.fontTwo,
+          '&.sort:hover': {
+            cursor: 'pointer',
+          },
         },
         flexCells: {
           '& > *': {
@@ -29,16 +29,8 @@ export const useStyles = () => {
             },
           },
         },
-        price: {
-          '&.positive': {
-            '&:before': {
-              content: '"+"',
-            },
-            color: theme.palette.custom.priceData.positive,
-          },
-          '&.negative': {
-            color: theme.palette.custom.priceData.negative,
-          },
+        body: {
+          color: theme.palette.custom.fonts.fontTwo,
         },
       });
     },
