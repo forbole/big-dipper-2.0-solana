@@ -21,12 +21,14 @@ exports[`screen: Proposals matches snapshot 1`] = `
         Array [
           Object {
             "address": "EAniGDVY2VKUtZxvpHnbazHfZgfo3bp61TxUGHzw3Cn7",
+            "logo": "https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/EAniGDVY2VKUtZxvpHnbazHfZgfo3bp61TxUGHzw3Cn7/logo.png",
             "marketCap": null,
             "price": null,
             "token": "007 Exchange",
           },
           Object {
             "address": "G2jrxYSoCSzmohxERa2JzSJMuRM4kiNvRA3DnCv7Lzcz",
+            "logo": "https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/G2jrxYSoCSzmohxERa2JzSJMuRM4kiNvRA3DnCv7Lzcz/logo.png",
             "marketCap": 783277125,
             "price": 0.913409,
             "token": "0x Protocol Token (Wormhole v1)",

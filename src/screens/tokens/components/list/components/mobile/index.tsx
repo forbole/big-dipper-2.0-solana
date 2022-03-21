@@ -1,11 +1,10 @@
 import React from 'react';
 import classnames from 'classnames';
 import numeral from 'numeral';
-import Link from 'next/link';
-import { Loading } from '@components';
 import {
-  Typography, Divider,
-} from '@material-ui/core';
+  Loading, AvatarName,
+} from '@components';
+import { Divider } from '@material-ui/core';
 import { VariableSizeList as List } from 'react-window';
 import InfiniteLoader from 'react-window-infinite-loader';
 import AutoSizer from 'react-virtualized-auto-sizer';
@@ -53,11 +52,12 @@ const Mobile: React.FC<{
     return ({
       idx: `#${numeral(i + 1).format('0,0')}`,
       token: (
-        <Link href={TOKEN_DETAILS(x.address)} passHref>
-          <Typography variant="body1" className="value" component="a">
-            {x.token}
-          </Typography>
-        </Link>
+        <AvatarName
+          name={x.token}
+          address={x.address}
+          imageUrl={x.logo}
+          href={TOKEN_DETAILS}
+        />
       ),
       price,
       marketCap,

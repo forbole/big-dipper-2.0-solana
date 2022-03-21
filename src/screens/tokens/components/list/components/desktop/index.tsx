@@ -1,7 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
 import numeral from 'numeral';
-import Link from 'next/link';
 import { TOKEN_DETAILS } from '@utils/go_to_page';
 import AutoSizer from 'react-virtualized-auto-sizer';
 import InfiniteLoader from 'react-window-infinite-loader';
@@ -9,7 +8,7 @@ import useTranslation from 'next-translate/useTranslation';
 import { Typography } from '@material-ui/core';
 import { VariableSizeGrid as Grid } from 'react-window';
 import {
-  Loading, SortArrows,
+  Loading, SortArrows, AvatarName,
 } from '@components';
 import { useGrid } from '@hooks';
 import { mergeRefs } from '@src/utils/merge_refs';
@@ -59,11 +58,12 @@ const Desktop: React.FC<{
     return ({
       idx: `#${numeral(i + 1).format('0,0')}`,
       token: (
-        <Link href={TOKEN_DETAILS(x.address)} passHref>
-          <Typography variant="body1" className="value" component="a">
-            {x.token}
-          </Typography>
-        </Link>
+        <AvatarName
+          name={x.token}
+          address={x.address}
+          imageUrl={x.logo}
+          href={TOKEN_DETAILS}
+        />
       ),
       price,
       marketCap,

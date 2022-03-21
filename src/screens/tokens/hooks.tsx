@@ -42,6 +42,7 @@ export const useProposals = () => {
       return ({
         token: x.unitName,
         address: x.address,
+        logo: x.logo,
         price: R.pathOr(null, ['tokenPrice', 'price'], x),
         marketCap: R.pathOr(null, ['tokenPrice', 'marketCap'], x),
       });
