@@ -10,13 +10,6 @@ const AvatarName: React.FC<AvatarName> = ({
   className, address, name, imageUrl, href = ACCOUNT_DETAILS,
 }) => {
   const classes = useStyles();
-  let avatarName = name;
-
-  if (name === '""') {
-    avatarName = address;
-  } else if (name.length === 1) {
-    avatarName = address;
-  }
 
   return (
     <Link href={href(address)}>
@@ -24,7 +17,7 @@ const AvatarName: React.FC<AvatarName> = ({
         <div className={classnames(className, classes.root)}>
           <Avatar address={address} imageUrl={imageUrl} />
           <Typography variant="body1">
-            {name ? avatarName : address}
+            {name || address}
           </Typography>
         </div>
       </a>
