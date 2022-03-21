@@ -14,6 +14,7 @@ jest.mock('next-translate/useTranslation', () => () => mockI18n);
 jest.mock('@components', () => ({
   Loading: (props) => <div id="Loading" {...props} />,
   SortArrows: (props) => <div id="SortArrows" {...props} />,
+  AvatarName: (props) => <div id="AvatarName" {...props} />,
 }));
 
 jest.mock('react-virtualized-auto-sizer', () => ({ children }: any) => children({
@@ -31,6 +32,7 @@ describe('screen: Home/Blocks/Desktop', () => {
           items={[
             {
               token: 'BTC',
+              logo: null,
               price: 1802,
               marketCap: 515912496,
               address: '9n4nbM75f5Ui33ZbPYXn59EwSgE8CGsHtAeTH5YFeJ9E',

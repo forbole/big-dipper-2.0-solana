@@ -52,14 +52,12 @@ exports[`screen: Home/Blocks/Mobile matches snapshot 1`] = `
               >
                 tokens:token
               </h4>
-              <a
-                className="MuiTypography-root value MuiTypography-body1"
-                href="/tokens/9n4nbM75f5Ui33ZbPYXn59EwSgE8CGsHtAeTH5YFeJ9E"
-                onClick={[Function]}
-                onMouseEnter={[Function]}
-              >
-                BTC
-              </a>
+              <div
+                address="9n4nbM75f5Ui33ZbPYXn59EwSgE8CGsHtAeTH5YFeJ9E"
+                href={[Function]}
+                id="AvatarName"
+                name="BTC"
+              />
             </div>
             <div
               className="makeStyles-item"

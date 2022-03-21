@@ -1,6 +1,7 @@
 export type TokenType = {
   token: string;
   address: string;
+  logo: string;
   price?: number;
   marketCap?: number;
 }
