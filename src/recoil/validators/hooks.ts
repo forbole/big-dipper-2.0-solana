@@ -46,7 +46,12 @@ export const useValidatorRecoil = () => {
       const {
         name, avatarUrl,
       } = validatorConfig;
-      const moniker = name || '';
+
+      let moniker = '';
+      if (name.replace(/ /g, '').length && name !== '""') {
+        moniker = name;
+      }
+
       const imageUrl = avatarUrl || '';
       set(profileAtomFamilyState(x.address), {
         moniker: moniker || x.address,
