@@ -5,6 +5,7 @@ import {
   Box,
   NoData,
   LoadAndExist,
+  TabPanel,
 } from '@components';
 import { useScreenSize } from '@hooks';
 import {
@@ -61,28 +62,78 @@ const List: React.FC<{
           handleSearch={handleSearch}
           validatorCount={validatorCount}
         />
-        <div className={classes.list}>
-          {items.length ? (
-            <>
-              {isDesktop ? (
-                <Desktop
-                  className={classes.desktop}
-                  sortDirection={state.sortDirection}
-                  sortKey={state.sortKey}
-                  handleSort={handleSort}
-                  items={items}
-                />
-              ) : (
-                <Mobile
-                  className={classes.mobile}
-                  items={items}
-                />
-              )}
-            </>
-          ) : (
-            <NoData />
-          )}
-        </div>
+        <TabPanel value={state.tab} index={0}>
+          <div className={classes.list}>
+            {items.length ? (
+              <>
+                {isDesktop ? (
+                  <Desktop
+                    className={classes.desktop}
+                    sortDirection={state.sortDirection}
+                    sortKey={state.sortKey}
+                    handleSort={handleSort}
+                    items={items}
+                  />
+                ) : (
+                  <Mobile
+                    className={classes.mobile}
+                    items={items}
+                  />
+                )}
+              </>
+            ) : (
+              <NoData />
+            )}
+          </div>
+        </TabPanel>
+        <TabPanel value={state.tab} index={1}>
+          <div className={classes.list}>
+            {items.length ? (
+              <>
+                {isDesktop ? (
+                  <Desktop
+                    className={classes.desktop}
+                    sortDirection={state.sortDirection}
+                    sortKey={state.sortKey}
+                    handleSort={handleSort}
+                    items={items}
+                  />
+                ) : (
+                  <Mobile
+                    className={classes.mobile}
+                    items={items}
+                  />
+                )}
+              </>
+            ) : (
+              <NoData />
+            )}
+          </div>
+        </TabPanel>
+        <TabPanel value={state.tab} index={2}>
+          <div className={classes.list}>
+            {items.length ? (
+              <>
+                {isDesktop ? (
+                  <Desktop
+                    className={classes.desktop}
+                    sortDirection={state.sortDirection}
+                    sortKey={state.sortKey}
+                    handleSort={handleSort}
+                    items={items}
+                  />
+                ) : (
+                  <Mobile
+                    className={classes.mobile}
+                    items={items}
+                  />
+                )}
+              </>
+            ) : (
+              <NoData />
+            )}
+          </div>
+        </TabPanel>
       </Box>
     </LoadAndExist>
   );
