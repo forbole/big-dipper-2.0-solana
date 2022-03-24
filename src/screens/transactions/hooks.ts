@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import * as R from 'ramda';
+import { useInterval } from '@hooks';
 import {
-  useTransactionsQuery,
-  useTransactionsListenerSubscription,
-  TransactionsListenerSubscription,
+  useTransactionsLazyQuery,
+  TransactionsQuery,
 } from '@graphql/types';
 import { TransactionsState } from './types';
 
@@ -11,8 +11,6 @@ export const useTransactions = () => {
   const [state, setState] = useState<TransactionsState>({
     loading: true,
     exists: true,
-    hasNextPage: false,
-    isNextPageLoading: false,
     items: [],
   });
 
@@ -20,44 +18,14 @@ export const useTransactions = () => {
     setState((prevState) => R.mergeDeepLeft(stateChange, prevState));
   };
 
-  // This is a bandaid as it can get extremely
-  // expensive if there is too much data
-  /**
-   * Helps remove any possible duplication
-   * and sorts by height in case it bugs out
-   */
-  const uniqueAndSort = R.pipe(
-    R.uniqBy(R.prop('signature')),
-    R.sort(R.descend(R.prop('slot'))),
-  );
-
-  // ================================
-  // tx subscription
-  // ================================
-  useTransactionsListenerSubscription({
-    variables: {
-      limit: 1,
-      offset: 0,
-    },
-    onSubscriptionData: (data) => {
-      handleSetState({
-        loading: false,
-        items: [
-          ...formatTransactions(data.subscriptionData.data),
-          ...state.items,
-        ],
-      });
-    },
-  });
-
   // ================================
   // tx query
   // ================================
-  const LIMIT = 51;
-  const transactionQuery = useTransactionsQuery({
+
+  const [getTransactions] = useTransactionsLazyQuery({
     variables: {
-      limit: LIMIT,
-      offset: 1,
+      limit: 25,
+      offset: 0,
     },
     onError: () => {
       handleSetState({
@@ -65,46 +33,14 @@ export const useTransactions = () => {
       });
     },
     onCompleted: (data) => {
-      const itemsLength = data.transactions.length;
-      const newItems = uniqueAndSort([
-        ...state.items,
-        ...formatTransactions(data),
-      ]);
       handleSetState({
         loading: false,
-        items: newItems,
-        hasNextPage: itemsLength === 51,
-        isNextPageLoading: false,
+        items: formatTransactions(data),
       });
     },
   });
 
-  const loadNextPage = async () => {
-    handleSetState({
-      isNextPageLoading: true,
-    });
-    // refetch query
-    await transactionQuery.fetchMore({
-      variables: {
-        offset: state.items.length,
-        limit: LIMIT,
-      },
-    }).then(({ data }) => {
-      const itemsLength = data.transactions.length;
-      const newItems = uniqueAndSort([
-        ...state.items,
-        ...formatTransactions(data),
-      ]);
-      // set new state
-      handleSetState({
-        items: newItems,
-        isNextPageLoading: false,
-        hasNextPage: itemsLength === 51,
-      });
-    });
-  };
-
-  const formatTransactions = (data: TransactionsListenerSubscription) => {
+  const formatTransactions = (data: TransactionsQuery) => {
     return data.transactions.map((x) => {
       return ({
         slot: x.slot,
@@ -116,8 +52,9 @@ export const useTransactions = () => {
     });
   };
 
+  useInterval(getTransactions, 5000);
+
   return {
     state,
-    loadNextPage,
   };
 };
