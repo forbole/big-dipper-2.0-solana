@@ -3,10 +3,10 @@ import useTranslation from 'next-translate/useTranslation';
 import { NextSeo } from 'next-seo';
 import {
   Layout,
-  TransactionsList,
   Box,
   LoadAndExist,
 } from '@components';
+import { TransactionsList } from './components';
 import { useStyles } from './styles';
 import { useTransactions } from './hooks';
 
@@ -35,8 +35,7 @@ const Transactions = () => {
         >
           <Box className={classes.box}>
             <TransactionsList
-              transactions={state.items}
-              itemCount={state.items.length}
+              items={state.items}
             />
           </Box>
         </LoadAndExist>
