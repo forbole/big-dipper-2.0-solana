@@ -20,10 +20,12 @@ import Transactions from '.';
 // ==================================
 jest.mock('@components', () => ({
   Layout: (props) => <div id="Layout" {...props} />,
-  TransactionsList: (props) => <div id="TransactionsList" {...props} />,
-  TransactionListDetails: (props) => <div id="TransactionListDetails" {...props} />,
   Box: (props) => <div id="Box" {...props} />,
   LoadAndExist: (props) => <div id="LoadAndExist" {...props} />,
+}));
+
+jest.mock('./components', () => ({
+  TransactionsList: (props) => <div id="TransactionsList" {...props} />,
 }));
 
 const mockTransactionsListenerDocument = {
