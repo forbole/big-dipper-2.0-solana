@@ -49,6 +49,7 @@ const List: React.FC<{
     numeral(deliquentTotal).format('0,0'),
     numeral(total).format('0,0'),
   ];
+  const indexValue = [0, 1, 2];
 
   return (
     <LoadAndExist
@@ -62,78 +63,32 @@ const List: React.FC<{
           handleSearch={handleSearch}
           validatorCount={validatorCount}
         />
-        <TabPanel value={state.tab} index={0}>
-          <div className={classes.list}>
-            {items.length ? (
-              <>
-                {isDesktop ? (
-                  <Desktop
-                    className={classes.desktop}
-                    sortDirection={state.sortDirection}
-                    sortKey={state.sortKey}
-                    handleSort={handleSort}
-                    items={items}
-                  />
-                ) : (
-                  <Mobile
-                    className={classes.mobile}
-                    items={items}
-                  />
-                )}
-              </>
-            ) : (
-              <NoData />
-            )}
-          </div>
-        </TabPanel>
-        <TabPanel value={state.tab} index={1}>
-          <div className={classes.list}>
-            {items.length ? (
-              <>
-                {isDesktop ? (
-                  <Desktop
-                    className={classes.desktop}
-                    sortDirection={state.sortDirection}
-                    sortKey={state.sortKey}
-                    handleSort={handleSort}
-                    items={items}
-                  />
-                ) : (
-                  <Mobile
-                    className={classes.mobile}
-                    items={items}
-                  />
-                )}
-              </>
-            ) : (
-              <NoData />
-            )}
-          </div>
-        </TabPanel>
-        <TabPanel value={state.tab} index={2}>
-          <div className={classes.list}>
-            {items.length ? (
-              <>
-                {isDesktop ? (
-                  <Desktop
-                    className={classes.desktop}
-                    sortDirection={state.sortDirection}
-                    sortKey={state.sortKey}
-                    handleSort={handleSort}
-                    items={items}
-                  />
-                ) : (
-                  <Mobile
-                    className={classes.mobile}
-                    items={items}
-                  />
-                )}
-              </>
-            ) : (
-              <NoData />
-            )}
-          </div>
-        </TabPanel>
+        {indexValue.map((x) => (
+          <TabPanel value={state.tab} index={x}>
+            <div className={classes.list}>
+              {items.length ? (
+                <>
+                  {isDesktop ? (
+                    <Desktop
+                      className={classes.desktop}
+                      sortDirection={state.sortDirection}
+                      sortKey={state.sortKey}
+                      handleSort={handleSort}
+                      items={items}
+                    />
+                  ) : (
+                    <Mobile
+                      className={classes.mobile}
+                      items={items}
+                    />
+                  )}
+                </>
+              ) : (
+                <NoData />
+              )}
+            </div>
+          </TabPanel>
+        ))}
       </Box>
     </LoadAndExist>
   );
