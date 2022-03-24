@@ -10,7 +10,9 @@ import useTranslation from 'next-translate/useTranslation';
 import { Typography } from '@material-ui/core';
 import { getMiddleEllipsis } from '@utils/get_middle_ellipsis';
 import { VariableSizeGrid as Grid } from 'react-window';
-import { AvatarName } from '@components';
+import {
+  Loading, AvatarName,
+} from '@components';
 import { useGrid } from '@hooks';
 import { mergeRefs } from '@src/utils/merge_refs';
 import { useStyles } from './styles';
@@ -21,10 +23,14 @@ const Desktop: React.FC<{
   className?: string;
   items: ItemType[];
   itemCount: number;
+  loadMoreItems: (any) => void;
+  isItemLoaded?: (index: number) => boolean;
 }> = ({
   className,
   items,
   itemCount,
+  loadMoreItems,
+  isItemLoaded,
 }) => {
   const { t } = useTranslation('blocks');
   const classes = useStyles();
@@ -112,9 +118,9 @@ const Desktop: React.FC<{
               {/* Table Body */}
               {/* ======================================= */}
               <InfiniteLoader
-                isItemLoaded={() => true}
+                isItemLoaded={isItemLoaded}
                 itemCount={itemCount}
-                loadMoreItems={() => null}
+                loadMoreItems={loadMoreItems}
               >
                 {({
                   onItemsRendered, ref,
@@ -146,6 +152,23 @@ const Desktop: React.FC<{
                       {({
                         columnIndex, rowIndex, style,
                       }) => {
+                        if (!isItemLoaded(rowIndex) && columnIndex === 0) {
+                          return (
+                            <div
+                              style={{
+                                ...style,
+                                width,
+                              }}
+                            >
+                              <Loading />
+                            </div>
+                          );
+                        }
+
+                        if (!isItemLoaded(rowIndex)) {
+                          return null;
+                        }
+
                         const {
                           key, align,
                         } = columns[columnIndex];

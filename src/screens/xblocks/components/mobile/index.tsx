@@ -7,6 +7,7 @@ import { getMiddleEllipsis } from '@utils/get_middle_ellipsis';
 import {
   AvatarName,
   SingleBlockMobile,
+  Loading,
 } from '@components';
 import {
   Typography, Divider,
@@ -27,10 +28,14 @@ const Mobile: React.FC<{
   className?: string;
   items: ItemType[];
   itemCount: number;
+  loadMoreItems: (any) => void;
+  isItemLoaded?: (index: number) => boolean;
 }> = ({
   className,
   items,
   itemCount,
+  loadMoreItems,
+  isItemLoaded,
 }) => {
   const classes = useStyles();
 
@@ -72,9 +77,9 @@ const Mobile: React.FC<{
         }) => {
           return (
             <InfiniteLoader
-              isItemLoaded={() => true}
+              isItemLoaded={isItemLoaded}
               itemCount={itemCount}
-              loadMoreItems={() => null}
+              loadMoreItems={loadMoreItems}
             >
               {({
                 onItemsRendered, ref,
@@ -92,6 +97,15 @@ const Mobile: React.FC<{
                     index, style,
                   }) => {
                     const { rowRef } = useListRow(index, setRowHeight);
+                    if (!isItemLoaded(index)) {
+                      return (
+                        <div style={style}>
+                          <div ref={rowRef}>
+                            <Loading />
+                          </div>
+                        </div>
+                      );
+                    }
                     const item = formattedItems[index];
                     return (
                       <div style={style}>

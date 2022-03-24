@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import * as R from 'ramda';
+import { useInterval } from '@hooks';
 import {
-  useBlocksListenerSubscription,
-  useBlocksQuery,
-  BlocksListenerSubscription,
+  useBlocksLazyQuery,
+  BlocksQuery,
 } from '@graphql/types';
 import {
   BlocksState, BlockType,
@@ -13,8 +13,6 @@ export const useBlocks = () => {
   const [state, setState] = useState<BlocksState>({
     loading: true,
     exists: true,
-    hasNextPage: false,
-    isNextPageLoading: false,
     items: [],
   });
 
@@ -22,44 +20,13 @@ export const useBlocks = () => {
     setState((prevState) => R.mergeDeepLeft(stateChange, prevState));
   };
 
-  // This is a bandaid as it can get extremely
-  // expensive if there is too much data
-  /**
-   * Helps remove any possible duplication
-   * and sorts by height in case it bugs out
-   */
-  const uniqueAndSort = R.pipe(
-    R.uniqBy(R.prop('hash')),
-    R.sort(R.descend(R.prop('height'))),
-  );
-
-  // ================================
-  // block subscription
-  // ================================
-  useBlocksListenerSubscription({
-    variables: {
-      limit: 1,
-      offset: 0,
-    },
-    onSubscriptionData: (data) => {
-      handleSetState({
-        loading: false,
-        items: [
-          ...formatBlocks(data.subscriptionData.data),
-          ...state.items,
-        ],
-      });
-    },
-  });
-
   // ================================
   // block query
   // ================================
-  const LIMIT = 51;
-  const blockQuery = useBlocksQuery({
+  const [getBlocks] = useBlocksLazyQuery({
     variables: {
-      limit: LIMIT,
-      offset: 1,
+      limit: 25,
+      offset: 0,
     },
     onError: () => {
       handleSetState({
@@ -67,46 +34,14 @@ export const useBlocks = () => {
       });
     },
     onCompleted: (data) => {
-      const itemsLength = data.blocks.length;
-      const newItems = uniqueAndSort([
-        ...state.items,
-        ...formatBlocks(data),
-      ]);
       handleSetState({
         loading: false,
-        items: newItems,
-        hasNextPage: itemsLength === 51,
-        isNextPageLoading: false,
+        items: formatBlocks(data),
       });
     },
   });
 
-  const loadNextPage = async () => {
-    handleSetState({
-      isNextPageLoading: true,
-    });
-    // refetch query
-    await blockQuery.fetchMore({
-      variables: {
-        offset: state.items.length,
-        limit: LIMIT,
-      },
-    }).then(({ data }) => {
-      const itemsLength = data.blocks.length;
-      const newItems = uniqueAndSort([
-        ...state.items,
-        ...formatBlocks(data),
-      ]);
-      // set new state
-      handleSetState({
-        items: newItems,
-        isNextPageLoading: false,
-        hasNextPage: itemsLength === 51,
-      });
-    });
-  };
-
-  const formatBlocks = (data: BlocksListenerSubscription): BlockType[] => {
+  const formatBlocks = (data: BlocksQuery): BlockType[] => {
     return data.blocks.map((x) => {
       return ({
         slot: x.slot,
@@ -118,8 +53,9 @@ export const useBlocks = () => {
     });
   };
 
+  useInterval(getBlocks, 5000);
+
   return {
     state,
-    loadNextPage,
   };
 };

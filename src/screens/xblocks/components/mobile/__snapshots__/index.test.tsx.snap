@@ -1,0 +1,119 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`screen: Home/Blocks/Mobile matches snapshot 1`] = `
+<div
+  className="makeStyles-root"
+>
+  <div
+    className="List"
+    onScroll={[Function]}
+    style={
+      Object {
+        "WebkitOverflowScrolling": "touch",
+        "direction": "ltr",
+        "height": 600,
+        "overflow": "auto",
+        "position": "relative",
+        "width": 600,
+        "willChange": "transform",
+      }
+    }
+  >
+    <div
+      style={
+        Object {
+          "height": 200,
+          "pointerEvents": undefined,
+          "width": "100%",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "height": 100,
+            "left": 0,
+            "position": "absolute",
+            "right": undefined,
+            "top": 0,
+            "width": "100%",
+          }
+        }
+      >
+        <div>
+          <div
+            hash="76nwV8zz8tLz9...F66jZhQ857"
+            id="SingleBlockMobile"
+            leader={
+              <AvatarName
+                address="desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467"
+                name="desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467"
+              />
+            }
+            slot={
+              <Link
+                href="/blocks/812768640"
+                passHref={true}
+              >
+                <WithStyles(ForwardRef(Typography))
+                  className="value"
+                  component="a"
+                  variant="body1"
+                >
+                  812,768,640
+                </WithStyles(ForwardRef(Typography))>
+              </Link>
+            }
+            time="1 day ago"
+            txs="2"
+          />
+          <hr
+            className="MuiDivider-root"
+          />
+        </div>
+      </div>
+      <div
+        style={
+          Object {
+            "height": 100,
+            "left": 0,
+            "position": "absolute",
+            "right": undefined,
+            "top": 100,
+            "width": "100%",
+          }
+        }
+      >
+        <div>
+          <div
+            hash="76nwV8zz8tLz9...F66jZhQ857"
+            id="SingleBlockMobile"
+            leader={
+              <AvatarName
+                address="desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467"
+                name="desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467"
+              />
+            }
+            slot={
+              <Link
+                href="/blocks/812768640"
+                passHref={true}
+              >
+                <WithStyles(ForwardRef(Typography))
+                  className="value"
+                  component="a"
+                  variant="body1"
+                >
+                  812,768,640
+                </WithStyles(ForwardRef(Typography))>
+              </Link>
+            }
+            time="1 day ago"
+            txs="2"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

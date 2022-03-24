@@ -24,7 +24,11 @@ const Blocks = () => {
   const classes = useStyles();
   const {
     state,
+    loadNextPage,
   } = useBlocks();
+  const loadMoreItems = state.isNextPageLoading ? () => null : loadNextPage;
+  const isItemLoaded = (index) => !state.hasNextPage || index < state.items.length;
+  const itemCount = state.hasNextPage ? state.items.length + 1 : state.items.length;
 
   const proposerProfiles = useProfilesRecoil(state.items.map((x) => x.leader));
   const mergedDataWithProfiles = state.items.map((x, i) => {
@@ -58,12 +62,16 @@ const Blocks = () => {
                 {isDesktop ? (
                   <Desktop
                     items={mergedDataWithProfiles}
-                    itemCount={mergedDataWithProfiles.length}
+                    itemCount={itemCount}
+                    loadMoreItems={loadMoreItems}
+                    isItemLoaded={isItemLoaded}
                   />
                 ) : (
                   <Mobile
                     items={mergedDataWithProfiles}
-                    itemCount={mergedDataWithProfiles.length}
+                    itemCount={itemCount}
+                    loadMoreItems={loadMoreItems}
+                    isItemLoaded={isItemLoaded}
                   />
                 )}
               </>
