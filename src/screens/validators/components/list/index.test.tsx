@@ -23,6 +23,7 @@ jest.mock('@components', () => ({
   Box: (props) => <div id="Box" {...props} />,
   NoData: (props) => <div id="NoData" {...props} />,
   LoadAndExist: (props) => <div id="LoadAndExist" {...props} />,
+  TabPanel: (props) => <div id="TabPanel" {...props} />,
 }));
 
 const mockValidatorsDocument = jest.fn().mockResolvedValue({
