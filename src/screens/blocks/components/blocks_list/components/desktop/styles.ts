@@ -5,7 +5,9 @@ export const useStyles = () => {
     () => {
       return ({
         root: {
-          height: '100%',
+          '& .MuiTableCell-root': {
+            whiteSpace: 'nowrap',
+          },
         },
       });
     },
