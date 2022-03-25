@@ -10,7 +10,9 @@ import { useStyles } from './styles';
 
 const Logs: React.FC<{ logs: LogType[] } & ComponentDefault> = (props) => {
   const { t } = useTranslation('transactions');
-  const classes = useStyles();
+  const {
+    classes, theme,
+  } = useStyles();
   const splitLogs = formatLogs(props.logs);
 
   return (
@@ -43,8 +45,11 @@ const Logs: React.FC<{ logs: LogType[] } & ComponentDefault> = (props) => {
                         'content--success': y.value.includes('success'),
                         'content--error': y.value.includes('error'),
                       })}
+                      style={{
+                        marginLeft: theme.spacing(y.indent),
+                      }}
                     >
-                      {`${prefix} ${y}`}
+                      {`${prefix} ${y.value}`}
                     </Typography>
                   );
                 })}

@@ -1,4 +1,6 @@
-import { makeStyles } from '@material-ui/core/styles';
+import {
+  makeStyles, useTheme,
+} from '@material-ui/core/styles';
 
 export const useStyles = () => {
   const styles = makeStyles(
@@ -63,6 +65,8 @@ export const useStyles = () => {
       });
     }, { index: 1 },
   )();
-
-  return styles;
+  return {
+    classes: styles,
+    theme: useTheme(),
+  };
 };

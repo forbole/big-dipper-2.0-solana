@@ -29,5 +29,9 @@ export const formatLogs = (logs: LogType[]): {value: string, indent: number}[][]
       indent = indent === 0 ? 0 : indent - 1;
     }
   }
+
+  if (currentBatch.length) { // clean up
+    results.push(currentBatch);
+  }
   return results;
 };
