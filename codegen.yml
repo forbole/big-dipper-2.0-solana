@@ -16,6 +16,6 @@ generates:
     schema: https://gql.morpheus.desmos.network/v1/graphql
     documents:
       - 'src/graphql/desmos_profile_graphql.ts'
-    plugins:ß
+    plugins:
       - "typescript"
       - "typescript-operations"
