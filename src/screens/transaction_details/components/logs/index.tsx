@@ -12,7 +12,7 @@ const Logs: React.FC<{ logs: LogType[] } & ComponentDefault> = (props) => {
   const { t } = useTranslation('transactions');
   const classes = useStyles();
   const splitLogs = splitLogsToSteps(props.logs);
-  console.log(splitLogs);
+
   return (
     <Box className={classes.root}>
       <Typography variant="h2">
@@ -41,6 +41,7 @@ const Logs: React.FC<{ logs: LogType[] } & ComponentDefault> = (props) => {
                         'content--log': y.includes('Program log'),
                         'content--invoke': index !== 0 && y.includes('invoke'),
                         'content--success': y.includes('success'),
+                        'content--error': y.includes('error'),
                       })}
                     >
                       {`${prefix} ${y}`}

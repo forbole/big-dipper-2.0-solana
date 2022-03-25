@@ -56,6 +56,9 @@ export const useStyles = () => {
           '& .content--success': {
             color: theme.palette.primary.main,
           },
+          '& .content--error': {
+            color: theme.palette.custom.primaryData.four,
+          },
         },
       });
     }, { index: 1 },
