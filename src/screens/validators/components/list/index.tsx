@@ -5,7 +5,6 @@ import {
   Box,
   NoData,
   LoadAndExist,
-  TabPanel,
 } from '@components';
 import { useScreenSize } from '@hooks';
 import {
@@ -49,7 +48,6 @@ const List: React.FC<{
     numeral(deliquentTotal).format('0,0'),
     numeral(total).format('0,0'),
   ];
-  const indexValue = [0, 1, 2];
 
   return (
     <LoadAndExist
@@ -63,32 +61,28 @@ const List: React.FC<{
           handleSearch={handleSearch}
           validatorCount={validatorCount}
         />
-        {indexValue.map((x) => (
-          <TabPanel value={state.tab} index={x}>
-            <div className={classes.list}>
-              {items.length ? (
-                <>
-                  {isDesktop ? (
-                    <Desktop
-                      className={classes.desktop}
-                      sortDirection={state.sortDirection}
-                      sortKey={state.sortKey}
-                      handleSort={handleSort}
-                      items={items}
-                    />
-                  ) : (
-                    <Mobile
-                      className={classes.mobile}
-                      items={items}
-                    />
-                  )}
-                </>
+        <div className={classes.list}>
+          {items.length ? (
+            <>
+              {isDesktop ? (
+                <Desktop
+                  className={classes.desktop}
+                  sortDirection={state.sortDirection}
+                  sortKey={state.sortKey}
+                  handleSort={handleSort}
+                  items={items}
+                />
               ) : (
-                <NoData />
+                <Mobile
+                  className={classes.mobile}
+                  items={items}
+                />
               )}
-            </div>
-          </TabPanel>
-        ))}
+            </>
+          ) : (
+            <NoData />
+          )}
+        </div>
       </Box>
     </LoadAndExist>
   );
