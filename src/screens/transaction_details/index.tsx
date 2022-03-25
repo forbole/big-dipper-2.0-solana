@@ -8,23 +8,14 @@ import {
 import { useStyles } from './styles';
 import {
   Overview,
-  Messages,
+  Logs,
 } from './components';
 import { useTransactionDetails } from './hooks';
 
 const TransactionDetails = () => {
   const { t } = useTranslation('transactions');
   const classes = useStyles();
-  const {
-    state,
-    onMessageFilterCallback,
-    toggleMessageDisplay,
-    filterMessages,
-  } = useTransactionDetails();
-  const {
-    overview,
-    messages,
-  } = state;
+  const { state } = useTransactionDetails();
 
   return (
     <>
@@ -41,15 +32,9 @@ const TransactionDetails = () => {
         >
           <span className={classes.root}>
             <Overview
-              data={overview}
+              data={state.overview}
             />
-            <Messages
-              className={classes.messages}
-              messages={filterMessages(messages.items)}
-              viewRaw={messages.viewRaw}
-              toggleMessageDisplay={toggleMessageDisplay}
-              onMessageFilterCallback={onMessageFilterCallback}
-            />
+            <Logs />
           </span>
         </LoadAndExist>
       </Layout>
