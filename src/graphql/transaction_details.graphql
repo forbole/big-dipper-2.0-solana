@@ -1,7 +1,7 @@
 query TransactionDetails($signature: String) {
   transaction(where: {signature: {_eq: $signature}}, limit: 1) {
     slot
-    error
+    success
     signature
     fee
     block {

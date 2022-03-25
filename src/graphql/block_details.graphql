@@ -11,7 +11,7 @@ query BlockDetails($height: bigint) {
   transaction(where: {slot: {_eq: $height}}) {
     slot
     signature
-    error
+    success
     block {
       timestamp
     }

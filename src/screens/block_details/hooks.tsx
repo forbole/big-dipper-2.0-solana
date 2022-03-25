@@ -84,7 +84,7 @@ export const useBlockDetails = () => {
         return ({
           slot: x.slot,
           signature: x.signature,
-          success: !x.error,
+          success: x.success,
           timestamp: stateChange.overview.timestamp,
           numInstructions: R.pathOr(0, ['numInstructions'], x),
         });

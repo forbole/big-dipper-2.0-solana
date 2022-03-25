@@ -46,7 +46,7 @@ export const useTransactions = () => {
         slot: x.slot,
         signature: x.signature,
         numInstructions: x.numInstructions,
-        success: !x.error,
+        success: x.success,
         timestamp: x.block.timestamp,
       });
     });

@@ -82,7 +82,7 @@ export const useTransactionDetails = () => {
 
       const overview = {
         slot: tx.slot,
-        success: !tx.error,
+        success: tx.success,
         fee: formatToken(tx.fee, chainConfig.primaryTokenUnit),
         signature: tx.signature,
         timestamp: R.pathOr('', ['block', 'timestamp'], tx),
