@@ -34,7 +34,7 @@ const TransactionDetails = () => {
             <Overview
               data={state.overview}
             />
-            <Logs />
+            <Logs logs={state.logs} />
           </span>
         </LoadAndExist>
       </Layout>

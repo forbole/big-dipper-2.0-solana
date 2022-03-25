@@ -7,7 +7,6 @@ import {
   useTransactionDetailsQuery,
   TransactionDetailsQuery,
 } from '@graphql/types';
-import { convertMsgsToModels } from '@msg';
 import { chainConfig } from '@configs';
 import { formatToken } from '@utils/format_token';
 import {
@@ -88,6 +87,16 @@ export const useTransactionDetails = () => {
     };
 
     stateChange.overview = formatOverview();
+
+    // =============================
+    // logs
+    // =============================
+    const formatLogs = () => {
+      return R.pathOr([], ['transaction', 0, 'logs'], data);
+    };
+
+    stateChange.logs = formatLogs();
+
     return stateChange;
   };
 
