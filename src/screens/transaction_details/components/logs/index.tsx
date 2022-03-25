@@ -5,13 +5,13 @@ import { Typography } from '@material-ui/core';
 import useTranslation from 'next-translate/useTranslation';
 import { Box } from '@components';
 import { LogType } from '../../types';
-import { splitLogsToSteps } from './utils';
+import { formatLogs } from './utils';
 import { useStyles } from './styles';
 
 const Logs: React.FC<{ logs: LogType[] } & ComponentDefault> = (props) => {
   const { t } = useTranslation('transactions');
   const classes = useStyles();
-  const splitLogs = splitLogsToSteps(props.logs);
+  const splitLogs = formatLogs(props.logs);
 
   return (
     <Box className={classes.root}>
@@ -38,10 +38,10 @@ const Logs: React.FC<{ logs: LogType[] } & ComponentDefault> = (props) => {
                       key={`content-${i}-${index}`}
                       className={classnames('content', {
                         'content--title': index === 0,
-                        'content--log': y.includes('Program log'),
-                        'content--invoke': index !== 0 && y.includes('invoke'),
-                        'content--success': y.includes('success'),
-                        'content--error': y.includes('error'),
+                        'content--log': y.value.includes('Program log'),
+                        'content--invoke': index !== 0 && y.value.includes('invoke'),
+                        'content--success': y.value.includes('success'),
+                        'content--error': y.value.includes('error'),
                       })}
                     >
                       {`${prefix} ${y}`}
