@@ -52,7 +52,7 @@ const mockAverageBlockTime = jest.fn().mockResolvedValue({
       {
         "slot": 125056600,
         "signature": "AxVwePxYYKqGHSwrrpjwptp9km4N91fYtQcHgYvLNRKPEMp6ZNdQJd6wxA4KF3LHRbKS7iZwMWckmnT9YdATE2Y",
-        "error": true,
+        "success": true,
         "block": {
           "timestamp": "2022-03-15T13:13:45"
         },

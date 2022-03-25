@@ -24,7 +24,7 @@ exports[`screen: Blocks/List matches snapshot 1`] = `
             },
             "signature": "5oNqh9epbE8AmCqVUr2hb238dyoqBKninb8cyMwwqgTQ5dckAkSqaA3JVhHm8ZK7AjcFp2X1PwvSyVbYGdqBLYGm",
             "slot": 112756074,
-            "success": true,
+            "success": false,
             "timestamp": "2021-12-22T14:33:14",
           }
         }

@@ -42,7 +42,7 @@ const mockTransactionDetailsDocument = jest.fn().mockResolvedValue({
     "transaction": [
       {
         "slot": 112756074,
-        "error": false,
+        "success": false,
         "signature": "5oNqh9epbE8AmCqVUr2hb238dyoqBKninb8cyMwwqgTQ5dckAkSqaA3JVhHm8ZK7AjcFp2X1PwvSyVbYGdqBLYGm",
         "fee": 5000,
         "block": {
