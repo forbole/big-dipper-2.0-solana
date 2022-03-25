@@ -6373,7 +6373,7 @@ export type TransactionDetailsQueryVariables = Exact<{
 
 export type TransactionDetailsQuery = { transaction: Array<(
     { __typename?: 'transaction' }
-    & Pick<Transaction, 'slot' | 'success' | 'signature' | 'fee'>
+    & Pick<Transaction, 'slot' | 'success' | 'signature' | 'fee' | 'logs'>
     & { block?: Maybe<(
       { __typename?: 'block' }
       & Pick<Block, 'timestamp'>
@@ -6955,6 +6955,7 @@ export const TransactionDetailsDocument = gql`
     success
     signature
     fee
+    logs
     block {
       timestamp
     }
