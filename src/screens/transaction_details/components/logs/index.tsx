@@ -1,4 +1,5 @@
 import React from 'react';
+import numeral from 'numeral';
 import { Typography } from '@material-ui/core';
 import useTranslation from 'next-translate/useTranslation';
 import { Box } from '@components';
@@ -10,6 +11,7 @@ const Logs: React.FC<{ logs: LogType[] } & ComponentDefault> = (props) => {
   const { t } = useTranslation('transactions');
   const classes = useStyles();
   const splitLogs = splitLogsToSteps(props.logs);
+  console.log(splitLogs);
   return (
     <Box className={classes.root}>
       <Typography variant="h2">
@@ -18,8 +20,13 @@ const Logs: React.FC<{ logs: LogType[] } & ComponentDefault> = (props) => {
       <div className={classes.logs}>
         {splitLogs.map((x, i) => {
           return (
-            <div className="log">
-              hello world
+            <div className="log" key={`log-${i}`}>
+              <div className="log__count">
+                {`#${numeral(i + 1).format('0,0')}`}
+              </div>
+              <div className="log__content">
+                content
+              </div>
             </div>
           );
         })}
