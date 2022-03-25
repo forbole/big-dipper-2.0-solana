@@ -1,5 +1,6 @@
 import React from 'react';
 import numeral from 'numeral';
+import classnames from 'classnames';
 import { Typography } from '@material-ui/core';
 import useTranslation from 'next-translate/useTranslation';
 import { Box } from '@components';
@@ -26,25 +27,24 @@ const Logs: React.FC<{ logs: LogType[] } & ComponentDefault> = (props) => {
               </div>
               <div className="log__content">
                 {x.map((y, index) => {
-                  let content = null;
-                  if (index === 0) {
-                    content = (
-                      <div>
-                        title
-                      </div>
-                    );
-                  } else {
-                    content = (
-                      <div>
-                        content
-                      </div>
-                    );
+                  let prefix = '';
+
+                  if (index !== 0) {
+                    prefix = '>';
                   }
 
                   return (
-                    <React.Fragment key={`content-${i}-${index}`}>
-                      {content}
-                    </React.Fragment>
+                    <Typography
+                      key={`content-${i}-${index}`}
+                      className={classnames('content', {
+                        'content--title': index === 0,
+                        'content--log': y.includes('Program log'),
+                        'content--invoke': index !== 0 && y.includes('invoke'),
+                        'content--success': y.includes('success'),
+                      })}
+                    >
+                      {`${prefix} ${y}`}
+                    </Typography>
                   );
                 })}
               </div>

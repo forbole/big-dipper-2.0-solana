@@ -6,8 +6,7 @@ export const splitLogsToSteps = (logs: LogType[]) => {
 
   logs.forEach((x) => {
     const keywords = x.split(' ');
-
-    if (keywords.includes('invoke') && keywords.includes('[1]')) { // start of a new step
+    if (keywords.includes('invoke') && keywords.includes('[1]')) {
       if (currentStep.length) {
         results.push(currentStep);
         currentStep = [];

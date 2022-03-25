@@ -39,6 +39,22 @@ export const useStyles = () => {
           },
           '& .log__content': {
             flex: 1,
+            wordBreak: 'break-all',
+          },
+          '& .content:not(:last-child)': {
+            marginBottom: theme.spacing(1),
+          },
+          '& .content': {
+            color: theme.palette.custom.fonts.fontThree,
+          },
+          '& .content--title': {
+            color: theme.palette.custom.fonts.fontOne,
+          },
+          '& .content--invoke': {
+            color: theme.palette.custom.fonts.highlight,
+          },
+          '& .content--success': {
+            color: theme.palette.primary.main,
           },
         },
       });
