@@ -26,7 +26,7 @@ export const useTransactions = () => {
       return ({
         slot: x.slot,
         signature: x.signature,
-        success: !x.error,
+        success: x.success,
         timestamp: x.block.timestamp,
       });
     });

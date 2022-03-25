@@ -7,7 +7,7 @@ generates:
     documents:
       - './src/graphql/*.graphql'
       - '!./src/**/desmos_profile.graphql'
-    schema: http://139.162.80.50:8080/v1/graphql
+    schema: https://gql.solana.forbole.com/v1/graphql
     plugins:
       - "typescript"
       - "typescript-operations"

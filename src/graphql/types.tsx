@@ -803,7 +803,6 @@ export type Instruction = {
   index: Scalars['Int'];
   inner_index: Scalars['Int'];
   involved_accounts: Scalars['_text'];
-  partition_id: Scalars['Int'];
   program: Scalars['String'];
   raw_data: Scalars['String'];
   /** An object relationship */
@@ -869,14 +868,12 @@ export type Instruction_Avg_Fields = {
   __typename?: 'instruction_avg_fields';
   index?: Maybe<Scalars['Float']>;
   inner_index?: Maybe<Scalars['Float']>;
-  partition_id?: Maybe<Scalars['Float']>;
 };
 
 /** order by avg() on columns of table "instruction" */
 export type Instruction_Avg_Order_By = {
   index?: Maybe<Order_By>;
   inner_index?: Maybe<Order_By>;
-  partition_id?: Maybe<Order_By>;
 };
 
 /** Boolean expression to filter rows from the table "instruction". All fields are combined with a logical 'AND'. */
@@ -887,7 +884,6 @@ export type Instruction_Bool_Exp = {
   index?: Maybe<Int_Comparison_Exp>;
   inner_index?: Maybe<Int_Comparison_Exp>;
   involved_accounts?: Maybe<_Text_Comparison_Exp>;
-  partition_id?: Maybe<Int_Comparison_Exp>;
   program?: Maybe<String_Comparison_Exp>;
   raw_data?: Maybe<String_Comparison_Exp>;
   transaction?: Maybe<Transaction_Bool_Exp>;
@@ -901,7 +897,6 @@ export type Instruction_Max_Fields = {
   __typename?: 'instruction_max_fields';
   index?: Maybe<Scalars['Int']>;
   inner_index?: Maybe<Scalars['Int']>;
-  partition_id?: Maybe<Scalars['Int']>;
   program?: Maybe<Scalars['String']>;
   raw_data?: Maybe<Scalars['String']>;
   tx_signature?: Maybe<Scalars['String']>;
@@ -912,7 +907,6 @@ export type Instruction_Max_Fields = {
 export type Instruction_Max_Order_By = {
   index?: Maybe<Order_By>;
   inner_index?: Maybe<Order_By>;
-  partition_id?: Maybe<Order_By>;
   program?: Maybe<Order_By>;
   raw_data?: Maybe<Order_By>;
   tx_signature?: Maybe<Order_By>;
@@ -924,7 +918,6 @@ export type Instruction_Min_Fields = {
   __typename?: 'instruction_min_fields';
   index?: Maybe<Scalars['Int']>;
   inner_index?: Maybe<Scalars['Int']>;
-  partition_id?: Maybe<Scalars['Int']>;
   program?: Maybe<Scalars['String']>;
   raw_data?: Maybe<Scalars['String']>;
   tx_signature?: Maybe<Scalars['String']>;
@@ -935,7 +928,6 @@ export type Instruction_Min_Fields = {
 export type Instruction_Min_Order_By = {
   index?: Maybe<Order_By>;
   inner_index?: Maybe<Order_By>;
-  partition_id?: Maybe<Order_By>;
   program?: Maybe<Order_By>;
   raw_data?: Maybe<Order_By>;
   tx_signature?: Maybe<Order_By>;
@@ -947,7 +939,6 @@ export type Instruction_Order_By = {
   index?: Maybe<Order_By>;
   inner_index?: Maybe<Order_By>;
   involved_accounts?: Maybe<Order_By>;
-  partition_id?: Maybe<Order_By>;
   program?: Maybe<Order_By>;
   raw_data?: Maybe<Order_By>;
   transaction?: Maybe<Transaction_Order_By>;
@@ -965,8 +956,6 @@ export enum Instruction_Select_Column {
   /** column name */
   InvolvedAccounts = 'involved_accounts',
   /** column name */
-  PartitionId = 'partition_id',
-  /** column name */
   Program = 'program',
   /** column name */
   RawData = 'raw_data',
@@ -983,14 +972,12 @@ export type Instruction_Stddev_Fields = {
   __typename?: 'instruction_stddev_fields';
   index?: Maybe<Scalars['Float']>;
   inner_index?: Maybe<Scalars['Float']>;
-  partition_id?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev() on columns of table "instruction" */
 export type Instruction_Stddev_Order_By = {
   index?: Maybe<Order_By>;
   inner_index?: Maybe<Order_By>;
-  partition_id?: Maybe<Order_By>;
 };
 
 /** aggregate stddev_pop on columns */
@@ -998,14 +985,12 @@ export type Instruction_Stddev_Pop_Fields = {
   __typename?: 'instruction_stddev_pop_fields';
   index?: Maybe<Scalars['Float']>;
   inner_index?: Maybe<Scalars['Float']>;
-  partition_id?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev_pop() on columns of table "instruction" */
 export type Instruction_Stddev_Pop_Order_By = {
   index?: Maybe<Order_By>;
   inner_index?: Maybe<Order_By>;
-  partition_id?: Maybe<Order_By>;
 };
 
 /** aggregate stddev_samp on columns */
@@ -1013,14 +998,12 @@ export type Instruction_Stddev_Samp_Fields = {
   __typename?: 'instruction_stddev_samp_fields';
   index?: Maybe<Scalars['Float']>;
   inner_index?: Maybe<Scalars['Float']>;
-  partition_id?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev_samp() on columns of table "instruction" */
 export type Instruction_Stddev_Samp_Order_By = {
   index?: Maybe<Order_By>;
   inner_index?: Maybe<Order_By>;
-  partition_id?: Maybe<Order_By>;
 };
 
 /** aggregate sum on columns */
@@ -1028,14 +1011,12 @@ export type Instruction_Sum_Fields = {
   __typename?: 'instruction_sum_fields';
   index?: Maybe<Scalars['Int']>;
   inner_index?: Maybe<Scalars['Int']>;
-  partition_id?: Maybe<Scalars['Int']>;
 };
 
 /** order by sum() on columns of table "instruction" */
 export type Instruction_Sum_Order_By = {
   index?: Maybe<Order_By>;
   inner_index?: Maybe<Order_By>;
-  partition_id?: Maybe<Order_By>;
 };
 
 /** aggregate var_pop on columns */
@@ -1043,14 +1024,12 @@ export type Instruction_Var_Pop_Fields = {
   __typename?: 'instruction_var_pop_fields';
   index?: Maybe<Scalars['Float']>;
   inner_index?: Maybe<Scalars['Float']>;
-  partition_id?: Maybe<Scalars['Float']>;
 };
 
 /** order by var_pop() on columns of table "instruction" */
 export type Instruction_Var_Pop_Order_By = {
   index?: Maybe<Order_By>;
   inner_index?: Maybe<Order_By>;
-  partition_id?: Maybe<Order_By>;
 };
 
 /** aggregate var_samp on columns */
@@ -1058,14 +1037,12 @@ export type Instruction_Var_Samp_Fields = {
   __typename?: 'instruction_var_samp_fields';
   index?: Maybe<Scalars['Float']>;
   inner_index?: Maybe<Scalars['Float']>;
-  partition_id?: Maybe<Scalars['Float']>;
 };
 
 /** order by var_samp() on columns of table "instruction" */
 export type Instruction_Var_Samp_Order_By = {
   index?: Maybe<Order_By>;
   inner_index?: Maybe<Order_By>;
-  partition_id?: Maybe<Order_By>;
 };
 
 /** aggregate variance on columns */
@@ -1073,14 +1050,12 @@ export type Instruction_Variance_Fields = {
   __typename?: 'instruction_variance_fields';
   index?: Maybe<Scalars['Float']>;
   inner_index?: Maybe<Scalars['Float']>;
-  partition_id?: Maybe<Scalars['Float']>;
 };
 
 /** order by variance() on columns of table "instruction" */
 export type Instruction_Variance_Order_By = {
   index?: Maybe<Order_By>;
   inner_index?: Maybe<Order_By>;
-  partition_id?: Maybe<Order_By>;
 };
 
 export type Instructions_By_Address_Args = {
@@ -4368,6 +4343,7 @@ export type Token_Price = {
   timestamp: Scalars['timestamp'];
   /** An object relationship */
   token_unit?: Maybe<Token_Unit>;
+  volume: Scalars['float8'];
 };
 
 /** aggregated selection of "token_price" */
@@ -4405,6 +4381,7 @@ export type Token_Price_Avg_Fields = {
   __typename?: 'token_price_avg_fields';
   market_cap?: Maybe<Scalars['Float']>;
   price?: Maybe<Scalars['Float']>;
+  volume?: Maybe<Scalars['Float']>;
 };
 
 /** Boolean expression to filter rows from the table "token_price". All fields are combined with a logical 'AND'. */
@@ -4418,6 +4395,7 @@ export type Token_Price_Bool_Exp = {
   symbol?: Maybe<String_Comparison_Exp>;
   timestamp?: Maybe<Timestamp_Comparison_Exp>;
   token_unit?: Maybe<Token_Unit_Bool_Exp>;
+  volume?: Maybe<Float8_Comparison_Exp>;
 };
 
 /** columns and relationships of "token_price_history" */
@@ -4430,6 +4408,7 @@ export type Token_Price_History = {
   timestamp: Scalars['timestamp'];
   /** An object relationship */
   token_unit?: Maybe<Token_Unit>;
+  volume: Scalars['float8'];
 };
 
 /** aggregated selection of "token_price_history" */
@@ -4482,12 +4461,14 @@ export type Token_Price_History_Avg_Fields = {
   __typename?: 'token_price_history_avg_fields';
   market_cap?: Maybe<Scalars['Float']>;
   price?: Maybe<Scalars['Float']>;
+  volume?: Maybe<Scalars['Float']>;
 };
 
 /** order by avg() on columns of table "token_price_history" */
 export type Token_Price_History_Avg_Order_By = {
   market_cap?: Maybe<Order_By>;
   price?: Maybe<Order_By>;
+  volume?: Maybe<Order_By>;
 };
 
 /** Boolean expression to filter rows from the table "token_price_history". All fields are combined with a logical 'AND'. */
@@ -4501,6 +4482,7 @@ export type Token_Price_History_Bool_Exp = {
   symbol?: Maybe<String_Comparison_Exp>;
   timestamp?: Maybe<Timestamp_Comparison_Exp>;
   token_unit?: Maybe<Token_Unit_Bool_Exp>;
+  volume?: Maybe<Float8_Comparison_Exp>;
 };
 
 /** aggregate max on columns */
@@ -4511,6 +4493,7 @@ export type Token_Price_History_Max_Fields = {
   price?: Maybe<Scalars['numeric']>;
   symbol?: Maybe<Scalars['String']>;
   timestamp?: Maybe<Scalars['timestamp']>;
+  volume?: Maybe<Scalars['float8']>;
 };
 
 /** order by max() on columns of table "token_price_history" */
@@ -4520,6 +4503,7 @@ export type Token_Price_History_Max_Order_By = {
   price?: Maybe<Order_By>;
   symbol?: Maybe<Order_By>;
   timestamp?: Maybe<Order_By>;
+  volume?: Maybe<Order_By>;
 };
 
 /** aggregate min on columns */
@@ -4530,6 +4514,7 @@ export type Token_Price_History_Min_Fields = {
   price?: Maybe<Scalars['numeric']>;
   symbol?: Maybe<Scalars['String']>;
   timestamp?: Maybe<Scalars['timestamp']>;
+  volume?: Maybe<Scalars['float8']>;
 };
 
 /** order by min() on columns of table "token_price_history" */
@@ -4539,6 +4524,7 @@ export type Token_Price_History_Min_Order_By = {
   price?: Maybe<Order_By>;
   symbol?: Maybe<Order_By>;
   timestamp?: Maybe<Order_By>;
+  volume?: Maybe<Order_By>;
 };
 
 /** Ordering options when selecting data from "token_price_history". */
@@ -4549,6 +4535,7 @@ export type Token_Price_History_Order_By = {
   symbol?: Maybe<Order_By>;
   timestamp?: Maybe<Order_By>;
   token_unit?: Maybe<Token_Unit_Order_By>;
+  volume?: Maybe<Order_By>;
 };
 
 /** select columns of table "token_price_history" */
@@ -4562,7 +4549,9 @@ export enum Token_Price_History_Select_Column {
   /** column name */
   Symbol = 'symbol',
   /** column name */
-  Timestamp = 'timestamp'
+  Timestamp = 'timestamp',
+  /** column name */
+  Volume = 'volume'
 }
 
 /** aggregate stddev on columns */
@@ -4570,12 +4559,14 @@ export type Token_Price_History_Stddev_Fields = {
   __typename?: 'token_price_history_stddev_fields';
   market_cap?: Maybe<Scalars['Float']>;
   price?: Maybe<Scalars['Float']>;
+  volume?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev() on columns of table "token_price_history" */
 export type Token_Price_History_Stddev_Order_By = {
   market_cap?: Maybe<Order_By>;
   price?: Maybe<Order_By>;
+  volume?: Maybe<Order_By>;
 };
 
 /** aggregate stddev_pop on columns */
@@ -4583,12 +4574,14 @@ export type Token_Price_History_Stddev_Pop_Fields = {
   __typename?: 'token_price_history_stddev_pop_fields';
   market_cap?: Maybe<Scalars['Float']>;
   price?: Maybe<Scalars['Float']>;
+  volume?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev_pop() on columns of table "token_price_history" */
 export type Token_Price_History_Stddev_Pop_Order_By = {
   market_cap?: Maybe<Order_By>;
   price?: Maybe<Order_By>;
+  volume?: Maybe<Order_By>;
 };
 
 /** aggregate stddev_samp on columns */
@@ -4596,12 +4589,14 @@ export type Token_Price_History_Stddev_Samp_Fields = {
   __typename?: 'token_price_history_stddev_samp_fields';
   market_cap?: Maybe<Scalars['Float']>;
   price?: Maybe<Scalars['Float']>;
+  volume?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev_samp() on columns of table "token_price_history" */
 export type Token_Price_History_Stddev_Samp_Order_By = {
   market_cap?: Maybe<Order_By>;
   price?: Maybe<Order_By>;
+  volume?: Maybe<Order_By>;
 };
 
 /** aggregate sum on columns */
@@ -4609,12 +4604,14 @@ export type Token_Price_History_Sum_Fields = {
   __typename?: 'token_price_history_sum_fields';
   market_cap?: Maybe<Scalars['bigint']>;
   price?: Maybe<Scalars['numeric']>;
+  volume?: Maybe<Scalars['float8']>;
 };
 
 /** order by sum() on columns of table "token_price_history" */
 export type Token_Price_History_Sum_Order_By = {
   market_cap?: Maybe<Order_By>;
   price?: Maybe<Order_By>;
+  volume?: Maybe<Order_By>;
 };
 
 /** aggregate var_pop on columns */
@@ -4622,12 +4619,14 @@ export type Token_Price_History_Var_Pop_Fields = {
   __typename?: 'token_price_history_var_pop_fields';
   market_cap?: Maybe<Scalars['Float']>;
   price?: Maybe<Scalars['Float']>;
+  volume?: Maybe<Scalars['Float']>;
 };
 
 /** order by var_pop() on columns of table "token_price_history" */
 export type Token_Price_History_Var_Pop_Order_By = {
   market_cap?: Maybe<Order_By>;
   price?: Maybe<Order_By>;
+  volume?: Maybe<Order_By>;
 };
 
 /** aggregate var_samp on columns */
@@ -4635,12 +4634,14 @@ export type Token_Price_History_Var_Samp_Fields = {
   __typename?: 'token_price_history_var_samp_fields';
   market_cap?: Maybe<Scalars['Float']>;
   price?: Maybe<Scalars['Float']>;
+  volume?: Maybe<Scalars['Float']>;
 };
 
 /** order by var_samp() on columns of table "token_price_history" */
 export type Token_Price_History_Var_Samp_Order_By = {
   market_cap?: Maybe<Order_By>;
   price?: Maybe<Order_By>;
+  volume?: Maybe<Order_By>;
 };
 
 /** aggregate variance on columns */
@@ -4648,12 +4649,14 @@ export type Token_Price_History_Variance_Fields = {
   __typename?: 'token_price_history_variance_fields';
   market_cap?: Maybe<Scalars['Float']>;
   price?: Maybe<Scalars['Float']>;
+  volume?: Maybe<Scalars['Float']>;
 };
 
 /** order by variance() on columns of table "token_price_history" */
 export type Token_Price_History_Variance_Order_By = {
   market_cap?: Maybe<Order_By>;
   price?: Maybe<Order_By>;
+  volume?: Maybe<Order_By>;
 };
 
 /** aggregate max on columns */
@@ -4664,6 +4667,7 @@ export type Token_Price_Max_Fields = {
   price?: Maybe<Scalars['numeric']>;
   symbol?: Maybe<Scalars['String']>;
   timestamp?: Maybe<Scalars['timestamp']>;
+  volume?: Maybe<Scalars['float8']>;
 };
 
 /** aggregate min on columns */
@@ -4674,6 +4678,7 @@ export type Token_Price_Min_Fields = {
   price?: Maybe<Scalars['numeric']>;
   symbol?: Maybe<Scalars['String']>;
   timestamp?: Maybe<Scalars['timestamp']>;
+  volume?: Maybe<Scalars['float8']>;
 };
 
 /** Ordering options when selecting data from "token_price". */
@@ -4684,6 +4689,7 @@ export type Token_Price_Order_By = {
   symbol?: Maybe<Order_By>;
   timestamp?: Maybe<Order_By>;
   token_unit?: Maybe<Token_Unit_Order_By>;
+  volume?: Maybe<Order_By>;
 };
 
 /** select columns of table "token_price" */
@@ -4697,7 +4703,9 @@ export enum Token_Price_Select_Column {
   /** column name */
   Symbol = 'symbol',
   /** column name */
-  Timestamp = 'timestamp'
+  Timestamp = 'timestamp',
+  /** column name */
+  Volume = 'volume'
 }
 
 /** aggregate stddev on columns */
@@ -4705,6 +4713,7 @@ export type Token_Price_Stddev_Fields = {
   __typename?: 'token_price_stddev_fields';
   market_cap?: Maybe<Scalars['Float']>;
   price?: Maybe<Scalars['Float']>;
+  volume?: Maybe<Scalars['Float']>;
 };
 
 /** aggregate stddev_pop on columns */
@@ -4712,6 +4721,7 @@ export type Token_Price_Stddev_Pop_Fields = {
   __typename?: 'token_price_stddev_pop_fields';
   market_cap?: Maybe<Scalars['Float']>;
   price?: Maybe<Scalars['Float']>;
+  volume?: Maybe<Scalars['Float']>;
 };
 
 /** aggregate stddev_samp on columns */
@@ -4719,6 +4729,7 @@ export type Token_Price_Stddev_Samp_Fields = {
   __typename?: 'token_price_stddev_samp_fields';
   market_cap?: Maybe<Scalars['Float']>;
   price?: Maybe<Scalars['Float']>;
+  volume?: Maybe<Scalars['Float']>;
 };
 
 /** aggregate sum on columns */
@@ -4726,6 +4737,7 @@ export type Token_Price_Sum_Fields = {
   __typename?: 'token_price_sum_fields';
   market_cap?: Maybe<Scalars['bigint']>;
   price?: Maybe<Scalars['numeric']>;
+  volume?: Maybe<Scalars['float8']>;
 };
 
 /** aggregate var_pop on columns */
@@ -4733,6 +4745,7 @@ export type Token_Price_Var_Pop_Fields = {
   __typename?: 'token_price_var_pop_fields';
   market_cap?: Maybe<Scalars['Float']>;
   price?: Maybe<Scalars['Float']>;
+  volume?: Maybe<Scalars['Float']>;
 };
 
 /** aggregate var_samp on columns */
@@ -4740,6 +4753,7 @@ export type Token_Price_Var_Samp_Fields = {
   __typename?: 'token_price_var_samp_fields';
   market_cap?: Maybe<Scalars['Float']>;
   price?: Maybe<Scalars['Float']>;
+  volume?: Maybe<Scalars['Float']>;
 };
 
 /** aggregate variance on columns */
@@ -4747,6 +4761,7 @@ export type Token_Price_Variance_Fields = {
   __typename?: 'token_price_variance_fields';
   market_cap?: Maybe<Scalars['Float']>;
   price?: Maybe<Scalars['Float']>;
+  volume?: Maybe<Scalars['Float']>;
 };
 
 /** select columns of table "token" */
@@ -5058,7 +5073,6 @@ export type Transaction = {
   __typename?: 'transaction';
   /** An object relationship */
   block?: Maybe<Block>;
-  error: Scalars['Boolean'];
   fee: Scalars['Int'];
   /** An array relationship */
   instructions: Array<Instruction>;
@@ -5068,6 +5082,7 @@ export type Transaction = {
   num_instructions: Scalars['Int'];
   signature: Scalars['String'];
   slot: Scalars['bigint'];
+  success: Scalars['Boolean'];
 };
 
 
@@ -5156,13 +5171,13 @@ export type Transaction_Bool_Exp = {
   _not?: Maybe<Transaction_Bool_Exp>;
   _or?: Maybe<Array<Transaction_Bool_Exp>>;
   block?: Maybe<Block_Bool_Exp>;
-  error?: Maybe<Boolean_Comparison_Exp>;
   fee?: Maybe<Int_Comparison_Exp>;
   instructions?: Maybe<Instruction_Bool_Exp>;
   logs?: Maybe<_Text_Comparison_Exp>;
   num_instructions?: Maybe<Int_Comparison_Exp>;
   signature?: Maybe<String_Comparison_Exp>;
   slot?: Maybe<Bigint_Comparison_Exp>;
+  success?: Maybe<Boolean_Comparison_Exp>;
 };
 
 /** aggregate max on columns */
@@ -5202,19 +5217,17 @@ export type Transaction_Min_Order_By = {
 /** Ordering options when selecting data from "transaction". */
 export type Transaction_Order_By = {
   block?: Maybe<Block_Order_By>;
-  error?: Maybe<Order_By>;
   fee?: Maybe<Order_By>;
   instructions_aggregate?: Maybe<Instruction_Aggregate_Order_By>;
   logs?: Maybe<Order_By>;
   num_instructions?: Maybe<Order_By>;
   signature?: Maybe<Order_By>;
   slot?: Maybe<Order_By>;
+  success?: Maybe<Order_By>;
 };
 
 /** select columns of table "transaction" */
 export enum Transaction_Select_Column {
-  /** column name */
-  Error = 'error',
   /** column name */
   Fee = 'fee',
   /** column name */
@@ -5224,7 +5237,9 @@ export enum Transaction_Select_Column {
   /** column name */
   Signature = 'signature',
   /** column name */
-  Slot = 'slot'
+  Slot = 'slot',
+  /** column name */
+  Success = 'success'
 }
 
 /** aggregate stddev on columns */
@@ -6203,7 +6218,7 @@ export type BlockDetailsQuery = { block: Array<(
     )> }
   )>, transaction: Array<(
     { __typename?: 'transaction' }
-    & Pick<Transaction, 'slot' | 'signature' | 'error'>
+    & Pick<Transaction, 'slot' | 'signature' | 'success'>
     & { numInstructions: Transaction['num_instructions'] }
     & { block?: Maybe<(
       { __typename?: 'block' }
@@ -6358,7 +6373,7 @@ export type TransactionDetailsQueryVariables = Exact<{
 
 export type TransactionDetailsQuery = { transaction: Array<(
     { __typename?: 'transaction' }
-    & Pick<Transaction, 'slot' | 'error' | 'signature' | 'fee'>
+    & Pick<Transaction, 'slot' | 'success' | 'signature' | 'fee'>
     & { block?: Maybe<(
       { __typename?: 'block' }
       & Pick<Block, 'timestamp'>
@@ -6376,7 +6391,7 @@ export type TransactionsListenerSubscriptionVariables = Exact<{
 
 export type TransactionsListenerSubscription = { transactions: Array<(
     { __typename?: 'transaction' }
-    & Pick<Transaction, 'slot' | 'signature' | 'error'>
+    & Pick<Transaction, 'slot' | 'signature' | 'success'>
     & { numInstructions: Transaction['num_instructions'] }
     & { block?: Maybe<(
       { __typename?: 'block' }
@@ -6392,7 +6407,7 @@ export type TransactionsQueryVariables = Exact<{
 
 export type TransactionsQuery = { transactions: Array<(
     { __typename?: 'transaction' }
-    & Pick<Transaction, 'slot' | 'signature' | 'error'>
+    & Pick<Transaction, 'slot' | 'signature' | 'success'>
     & { numInstructions: Transaction['num_instructions'] }
     & { block?: Maybe<(
       { __typename?: 'block' }
@@ -6482,7 +6497,7 @@ export const BlockDetailsDocument = gql`
   transaction(where: {slot: {_eq: $height}}) {
     slot
     signature
-    error
+    success
     block {
       timestamp
     }
@@ -6937,7 +6952,7 @@ export const TransactionDetailsDocument = gql`
     query TransactionDetails($signature: String) {
   transaction(where: {signature: {_eq: $signature}}, limit: 1) {
     slot
-    error
+    success
     signature
     fee
     block {
@@ -6986,7 +7001,7 @@ export const TransactionsListenerDocument = gql`
   ) {
     slot
     signature
-    error
+    success
     block {
       timestamp
     }
@@ -7027,7 +7042,7 @@ export const TransactionsDocument = gql`
   ) {
     slot
     signature
-    error
+    success
     block {
       timestamp
     }

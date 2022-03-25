@@ -2,13 +2,15 @@ import { useState } from 'react';
 import * as R from 'ramda';
 import { useInterval } from '@hooks';
 import {
-  useTransactionsLazyQuery,
-  TransactionsQuery,
+  useBlocksLazyQuery,
+  BlocksQuery,
 } from '@graphql/types';
-import { TransactionsState } from './types';
+import {
+  BlocksState, BlockType,
+} from './types';
 
-export const useTransactions = () => {
-  const [state, setState] = useState<TransactionsState>({
+export const useBlocks = () => {
+  const [state, setState] = useState<BlocksState>({
     loading: true,
     exists: true,
     items: [],
@@ -19,10 +21,9 @@ export const useTransactions = () => {
   };
 
   // ================================
-  // tx query
+  // block query
   // ================================
-
-  const [getTransactions] = useTransactionsLazyQuery({
+  const [getBlocks] = useBlocksLazyQuery({
     variables: {
       limit: 25,
       offset: 0,
@@ -35,24 +36,24 @@ export const useTransactions = () => {
     onCompleted: (data) => {
       handleSetState({
         loading: false,
-        items: formatTransactions(data),
+        items: formatBlocks(data),
       });
     },
   });
 
-  const formatTransactions = (data: TransactionsQuery) => {
-    return data.transactions.map((x) => {
+  const formatBlocks = (data: BlocksQuery): BlockType[] => {
+    return data.blocks.map((x) => {
       return ({
         slot: x.slot,
-        signature: x.signature,
-        numInstructions: x.numInstructions,
-        success: x.success,
-        timestamp: x.block.timestamp,
+        txs: x.numTxs,
+        hash: x.hash,
+        timestamp: x.timestamp,
+        leader: R.pathOr('', ['validator', 0, 'address'], x),
       });
     });
   };
 
-  useInterval(getTransactions, 5000);
+  useInterval(getBlocks, 5000);
 
   return {
     state,

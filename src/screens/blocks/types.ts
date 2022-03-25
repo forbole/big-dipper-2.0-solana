@@ -9,8 +9,6 @@ export type BlockType = {
 export type BlocksState = {
   loading: boolean;
   exists: boolean;
-  hasNextPage: boolean;
-  isNextPageLoading: boolean;
   items: BlockType[];
 }
 

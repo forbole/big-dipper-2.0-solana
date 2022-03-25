@@ -2,7 +2,7 @@ subscription TransactionsListener($limit: Int = 7, $offset: Int = 0) {
   transactions: transaction(limit: $limit, offset: $offset, order_by: {slot: desc}) {
     slot
     signature
-    error
+    success
     block {
       timestamp
     }
@@ -15,7 +15,7 @@ query Transactions($limit: Int = 7, $offset: Int = 0) {
   transactions: transaction(limit: $limit, offset: $offset, order_by: {slot: desc}) {
     slot
     signature
-    error
+    success
     block {
       timestamp
     }
