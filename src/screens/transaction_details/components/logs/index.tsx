@@ -25,7 +25,28 @@ const Logs: React.FC<{ logs: LogType[] } & ComponentDefault> = (props) => {
                 {`#${numeral(i + 1).format('0,0')}`}
               </div>
               <div className="log__content">
-                content
+                {x.map((y, index) => {
+                  let content = null;
+                  if (index === 0) {
+                    content = (
+                      <div>
+                        title
+                      </div>
+                    );
+                  } else {
+                    content = (
+                      <div>
+                        content
+                      </div>
+                    );
+                  }
+
+                  return (
+                    <React.Fragment key={`content-${i}-${index}`}>
+                      {content}
+                    </React.Fragment>
+                  );
+                })}
               </div>
             </div>
           );
