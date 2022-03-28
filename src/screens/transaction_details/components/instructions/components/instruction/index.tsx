@@ -1,12 +1,14 @@
 import React from 'react';
 import { Typography } from '@material-ui/core';
 import { InstructionType } from '../../../../types';
-import { getParentInstructions } from './utils';
+import { formatInstructions } from './utils';
 import { useStyles } from './styles';
 import { useInstruction } from './hooks';
 
 const Instruction: React.FC<{instructions: InstructionType[]} & ComponentDefault> = (props) => {
-  const parent = getParentInstructions(props.instructions);
+  const formattedInstructions = formatInstructions(props.instructions);
+  // first item is always parent as we have sorted it already
+  const parent = props.instructions[0];
   const classes = useStyles();
   const {
     state,

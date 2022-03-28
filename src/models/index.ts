@@ -5,8 +5,10 @@ import MintParams from './mint_params';
 import GovParams from './gov_params';
 import DistributionParams from './distribution_params';
 // ================================
-// Transaction Message Types
+// Transaction Instruction Types
 // ================================
+import InstructionBase from './instructions/instruction_base';
+import InstructionUnknown from './instructions/instruction_unknown';
 
 export {
   BigDipperNetwork,
@@ -15,4 +17,9 @@ export {
   MintParams,
   GovParams,
   DistributionParams,
+};
+
+export {
+  InstructionBase,
+  InstructionUnknown,
 };
