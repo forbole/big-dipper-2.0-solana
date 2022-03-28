@@ -7,7 +7,6 @@ import DistributionParams from './distribution_params';
 // ================================
 // Transaction Message Types
 // ================================
-import MsgUnknown from './msg/msg_unknown';
 
 export {
   BigDipperNetwork,
@@ -16,8 +15,4 @@ export {
   MintParams,
   GovParams,
   DistributionParams,
-};
-
-export {
-  MsgUnknown,
 };
