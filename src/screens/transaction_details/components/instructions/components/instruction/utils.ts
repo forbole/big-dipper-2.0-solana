@@ -336,7 +336,7 @@ export const PROGRAM_INFO_BY_ID: ProgramInfoType = {
 };
 
 export const getProgramLabel = (address: string) => {
-  return R.pathOr(address, [address, 'name'], PROGRAM_INFO_BY_ID);
+  return R.pathOr('Unknown Program', [address, 'name'], PROGRAM_INFO_BY_ID);
 };
 
 export const formatInstructions = (instructions: InstructionType[]) => {

@@ -9,6 +9,7 @@ export const useStyles = () => {
           padding: theme.spacing(2),
           borderRadius: theme.spacing(0.5),
           marginBottom: theme.spacing(2),
+          overflow: 'auto',
           '&:last-child': {
             marginBottom: 0,
           },
