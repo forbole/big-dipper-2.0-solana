@@ -28,16 +28,16 @@ export const getModelByType = (
   return selectedModel ? selectedModel.model : MODELS.InstructionUnknown;
 };
 
-export const getProgramName = (program: string) => {
-  const PROGRAMS = {
-    '11111111111111111111111111111111': 'systemProgram',
-  };
-  return PROGRAMS[program] || program;
-};
+// export const getProgramName = (program: string) => {
+//   const PROGRAMS = {
+//     '11111111111111111111111111111111': 'systemProgram',
+//   };
+//   return PROGRAMS[program] || program;
+// };
 
-export const getTypeName = (type: string) => {
-  const TYPES = {
-    createAccount: 'createAccount',
-  };
-  return TYPES[type] || type;
-};
+// export const getTypeName = (type: string) => {
+//   const TYPES = {
+//     createAccount: 'createAccount',
+//   };
+//   return TYPES[type] || type;
+// };
