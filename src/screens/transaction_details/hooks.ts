@@ -12,6 +12,7 @@ import { formatToken } from '@utils/format_token';
 import {
   TransactionState,
 } from './types';
+import { FAKE_INSTRUCTIONS } from './fake';
 
 export const useTransactionDetails = () => {
   const router = useRouter();
@@ -30,6 +31,7 @@ export const useTransactionDetails = () => {
       signature: '',
       timestamp: '',
     },
+    instructions: FAKE_INSTRUCTIONS,
     logs: [],
   });
 
