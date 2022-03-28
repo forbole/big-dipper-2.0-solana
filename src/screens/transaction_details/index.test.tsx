@@ -34,28 +34,32 @@ jest.mock('@components', () => ({
 
 jest.mock('./components', () => ({
   Overview: (props) => <div id="Overview" {...props} />,
-  Messages: (props) => <div id="Messages" {...props} />,
+  Logs: (props) => <div id="Logs" {...props} />,
 }));
 
 const mockTransactionDetailsDocument = jest.fn().mockResolvedValue({
-  data: {
+  "data": {
     "transaction": [
       {
-        "slot": 112756074,
+        "slot": 126542151,
         "success": false,
-        "signature": "5oNqh9epbE8AmCqVUr2hb238dyoqBKninb8cyMwwqgTQ5dckAkSqaA3JVhHm8ZK7AjcFp2X1PwvSyVbYGdqBLYGm",
-        "fee": 5000,
+        "signature": "47vcSu9mH3mUPo5FRbv5dKkeDGCEV26H2V3GWSk25F8SrWwEFzcBvC9u1DpEJwx1k5apYF6uHL1Nv8PFZBZGzwzn",
+        "fee": 15000,
+        "logs": [
+          "Program 11111111111111111111111111111111 invoke [1]",
+          "Program 11111111111111111111111111111111 success",
+        ],
         "block": {
-          "timestamp": "2021-12-22T14:33:14"
+          "timestamp": "2022-03-25T02:30:13"
         },
         "messages": [
           {
-            "type": "vote"
+            "type": "createAccount"
           }
         ]
       }
     ]
-  },
+  }
 });
 
 // ==================================

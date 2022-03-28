@@ -27,7 +27,7 @@ export const useStyles = () => {
           },
           '& .detail': {
             '&.MuiTypography-body1': {
-              wordWrap: 'break-word',
+              wordBreak: 'break-all',
             },
           },
           [theme.breakpoints.up('md')]: {
@@ -35,6 +35,7 @@ export const useStyles = () => {
             alignItems: 'center',
             justifyContent: 'space-between',
             '& .label': {
+              marginRight: theme.spacing(2),
               marginBottom: 0,
             },
           },

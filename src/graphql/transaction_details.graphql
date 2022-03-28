@@ -4,6 +4,7 @@ query TransactionDetails($signature: String) {
     success
     signature
     fee
+    logs
     block {
       timestamp
     }

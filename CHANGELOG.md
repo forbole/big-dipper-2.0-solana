@@ -21,3 +21,4 @@
 - Add Stake Weight Component ([\#41](https://github.com/forbole/big-dipper-2.0-solana/issues/41))
 - Fix: update general chain config report issue url ([\#98](https://github.com/forbole/big-dipper-2.0-solana/issues/98))
 - Fix AvatarName if name === '""' or length is empty return address ([\#95](https://github.com/forbole/big-dipper-2.0-solana/issues/95))
+- Add tx details logs component
