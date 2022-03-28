@@ -24,9 +24,9 @@ const Logs: React.FC<{ logs: LogType[] } & ComponentDefault> = (props) => {
         {splitLogs.map((x, i) => {
           return (
             <div className="log" key={`log-${i}`}>
-              <div className="log__count">
+              <Typography className="log__count">
                 {`#${numeral(i + 1).format('0,0')}`}
-              </div>
+              </Typography>
               <div className="log__content">
                 {x.map((y, index) => {
                   let prefix = '';

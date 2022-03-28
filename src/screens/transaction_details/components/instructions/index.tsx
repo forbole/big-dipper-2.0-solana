@@ -19,7 +19,7 @@ const Instructions: React.FC<{ instructions: InstructionType[] } & ComponentDefa
       {formatInstructions.map((x) => {
         return (
           <React.Fragment key={x[0].index}>
-            <Instruction />
+            <Instruction instructions={x} />
           </React.Fragment>
         );
       })}

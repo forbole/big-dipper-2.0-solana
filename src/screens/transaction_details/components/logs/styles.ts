@@ -30,7 +30,7 @@ export const useStyles = () => {
           },
           '& .log__count': {
             background: theme.palette.divider,
-            width: theme.spacing(4),
+            padding: theme.spacing(0, 1.5),
             textAlign: 'center',
             borderRadius: theme.spacing(3),
             marginBottom: theme.spacing(2),
