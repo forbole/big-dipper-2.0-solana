@@ -3,7 +3,9 @@ import classnames from 'classnames';
 import numeral from 'numeral';
 import useTranslation from 'next-translate/useTranslation';
 import AutoSizer from 'react-virtualized-auto-sizer';
-import { VariableSizeGrid as Grid } from 'react-window';
+import {
+  VariableSizeGrid as Grid,
+} from 'react-window';
 import { Typography } from '@material-ui/core';
 import { useGrid } from '@hooks';
 import {
@@ -61,6 +63,10 @@ const Desktop: React.FC<{
       //   <Condition className={condition} />
       // ),
     });
+  });
+
+  gridRef.current.scrollToItem({
+    rowIndex: 1,
   });
 
   return (
