@@ -25,5 +25,19 @@ export const getModelByType = (
   models: ReturnModelType[],
 ) => (type: string): typeof MODELS.InstructionBase => {
   const [selectedModel] = models.filter((x) => x.type === type);
-  return selectedModel.model || MODELS.InstructionUnknown;
+  return selectedModel ? selectedModel.model : MODELS.InstructionUnknown;
+};
+
+export const getProgramName = (program: string) => {
+  const PROGRAMS = {
+    '11111111111111111111111111111111': 'systemProgram',
+  };
+  return PROGRAMS[program] || program;
+};
+
+export const getTypeName = (type: string) => {
+  const TYPES = {
+    createAccount: 'createAccount',
+  };
+  return TYPES[type] || type;
 };
