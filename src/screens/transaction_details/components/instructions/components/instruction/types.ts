@@ -5,7 +5,14 @@ export type InstructionState = {
   raw: boolean;
 }
 
-export type ReturnModelType = {
+export type ModelType = {
   type: string;
-  model: typeof InstructionBase;
+  model: typeof InstructionBase
+}
+
+export type ProgramInfoType = {
+  [address: string]: {
+    name: string;
+    types: ModelType[];
+  }
 }
