@@ -20,33 +20,24 @@ exports[`screen: Blocks/List matches snapshot 1`] = `
               "baseDenom": "udaric",
               "displayDenom": "daric",
               "exponent": 6,
-              "value": "0.005",
+              "value": "0.015",
             },
-            "signature": "5oNqh9epbE8AmCqVUr2hb238dyoqBKninb8cyMwwqgTQ5dckAkSqaA3JVhHm8ZK7AjcFp2X1PwvSyVbYGdqBLYGm",
-            "slot": 112756074,
+            "signature": "47vcSu9mH3mUPo5FRbv5dKkeDGCEV26H2V3GWSk25F8SrWwEFzcBvC9u1DpEJwx1k5apYF6uHL1Nv8PFZBZGzwzn",
+            "slot": 126542151,
             "success": false,
-            "timestamp": "2021-12-22T14:33:14",
+            "timestamp": "2022-03-25T02:30:13",
           }
         }
         id="Overview"
       />
       <div
-        className="makeStyles-messages"
-        id="Messages"
-        messages={
+        id="Logs"
+        logs={
           Array [
-            MsgUnknown {
-              "category": "others",
-              "json": Object {
-                "type": "vote",
-              },
-              "type": "",
-            },
+            "Program 11111111111111111111111111111111 invoke [1]",
+            "Program 11111111111111111111111111111111 success",
           ]
         }
-        onMessageFilterCallback={[Function]}
-        toggleMessageDisplay={[Function]}
-        viewRaw={false}
       />
     </span>
   </div>

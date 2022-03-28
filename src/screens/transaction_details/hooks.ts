@@ -7,7 +7,6 @@ import {
   useTransactionDetailsQuery,
   TransactionDetailsQuery,
 } from '@graphql/types';
-import { convertMsgsToModels } from '@msg';
 import { chainConfig } from '@configs';
 import { formatToken } from '@utils/format_token';
 import {
@@ -31,11 +30,7 @@ export const useTransactionDetails = () => {
       signature: '',
       timestamp: '',
     },
-    messages: {
-      filterBy: 'none',
-      viewRaw: false,
-      items: [],
-    },
+    logs: [],
   });
 
   const handleSetState = (stateChange: any) => {
@@ -94,47 +89,18 @@ export const useTransactionDetails = () => {
     stateChange.overview = formatOverview();
 
     // =============================
-    // messages
+    // logs
     // =============================
-    const formatMessages = () => {
-      const messages = convertMsgsToModels(data.transaction[0]);
-      return {
-        items: messages,
-      };
+    const formatLogs = () => {
+      return R.pathOr([], ['transaction', 0, 'logs'], data);
     };
-    stateChange.messages = formatMessages();
+
+    stateChange.logs = formatLogs();
+
     return stateChange;
-  };
-
-  const onMessageFilterCallback = (value: string) => {
-    handleSetState({
-      messages: {
-        filterBy: value,
-      },
-    });
-  };
-
-  const toggleMessageDisplay = (event: React.ChangeEvent<HTMLInputElement>) => {
-    handleSetState({
-      messages: {
-        viewRaw: event.target.checked,
-      },
-    });
-  };
-
-  const filterMessages = (messages: any[]) => {
-    return messages.filter((x) => {
-      if (state.messages.filterBy !== 'none') {
-        return x.category === state.messages.filterBy;
-      }
-      return true;
-    });
   };
 
   return {
     state,
-    onMessageFilterCallback,
-    toggleMessageDisplay,
-    filterMessages,
   };
 };

@@ -6,13 +6,11 @@ export type OverviewType = {
   timestamp: string;
 }
 
+export type LogType = string;
+
 export type TransactionState = {
   loading: boolean;
   exists: boolean;
   overview: OverviewType;
-  messages: {
-    filterBy: string;
-    viewRaw: boolean;
-    items: any[];
-  }
+  logs: LogType[];
 }
