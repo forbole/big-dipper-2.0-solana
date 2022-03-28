@@ -7,7 +7,13 @@ import {
   Secp256k1Program,
   Ed25519Program,
 } from '@solana/web3.js';
+import * as R from 'ramda';
 import * as MODELS from '@models';
+import { InstructionType } from '../../../../types';
+import {
+  ProgramInfoType,
+  ModelType,
+} from './types';
 
 export enum PROGRAM_NAMES {
   // native built-ins
@@ -77,18 +83,6 @@ export enum PROGRAM_NAMES {
   SWIM_SWAP = 'Swim Swap Program',
   SWITCHBOARD = 'Switchboard Oracle Program',
   WORMHOLE = 'Wormhole',
-}
-
-export type ModelType = {
-  type: string;
-  model: typeof MODELS.InstructionBase
-}
-
-export type ProgramInfoType = {
-  [address: string]: {
-    name: string;
-    types: ModelType[];
-  }
 }
 
 export const PROGRAM_INFO_BY_ID: ProgramInfoType = {
@@ -342,5 +336,24 @@ export const PROGRAM_INFO_BY_ID: ProgramInfoType = {
 };
 
 export const getProgramLabel = (address: string) => {
-  return PROGRAM_INFO_BY_ID[address].name || address;
+  return R.pathOr(address, [address, 'name'], PROGRAM_INFO_BY_ID);
+};
+
+export const formatInstructions = (instructions: InstructionType[]) => {
+  return instructions.map((x) => {
+    const models = getModelsByProgram(x.program);
+    const model = getModelByType(models)(x.type);
+    return model.fromJson(x);
+  });
+};
+
+export const getModelsByProgram = (address: string): ModelType[] => {
+  return R.pathOr([], [address, 'types'], PROGRAM_INFO_BY_ID);
+};
+
+export const getModelByType = (
+  models: ModelType[],
+) => (type: string): typeof MODELS.InstructionBase => {
+  const [selectedModel] = models.filter((x) => x.type === type);
+  return selectedModel ? selectedModel.model : MODELS.InstructionUnknown;
 };

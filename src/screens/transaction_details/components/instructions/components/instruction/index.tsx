@@ -1,11 +1,12 @@
 import React from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import { Typography } from '@material-ui/core';
+import { convertCamelToTitle } from '@utils/camel_to_title';
 import { InstructionType } from '../../../../types';
 import { useStyles } from './styles';
 import { useInstruction } from './hooks';
 import {
-  formatInstructions, getProgramName, getTypeName,
+  formatInstructions, getProgramLabel,
 } from './utils';
 
 const Instruction: React.FC<{instructions: InstructionType[]} & ComponentDefault> = (props) => {
@@ -19,8 +20,8 @@ const Instruction: React.FC<{instructions: InstructionType[]} & ComponentDefault
 
   const formattedInstructions = formatInstructions(props.instructions);
   const parent = formattedInstructions[0];
-  const programName = t(getProgramName(parent.program), {}, { fallback: parent.program });
-  const typeName = t(getTypeName(parent.type), {}, { fallback: parent.type });
+  const programName = getProgramLabel(parent.program);
+  const typeName = convertCamelToTitle(parent.type);
 
   return (
     <div className={classes.root}>
@@ -29,7 +30,7 @@ const Instruction: React.FC<{instructions: InstructionType[]} & ComponentDefault
           <Typography className="title__index">
             {`#${parent.index + 1}`}
           </Typography>
-          <div>{`${programName} (${typeName})`}</div>
+          <div>{`${programName}: ${typeName}`}</div>
         </div>
         <div>raw and hide</div>
       </div>
