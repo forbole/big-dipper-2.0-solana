@@ -64,6 +64,7 @@
     }
   ],
   "rules": {
+    "class-methods-use-this": "warn",
     "no-shadow": "warn",
     "react/destructuring-assignment": "off",
     "no-bitwise": "off",

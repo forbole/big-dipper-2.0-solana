@@ -18,6 +18,10 @@ class InstructionBase {
     this.json = payload.json;
   }
 
+  getDisplayData() {
+    console.log('set up abstract function here');
+  }
+
   static fromJson(json: any) {
     return new InstructionBase({
       type: R.pathOr('', ['type'], json),

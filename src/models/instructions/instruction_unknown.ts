@@ -1,6 +1,8 @@
 import InstructionBase from './instruction_base';
 
-class InstructionUnknown extends InstructionBase {}
+class InstructionUnknown extends InstructionBase {
+
+}
 
 // model to handle all unknown data
 // class InstructionUnknown {

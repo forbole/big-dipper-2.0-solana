@@ -14,6 +14,7 @@ import { useInstruction } from './hooks';
 import {
   formatInstructions, getProgramLabel,
 } from './utils';
+import { Parent } from './components';
 
 const Instruction: React.FC<{instructions: InstructionType[]} & ComponentDefault> = (props) => {
   const { t } = useTranslation('instructions');
@@ -59,7 +60,7 @@ const Instruction: React.FC<{instructions: InstructionType[]} & ComponentDefault
       </div>
       <Collapse in={state.hide}>
         <div>
-          Body
+          <Parent instruction={parent} />
         </div>
       </Collapse>
     </div>
