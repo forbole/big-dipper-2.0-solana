@@ -16,10 +16,10 @@
 - Add validator list ([\#52](https://github.com/forbole/big-dipper-2.0-solana/issues/52))
 - Fix graphql files after hasura update ([\#54](https://github.com/forbole/big-dipper-2.0-solana/issues/54))
 - Update proposer to leader and add leader name avatar in latest blocks (home) ([\#66](https://github.com/forbole/big-dipper-2.0-solana/issues/66))
-- Add: show number of validators in tabs title (validators page) ([\#68](https://github.com/forbole/big-dipper-2.0-solana/issues/68))
+- Add numbers of validators in tabs title (validators page) ([\#68](https://github.com/forbole/big-dipper-2.0-solana/issues/68))
 - Add tokens chart ([\#76](https://github.com/forbole/big-dipper-2.0-solana/issues/76))
 - Add Stake Weight Component ([\#41](https://github.com/forbole/big-dipper-2.0-solana/issues/41))
-- Fix: update general chain config report issue url ([\#98](https://github.com/forbole/big-dipper-2.0-solana/issues/98))
+- Update general chain config report issue url ([\#98](https://github.com/forbole/big-dipper-2.0-solana/issues/98))
 - Fix AvatarName if name === '""' or length is empty return address ([\#95](https://github.com/forbole/big-dipper-2.0-solana/issues/95))
 - Add tx details logs component
 - Fix tabs index behavior (validators page) ([\#69](https://github.com/forbole/big-dipper-2.0-solana/issues/69))
