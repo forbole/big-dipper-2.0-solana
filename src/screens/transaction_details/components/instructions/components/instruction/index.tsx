@@ -6,7 +6,7 @@ import {
   Button,
   Collapse,
 } from '@material-ui/core';
-import { KeyboardArrowUp } from '@material-ui/icons';
+import { KeyboardArrowDown } from '@material-ui/icons';
 import { convertCamelToTitle } from '@utils/camel_to_title';
 import { InstructionType } from '../../../../types';
 import { useStyles } from './styles';
@@ -49,7 +49,7 @@ const Instruction: React.FC<{instructions: InstructionType[]} & ComponentDefault
           >
             {t('raw')}
           </Button>
-          <KeyboardArrowUp
+          <KeyboardArrowDown
             className={classnames('title__actions-display', {
               'title__actions-display--hide': state.hide,
               'title__actions-display--show': !state.hide,
@@ -58,7 +58,7 @@ const Instruction: React.FC<{instructions: InstructionType[]} & ComponentDefault
           />
         </div>
       </div>
-      <Collapse in={state.hide}>
+      <Collapse in={!state.hide}>
         <div>
           <Parent instruction={parent} />
         </div>
