@@ -5,5 +5,6 @@
   "newAccount": "New Account",
   "lamports": "Lamports",
   "space": "Space",
-  "owner": "Owner"
+  "owner": "Owner",
+  "innerInstructions": "Inner Instructions"
 }

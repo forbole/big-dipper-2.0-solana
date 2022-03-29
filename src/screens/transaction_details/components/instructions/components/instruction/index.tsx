@@ -13,7 +13,10 @@ import { InstructionType } from '../../../../types';
 import { useStyles } from './styles';
 import { useInstruction } from './hooks';
 import { formatInstructions } from './utils';
-import { DisplayInstruction } from './components';
+import {
+  DisplayInstruction,
+  InnerInstruction,
+} from './components';
 
 const Instruction: React.FC<{instructions: InstructionType[]} & ComponentDefault> = (props) => {
   const { t } = useTranslation('instructions');
@@ -27,6 +30,8 @@ const Instruction: React.FC<{instructions: InstructionType[]} & ComponentDefault
   const formattedInstructions = formatInstructions(props.instructions);
   const parent = formattedInstructions[0];
   const typeName = convertCamelToTitle(parent.data.type);
+
+  const innerInstructions = formattedInstructions.filter((x) => x.data.innerIndex !== 0);
 
   return (
     <div className={classes.root}>
@@ -61,10 +66,19 @@ const Instruction: React.FC<{instructions: InstructionType[]} & ComponentDefault
         <div className={classes.parent}>
           <Divider className="parent__divider" />
           <DisplayInstruction instruction={parent} raw={state.raw} />
-          {formattedInstructions.length > 1 && (
+          {!!innerInstructions.length && (
             <div>
               <Divider className="parent__divider" />
-              inner instructions
+              <Typography className="parent__label">
+                {t('innerInstructions')}
+              </Typography>
+              <div>
+                {innerInstructions.map((x) => {
+                  return (
+                    <InnerInstruction key={x.data.innerIndex} info={x} />
+                  );
+                })}
+              </div>
             </div>
           )}
         </div>

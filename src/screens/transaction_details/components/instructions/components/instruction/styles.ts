@@ -74,6 +74,9 @@ export const useStyles = () => {
           '& .parent__divider': {
             margin: theme.spacing(2, 0),
           },
+          '& .parent__label': {
+            marginBottom: theme.spacing(2),
+          },
         },
       });
     }, { index: 1 },
