@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import classnames from 'classnames';
 import numeral from 'numeral';
 import useTranslation from 'next-translate/useTranslation';
@@ -14,6 +14,7 @@ import {
 import { useStyles } from './styles';
 import { fetchColumns } from './utils';
 import { ItemType } from '../../types';
+import { useDesktop } from './hooks';
 // import {
 //   Condition, SkipRate,
 // } from '..';
@@ -35,7 +36,6 @@ const Desktop: React.FC<{
     onResize,
     getColumnWidth,
     getRowHeight,
-    resetToTop,
   } = useGrid(columns);
 
   const formattedItems = props.items.map((x, i) => {
@@ -64,9 +64,7 @@ const Desktop: React.FC<{
     });
   });
 
-  useEffect(() => {
-    resetToTop();
-  }, [props]);
+  useDesktop();
 
   return (
     <div className={classnames(props.className, classes.root)}>

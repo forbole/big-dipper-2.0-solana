@@ -23,8 +23,9 @@ export const useList = () => {
   };
 
   const resetToTop = () => {
-    // this reset list to the first row when click a new tab
+    // this reset list to the first row
     if (listRef.current != null) {
+      console.log('in the resetToTop function');
       listRef.current.scrollToItem(0);
     }
   };
@@ -82,7 +83,7 @@ export const useGrid = (columns: {
   };
 
   const resetToTop = () => {
-    // this reset grid to the first row when click a new tab
+    // this reset grid to the first row
     if (gridRef.current != null) {
       gridRef.current.scrollToItem({
         rowIndex: 0,
@@ -98,4 +99,26 @@ export const useGrid = (columns: {
     getRowHeight,
     resetToTop,
   };
+};
+
+export const resetToTopDesktop = () => {
+  console.log('resetToTopDesktop function in use_react_windows');
+  const resetDesktop = () => {
+    const gridRef:any = createRef();
+    if (gridRef.current != null) {
+      gridRef.current.scrollToItem({
+        rowIndex: 0,
+      });
+    }
+  };
+  return {
+    resetDesktop,
+  };
+};
+
+export const resetToTopMobile = () => {
+  const listRef:any = useRef();
+  if (listRef.current != null) {
+    listRef.current.scrollToItem(0);
+  }
 };

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import classnames from 'classnames';
 import numeral from 'numeral';
 import { VariableSizeList as List } from 'react-window';
@@ -15,6 +15,7 @@ import { SingleValidator } from './component';
 //   Condition, SkipRate,
 // } from '..';
 import { ItemType } from '../../types';
+import { useMobile } from './hooks';
 
 const Mobile: React.FC<{
   className?: string;
@@ -26,7 +27,6 @@ const Mobile: React.FC<{
     listRef,
     getRowHeight,
     setRowHeight,
-    resetToTop,
   } = useList();
 
   const formattedItems = items.map((x, i) => {
@@ -55,9 +55,7 @@ const Mobile: React.FC<{
     });
   });
 
-  useEffect(() => {
-    resetToTop();
-  }, [items]);
+  useMobile();
 
   return (
     <div className={classnames(className)}>
