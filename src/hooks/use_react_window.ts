@@ -102,7 +102,6 @@ export const useGrid = (columns: {
 };
 
 export const resetToTopDesktop = () => {
-  console.log('resetToTopDesktop function in use_react_windows');
   const resetDesktop = () => {
     const gridRef:any = createRef();
     if (gridRef.current != null) {
@@ -114,11 +113,4 @@ export const resetToTopDesktop = () => {
   return {
     resetDesktop,
   };
-};
-
-export const resetToTopMobile = () => {
-  const listRef:any = useRef();
-  if (listRef.current != null) {
-    listRef.current.scrollToItem(0);
-  }
 };
