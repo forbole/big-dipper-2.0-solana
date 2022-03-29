@@ -45,7 +45,7 @@ export const useStyles = () => {
             transform: 'rotate(0)',
           },
           '& .title__actions-display--show': {
-            transform: 'rotate(180deg)',
+            transform: 'rotate(-180deg)',
           },
         },
       });
