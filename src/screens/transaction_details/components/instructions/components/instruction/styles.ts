@@ -47,6 +47,25 @@ export const useStyles = () => {
           '& .title__actions-display--show': {
             transform: 'rotate(-180deg)',
           },
+          [theme.breakpoints.up('lg')]: {
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            '& .title__content': {
+              flexDirection: 'row',
+              marginBottom: 0,
+            },
+            '& .title__index': {
+              marginBottom: 0,
+              marginRight: theme.spacing(2),
+            },
+            '& .title__actions': {
+              justifyContent: 'flex-start',
+            },
+            '& .title__actions-display': {
+              marginLeft: theme.spacing(2),
+            },
+          },
         },
       });
     }, { index: 1 },

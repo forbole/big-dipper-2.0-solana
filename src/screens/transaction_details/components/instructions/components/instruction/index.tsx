@@ -41,6 +41,7 @@ const Instruction: React.FC<{instructions: InstructionType[]} & ComponentDefault
         </div>
         <div className="title__actions">
           <Button
+            disableElevation
             size="small"
             variant="outlined"
             onClick={toggleRaw}
