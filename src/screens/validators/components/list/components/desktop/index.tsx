@@ -65,10 +65,6 @@ const Desktop: React.FC<{
     });
   });
 
-  gridRef.current.scrollToItem({
-    rowIndex: 1,
-  });
-
   return (
     <div className={classnames(props.className, classes.root)}>
       <AutoSizer onResize={onResize}>
