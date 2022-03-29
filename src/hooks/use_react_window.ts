@@ -77,7 +77,7 @@ export const useGrid = (columns: {
     // this reset to grid to the first row when click a new tab
     if (gridRef.current != null) {
       gridRef.current.scrollToItem({
-        columnIndex: 1,
+        rowIndex: 0,
       });
     }
   };

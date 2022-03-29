@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import classnames from 'classnames';
 import numeral from 'numeral';
 import useTranslation from 'next-translate/useTranslation';
@@ -37,6 +37,7 @@ const Desktop: React.FC<{
     onResize,
     getColumnWidth,
     getRowHeight,
+    resetToTop,
   } = useGrid(columns);
 
   const formattedItems = props.items.map((x, i) => {
@@ -64,6 +65,10 @@ const Desktop: React.FC<{
       // ),
     });
   });
+
+  useEffect(() => {
+    resetToTop();
+  }, [props]);
 
   return (
     <div className={classnames(props.className, classes.root)}>
