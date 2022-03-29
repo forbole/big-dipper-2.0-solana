@@ -8,8 +8,8 @@ import * as R from 'ramda';
 // reusable hook helpers for react window list components
 
 export const useList = () => {
-  const listRef = useRef({});
-  const rowHeights = useRef({});
+  const listRef:any = useRef();
+  const rowHeights:any = useRef({});
 
   const getRowHeight = (index) => {
     return rowHeights.current[index] + 16 || 100;
@@ -22,11 +22,19 @@ export const useList = () => {
     };
   };
 
+  const resetToTop = () => {
+    // this reset list to the first row when click a new tab
+    if (listRef.current != null) {
+      listRef.current.scrollToItem(0);
+    }
+  };
+
   return {
     listRef,
     rowHeights,
     getRowHeight,
     setRowHeight,
+    resetToTop,
   };
 };
 
@@ -74,7 +82,7 @@ export const useGrid = (columns: {
   };
 
   const resetToTop = () => {
-    // this reset to grid to the first row when click a new tab
+    // this reset grid to the first row when click a new tab
     if (gridRef.current != null) {
       gridRef.current.scrollToItem({
         rowIndex: 0,
