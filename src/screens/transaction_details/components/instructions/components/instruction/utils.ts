@@ -12,8 +12,10 @@ import * as MODELS from '@models';
 import { InstructionType } from '../../../../types';
 import {
   ProgramInfoType,
-  ModelType,
+  ProgramInfoModelType,
+  FormattedInstructionType,
 } from './types';
+import * as COMPONENTS from './components';
 
 export enum PROGRAM_NAMES {
   // native built-ins
@@ -335,25 +337,61 @@ export const PROGRAM_INFO_BY_ID: ProgramInfoType = {
   },
 };
 
-export const getProgramLabel = (address: string) => {
-  return R.pathOr('Unknown Program', [address, 'name'], PROGRAM_INFO_BY_ID);
-};
+// ================================================================
+// HELPERS
+// ================================================================
 
-export const formatInstructions = (instructions: InstructionType[]) => {
+/**
+ * Takes an array of instructions and converts them in to the
+ * correct classes, labels, and components
+ * @param instructions
+ * @returns
+ */
+export const formatInstructions = (instructions: InstructionType[]): FormattedInstructionType[] => {
   return instructions.map((x) => {
     const models = getModelsByProgram(x.program);
-    const model = getModelByType(models)(x.type);
-    return model.fromJson(x);
+    const modelInfo = getModelInfoByType(models)(x.type);
+    return {
+      label: getProgramLabel(x.type),
+      data: modelInfo.model.fromJson(x),
+      component: modelInfo.component,
+    };
   });
 };
 
-export const getModelsByProgram = (address: string): ModelType[] => {
+/**
+ * Returns a list of possible types by program address
+ * @param address
+ * @returns
+ */
+export const getModelsByProgram = (address: string): ProgramInfoModelType[] => {
   return R.pathOr([], [address, 'types'], PROGRAM_INFO_BY_ID);
 };
 
-export const getModelByType = (
-  models: ModelType[],
-) => (type: string): typeof MODELS.InstructionBase => {
+/**
+ * Returns the appropriate model and component based on instruction
+ * type. Defaults to JSON and UNKNOWN model if it has not been parsed by the
+ * ui
+ * @param models
+ * @returns
+ */
+export const getModelInfoByType = (
+  models: ProgramInfoModelType[],
+) => (type: string) => {
   const [selectedModel] = models.filter((x) => x.type === type);
-  return selectedModel ? selectedModel.model : MODELS.InstructionUnknown;
+  const model = selectedModel ? selectedModel.model : MODELS.InstructionUnknown;
+  const component = selectedModel ? selectedModel.component : COMPONENTS.Json;
+  return {
+    model,
+    component,
+  };
+};
+
+/**
+ * Returns the program label
+ * @param address
+ * @returns
+ */
+export const getProgramLabel = (address: string) => {
+  return R.pathOr('Unknown Program', [address, 'name'], PROGRAM_INFO_BY_ID);
 };

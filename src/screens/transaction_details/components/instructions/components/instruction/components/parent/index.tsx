@@ -1,7 +1,7 @@
 import React from 'react';
-import { InstructionBase } from '@models';
+import { FormattedInstructionType } from '../../types';
 
-const Parent: React.FC<{instruction: InstructionBase} & ComponentDefault> = (props) => {
+const Parent: React.FC<{instruction: FormattedInstructionType} & ComponentDefault> = (props) => {
   console.log(props, 'props');
   return (
     <div>

@@ -11,9 +11,7 @@ import { convertCamelToTitle } from '@utils/camel_to_title';
 import { InstructionType } from '../../../../types';
 import { useStyles } from './styles';
 import { useInstruction } from './hooks';
-import {
-  formatInstructions, getProgramLabel,
-} from './utils';
+import { formatInstructions } from './utils';
 import { Parent } from './components';
 
 const Instruction: React.FC<{instructions: InstructionType[]} & ComponentDefault> = (props) => {
@@ -27,17 +25,17 @@ const Instruction: React.FC<{instructions: InstructionType[]} & ComponentDefault
 
   const formattedInstructions = formatInstructions(props.instructions);
   const parent = formattedInstructions[0];
-  const programName = getProgramLabel(parent.program);
-  const typeName = convertCamelToTitle(parent.type);
+  const typeName = convertCamelToTitle(parent.data.type);
+
   return (
     <div className={classes.root}>
       <div className={classes.title}>
         <div className="title__content">
           <Typography className="title__index">
-            {`#${parent.index + 1}`}
+            {`#${parent.data.index + 1}`}
           </Typography>
           <Typography>
-            {`${programName}: ${typeName}`}
+            {`${parent.label}: ${typeName}`}
           </Typography>
         </div>
         <div className="title__actions">

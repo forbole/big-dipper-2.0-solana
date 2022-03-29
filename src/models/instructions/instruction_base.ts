@@ -19,7 +19,7 @@ class InstructionBase {
   }
 
   getDisplayData() {
-    console.log('set up abstract function here');
+    return this.json;
   }
 
   static fromJson(json: any) {
