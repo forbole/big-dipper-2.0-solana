@@ -52,7 +52,7 @@ export const useGrid = (columns: {
   align?: 'left' | 'center' | 'right' | 'justify' | 'inherit';
   width: number;
 }[]) => {
-  const gridRef = createRef();
+  const gridRef:any = createRef();
   const columnRef = createRef();
 
   const onResize = () => {
@@ -73,11 +73,21 @@ export const useGrid = (columns: {
     return 50;
   };
 
+  const resetToTop = () => {
+    // this reset to grid to the first row when click a new tab
+    if (gridRef.current != null) {
+      gridRef.current.scrollToItem({
+        columnIndex: 1,
+      });
+    }
+  };
+
   return {
     gridRef,
     columnRef,
     onResize,
     getColumnWidth,
     getRowHeight,
+    resetToTop,
   };
 };
