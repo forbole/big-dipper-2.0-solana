@@ -5,6 +5,7 @@ import {
   Typography,
   Button,
   Collapse,
+  Divider,
 } from '@material-ui/core';
 import { KeyboardArrowDown } from '@material-ui/icons';
 import { convertCamelToTitle } from '@utils/camel_to_title';
@@ -58,7 +59,14 @@ const Instruction: React.FC<{instructions: InstructionType[]} & ComponentDefault
       </div>
       <Collapse in={!state.hide}>
         <div className={classes.parent}>
+          <Divider className="parent__divider" />
           <DisplayInstruction instruction={parent} raw={state.raw} />
+          {formattedInstructions.length > 1 && (
+            <div>
+              <Divider className="parent__divider" />
+              inner instructions
+            </div>
+          )}
         </div>
       </Collapse>
     </div>

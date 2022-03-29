@@ -71,7 +71,9 @@ export const useStyles = () => {
           },
         },
         parent: {
-          paddingTop: theme.spacing(2),
+          '& .parent__divider': {
+            margin: theme.spacing(2, 0),
+          },
         },
       });
     }, { index: 1 },
