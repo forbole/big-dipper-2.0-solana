@@ -5,7 +5,6 @@ import useTranslation from 'next-translate/useTranslation';
 import { useRecoilValue } from 'recoil';
 import { readTx } from '@recoil/settings';
 import {
-  TransactionListDetails,
   TransactionsList,
   Box,
 } from '@components';
@@ -31,27 +30,15 @@ const Transactions: React.FC<{
         {t('transactions')}
       </Typography>
       <div className={classes.list}>
-        {txListFormat === 'compact' ? (
-          <TransactionsList
-            transactions={props.data}
-            itemCount={itemCount}
-            hasNextPage={props.hasNextPage}
-            isNextPageLoading={props.isNextPageLoading}
-            loadNextPage={props.loadNextPage}
-            loadMoreItems={loadMoreItems}
-            isItemLoaded={isItemLoaded}
-          />
-        ) : (
-          <TransactionListDetails
-            transactions={props.data}
-            itemCount={itemCount}
-            hasNextPage={props.hasNextPage}
-            isNextPageLoading={props.isNextPageLoading}
-            loadNextPage={props.loadNextPage}
-            loadMoreItems={loadMoreItems}
-            isItemLoaded={isItemLoaded}
-          />
-        )}
+        <TransactionsList
+          transactions={props.data}
+          itemCount={itemCount}
+          hasNextPage={props.hasNextPage}
+          isNextPageLoading={props.isNextPageLoading}
+          loadNextPage={props.loadNextPage}
+          loadMoreItems={loadMoreItems}
+          isItemLoaded={isItemLoaded}
+        />
       </div>
     </Box>
   );

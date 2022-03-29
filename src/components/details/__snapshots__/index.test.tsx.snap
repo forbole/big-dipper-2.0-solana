@@ -2,10 +2,10 @@
 
 exports[`components: BoxDetails matches snapshot 1`] = `
 <div
-  className="makeStyles-root makeStyles-root"
+  className="makeStyles-root"
 >
   <div
-    className="makeStyles-header makeStyles-item"
+    className="makeStyles-item"
   >
     <h2
       className="MuiTypography-root MuiTypography-h2"
@@ -46,10 +46,10 @@ exports[`components: BoxDetails matches snapshot 1`] = `
 
 exports[`components: BoxDetails matches snapshot with title actions 1`] = `
 <div
-  className="makeStyles-root makeStyles-root"
+  className="makeStyles-root"
 >
   <div
-    className="makeStyles-header makeStyles-item"
+    className="makeStyles-item"
   >
     <h2
       className="MuiTypography-root MuiTypography-h2"

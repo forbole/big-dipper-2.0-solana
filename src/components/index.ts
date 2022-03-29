@@ -23,7 +23,6 @@ import SingleTransactionMobile from './single_transaction_mobile';
 import InfoPopover from './info_popover';
 import ConditionExplanation from './condition_explanation';
 import TransactionsList from './transactions_list';
-import TransactionListDetails from './transactions_list_details';
 import TransactionMessagesFilter from './transaction_messages_filter';
 import Markdown from './markdown';
 import DesmosProfile from './desmos_profile';
@@ -55,7 +54,6 @@ export {
   InfoPopover,
   ConditionExplanation,
   TransactionsList,
-  TransactionListDetails,
   TransactionMessagesFilter,
   Markdown,
   DesmosProfile,

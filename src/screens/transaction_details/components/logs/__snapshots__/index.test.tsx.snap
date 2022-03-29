@@ -16,11 +16,11 @@ exports[`screen: BlockDetails/Logs matches snapshot 1`] = `
     <div
       className="log"
     >
-      <div
-        className="log__count"
+      <p
+        className="MuiTypography-root log__count MuiTypography-body1"
       >
         #1
-      </div>
+      </p>
       <div
         className="log__content"
       >
@@ -49,11 +49,11 @@ exports[`screen: BlockDetails/Logs matches snapshot 1`] = `
     <div
       className="log"
     >
-      <div
-        className="log__count"
+      <p
+        className="MuiTypography-root log__count MuiTypography-body1"
       >
         #2
-      </div>
+      </p>
       <div
         className="log__content"
       >
@@ -102,11 +102,11 @@ exports[`screen: BlockDetails/Logs matches snapshot 1`] = `
     <div
       className="log"
     >
-      <div
-        className="log__count"
+      <p
+        className="MuiTypography-root log__count MuiTypography-body1"
       >
         #3
-      </div>
+      </p>
       <div
         className="log__content"
       >
@@ -155,11 +155,11 @@ exports[`screen: BlockDetails/Logs matches snapshot 1`] = `
     <div
       className="log"
     >
-      <div
-        className="log__count"
+      <p
+        className="MuiTypography-root log__count MuiTypography-body1"
       >
         #4
-      </div>
+      </p>
       <div
         className="log__content"
       >
@@ -338,11 +338,11 @@ exports[`screen: BlockDetails/Logs matches snapshot 1`] = `
     <div
       className="log"
     >
-      <div
-        className="log__count"
+      <p
+        className="MuiTypography-root log__count MuiTypography-body1"
       >
         #5
-      </div>
+      </p>
       <div
         className="log__content"
       >
@@ -391,11 +391,11 @@ exports[`screen: BlockDetails/Logs matches snapshot 1`] = `
     <div
       className="log"
     >
-      <div
-        className="log__count"
+      <p
+        className="MuiTypography-root log__count MuiTypography-body1"
       >
         #6
-      </div>
+      </p>
       <div
         className="log__content"
       >
