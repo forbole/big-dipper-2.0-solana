@@ -17,10 +17,14 @@ export const useStyles = () => {
         title: {
           display: 'flex',
           flexDirection: 'column',
+          '& .MuiTypography-body1': {
+            wordBreak: 'break-all',
+          },
           '& .title__content': {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'flex-start',
+            marginBottom: theme.spacing(2),
           },
           '& .title__index': {
             padding: theme.spacing(0, 1.5),
@@ -28,6 +32,20 @@ export const useStyles = () => {
             background: theme.palette.divider,
             borderRadius: theme.spacing(3),
             marginBottom: theme.spacing(2),
+          },
+          '& .title__actions': {
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+          },
+          '& .title__actions-display': {
+            transition: 'all 0.3s ease-in-out',
+          },
+          '& .title__actions-display--hide': {
+            transform: 'rotate(0)',
+          },
+          '& .title__actions-display--show': {
+            transform: 'rotate(180deg)',
           },
         },
       });

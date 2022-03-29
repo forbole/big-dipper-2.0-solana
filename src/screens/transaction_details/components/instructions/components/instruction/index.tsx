@@ -1,6 +1,12 @@
 import React from 'react';
+import classnames from 'classnames';
 import useTranslation from 'next-translate/useTranslation';
-import { Typography } from '@material-ui/core';
+import {
+  Typography,
+  Button,
+  Collapse,
+} from '@material-ui/core';
+import { KeyboardArrowDown } from '@material-ui/icons';
 import { convertCamelToTitle } from '@utils/camel_to_title';
 import { InstructionType } from '../../../../types';
 import { useStyles } from './styles';
@@ -22,7 +28,6 @@ const Instruction: React.FC<{instructions: InstructionType[]} & ComponentDefault
   const parent = formattedInstructions[0];
   const programName = getProgramLabel(parent.program);
   const typeName = convertCamelToTitle(parent.type);
-
   return (
     <div className={classes.root}>
       <div className={classes.title}>
@@ -30,11 +35,32 @@ const Instruction: React.FC<{instructions: InstructionType[]} & ComponentDefault
           <Typography className="title__index">
             {`#${parent.index + 1}`}
           </Typography>
-          <div>{`${programName}: ${typeName}`}</div>
+          <Typography>
+            {`${programName}: ${typeName}`}
+          </Typography>
         </div>
-        <div>raw and hide</div>
+        <div className="title__actions">
+          <Button
+            size="small"
+            variant="outlined"
+            onClick={toggleRaw}
+          >
+            {t('raw')}
+          </Button>
+          <KeyboardArrowDown
+            className={classnames('title__actions-display', {
+              'title__actions-display--hide': state.hide,
+              'title__actions-display--show': !state.hide,
+            })}
+            onClick={toggleHide}
+          />
+        </div>
       </div>
-      <div>body</div>
+      <Collapse in={state.hide}>
+        <div>
+          Body
+        </div>
+      </Collapse>
     </div>
   );
 };
