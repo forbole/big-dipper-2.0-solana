@@ -67,7 +67,7 @@ export const useValidators = () => {
           stake,
           chainConfig.primaryTokenUnit,
         ).value).value(),
-        stakePercent: status ? stakePercent : 0, // ryuash
+        stakePercent: status ? stakePercent : 0,
         lastVote: R.pathOr(0, ['validatorStatus', 'lastVote'], x),
         status,
       });

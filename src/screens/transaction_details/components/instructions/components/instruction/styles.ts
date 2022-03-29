@@ -41,6 +41,9 @@ export const useStyles = () => {
           '& .title__actions-display': {
             transition: 'all 0.3s ease-in-out',
           },
+          '& .title__actions-display:hover': {
+            cursor: 'pointer',
+          },
           '& .title__actions-display--hide': {
             transform: 'rotate(0)',
           },
@@ -66,6 +69,9 @@ export const useStyles = () => {
               marginLeft: theme.spacing(2),
             },
           },
+        },
+        parent: {
+          paddingTop: theme.spacing(2),
         },
       });
     }, { index: 1 },

@@ -1,3 +1,9 @@
 {
-  "raw": "Raw"
+  "raw": "Raw",
+  "program": "Program",
+  "source": "Source",
+  "newAccount": "New Account",
+  "lamports": "Lamports",
+  "space": "Space",
+  "owner": "Owner"
 }

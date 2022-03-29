@@ -10,7 +10,9 @@ import { Instruction } from './components';
 const Instructions: React.FC<{ instructions: InstructionType[] } & ComponentDefault> = (props) => {
   const classes = useStyles();
   const { t } = useTranslation('transactions');
+
   const formatInstructions = batchInstructions(props.instructions);
+
   return (
     <Box className={classes.root}>
       <Typography variant="h2">

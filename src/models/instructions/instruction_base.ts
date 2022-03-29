@@ -18,12 +18,8 @@ class InstructionBase {
     this.json = payload.json;
   }
 
-  getDisplayData() {
-    return this.json;
-  }
-
-  static fromJson(json: any) {
-    return new InstructionBase({
+  static defaultFormat(json: any) {
+    return ({
       type: R.pathOr('', ['type'], json),
       program: R.pathOr('', ['program'], json),
       rawData: R.pathOr('', ['raw_data'], json),
@@ -31,6 +27,11 @@ class InstructionBase {
       innerIndex: R.pathOr('', ['innerIndex'], json),
       json,
     });
+  }
+
+  static fromJson(json: any) {
+    const defaultItems = this.defaultFormat(json);
+    return new InstructionBase(defaultItems);
   }
 }
 

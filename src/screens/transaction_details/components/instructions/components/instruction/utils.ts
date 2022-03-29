@@ -103,7 +103,13 @@ export const PROGRAM_INFO_BY_ID: ProgramInfoType = {
   },
   [SystemProgram.programId.toBase58()]: {
     name: PROGRAM_NAMES.SYSTEM,
-    types: [],
+    types: [
+      {
+        type: 'createAccount',
+        model: MODELS.InstructionCreateAccount,
+        component: COMPONENTS.CreateAccount,
+      },
+    ],
   },
   [VOTE_PROGRAM_ID.toBase58()]: {
     name: PROGRAM_NAMES.VOTE,
@@ -352,7 +358,7 @@ export const formatInstructions = (instructions: InstructionType[]): FormattedIn
     const models = getModelsByProgram(x.program);
     const modelInfo = getModelInfoByType(models)(x.type);
     return {
-      label: getProgramLabel(x.type),
+      label: getProgramLabel(x.program),
       data: modelInfo.model.fromJson(x),
       component: modelInfo.component,
     };
@@ -378,7 +384,7 @@ export const getModelsByProgram = (address: string): ProgramInfoModelType[] => {
 export const getModelInfoByType = (
   models: ProgramInfoModelType[],
 ) => (type: string) => {
-  const [selectedModel] = models.filter((x) => x.type === type);
+  const [selectedModel] = models.filter((x) => x.type.toLowerCase() === type.toLowerCase());
   const model = selectedModel ? selectedModel.model : MODELS.InstructionUnknown;
   const component = selectedModel ? selectedModel.component : COMPONENTS.Json;
   return {
@@ -392,6 +398,6 @@ export const getModelInfoByType = (
  * @param address
  * @returns
  */
-export const getProgramLabel = (address: string) => {
-  return R.pathOr('Unknown Program', [address, 'name'], PROGRAM_INFO_BY_ID);
+export const getProgramLabel = (address: string, fallback = 'Unknown Program') => {
+  return R.pathOr(fallback, [address, 'name'], PROGRAM_INFO_BY_ID);
 };

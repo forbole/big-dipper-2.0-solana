@@ -4,11 +4,15 @@ import SlashingParams from './slashing_params';
 import MintParams from './mint_params';
 import GovParams from './gov_params';
 import DistributionParams from './distribution_params';
+
 // ================================
 // Transaction Instruction Types
 // ================================
 import InstructionBase from './instructions/instruction_base';
 import InstructionUnknown from './instructions/instruction_unknown';
+
+// system program
+import InstructionCreateAccount from './instructions/system/create_account';
 
 export {
   BigDipperNetwork,
@@ -22,4 +26,6 @@ export {
 export {
   InstructionBase,
   InstructionUnknown,
+  // system
+  InstructionCreateAccount,
 };
