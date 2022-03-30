@@ -24,11 +24,32 @@ export const useStyles = () => {
             background: theme.palette.divider,
             borderRadius: theme.spacing(3),
           },
-          '& .header__content--mobile': {
+          '& .header__content': {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
             marginBottom: theme.spacing(1),
+          },
+          '& .header__label--desktop': {
+            display: 'none',
+            [theme.breakpoints.up('lg')]: {
+              display: 'block',
+            },
+          },
+          '& .header__label--mobile': {
+            display: 'block',
+            [theme.breakpoints.up('lg')]: {
+              display: 'none',
+            },
+          },
+          [theme.breakpoints.up('lg')]: {
+            '& .header__flex': {
+              display: 'flex',
+              alignItems: 'center',
+            },
+            '& .header__index': {
+              marginRight: theme.spacing(2),
+            },
           },
         },
       });

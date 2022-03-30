@@ -8,6 +8,7 @@ import useTranslation from 'next-translate/useTranslation';
 import { useStyles } from './styles';
 import { FormattedInstructionType } from '../../types';
 import { useInnerInstruction } from './hooks';
+import { DisplayInstruction } from '..';
 
 const InnerInstruction: React.FC<{
   info: FormattedInstructionType;
@@ -25,10 +26,15 @@ const InnerInstruction: React.FC<{
   return (
     <div className={classes.root}>
       <div className={classes.header}>
-        <div className="header__content--mobile">
-          <Typography className="header__index">
-            {`#${props.info.data.index + 1}.${props.info.data.innerIndex}`}
-          </Typography>
+        <div className="header__content">
+          <div className="header__flex">
+            <Typography className="header__index">
+              {`#${props.info.data.index + 1}.${props.info.data.innerIndex}`}
+            </Typography>
+            <Typography className="header__label--desktop">
+              {label}
+            </Typography>
+          </div>
           <Button
             disableElevation
             size="small"
@@ -38,13 +44,14 @@ const InnerInstruction: React.FC<{
             {t('raw')}
           </Button>
         </div>
-        <Typography>
+        <Typography className="header__label--mobile">
           {label}
         </Typography>
       </div>
-      <div>
-        Instruction
-      </div>
+      <DisplayInstruction
+        instruction={props.info}
+        raw={state.raw || props.parentRaw}
+      />
     </div>
   );
 };
