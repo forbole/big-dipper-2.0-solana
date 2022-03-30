@@ -197,7 +197,7 @@ exports[`screen: BlockDetails/Logs matches snapshot 1`] = `
           className="MuiTypography-root content content--success MuiTypography-body1"
           style={
             Object {
-              "marginLeft": 8,
+              "marginLeft": 16,
             }
           }
         >
@@ -227,7 +227,7 @@ exports[`screen: BlockDetails/Logs matches snapshot 1`] = `
           className="MuiTypography-root content content--success MuiTypography-body1"
           style={
             Object {
-              "marginLeft": 8,
+              "marginLeft": 16,
             }
           }
         >
@@ -257,7 +257,7 @@ exports[`screen: BlockDetails/Logs matches snapshot 1`] = `
           className="MuiTypography-root content content--success MuiTypography-body1"
           style={
             Object {
-              "marginLeft": 8,
+              "marginLeft": 16,
             }
           }
         >
@@ -287,7 +287,7 @@ exports[`screen: BlockDetails/Logs matches snapshot 1`] = `
           className="MuiTypography-root content content--log MuiTypography-body1"
           style={
             Object {
-              "marginLeft": 8,
+              "marginLeft": 16,
             }
           }
         >
@@ -297,7 +297,7 @@ exports[`screen: BlockDetails/Logs matches snapshot 1`] = `
           className="MuiTypography-root content MuiTypography-body1"
           style={
             Object {
-              "marginLeft": 8,
+              "marginLeft": 16,
             }
           }
         >
@@ -307,7 +307,7 @@ exports[`screen: BlockDetails/Logs matches snapshot 1`] = `
           className="MuiTypography-root content content--success MuiTypography-body1"
           style={
             Object {
-              "marginLeft": 8,
+              "marginLeft": 16,
             }
           }
         >
@@ -433,7 +433,7 @@ exports[`screen: BlockDetails/Logs matches snapshot 1`] = `
           className="MuiTypography-root content content--success MuiTypography-body1"
           style={
             Object {
-              "marginLeft": 8,
+              "marginLeft": 16,
             }
           }
         >
