@@ -9,6 +9,7 @@ import { useStyles } from './styles';
 import {
   Overview,
   Logs,
+  Instructions,
 } from './components';
 import { useTransactionDetails } from './hooks';
 
@@ -34,6 +35,7 @@ const TransactionDetails = () => {
             <Overview
               data={state.overview}
             />
+            <Instructions instructions={state.instructions} />
             <Logs logs={state.logs} />
           </span>
         </LoadAndExist>

@@ -2,10 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 import { Typography } from '@material-ui/core';
 import useTranslation from 'next-translate/useTranslation';
-import { useRecoilValue } from 'recoil';
-import { readTx } from '@recoil/settings';
 import {
-  TransactionListDetails,
   TransactionsList,
   Box,
 } from '@components';
@@ -18,7 +15,6 @@ const Transactions: React.FC<{
   hasNextPage: boolean;
   isNextPageLoading: boolean;
 }> = (props) => {
-  const txListFormat = useRecoilValue(readTx);
   const classes = useStyles();
   const { t } = useTranslation('transactions');
   const loadMoreItems = props.isNextPageLoading ? () => null : props.loadNextPage;
@@ -31,27 +27,15 @@ const Transactions: React.FC<{
         {t('transactions')}
       </Typography>
       <div className={classes.list}>
-        {txListFormat === 'compact' ? (
-          <TransactionsList
-            transactions={props.data}
-            itemCount={itemCount}
-            hasNextPage={props.hasNextPage}
-            isNextPageLoading={props.isNextPageLoading}
-            loadNextPage={props.loadNextPage}
-            loadMoreItems={loadMoreItems}
-            isItemLoaded={isItemLoaded}
-          />
-        ) : (
-          <TransactionListDetails
-            transactions={props.data}
-            itemCount={itemCount}
-            hasNextPage={props.hasNextPage}
-            isNextPageLoading={props.isNextPageLoading}
-            loadNextPage={props.loadNextPage}
-            loadMoreItems={loadMoreItems}
-            isItemLoaded={isItemLoaded}
-          />
-        )}
+        <TransactionsList
+          transactions={props.data}
+          itemCount={itemCount}
+          hasNextPage={props.hasNextPage}
+          isNextPageLoading={props.isNextPageLoading}
+          loadNextPage={props.loadNextPage}
+          loadMoreItems={loadMoreItems}
+          isItemLoaded={isItemLoaded}
+        />
       </div>
     </Box>
   );

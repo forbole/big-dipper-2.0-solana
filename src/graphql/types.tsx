@@ -6377,9 +6377,10 @@ export type TransactionDetailsQuery = { transaction: Array<(
     & { block?: Maybe<(
       { __typename?: 'block' }
       & Pick<Block, 'timestamp'>
-    )>, messages: Array<(
+    )>, instructions: Array<(
       { __typename?: 'instruction' }
-      & Pick<Instruction, 'type'>
+      & Pick<Instruction, 'type' | 'index' | 'program' | 'value'>
+      & { innerIndex: Instruction['inner_index'], rawData: Instruction['raw_data'] }
     )> }
   )> };
 
@@ -6959,8 +6960,13 @@ export const TransactionDetailsDocument = gql`
     block {
       timestamp
     }
-    messages: instructions {
+    instructions(order_by: {index: asc}) {
       type
+      index
+      innerIndex: inner_index
+      program
+      value
+      rawData: raw_data
     }
   }
 }

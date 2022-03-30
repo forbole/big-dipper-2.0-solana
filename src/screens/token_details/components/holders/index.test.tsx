@@ -11,7 +11,6 @@ import Transactions from '.';
 // ==================================
 jest.mock('@components', () => ({
   Box: (props) => <div id="Box" {...props} />,
-  TransactionListDetails: (props) => <div id="TransactionListDetails" {...props} />,
   TransactionsList: (props) => <div id="TransactionsList" {...props} />,
 }));
 
