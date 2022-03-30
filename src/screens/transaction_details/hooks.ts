@@ -64,7 +64,7 @@ export const useTransactionDetails = () => {
     const stateChange: any = {
       loading: false,
     };
-    console.log(data, 'data');
+
     if (!data.transaction.length) {
       stateChange.exists = false;
       return stateChange;
