@@ -75,7 +75,11 @@ const Instruction: React.FC<{instructions: InstructionType[]} & ComponentDefault
               <div>
                 {innerInstructions.map((x) => {
                   return (
-                    <InnerInstruction key={x.data.innerIndex} info={x} />
+                    <InnerInstruction
+                      key={x.data.innerIndex}
+                      info={x}
+                      parentRaw={state.raw}
+                    />
                   );
                 })}
               </div>

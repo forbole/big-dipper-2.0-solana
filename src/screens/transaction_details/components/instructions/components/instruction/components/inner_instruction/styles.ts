@@ -14,6 +14,23 @@ export const useStyles = () => {
             marginBottom: 0,
           },
         },
+        header: {
+          '& .MuiTypography-body1': {
+            wordBreak: 'break-all',
+          },
+          '& .header__index': {
+            padding: theme.spacing(0, 1.5),
+            textAlign: 'center',
+            background: theme.palette.divider,
+            borderRadius: theme.spacing(3),
+          },
+          '& .header__content--mobile': {
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            marginBottom: theme.spacing(1),
+          },
+        },
       });
     }, { index: 1 },
   )();
