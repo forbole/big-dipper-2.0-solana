@@ -35,26 +35,50 @@ jest.mock('@components', () => ({
 jest.mock('./components', () => ({
   Overview: (props) => <div id="Overview" {...props} />,
   Logs: (props) => <div id="Logs" {...props} />,
+  Instructions: (props) => <div id="Instructions" {...props} />,
 }));
 
 const mockTransactionDetailsDocument = jest.fn().mockResolvedValue({
   "data": {
     "transaction": [
       {
-        "slot": 126542151,
-        "success": false,
-        "signature": "47vcSu9mH3mUPo5FRbv5dKkeDGCEV26H2V3GWSk25F8SrWwEFzcBvC9u1DpEJwx1k5apYF6uHL1Nv8PFZBZGzwzn",
-        "fee": 15000,
+        "slot": 127369547,
+        "success": true,
+        "signature": "2Rmxi1EouXEDtWWL525SiNXATTsyhcWzGak8tWnnhur8u6Zw68befaFHTMxy7avdP96gabsfjpEKJ5su9owyec7r",
+        "fee": 10000,
         "logs": [
-          "Program 11111111111111111111111111111111 invoke [1]",
-          "Program 11111111111111111111111111111111 success",
+          "Program Memo1UhkJRfHyvLMcVucJwxXeuD728EqVDDwQDxFMNo invoke [1]",
+          "Program Memo1UhkJRfHyvLMcVucJwxXeuD728EqVDDwQDxFMNo consumed 374 of 200000 compute units",
+          "Program Memo1UhkJRfHyvLMcVucJwxXeuD728EqVDDwQDxFMNo success",
+          "Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA invoke [1]",
+          "Program log: Instruction: Transfer",
+          "Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA consumed 2842 of 200000 compute units",
+          "Program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA success"
         ],
         "block": {
-          "timestamp": "2022-03-25T02:30:13"
+          "timestamp": "2022-03-30T08:02:15"
         },
-        "messages": [
+        "instructions": [
           {
-            "type": "createAccount"
+            "type": "unknown",
+            "index": 0,
+            "innerIndex": 0,
+            "program": "Memo1UhkJRfHyvLMcVucJwxXeuD728EqVDDwQDxFMNo",
+            "value": null,
+            "rawData": "TTfFhc6NAqmBD2SBbgyxRC1oxAhBvXXU8eoGEjL6abFPpNd26V9AbT2cKG9r"
+          },
+          {
+            "type": "transfer",
+            "index": 1,
+            "innerIndex": 0,
+            "program": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+            "value": {
+              "source": "7uCywL8j7jhN8YoFvpSyPZrKbYELkkQAYRZuumzSUyAS",
+              "destination": "Bo6qknJzJKZwG6P51SL9fF7ewYy9k7TtjPKaVxpheoiA",
+              "amount": "100000",
+              "authority": "31vSgwrQ6AGpCamqAeTfs3JJ77pycnwUj1yixJ77exU9"
+            },
+            "rawData": "3gJqkocMWaMm"
           }
         ]
       }

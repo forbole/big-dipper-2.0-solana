@@ -13,6 +13,9 @@ export const useStyles = () => {
           '&:last-child': {
             marginBottom: 0,
           },
+          '& .divider': {
+            margin: theme.spacing(2, 0),
+          },
         },
         header: {
           '& .MuiTypography-body1': {

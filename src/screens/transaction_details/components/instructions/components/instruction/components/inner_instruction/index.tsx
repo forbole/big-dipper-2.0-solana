@@ -2,6 +2,7 @@ import React from 'react';
 import {
   Typography,
   Button,
+  Divider,
 } from '@material-ui/core';
 import { convertCamelToTitle } from '@utils/camel_to_title';
 import useTranslation from 'next-translate/useTranslation';
@@ -48,6 +49,7 @@ const InnerInstruction: React.FC<{
           {label}
         </Typography>
       </div>
+      <Divider className="divider" />
       <DisplayInstruction
         instruction={props.info}
         raw={state.raw || props.parentRaw}

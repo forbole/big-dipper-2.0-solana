@@ -13,6 +13,7 @@ import InstructionUnknown from './instructions/instruction_unknown';
 
 // system program
 import InstructionCreateAccount from './instructions/system/create_account';
+import InstructionTransfer from './instructions/system/transfer';
 
 export {
   BigDipperNetwork,
@@ -28,4 +29,5 @@ export {
   InstructionUnknown,
   // system
   InstructionCreateAccount,
+  InstructionTransfer,
 };

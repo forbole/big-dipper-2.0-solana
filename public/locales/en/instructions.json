@@ -6,5 +6,6 @@
   "lamports": "Lamports",
   "space": "Space",
   "owner": "Owner",
-  "innerInstructions": "Inner Instructions"
+  "innerInstructions": "Inner Instructions",
+  "destination": "Destination"
 }

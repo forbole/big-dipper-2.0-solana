@@ -6,8 +6,6 @@ import {
   TransactionsList,
   Box,
 } from '@components';
-import { useRecoilValue } from 'recoil';
-import { readTx } from '@recoil/settings';
 import { useStyles } from './styles';
 
 const Transactions: React.FC<{
@@ -17,7 +15,6 @@ const Transactions: React.FC<{
   hasNextPage: boolean;
   isNextPageLoading: boolean;
 }> = (props) => {
-  const txListFormat = useRecoilValue(readTx);
   const classes = useStyles();
   const { t } = useTranslation('validators');
   const loadMoreItems = props.isNextPageLoading ? () => null : props.loadNextPage;

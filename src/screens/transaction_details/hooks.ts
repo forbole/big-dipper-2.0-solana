@@ -12,7 +12,6 @@ import { formatToken } from '@utils/format_token';
 import {
   TransactionState,
 } from './types';
-import { FAKE_INSTRUCTIONS } from './fake';
 
 export const useTransactionDetails = () => {
   const router = useRouter();
@@ -31,7 +30,7 @@ export const useTransactionDetails = () => {
       signature: '',
       timestamp: '',
     },
-    instructions: FAKE_INSTRUCTIONS,
+    instructions: [],
     logs: [],
   });
 
@@ -65,7 +64,7 @@ export const useTransactionDetails = () => {
     const stateChange: any = {
       loading: false,
     };
-
+    console.log(data, 'data');
     if (!data.transaction.length) {
       stateChange.exists = false;
       return stateChange;
@@ -99,6 +98,10 @@ export const useTransactionDetails = () => {
 
     stateChange.logs = formatLogs();
 
+    // =============================
+    // instructions
+    // =============================
+    stateChange.instructions = R.pathOr([], ['transaction', 0, 'instructions'], data);
     return stateChange;
   };
 

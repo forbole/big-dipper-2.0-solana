@@ -109,6 +109,11 @@ export const PROGRAM_INFO_BY_ID: ProgramInfoType = {
         model: MODELS.InstructionCreateAccount,
         component: COMPONENTS.CreateAccount,
       },
+      {
+        type: 'transfer',
+        model: MODELS.InstructionTransfer,
+        component: COMPONENTS.Transfer,
+      },
     ],
   },
   [VOTE_PROGRAM_ID.toBase58()]: {

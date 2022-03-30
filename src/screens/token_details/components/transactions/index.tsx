@@ -2,8 +2,6 @@ import React from 'react';
 import classnames from 'classnames';
 import { Typography } from '@material-ui/core';
 import useTranslation from 'next-translate/useTranslation';
-import { useRecoilValue } from 'recoil';
-import { readTx } from '@recoil/settings';
 import {
   TransactionsList,
   Box,
@@ -17,7 +15,6 @@ const Transactions: React.FC<{
   hasNextPage: boolean;
   isNextPageLoading: boolean;
 }> = (props) => {
-  const txListFormat = useRecoilValue(readTx);
   const classes = useStyles();
   const { t } = useTranslation('transactions');
   const loadMoreItems = props.isNextPageLoading ? () => null : props.loadNextPage;
