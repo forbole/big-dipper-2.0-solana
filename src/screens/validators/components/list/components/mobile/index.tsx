@@ -56,7 +56,7 @@ const Mobile: React.FC<{
     });
   });
 
-  useMobile(tab);
+  useMobile(tab, listRef);
 
   return (
     <div className={classnames(className)}>

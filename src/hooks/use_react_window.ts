@@ -22,22 +22,11 @@ export const useList = () => {
     };
   };
 
-  const resetToTop = () => {
-    // this reset list to the first row
-    console.log('run resetToTop mobile');
-    console.log('listRef.current', listRef.current); // undefined
-    if (listRef.current != null) {
-      console.log('in the resetToTop function');
-      listRef.current.scrollToItem(0);
-    }
-  };
-
   return {
     listRef,
     rowHeights,
     getRowHeight,
     setRowHeight,
-    resetToTop,
   };
 };
 
@@ -84,37 +73,31 @@ export const useGrid = (columns: {
     return 50;
   };
 
-  // const resetToTop = () => {
-  //   // this reset grid to the first row
-  //   if (gridRef.current != null) {
-  //     gridRef.current.scrollToItem({
-  //       rowIndex: 0,
-  //     });
-  //   }
-  // };
-
   return {
     gridRef,
     columnRef,
     onResize,
     getColumnWidth,
     getRowHeight,
-    // resetToTop,
   };
 };
 
-export const resetToTopDesktop = () => {
-  console.log('run resetToTop desktop');
-  const resetDesktop = () => {
-    const gridRef:any = createRef();
-    console.log('gridRef.current', gridRef.current); // undefined
+export const resetToTop = () => {
+  const resetDesktop = (gridRef) => {
     if (gridRef.current != null) {
       gridRef.current.scrollToItem({
         rowIndex: 0,
       });
     }
   };
+  const resetMobile = (listRef) => {
+    if (listRef.current != null) {
+      listRef.current.scrollToItem(0);
+    }
+  };
+
   return {
     resetDesktop,
+    resetMobile,
   };
 };

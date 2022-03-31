@@ -65,7 +65,7 @@ const Desktop: React.FC<{
     });
   });
 
-  useDesktop(props.tab);
+  useDesktop(props.tab, gridRef);
 
   return (
     <div className={classnames(props.className, classes.root)}>
