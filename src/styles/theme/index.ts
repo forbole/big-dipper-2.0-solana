@@ -122,6 +122,7 @@ export const common: ThemeOptions = {
         background: '#0A0A0A', // same as background default
         surfaceOne: '#131316', // same as background paper
         surfaceTwo: '#19191D', // striped tables
+        surfaceThree: '#232327', // instructions
         icon: '#999999',
       },
       fonts: {

@@ -24,9 +24,9 @@ const Logs: React.FC<{ logs: LogType[] } & ComponentDefault> = (props) => {
         {splitLogs.map((x, i) => {
           return (
             <div className="log" key={`log-${i}`}>
-              <div className="log__count">
+              <Typography className="log__count">
                 {`#${numeral(i + 1).format('0,0')}`}
-              </div>
+              </Typography>
               <div className="log__content">
                 {x.map((y, index) => {
                   let prefix = '';
@@ -41,12 +41,12 @@ const Logs: React.FC<{ logs: LogType[] } & ComponentDefault> = (props) => {
                       className={classnames('content', {
                         'content--title': index === 0,
                         'content--log': y.value.includes('Program log'),
-                        'content--invoke': index !== 0 && y.value.includes('invoke'),
+                        'content--invoke': index !== 0 && y.value.includes('invoke') && !y.value.includes('Program log'),
                         'content--success': y.value.includes('success'),
                         'content--error': y.value.includes('error'),
                       })}
                       style={{
-                        marginLeft: theme.spacing(y.indent),
+                        marginLeft: theme.spacing(y.indent * 2),
                       }}
                     >
                       {`${prefix} ${y.value}`}

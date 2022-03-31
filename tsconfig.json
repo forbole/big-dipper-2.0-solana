@@ -27,9 +27,6 @@
       "@components": [
         "src/components"
       ],
-      "@msg": [
-        "src/components/msg"
-      ],
       "@icons": [
         "src/components/icons"
       ],
@@ -71,12 +68,6 @@
       ],
       "@graphql/types": [
         "src/graphql/types"
-      ],
-      "@graphql/queries": [
-        "src/graphql/queries"
-      ],
-      "@graphql/mutations": [
-        "src/graphql/mutations"
       ],
       "@tests/utils": [
         "tests/utils"

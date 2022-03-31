@@ -8,8 +8,13 @@ query TransactionDetails($signature: String) {
     block {
       timestamp
     }
-    messages: instructions {
+    instructions(order_by: {index: asc}) {
       type
+      index
+      innerIndex: inner_index
+      program
+      value
+      rawData: raw_data
     }
   }
 }

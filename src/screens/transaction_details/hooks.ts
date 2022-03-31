@@ -30,6 +30,7 @@ export const useTransactionDetails = () => {
       signature: '',
       timestamp: '',
     },
+    instructions: [],
     logs: [],
   });
 
@@ -97,6 +98,10 @@ export const useTransactionDetails = () => {
 
     stateChange.logs = formatLogs();
 
+    // =============================
+    // instructions
+    // =============================
+    stateChange.instructions = R.pathOr([], ['transaction', 0, 'instructions'], data);
     return stateChange;
   };
 

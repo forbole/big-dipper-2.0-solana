@@ -21,7 +21,7 @@ export const formatLogs = (logs: LogType[]): {value: string, indent: number}[][]
       indent,
     });
 
-    if (keywords.includes('invoke')) {
+    if (keywords.includes('invoke') && !current.includes('Program log')) {
       indent = Big(R.pathOr('0', [1], keywords[keywords.length - 1])).minus(1).toNumber();
     }
 
