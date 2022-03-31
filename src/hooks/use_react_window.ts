@@ -24,6 +24,8 @@ export const useList = () => {
 
   const resetToTop = () => {
     // this reset list to the first row
+    console.log('run resetToTop mobile');
+    console.log('listRef.current', listRef.current); // undefined
     if (listRef.current != null) {
       console.log('in the resetToTop function');
       listRef.current.scrollToItem(0);
@@ -102,8 +104,10 @@ export const useGrid = (columns: {
 };
 
 export const resetToTopDesktop = () => {
+  console.log('run resetToTop desktop');
   const resetDesktop = () => {
     const gridRef:any = createRef();
+    console.log('gridRef.current', gridRef.current); // undefined
     if (gridRef.current != null) {
       gridRef.current.scrollToItem({
         rowIndex: 0,
