@@ -1,12 +1,10 @@
 import { useEffect } from 'react';
-import {
-  useList,
-} from '@hooks';
+import { useList } from '@hooks';
 
-export const useMobile = () => {
+export const useMobile = (tab) => {
   const { resetToTop } = useList();
 
   useEffect(() => {
     resetToTop();
-  }, []);
+  }, [tab]);
 };

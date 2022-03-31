@@ -1,10 +1,8 @@
 import { useEffect } from 'react';
-import {
-  resetToTopDesktop,
-} from '@hooks';
+import { resetToTopDesktop } from '@hooks';
 
-export const useDesktop = () => {
+export const useDesktop = (tab) => {
   useEffect(() => {
     resetToTopDesktop();
-  }, []);
+  }, [tab]);
 };

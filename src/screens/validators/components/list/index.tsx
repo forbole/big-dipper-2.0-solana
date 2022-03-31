@@ -71,11 +71,13 @@ const List: React.FC<{
                   sortKey={state.sortKey}
                   handleSort={handleSort}
                   items={items}
+                  tab={state.tab}
                 />
               ) : (
                 <Mobile
                   className={classes.mobile}
                   items={items}
+                  tab={state.tab}
                 />
               )}
             </>

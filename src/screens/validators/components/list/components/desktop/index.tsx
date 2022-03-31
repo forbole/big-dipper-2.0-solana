@@ -25,6 +25,7 @@ const Desktop: React.FC<{
   sortKey: string;
   handleSort: (key: string) => void;
   items: ItemType[];
+  tab: number;
 }> = (props) => {
   const { t } = useTranslation('validators');
   const classes = useStyles();
@@ -64,7 +65,7 @@ const Desktop: React.FC<{
     });
   });
 
-  useDesktop();
+  useDesktop(props.tab);
 
   return (
     <div className={classnames(props.className, classes.root)}>

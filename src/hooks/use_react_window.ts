@@ -82,14 +82,14 @@ export const useGrid = (columns: {
     return 50;
   };
 
-  const resetToTop = () => {
-    // this reset grid to the first row
-    if (gridRef.current != null) {
-      gridRef.current.scrollToItem({
-        rowIndex: 0,
-      });
-    }
-  };
+  // const resetToTop = () => {
+  //   // this reset grid to the first row
+  //   if (gridRef.current != null) {
+  //     gridRef.current.scrollToItem({
+  //       rowIndex: 0,
+  //     });
+  //   }
+  // };
 
   return {
     gridRef,
@@ -97,7 +97,7 @@ export const useGrid = (columns: {
     onResize,
     getColumnWidth,
     getRowHeight,
-    resetToTop,
+    // resetToTop,
   };
 };
 
