@@ -107,6 +107,8 @@ export const useProposals = () => {
     return sorted;
   };
 
+  console.log('state=> ', state);
+
   return {
     state,
     handleSearch,
