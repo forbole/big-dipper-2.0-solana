@@ -40,7 +40,9 @@ describe('screen: Proposals/List', () => {
                 token: 'BTC',
                 price: 1802,
                 marketCap: 515912496,
+                volume: 18333060,
                 address: '9n4nbM75f5Ui33ZbPYXn59EwSgE8CGsHtAeTH5YFeJ9E',
+                logo: 'https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/G2jrxYSoCSzmohxERa2JzSJMuRM4kiNvRA3DnCv7Lzcz/logo.png',
               },
             ]}
             isItemLoaded={() => true}
