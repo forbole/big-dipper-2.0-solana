@@ -1688,7 +1688,7 @@ export type Query_Root = {
   token_price_aggregate: Token_Price_Aggregate;
   /** fetch data from the table: "token_price" using primary key columns */
   token_price_by_pk?: Maybe<Token_Price>;
-  /** fetch data from the table: "token_price_history" */
+  /** An array relationship */
   token_price_history: Array<Token_Price_History>;
   /** An aggregate relationship */
   token_price_history_aggregate: Token_Price_History_Aggregate;
@@ -2887,7 +2887,7 @@ export type Subscription_Root = {
   token_price_aggregate: Token_Price_Aggregate;
   /** fetch data from the table: "token_price" using primary key columns */
   token_price_by_pk?: Maybe<Token_Price>;
-  /** fetch data from the table: "token_price_history" */
+  /** An array relationship */
   token_price_history: Array<Token_Price_History>;
   /** An aggregate relationship */
   token_price_history_aggregate: Token_Price_History_Aggregate;
@@ -3778,6 +3778,8 @@ export type Token_Account = {
   owner: Scalars['String'];
   /** An object relationship */
   token_info?: Maybe<Token>;
+  /** An object relationship */
+  token_unit?: Maybe<Token_Unit>;
 };
 
 /** aggregated selection of "token_account" */
@@ -4073,6 +4075,7 @@ export type Token_Account_Bool_Exp = {
   mint?: Maybe<String_Comparison_Exp>;
   owner?: Maybe<String_Comparison_Exp>;
   token_info?: Maybe<Token_Bool_Exp>;
+  token_unit?: Maybe<Token_Unit_Bool_Exp>;
 };
 
 /** aggregate max on columns */
@@ -4111,6 +4114,7 @@ export type Token_Account_Order_By = {
   mint?: Maybe<Order_By>;
   owner?: Maybe<Order_By>;
   token_info?: Maybe<Token_Order_By>;
+  token_unit?: Maybe<Token_Unit_Order_By>;
 };
 
 /** select columns of table "token_account" */
@@ -4933,7 +4937,7 @@ export type Token_Unit = {
   token?: Maybe<Token>;
   /** An object relationship */
   token_price?: Maybe<Token_Price>;
-  /** fetch data from the table: "token_price_history" */
+  /** An array relationship */
   token_price_history: Array<Token_Price_History>;
   /** An aggregate relationship */
   token_price_history_aggregate: Token_Price_History_Aggregate;
@@ -6361,7 +6365,7 @@ export type TokensQuery = { tokenUnit: Array<(
     & { address: Token_Unit['mint'], unitName: Token_Unit['unit_name'], logo: Token_Unit['logo_uri'] }
     & { tokenPrice?: Maybe<(
       { __typename?: 'token_price' }
-      & Pick<Token_Price, 'price'>
+      & Pick<Token_Price, 'price' | 'volume'>
       & { marketCap: Token_Price['market_cap'] }
     )> }
   )> };
@@ -6918,6 +6922,7 @@ export const TokensDocument = gql`
     tokenPrice: token_price {
       marketCap: market_cap
       price
+      volume
     }
   }
 }
