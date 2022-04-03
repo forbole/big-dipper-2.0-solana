@@ -268,7 +268,9 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
       >
         <div
           className="MuiTypography-root MuiTypography-body1 MuiTypography-alignRight"
-        />
+        >
+          $18,333,060
+        </div>
       </div>
     </div>
   </div>
