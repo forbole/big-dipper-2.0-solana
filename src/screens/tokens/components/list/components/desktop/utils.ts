@@ -35,6 +35,6 @@ export const columns:{
     align: 'right',
     width: 20,
     sort: true,
-    sortKey: 'marketCap',
+    sortKey: 'volume',
   },
 ];
