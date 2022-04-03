@@ -4,6 +4,7 @@ export type TokenType = {
   logo: string;
   price?: number;
   marketCap?: number;
+  volume?: number;
 }
 
 export type TokensState = {

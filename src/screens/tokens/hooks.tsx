@@ -45,6 +45,7 @@ export const useProposals = () => {
         logo: x.logo,
         price: R.pathOr(null, ['tokenPrice', 'price'], x),
         marketCap: R.pathOr(null, ['tokenPrice', 'marketCap'], x),
+        volume: R.pathOr(null, ['tokenPrice', 'volume'], x),
       });
     });
   };
