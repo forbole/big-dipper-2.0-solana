@@ -38,7 +38,7 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
             "position": "absolute",
             "right": undefined,
             "top": 0,
-            "width": 90,
+            "width": 60,
           }
         }
       >
@@ -55,11 +55,11 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
         style={
           Object {
             "height": 50,
-            "left": 90,
+            "left": 60,
             "position": "absolute",
             "right": undefined,
             "top": 0,
-            "width": 210,
+            "width": 180,
           }
         }
       >
@@ -80,11 +80,11 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
         style={
           Object {
             "height": 50,
-            "left": 300,
+            "left": 240,
             "position": "absolute",
             "right": undefined,
             "top": 0,
-            "width": 150,
+            "width": 120,
           }
         }
       >
@@ -104,11 +104,11 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
         style={
           Object {
             "height": 50,
-            "left": 450,
+            "left": 360,
             "position": "absolute",
             "right": undefined,
             "top": 0,
-            "width": 150,
+            "width": 120,
           }
         }
       >
@@ -116,6 +116,30 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
           className="MuiTypography-root MuiTypography-h4 MuiTypography-alignRight"
         >
           marketCap
+          <div
+            id="SortArrows"
+          />
+        </h4>
+      </div>
+      <div
+        className="makeStyles-cell makeStyles-flexCells right sort"
+        onClick={[Function]}
+        role="button"
+        style={
+          Object {
+            "height": 50,
+            "left": 480,
+            "position": "absolute",
+            "right": undefined,
+            "top": 0,
+            "width": 120,
+          }
+        }
+      >
+        <h4
+          className="MuiTypography-root MuiTypography-h4 MuiTypography-alignRight"
+        >
+          volume
           <div
             id="SortArrows"
           />
@@ -156,7 +180,7 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
             "position": "absolute",
             "right": undefined,
             "top": 0,
-            "width": 90,
+            "width": 60,
           }
         }
       >
@@ -171,11 +195,11 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
         style={
           Object {
             "height": 50,
-            "left": 90,
+            "left": 60,
             "position": "absolute",
             "right": undefined,
             "top": 0,
-            "width": 210,
+            "width": 180,
           }
         }
       >
@@ -196,11 +220,11 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
         style={
           Object {
             "height": 50,
-            "left": 300,
+            "left": 240,
             "position": "absolute",
             "right": undefined,
             "top": 0,
-            "width": 150,
+            "width": 120,
           }
         }
       >
@@ -215,11 +239,11 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
         style={
           Object {
             "height": 50,
-            "left": 450,
+            "left": 360,
             "position": "absolute",
             "right": undefined,
             "top": 0,
-            "width": 150,
+            "width": 120,
           }
         }
       >
@@ -228,6 +252,23 @@ exports[`screen: Home/Blocks/Desktop matches snapshot 1`] = `
         >
           $515,912,496
         </div>
+      </div>
+      <div
+        className="makeStyles-cell makeStyles-body odd"
+        style={
+          Object {
+            "height": 50,
+            "left": 480,
+            "position": "absolute",
+            "right": undefined,
+            "top": 0,
+            "width": 120,
+          }
+        }
+      >
+        <div
+          className="MuiTypography-root MuiTypography-body1 MuiTypography-alignRight"
+        />
       </div>
     </div>
   </div>

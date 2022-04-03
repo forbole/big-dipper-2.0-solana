@@ -25,6 +25,7 @@ exports[`screen: Proposals matches snapshot 1`] = `
             "marketCap": null,
             "price": null,
             "token": "007 Exchange",
+            "volume": null,
           },
           Object {
             "address": "G2jrxYSoCSzmohxERa2JzSJMuRM4kiNvRA3DnCv7Lzcz",
@@ -32,6 +33,7 @@ exports[`screen: Proposals matches snapshot 1`] = `
             "marketCap": 783277125,
             "price": 0.913409,
             "token": "0x Protocol Token (Wormhole v1)",
+            "volume": 18333060,
           },
         ]
       }
