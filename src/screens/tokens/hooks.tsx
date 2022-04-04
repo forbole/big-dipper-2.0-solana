@@ -82,7 +82,7 @@ export const useProposals = () => {
 
     if (state.sortKey && state.sortDirection) {
       let defaultValue;
-      const edgeCases = ['price', 'marketCap'];
+      const edgeCases = ['price', 'marketCap', 'volume'];
       if (edgeCases.includes(state.sortKey)) {
         defaultValue = 0;
       }
