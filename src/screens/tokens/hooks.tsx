@@ -45,6 +45,7 @@ export const useProposals = () => {
         logo: x.logo,
         price: R.pathOr(null, ['tokenPrice', 'price'], x),
         marketCap: R.pathOr(null, ['tokenPrice', 'marketCap'], x),
+        volume: R.pathOr(null, ['tokenPrice', 'volume'], x),
       });
     });
   };
@@ -81,7 +82,7 @@ export const useProposals = () => {
 
     if (state.sortKey && state.sortDirection) {
       let defaultValue;
-      const edgeCases = ['price', 'marketCap'];
+      const edgeCases = ['price', 'marketCap', 'volume'];
       if (edgeCases.includes(state.sortKey)) {
         defaultValue = 0;
       }

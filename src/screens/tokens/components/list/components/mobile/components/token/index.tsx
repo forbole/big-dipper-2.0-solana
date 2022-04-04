@@ -11,8 +11,9 @@ const Token: React.FC<{
   token: React.ReactNode;
   price: string;
   marketCap: string;
+  volume: string;
 }> = ({
-  className, token, price, marketCap,
+  className, token, price, marketCap, volume,
 }) => {
   const { t } = useTranslation('tokens');
   const classes = useStyles();
@@ -38,6 +39,14 @@ const Token: React.FC<{
         </Typography>
         <Typography variant="body1" className="value">
           {marketCap}
+        </Typography>
+      </div>
+      <div className={classes.item}>
+        <Typography variant="h4" className="label">
+          {t('volume')}
+        </Typography>
+        <Typography variant="body1" className="value">
+          {volume}
         </Typography>
       </div>
     </div>

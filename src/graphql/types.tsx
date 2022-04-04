@@ -6365,7 +6365,7 @@ export type TokensQuery = { tokenUnit: Array<(
     & { address: Token_Unit['mint'], unitName: Token_Unit['unit_name'], logo: Token_Unit['logo_uri'] }
     & { tokenPrice?: Maybe<(
       { __typename?: 'token_price' }
-      & Pick<Token_Price, 'price'>
+      & Pick<Token_Price, 'price' | 'volume'>
       & { marketCap: Token_Price['market_cap'] }
     )> }
   )> };
@@ -6922,6 +6922,7 @@ export const TokensDocument = gql`
     tokenPrice: token_price {
       marketCap: market_cap
       price
+      volume
     }
   }
 }
