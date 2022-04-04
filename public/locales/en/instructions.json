@@ -9,5 +9,11 @@
   "innerInstructions": "Inner Instructions",
   "destination": "Destination",
   "delegate": "Delegate",
-  "amount": "Amount"
+  "amount": "Amount",
+  "mint": "Mint",
+  "decimals": "Decimals",
+  "rentSysvar": "Rent Sysvar",
+  "mintAuthority": "Mint Authority",
+  "account": "Account",
+  "authority": "Authority"
 }

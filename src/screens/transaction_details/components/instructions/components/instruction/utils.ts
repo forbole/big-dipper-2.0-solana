@@ -177,6 +177,21 @@ export const PROGRAM_INFO_BY_ID: ProgramInfoType = {
         model: MODELS.TokenProgramRevoke,
         component: COMPONENTS.Revoke,
       },
+      {
+        type: 'initializeMint',
+        model: MODELS.TokenProgramInitializeMint,
+        component: COMPONENTS.InitializeMint,
+      },
+      {
+        type: 'initializeAccount',
+        model: MODELS.TokenProgramInitializeAccount,
+        component: COMPONENTS.InitializeAccount,
+      },
+      {
+        type: 'transfer',
+        model: MODELS.TokenProgramTransfer,
+        component: COMPONENTS.TokenProgramTransfer,
+      },
     ],
   },
   metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s: {
