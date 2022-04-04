@@ -3,12 +3,12 @@ import axios from 'axios';
 import * as R from 'ramda';
 import { TokenAccountUnitDocument } from '@graphql/transaction_details_utils';
 
-class InstructionApprove extends InstructionBase {
+class TokenProgramApprove extends InstructionBase {
   public source: string;
   public delegate: string;
   public amount: string;
   public owner: string;
-  public unit: string;
+  public denom: string;
   public decimal: number;
 
   constructor(payload: any) {
@@ -17,16 +17,16 @@ class InstructionApprove extends InstructionBase {
     this.delegate = payload.delegate;
     this.amount = payload.amount;
     this.owner = payload.owner;
-    this.unit = payload.unit;
+    this.denom = payload.denom;
     this.decimal = payload.decimal;
   }
 
   public static async setExternalData(address: string): Promise<{
-    unit: string;
+    denom: string;
     decimal: number;
   }> {
     const DEFAULT_RETURN_VALUE = {
-      unit: '',
+      denom: '',
       decimal: 0,
     };
 
@@ -38,7 +38,7 @@ class InstructionApprove extends InstructionBase {
         query: TokenAccountUnitDocument,
       });
       return {
-        unit: R.pathOr('', [
+        denom: R.pathOr('', [
           'data', 'tokenAccount', 0, 'tokenUnit', 'unitName'], data),
         decimal: R.pathOr(0, [
           'data', 'tokenAccount', 0, 'tokenInfo', 'decimals',
@@ -52,8 +52,8 @@ class InstructionApprove extends InstructionBase {
   public static async fromJson(json: any) {
     const defaultItems = this.defaultFormat(json);
     const source = R.pathOr('', ['value', 'source'], json);
-    const tokenUnitInfo = await InstructionApprove.setExternalData(source);
-    return new InstructionApprove({
+    const tokenUnitInfo = await TokenProgramApprove.setExternalData(source);
+    return new TokenProgramApprove({
       ...defaultItems,
       ...tokenUnitInfo,
       source,
@@ -64,4 +64,4 @@ class InstructionApprove extends InstructionBase {
   }
 }
 
-export default InstructionApprove;
+export default TokenProgramApprove;

@@ -15,6 +15,9 @@ import InstructionUnknown from './instructions/instruction_unknown';
 import InstructionCreateAccount from './instructions/system_program/create_account';
 import InstructionTransfer from './instructions/system_program/transfer';
 
+// token program
+import TokenProgramApprove from './instructions/token_program/approve';
+
 export {
   BigDipperNetwork,
   StakingParams,
@@ -30,4 +33,6 @@ export {
   // system program
   InstructionCreateAccount,
   InstructionTransfer,
+  // token program
+  TokenProgramApprove,
 };
