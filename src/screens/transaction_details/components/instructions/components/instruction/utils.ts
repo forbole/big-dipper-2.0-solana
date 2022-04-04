@@ -172,6 +172,11 @@ export const PROGRAM_INFO_BY_ID: ProgramInfoType = {
         model: MODELS.TokenProgramApprove,
         component: COMPONENTS.Approve,
       },
+      {
+        type: 'revoke',
+        model: MODELS.TokenProgramRevoke,
+        component: COMPONENTS.Revoke,
+      },
     ],
   },
   metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s: {

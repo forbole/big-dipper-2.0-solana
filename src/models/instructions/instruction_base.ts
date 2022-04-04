@@ -20,14 +20,16 @@ class InstructionBase {
 
   static defaultFormat(json: any) {
     const type = R.pathOr('', ['type'], json);
+    const defaultJson = {
+      raw: R.pathOr(null, ['rawData'], json),
+    };
     return ({
       type,
       program: R.pathOr('', ['program'], json),
       rawData: R.pathOr('', ['raw_data'], json),
       index: R.pathOr('', ['index'], json),
       innerIndex: R.pathOr('', ['innerIndex'], json),
-      // json: type === 'unknown' ? json : R.pathOr(null, ['value'], json), // ryuash
-      json,
+      json: type === 'unknown' ? defaultJson : R.pathOr(null, ['value'], json),
     });
   }
 

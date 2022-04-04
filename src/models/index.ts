@@ -17,6 +17,7 @@ import InstructionTransfer from './instructions/system_program/transfer';
 
 // token program
 import TokenProgramApprove from './instructions/token_program/approve';
+import TokenProgramRevoke from './instructions/token_program/revoke';
 
 export {
   BigDipperNetwork,
@@ -35,4 +36,5 @@ export {
   InstructionTransfer,
   // token program
   TokenProgramApprove,
+  TokenProgramRevoke,
 };
