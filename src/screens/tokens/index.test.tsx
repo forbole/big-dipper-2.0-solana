@@ -39,7 +39,8 @@ const mockTokens = jest.fn().mockResolvedValue({
         "logo": "https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/G2jrxYSoCSzmohxERa2JzSJMuRM4kiNvRA3DnCv7Lzcz/logo.png",
         "tokenPrice": {
           "marketCap": 783277125,
-          "price": 0.913409
+          "price": 0.913409,
+          "volume": 18333060,
         }
       }
     ]

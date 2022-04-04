@@ -48,11 +48,15 @@ const Desktop: React.FC<{
   const formattedItems = items.map((x, i) => {
     let price = '-';
     let marketCap = '-';
+    let volume = '-';
     if (x.price !== null) {
       price = `$${numeral(x.price).format('0,0.[00]')}`;
     }
     if (x.marketCap !== null) {
       marketCap = `$${numeral(x.marketCap).format('0,0[00]')}`;
+    }
+    if (x.volume !== null) {
+      volume = `$${numeral(x.volume).format('0,0[00]')}`;
     }
 
     return ({
@@ -67,6 +71,7 @@ const Desktop: React.FC<{
       ),
       price,
       marketCap,
+      volume,
     });
   });
 

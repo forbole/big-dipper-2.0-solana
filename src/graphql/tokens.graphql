@@ -6,6 +6,7 @@ query Tokens {
     tokenPrice: token_price {
       marketCap: market_cap
       price
+      volume
     }
   }
 }

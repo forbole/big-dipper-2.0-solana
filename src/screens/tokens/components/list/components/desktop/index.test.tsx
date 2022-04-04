@@ -35,6 +35,7 @@ describe('screen: Home/Blocks/Desktop', () => {
               logo: null,
               price: 1802,
               marketCap: 515912496,
+              volume: 18333060,
               address: '9n4nbM75f5Ui33ZbPYXn59EwSgE8CGsHtAeTH5YFeJ9E',
             },
           ]}

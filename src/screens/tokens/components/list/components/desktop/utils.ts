@@ -8,17 +8,17 @@ export const columns:{
 }[] = [
   {
     key: 'idx',
-    width: 15,
+    width: 10,
   },
   {
     key: 'token',
-    width: 35,
+    width: 30,
     sort: true,
     sortKey: 'token',
   },
   {
     key: 'price',
-    width: 25,
+    width: 20,
     align: 'right',
     sort: true,
     sortKey: 'price',
@@ -26,8 +26,15 @@ export const columns:{
   {
     key: 'marketCap',
     align: 'right',
-    width: 25,
+    width: 20,
     sort: true,
     sortKey: 'marketCap',
+  },
+  {
+    key: 'volume',
+    align: 'right',
+    width: 20,
+    sort: true,
+    sortKey: 'volume',
   },
 ];
