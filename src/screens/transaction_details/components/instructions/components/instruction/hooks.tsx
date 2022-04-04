@@ -6,6 +6,7 @@ export const useInstruction = () => {
   const [state, setState] = useState<InstructionState>({
     hide: true,
     raw: false,
+    instructions: [],
   });
 
   const handleSetState = (stateChange: any) => {

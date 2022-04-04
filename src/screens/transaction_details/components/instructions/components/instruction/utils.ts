@@ -134,7 +134,13 @@ export const PROGRAM_INFO_BY_ID: ProgramInfoType = {
   // spl
   ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL: {
     name: PROGRAM_NAMES.ASSOCIATED_TOKEN,
-    types: [],
+    types: [
+      {
+        type: 'approve',
+        model: MODELS.TokenProgramApprove,
+        component: COMPONENTS.Approve,
+      },
+    ],
   },
   Feat1YXHhH6t1juaWF74WLcfv4XoNocjXA6sPWHNgAse: {
     name: PROGRAM_NAMES.FEATURE_PROPOSAL,
@@ -358,16 +364,26 @@ export const PROGRAM_INFO_BY_ID: ProgramInfoType = {
  * @param instructions
  * @returns
  */
-export const formatInstructions = (instructions: InstructionType[]): FormattedInstructionType[] => {
-  return instructions.map((x) => {
+export const formatInstructions = async (
+  instructions: InstructionType[],
+): Promise<FormattedInstructionType[]> => {
+  const promises = await Promise.allSettled(instructions.map(async (x) => {
     const models = getModelsByProgram(x.program);
     const modelInfo = getModelInfoByType(models)(x.type);
+    const data = await modelInfo.model.fromJson(x);
     return {
+      data,
       label: getProgramLabel(x.program),
-      data: modelInfo.model.fromJson(x),
       component: modelInfo.component,
     };
+  }));
+  const results = [];
+  promises.forEach((x) => {
+    if (x.status === 'fulfilled') {
+      results.push(x.value);
+    }
   });
+  return results;
 };
 
 /**

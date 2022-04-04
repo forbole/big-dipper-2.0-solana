@@ -13,7 +13,7 @@ class InstructionTransfer extends InstructionBase {
     this.lamports = payload.lamports;
   }
 
-  static fromJson(json: any) {
+  public static async fromJson(json: any) {
     const defaultItems = this.defaultFormat(json);
     return new InstructionTransfer({
       ...defaultItems,

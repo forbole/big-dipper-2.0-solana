@@ -17,7 +17,7 @@ class InstructionCreateAccount extends InstructionBase {
     this.owner = payload.owner;
   }
 
-  static fromJson(json: any) {
+  public static async fromJson(json: any) {
     const defaultItems = this.defaultFormat(json);
     return new InstructionCreateAccount({
       ...defaultItems,
