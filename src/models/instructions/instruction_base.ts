@@ -19,17 +19,19 @@ class InstructionBase {
   }
 
   static defaultFormat(json: any) {
+    const type = R.pathOr('', ['type'], json);
     return ({
-      type: R.pathOr('', ['type'], json),
+      type,
       program: R.pathOr('', ['program'], json),
       rawData: R.pathOr('', ['raw_data'], json),
       index: R.pathOr('', ['index'], json),
       innerIndex: R.pathOr('', ['innerIndex'], json),
-      json: R.pathOr(null, ['value'], json),
+      // json: type === 'unknown' ? json : R.pathOr(null, ['value'], json), // ryuash
+      json,
     });
   }
 
-  static fromJson(json: any) {
+  public static async fromJson(json: any) {
     const defaultItems = this.defaultFormat(json);
     return new InstructionBase(defaultItems);
   }

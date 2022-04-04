@@ -3,8 +3,8 @@ import DisplayInstruction from './display_instruction';
 import InnerInstruction from './inner_instruction';
 
 // defined instruction types
-import CreateAccount from './system/create_account';
-import Transfer from './system/transfer';
+import CreateAccount from './system_program/create_account';
+import Transfer from './system_program/transfer';
 
 export {
   Json,
