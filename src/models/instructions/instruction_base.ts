@@ -25,7 +25,7 @@ class InstructionBase {
       rawData: R.pathOr('', ['raw_data'], json),
       index: R.pathOr('', ['index'], json),
       innerIndex: R.pathOr('', ['innerIndex'], json),
-      json,
+      json: R.pathOr(null, ['value'], json),
     });
   }
 
