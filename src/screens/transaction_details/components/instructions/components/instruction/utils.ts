@@ -118,7 +118,13 @@ export const PROGRAM_INFO_BY_ID: ProgramInfoType = {
   },
   [VOTE_PROGRAM_ID.toBase58()]: {
     name: PROGRAM_NAMES.VOTE,
-    types: [],
+    types: [
+      {
+        type: 'vote',
+        model: MODELS.VoteProgramVote,
+        component: COMPONENTS.Vote,
+      },
+    ],
   },
 
   // native precompiles

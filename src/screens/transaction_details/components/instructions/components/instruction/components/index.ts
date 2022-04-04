@@ -13,6 +13,9 @@ import InitializeMint from './token_program/initialize_mint';
 import InitializeAccount from './token_program/initialize_account';
 import TokenProgramTransfer from './token_program/transfer';
 
+// vote program
+import Vote from './vote_program/vote';
+
 export {
   Json,
   DisplayInstruction,
@@ -29,4 +32,6 @@ export {
   InitializeMint,
   InitializeAccount,
   TokenProgramTransfer,
+  // vote program
+  Vote,
 };

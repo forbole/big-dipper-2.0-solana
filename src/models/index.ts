@@ -22,6 +22,9 @@ import TokenProgramInitializeMint from './instructions/token_program/initialize_
 import TokenProgramInitializeAccount from './instructions/token_program/initialize_account';
 import TokenProgramTransfer from './instructions/token_program/transfer';
 
+// vote Program
+import VoteProgramVote from './instructions/vote_program/vote';
+
 export {
   BigDipperNetwork,
   StakingParams,
@@ -43,4 +46,6 @@ export {
   TokenProgramInitializeMint,
   TokenProgramInitializeAccount,
   TokenProgramTransfer,
+  // vote program
+  VoteProgramVote,
 };

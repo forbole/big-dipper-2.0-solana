@@ -15,5 +15,12 @@
   "rentSysvar": "Rent Sysvar",
   "mintAuthority": "Mint Authority",
   "account": "Account",
-  "authority": "Authority"
+  "authority": "Authority",
+  "voteAccount": "Vote Account",
+  "slotHashesSysvar": "Slot Hashes Sysvar",
+  "clockSysvar": "Clock Sysvar",
+  "voteAuthority": "Vote Authority",
+  "hash": "Hash",
+  "timestamp": "Timestamp",
+  "slots": "Slots"
 }
