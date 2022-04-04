@@ -134,13 +134,7 @@ export const PROGRAM_INFO_BY_ID: ProgramInfoType = {
   // spl
   ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL: {
     name: PROGRAM_NAMES.ASSOCIATED_TOKEN,
-    types: [
-      {
-        type: 'approve',
-        model: MODELS.TokenProgramApprove,
-        component: COMPONENTS.Approve,
-      },
-    ],
+    types: [],
   },
   Feat1YXHhH6t1juaWF74WLcfv4XoNocjXA6sPWHNgAse: {
     name: PROGRAM_NAMES.FEATURE_PROPOSAL,
@@ -172,7 +166,13 @@ export const PROGRAM_INFO_BY_ID: ProgramInfoType = {
   },
   TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA: {
     name: PROGRAM_NAMES.TOKEN,
-    types: [],
+    types: [
+      {
+        type: 'approve',
+        model: MODELS.TokenProgramApprove,
+        component: COMPONENTS.Approve,
+      },
+    ],
   },
   metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s: {
     name: PROGRAM_NAMES.TOKEN_METADATA,

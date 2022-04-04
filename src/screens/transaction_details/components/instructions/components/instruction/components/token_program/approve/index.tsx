@@ -38,6 +38,10 @@ const Approve: React.FC<{
       ),
     },
     {
+      label: t('amount'),
+      detail: formattedAmount,
+    },
+    {
       label: t('delegate'),
       detail: (
         <AvatarName
@@ -45,10 +49,6 @@ const Approve: React.FC<{
           name={props.instruction.delegate}
         />
       ),
-    },
-    {
-      label: t('amount'),
-      detail: formattedAmount,
     },
     {
       label: t('owner'),

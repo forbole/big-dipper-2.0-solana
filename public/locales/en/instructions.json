@@ -7,5 +7,7 @@
   "space": "Space",
   "owner": "Owner",
   "innerInstructions": "Inner Instructions",
-  "destination": "Destination"
+  "destination": "Destination",
+  "delegate": "Delegate",
+  "amount": "Amount"
 }

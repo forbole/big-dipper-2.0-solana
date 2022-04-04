@@ -29,7 +29,7 @@ const Instruction: React.FC<{instructions: InstructionType[]} & ComponentDefault
   if (!state.instructions.length) {
     return null;
   }
-
+  console.log(state.instructions, 'instructions');
   const parent = state.instructions[0];
   const typeName = convertCamelToTitle(parent.data.type);
 
