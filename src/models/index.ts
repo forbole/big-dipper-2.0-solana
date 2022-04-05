@@ -49,6 +49,9 @@ import VoteProgramVoteSwitch from './instructions/vote_program/vote_switch';
 import StakeProgramInitialize from './instructions/stake_program/initialize';
 import StakeProgramAuthorize from './instructions/stake_program/authorize';
 import StakeProgramDelegate from './instructions/stake_program/delegate';
+import StakeProgramSplit from './instructions/stake_program/split';
+import StakeProgramWithdraw from './instructions/stake_program/withdraw';
+import StakeProgramDeactivate from './instructions/stake_program/deactivate';
 
 export {
   BigDipperNetwork,
@@ -97,4 +100,7 @@ export {
   StakeProgramInitialize,
   StakeProgramAuthorize,
   StakeProgramDelegate,
+  StakeProgramSplit,
+  StakeProgramWithdraw,
+  StakeProgramDeactivate,
 };
