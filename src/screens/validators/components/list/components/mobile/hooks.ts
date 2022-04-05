@@ -1,10 +1,9 @@
 import { useEffect } from 'react';
-import { useList } from '@hooks';
 
-export const useMobile = (tab:number, listRef) => {
-  const { resetMobile } = useList();
-
+export const useMobile = (tab:number, listRef:any) => {
   useEffect(() => {
-    resetMobile(listRef);
+    if (listRef.current != null) {
+      listRef.current.scrollToItem(0);
+    }
   }, [tab]);
 };
