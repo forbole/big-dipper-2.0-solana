@@ -22,11 +22,18 @@ export const useList = () => {
     };
   };
 
+  const resetMobile = (listRef) => {
+    if (listRef.current != null) {
+      listRef.current.scrollToItem(0);
+    }
+  };
+
   return {
     listRef,
     rowHeights,
     getRowHeight,
     setRowHeight,
+    resetMobile,
   };
 };
 
