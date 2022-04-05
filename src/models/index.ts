@@ -17,6 +17,10 @@ import InstructionTransfer from './instructions/system_program/transfer';
 import SystemProgramAssign from './instructions/system_program/assign';
 import SystemProgramCreateAccountWithSeed from './instructions/system_program/create_account_with_seed';
 import SystemProgramAdvancedNonce from './instructions/system_program/advance_nonce';
+import SystemProgramWithdrawFromNonce from './instructions/system_program/withdraw_from_nonce';
+import SystemProgramInitializeNonce from './instructions/system_program/initialize_nonce';
+import SystemProgramAuthorizeNonce from './instructions/system_program/authorize_nonce';
+import SystemProgramAllocate from './instructions/system_program/allocate';
 
 // token program
 import TokenProgramApprove from './instructions/token_program/approve';
@@ -59,6 +63,10 @@ export {
   SystemProgramAssign,
   SystemProgramCreateAccountWithSeed,
   SystemProgramAdvancedNonce,
+  SystemProgramWithdrawFromNonce,
+  SystemProgramInitializeNonce,
+  SystemProgramAuthorizeNonce,
+  SystemProgramAllocate,
   // token program
   TokenProgramApprove,
   TokenProgramRevoke,
