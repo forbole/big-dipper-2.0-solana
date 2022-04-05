@@ -8,7 +8,7 @@ import * as R from 'ramda';
 // reusable hook helpers for react window list components
 
 export const useList = () => {
-  const listRef:any = useRef();
+  let listRef:any = useRef();
   const rowHeights:any = useRef({});
 
   const getRowHeight = (index) => {
@@ -22,7 +22,8 @@ export const useList = () => {
     };
   };
 
-  const resetMobile = (listRef) => {
+  const resetMobile = (newListRef) => {
+    listRef = newListRef;
     if (listRef.current != null) {
       listRef.current.scrollToItem(0);
     }
@@ -59,7 +60,7 @@ export const useGrid = (columns: {
   align?: 'left' | 'center' | 'right' | 'justify' | 'inherit';
   width: number;
 }[]) => {
-  const gridRef:any = createRef();
+  let gridRef:any = createRef();
   const columnRef = createRef();
 
   const onResize = () => {
@@ -80,7 +81,8 @@ export const useGrid = (columns: {
     return 50;
   };
 
-  const resetDesktop = (gridRef) => {
+  const resetDesktop = (newGridRef) => {
+    gridRef = newGridRef;
     if (gridRef.current != null) {
       gridRef.current.scrollToItem({
         rowIndex: 0,
