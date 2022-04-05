@@ -45,6 +45,11 @@ import VoteProgramAuthorize from './instructions/vote_program/authorize';
 import VoteProgramUpdateCommission from './instructions/vote_program/update_commission';
 import VoteProgramVoteSwitch from './instructions/vote_program/vote_switch';
 
+// stake program
+import StakeProgramInitialize from './instructions/stake_program/initialize';
+import StakeProgramAuthorize from './instructions/stake_program/authorize';
+import StakeProgramDelegate from './instructions/stake_program/delegate';
+
 export {
   BigDipperNetwork,
   StakingParams,
@@ -88,4 +93,8 @@ export {
   VoteProgramAuthorize,
   VoteProgramUpdateCommission,
   VoteProgramVoteSwitch,
+  // stake program
+  StakeProgramInitialize,
+  StakeProgramAuthorize,
+  StakeProgramDelegate,
 };
