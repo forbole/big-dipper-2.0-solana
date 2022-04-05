@@ -24,6 +24,12 @@ import TokenProgramTransfer from './instructions/token_program/transfer';
 
 // vote Program
 import VoteProgramVote from './instructions/vote_program/vote';
+import VoteProgramInitializeAccount from './instructions/vote_program/initialize_account';
+import VoteProgramWithdraw from './instructions/vote_program/withdraw';
+import VoteProgramUpdateValidatorIdentity from './instructions/vote_program/update_validator_identity';
+import VoteProgramAuthorize from './instructions/vote_program/authorize';
+import VoteProgramUpdateCommission from './instructions/vote_program/update_commission';
+import VoteProgramVoteSwitch from './instructions/vote_program/vote_switch';
 
 export {
   BigDipperNetwork,
@@ -48,4 +54,10 @@ export {
   TokenProgramTransfer,
   // vote program
   VoteProgramVote,
+  VoteProgramInitializeAccount,
+  VoteProgramWithdraw,
+  VoteProgramUpdateValidatorIdentity,
+  VoteProgramAuthorize,
+  VoteProgramUpdateCommission,
+  VoteProgramVoteSwitch,
 };
