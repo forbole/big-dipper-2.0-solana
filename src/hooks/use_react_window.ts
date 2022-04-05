@@ -97,23 +97,3 @@ export const useGrid = (columns: {
     resetDesktop,
   };
 };
-
-export const resetToTop = () => {
-  const resetDesktop = (gridRef) => {
-    if (gridRef.current != null) {
-      gridRef.current.scrollToItem({
-        rowIndex: 0,
-      });
-    }
-  };
-  const resetMobile = (listRef) => {
-    if (listRef.current != null) {
-      listRef.current.scrollToItem(0);
-    }
-  };
-
-  return {
-    resetDesktop,
-    resetMobile,
-  };
-};
