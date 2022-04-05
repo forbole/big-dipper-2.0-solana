@@ -8,8 +8,8 @@ import * as R from 'ramda';
 // reusable hook helpers for react window list components
 
 export const useList = () => {
-  const listRef = useRef({});
-  const rowHeights = useRef({});
+  const listRef:any = useRef();
+  const rowHeights:any = useRef({});
 
   const getRowHeight = (index) => {
     return rowHeights.current[index] + 16 || 100;
@@ -52,7 +52,7 @@ export const useGrid = (columns: {
   align?: 'left' | 'center' | 'right' | 'justify' | 'inherit';
   width: number;
 }[]) => {
-  const gridRef = createRef();
+  const gridRef:any = createRef();
   const columnRef = createRef();
 
   const onResize = () => {

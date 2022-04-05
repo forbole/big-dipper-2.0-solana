@@ -15,12 +15,14 @@ import { SingleValidator } from './component';
 //   Condition, SkipRate,
 // } from '..';
 import { ItemType } from '../../types';
+import { useMobile } from './hooks';
 
 const Mobile: React.FC<{
   className?: string;
   items: ItemType[];
+  tab: number;
 }> = ({
-  className, items,
+  className, items, tab,
 }) => {
   const {
     listRef,
@@ -53,6 +55,8 @@ const Mobile: React.FC<{
       // ),
     });
   });
+
+  useMobile(tab, listRef);
 
   return (
     <div className={classnames(className)}>

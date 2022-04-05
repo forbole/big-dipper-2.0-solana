@@ -14,6 +14,7 @@ import {
 import { useStyles } from './styles';
 import { fetchColumns } from './utils';
 import { ItemType } from '../../types';
+import { useDesktop } from './hooks';
 // import {
 //   Condition, SkipRate,
 // } from '..';
@@ -24,6 +25,7 @@ const Desktop: React.FC<{
   sortKey: string;
   handleSort: (key: string) => void;
   items: ItemType[];
+  tab: number;
 }> = (props) => {
   const { t } = useTranslation('validators');
   const classes = useStyles();
@@ -62,6 +64,8 @@ const Desktop: React.FC<{
       // ),
     });
   });
+
+  useDesktop(props.tab, gridRef);
 
   return (
     <div className={classnames(props.className, classes.root)}>
