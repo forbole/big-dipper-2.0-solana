@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
-import { resetToTop } from '@hooks';
+import { useGrid } from '@hooks';
 
 export const useDesktop = (tab, gridRef) => {
-  const { resetDesktop } = resetToTop();
+  const { resetDesktop } = useGrid(gridRef);
 
   useEffect(() => {
     resetDesktop(gridRef);

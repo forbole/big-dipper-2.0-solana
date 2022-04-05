@@ -80,12 +80,21 @@ export const useGrid = (columns: {
     return 50;
   };
 
+  const resetDesktop = (gridRef) => {
+    if (gridRef.current != null) {
+      gridRef.current.scrollToItem({
+        rowIndex: 0,
+      });
+    }
+  };
+
   return {
     gridRef,
     columnRef,
     onResize,
     getColumnWidth,
     getRowHeight,
+    resetDesktop,
   };
 };
 

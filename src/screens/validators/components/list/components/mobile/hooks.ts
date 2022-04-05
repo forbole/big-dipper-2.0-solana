@@ -1,9 +1,7 @@
 import { useEffect } from 'react';
-// import { resetToTop } from '@hooks';
 import { useList } from '@hooks';
 
-export const useMobile = (tab, listRef) => {
-  // const { resetMobile } = resetToTop();
+export const useMobile = (tab:number, listRef) => {
   const { resetMobile } = useList();
 
   useEffect(() => {
