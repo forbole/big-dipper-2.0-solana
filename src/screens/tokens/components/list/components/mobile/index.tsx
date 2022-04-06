@@ -8,7 +8,7 @@ import { Divider } from '@material-ui/core';
 import { VariableSizeList as List } from 'react-window';
 import InfiniteLoader from 'react-window-infinite-loader';
 import AutoSizer from 'react-virtualized-auto-sizer';
-import { TOKEN_DETAILS } from '@utils/go_to_page';
+import { ACCOUNT_DETAILS } from '@utils/go_to_page';
 import { mergeRefs } from '@utils/merge_refs';
 import {
   useList,
@@ -60,7 +60,7 @@ const Mobile: React.FC<{
           name={x.token}
           address={x.address}
           imageUrl={x.logo}
-          href={TOKEN_DETAILS}
+          href={ACCOUNT_DETAILS}
         />
       ),
       price,

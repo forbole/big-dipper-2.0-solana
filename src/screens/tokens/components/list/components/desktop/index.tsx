@@ -1,7 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import numeral from 'numeral';
-import { TOKEN_DETAILS } from '@utils/go_to_page';
+import { ACCOUNT_DETAILS } from '@utils/go_to_page';
 import AutoSizer from 'react-virtualized-auto-sizer';
 import InfiniteLoader from 'react-window-infinite-loader';
 import useTranslation from 'next-translate/useTranslation';
@@ -66,7 +66,7 @@ const Desktop: React.FC<{
           name={x.token}
           address={x.address}
           imageUrl={x.logo}
-          href={TOKEN_DETAILS}
+          href={ACCOUNT_DETAILS}
         />
       ),
       price,
