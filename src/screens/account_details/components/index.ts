@@ -5,6 +5,7 @@ import VoteAccount from './vote_account';
 import TokenAccount from './token_account';
 import Tokens from './tokens';
 import Transactions from './transactions';
+import MintAccount from './mint_account';
 
 export {
   NativeAccount,
@@ -14,4 +15,5 @@ export {
   TokenAccount,
   Tokens,
   Transactions,
+  MintAccount,
 };
