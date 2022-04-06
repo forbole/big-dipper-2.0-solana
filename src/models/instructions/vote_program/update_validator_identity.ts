@@ -20,7 +20,7 @@ class VoteProgramUpdateValidatorIdentity extends InstructionBase {
       ...defaultItems,
       voteAccount: R.pathOr('', ['value', 'voteAccount'], json),
       newValidatorIdentity: R.pathOr('', ['value', 'newValidatorIdentity'], json),
-      withdrawAuthority: R.pathOr('', ['value', 'withdrawAuthority'], json),,
+      withdrawAuthority: R.pathOr('', ['value', 'withdrawAuthority'], json),
     });
   }
 }
