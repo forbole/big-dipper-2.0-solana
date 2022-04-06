@@ -12,7 +12,6 @@ import { convertCamelToTitle } from '@utils/camel_to_title';
 import { InstructionType } from '../../../../types';
 import { useStyles } from './styles';
 import { useInstruction } from './hooks';
-import { formatInstructions } from './utils';
 import {
   DisplayInstruction,
   InnerInstruction,
@@ -25,13 +24,16 @@ const Instruction: React.FC<{instructions: InstructionType[]} & ComponentDefault
     state,
     toggleHide,
     toggleRaw,
-  } = useInstruction();
+  } = useInstruction(props.instructions);
 
-  const formattedInstructions = formatInstructions(props.instructions);
-  const parent = formattedInstructions[0];
+  if (!state.instructions.length) {
+    return null;
+  }
+
+  const parent = state.instructions[0];
   const typeName = convertCamelToTitle(parent.data.type);
 
-  const innerInstructions = formattedInstructions.filter((x) => x.data.innerIndex !== 0);
+  const innerInstructions = state.instructions.filter((x) => x.data.innerIndex !== 0);
 
   return (
     <div className={classes.root}>

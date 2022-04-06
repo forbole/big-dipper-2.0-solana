@@ -57,5 +57,6 @@
   "maintainBy": "Maintained By <0>{{name}}</0>",
   "txListFormat": "Transactions Format",
   "compact": "Compact",
-  "detailed": "Detailed"
+  "detailed": "Detailed",
+  "and": "and"
 }
