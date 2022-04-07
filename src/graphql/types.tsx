@@ -6232,7 +6232,13 @@ export type TokenDetailsQuery = { tokenUnit: Array<(
   )>, tokenSupply: Array<(
     { __typename?: 'token_supply' }
     & Pick<Token_Supply, 'supply'>
-  )> };
+  )>, tokenAccountAggregate: (
+    { __typename?: 'token_account_aggregate' }
+    & { aggregate?: Maybe<(
+      { __typename?: 'token_account_aggregate_fields' }
+      & Pick<Token_Account_Aggregate_Fields, 'count'>
+    )> }
+  ) };
 
 export type ActiveValidatorCountQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -6597,6 +6603,11 @@ export const TokenDetailsDocument = gql`
   }
   tokenSupply: token_supply(where: {mint: {_eq: $address}}) {
     supply
+  }
+  tokenAccountAggregate: token_account_aggregate(where: {mint: {_eq: $address}}) {
+    aggregate {
+      count
+    }
   }
 }
     `;

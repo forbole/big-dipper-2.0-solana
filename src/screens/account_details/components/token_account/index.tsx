@@ -19,7 +19,6 @@ const TokenAccount = () => {
     // loadNextPageTx,
     // loadNextPageHolders,
   } = useTokenAccount();
-
   return (
     <LoadAndExist
       loading={state.loading}

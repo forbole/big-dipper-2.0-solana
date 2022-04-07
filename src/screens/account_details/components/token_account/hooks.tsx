@@ -127,7 +127,7 @@ export const useTokenAccount = () => {
         price: R.pathOr(0, ['tokenUnit', 0, 'tokenPrice', 'price'], data),
         marketCap: R.pathOr(0, ['tokenUnit', 0, 'tokenPrice', 'marketCap'], data),
         supply: R.pathOr(0, ['tokenSupply', 0, 'supply'], data),
-        // holders: 0,
+        holders: R.pathOr(0, ['tokenAccountAggregate', 'aggregate', 'count'], data),
       });
     };
     stateChange.market = formatMarket();

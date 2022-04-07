@@ -35,5 +35,10 @@ query TokenDetails($address: String!) {
   tokenSupply: token_supply(where: {mint: {_eq: $address}}) {
     supply
   }
+  tokenAccountAggregate: token_account_aggregate (where: {mint: {_eq: $address}}) {
+    aggregate {
+      count
+    }
+  }
 }
 `;
