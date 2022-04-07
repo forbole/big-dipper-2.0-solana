@@ -10,9 +10,8 @@ import {
   NativeAccount,
   // NonceAccount,
   // StakeAccount,
-  // TokenAccount,
+  TokenAccount,
   // VoteAccount,
-  // MintAccount,
 } from './components';
 import { useStyles } from './styles';
 import { useAccountDetails } from './hooks';
@@ -24,7 +23,7 @@ const AccountDetails = () => {
   const classes = useStyles();
   const { state } = useAccountDetails();
 
-  const component = <NativeAccount />; // default
+  let component = <NativeAccount />; // default
 
   // if (ACCOUNT_TYPE === 'nonce') { // done
   //   component = <NonceAccount />;
@@ -38,9 +37,9 @@ const AccountDetails = () => {
   // if (ACCOUNT_TYPE === 'vote') {
   //   component = <VoteAccount />;
   // }
-  // if (ACCOUNT_TYPE === 'mint') {
-  //   component = <MintAccount />;
-  // }
+  if (state.accountType === 'TOKEN') {
+    component = <TokenAccount />;
+  }
 
   return (
     <>

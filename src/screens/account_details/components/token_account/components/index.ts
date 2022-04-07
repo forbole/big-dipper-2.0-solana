@@ -1,7 +1,11 @@
 import Overview from './overview';
-import Accounts from './accounts';
+import Transactions from './transactions';
+import Market from './market';
+import Holders from './holders';
 
 export {
   Overview,
-  Accounts,
+  Transactions,
+  Market,
+  Holders,
 };

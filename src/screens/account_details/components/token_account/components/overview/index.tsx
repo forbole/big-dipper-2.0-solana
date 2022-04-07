@@ -1,109 +1,92 @@
 import React from 'react';
-import classnames from 'classnames';
-import useTranslation from 'next-translate/useTranslation';
-import { Typography } from '@material-ui/core';
 import Link from 'next/link';
+import useTranslation from 'next-translate/useTranslation';
 import { getMiddleEllipsis } from '@utils/get_middle_ellipsis';
+import { Typography } from '@material-ui/core';
 import CopyIcon from '@assets/icon-copy.svg';
-import { useProfileRecoil } from '@recoil/profiles';
-import {
-  BoxDetails,
-  AvatarName,
-} from '@components';
 import { ACCOUNT_DETAILS } from '@utils/go_to_page';
-import { useScreenSize } from '@hooks';
-import TokenAccountLogo from '@assets/token-account.svg';
-import { useStyles } from './styles';
+import { BoxDetails } from '@components';
+import { OverviewType } from '../../types';
 import { useOverview } from './hooks';
-import { OverviewType } from './types';
+import { useStyles } from './styles';
 
-const Overview: React.FC<OverviewType & ComponentDefault> = (props) => {
-  const { t } = useTranslation('accounts');
+const Overview: React.FC<OverviewType & ComponentDefault> = (props, { className }) => {
+  const { t } = useTranslation('tokens');
   const classes = useStyles();
-  const { isMobile } = useScreenSize();
-  const {
-    handleCopyToClipboard,
-  } = useOverview(t);
-
-  const mint = useProfileRecoil(props.mint);
-
-  const data = {
-    title: (
-      <div className={classes.header}>
-        <TokenAccountLogo />
-        <Typography variant="h2">
-          {t('tokenAccount')}
-        </Typography>
-      </div>
-    ),
-    details: [
-      {
-        label: t('address'),
-        className: classes.copyText,
-        detail: (
-          <>
-            <CopyIcon
-              className={classes.actionIcons}
-              onClick={() => handleCopyToClipboard(props.address)}
-            />
-            <Typography variant="body1" className="value">
-              {
-                isMobile ? (
-                  getMiddleEllipsis(props.address, {
-                    beginning: 15, ending: 5,
-                  })
-                ) : (
-                  props.address
-                )
-              }
-            </Typography>
-          </>
-        ),
-      },
-      {
-        label: t('mint'),
-        detail: (
-          <AvatarName
-            address={props.mint}
-            imageUrl={mint.imageUrl}
-            name={mint.name}
-          />
-        ),
-      },
-      {
-        label: t('balance'),
-        detail: props.balance,
-      },
-      {
-        label: t('authority'),
-        className: classes.copyText,
-        detail: (
-          <>
-            <CopyIcon
-              className={classes.actionIcons}
-              onClick={() => handleCopyToClipboard(props.authority)}
-            />
-            <Link href={ACCOUNT_DETAILS(props.authority)} passHref>
-              <Typography variant="body1" className="value" component="a">
-                {
-                isMobile ? (
-                  getMiddleEllipsis(props.authority, {
-                    beginning: 15, ending: 5,
-                  })
-                ) : (
-                  props.authority
-                )
-              }
-              </Typography>
-            </Link>
-          </>
-        ),
-      },
-    ],
-  };
+  const { handleCopyToClipboard } = useOverview();
 
   return (
-    <BoxDetails className={classnames(props.className, classes.root)} {...data} />
+    <BoxDetails
+      className={className}
+      title={t('overview')}
+      details={[
+        {
+          label: t('address'),
+          className: classes.copyText,
+          detail: (
+            <>
+              <CopyIcon onClick={() => handleCopyToClipboard(props.address)} />
+              <Typography variant="body1" className="value">
+                {getMiddleEllipsis(props.address, {
+                  beginning: 15, ending: 5,
+                })}
+              </Typography>
+            </>
+          ),
+        },
+        {
+          label: t('decimals'),
+          detail: props.decimals,
+        },
+        {
+          label: t('mintAuthority'),
+          className: classes.copyText,
+          detail: (
+            <>
+              <CopyIcon onClick={() => handleCopyToClipboard('1334')} />
+              <Link href={ACCOUNT_DETAILS(props.address)} passHref>
+                <Typography variant="body1" className="value" component="a">
+                  {getMiddleEllipsis(props.address, {
+                    beginning: 15, ending: 5,
+                  })}
+                </Typography>
+              </Link>
+            </>
+          ),
+        },
+        {
+          label: t('freezeAuthority'),
+          className: classes.copyText,
+          detail: (
+            <>
+              <CopyIcon onClick={() => handleCopyToClipboard('1334')} />
+              <Link href={ACCOUNT_DETAILS(props.freezeAuthority)} passHref>
+                <Typography variant="body1" className="value" component="a">
+                  {getMiddleEllipsis(props.freezeAuthority, {
+                    beginning: 15, ending: 5,
+                  })}
+                </Typography>
+              </Link>
+            </>
+          ),
+        },
+        {
+          label: t('officialSite'),
+          detail: (
+            <Typography
+              variant="body1"
+              className="value"
+              component="a"
+              href={props.officialSite}
+              target="_blank"
+              rel="noopener"
+            >
+              {props.officialSite}
+            </Typography>
+          ),
+        },
+      ]}
+    />
   );
 };
 

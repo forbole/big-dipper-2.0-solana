@@ -19,6 +19,7 @@ const initialState: AccountDetailState = {
 };
 
 const ACCOUNT_TYPE_MAP: {[key: string]: string} = {
+  token: 'TOKEN',
   token_account: 'TOKEN_ACCOUNT',
 };
 

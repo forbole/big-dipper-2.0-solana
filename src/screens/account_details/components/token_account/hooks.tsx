@@ -48,7 +48,7 @@ const dummyMarket = {
   transactions: 0,
 };
 
-export const useBlockDetails = () => {
+export const useTokenAccount = () => {
   const router = useRouter();
   const [state, setState] = useState<TokenDetailState>({
     // loading: true,
