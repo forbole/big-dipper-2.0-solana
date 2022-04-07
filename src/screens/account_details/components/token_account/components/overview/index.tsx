@@ -10,7 +10,7 @@ import { OverviewType } from '../../types';
 import { useOverview } from './hooks';
 import { useStyles } from './styles';
 
-const Overview: React.FC<OverviewType & ComponentDefault> = (props, { className }) => {
+const Overview: React.FC<{overview: OverviewType} & ComponentDefault> = (props, { className }) => {
   const { t } = useTranslation('accounts');
   const classes = useStyles();
   const { handleCopyToClipboard } = useOverview();
@@ -25,9 +25,9 @@ const Overview: React.FC<OverviewType & ComponentDefault> = (props, { className 
           className: classes.copyText,
           detail: (
             <>
-              <CopyIcon onClick={() => handleCopyToClipboard(props.address)} />
+              <CopyIcon onClick={() => handleCopyToClipboard(props.overview.mint)} />
               <Typography variant="body1" className="value">
-                {getMiddleEllipsis(props.address, {
+                {getMiddleEllipsis(props.overview.mint, {
                   beginning: 15, ending: 5,
                 })}
               </Typography>
@@ -36,19 +36,25 @@ const Overview: React.FC<OverviewType & ComponentDefault> = (props, { className 
         },
         {
           label: t('decimals'),
-          detail: props.decimals,
+          detail: props.overview.decimals,
         },
         {
           label: t('mintAuthority'),
           className: classes.copyText,
           detail: (
             <>
-              <CopyIcon onClick={() => handleCopyToClipboard('1334')} />
-              <Link href={ACCOUNT_DETAILS(props.address)} passHref>
+              {!!props.overview.mintAuthority && (
+              <CopyIcon onClick={() => handleCopyToClipboard(props.overview.mintAuthority)} />
+              )}
+              <Link href={ACCOUNT_DETAILS(props.overview.mintAuthority)} passHref>
                 <Typography variant="body1" className="value" component="a">
-                  {getMiddleEllipsis(props.address, {
-                    beginning: 15, ending: 5,
-                  })}
+                  {props.overview.mintAuthority ? (
+                    getMiddleEllipsis(props.overview.mintAuthority, {
+                      beginning: 15, ending: 5,
+                    })
+                  ) : (
+                    '-'
+                  )}
                 </Typography>
               </Link>
             </>
@@ -59,30 +65,21 @@ const Overview: React.FC<OverviewType & ComponentDefault> = (props, { className 
           className: classes.copyText,
           detail: (
             <>
-              <CopyIcon onClick={() => handleCopyToClipboard('1334')} />
-              <Link href={ACCOUNT_DETAILS(props.freezeAuthority)} passHref>
+              {!!props.overview.freezeAuthority && (
+              <CopyIcon onClick={() => handleCopyToClipboard(props.overview.freezeAuthority)} />
+              )}
+              <Link href={ACCOUNT_DETAILS(props.overview.freezeAuthority)} passHref>
                 <Typography variant="body1" className="value" component="a">
-                  {getMiddleEllipsis(props.freezeAuthority, {
-                    beginning: 15, ending: 5,
-                  })}
+                  {props.overview.freezeAuthority ? (
+                    getMiddleEllipsis(props.overview.freezeAuthority, {
+                      beginning: 15, ending: 5,
+                    })
+                  ) : (
+                    '-'
+                  )}
                 </Typography>
               </Link>
             </>
-          ),
-        },
-        {
-          label: t('officialSite'),
-          detail: (
-            <Typography
-              variant="body1"
-              className="value"
-              component="a"
-              href={props.officialSite}
-              target="_blank"
-              rel="noopener"
-            >
-              {props.officialSite}
-            </Typography>
           ),
         },
       ]}

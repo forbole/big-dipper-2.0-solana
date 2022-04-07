@@ -57,7 +57,6 @@ const AccountDetails = () => {
           <span className={classes.root}>
             {(!!state.desmosProfile && ACCOUNT_TYPE === 'native') && (
             <DesmosProfile
-              className={classes.profile}
               dtag={state.desmosProfile.dtag}
               nickname={state.desmosProfile.nickname}
               imageUrl={state.desmosProfile.imageUrl}

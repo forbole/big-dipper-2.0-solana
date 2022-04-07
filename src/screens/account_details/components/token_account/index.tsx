@@ -25,29 +25,31 @@ const TokenAccount = () => {
       loading={state.loading}
       exists={state.exists}
     >
-      <Header className={classes.header} header={state.header} />
-      {/* <Overview
+      <div className={classes.root}>
+        <Header className={classes.header} header={state.header} />
+        <Overview
           className={classes.overview}
-          {...state.overview}
-        /> */}
-      {/* <Market
+          overview={state.overview}
+        />
+        {/* <Market
           className={classes.market}
           {...state.market}
         /> */}
-      {/* <Holders
+        {/* <Holders
           className={classes.holders}
           loadNextPage={loadNextPageHolders}
           data={state.holders.data}
           hasNextPage={state.transactions.hasNextPage}
           isNextPageLoading={state.transactions.isNextPageLoading}
         /> */}
-      {/* <Transactions
+        {/* <Transactions
           className={classes.transactions}
           loadNextPage={loadNextPageTx}
           data={state.transactions.data}
           hasNextPage={state.transactions.hasNextPage}
           isNextPageLoading={state.transactions.isNextPageLoading}
         /> */}
+      </div>
     </LoadAndExist>
   );
 };

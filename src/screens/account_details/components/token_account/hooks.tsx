@@ -8,16 +8,8 @@ import {
   TokenDetailsQuery,
 } from '@graphql/types';
 import {
-  TokenDetailState, OverviewType,
+  TokenDetailState,
 } from './types';
-
-const dummyOverview: OverviewType = {
-  address: '9n4nbM75f5Ui33ZbPYXn59EwSgE8CGsHtAeTH5YFeJ9E',
-  decimals: 6,
-  mintAuthority: '9n4nbM75f5Ui33ZbPYXn59EwSgE8CGsHtAeTH5YFeJ9E',
-  freezeAuthority: '9n4nbM75f5Ui33ZbPYXn59EwSgE8CGsHtAeTH5YFeJ9E',
-  officialSite: 'www.solana.com',
-};
 
 const dummyTransaction = {
   slot: 123548722,
@@ -56,7 +48,12 @@ export const useTokenAccount = () => {
       imageUrl: '',
       mint: '',
     },
-    overview: dummyOverview,
+    overview: {
+      mint: '',
+      decimals: 0,
+      mintAuthority: '',
+      freezeAuthority: '',
+    },
     market: dummyMarket,
     transactions: {
       hasNextPage: false,
@@ -100,21 +97,32 @@ export const useTokenAccount = () => {
     const stateChange: any = {
       loading: false,
     };
-
-    if (!data.tokenUnit.length) {
-      stateChange.exists = false;
-      return stateChange;
-    }
+    // ryuash come back to this later
+    // if (!data.tokenUnit.length && ) {
+    //   stateChange.exists = false;
+    //   return stateChange;
+    // }
 
     // header
     const formatHeader = () => {
       return ({
         token: R.pathOr('', ['tokenUnit', 0, 'unitName'], data),
         imageUrl: R.pathOr('', ['tokenUnit', 0, 'logo'], data),
-        mint: R.pathOr('', ['tokenUnit', 0, 'mint'], data),
+        mint: R.pathOr(router.query.address, ['tokenUnit', 0, 'mint'], data),
       });
     };
     stateChange.header = formatHeader();
+
+    // overview
+    const formatOverview = () => {
+      return ({
+        mint: R.pathOr(router.query.address, ['token', 0, 'mint'], data),
+        decimals: R.pathOr(0, ['token', 0, 'decimals'], data),
+        mintAuthority: R.pathOr('', ['token', 0, 'mintAuthority'], data),
+        freezeAuthority: R.pathOr('', ['token', 0, 'freezeAuthority'], data),
+      });
+    };
+    stateChange.overview = formatOverview();
 
     return stateChange;
   };

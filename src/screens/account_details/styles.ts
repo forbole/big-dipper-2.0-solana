@@ -14,15 +14,20 @@ export const useStyles = () => {
           gridTemplateColumns: '1fr',
           gridGap: theme.spacing(1),
           [theme.breakpoints.up('lg')]: {
-            gridTemplateColumns: 'repeat(2, 1fr)',
+            // gridTemplateColumns: 'repeat(2, 1fr)',
             gridGap: theme.spacing(2),
           },
         },
-        profile: {
-          [theme.breakpoints.up('lg')]: {
-            gridColumn: '1 / 3',
-          },
-        },
+        // profile: {
+        //   [theme.breakpoints.up('lg')]: {
+        //     gridColumn: '1 / 3',
+        //   },
+        // },
+        // component: {
+        //   [theme.breakpoints.up('lg')]: {
+        //     gridColumn: '1 / 3',
+        //   },
+        // },
       });
     },
   )();

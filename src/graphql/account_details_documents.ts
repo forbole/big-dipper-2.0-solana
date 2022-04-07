@@ -22,5 +22,11 @@ query TokenDetails($address: String!) {
     unitName: unit_name
     logo: logo_uri
   }
+  token(where: {mint: {_eq: $address}}) {
+    mint
+    freezeAuthority: freeze_authority
+    decimals
+    mintAuthority: mint_authority
+  }
 }
 `;

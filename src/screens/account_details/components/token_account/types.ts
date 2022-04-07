@@ -4,11 +4,10 @@ export type HeaderType = {
   imageUrl: string;
 }
 export type OverviewType = {
-  address: string;
+  mint: string;
   decimals: number;
   mintAuthority: string;
   freezeAuthority: string;
-  officialSite: string;
 }
 
 export type MarketType = {
