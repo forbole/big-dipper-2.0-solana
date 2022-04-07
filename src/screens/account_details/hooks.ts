@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 import axios from 'axios';
 import {
   AccountTypeDocument,
-} from '@graphql/account_details';
+} from '@src/graphql/account_details_documents';
 import { chainConfig } from '@src/configs';
 import { useDesmosProfile } from '@hooks';
 import { AccountDetailState } from './types';

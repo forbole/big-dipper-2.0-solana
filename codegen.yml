@@ -5,6 +5,7 @@ config:
 generates:
   ./src/graphql/types.tsx:
     documents:
+      - './src/**/*_documents.ts'
       - './src/graphql/*.graphql'
       - '!./src/**/desmos_profile.graphql'
     schema: https://gql.solana.forbole.com/v1/graphql

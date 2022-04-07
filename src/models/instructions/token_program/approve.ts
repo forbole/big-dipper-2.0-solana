@@ -1,7 +1,7 @@
 import { InstructionBase } from '@models';
 import axios from 'axios';
 import * as R from 'ramda';
-import { TokenAccountUnitDocument } from '@graphql/transaction_details_utils';
+import { TokenAccountUnitDocument } from '@src/graphql/transaction_details_documents';
 
 class TokenProgramApprove extends InstructionBase {
   public source: string;
