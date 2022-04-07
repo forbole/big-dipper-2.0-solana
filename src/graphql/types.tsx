@@ -6211,6 +6211,17 @@ export type NativeAccountDetailsQuery = { accountBalance: Array<(
     & Pick<Account_Balance, 'balance'>
   )> };
 
+export type TokenDetailsQueryVariables = Exact<{
+  address: Scalars['String'];
+}>;
+
+
+export type TokenDetailsQuery = { tokenUnit: Array<(
+    { __typename?: 'token_unit' }
+    & Pick<Token_Unit, 'mint'>
+    & { unitName: Token_Unit['unit_name'], logo: Token_Unit['logo_uri'] }
+  )> };
+
 export type ActiveValidatorCountQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -6555,6 +6566,43 @@ export function useNativeAccountDetailsLazyQuery(baseOptions?: Apollo.LazyQueryH
 export type NativeAccountDetailsQueryHookResult = ReturnType<typeof useNativeAccountDetailsQuery>;
 export type NativeAccountDetailsLazyQueryHookResult = ReturnType<typeof useNativeAccountDetailsLazyQuery>;
 export type NativeAccountDetailsQueryResult = Apollo.QueryResult<NativeAccountDetailsQuery, NativeAccountDetailsQueryVariables>;
+export const TokenDetailsDocument = gql`
+    query TokenDetails($address: String!) {
+  tokenUnit: token_unit(where: {mint: {_eq: $address}}) {
+    mint
+    unitName: unit_name
+    logo: logo_uri
+  }
+}
+    `;
+
+/**
+ * __useTokenDetailsQuery__
+ *
+ * To run a query within a React component, call `useTokenDetailsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useTokenDetailsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useTokenDetailsQuery({
+ *   variables: {
+ *      address: // value for 'address'
+ *   },
+ * });
+ */
+export function useTokenDetailsQuery(baseOptions: Apollo.QueryHookOptions<TokenDetailsQuery, TokenDetailsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<TokenDetailsQuery, TokenDetailsQueryVariables>(TokenDetailsDocument, options);
+      }
+export function useTokenDetailsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<TokenDetailsQuery, TokenDetailsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<TokenDetailsQuery, TokenDetailsQueryVariables>(TokenDetailsDocument, options);
+        }
+export type TokenDetailsQueryHookResult = ReturnType<typeof useTokenDetailsQuery>;
+export type TokenDetailsLazyQueryHookResult = ReturnType<typeof useTokenDetailsLazyQuery>;
+export type TokenDetailsQueryResult = Apollo.QueryResult<TokenDetailsQuery, TokenDetailsQueryVariables>;
 export const ActiveValidatorCountDocument = gql`
     query ActiveValidatorCount {
   activeTotal: validator_status_aggregate(where: {active: {_eq: true}}) {

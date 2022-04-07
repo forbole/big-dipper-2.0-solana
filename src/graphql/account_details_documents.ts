@@ -14,3 +14,13 @@ query NativeAccountDetails($address: String!) {
   }
 }
 `;
+
+export const TokenAccountDetailsDocument = /* GraphQL */`
+query TokenDetails($address: String!) {
+  tokenUnit: token_unit(where: {mint: {_eq: $address}}) {
+    mint
+    unitName: unit_name
+    logo: logo_uri
+  }
+}
+`;

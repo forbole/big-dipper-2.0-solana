@@ -5,7 +5,6 @@ export const useStyles = () => {
     (theme) => {
       return ({
         root: {
-          ...theme.mixins.layout,
           '& a': {
             color: theme.palette.custom.fonts.highlight,
           },
@@ -16,6 +15,11 @@ export const useStyles = () => {
           [theme.breakpoints.up('lg')]: {
             gridGap: theme.spacing(2),
             gridTemplateColumns: 'repeat(2, 1fr)',
+          },
+        },
+        header: {
+          [theme.breakpoints.up('lg')]: {
+            gridColumn: '1 / 3',
           },
         },
         overview: {

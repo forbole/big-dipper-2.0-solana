@@ -11,7 +11,7 @@ import { useOverview } from './hooks';
 import { useStyles } from './styles';
 
 const Overview: React.FC<OverviewType & ComponentDefault> = (props, { className }) => {
-  const { t } = useTranslation('tokens');
+  const { t } = useTranslation('accounts');
   const classes = useStyles();
   const { handleCopyToClipboard } = useOverview();
 

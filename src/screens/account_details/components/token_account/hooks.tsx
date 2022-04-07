@@ -1,15 +1,12 @@
-/* eslint-disable max-len */
 import {
   useState, useEffect,
 } from 'react';
 import * as R from 'ramda';
-// import numeral from 'numeral';
 import { useRouter } from 'next/router';
-// import {
-//   useBlockDetailsQuery,
-//   BlockDetailsQuery,
-// } from '@graphql/types';
-// import { convertMsgsToModels } from '@msg';
+import {
+  useTokenDetailsQuery,
+  TokenDetailsQuery,
+} from '@graphql/types';
 import {
   TokenDetailState, OverviewType,
 } from './types';
@@ -54,6 +51,11 @@ export const useTokenAccount = () => {
     // loading: true,
     loading: false,
     exists: true,
+    header: {
+      token: '',
+      imageUrl: '',
+      mint: '',
+    },
     overview: dummyOverview,
     market: dummyMarket,
     transactions: {
@@ -85,78 +87,37 @@ export const useTokenAccount = () => {
   // ==========================
   // Fetch Data
   // ==========================
-  // useBlockDetailsQuery({
-  //   variables: {
-  //     height: numeral(router.query.height).value(),
-  //     signatureHeight: numeral(router.query.height).value() + 1,
-  //   },
-  //   onCompleted: (data) => {
-  //     handleSetState(formatRaws(data));
-  //   },
-  // });
+  useTokenDetailsQuery({
+    variables: {
+      address: router.query.address as string,
+    },
+    onCompleted: (data) => {
+      handleSetState(formatDetails(data));
+    },
+  });
 
-  // const formatRaws = (data: BlockDetailsQuery) => {
-  //   const stateChange: any = {
-  //     loading: false,
-  //   };
+  const formatDetails = (data:TokenDetailsQuery) => {
+    const stateChange: any = {
+      loading: false,
+    };
 
-  //   if (!data.block.length) {
-  //     stateChange.exists = false;
-  //     return stateChange;
-  //   }
+    if (!data.tokenUnit.length) {
+      stateChange.exists = false;
+      return stateChange;
+    }
 
-  //   // ==========================
-  //   // Overview
-  //   // ==========================
-  //   const formatOverview = () => {
-  //     const proposerAddress = R.pathOr('', ['block', 0, 'validator', 'validatorInfo', 'operatorAddress'], data);
-  //     const overview = {
-  //       height: data.block[0].height,
-  //       hash: data.block[0].hash,
-  //       txs: data.block[0].txs,
-  //       timestamp: data.block[0].timestamp,
-  //       proposer: proposerAddress,
-  //     };
-  //     return overview;
-  //   };
+    // header
+    const formatHeader = () => {
+      return ({
+        token: R.pathOr('', ['tokenUnit', 0, 'unitName'], data),
+        imageUrl: R.pathOr('', ['tokenUnit', 0, 'logo'], data),
+        mint: R.pathOr('', ['tokenUnit', 0, 'mint'], data),
+      });
+    };
+    stateChange.header = formatHeader();
 
-  //   stateChange.overview = formatOverview();
-
-  //   // ==========================
-  //   // Signatures
-  //   // ==========================
-  //   const formatSignatures = () => {
-  //     const signatures = data.preCommits.filter((x) => x?.validator?.validatorInfo).map((x) => {
-  //       return x.validator.validatorInfo.operatorAddress;
-  //     });
-  //     return signatures;
-  //   };
-  //   stateChange.signatures = formatSignatures();
-
-  //   // ==========================
-  //   // Transactions
-  //   // ==========================
-  //   const formatTransactions = () => {
-  //     const transactions = data.transaction.map((x) => {
-  //       const messages = convertMsgsToModels(x);
-  //       return ({
-  //         height: x.height,
-  //         hash: x.hash,
-  //         success: x.success,
-  //         timestamp: stateChange.overview.timestamp,
-  //         messages: {
-  //           count: x.messages.length,
-  //           items: messages,
-  //         },
-  //       });
-  //     });
-
-  //     return transactions;
-  //   };
-  //   stateChange.transactions = formatTransactions();
-
-  //   return stateChange;
-  // };
+    return stateChange;
+  };
 
   const loadNextPageTx = async () => {
     handleSetState({

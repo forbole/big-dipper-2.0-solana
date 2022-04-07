@@ -1,3 +1,8 @@
+export type HeaderType = {
+  token: string;
+  mint: string;
+  imageUrl: string;
+}
 export type OverviewType = {
   address: string;
   decimals: number;
@@ -24,6 +29,7 @@ export type HolderType = {
 export type TokenDetailState = {
   loading: boolean;
   exists: boolean;
+  header: HeaderType;
   overview: OverviewType;
   market: MarketType;
   holders: {
