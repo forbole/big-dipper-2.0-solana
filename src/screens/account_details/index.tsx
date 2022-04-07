@@ -8,11 +8,11 @@ import {
 } from '@components';
 import {
   NativeAccount,
-  NonceAccount,
-  StakeAccount,
-  TokenAccount,
-  VoteAccount,
-  MintAccount,
+  // NonceAccount,
+  // StakeAccount,
+  // TokenAccount,
+  // VoteAccount,
+  // MintAccount,
 } from './components';
 import { useStyles } from './styles';
 import { useAccountDetails } from './hooks';
@@ -24,23 +24,23 @@ const AccountDetails = () => {
   const classes = useStyles();
   const { state } = useAccountDetails();
 
-  let component = <NativeAccount />; // default
+  const component = <NativeAccount />; // default
 
-  if (ACCOUNT_TYPE === 'nonce') { // done
-    component = <NonceAccount />;
-  }
-  if (ACCOUNT_TYPE === 'stake') { // done
-    component = <StakeAccount />;
-  }
-  if (ACCOUNT_TYPE === 'token') { // done
-    component = <TokenAccount />;
-  }
-  if (ACCOUNT_TYPE === 'vote') {
-    component = <VoteAccount />;
-  }
-  if (ACCOUNT_TYPE === 'mint') {
-    component = <MintAccount />;
-  }
+  // if (ACCOUNT_TYPE === 'nonce') { // done
+  //   component = <NonceAccount />;
+  // }
+  // if (ACCOUNT_TYPE === 'stake') { // done
+  //   component = <StakeAccount />;
+  // }
+  // if (ACCOUNT_TYPE === 'token') { // done
+  //   component = <TokenAccount />;
+  // }
+  // if (ACCOUNT_TYPE === 'vote') {
+  //   component = <VoteAccount />;
+  // }
+  // if (ACCOUNT_TYPE === 'mint') {
+  //   component = <MintAccount />;
+  // }
 
   return (
     <>
