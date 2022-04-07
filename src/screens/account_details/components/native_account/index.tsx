@@ -1,5 +1,8 @@
 import React from 'react';
 import {
+  LoadAndExist,
+} from '@components';
+import {
   Overview,
   Balance,
   Accounts,
@@ -8,10 +11,13 @@ import {
   Tokens,
   Transactions,
 } from '..';
+import { useNativeAccount } from './hooks';
 import { useStyles } from './styles';
 
 const NativeAccount = () => {
   const classes = useStyles();
+  const { state } = useNativeAccount();
+
   const data = {
     overview: {
       address: 'desmos1hfhkduejung7g29wv863x369rndf3hu5xj4g93',
@@ -63,8 +69,11 @@ const NativeAccount = () => {
   };
 
   return (
-    <>
-      <Overview className={classes.overview} {...data.overview} />
+    <LoadAndExist
+      loading={state.loading}
+      exists={state.exists}
+    >
+      <Overview className={classes.overview} overview={state.overview} />
       <Balance className={classes.balance} {...data.balance} />
       <Accounts className={classes.accounts} {...data.accounts} />
       <Tokens
@@ -78,7 +87,7 @@ const NativeAccount = () => {
         hasNextPage={false}
         isNextPageLoading={false}
       />
-    </>
+    </LoadAndExist>
   );
 };
 
