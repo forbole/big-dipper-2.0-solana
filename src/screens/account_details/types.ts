@@ -1,8 +1,11 @@
-export type OverviewType = {
-  address: string;
-  withdrawalAddress: string;
+export type AccountDetailState = {
+  loading: boolean;
+  exists: boolean;
+  desmosProfile: DesmosProfile | null;
+  accountType: string;
 }
 
+// delete later
 export type BalanceType = {
   native: TokenUnit;
   stake: TokenUnit;
@@ -41,34 +44,4 @@ export type UnbondingType = {
   commission: number;
   amount: TokenUnit;
   linkedUntil: string;
-}
-
-export type AccountDetailState = {
-  loading: boolean;
-  exists: boolean;
-  desmosProfile: DesmosProfile | null;
-  // overview: OverviewType;
-  // balance: BalanceType;
-  // otherTokens: {
-  //   data: OtherTokenType[];
-  //   count: number;
-  // };
-  // delegations: {
-  //   data: DelegationType[];
-  //   count: number;
-  // }
-  // redelegations: {
-  //   data: RedelegationType[];
-  //   count: number;
-  // }
-  // unbondings: {
-  //   data: UnbondingType[];
-  //   count: number;
-  // }
-  // transactions: {
-  //   hasNextPage: boolean;
-  //   isNextPageLoading: boolean;
-  //   offsetCount: number;
-  //   data: Transactions[];
-  // };
 }

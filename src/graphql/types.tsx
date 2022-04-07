@@ -6190,6 +6190,27 @@ export type Validator_Variance_Order_By = {
   commission?: Maybe<Order_By>;
 };
 
+export type AccountTypeQueryVariables = Exact<{
+  address: Scalars['String'];
+}>;
+
+
+export type AccountTypeQuery = { actionsAccountInfo: (
+    { __typename?: 'AccountInfo' }
+    & Pick<AccountInfo, 'parsed'>
+    & { programOwner: AccountInfo['program_owner'] }
+  ) };
+
+export type NativeAccountDetailsQueryVariables = Exact<{
+  address: Scalars['String'];
+}>;
+
+
+export type NativeAccountDetailsQuery = { accountBalance: Array<(
+    { __typename?: 'account_balance' }
+    & Pick<Account_Balance, 'balance'>
+  )> };
+
 export type ActiveValidatorCountQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -6388,6 +6409,22 @@ export type TransactionDetailsQuery = { transaction: Array<(
     )> }
   )> };
 
+export type AccountWithdrawalAddressQueryVariables = Exact<{
+  address: Scalars['String'];
+}>;
+
+
+export type AccountWithdrawalAddressQuery = { tokenAccount: Array<(
+    { __typename?: 'token_account' }
+    & { tokenUnit?: Maybe<(
+      { __typename?: 'token_unit' }
+      & { unitName: Token_Unit['unit_name'] }
+    )>, tokenInfo?: Maybe<(
+      { __typename?: 'token' }
+      & Pick<Token, 'decimals'>
+    )> }
+  )> };
+
 export type TransactionsListenerSubscriptionVariables = Exact<{
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
@@ -6447,6 +6484,77 @@ export type ValidatorAddressesQuery = { validator: Array<(
   )> };
 
 
+export const AccountTypeDocument = gql`
+    query AccountType($address: String!) {
+  actionsAccountInfo: actions_account_info(address: $address) {
+    parsed
+    programOwner: program_owner
+  }
+}
+    `;
+
+/**
+ * __useAccountTypeQuery__
+ *
+ * To run a query within a React component, call `useAccountTypeQuery` and pass it any options that fit your needs.
+ * When your component renders, `useAccountTypeQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useAccountTypeQuery({
+ *   variables: {
+ *      address: // value for 'address'
+ *   },
+ * });
+ */
+export function useAccountTypeQuery(baseOptions: Apollo.QueryHookOptions<AccountTypeQuery, AccountTypeQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<AccountTypeQuery, AccountTypeQueryVariables>(AccountTypeDocument, options);
+      }
+export function useAccountTypeLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<AccountTypeQuery, AccountTypeQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<AccountTypeQuery, AccountTypeQueryVariables>(AccountTypeDocument, options);
+        }
+export type AccountTypeQueryHookResult = ReturnType<typeof useAccountTypeQuery>;
+export type AccountTypeLazyQueryHookResult = ReturnType<typeof useAccountTypeLazyQuery>;
+export type AccountTypeQueryResult = Apollo.QueryResult<AccountTypeQuery, AccountTypeQueryVariables>;
+export const NativeAccountDetailsDocument = gql`
+    query NativeAccountDetails($address: String!) {
+  accountBalance: account_balance(where: {address: {_eq: $address}}) {
+    balance
+  }
+}
+    `;
+
+/**
+ * __useNativeAccountDetailsQuery__
+ *
+ * To run a query within a React component, call `useNativeAccountDetailsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useNativeAccountDetailsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useNativeAccountDetailsQuery({
+ *   variables: {
+ *      address: // value for 'address'
+ *   },
+ * });
+ */
+export function useNativeAccountDetailsQuery(baseOptions: Apollo.QueryHookOptions<NativeAccountDetailsQuery, NativeAccountDetailsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<NativeAccountDetailsQuery, NativeAccountDetailsQueryVariables>(NativeAccountDetailsDocument, options);
+      }
+export function useNativeAccountDetailsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<NativeAccountDetailsQuery, NativeAccountDetailsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<NativeAccountDetailsQuery, NativeAccountDetailsQueryVariables>(NativeAccountDetailsDocument, options);
+        }
+export type NativeAccountDetailsQueryHookResult = ReturnType<typeof useNativeAccountDetailsQuery>;
+export type NativeAccountDetailsLazyQueryHookResult = ReturnType<typeof useNativeAccountDetailsLazyQuery>;
+export type NativeAccountDetailsQueryResult = Apollo.QueryResult<NativeAccountDetailsQuery, NativeAccountDetailsQueryVariables>;
 export const ActiveValidatorCountDocument = gql`
     query ActiveValidatorCount {
   activeTotal: validator_status_aggregate(where: {active: {_eq: true}}) {
@@ -7004,6 +7112,46 @@ export function useTransactionDetailsLazyQuery(baseOptions?: Apollo.LazyQueryHoo
 export type TransactionDetailsQueryHookResult = ReturnType<typeof useTransactionDetailsQuery>;
 export type TransactionDetailsLazyQueryHookResult = ReturnType<typeof useTransactionDetailsLazyQuery>;
 export type TransactionDetailsQueryResult = Apollo.QueryResult<TransactionDetailsQuery, TransactionDetailsQueryVariables>;
+export const AccountWithdrawalAddressDocument = gql`
+    query AccountWithdrawalAddress($address: String!) {
+  tokenAccount: token_account(where: {address: {_eq: $address}}) {
+    tokenUnit: token_unit {
+      unitName: unit_name
+    }
+    tokenInfo: token_info {
+      decimals
+    }
+  }
+}
+    `;
+
+/**
+ * __useAccountWithdrawalAddressQuery__
+ *
+ * To run a query within a React component, call `useAccountWithdrawalAddressQuery` and pass it any options that fit your needs.
+ * When your component renders, `useAccountWithdrawalAddressQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useAccountWithdrawalAddressQuery({
+ *   variables: {
+ *      address: // value for 'address'
+ *   },
+ * });
+ */
+export function useAccountWithdrawalAddressQuery(baseOptions: Apollo.QueryHookOptions<AccountWithdrawalAddressQuery, AccountWithdrawalAddressQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<AccountWithdrawalAddressQuery, AccountWithdrawalAddressQueryVariables>(AccountWithdrawalAddressDocument, options);
+      }
+export function useAccountWithdrawalAddressLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<AccountWithdrawalAddressQuery, AccountWithdrawalAddressQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<AccountWithdrawalAddressQuery, AccountWithdrawalAddressQueryVariables>(AccountWithdrawalAddressDocument, options);
+        }
+export type AccountWithdrawalAddressQueryHookResult = ReturnType<typeof useAccountWithdrawalAddressQuery>;
+export type AccountWithdrawalAddressLazyQueryHookResult = ReturnType<typeof useAccountWithdrawalAddressLazyQuery>;
+export type AccountWithdrawalAddressQueryResult = Apollo.QueryResult<AccountWithdrawalAddressQuery, AccountWithdrawalAddressQueryVariables>;
 export const TransactionsListenerDocument = gql`
     subscription TransactionsListener($limit: Int = 7, $offset: Int = 0) {
   transactions: transaction(
