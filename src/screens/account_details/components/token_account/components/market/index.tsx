@@ -1,10 +1,11 @@
 import React from 'react';
+import numeral from 'numeral';
 import useTranslation from 'next-translate/useTranslation';
 import { BoxDetails } from '@components';
 import { MarketType } from '../../types';
 
-const Market: React.FC<MarketType & ComponentDefault> = (props, { className }) => {
-  const { t } = useTranslation('tokens');
+const Market: React.FC<{market: MarketType} & ComponentDefault> = (props, { className }) => {
+  const { t } = useTranslation('accounts');
 
   return (
     <BoxDetails
@@ -13,23 +14,19 @@ const Market: React.FC<MarketType & ComponentDefault> = (props, { className }) =
       details={[
         {
           label: t('price'),
-          detail: props.price,
+          detail: `$${numeral(props.market.price).format('0,0.00')}`,
         },
         {
           label: t('marketCap'),
-          detail: props.marketCap,
+          detail: `$${numeral(props.market.marketCap).format('0,0.00')}`,
         },
         {
           label: t('supply'),
-          detail: props.supply,
+          detail: numeral(props.market.supply).format('0,0'),
         },
         {
           label: t('holders'),
-          detail: props.holders,
-        },
-        {
-          label: t('transactions'),
-          detail: props.transactions,
+          detail: numeral(props.market.holders).format('0,0'),
         },
       ]}
     />

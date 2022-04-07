@@ -6220,10 +6220,18 @@ export type TokenDetailsQuery = { tokenUnit: Array<(
     { __typename?: 'token_unit' }
     & Pick<Token_Unit, 'mint'>
     & { unitName: Token_Unit['unit_name'], logo: Token_Unit['logo_uri'] }
+    & { tokenPrice?: Maybe<(
+      { __typename?: 'token_price' }
+      & Pick<Token_Price, 'price'>
+      & { marketCap: Token_Price['market_cap'] }
+    )> }
   )>, token: Array<(
     { __typename?: 'token' }
     & Pick<Token, 'mint' | 'decimals'>
     & { freezeAuthority: Token['freeze_authority'], mintAuthority: Token['mint_authority'] }
+  )>, tokenSupply: Array<(
+    { __typename?: 'token_supply' }
+    & Pick<Token_Supply, 'supply'>
   )> };
 
 export type ActiveValidatorCountQueryVariables = Exact<{ [key: string]: never; }>;
@@ -6576,12 +6584,19 @@ export const TokenDetailsDocument = gql`
     mint
     unitName: unit_name
     logo: logo_uri
+    tokenPrice: token_price {
+      marketCap: market_cap
+      price
+    }
   }
   token(where: {mint: {_eq: $address}}) {
     mint
     freezeAuthority: freeze_authority
     decimals
     mintAuthority: mint_authority
+  }
+  tokenSupply: token_supply(where: {mint: {_eq: $address}}) {
+    supply
   }
 }
     `;

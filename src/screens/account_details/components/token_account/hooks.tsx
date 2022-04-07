@@ -29,14 +29,6 @@ const dummyHolder = {
   value: 234243,
 };
 
-const dummyMarket = {
-  price: 4.01,
-  marketCap: 7363,
-  supply: 435365,
-  holders: 20,
-  transactions: 0,
-};
-
 export const useTokenAccount = () => {
   const router = useRouter();
   const [state, setState] = useState<TokenDetailState>({
@@ -54,7 +46,12 @@ export const useTokenAccount = () => {
       mintAuthority: '',
       freezeAuthority: '',
     },
-    market: dummyMarket,
+    market: {
+      price: 0,
+      marketCap: 0,
+      supply: 0,
+      holders: 0,
+    },
     transactions: {
       hasNextPage: false,
       isNextPageLoading: false,
@@ -123,6 +120,17 @@ export const useTokenAccount = () => {
       });
     };
     stateChange.overview = formatOverview();
+
+    // market
+    const formatMarket = () => {
+      return ({
+        price: R.pathOr(0, ['tokenUnit', 0, 'tokenPrice', 'price'], data),
+        marketCap: R.pathOr(0, ['tokenUnit', 0, 'tokenPrice', 'marketCap'], data),
+        supply: R.pathOr(0, ['tokenSupply', 0, 'supply'], data),
+        // holders: 0,
+      });
+    };
+    stateChange.market = formatMarket();
 
     return stateChange;
   };

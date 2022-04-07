@@ -62,5 +62,10 @@
   "decimals": "Decimals",
   "mintAuthority": "Mint Authority",
   "freezeAuthority": "Freeze Authority",
-  "officialSite": "Official Site"
+  "officialSite": "Official Site",
+  "price": "Price",
+  "marketCap": "Market Cap",
+  "supply": "Supply",
+  "holders": "Holders",
+  "market": "Market"
 }

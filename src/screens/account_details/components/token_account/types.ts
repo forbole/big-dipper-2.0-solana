@@ -15,7 +15,6 @@ export type MarketType = {
   marketCap: number;
   supply: number;
   holders: number;
-  transactions: number;
 }
 
 export type HolderType = {

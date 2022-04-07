@@ -31,10 +31,10 @@ const TokenAccount = () => {
           className={classes.overview}
           overview={state.overview}
         />
-        {/* <Market
+        <Market
           className={classes.market}
-          {...state.market}
-        /> */}
+          market={state.market}
+        />
         {/* <Holders
           className={classes.holders}
           loadNextPage={loadNextPageHolders}

@@ -28,6 +28,7 @@ jest.mock('@components', () => ({
 }));
 
 jest.mock('./components', () => ({
+  Header: (props) => <div id="Header" {...props} />,
   Overview: (props) => <div id="Overview" {...props} />,
   Transactions: (props) => <div id="Transactions" {...props} />,
   Holders: (props) => <div id="Holders" {...props} />,

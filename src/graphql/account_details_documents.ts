@@ -21,12 +21,19 @@ query TokenDetails($address: String!) {
     mint
     unitName: unit_name
     logo: logo_uri
+    tokenPrice: token_price {
+      marketCap: market_cap
+      price
+    }
   }
   token(where: {mint: {_eq: $address}}) {
     mint
     freezeAuthority: freeze_authority
     decimals
     mintAuthority: mint_authority
+  }
+  tokenSupply: token_supply(where: {mint: {_eq: $address}}) {
+    supply
   }
 }
 `;
