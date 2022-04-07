@@ -27,7 +27,7 @@ export const useEpoch = () => {
     const slot = R.pathOr(0, ['block', 0, 'slot'], data);
 
     // epoch number
-    const epochNumber = Big(slot).div(SLOTS_PER_EPOCH).toFixed(0);
+    const epochNumber = Big(slot).div(SLOTS_PER_EPOCH).toFixed(0, Big.roundDown);
 
     // epoch %
     const nextEpochSlot = Big(epochNumber).plus(1).times(SLOTS_PER_EPOCH).toString();
