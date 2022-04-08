@@ -42,3 +42,12 @@ query TokenDetails($address: String!) {
   }
 }
 `;
+
+export const TokenAccountDetailsHoldersDocument = /* GraphQL */`
+query TokenDetailsHolders($address: String!) {
+  tokenAccountBalance: token_account_balance(where: {token_account: {mint: {_eq: $address}}}, limit: 5, order_by: {balance: desc}) {
+    balance
+    address
+  }
+}
+`;
