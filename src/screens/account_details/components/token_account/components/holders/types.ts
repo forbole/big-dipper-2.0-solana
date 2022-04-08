@@ -1,3 +1,3 @@
-import { HolderType } from '../../types';
+export type HoldersState = {
 
-export type ItemType = Override<HolderType, { address: AvatarName }>
+}

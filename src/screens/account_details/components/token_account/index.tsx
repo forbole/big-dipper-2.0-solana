@@ -7,7 +7,7 @@ import {
   Market,
   Header,
   // Transactions,
-  // Holders,
+  Holders,
 } from './components';
 import { useStyles } from './styles';
 import { useTokenAccount } from './hooks';
@@ -16,8 +16,6 @@ const TokenAccount = () => {
   const classes = useStyles();
   const {
     state,
-    // loadNextPageTx,
-    // loadNextPageHolders,
   } = useTokenAccount();
   return (
     <LoadAndExist
@@ -34,13 +32,7 @@ const TokenAccount = () => {
           className={classes.market}
           market={state.market}
         />
-        {/* <Holders
-          className={classes.holders}
-          loadNextPage={loadNextPageHolders}
-          data={state.holders.data}
-          hasNextPage={state.transactions.hasNextPage}
-          isNextPageLoading={state.transactions.isNextPageLoading}
-        /> */}
+        <Holders className={classes.holders} />
         {/* <Transactions
           className={classes.transactions}
           loadNextPage={loadNextPageTx}

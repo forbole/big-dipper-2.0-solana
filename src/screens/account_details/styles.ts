@@ -6,28 +6,16 @@ export const useStyles = () => {
       return ({
         root: {
           ...theme.mixins.layout,
+          display: 'grid',
+          gridGap: theme.spacing(1),
+          height: '100%',
           '& a': {
             color: theme.palette.custom.fonts.highlight,
           },
-          display: 'grid',
-          gridTemplateRows: 'auto auto 1fr',
-          gridTemplateColumns: '1fr',
-          gridGap: theme.spacing(1),
           [theme.breakpoints.up('lg')]: {
-            // gridTemplateColumns: 'repeat(2, 1fr)',
             gridGap: theme.spacing(2),
           },
         },
-        // profile: {
-        //   [theme.breakpoints.up('lg')]: {
-        //     gridColumn: '1 / 3',
-        //   },
-        // },
-        // component: {
-        //   [theme.breakpoints.up('lg')]: {
-        //     gridColumn: '1 / 3',
-        //   },
-        // },
       });
     },
   )();

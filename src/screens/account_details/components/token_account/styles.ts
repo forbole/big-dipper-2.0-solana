@@ -10,7 +10,6 @@ export const useStyles = () => {
             color: theme.palette.custom.fonts.highlight,
           },
           display: 'grid',
-          gridTemplateRows: 'auto auto 1fr',
           gridTemplateColumns: '1fr',
           gridGap: theme.spacing(1),
           [theme.breakpoints.up('lg')]: {

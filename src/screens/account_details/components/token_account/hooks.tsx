@@ -32,8 +32,8 @@ const dummyHolder = {
 export const useTokenAccount = () => {
   const router = useRouter();
   const [state, setState] = useState<TokenDetailState>({
-    // loading: true,
-    loading: false,
+    loading: true,
+    // loading: false,
     exists: true,
     header: {
       token: '',
@@ -72,11 +72,10 @@ export const useTokenAccount = () => {
   useEffect(() => {
     // reset every call
     handleSetState({
-      // loading: true,
-      loading: false,
+      loading: true,
       exists: true,
     });
-  }, [router.query.height]);
+  }, [router.query.address]);
 
   // ==========================
   // Fetch Data
