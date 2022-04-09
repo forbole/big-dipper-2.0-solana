@@ -46,17 +46,19 @@ const Overview: React.FC<{overview: OverviewType} & ComponentDefault> = (props, 
               {!!props.overview.mintAuthority && (
               <CopyIcon onClick={() => handleCopyToClipboard(props.overview.mintAuthority)} />
               )}
-              <Link href={ACCOUNT_DETAILS(props.overview.mintAuthority)} passHref>
-                <Typography variant="body1" className="value" component="a">
-                  {props.overview.mintAuthority ? (
-                    getMiddleEllipsis(props.overview.mintAuthority, {
+              {props.overview.mintAuthority ? (
+                <Link href={ACCOUNT_DETAILS(props.overview.mintAuthority)} passHref>
+                  <Typography variant="body1" className="value" component="a">
+                    {getMiddleEllipsis(props.overview.mintAuthority, {
                       beginning: 15, ending: 5,
-                    })
-                  ) : (
-                    '-'
-                  )}
+                    })}
+                  </Typography>
+                </Link>
+              ) : (
+                <Typography>
+                  -
                 </Typography>
-              </Link>
+              )}
             </>
           ),
         },
@@ -68,17 +70,19 @@ const Overview: React.FC<{overview: OverviewType} & ComponentDefault> = (props, 
               {!!props.overview.freezeAuthority && (
               <CopyIcon onClick={() => handleCopyToClipboard(props.overview.freezeAuthority)} />
               )}
-              <Link href={ACCOUNT_DETAILS(props.overview.freezeAuthority)} passHref>
-                <Typography variant="body1" className="value" component="a">
-                  {props.overview.freezeAuthority ? (
-                    getMiddleEllipsis(props.overview.freezeAuthority, {
+              {props.overview.freezeAuthority ? (
+                <Link href={ACCOUNT_DETAILS(props.overview.freezeAuthority)} passHref>
+                  <Typography variant="body1" className="value" component="a">
+                    {getMiddleEllipsis(props.overview.freezeAuthority, {
                       beginning: 15, ending: 5,
-                    })
-                  ) : (
-                    '-'
-                  )}
+                    })}
+                  </Typography>
+                </Link>
+              ) : (
+                <Typography variant="body1" className="value">
+                  -
                 </Typography>
-              </Link>
+              )}
             </>
           ),
         },
