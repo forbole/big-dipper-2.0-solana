@@ -6,9 +6,7 @@ import renderer from 'react-test-renderer';
 import {
   MockTheme, wait,
 } from '@tests/utils';
-import {
-// BlockDetailsDocument,
-} from '@graphql/types';
+import { TokenDetailsDocument } from '@graphql/types';
 import BlockDetails from '.';
 
 // ==================================
@@ -30,62 +28,43 @@ jest.mock('@components', () => ({
 jest.mock('./components', () => ({
   Header: (props) => <div id="Header" {...props} />,
   Overview: (props) => <div id="Overview" {...props} />,
-  Transactions: (props) => <div id="Transactions" {...props} />,
-  Holders: (props) => <div id="Holders" {...props} />,
+  // Transactions: (props) => <div id="Transactions" {...props} />,
+  TopHolders: (props) => <div id="TopHolders" {...props} />,
   Market: (props) => <div id="Market" {...props} />,
 }));
 
-const mockAverageBlockTime = jest.fn().mockResolvedValue({
-  data: {
-    transaction: [
+const mockData = jest.fn().mockResolvedValue({
+  "data": {
+    "tokenUnit": [
       {
-        height: 999,
-        hash: '393310C681CB39E09CD3AC16C600DBFDACB2DF5085277DA81E52698620C06136',
-        logs: [],
-        messages: [
-          {
-            '@type': '/cosmos.staking.v1beta1.MsgDelegate',
-            amount: {
-              denom: 'udaric',
-              amount: '27466368',
-            },
-            delegator_address: 'desmos18kvwy5hzcu3ss08lcfcnx0eajuecg69ujmkwjr',
-            validator_address: 'desmosvaloper18kvwy5hzcu3ss08lcfcnx0eajuecg69uvk76c3',
-          },
-        ],
-        success: true,
-      },
+        "mint": "SBTCB6pWqeDo6zGi9WVRMLCsKsN6JiR1RMUqvLtgSRv",
+        "unitName": "Saber Wrapped Bitcoin (Sollet) (8 decimals)",
+        "logo": "https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/SBTCB6pWqeDo6zGi9WVRMLCsKsN6JiR1RMUqvLtgSRv/icon.png",
+        "tokenPrice": {
+          "marketCap": 807393897904,
+          "price": 42485
+        }
+      }
     ],
-    block: [
+    "token": [
       {
-        height: 999,
-        hash: 'E568ACFE5717F79A44979563410FF7F6C3043A07307E541EF21E15FC478C3DF0',
-        timestamp: '2021-04-27T16:27:34.331769',
-        txs: 1,
-        validator: {
-          validatorInfo: {
-            operatorAddress: 'desmosvaloper18kvwy5hzcu3ss08lcfcnx0eajuecg69uvk76c3',
-          },
-        },
-      },
+        "mint": "SBTCB6pWqeDo6zGi9WVRMLCsKsN6JiR1RMUqvLtgSRv",
+        "freezeAuthority": "",
+        "decimals": 8,
+        "mintAuthority": "GpkFF2nPfjUcsavgDGscxaUEQ2hYJ563AXXtU8ohiZ7c"
+      }
     ],
-    preCommitsAggregate: {
-      aggregate: {
-        sum: {
-          votingPower: 7304,
-        },
-      },
-    },
-    preCommits: [
+    "tokenSupply": [
       {
-        validator: {
-          validatorInfo: {
-            operatorAddress: 'desmosvaloper1qlh47ty9ah2d5e0xq6gsvqjvfulljl9602k7f9',
-          },
-        },
-      },
+        "supply": 28421156478
+      }
     ],
-  },
+    "tokenAccountAggregate": {
+      "aggregate": {
+        "count": 3355
+      }
+    }
+  }
 });
 
 // ==================================
@@ -94,10 +73,10 @@ const mockAverageBlockTime = jest.fn().mockResolvedValue({
 describe('screen: BlockDetails', () => {
   it('matches snapshot', async () => {
     const mockClient = createMockClient();
-    // mockClient.setRequestHandler(
-    //   BlockDetailsDocument,
-    //   mockAverageBlockTime,
-    // );
+    mockClient.setRequestHandler(
+      TokenDetailsDocument,
+      mockData,
+    );
 
     let component;
     renderer.act(() => {

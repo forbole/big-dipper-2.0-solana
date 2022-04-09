@@ -1,9 +1,7 @@
-import Mobile from './mobile';
 import Desktop from './desktop';
-import StackBar from './stack_bar';
+import Mobile from './mobile';
 
 export {
-  Mobile,
   Desktop,
-  StackBar,
+  Mobile,
 };

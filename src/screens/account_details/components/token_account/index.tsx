@@ -7,7 +7,6 @@ import {
   Market,
   Header,
   // Transactions,
-  Holders,
   TopHolders,
 } from './components';
 import { useStyles } from './styles';

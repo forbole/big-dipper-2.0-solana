@@ -2,378 +2,52 @@
 
 exports[`screen: BlockDetails matches snapshot 1`] = `
 <div
-  id="Layout"
-  navTitle="tokens:tokenDetails"
+  exists={true}
+  id="LoadAndExist"
+  loading={false}
 >
   <div
-    exists={true}
-    id="LoadAndExist"
-    loading={false}
+    className="makeStyles-root"
   >
-    <span
-      className="makeStyles-root"
-    >
-      <div
-        address="9n4nbM75f5Ui33ZbPYXn59EwSgE8CGsHtAeTH5YFeJ9E"
-        className="makeStyles-overview"
-        decimals={6}
-        freezeAuthority="9n4nbM75f5Ui33ZbPYXn59EwSgE8CGsHtAeTH5YFeJ9E"
-        id="Overview"
-        mintAuthority="9n4nbM75f5Ui33ZbPYXn59EwSgE8CGsHtAeTH5YFeJ9E"
-        officialSite="www.solana.com"
-      />
-      <div
-        className="makeStyles-market"
-        holders={20}
-        id="Market"
-        marketCap={7363}
-        price={4.01}
-        supply={435365}
-        transactions={0}
-      />
-      <div
-        className="makeStyles-holders"
-        data={
-          Array [
-            Object {
-              "address": "desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467",
-              "percentage": 70,
-              "quantity": 4534,
-              "value": 234243,
-            },
-            Object {
-              "address": "desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467",
-              "percentage": 70,
-              "quantity": 4534,
-              "value": 234243,
-            },
-            Object {
-              "address": "desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467",
-              "percentage": 70,
-              "quantity": 4534,
-              "value": 234243,
-            },
-            Object {
-              "address": "desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467",
-              "percentage": 70,
-              "quantity": 4534,
-              "value": 234243,
-            },
-            Object {
-              "address": "desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467",
-              "percentage": 70,
-              "quantity": 4534,
-              "value": 234243,
-            },
-            Object {
-              "address": "desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467",
-              "percentage": 70,
-              "quantity": 4534,
-              "value": 234243,
-            },
-            Object {
-              "address": "desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467",
-              "percentage": 70,
-              "quantity": 4534,
-              "value": 234243,
-            },
-            Object {
-              "address": "desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467",
-              "percentage": 70,
-              "quantity": 4534,
-              "value": 234243,
-            },
-            Object {
-              "address": "desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467",
-              "percentage": 70,
-              "quantity": 4534,
-              "value": 234243,
-            },
-            Object {
-              "address": "desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467",
-              "percentage": 70,
-              "quantity": 4534,
-              "value": 234243,
-            },
-            Object {
-              "address": "desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467",
-              "percentage": 70,
-              "quantity": 4534,
-              "value": 234243,
-            },
-            Object {
-              "address": "desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467",
-              "percentage": 70,
-              "quantity": 4534,
-              "value": 234243,
-            },
-            Object {
-              "address": "desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467",
-              "percentage": 70,
-              "quantity": 4534,
-              "value": 234243,
-            },
-            Object {
-              "address": "desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467",
-              "percentage": 70,
-              "quantity": 4534,
-              "value": 234243,
-            },
-            Object {
-              "address": "desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467",
-              "percentage": 70,
-              "quantity": 4534,
-              "value": 234243,
-            },
-            Object {
-              "address": "desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467",
-              "percentage": 70,
-              "quantity": 4534,
-              "value": 234243,
-            },
-            Object {
-              "address": "desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467",
-              "percentage": 70,
-              "quantity": 4534,
-              "value": 234243,
-            },
-            Object {
-              "address": "desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467",
-              "percentage": 70,
-              "quantity": 4534,
-              "value": 234243,
-            },
-            Object {
-              "address": "desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467",
-              "percentage": 70,
-              "quantity": 4534,
-              "value": 234243,
-            },
-            Object {
-              "address": "desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467",
-              "percentage": 70,
-              "quantity": 4534,
-              "value": 234243,
-            },
-          ]
+    <div
+      className="makeStyles-header"
+      header={
+        Object {
+          "imageUrl": "https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/SBTCB6pWqeDo6zGi9WVRMLCsKsN6JiR1RMUqvLtgSRv/icon.png",
+          "mint": "SBTCB6pWqeDo6zGi9WVRMLCsKsN6JiR1RMUqvLtgSRv",
+          "token": "Saber Wrapped Bitcoin (Sollet) (8 decimals)",
         }
-        hasNextPage={false}
-        id="Holders"
-        isNextPageLoading={false}
-        loadNextPage={[Function]}
-      />
-      <div
-        className="makeStyles-transactions"
-        data={
-          Array [
-            Object {
-              "messages": Object {
-                "count": 0,
-                "items": Array [],
-              },
-              "signature": "4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB",
-              "slot": 123548722,
-              "success": true,
-              "timestamp": "2021-09-13T20:06:17.363145",
-            },
-            Object {
-              "messages": Object {
-                "count": 0,
-                "items": Array [],
-              },
-              "signature": "4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB",
-              "slot": 123548722,
-              "success": true,
-              "timestamp": "2021-09-13T20:06:17.363145",
-            },
-            Object {
-              "messages": Object {
-                "count": 0,
-                "items": Array [],
-              },
-              "signature": "4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB",
-              "slot": 123548722,
-              "success": true,
-              "timestamp": "2021-09-13T20:06:17.363145",
-            },
-            Object {
-              "messages": Object {
-                "count": 0,
-                "items": Array [],
-              },
-              "signature": "4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB",
-              "slot": 123548722,
-              "success": true,
-              "timestamp": "2021-09-13T20:06:17.363145",
-            },
-            Object {
-              "messages": Object {
-                "count": 0,
-                "items": Array [],
-              },
-              "signature": "4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB",
-              "slot": 123548722,
-              "success": true,
-              "timestamp": "2021-09-13T20:06:17.363145",
-            },
-            Object {
-              "messages": Object {
-                "count": 0,
-                "items": Array [],
-              },
-              "signature": "4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB",
-              "slot": 123548722,
-              "success": true,
-              "timestamp": "2021-09-13T20:06:17.363145",
-            },
-            Object {
-              "messages": Object {
-                "count": 0,
-                "items": Array [],
-              },
-              "signature": "4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB",
-              "slot": 123548722,
-              "success": true,
-              "timestamp": "2021-09-13T20:06:17.363145",
-            },
-            Object {
-              "messages": Object {
-                "count": 0,
-                "items": Array [],
-              },
-              "signature": "4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB",
-              "slot": 123548722,
-              "success": true,
-              "timestamp": "2021-09-13T20:06:17.363145",
-            },
-            Object {
-              "messages": Object {
-                "count": 0,
-                "items": Array [],
-              },
-              "signature": "4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB",
-              "slot": 123548722,
-              "success": true,
-              "timestamp": "2021-09-13T20:06:17.363145",
-            },
-            Object {
-              "messages": Object {
-                "count": 0,
-                "items": Array [],
-              },
-              "signature": "4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB",
-              "slot": 123548722,
-              "success": true,
-              "timestamp": "2021-09-13T20:06:17.363145",
-            },
-            Object {
-              "messages": Object {
-                "count": 0,
-                "items": Array [],
-              },
-              "signature": "4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB",
-              "slot": 123548722,
-              "success": true,
-              "timestamp": "2021-09-13T20:06:17.363145",
-            },
-            Object {
-              "messages": Object {
-                "count": 0,
-                "items": Array [],
-              },
-              "signature": "4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB",
-              "slot": 123548722,
-              "success": true,
-              "timestamp": "2021-09-13T20:06:17.363145",
-            },
-            Object {
-              "messages": Object {
-                "count": 0,
-                "items": Array [],
-              },
-              "signature": "4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB",
-              "slot": 123548722,
-              "success": true,
-              "timestamp": "2021-09-13T20:06:17.363145",
-            },
-            Object {
-              "messages": Object {
-                "count": 0,
-                "items": Array [],
-              },
-              "signature": "4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB",
-              "slot": 123548722,
-              "success": true,
-              "timestamp": "2021-09-13T20:06:17.363145",
-            },
-            Object {
-              "messages": Object {
-                "count": 0,
-                "items": Array [],
-              },
-              "signature": "4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB",
-              "slot": 123548722,
-              "success": true,
-              "timestamp": "2021-09-13T20:06:17.363145",
-            },
-            Object {
-              "messages": Object {
-                "count": 0,
-                "items": Array [],
-              },
-              "signature": "4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB",
-              "slot": 123548722,
-              "success": true,
-              "timestamp": "2021-09-13T20:06:17.363145",
-            },
-            Object {
-              "messages": Object {
-                "count": 0,
-                "items": Array [],
-              },
-              "signature": "4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB",
-              "slot": 123548722,
-              "success": true,
-              "timestamp": "2021-09-13T20:06:17.363145",
-            },
-            Object {
-              "messages": Object {
-                "count": 0,
-                "items": Array [],
-              },
-              "signature": "4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB",
-              "slot": 123548722,
-              "success": true,
-              "timestamp": "2021-09-13T20:06:17.363145",
-            },
-            Object {
-              "messages": Object {
-                "count": 0,
-                "items": Array [],
-              },
-              "signature": "4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB",
-              "slot": 123548722,
-              "success": true,
-              "timestamp": "2021-09-13T20:06:17.363145",
-            },
-            Object {
-              "messages": Object {
-                "count": 0,
-                "items": Array [],
-              },
-              "signature": "4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB",
-              "slot": 123548722,
-              "success": true,
-              "timestamp": "2021-09-13T20:06:17.363145",
-            },
-          ]
+      }
+      id="Header"
+    />
+    <div
+      className="makeStyles-overview"
+      id="Overview"
+      overview={
+        Object {
+          "decimals": 8,
+          "freezeAuthority": "",
+          "mint": "SBTCB6pWqeDo6zGi9WVRMLCsKsN6JiR1RMUqvLtgSRv",
+          "mintAuthority": "GpkFF2nPfjUcsavgDGscxaUEQ2hYJ563AXXtU8ohiZ7c",
         }
-        hasNextPage={false}
-        id="Transactions"
-        isNextPageLoading={false}
-        loadNextPage={[Function]}
-      />
-    </span>
+      }
+    />
+    <div
+      className="makeStyles-market"
+      id="Market"
+      market={
+        Object {
+          "holders": 3355,
+          "marketCap": 807393897904,
+          "price": 42485,
+          "supply": 28421156478,
+        }
+      }
+    />
+    <div
+      className="makeStyles-holders"
+      id="TopHolders"
+    />
   </div>
 </div>
 `;

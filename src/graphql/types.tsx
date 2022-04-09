@@ -1213,6 +1213,8 @@ export type Nonce_Account = {
   authority: Scalars['String'];
   blockhash: Scalars['String'];
   lamports_per_signature: Scalars['Int'];
+  /** An object relationship */
+  native_balance?: Maybe<Account_Balance>;
 };
 
 /** aggregated selection of "nonce_account" */
@@ -1260,6 +1262,7 @@ export type Nonce_Account_Bool_Exp = {
   authority?: Maybe<String_Comparison_Exp>;
   blockhash?: Maybe<String_Comparison_Exp>;
   lamports_per_signature?: Maybe<Int_Comparison_Exp>;
+  native_balance?: Maybe<Account_Balance_Bool_Exp>;
 };
 
 /** aggregate max on columns */
@@ -1286,6 +1289,7 @@ export type Nonce_Account_Order_By = {
   authority?: Maybe<Order_By>;
   blockhash?: Maybe<Order_By>;
   lamports_per_signature?: Maybe<Order_By>;
+  native_balance?: Maybe<Account_Balance_Order_By>;
 };
 
 /** select columns of table "nonce_account" */
@@ -2383,6 +2387,8 @@ export type Stake_Account = {
   __typename?: 'stake_account';
   address: Scalars['String'];
   /** An object relationship */
+  native_balance?: Maybe<Account_Balance>;
+  /** An object relationship */
   stake_delegation?: Maybe<Stake_Delegation>;
   /** An object relationship */
   stake_lockup?: Maybe<Stake_Lockup>;
@@ -2418,6 +2424,7 @@ export type Stake_Account_Bool_Exp = {
   _not?: Maybe<Stake_Account_Bool_Exp>;
   _or?: Maybe<Array<Stake_Account_Bool_Exp>>;
   address?: Maybe<String_Comparison_Exp>;
+  native_balance?: Maybe<Account_Balance_Bool_Exp>;
   stake_delegation?: Maybe<Stake_Delegation_Bool_Exp>;
   stake_lockup?: Maybe<Stake_Lockup_Bool_Exp>;
   staker?: Maybe<String_Comparison_Exp>;
@@ -2443,6 +2450,7 @@ export type Stake_Account_Min_Fields = {
 /** Ordering options when selecting data from "stake_account". */
 export type Stake_Account_Order_By = {
   address?: Maybe<Order_By>;
+  native_balance?: Maybe<Account_Balance_Order_By>;
   stake_delegation?: Maybe<Stake_Delegation_Order_By>;
   stake_lockup?: Maybe<Stake_Lockup_Order_By>;
   staker?: Maybe<Order_By>;
@@ -5356,6 +5364,8 @@ export type Validator = {
   __typename?: 'validator';
   address: Scalars['String'];
   commission: Scalars['Int'];
+  /** An object relationship */
+  native_balance?: Maybe<Account_Balance>;
   node: Scalars['String'];
   /** An object relationship */
   validator_config?: Maybe<Validator_Config>;
@@ -5432,6 +5442,7 @@ export type Validator_Bool_Exp = {
   _or?: Maybe<Array<Validator_Bool_Exp>>;
   address?: Maybe<String_Comparison_Exp>;
   commission?: Maybe<Int_Comparison_Exp>;
+  native_balance?: Maybe<Account_Balance_Bool_Exp>;
   node?: Maybe<String_Comparison_Exp>;
   validator_config?: Maybe<Validator_Config_Bool_Exp>;
   validator_skip_rate?: Maybe<Validator_Skip_Rate_Bool_Exp>;
@@ -5584,6 +5595,7 @@ export type Validator_Min_Order_By = {
 export type Validator_Order_By = {
   address?: Maybe<Order_By>;
   commission?: Maybe<Order_By>;
+  native_balance?: Maybe<Account_Balance_Order_By>;
   node?: Maybe<Order_By>;
   validator_config?: Maybe<Validator_Config_Order_By>;
   validator_skip_rate?: Maybe<Validator_Skip_Rate_Order_By>;
@@ -6240,6 +6252,19 @@ export type TokenDetailsQuery = { tokenUnit: Array<(
     )> }
   ) };
 
+export type TokenDetailsHoldersQueryVariables = Exact<{
+  address: Scalars['String'];
+}>;
+
+
+export type TokenDetailsHoldersQuery = { tokenAccountBalance: Array<(
+    { __typename?: 'token_account_balance' }
+    & Pick<Token_Account_Balance, 'balance' | 'address'>
+  )>, token: Array<(
+    { __typename?: 'token' }
+    & Pick<Token, 'decimals'>
+  )> };
+
 export type ActiveValidatorCountQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -6639,6 +6664,49 @@ export function useTokenDetailsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptio
 export type TokenDetailsQueryHookResult = ReturnType<typeof useTokenDetailsQuery>;
 export type TokenDetailsLazyQueryHookResult = ReturnType<typeof useTokenDetailsLazyQuery>;
 export type TokenDetailsQueryResult = Apollo.QueryResult<TokenDetailsQuery, TokenDetailsQueryVariables>;
+export const TokenDetailsHoldersDocument = gql`
+    query TokenDetailsHolders($address: String!) {
+  tokenAccountBalance: token_account_balance(
+    where: {token_account: {mint: {_eq: $address}}}
+    limit: 10
+    order_by: {balance: desc}
+  ) {
+    balance
+    address
+  }
+  token(where: {mint: {_eq: $address}}) {
+    decimals
+  }
+}
+    `;
+
+/**
+ * __useTokenDetailsHoldersQuery__
+ *
+ * To run a query within a React component, call `useTokenDetailsHoldersQuery` and pass it any options that fit your needs.
+ * When your component renders, `useTokenDetailsHoldersQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useTokenDetailsHoldersQuery({
+ *   variables: {
+ *      address: // value for 'address'
+ *   },
+ * });
+ */
+export function useTokenDetailsHoldersQuery(baseOptions: Apollo.QueryHookOptions<TokenDetailsHoldersQuery, TokenDetailsHoldersQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<TokenDetailsHoldersQuery, TokenDetailsHoldersQueryVariables>(TokenDetailsHoldersDocument, options);
+      }
+export function useTokenDetailsHoldersLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<TokenDetailsHoldersQuery, TokenDetailsHoldersQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<TokenDetailsHoldersQuery, TokenDetailsHoldersQueryVariables>(TokenDetailsHoldersDocument, options);
+        }
+export type TokenDetailsHoldersQueryHookResult = ReturnType<typeof useTokenDetailsHoldersQuery>;
+export type TokenDetailsHoldersLazyQueryHookResult = ReturnType<typeof useTokenDetailsHoldersLazyQuery>;
+export type TokenDetailsHoldersQueryResult = Apollo.QueryResult<TokenDetailsHoldersQuery, TokenDetailsHoldersQueryVariables>;
 export const ActiveValidatorCountDocument = gql`
     query ActiveValidatorCount {
   activeTotal: validator_status_aggregate(where: {active: {_eq: true}}) {

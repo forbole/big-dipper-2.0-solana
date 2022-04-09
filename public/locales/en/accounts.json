@@ -68,5 +68,7 @@
   "supply": "Supply",
   "holders": "Holders",
   "market": "Market",
-  "topHolders": "Top Holders"
+  "topHolders": "Top Holders",
+  "holder": "Holder",
+  "rank": "Rank"
 }

@@ -21,12 +21,11 @@ describe('screen: BlockDetails/Overview', () => {
       <RecoilRoot>
         <MockTheme>
           <Overview
-            {...{
-              address: '9n4nbM75f5Ui33ZbPYXn59EwSgE8CGsHtAeTH5YFeJ9E',
+            overview={{
+              mint: '9n4nbM75f5Ui33ZbPYXn59EwSgE8CGsHtAeTH5YFeJ9E',
               decimals: 6,
               mintAuthority: '9n4nbM75f5Ui33ZbPYXn59EwSgE8CGsHtAeTH5YFeJ9E',
               freezeAuthority: '9n4nbM75f5Ui33ZbPYXn59EwSgE8CGsHtAeTH5YFeJ9E',
-              officialSite: 'www.solana.com',
             }}
           />
         </MockTheme>

@@ -1,11 +1,13 @@
-export type DataType = {
-  address: string;
-  amount: TokenUnit;
-  value: number;
+export type HolderType = {
+  holder: string;
+  amount: string;
+  decimals: number;
 }
 
 export type HoldersState = {
   loading: boolean;
   exists: boolean;
-  data: DataType[];
+  holders: HolderType[];
 }
+
+export type ItemType = Override<HolderType, { holder: AvatarName }>

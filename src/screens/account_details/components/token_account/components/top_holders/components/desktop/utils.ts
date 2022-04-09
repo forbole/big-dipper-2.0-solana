@@ -5,25 +5,16 @@ export const columns:{
 }[] = [
   {
     key: 'rank',
-    width: 10,
+    width: 5,
+    align: 'center',
   },
   {
-    key: 'address',
-    width: 35,
+    key: 'holder',
+    width: 65,
   },
   {
-    key: 'quantity',
-    width: 20,
+    key: 'amount',
+    width: 30,
     align: 'right',
-  },
-  {
-    key: 'percentage',
-    width: 20,
-    align: 'right',
-  },
-  {
-    key: 'value',
-    align: 'right',
-    width: 15,
   },
 ];
