@@ -4,17 +4,35 @@ export const useStyles = () => {
   const styles = makeStyles(
     (theme) => {
       return ({
+        root: {
+          gridColumn: '1 / 3',
+          '& a': {
+            color: theme.palette.custom.fonts.highlight,
+          },
+          display: 'grid',
+          gridTemplateColumns: '1fr',
+          gridGap: theme.spacing(1),
+          [theme.breakpoints.up('lg')]: {
+            gridGap: theme.spacing(2),
+            gridTemplateColumns: 'repeat(2, 1fr)',
+          },
+        },
+        header: {
+          [theme.breakpoints.up('lg')]: {
+            gridColumn: '1 / 3',
+          },
+        },
         overview: {
           [theme.breakpoints.up('lg')]: {
-            gridColumn: '1 / 3',
+            gridColumn: '1 / 2',
           },
         },
-        accounts: {
+        market: {
           [theme.breakpoints.up('lg')]: {
-            gridColumn: '1 / 3',
+            gridColumn: '2 / 3',
           },
         },
-        tokens: {
+        holders: {
           [theme.breakpoints.up('lg')]: {
             gridColumn: '1 / 3',
           },
