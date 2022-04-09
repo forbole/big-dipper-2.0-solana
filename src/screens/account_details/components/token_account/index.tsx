@@ -8,6 +8,7 @@ import {
   Header,
   // Transactions,
   Holders,
+  TopHolders,
 } from './components';
 import { useStyles } from './styles';
 import { useTokenAccount } from './hooks';
@@ -32,7 +33,8 @@ const TokenAccount = () => {
           className={classes.market}
           market={state.market}
         />
-        <Holders className={classes.holders} />
+        {/* <Holders className={classes.holders} /> */}
+        <TopHolders className={classes.holders} />
         {/* <Transactions
           className={classes.transactions}
           loadNextPage={loadNextPageTx}

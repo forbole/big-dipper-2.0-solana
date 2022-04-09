@@ -67,5 +67,6 @@
   "marketCap": "Market Cap",
   "supply": "Supply",
   "holders": "Holders",
-  "market": "Market"
+  "market": "Market",
+  "topHolders": "Top Holders"
 }

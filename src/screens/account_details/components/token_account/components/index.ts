@@ -3,6 +3,7 @@ import Transactions from './transactions';
 import Market from './market';
 import Holders from './holders';
 import Header from './header';
+import TopHolders from './top_holders';
 
 export {
   Overview,
@@ -10,4 +11,5 @@ export {
   Market,
   Holders,
   Header,
+  TopHolders,
 };
