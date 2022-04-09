@@ -4,10 +4,7 @@ import { useRouter } from 'next/router';
 import {
   useTokenDetailsHoldersQuery, TokenDetailsHoldersQuery,
 } from '@graphql/types';
-import {
-  formatToken, formatTokenByExponent,
-} from '@utils/format_token';
-import { chainConfig } from '@configs';
+import { formatTokenByExponent } from '@utils/format_token';
 import { HoldersState } from './types';
 
 export const useHolders = () => {
