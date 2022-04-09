@@ -17,25 +17,12 @@ export type MarketType = {
   holders: number;
 }
 
-export type HolderType = {
-  address: string;
-  quantity: number;
-  percentage: number;
-  value: number;
-}
-
 export type TokenDetailState = {
   loading: boolean;
   exists: boolean;
   header: HeaderType;
   overview: OverviewType;
   market: MarketType;
-  holders: {
-    hasNextPage: boolean;
-    isNextPageLoading: boolean;
-    offsetCount: number;
-    data: HolderType[];
-  };
   transactions: {
     hasNextPage: boolean;
     isNextPageLoading: boolean;

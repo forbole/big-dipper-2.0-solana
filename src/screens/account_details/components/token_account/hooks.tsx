@@ -22,13 +22,6 @@ const dummyTransaction = {
   },
 };
 
-const dummyHolder = {
-  address: 'desmosvaloper1rzhewpmmdl72lhnxj6zmxr4v94f522s4hyz467',
-  quantity: 4534,
-  percentage: 70,
-  value: 234243,
-};
-
 export const useTokenAccount = () => {
   const router = useRouter();
   const [state, setState] = useState<TokenDetailState>({
@@ -57,12 +50,6 @@ export const useTokenAccount = () => {
       isNextPageLoading: false,
       offsetCount: 0,
       data: Array(20).fill(dummyTransaction),
-    },
-    holders: {
-      hasNextPage: false,
-      isNextPageLoading: false,
-      offsetCount: 0,
-      data: Array(20).fill(dummyHolder),
     },
   });
   const handleSetState = (stateChange: any) => {
