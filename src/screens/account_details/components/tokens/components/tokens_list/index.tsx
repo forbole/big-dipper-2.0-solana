@@ -6,7 +6,8 @@ import {
   useScreenSize,
 } from '@hooks';
 import {
-  Pagination, NoData,
+  Pagination,
+  NoData,
 } from '@components';
 import { useStyles } from './styles';
 import { TokenType } from '../../types';
@@ -35,19 +36,19 @@ const List: React.FC<{
 
   const items = sliceItems(data);
 
+  let component = null;
+
+  if (!items.length) {
+    component = <NoData />;
+  } else if (isDesktop) {
+    component = <Desktop items={items} />;
+  } else {
+    component = <Mobile items={items} />;
+  }
+
   return (
     <div className={classnames(className)}>
-      {items.length ? (
-        <>
-          {isDesktop ? (
-            <Desktop className={classes.desktop} items={items} />
-          ) : (
-            <Mobile className={classes.mobile} items={items} />
-          )}
-        </>
-      ) : (
-        <NoData />
-      )}
+      {component}
       <Pagination
         className={classes.paginate}
         total={count}
@@ -55,7 +56,6 @@ const List: React.FC<{
         page={page}
         handleChangePage={handleChangePage}
         handleChangeRowsPerPage={handleChangeRowsPerPage}
-        rowsPerPageOptions={[10, 25, 50, 100]}
       />
     </div>
   );

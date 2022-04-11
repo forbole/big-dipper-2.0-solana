@@ -1,25 +1,35 @@
 import React from 'react';
 import classnames from 'classnames';
-import { Box } from '@components';
+import {
+  Box, Loading,
+} from '@components';
 import useTranslation from 'next-translate/useTranslation';
 import { Typography } from '@material-ui/core';
-import {
-  TokensList,
-} from './components';
-import { TokensType } from './types';
 
-const Tokens: React.FC<TokensType & ComponentDefault> = (props) => {
+import { useTokens } from './hooks';
+import { TokensList } from './components';
+
+const Tokens: React.FC<ComponentDefault> = (props) => {
   const { t } = useTranslation('accounts');
+  const { state } = useTokens();
+
+  if (!state.loading && !state.tokens.length) {
+    return null;
+  }
 
   return (
     <Box className={classnames(props.className)}>
       <Typography variant="h2">
         {t('tokens')}
       </Typography>
-      <TokensList
-        data={props.tokens}
-        count={props.tokens.length}
-      />
+      {state.loading ? (
+        <Loading />
+      ) : (
+        <TokensList
+          data={state.tokens}
+          count={state.tokens.length}
+        />
+      )}
     </Box>
   );
 };

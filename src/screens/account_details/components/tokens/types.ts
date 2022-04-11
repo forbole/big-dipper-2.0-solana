@@ -1,8 +1,9 @@
 export type TokenType = {
   token: string;
-  amount: number;
+  amount: TokenUnit;
 }
 
-export type TokensType = {
-  tokens: TokenType[]
+export type TokensState = {
+  loading: boolean;
+  tokens: TokenType[];
 }

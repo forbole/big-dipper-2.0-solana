@@ -1,11 +1,11 @@
 import React from 'react';
-import numeral from 'numeral';
 import classnames from 'classnames';
 import useTranslation from 'next-translate/useTranslation';
 import {
   Divider,
   Typography,
 } from '@material-ui/core';
+import { formatNumber } from '@utils/format_token';
 import { useStyles } from './styles';
 import { TokenType } from '../../../../types';
 
@@ -35,7 +35,7 @@ const Mobile: React.FC<{
                   {t('amount')}
                 </Typography>
                 <Typography variant="body1" className="value">
-                  {numeral(x.amount).format('0,0')}
+                  {formatNumber(x.amount.value, x.amount.exponent)}
                 </Typography>
               </div>
             </div>

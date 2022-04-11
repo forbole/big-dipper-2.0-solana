@@ -80,11 +80,12 @@ query NativeRelatedAccounts($address: String) {
 
 export const NativeAccountTokensDocument = /* GraphQL */`
 query NativeAccountTokens($address: String) {
-  token: token_account_balance(where: {token_account: {owner: {_eq: $address}}}) {
+  tokens: token_account_balance(where: {token_account: {owner: {_eq: $address}}}) {
     balance
     tokenAccount: token_account {
       tokenUnit: token_unit {
         unitName: unit_name
+        mint
       }
       tokenInfo: token_info {
         decimals

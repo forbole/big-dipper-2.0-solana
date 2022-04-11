@@ -1058,6 +1058,14 @@ export type Instruction_Variance_Order_By = {
   inner_index?: Maybe<Order_By>;
 };
 
+export type Instructions_By_Address_2_Args = {
+  addresses?: Maybe<Scalars['_text']>;
+  amount?: Maybe<Scalars['bigint']>;
+  limit?: Maybe<Scalars['bigint']>;
+  offset?: Maybe<Scalars['bigint']>;
+  programs?: Maybe<Scalars['_text']>;
+};
+
 export type Instructions_By_Address_Args = {
   addresses?: Maybe<Scalars['_text']>;
   limit?: Maybe<Scalars['bigint']>;
@@ -1610,6 +1618,10 @@ export type Query_Root = {
   instruction_aggregate: Instruction_Aggregate;
   /** execute function "instructions_by_address" which returns "instruction" */
   instructions_by_address: Array<Instruction>;
+  /** execute function "instructions_by_address_2" which returns "instruction" */
+  instructions_by_address_2: Array<Instruction>;
+  /** execute function "instructions_by_address_2" and query aggregates on result of table type "instruction" */
+  instructions_by_address_2_aggregate: Instruction_Aggregate;
   /** execute function "instructions_by_address" and query aggregates on result of table type "instruction" */
   instructions_by_address_aggregate: Instruction_Aggregate;
   /** fetch data from the table: "multisig" */
@@ -1861,6 +1873,26 @@ export type Query_RootInstruction_AggregateArgs = {
 
 export type Query_RootInstructions_By_AddressArgs = {
   args: Instructions_By_Address_Args;
+  distinct_on?: Maybe<Array<Instruction_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Instruction_Order_By>>;
+  where?: Maybe<Instruction_Bool_Exp>;
+};
+
+
+export type Query_RootInstructions_By_Address_2Args = {
+  args: Instructions_By_Address_2_Args;
+  distinct_on?: Maybe<Array<Instruction_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Instruction_Order_By>>;
+  where?: Maybe<Instruction_Bool_Exp>;
+};
+
+
+export type Query_RootInstructions_By_Address_2_AggregateArgs = {
+  args: Instructions_By_Address_2_Args;
   distinct_on?: Maybe<Array<Instruction_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
@@ -2813,6 +2845,10 @@ export type Subscription_Root = {
   instruction_aggregate: Instruction_Aggregate;
   /** execute function "instructions_by_address" which returns "instruction" */
   instructions_by_address: Array<Instruction>;
+  /** execute function "instructions_by_address_2" which returns "instruction" */
+  instructions_by_address_2: Array<Instruction>;
+  /** execute function "instructions_by_address_2" and query aggregates on result of table type "instruction" */
+  instructions_by_address_2_aggregate: Instruction_Aggregate;
   /** execute function "instructions_by_address" and query aggregates on result of table type "instruction" */
   instructions_by_address_aggregate: Instruction_Aggregate;
   /** fetch data from the table: "multisig" */
@@ -3048,6 +3084,26 @@ export type Subscription_RootInstruction_AggregateArgs = {
 
 export type Subscription_RootInstructions_By_AddressArgs = {
   args: Instructions_By_Address_Args;
+  distinct_on?: Maybe<Array<Instruction_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Instruction_Order_By>>;
+  where?: Maybe<Instruction_Bool_Exp>;
+};
+
+
+export type Subscription_RootInstructions_By_Address_2Args = {
+  args: Instructions_By_Address_2_Args;
+  distinct_on?: Maybe<Array<Instruction_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Instruction_Order_By>>;
+  where?: Maybe<Instruction_Bool_Exp>;
+};
+
+
+export type Subscription_RootInstructions_By_Address_2_AggregateArgs = {
+  args: Instructions_By_Address_2_Args;
   distinct_on?: Maybe<Array<Instruction_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
@@ -6305,13 +6361,14 @@ export type NativeAccountTokensQueryVariables = Exact<{
 }>;
 
 
-export type NativeAccountTokensQuery = { token: Array<(
+export type NativeAccountTokensQuery = { tokens: Array<(
     { __typename?: 'token_account_balance' }
     & Pick<Token_Account_Balance, 'balance'>
     & { tokenAccount?: Maybe<(
       { __typename?: 'token_account' }
       & { tokenUnit?: Maybe<(
         { __typename?: 'token_unit' }
+        & Pick<Token_Unit, 'mint'>
         & { unitName: Token_Unit['unit_name'] }
       )>, tokenInfo?: Maybe<(
         { __typename?: 'token' }
@@ -6829,11 +6886,12 @@ export type NativeRelatedAccountsLazyQueryHookResult = ReturnType<typeof useNati
 export type NativeRelatedAccountsQueryResult = Apollo.QueryResult<NativeRelatedAccountsQuery, NativeRelatedAccountsQueryVariables>;
 export const NativeAccountTokensDocument = gql`
     query NativeAccountTokens($address: String) {
-  token: token_account_balance(where: {token_account: {owner: {_eq: $address}}}) {
+  tokens: token_account_balance(where: {token_account: {owner: {_eq: $address}}}) {
     balance
     tokenAccount: token_account {
       tokenUnit: token_unit {
         unitName: unit_name
+        mint
       }
       tokenInfo: token_info {
         decimals
