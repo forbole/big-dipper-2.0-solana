@@ -79,11 +79,18 @@ export const useNativeAccount = () => {
         return Big(a).add(R.pathOr(0, ['nativeBalance', 'balance'], b)).toString();
       }, 0);
 
+      const total = Big(native)
+        .add(stakeReduced)
+        .add(nonceReduced)
+        .add(voteReduced)
+        .toString();
+
       return ({
         native: formatToken(native, chainConfig.primaryTokenUnit),
         stake: formatToken(stakeReduced, chainConfig.primaryTokenUnit),
         nonce: formatToken(nonceReduced, chainConfig.primaryTokenUnit),
         vote: formatToken(voteReduced, chainConfig.primaryTokenUnit),
+        total: formatToken(total, chainConfig.primaryTokenUnit),
       });
     };
     stateChange.balance = formatBalance();
