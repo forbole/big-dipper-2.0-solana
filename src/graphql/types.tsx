@@ -6611,6 +6611,7 @@ export type TxByAddressQuery = { transactions: (
       & { transaction?: Maybe<(
         { __typename?: 'transaction' }
         & Pick<Transaction, 'success' | 'slot' | 'signature'>
+        & { numInstructions: Transaction['num_instructions'] }
         & { block?: Maybe<(
           { __typename?: 'block' }
           & Pick<Block, 'timestamp'>
@@ -7565,6 +7566,7 @@ export const TxByAddressDocument = gql`
         success
         slot
         signature
+        numInstructions: num_instructions
         block {
           timestamp
         }

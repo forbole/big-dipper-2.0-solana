@@ -6,6 +6,7 @@ query TxByAddress($address: _text) {
         success
         slot
         signature
+        numInstructions: num_instructions
         block {
           timestamp
         }

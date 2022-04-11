@@ -6,6 +6,7 @@ import {
   TransactionsList,
   Box,
 } from '@components';
+import { useTransactions } from './hooks';
 import { useStyles } from './styles';
 
 const Transactions: React.FC<{
@@ -17,9 +18,7 @@ const Transactions: React.FC<{
 }> = (props) => {
   const classes = useStyles();
   const { t } = useTranslation('accounts');
-  const loadMoreItems = props.isNextPageLoading ? () => null : props.loadNextPage;
-  const isItemLoaded = (index) => !props.hasNextPage || index < props.data.length;
-  const itemCount = props.hasNextPage ? props.data.length + 1 : props.data.length;
+  const { state } = useTransactions();
 
   return (
     <Box className={classnames(props.className, classes.root)}>
@@ -28,13 +27,14 @@ const Transactions: React.FC<{
       </Typography>
       <div className={classes.list}>
         <TransactionsList
-          transactions={props.data}
-          itemCount={itemCount}
-          hasNextPage={props.hasNextPage}
-          isNextPageLoading={props.isNextPageLoading}
-          loadNextPage={props.loadNextPage}
-          loadMoreItems={loadMoreItems}
-          isItemLoaded={isItemLoaded}
+          transactions={state.transactions}
+          itemCount={state.transactions.length}
+          className={classes.list}
+          hasNextPage={false}
+          isNextPageLoading={false}
+          loadNextPage={() => null}
+          loadMoreItems={() => null}
+          isItemLoaded={() => true}
         />
       </div>
     </Box>
