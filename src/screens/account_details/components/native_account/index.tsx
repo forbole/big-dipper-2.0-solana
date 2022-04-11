@@ -17,40 +17,7 @@ import { useStyles } from './styles';
 const NativeAccount = () => {
   const classes = useStyles();
   const { state } = useNativeAccount();
-
   const data = {
-    balance: {
-      native: {
-        value: '5000',
-        baseDenom: 'sol',
-        displayDenom: 'sol',
-        exponent: 6,
-      },
-      stake: {
-        value: '5000',
-        baseDenom: 'sol',
-        displayDenom: 'sol',
-        exponent: 6,
-      },
-      nonce: {
-        value: '5000',
-        baseDenom: 'sol',
-        displayDenom: 'sol',
-        exponent: 6,
-      },
-      vote: {
-        value: '5000',
-        baseDenom: 'sol',
-        displayDenom: 'sol',
-        exponent: 6,
-      },
-      total: {
-        value: '20000',
-        baseDenom: 'sol',
-        displayDenom: 'sol',
-        exponent: 6,
-      },
-    },
     tokens: {
       tokens: Array(14).fill({
         token: 'ETH',
@@ -65,7 +32,7 @@ const NativeAccount = () => {
       exists={state.exists}
     >
       <Overview className={classes.overview} overview={state.overview} />
-      <Balance className={classes.balance} {...data.balance} />
+      <Balance className={classes.balance} balance={state.balance} />
       <Accounts className={classes.accounts} />
       <Tokens
         className={classes.tokens}

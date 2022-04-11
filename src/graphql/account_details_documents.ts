@@ -9,8 +9,29 @@ query AccountType($address: String!) {
 
 export const NativeAccountDetailsDocument = /* GraphQL */`
 query NativeAccountDetails($address: String!) {
-  accountBalance: account_balance (where: {address: {_eq: $address}}) {
+  accountBalance: account_balance(where: {address: {_eq: $address}}) {
     balance
+  }
+  stake: stake_account_aggregate(where: {withdrawer: {_eq: $address}}) {
+    nodes {
+      nativeBalance: native_balance {
+        balance
+      }
+    }
+  }
+  nonce: nonce_account_aggregate(where: {authority: {_eq: $address}}) {
+    nodes {
+      nativeBalance: native_balance {
+        balance
+      }
+    }
+  }
+  validator: validator_aggregate(where: {withdrawer: {_eq: $address}}) {
+    nodes {
+      nativeBalance: native_balance {
+        balance
+      }
+    }
   }
 }
 `;
