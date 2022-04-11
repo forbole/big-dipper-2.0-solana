@@ -6599,6 +6599,27 @@ export type TokensQuery = { tokenUnit: Array<(
     )> }
   )> };
 
+export type TxByAddressQueryVariables = Exact<{
+  address?: Maybe<Scalars['_text']>;
+}>;
+
+
+export type TxByAddressQuery = { transactions: (
+    { __typename?: 'instruction_aggregate' }
+    & { nodes: Array<(
+      { __typename?: 'instruction' }
+      & { transaction?: Maybe<(
+        { __typename?: 'transaction' }
+        & Pick<Transaction, 'success' | 'slot' | 'signature'>
+        & { numInstructions: Transaction['num_instructions'] }
+        & { block?: Maybe<(
+          { __typename?: 'block' }
+          & Pick<Block, 'timestamp'>
+        )> }
+      )> }
+    )> }
+  ) };
+
 export type TransactionDetailsQueryVariables = Exact<{
   signature?: Maybe<Scalars['String']>;
 }>;
@@ -7533,6 +7554,55 @@ export function useTokensLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<Tok
 export type TokensQueryHookResult = ReturnType<typeof useTokensQuery>;
 export type TokensLazyQueryHookResult = ReturnType<typeof useTokensLazyQuery>;
 export type TokensQueryResult = Apollo.QueryResult<TokensQuery, TokensQueryVariables>;
+export const TxByAddressDocument = gql`
+    query TxByAddress($address: _text) {
+  transactions: instructions_by_address_2_aggregate(
+    args: {addresses: $address, programs: "{}", limit: 10, offset: 0, amount: 100000}
+    where: {}
+    distinct_on: tx_signature
+  ) {
+    nodes {
+      transaction {
+        success
+        slot
+        signature
+        numInstructions: num_instructions
+        block {
+          timestamp
+        }
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useTxByAddressQuery__
+ *
+ * To run a query within a React component, call `useTxByAddressQuery` and pass it any options that fit your needs.
+ * When your component renders, `useTxByAddressQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useTxByAddressQuery({
+ *   variables: {
+ *      address: // value for 'address'
+ *   },
+ * });
+ */
+export function useTxByAddressQuery(baseOptions?: Apollo.QueryHookOptions<TxByAddressQuery, TxByAddressQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<TxByAddressQuery, TxByAddressQueryVariables>(TxByAddressDocument, options);
+      }
+export function useTxByAddressLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<TxByAddressQuery, TxByAddressQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<TxByAddressQuery, TxByAddressQueryVariables>(TxByAddressDocument, options);
+        }
+export type TxByAddressQueryHookResult = ReturnType<typeof useTxByAddressQuery>;
+export type TxByAddressLazyQueryHookResult = ReturnType<typeof useTxByAddressLazyQuery>;
+export type TxByAddressQueryResult = Apollo.QueryResult<TxByAddressQuery, TxByAddressQueryVariables>;
 export const TransactionDetailsDocument = gql`
     query TransactionDetails($signature: String) {
   transaction(where: {signature: {_eq: $signature}}, limit: 1) {
