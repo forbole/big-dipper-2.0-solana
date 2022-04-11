@@ -17,14 +17,6 @@ import { useStyles } from './styles';
 const NativeAccount = () => {
   const classes = useStyles();
   const { state } = useNativeAccount();
-  const data = {
-    tokens: {
-      tokens: Array(14).fill({
-        token: 'ETH',
-        amount: 243530,
-      }),
-    },
-  };
 
   return (
     <LoadAndExist
@@ -34,10 +26,7 @@ const NativeAccount = () => {
       <Overview className={classes.overview} overview={state.overview} />
       <Balance className={classes.balance} balance={state.balance} />
       <Accounts className={classes.accounts} />
-      <Tokens
-        className={classes.tokens}
-        {...data.tokens}
-      />
+      <Tokens className={classes.tokens} />
       <Transactions
         className={classes.transactions}
         loadNextPage={() => null}
