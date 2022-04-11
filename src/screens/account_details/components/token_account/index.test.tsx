@@ -33,6 +33,10 @@ jest.mock('./components', () => ({
   Market: (props) => <div id="Market" {...props} />,
 }));
 
+jest.mock('..', () => ({
+  Transactions: (props) => <div id="Transactions" {...props} />,
+}));
+
 const mockData = jest.fn().mockResolvedValue({
   "data": {
     "tokenUnit": [

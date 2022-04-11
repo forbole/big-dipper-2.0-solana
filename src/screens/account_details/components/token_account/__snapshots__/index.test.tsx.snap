@@ -48,6 +48,10 @@ exports[`screen: BlockDetails matches snapshot 1`] = `
       className="makeStyles-holders"
       id="TopHolders"
     />
+    <div
+      className="makeStyles-transactions"
+      id="Transactions"
+    />
   </div>
 </div>
 `;

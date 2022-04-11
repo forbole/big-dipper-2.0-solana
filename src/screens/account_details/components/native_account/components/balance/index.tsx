@@ -23,13 +23,13 @@ import { useStyles } from './styles';
 import { BalanceType } from '../../../../types';
 import { formatBalanceData } from './utils';
 
-const Balance: React.FC<BalanceType & ComponentDefault> = (props) => {
+const Balance: React.FC<{balance: BalanceType} & ComponentDefault> = (props) => {
   const { t } = useTranslation('accounts');
   const {
     classes, theme,
   } = useStyles();
   const market = useRecoilValue(readMarket);
-  const formattedChartData = formatBalanceData(props);
+  const formattedChartData = formatBalanceData(props.balance);
 
   const empty = {
     key: 'empty',
@@ -39,14 +39,15 @@ const Balance: React.FC<BalanceType & ComponentDefault> = (props) => {
   };
 
   const backgrounds = [
-    theme.palette.custom.charts.one,
-    theme.palette.custom.charts.two,
-    theme.palette.custom.charts.three,
-    theme.palette.custom.charts.four,
+    theme.palette.custom.primaryData.one,
+    theme.palette.custom.primaryData.two,
+    theme.palette.custom.primaryData.three,
+    theme.palette.custom.primaryData.four,
   ];
 
   const formatData = formattedChartData.map((x, i) => ({
     ...x,
+    value: numeral(x.value).value(),
     background: backgrounds[i],
   }));
 
@@ -54,7 +55,7 @@ const Balance: React.FC<BalanceType & ComponentDefault> = (props) => {
 
   const dataCount = formatData.filter((x) => Big(x.value).gt(0)).length;
   const data = notEmpty ? formatData : [...formatData, empty];
-  const totalAmount = `$${numeral(market.price * numeral(props.total.value).value()).format('0,0.00')}`;
+  const totalAmount = `$${numeral(market.price * numeral(props.balance.total.value).value()).format('0,0.00')}`;
 
   return (
     <Box className={classnames(props.className, classes.root)}>
@@ -115,11 +116,11 @@ const Balance: React.FC<BalanceType & ComponentDefault> = (props) => {
           <div className="total__single--container">
             <Typography variant="h3" className="label">
               {t('total', {
-                unit: props.total.displayDenom.toUpperCase(),
+                unit: props.balance.total.displayDenom.toUpperCase(),
               })}
             </Typography>
             <Typography variant="h3">
-              {formatNumber(props.total.value, props.total.exponent)}
+              {formatNumber(props.balance.total.value, props.balance.total.exponent)}
             </Typography>
           </div>
           <div className="total__secondary--container total__single--container">
