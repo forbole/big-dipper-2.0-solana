@@ -16,32 +16,47 @@ const Accounts: React.FC<ComponentDefault> = (props) => {
     tab,
     state,
   } = useAccountsHook();
-  const tabs = [
-    {
-      id: 0,
+  const tabs = [];
+
+  if (state.stake.length) {
+    tabs.push({
+      id: tabs.length,
       key: 'accountStake',
       data: state.stake,
       count: state.stake.length,
-    },
-    {
-      id: 1,
+    });
+  }
+
+  if (state.vote.length) {
+    tabs.push({
+      id: tabs.length,
       key: 'accountVote',
       data: state.vote,
       count: state.vote.length,
-    },
-    {
-      id: 2,
+    });
+  }
+
+  if (state.nonce.length) {
+    tabs.push({
+      id: tabs.length,
       key: 'accountNonce',
       data: state.nonce,
       count: state.nonce.length,
-    },
-    {
-      id: 3,
+    });
+  }
+
+  if (state.token.length) {
+    tabs.push({
+      id: tabs.length,
       key: 'accountToken',
       data: state.token,
       count: state.token.length,
-    },
-  ];
+    });
+  }
+
+  if (!state.loading && !tabs.length) {
+    return null;
+  }
 
   return (
     <Box className={classnames(props.className)}>

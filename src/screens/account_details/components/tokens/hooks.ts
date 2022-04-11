@@ -49,7 +49,7 @@ export const useTokens = () => {
           exponent: decimal,
         },
       });
-    });
+    }).filter((x) => x.token || x.mint);
   };
 
   return {
