@@ -8,7 +8,7 @@ import {
   TableCell,
   TableBody,
 } from '@material-ui/core';
-import { Name } from '@components';
+import { AvatarName } from '@components';
 import { columns } from './utils';
 import { AddressesType } from '../../../../types';
 
@@ -23,7 +23,7 @@ const Desktop: React.FC<{
   const formattedItems = items.map((x) => {
     return ({
       address: (
-        <Name
+        <AvatarName
           address={x}
           name={x}
         />

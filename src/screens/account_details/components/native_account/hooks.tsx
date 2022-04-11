@@ -6,17 +6,15 @@ import {
   NativeAccountDetailsQuery,
 } from '@graphql/types';
 import { NativeAccountState } from './types';
-import { fakeData } from './fake';
 
 export const useNativeAccount = () => {
   const router = useRouter();
   const [state, setState] = useState<NativeAccountState>({
     loading: false,
     exists: true,
-    ...fakeData,
-    // overview: {
-    //   address: '',
-    // },
+    overview: {
+      address: '',
+    },
   });
 
   const handleSetState = (stateChange: any) => {

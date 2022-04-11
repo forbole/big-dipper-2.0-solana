@@ -15,6 +15,48 @@ query NativeAccountDetails($address: String!) {
 }
 `;
 
+export const NativeAccountCountDocument = /* GraphQL */`
+query NativeRelatedAccountsCount($address: String) {
+  stakeAccountAggregate: stake_account_aggregate(where: {withdrawer: {_eq: $address}}) {
+    aggregate {
+      count
+    }
+  }
+  validatorAggregate: validator_aggregate(where: {withdrawer: {_eq: $address}}) {
+    aggregate {
+      count
+    }
+  }
+  nonceAccountAggregate: nonce_account_aggregate(where: {authority: {_eq: $address}}) {
+    aggregate {
+      count
+    }
+  }
+  tokenAccountAggregate: token_account_aggregate(where: {owner: {_eq: $address}}) {
+    aggregate {
+      count
+    }
+  }
+}
+`;
+
+export const NativeRelatedAccountsDocument = /* GraphQL */`
+query NativeRelatedAccounts($address: String) {
+  stakeAccount: stake_account(where: {withdrawer: {_eq: $address}}) {
+    address
+  }
+  validator(where: {withdrawer: {_eq: $address}}) {
+    address
+  }
+  nonceAccount: nonce_account(where: {authority: {_eq: $address}}) {
+    address
+  }
+  tokenAccount: token_account(where: {owner: {_eq: $address}}) {
+    address
+  }
+}
+`;
+
 export const TokenAccountDetailsDocument = /* GraphQL */`
 query TokenDetails($address: String!) {
   tokenUnit: token_unit(where: {mint: {_eq: $address}}) {
