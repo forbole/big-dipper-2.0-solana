@@ -6,9 +6,9 @@ import {
   Overview,
   Market,
   Header,
-  // Transactions,
   TopHolders,
 } from './components';
+import { Transactions } from '..';
 import { useStyles } from './styles';
 import { useTokenAccount } from './hooks';
 
@@ -34,13 +34,7 @@ const TokenAccount = () => {
         />
         {/* <Holders className={classes.holders} /> */}
         <TopHolders className={classes.holders} />
-        {/* <Transactions
-          className={classes.transactions}
-          loadNextPage={loadNextPageTx}
-          data={state.transactions.data}
-          hasNextPage={state.transactions.hasNextPage}
-          isNextPageLoading={state.transactions.isNextPageLoading}
-        /> */}
+        <Transactions className={classes.transactions} />
       </div>
     </LoadAndExist>
   );

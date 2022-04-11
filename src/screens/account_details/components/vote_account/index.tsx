@@ -32,13 +32,7 @@ const VoteAccount = () => {
         className={classes.accounts}
         addresses={data.accounts.vote}
       />
-      <Transactions
-        className={classes.transactions}
-        loadNextPage={() => null}
-        data={[]}
-        hasNextPage={false}
-        isNextPageLoading={false}
-      />
+      <Transactions className={classes.transactions} />
     </>
   );
 };

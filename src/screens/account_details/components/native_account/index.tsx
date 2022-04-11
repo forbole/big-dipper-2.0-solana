@@ -27,13 +27,7 @@ const NativeAccount = () => {
       <Balance className={classes.balance} balance={state.balance} />
       <Accounts className={classes.accounts} />
       <Tokens className={classes.tokens} />
-      <Transactions
-        className={classes.transactions}
-        loadNextPage={() => null}
-        data={[]}
-        hasNextPage={false}
-        isNextPageLoading={false}
-      />
+      <Transactions className={classes.transactions} />
     </LoadAndExist>
   );
 };

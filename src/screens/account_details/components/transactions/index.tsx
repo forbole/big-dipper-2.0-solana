@@ -9,13 +9,7 @@ import {
 import { useTransactions } from './hooks';
 import { useStyles } from './styles';
 
-const Transactions: React.FC<{
-  className?: string;
-  data: Transactions[];
-  loadNextPage: () => void;
-  hasNextPage: boolean;
-  isNextPageLoading: boolean;
-}> = (props) => {
+const Transactions: React.FC<ComponentDefault> = (props) => {
   const classes = useStyles();
   const { t } = useTranslation('accounts');
   const { state } = useTransactions();
