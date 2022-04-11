@@ -17,7 +17,7 @@ const Mobile = dynamic(() => import('./components/mobile'));
 
 const List: React.FC<{
   className?: string;
-  data: AddressesType[];
+  data: AddressesType;
   count: number;
 }> = (props) => {
   const { isDesktop } = useScreenSize();
