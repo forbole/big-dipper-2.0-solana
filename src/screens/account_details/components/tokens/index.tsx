@@ -5,7 +5,6 @@ import {
 } from '@components';
 import useTranslation from 'next-translate/useTranslation';
 import { Typography } from '@material-ui/core';
-
 import { useTokens } from './hooks';
 import { TokensList } from './components';
 
