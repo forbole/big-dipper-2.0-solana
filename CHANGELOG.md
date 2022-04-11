@@ -25,4 +25,5 @@
 - Add tx details instructions ([\#105](https://github.com/forbole/big-dipper-2.0-solana/issues/105))
 - Add volume on token page ([\#112](https://github.com/forbole/big-dipper-2.0-solana/issues/112))
 - Fix tabs index behavior (validators page) ([\#69](https://github.com/forbole/big-dipper-2.0-solana/issues/69))
+- Add native account details page
 
