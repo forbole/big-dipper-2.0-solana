@@ -6,7 +6,8 @@ import {
   useScreenSize,
 } from '@hooks';
 import {
-  Pagination, NoData,
+  Pagination,
+  NoData,
 } from '@components';
 import { useStyles } from './styles';
 import { AddressesType } from '../../types';
@@ -16,13 +17,9 @@ const Mobile = dynamic(() => import('./components/mobile'));
 
 const List: React.FC<{
   className?: string;
-  data: AddressesType;
+  data: AddressesType[];
   count: number;
-}> = ({
-  className,
-  data,
-  count,
-}) => {
+}> = (props) => {
   const { isDesktop } = useScreenSize();
   const classes = useStyles();
   const {
@@ -33,29 +30,27 @@ const List: React.FC<{
     sliceItems,
   } = usePagination({});
 
-  const items = sliceItems(data);
+  const items = sliceItems(props.data);
+  let component = null;
+
+  if (!items.length) {
+    component = <NoData />;
+  } else if (isDesktop) {
+    component = <Desktop items={items} />;
+  } else {
+    component = <Mobile items={items} />;
+  }
 
   return (
-    <div className={classnames(className)}>
-      {items.length ? (
-        <>
-          {isDesktop ? (
-            <Desktop className={classes.desktop} items={items} />
-          ) : (
-            <Mobile className={classes.mobile} items={items} />
-          )}
-        </>
-      ) : (
-        <NoData />
-      )}
+    <div className={classnames(props.className)}>
+      {component}
       <Pagination
         className={classes.paginate}
-        total={count}
+        total={props.count}
         rowsPerPage={rowsPerPage}
         page={page}
         handleChangePage={handleChangePage}
         handleChangeRowsPerPage={handleChangeRowsPerPage}
-        rowsPerPageOptions={[10, 25, 50, 100]}
       />
     </div>
   );

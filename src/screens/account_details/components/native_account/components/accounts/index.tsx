@@ -3,66 +3,73 @@ import classnames from 'classnames';
 import {
   Box,
   TabPanel,
+  Loading,
 } from '@components';
 import { useAccountsHook } from './hooks';
 import {
   Tabs, List,
 } from './components';
-import { AccountsType } from './types';
 
-const Accounts: React.FC<AccountsType & ComponentDefault> = (props) => {
+const Accounts: React.FC<ComponentDefault> = (props) => {
   const {
     handleTabChange,
     tab,
+    state,
   } = useAccountsHook();
   const tabs = [
     {
       id: 0,
       key: 'accountStake',
-      data: props.stake,
-      count: props.stake.length,
+      data: state.stake,
+      count: state.stake.length,
     },
     {
       id: 1,
       key: 'accountVote',
-      data: props.vote,
-      count: props.vote.length,
+      data: state.vote,
+      count: state.vote.length,
     },
     {
       id: 2,
       key: 'accountNonce',
-      data: props.nonce,
-      count: props.nonce.length,
+      data: state.nonce,
+      count: state.nonce.length,
     },
     {
       id: 3,
       key: 'accountToken',
-      data: props.token,
-      count: props.token.length,
+      data: state.token,
+      count: state.token.length,
     },
   ];
 
   return (
     <Box className={classnames(props.className)}>
-      <Tabs
-        tab={tab}
-        handleTabChange={handleTabChange}
-        tabs={tabs}
-      />
-      {tabs.map((x) => {
-        return (
-          <TabPanel
-            key={x.id}
-            index={x.id}
-            value={tab}
-          >
-            <List
-              data={x.data}
-              count={x.count}
-            />
-          </TabPanel>
-        );
-      })}
+      {state.loading ? (
+        <Loading />
+      ) : (
+        <>
+          <Tabs
+            tab={tab}
+            handleTabChange={handleTabChange}
+            tabs={tabs}
+          />
+          {tabs.map((x) => {
+            return (
+              <TabPanel
+                key={x.id}
+                index={x.id}
+                value={tab}
+              >
+                <List
+                  data={x.data}
+                  count={x.count}
+                />
+              </TabPanel>
+            );
+          })}
+        </>
+      )}
     </Box>
   );
 };

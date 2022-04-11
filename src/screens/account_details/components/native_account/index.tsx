@@ -19,9 +19,6 @@ const NativeAccount = () => {
   const { state } = useNativeAccount();
 
   const data = {
-    overview: {
-      address: 'desmos1hfhkduejung7g29wv863x369rndf3hu5xj4g93',
-    },
     balance: {
       native: {
         value: '5000',
@@ -54,12 +51,6 @@ const NativeAccount = () => {
         exponent: 6,
       },
     },
-    accounts: {
-      stake: Array(15).fill('desmos1rzhewpmmdl72lhnxj6zmxr4v94f522s4ff2psv'),
-      vote: Array(3).fill('desmos1rzhewpmmdl72lhnxj6zmxr4v94f522s4ff2psv'),
-      nonce: Array(100).fill('desmos1rzhewpmmdl72lhnxj6zmxr4v94f522s4ff2psv'),
-      token: Array(10).fill('desmos1rzhewpmmdl72lhnxj6zmxr4v94f522s4ff2psv'),
-    },
     tokens: {
       tokens: Array(14).fill({
         token: 'ETH',
@@ -75,7 +66,7 @@ const NativeAccount = () => {
     >
       <Overview className={classes.overview} overview={state.overview} />
       <Balance className={classes.balance} {...data.balance} />
-      <Accounts className={classes.accounts} {...data.accounts} />
+      <Accounts className={classes.accounts} />
       <Tokens
         className={classes.tokens}
         {...data.tokens}
