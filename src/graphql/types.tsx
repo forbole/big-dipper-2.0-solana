@@ -6300,6 +6300,26 @@ export type NativeRelatedAccountsQuery = { stakeAccount: Array<(
     & Pick<Token_Account, 'address'>
   )> };
 
+export type NativeAccountTokensQueryVariables = Exact<{
+  address?: Maybe<Scalars['String']>;
+}>;
+
+
+export type NativeAccountTokensQuery = { token: Array<(
+    { __typename?: 'token_account_balance' }
+    & Pick<Token_Account_Balance, 'balance'>
+    & { tokenAccount?: Maybe<(
+      { __typename?: 'token_account' }
+      & { tokenUnit?: Maybe<(
+        { __typename?: 'token_unit' }
+        & { unitName: Token_Unit['unit_name'] }
+      )>, tokenInfo?: Maybe<(
+        { __typename?: 'token' }
+        & Pick<Token, 'decimals'>
+      )> }
+    )> }
+  )> };
+
 export type TokenDetailsQueryVariables = Exact<{
   address: Scalars['String'];
 }>;
@@ -6807,6 +6827,49 @@ export function useNativeRelatedAccountsLazyQuery(baseOptions?: Apollo.LazyQuery
 export type NativeRelatedAccountsQueryHookResult = ReturnType<typeof useNativeRelatedAccountsQuery>;
 export type NativeRelatedAccountsLazyQueryHookResult = ReturnType<typeof useNativeRelatedAccountsLazyQuery>;
 export type NativeRelatedAccountsQueryResult = Apollo.QueryResult<NativeRelatedAccountsQuery, NativeRelatedAccountsQueryVariables>;
+export const NativeAccountTokensDocument = gql`
+    query NativeAccountTokens($address: String) {
+  token: token_account_balance(where: {token_account: {owner: {_eq: $address}}}) {
+    balance
+    tokenAccount: token_account {
+      tokenUnit: token_unit {
+        unitName: unit_name
+      }
+      tokenInfo: token_info {
+        decimals
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useNativeAccountTokensQuery__
+ *
+ * To run a query within a React component, call `useNativeAccountTokensQuery` and pass it any options that fit your needs.
+ * When your component renders, `useNativeAccountTokensQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useNativeAccountTokensQuery({
+ *   variables: {
+ *      address: // value for 'address'
+ *   },
+ * });
+ */
+export function useNativeAccountTokensQuery(baseOptions?: Apollo.QueryHookOptions<NativeAccountTokensQuery, NativeAccountTokensQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<NativeAccountTokensQuery, NativeAccountTokensQueryVariables>(NativeAccountTokensDocument, options);
+      }
+export function useNativeAccountTokensLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<NativeAccountTokensQuery, NativeAccountTokensQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<NativeAccountTokensQuery, NativeAccountTokensQueryVariables>(NativeAccountTokensDocument, options);
+        }
+export type NativeAccountTokensQueryHookResult = ReturnType<typeof useNativeAccountTokensQuery>;
+export type NativeAccountTokensLazyQueryHookResult = ReturnType<typeof useNativeAccountTokensLazyQuery>;
+export type NativeAccountTokensQueryResult = Apollo.QueryResult<NativeAccountTokensQuery, NativeAccountTokensQueryVariables>;
 export const TokenDetailsDocument = gql`
     query TokenDetails($address: String!) {
   tokenUnit: token_unit(where: {mint: {_eq: $address}}) {

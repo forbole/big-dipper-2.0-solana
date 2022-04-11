@@ -78,6 +78,22 @@ query NativeRelatedAccounts($address: String) {
 }
 `;
 
+export const NativeAccountTokensDocument = /* GraphQL */`
+query NativeAccountTokens($address: String) {
+  token: token_account_balance(where: {token_account: {owner: {_eq: $address}}}) {
+    balance
+    tokenAccount: token_account {
+      tokenUnit: token_unit {
+        unitName: unit_name
+      }
+      tokenInfo: token_info {
+        decimals
+      }
+    }
+  }
+}
+`;
+
 export const TokenAccountDetailsDocument = /* GraphQL */`
 query TokenDetails($address: String!) {
   tokenUnit: token_unit(where: {mint: {_eq: $address}}) {
