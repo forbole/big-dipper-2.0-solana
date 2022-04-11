@@ -6221,7 +6221,34 @@ export type NativeAccountDetailsQueryVariables = Exact<{
 export type NativeAccountDetailsQuery = { accountBalance: Array<(
     { __typename?: 'account_balance' }
     & Pick<Account_Balance, 'balance'>
-  )> };
+  )>, stake: (
+    { __typename?: 'stake_account_aggregate' }
+    & { nodes: Array<(
+      { __typename?: 'stake_account' }
+      & { nativeBalance?: Maybe<(
+        { __typename?: 'account_balance' }
+        & Pick<Account_Balance, 'balance'>
+      )> }
+    )> }
+  ), nonce: (
+    { __typename?: 'nonce_account_aggregate' }
+    & { nodes: Array<(
+      { __typename?: 'nonce_account' }
+      & { nativeBalance?: Maybe<(
+        { __typename?: 'account_balance' }
+        & Pick<Account_Balance, 'balance'>
+      )> }
+    )> }
+  ), validator: (
+    { __typename?: 'validator_aggregate' }
+    & { nodes: Array<(
+      { __typename?: 'validator' }
+      & { nativeBalance?: Maybe<(
+        { __typename?: 'account_balance' }
+        & Pick<Account_Balance, 'balance'>
+      )> }
+    )> }
+  ) };
 
 export type NativeRelatedAccountsCountQueryVariables = Exact<{
   address?: Maybe<Scalars['String']>;
@@ -6628,6 +6655,27 @@ export const NativeAccountDetailsDocument = gql`
     query NativeAccountDetails($address: String!) {
   accountBalance: account_balance(where: {address: {_eq: $address}}) {
     balance
+  }
+  stake: stake_account_aggregate(where: {withdrawer: {_eq: $address}}) {
+    nodes {
+      nativeBalance: native_balance {
+        balance
+      }
+    }
+  }
+  nonce: nonce_account_aggregate(where: {authority: {_eq: $address}}) {
+    nodes {
+      nativeBalance: native_balance {
+        balance
+      }
+    }
+  }
+  validator: validator_aggregate(where: {withdrawer: {_eq: $address}}) {
+    nodes {
+      nativeBalance: native_balance {
+        balance
+      }
+    }
   }
 }
     `;

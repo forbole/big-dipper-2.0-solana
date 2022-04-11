@@ -14,8 +14,17 @@ export type AccountsType = {
   loading: boolean;
 }
 
+export type BalanceType = {
+  native: TokenUnit;
+  stake: TokenUnit;
+  nonce: TokenUnit;
+  vote: TokenUnit;
+  total: TokenUnit;
+}
+
 export type NativeAccountState = {
   loading: boolean;
   exists: boolean;
   overview: OverviewType;
+  balance: BalanceType;
 }

@@ -17,7 +17,7 @@ import { useStyles } from './styles';
 const NativeAccount = () => {
   const classes = useStyles();
   const { state } = useNativeAccount();
-
+  console.log(state, 'state');
   const data = {
     balance: {
       native: {
