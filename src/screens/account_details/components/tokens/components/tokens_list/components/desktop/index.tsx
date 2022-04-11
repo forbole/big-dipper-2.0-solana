@@ -8,6 +8,7 @@ import {
   TableCell,
   TableBody,
 } from '@material-ui/core';
+import { AvatarName } from '@components';
 import { formatNumber } from '@utils/format_token';
 import { columns } from './utils';
 import { TokenType } from '../../../../types';
@@ -22,7 +23,12 @@ const Desktop: React.FC<{
   const { t } = useTranslation('accounts');
   const formattedItems = items.map((x) => {
     return ({
-      token: x.token,
+      token: (
+        <AvatarName
+          address={x.mint}
+          name={x.token}
+        />
+      ),
       amount: formatNumber(x.amount.value, x.amount.exponent),
     });
   });

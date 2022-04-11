@@ -5,6 +5,7 @@ import {
   Divider,
   Typography,
 } from '@material-ui/core';
+import { AvatarName } from '@components';
 import { formatNumber } from '@utils/format_token';
 import { useStyles } from './styles';
 import { TokenType } from '../../../../types';
@@ -28,9 +29,10 @@ const Mobile: React.FC<{
                 <Typography variant="h4" className="label">
                   {t('token')}
                 </Typography>
-                <Typography variant="body1" className="value">
-                  {x.token}
-                </Typography>
+                <AvatarName
+                  address={x.mint}
+                  name={x.token}
+                />
                 <Typography variant="h4" className="label">
                   {t('amount')}
                 </Typography>

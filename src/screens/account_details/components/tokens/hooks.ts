@@ -41,6 +41,7 @@ export const useTokens = () => {
       );
       return ({
         token: R.pathOr('', ['tokenAccount', 'tokenUnit', 'unitName'], x),
+        mint: R.pathOr('', ['tokenAccount', 'tokenUnit', 'mint'], x),
         amount: {
           value: amount,
           baseDenom: '',
