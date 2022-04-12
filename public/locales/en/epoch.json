@@ -1,0 +1,9 @@
+{
+    "epoch": "Epoch",
+    "inflation": "Inflation",
+    "inflationGovernor": "Inflation Governor",
+    "epochSchedule": "Epoch Schedule",
+    "name": "Name",
+    "value": "Value",
+    "detail": "Detail"
+  }
