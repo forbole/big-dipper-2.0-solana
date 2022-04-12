@@ -1,3 +1,10 @@
+export enum ACCOUNT_TYPES {
+    TOKEN = 'TOKEN',
+    TOKEN_ACCOUNT = 'TOKEN_ACCOUNT',
+    NONCE_ACCOUNT = 'NONCE_ACCOUNT',
+    NATIVE_ACCOUNT = 'NATIVE_ACCOUNT'
+}
+
 export type AccountDetailState = {
   loading: boolean;
   exists: boolean;

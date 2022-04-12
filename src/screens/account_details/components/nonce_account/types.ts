@@ -1,7 +1,12 @@
 export type OverviewType = {
   address: string;
-  balance: number;
   authority: string;
+  balance: TokenUnit;
   blockhash: string;
   fee: number;
+}
+
+export type NonceAccountState = {
+  loading: boolean;
+  overview: OverviewType;
 }
