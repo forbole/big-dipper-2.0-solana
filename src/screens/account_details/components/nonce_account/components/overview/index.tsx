@@ -12,9 +12,9 @@ import NonceAccountLogo from '@assets/nonce-account.svg';
 
 import { useStyles } from './styles';
 import { useOverview } from './hooks';
-import { OverviewType } from './types';
+import { OverviewType } from '../../types';
 
-const Overview: React.FC<OverviewType & ComponentDefault> = (props) => {
+const Overview: React.FC<{overview: OverviewType} & ComponentDefault> = (props) => {
   const { t } = useTranslation('accounts');
   const classes = useStyles();
   const { isMobile } = useScreenSize();
@@ -39,16 +39,16 @@ const Overview: React.FC<OverviewType & ComponentDefault> = (props) => {
           <>
             <CopyIcon
               className={classes.actionIcons}
-              onClick={() => handleCopyToClipboard(props.address)}
+              onClick={() => handleCopyToClipboard(props.overview.address)}
             />
             <Typography variant="body1" className="value">
               {
                 isMobile ? (
-                  getMiddleEllipsis(props.address, {
+                  getMiddleEllipsis(props.overview.address, {
                     beginning: 15, ending: 5,
                   })
                 ) : (
-                  props.address
+                  props.overview.address
                 )
               }
             </Typography>
@@ -62,17 +62,17 @@ const Overview: React.FC<OverviewType & ComponentDefault> = (props) => {
           <>
             <CopyIcon
               className={classes.actionIcons}
-              onClick={() => handleCopyToClipboard(props.authority)}
+              onClick={() => handleCopyToClipboard(props.overview.authority)}
             />
-            <Link href={ACCOUNT_DETAILS(props.authority)} passHref>
+            <Link href={ACCOUNT_DETAILS(props.overview.authority)} passHref>
               <Typography variant="body1" className="value" component="a">
                 {
                 isMobile ? (
-                  getMiddleEllipsis(props.authority, {
+                  getMiddleEllipsis(props.overview.authority, {
                     beginning: 15, ending: 5,
                   })
                 ) : (
-                  props.authority
+                  props.overview.authority
                 )
               }
               </Typography>
@@ -82,21 +82,24 @@ const Overview: React.FC<OverviewType & ComponentDefault> = (props) => {
       },
       {
         label: t('balance'),
-        detail: props.balance,
+        detail: props.overview.balance.value,
       },
       {
         label: t('blockhash'),
-        detail: props.blockhash,
+        detail: props.overview.blockhash,
       },
       {
         label: t('fee'),
-        detail: props.fee,
+        detail: props.overview.fee,
       },
     ],
   };
 
   return (
-    <BoxDetails className={classnames(props.className, classes.root)} {...data} />
+    <BoxDetails
+      className={classnames(props.className, classes.root)}
+      {...data}
+    />
   );
 };
 

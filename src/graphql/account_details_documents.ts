@@ -95,6 +95,8 @@ query NativeAccountTokens($address: String) {
 }
 `;
 
+// token account
+
 export const TokenAccountDetailsDocument = /* GraphQL */`
 query TokenDetails($address: String!) {
   tokenUnit: token_unit(where: {mint: {_eq: $address}}) {
@@ -131,6 +133,21 @@ query TokenDetailsHolders($address: String!) {
   }
   token(where: {mint: {_eq: $address}}) {
     decimals
+  }
+}
+`;
+
+// nonce account
+export const NonceAccountDetailsDocument = /* GraphQL */`
+query NonceAccountDetails($address: String!) {
+  nonceAccount: nonce_account(where: {address: {_eq: $address}}) {
+    address
+    authority
+    lamportsPerSignature: lamports_per_signature
+    blockhash
+    nativeBalance: native_balance {
+        balance
+      }
   }
 }
 `;
