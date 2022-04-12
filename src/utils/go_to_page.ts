@@ -11,3 +11,4 @@ export const ACCOUNT_DETAILS = (address: string): string => `/accounts/${address
 export const PARAMS = '/params';
 export const TOKENS = '/tokens';
 export const TOKEN_DETAILS = (address: string): string => `/tokens/${address}`;
+export const EPOCH = '/epoch';
