@@ -8,15 +8,14 @@ import {
 } from '@components';
 import {
   NativeAccount,
-  // NonceAccount,
+  NonceAccount,
   // StakeAccount,
   TokenAccount,
   // VoteAccount,
 } from './components';
 import { useStyles } from './styles';
+import { ACCOUNT_TYPES } from './types';
 import { useAccountDetails } from './hooks';
-
-const ACCOUNT_TYPE = 'stake' as string;
 
 const AccountDetails = () => {
   const { t } = useTranslation('accounts');
@@ -25,9 +24,9 @@ const AccountDetails = () => {
 
   let component = <NativeAccount />; // default
 
-  // if (ACCOUNT_TYPE === 'nonce') { // done
-  //   component = <NonceAccount />;
-  // }
+  if (state.accountType === ACCOUNT_TYPES.NONCE_ACCOUNT) { // done
+    component = <NonceAccount />;
+  }
   // if (ACCOUNT_TYPE === 'stake') { // done
   //   component = <StakeAccount />;
   // }
@@ -37,7 +36,7 @@ const AccountDetails = () => {
   // if (ACCOUNT_TYPE === 'vote') {
   //   component = <VoteAccount />;
   // }
-  if (state.accountType === 'TOKEN') {
+  if (state.accountType === ACCOUNT_TYPES.TOKEN) {
     component = <TokenAccount />;
   }
 
@@ -55,7 +54,7 @@ const AccountDetails = () => {
           exists={state.exists}
         >
           <span className={classes.root}>
-            {(!!state.desmosProfile && ACCOUNT_TYPE === 'native') && (
+            {(!!state.desmosProfile && state.accountType === ACCOUNT_TYPES.NATIVE_ACCOUNT) && (
             <DesmosProfile
               dtag={state.desmosProfile.dtag}
               nickname={state.desmosProfile.nickname}

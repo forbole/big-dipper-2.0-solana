@@ -9,7 +9,9 @@ import {
 } from '@src/graphql/account_details_documents';
 import { chainConfig } from '@src/configs';
 import { useDesmosProfile } from '@hooks';
-import { AccountDetailState } from './types';
+import {
+  AccountDetailState, ACCOUNT_TYPES,
+} from './types';
 
 const initialState: AccountDetailState = {
   loading: false,
@@ -19,8 +21,10 @@ const initialState: AccountDetailState = {
 };
 
 const ACCOUNT_TYPE_MAP: {[key: string]: string} = {
-  token: 'TOKEN',
-  token_account: 'TOKEN_ACCOUNT',
+  token: ACCOUNT_TYPES.TOKEN,
+  token_account: ACCOUNT_TYPES.TOKEN_ACCOUNT,
+  nonce_account: ACCOUNT_TYPES.NONCE_ACCOUNT,
+  native_account: ACCOUNT_TYPES.NATIVE_ACCOUNT,
 };
 
 export const useAccountDetails = () => {
@@ -67,7 +71,11 @@ export const useAccountDetails = () => {
         },
         query: AccountTypeDocument,
       });
-      const accountType = R.pathOr('', ['data', 'actionsAccountInfo', 'parsed', 'type'], data);
+      const accountType = R.pathOr(
+        'native_account',
+        ['data', 'actionsAccountInfo', 'parsed', 'type'],
+        data,
+      );
       handleSetState({
         accountType: ACCOUNT_TYPE_MAP[accountType] || '',
       });
