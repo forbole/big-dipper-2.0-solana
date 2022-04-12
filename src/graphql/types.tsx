@@ -6447,7 +6447,7 @@ export type TokenDetailsAccountDetailsQuery = { tokenAccount: Array<(
       & Pick<Token, 'decimals'>
     )>, tokenUnit?: Maybe<(
       { __typename?: 'token_unit' }
-      & { unitName: Token_Unit['unit_name'] }
+      & { unitName: Token_Unit['unit_name'], logoUrl: Token_Unit['logo_uri'] }
     )> }
   )>, tokenAccountBalance: Array<(
     { __typename?: 'token_account_balance' }
@@ -7134,6 +7134,7 @@ export const TokenDetailsAccountDetailsDocument = gql`
     }
     tokenUnit: token_unit {
       unitName: unit_name
+      logoUrl: logo_uri
     }
   }
   tokenAccountBalance: token_account_balance(where: {address: {_eq: $address}}) {

@@ -24,6 +24,7 @@ export const useTokenDetailAccount = () => {
       owner: '',
       balance: defaultTokenUnit,
       mint: '',
+      mintImageUrl: '',
     },
   });
 
@@ -68,6 +69,7 @@ export const useTokenDetailAccount = () => {
         address: router.query.address,
         owner: R.pathOr('', ['tokenAccount', 0, 'owner'], data),
         mint: R.pathOr('', ['tokenAccount', 0, 'mint'], data),
+        mintImageUrl: R.pathOr('', ['tokenAccount', 0, 'tokenUnit', 'logoUrl'], data),
         balance,
       });
     };

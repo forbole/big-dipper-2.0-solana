@@ -70,5 +70,6 @@
   "market": "Market",
   "topHolders": "Top Holders",
   "holder": "Holder",
-  "rank": "Rank"
+  "rank": "Rank",
+  "owner": "Owner"
 }

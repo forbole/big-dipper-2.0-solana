@@ -164,6 +164,7 @@ query TokenDetailsAccountDetails($address: String!) {
     }
     tokenUnit: token_unit {
       unitName: unit_name
+      logoUrl: logo_uri
     }
   }
   tokenAccountBalance: token_account_balance(where: {address: {_eq: $address}}) {

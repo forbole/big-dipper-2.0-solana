@@ -1,6 +1,7 @@
 export type OverviewType = {
   address: string;
   mint: string;
+  mintImageUrl: string;
   balance: TokenUnit;
   owner: string;
 }
