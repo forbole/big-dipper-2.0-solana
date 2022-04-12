@@ -151,3 +151,24 @@ query NonceAccountDetails($address: String!) {
   }
 }
 `;
+
+// token detail account
+export const TokenDetailsAccountDetailsDocument = /* GraphQL */`
+query TokenDetailsAccountDetails($address: String!) {
+  tokenAccount: token_account(where: {address: {_eq: $address}}) {
+    address
+    mint
+    owner
+    tokenInfo: token_info {
+      decimals
+    }
+    tokenUnit: token_unit {
+      unitName: unit_name
+      logoUrl: logo_uri
+    }
+  }
+  tokenAccountBalance: token_account_balance(where: {address: {_eq: $address}}) {
+    balance
+  }
+}
+`;
