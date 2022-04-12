@@ -12,6 +12,7 @@ import {
   // StakeAccount,
   TokenAccount,
   // VoteAccount,
+  TokenDetailsAccount,
 } from './components';
 import { useStyles } from './styles';
 import { ACCOUNT_TYPES } from './types';
@@ -30,9 +31,9 @@ const AccountDetails = () => {
   // if (ACCOUNT_TYPE === 'stake') { // done
   //   component = <StakeAccount />;
   // }
-  // if (ACCOUNT_TYPE === 'token') { // done
-  //   component = <TokenAccount />;
-  // }
+  if (state.accountType === ACCOUNT_TYPES.TOKEN_ACCOUNT) {
+    component = <TokenDetailsAccount />;
+  }
   // if (ACCOUNT_TYPE === 'vote') {
   //   component = <VoteAccount />;
   // }
