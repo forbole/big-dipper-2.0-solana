@@ -27,4 +27,5 @@
 - Fix tabs index behavior (validators page) ([\#69](https://github.com/forbole/big-dipper-2.0-solana/issues/69))
 - Add native account details page
 - Add nonce account details page
+- Add token details account page
 
