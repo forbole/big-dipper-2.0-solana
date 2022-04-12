@@ -8,10 +8,10 @@ import {
 } from '@components';
 import {
   NativeAccount,
-  NonceAccount,
-  StakeAccount,
+  // NonceAccount,
+  // StakeAccount,
   TokenAccount,
-  VoteAccount,
+  // VoteAccount,
 } from './components';
 import { useStyles } from './styles';
 import { useAccountDetails } from './hooks';
@@ -23,21 +23,22 @@ const AccountDetails = () => {
   const classes = useStyles();
   const { state } = useAccountDetails();
 
-  let component = null;
-  if (ACCOUNT_TYPE === 'native') { // done
-    component = <NativeAccount />;
-  }
-  if (ACCOUNT_TYPE === 'nonce') { // done
-    component = <NonceAccount />;
-  }
-  if (ACCOUNT_TYPE === 'stake') { // done
-    component = <StakeAccount />;
-  }
-  if (ACCOUNT_TYPE === 'token') { // done
+  let component = <NativeAccount />; // default
+
+  // if (ACCOUNT_TYPE === 'nonce') { // done
+  //   component = <NonceAccount />;
+  // }
+  // if (ACCOUNT_TYPE === 'stake') { // done
+  //   component = <StakeAccount />;
+  // }
+  // if (ACCOUNT_TYPE === 'token') { // done
+  //   component = <TokenAccount />;
+  // }
+  // if (ACCOUNT_TYPE === 'vote') {
+  //   component = <VoteAccount />;
+  // }
+  if (state.accountType === 'TOKEN') {
     component = <TokenAccount />;
-  }
-  if (ACCOUNT_TYPE === 'vote') {
-    component = <VoteAccount />;
   }
 
   return (
@@ -56,7 +57,6 @@ const AccountDetails = () => {
           <span className={classes.root}>
             {(!!state.desmosProfile && ACCOUNT_TYPE === 'native') && (
             <DesmosProfile
-              className={classes.profile}
               dtag={state.desmosProfile.dtag}
               nickname={state.desmosProfile.nickname}
               imageUrl={state.desmosProfile.imageUrl}

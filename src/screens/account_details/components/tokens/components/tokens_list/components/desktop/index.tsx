@@ -1,5 +1,4 @@
 import React from 'react';
-import numeral from 'numeral';
 import classnames from 'classnames';
 import useTranslation from 'next-translate/useTranslation';
 import {
@@ -9,6 +8,8 @@ import {
   TableCell,
   TableBody,
 } from '@material-ui/core';
+import { AvatarName } from '@components';
+import { formatNumber } from '@utils/format_token';
 import { columns } from './utils';
 import { TokenType } from '../../../../types';
 
@@ -22,8 +23,13 @@ const Desktop: React.FC<{
   const { t } = useTranslation('accounts');
   const formattedItems = items.map((x) => {
     return ({
-      token: x.token,
-      amount: numeral(x.amount).format('0,0'),
+      token: (
+        <AvatarName
+          address={x.mint}
+          name={x.token}
+        />
+      ),
+      amount: formatNumber(x.amount.value, x.amount.exponent),
     });
   });
 

@@ -58,5 +58,17 @@
   "authorizedWithdrawer": "Authorized Withdrawer",
   "lastTimestamp": "Last Timestamp",
   "rootSlot": "Root Slot",
-  "otherVoteAccounts": "Other Vote Accounts"
+  "otherVoteAccounts": "Other Vote Accounts",
+  "decimals": "Decimals",
+  "mintAuthority": "Mint Authority",
+  "freezeAuthority": "Freeze Authority",
+  "officialSite": "Official Site",
+  "price": "Price",
+  "marketCap": "Market Cap",
+  "supply": "Supply",
+  "holders": "Holders",
+  "market": "Market",
+  "topHolders": "Top Holders",
+  "holder": "Holder",
+  "rank": "Rank"
 }

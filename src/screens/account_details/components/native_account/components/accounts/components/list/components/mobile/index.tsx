@@ -5,7 +5,7 @@ import {
   Divider,
   Typography,
 } from '@material-ui/core';
-import { Name } from '@components';
+import { AvatarName } from '@components';
 import { useStyles } from './styles';
 import { AddressesType } from '../../../../types';
 
@@ -28,7 +28,7 @@ const Mobile: React.FC<{
                 <Typography variant="h4" className="label">
                   {t('address')}
                 </Typography>
-                <Name
+                <AvatarName
                   address={x}
                   name={x}
                 />

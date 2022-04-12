@@ -19,17 +19,21 @@ class InstructionBase {
   }
 
   static defaultFormat(json: any) {
+    const type = R.pathOr('', ['type'], json);
+    const defaultJson = {
+      raw: R.pathOr(null, ['rawData'], json),
+    };
     return ({
-      type: R.pathOr('', ['type'], json),
+      type,
       program: R.pathOr('', ['program'], json),
       rawData: R.pathOr('', ['raw_data'], json),
       index: R.pathOr('', ['index'], json),
       innerIndex: R.pathOr('', ['innerIndex'], json),
-      json,
+      json: type === 'unknown' ? defaultJson : R.pathOr(null, ['value'], json),
     });
   }
 
-  static fromJson(json: any) {
+  public static async fromJson(json: any) {
     const defaultItems = this.defaultFormat(json);
     return new InstructionBase(defaultItems);
   }

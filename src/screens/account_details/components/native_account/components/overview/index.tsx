@@ -28,12 +28,9 @@ import { useScreenSize } from '@hooks';
 import NativeAccountLogo from '@assets/native-account.svg';
 import { useStyles } from './styles';
 import { useOverview } from './hooks';
-import { OverviewType } from './types';
+import { OverviewType } from '../../types';
 
-const Overview: React.FC<OverviewType & ComponentDefault> = ({
-  className,
-  address,
-}) => {
+const Overview: React.FC<{overview: OverviewType} & ComponentDefault> = (props) => {
   const { t } = useTranslation('accounts');
   const classes = useStyles();
   const { isDesktop } = useScreenSize();
@@ -44,7 +41,7 @@ const Overview: React.FC<OverviewType & ComponentDefault> = ({
     handleCopyToClipboard,
   } = useOverview(t);
 
-  const url = `${process.env.NEXT_PUBLIC_URL}/accounts/${address}`;
+  const url = `${process.env.NEXT_PUBLIC_URL}/accounts/${props.overview.address}`;
   const hashTags = ['bigdipperexplorer', 'bigdipper'];
 
   return (
@@ -60,7 +57,7 @@ const Overview: React.FC<OverviewType & ComponentDefault> = ({
             {t('scanForAddress')}
           </Typography>
           <QRCode
-            value={address}
+            value={props.overview.address}
             size={200}
             bgColor="#ffffff"
             fgColor="#000000"
@@ -73,7 +70,7 @@ const Overview: React.FC<OverviewType & ComponentDefault> = ({
             <div className={classes.icons}>
               <FacebookShareButton
                 url={url}
-                quote={address}
+                value={props.overview.address}
                 hashtag={hashTags[0]}
                 className="share-buttons"
               >
@@ -83,7 +80,7 @@ const Overview: React.FC<OverviewType & ComponentDefault> = ({
               </FacebookShareButton>
               <TwitterShareButton
                 url={url}
-                title={address}
+                value={props.overview.address}
                 hashtags={hashTags}
                 className="share-buttons"
               >
@@ -94,7 +91,7 @@ const Overview: React.FC<OverviewType & ComponentDefault> = ({
 
               <TelegramShareButton
                 url={url}
-                title={address}
+                value={props.overview.address}
                 className="share-buttons"
               >
                 <TelegramIcon
@@ -104,7 +101,7 @@ const Overview: React.FC<OverviewType & ComponentDefault> = ({
 
               <WhatsappShareButton
                 url={url}
-                title={address}
+                value={props.overview.address}
                 separator=":: "
                 className="share-buttons"
               >
@@ -115,7 +112,7 @@ const Overview: React.FC<OverviewType & ComponentDefault> = ({
               <EmailShareButton
                 url={url}
                 subject="address"
-                body={address}
+                value={props.overview.address}
                 separator=":: "
                 className="share-buttons email"
               >
@@ -127,7 +124,7 @@ const Overview: React.FC<OverviewType & ComponentDefault> = ({
           </div>
         </Box>
       </Dialog>
-      <Box className={classnames(className, classes.root)}>
+      <Box className={classnames(props.className, classes.root)}>
         <NativeAccountLogo />
         <div className={classnames(classes.content, classes.copyText)}>
           <Typography variant="h2">
@@ -135,7 +132,7 @@ const Overview: React.FC<OverviewType & ComponentDefault> = ({
           </Typography>
           <div className="detail">
             <CopyIcon
-              onClick={() => handleCopyToClipboard(address)}
+              onClick={() => handleCopyToClipboard(props.overview.address)}
               className={classes.actionIcons}
             />
             <ShareIcon
@@ -145,11 +142,11 @@ const Overview: React.FC<OverviewType & ComponentDefault> = ({
             <Typography variant="body1" className="value">
               {
                 !isDesktop ? (
-                  getMiddleEllipsis(address, {
+                  getMiddleEllipsis(props.overview.address, {
                     beginning: 15, ending: 5,
                   })
                 ) : (
-                  address
+                  props.overview.address
                 )
               }
             </Typography>

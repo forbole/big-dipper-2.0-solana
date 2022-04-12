@@ -65,13 +65,7 @@ const StakeAccount = () => {
         className={classes.tokens}
         {...data.tokens}
       />
-      <Transactions
-        className={classes.transactions}
-        loadNextPage={() => null}
-        data={[]}
-        hasNextPage={false}
-        isNextPageLoading={false}
-      />
+      <Transactions className={classes.transactions} />
     </>
   );
 };

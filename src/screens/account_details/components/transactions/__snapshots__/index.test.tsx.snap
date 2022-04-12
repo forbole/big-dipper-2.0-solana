@@ -14,21 +14,22 @@ exports[`screen: Transactions/List matches snapshot 1`] = `
     className="makeStyles-list"
   >
     <div
+      className="makeStyles-list"
       hasNextPage={false}
       id="TransactionsList"
       isItemLoaded={[Function]}
       isNextPageLoading={false}
       itemCount={1}
-      loadMoreItems={[MockFunction]}
-      loadNextPage={[MockFunction]}
+      loadMoreItems={[Function]}
+      loadNextPage={[Function]}
       transactions={
         Array [
           Object {
-            "numInstructions": 13,
-            "signature": "4SGxuRMcseNbwki3tGxXPpfz7iFnuo9FUpTfiM4gJ8rhH59uZYSBBK2zW27xRdGX8Sb2N4VkGUnBYt59SBKEhPfB",
-            "slot": 123548722,
-            "success": true,
-            "timestamp": "2021-09-13T20:06:17.363145",
+            "numInstructions": 1,
+            "signature": "3yaQVjLkbCaC3eVVSSLCP3R73Rpyzz96PDyDopiYce7EvKBcTDQbfL8mtoAL69tUaK7E29yndHGcXsGUJNQNqvGz",
+            "slot": 128404067,
+            "success": false,
+            "timestamp": "2022-04-05T23:26:03",
           },
         ]
       }

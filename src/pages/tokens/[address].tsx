@@ -1,4 +1,4 @@
-import TokenDetails from '@src/screens/token_details';
+import TokenDetails from '@src/screens/account_details/components/token_account';
 
 const TokenDetailsPage = () => {
   return (

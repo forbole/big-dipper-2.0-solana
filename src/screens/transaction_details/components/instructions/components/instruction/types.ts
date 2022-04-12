@@ -4,6 +4,7 @@ import { InstructionBase } from '@models';
 export type InstructionState = {
   hide: boolean;
   raw: boolean;
+  instructions: FormattedInstructionType[];
 }
 
 export type ProgramInfoModelType = {

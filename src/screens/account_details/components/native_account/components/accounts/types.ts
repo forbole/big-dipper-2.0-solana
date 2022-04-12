@@ -6,3 +6,11 @@ export type AccountsType = {
   vote: AddressesType;
   token: AddressesType;
 }
+
+export type AccountsState = {
+  loading: boolean;
+  stake: AddressesType;
+  nonce: AddressesType;
+  vote: AddressesType;
+  token: AddressesType;
+}

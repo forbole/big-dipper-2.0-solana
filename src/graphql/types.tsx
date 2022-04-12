@@ -1058,6 +1058,14 @@ export type Instruction_Variance_Order_By = {
   inner_index?: Maybe<Order_By>;
 };
 
+export type Instructions_By_Address_2_Args = {
+  addresses?: Maybe<Scalars['_text']>;
+  amount?: Maybe<Scalars['bigint']>;
+  limit?: Maybe<Scalars['bigint']>;
+  offset?: Maybe<Scalars['bigint']>;
+  programs?: Maybe<Scalars['_text']>;
+};
+
 export type Instructions_By_Address_Args = {
   addresses?: Maybe<Scalars['_text']>;
   limit?: Maybe<Scalars['bigint']>;
@@ -1213,6 +1221,8 @@ export type Nonce_Account = {
   authority: Scalars['String'];
   blockhash: Scalars['String'];
   lamports_per_signature: Scalars['Int'];
+  /** An object relationship */
+  native_balance?: Maybe<Account_Balance>;
 };
 
 /** aggregated selection of "nonce_account" */
@@ -1260,6 +1270,7 @@ export type Nonce_Account_Bool_Exp = {
   authority?: Maybe<String_Comparison_Exp>;
   blockhash?: Maybe<String_Comparison_Exp>;
   lamports_per_signature?: Maybe<Int_Comparison_Exp>;
+  native_balance?: Maybe<Account_Balance_Bool_Exp>;
 };
 
 /** aggregate max on columns */
@@ -1286,6 +1297,7 @@ export type Nonce_Account_Order_By = {
   authority?: Maybe<Order_By>;
   blockhash?: Maybe<Order_By>;
   lamports_per_signature?: Maybe<Order_By>;
+  native_balance?: Maybe<Account_Balance_Order_By>;
 };
 
 /** select columns of table "nonce_account" */
@@ -1606,6 +1618,10 @@ export type Query_Root = {
   instruction_aggregate: Instruction_Aggregate;
   /** execute function "instructions_by_address" which returns "instruction" */
   instructions_by_address: Array<Instruction>;
+  /** execute function "instructions_by_address_2" which returns "instruction" */
+  instructions_by_address_2: Array<Instruction>;
+  /** execute function "instructions_by_address_2" and query aggregates on result of table type "instruction" */
+  instructions_by_address_2_aggregate: Instruction_Aggregate;
   /** execute function "instructions_by_address" and query aggregates on result of table type "instruction" */
   instructions_by_address_aggregate: Instruction_Aggregate;
   /** fetch data from the table: "multisig" */
@@ -1857,6 +1873,26 @@ export type Query_RootInstruction_AggregateArgs = {
 
 export type Query_RootInstructions_By_AddressArgs = {
   args: Instructions_By_Address_Args;
+  distinct_on?: Maybe<Array<Instruction_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Instruction_Order_By>>;
+  where?: Maybe<Instruction_Bool_Exp>;
+};
+
+
+export type Query_RootInstructions_By_Address_2Args = {
+  args: Instructions_By_Address_2_Args;
+  distinct_on?: Maybe<Array<Instruction_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Instruction_Order_By>>;
+  where?: Maybe<Instruction_Bool_Exp>;
+};
+
+
+export type Query_RootInstructions_By_Address_2_AggregateArgs = {
+  args: Instructions_By_Address_2_Args;
   distinct_on?: Maybe<Array<Instruction_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
@@ -2383,6 +2419,8 @@ export type Stake_Account = {
   __typename?: 'stake_account';
   address: Scalars['String'];
   /** An object relationship */
+  native_balance?: Maybe<Account_Balance>;
+  /** An object relationship */
   stake_delegation?: Maybe<Stake_Delegation>;
   /** An object relationship */
   stake_lockup?: Maybe<Stake_Lockup>;
@@ -2418,6 +2456,7 @@ export type Stake_Account_Bool_Exp = {
   _not?: Maybe<Stake_Account_Bool_Exp>;
   _or?: Maybe<Array<Stake_Account_Bool_Exp>>;
   address?: Maybe<String_Comparison_Exp>;
+  native_balance?: Maybe<Account_Balance_Bool_Exp>;
   stake_delegation?: Maybe<Stake_Delegation_Bool_Exp>;
   stake_lockup?: Maybe<Stake_Lockup_Bool_Exp>;
   staker?: Maybe<String_Comparison_Exp>;
@@ -2443,6 +2482,7 @@ export type Stake_Account_Min_Fields = {
 /** Ordering options when selecting data from "stake_account". */
 export type Stake_Account_Order_By = {
   address?: Maybe<Order_By>;
+  native_balance?: Maybe<Account_Balance_Order_By>;
   stake_delegation?: Maybe<Stake_Delegation_Order_By>;
   stake_lockup?: Maybe<Stake_Lockup_Order_By>;
   staker?: Maybe<Order_By>;
@@ -2805,6 +2845,10 @@ export type Subscription_Root = {
   instruction_aggregate: Instruction_Aggregate;
   /** execute function "instructions_by_address" which returns "instruction" */
   instructions_by_address: Array<Instruction>;
+  /** execute function "instructions_by_address_2" which returns "instruction" */
+  instructions_by_address_2: Array<Instruction>;
+  /** execute function "instructions_by_address_2" and query aggregates on result of table type "instruction" */
+  instructions_by_address_2_aggregate: Instruction_Aggregate;
   /** execute function "instructions_by_address" and query aggregates on result of table type "instruction" */
   instructions_by_address_aggregate: Instruction_Aggregate;
   /** fetch data from the table: "multisig" */
@@ -3040,6 +3084,26 @@ export type Subscription_RootInstruction_AggregateArgs = {
 
 export type Subscription_RootInstructions_By_AddressArgs = {
   args: Instructions_By_Address_Args;
+  distinct_on?: Maybe<Array<Instruction_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Instruction_Order_By>>;
+  where?: Maybe<Instruction_Bool_Exp>;
+};
+
+
+export type Subscription_RootInstructions_By_Address_2Args = {
+  args: Instructions_By_Address_2_Args;
+  distinct_on?: Maybe<Array<Instruction_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Instruction_Order_By>>;
+  where?: Maybe<Instruction_Bool_Exp>;
+};
+
+
+export type Subscription_RootInstructions_By_Address_2_AggregateArgs = {
+  args: Instructions_By_Address_2_Args;
   distinct_on?: Maybe<Array<Instruction_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
@@ -5356,6 +5420,8 @@ export type Validator = {
   __typename?: 'validator';
   address: Scalars['String'];
   commission: Scalars['Int'];
+  /** An object relationship */
+  native_balance?: Maybe<Account_Balance>;
   node: Scalars['String'];
   /** An object relationship */
   validator_config?: Maybe<Validator_Config>;
@@ -5432,6 +5498,7 @@ export type Validator_Bool_Exp = {
   _or?: Maybe<Array<Validator_Bool_Exp>>;
   address?: Maybe<String_Comparison_Exp>;
   commission?: Maybe<Int_Comparison_Exp>;
+  native_balance?: Maybe<Account_Balance_Bool_Exp>;
   node?: Maybe<String_Comparison_Exp>;
   validator_config?: Maybe<Validator_Config_Bool_Exp>;
   validator_skip_rate?: Maybe<Validator_Skip_Rate_Bool_Exp>;
@@ -5584,6 +5651,7 @@ export type Validator_Min_Order_By = {
 export type Validator_Order_By = {
   address?: Maybe<Order_By>;
   commission?: Maybe<Order_By>;
+  native_balance?: Maybe<Account_Balance_Order_By>;
   node?: Maybe<Order_By>;
   validator_config?: Maybe<Validator_Config_Order_By>;
   validator_skip_rate?: Maybe<Validator_Skip_Rate_Order_By>;
@@ -6190,6 +6258,167 @@ export type Validator_Variance_Order_By = {
   commission?: Maybe<Order_By>;
 };
 
+export type AccountTypeQueryVariables = Exact<{
+  address: Scalars['String'];
+}>;
+
+
+export type AccountTypeQuery = { actionsAccountInfo: (
+    { __typename?: 'AccountInfo' }
+    & Pick<AccountInfo, 'parsed'>
+    & { programOwner: AccountInfo['program_owner'] }
+  ) };
+
+export type NativeAccountDetailsQueryVariables = Exact<{
+  address: Scalars['String'];
+}>;
+
+
+export type NativeAccountDetailsQuery = { accountBalance: Array<(
+    { __typename?: 'account_balance' }
+    & Pick<Account_Balance, 'balance'>
+  )>, stake: (
+    { __typename?: 'stake_account_aggregate' }
+    & { nodes: Array<(
+      { __typename?: 'stake_account' }
+      & { nativeBalance?: Maybe<(
+        { __typename?: 'account_balance' }
+        & Pick<Account_Balance, 'balance'>
+      )> }
+    )> }
+  ), nonce: (
+    { __typename?: 'nonce_account_aggregate' }
+    & { nodes: Array<(
+      { __typename?: 'nonce_account' }
+      & { nativeBalance?: Maybe<(
+        { __typename?: 'account_balance' }
+        & Pick<Account_Balance, 'balance'>
+      )> }
+    )> }
+  ), validator: (
+    { __typename?: 'validator_aggregate' }
+    & { nodes: Array<(
+      { __typename?: 'validator' }
+      & { nativeBalance?: Maybe<(
+        { __typename?: 'account_balance' }
+        & Pick<Account_Balance, 'balance'>
+      )> }
+    )> }
+  ) };
+
+export type NativeRelatedAccountsCountQueryVariables = Exact<{
+  address?: Maybe<Scalars['String']>;
+}>;
+
+
+export type NativeRelatedAccountsCountQuery = { stakeAccountAggregate: (
+    { __typename?: 'stake_account_aggregate' }
+    & { aggregate?: Maybe<(
+      { __typename?: 'stake_account_aggregate_fields' }
+      & Pick<Stake_Account_Aggregate_Fields, 'count'>
+    )> }
+  ), validatorAggregate: (
+    { __typename?: 'validator_aggregate' }
+    & { aggregate?: Maybe<(
+      { __typename?: 'validator_aggregate_fields' }
+      & Pick<Validator_Aggregate_Fields, 'count'>
+    )> }
+  ), nonceAccountAggregate: (
+    { __typename?: 'nonce_account_aggregate' }
+    & { aggregate?: Maybe<(
+      { __typename?: 'nonce_account_aggregate_fields' }
+      & Pick<Nonce_Account_Aggregate_Fields, 'count'>
+    )> }
+  ), tokenAccountAggregate: (
+    { __typename?: 'token_account_aggregate' }
+    & { aggregate?: Maybe<(
+      { __typename?: 'token_account_aggregate_fields' }
+      & Pick<Token_Account_Aggregate_Fields, 'count'>
+    )> }
+  ) };
+
+export type NativeRelatedAccountsQueryVariables = Exact<{
+  address?: Maybe<Scalars['String']>;
+}>;
+
+
+export type NativeRelatedAccountsQuery = { stakeAccount: Array<(
+    { __typename?: 'stake_account' }
+    & Pick<Stake_Account, 'address'>
+  )>, validator: Array<(
+    { __typename?: 'validator' }
+    & Pick<Validator, 'address'>
+  )>, nonceAccount: Array<(
+    { __typename?: 'nonce_account' }
+    & Pick<Nonce_Account, 'address'>
+  )>, tokenAccount: Array<(
+    { __typename?: 'token_account' }
+    & Pick<Token_Account, 'address'>
+  )> };
+
+export type NativeAccountTokensQueryVariables = Exact<{
+  address?: Maybe<Scalars['String']>;
+}>;
+
+
+export type NativeAccountTokensQuery = { tokens: Array<(
+    { __typename?: 'token_account_balance' }
+    & Pick<Token_Account_Balance, 'balance'>
+    & { tokenAccount?: Maybe<(
+      { __typename?: 'token_account' }
+      & { tokenUnit?: Maybe<(
+        { __typename?: 'token_unit' }
+        & Pick<Token_Unit, 'mint'>
+        & { unitName: Token_Unit['unit_name'] }
+      )>, tokenInfo?: Maybe<(
+        { __typename?: 'token' }
+        & Pick<Token, 'decimals'>
+      )> }
+    )> }
+  )> };
+
+export type TokenDetailsQueryVariables = Exact<{
+  address: Scalars['String'];
+}>;
+
+
+export type TokenDetailsQuery = { tokenUnit: Array<(
+    { __typename?: 'token_unit' }
+    & Pick<Token_Unit, 'mint'>
+    & { unitName: Token_Unit['unit_name'], logo: Token_Unit['logo_uri'] }
+    & { tokenPrice?: Maybe<(
+      { __typename?: 'token_price' }
+      & Pick<Token_Price, 'price'>
+      & { marketCap: Token_Price['market_cap'] }
+    )> }
+  )>, token: Array<(
+    { __typename?: 'token' }
+    & Pick<Token, 'mint' | 'decimals'>
+    & { freezeAuthority: Token['freeze_authority'], mintAuthority: Token['mint_authority'] }
+  )>, tokenSupply: Array<(
+    { __typename?: 'token_supply' }
+    & Pick<Token_Supply, 'supply'>
+  )>, tokenAccountAggregate: (
+    { __typename?: 'token_account_aggregate' }
+    & { aggregate?: Maybe<(
+      { __typename?: 'token_account_aggregate_fields' }
+      & Pick<Token_Account_Aggregate_Fields, 'count'>
+    )> }
+  ) };
+
+export type TokenDetailsHoldersQueryVariables = Exact<{
+  address: Scalars['String'];
+}>;
+
+
+export type TokenDetailsHoldersQuery = { tokenAccountBalance: Array<(
+    { __typename?: 'token_account_balance' }
+    & Pick<Token_Account_Balance, 'balance' | 'address'>
+  )>, token: Array<(
+    { __typename?: 'token' }
+    & Pick<Token, 'decimals'>
+  )> };
+
 export type ActiveValidatorCountQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -6370,6 +6599,27 @@ export type TokensQuery = { tokenUnit: Array<(
     )> }
   )> };
 
+export type TxByAddressQueryVariables = Exact<{
+  address?: Maybe<Scalars['_text']>;
+}>;
+
+
+export type TxByAddressQuery = { transactions: (
+    { __typename?: 'instruction_aggregate' }
+    & { nodes: Array<(
+      { __typename?: 'instruction' }
+      & { transaction?: Maybe<(
+        { __typename?: 'transaction' }
+        & Pick<Transaction, 'success' | 'slot' | 'signature'>
+        & { numInstructions: Transaction['num_instructions'] }
+        & { block?: Maybe<(
+          { __typename?: 'block' }
+          & Pick<Block, 'timestamp'>
+        )> }
+      )> }
+    )> }
+  ) };
+
 export type TransactionDetailsQueryVariables = Exact<{
   signature?: Maybe<Scalars['String']>;
 }>;
@@ -6385,6 +6635,22 @@ export type TransactionDetailsQuery = { transaction: Array<(
       { __typename?: 'instruction' }
       & Pick<Instruction, 'type' | 'index' | 'program' | 'value'>
       & { innerIndex: Instruction['inner_index'], rawData: Instruction['raw_data'] }
+    )> }
+  )> };
+
+export type AccountWithdrawalAddressQueryVariables = Exact<{
+  address: Scalars['String'];
+}>;
+
+
+export type AccountWithdrawalAddressQuery = { tokenAccount: Array<(
+    { __typename?: 'token_account' }
+    & { tokenUnit?: Maybe<(
+      { __typename?: 'token_unit' }
+      & { unitName: Token_Unit['unit_name'] }
+    )>, tokenInfo?: Maybe<(
+      { __typename?: 'token' }
+      & Pick<Token, 'decimals'>
     )> }
   )> };
 
@@ -6447,6 +6713,340 @@ export type ValidatorAddressesQuery = { validator: Array<(
   )> };
 
 
+export const AccountTypeDocument = gql`
+    query AccountType($address: String!) {
+  actionsAccountInfo: actions_account_info(address: $address) {
+    parsed
+    programOwner: program_owner
+  }
+}
+    `;
+
+/**
+ * __useAccountTypeQuery__
+ *
+ * To run a query within a React component, call `useAccountTypeQuery` and pass it any options that fit your needs.
+ * When your component renders, `useAccountTypeQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useAccountTypeQuery({
+ *   variables: {
+ *      address: // value for 'address'
+ *   },
+ * });
+ */
+export function useAccountTypeQuery(baseOptions: Apollo.QueryHookOptions<AccountTypeQuery, AccountTypeQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<AccountTypeQuery, AccountTypeQueryVariables>(AccountTypeDocument, options);
+      }
+export function useAccountTypeLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<AccountTypeQuery, AccountTypeQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<AccountTypeQuery, AccountTypeQueryVariables>(AccountTypeDocument, options);
+        }
+export type AccountTypeQueryHookResult = ReturnType<typeof useAccountTypeQuery>;
+export type AccountTypeLazyQueryHookResult = ReturnType<typeof useAccountTypeLazyQuery>;
+export type AccountTypeQueryResult = Apollo.QueryResult<AccountTypeQuery, AccountTypeQueryVariables>;
+export const NativeAccountDetailsDocument = gql`
+    query NativeAccountDetails($address: String!) {
+  accountBalance: account_balance(where: {address: {_eq: $address}}) {
+    balance
+  }
+  stake: stake_account_aggregate(where: {withdrawer: {_eq: $address}}) {
+    nodes {
+      nativeBalance: native_balance {
+        balance
+      }
+    }
+  }
+  nonce: nonce_account_aggregate(where: {authority: {_eq: $address}}) {
+    nodes {
+      nativeBalance: native_balance {
+        balance
+      }
+    }
+  }
+  validator: validator_aggregate(where: {withdrawer: {_eq: $address}}) {
+    nodes {
+      nativeBalance: native_balance {
+        balance
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useNativeAccountDetailsQuery__
+ *
+ * To run a query within a React component, call `useNativeAccountDetailsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useNativeAccountDetailsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useNativeAccountDetailsQuery({
+ *   variables: {
+ *      address: // value for 'address'
+ *   },
+ * });
+ */
+export function useNativeAccountDetailsQuery(baseOptions: Apollo.QueryHookOptions<NativeAccountDetailsQuery, NativeAccountDetailsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<NativeAccountDetailsQuery, NativeAccountDetailsQueryVariables>(NativeAccountDetailsDocument, options);
+      }
+export function useNativeAccountDetailsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<NativeAccountDetailsQuery, NativeAccountDetailsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<NativeAccountDetailsQuery, NativeAccountDetailsQueryVariables>(NativeAccountDetailsDocument, options);
+        }
+export type NativeAccountDetailsQueryHookResult = ReturnType<typeof useNativeAccountDetailsQuery>;
+export type NativeAccountDetailsLazyQueryHookResult = ReturnType<typeof useNativeAccountDetailsLazyQuery>;
+export type NativeAccountDetailsQueryResult = Apollo.QueryResult<NativeAccountDetailsQuery, NativeAccountDetailsQueryVariables>;
+export const NativeRelatedAccountsCountDocument = gql`
+    query NativeRelatedAccountsCount($address: String) {
+  stakeAccountAggregate: stake_account_aggregate(
+    where: {withdrawer: {_eq: $address}}
+  ) {
+    aggregate {
+      count
+    }
+  }
+  validatorAggregate: validator_aggregate(where: {withdrawer: {_eq: $address}}) {
+    aggregate {
+      count
+    }
+  }
+  nonceAccountAggregate: nonce_account_aggregate(
+    where: {authority: {_eq: $address}}
+  ) {
+    aggregate {
+      count
+    }
+  }
+  tokenAccountAggregate: token_account_aggregate(where: {owner: {_eq: $address}}) {
+    aggregate {
+      count
+    }
+  }
+}
+    `;
+
+/**
+ * __useNativeRelatedAccountsCountQuery__
+ *
+ * To run a query within a React component, call `useNativeRelatedAccountsCountQuery` and pass it any options that fit your needs.
+ * When your component renders, `useNativeRelatedAccountsCountQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useNativeRelatedAccountsCountQuery({
+ *   variables: {
+ *      address: // value for 'address'
+ *   },
+ * });
+ */
+export function useNativeRelatedAccountsCountQuery(baseOptions?: Apollo.QueryHookOptions<NativeRelatedAccountsCountQuery, NativeRelatedAccountsCountQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<NativeRelatedAccountsCountQuery, NativeRelatedAccountsCountQueryVariables>(NativeRelatedAccountsCountDocument, options);
+      }
+export function useNativeRelatedAccountsCountLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<NativeRelatedAccountsCountQuery, NativeRelatedAccountsCountQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<NativeRelatedAccountsCountQuery, NativeRelatedAccountsCountQueryVariables>(NativeRelatedAccountsCountDocument, options);
+        }
+export type NativeRelatedAccountsCountQueryHookResult = ReturnType<typeof useNativeRelatedAccountsCountQuery>;
+export type NativeRelatedAccountsCountLazyQueryHookResult = ReturnType<typeof useNativeRelatedAccountsCountLazyQuery>;
+export type NativeRelatedAccountsCountQueryResult = Apollo.QueryResult<NativeRelatedAccountsCountQuery, NativeRelatedAccountsCountQueryVariables>;
+export const NativeRelatedAccountsDocument = gql`
+    query NativeRelatedAccounts($address: String) {
+  stakeAccount: stake_account(where: {withdrawer: {_eq: $address}}) {
+    address
+  }
+  validator(where: {withdrawer: {_eq: $address}}) {
+    address
+  }
+  nonceAccount: nonce_account(where: {authority: {_eq: $address}}) {
+    address
+  }
+  tokenAccount: token_account(where: {owner: {_eq: $address}}) {
+    address
+  }
+}
+    `;
+
+/**
+ * __useNativeRelatedAccountsQuery__
+ *
+ * To run a query within a React component, call `useNativeRelatedAccountsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useNativeRelatedAccountsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useNativeRelatedAccountsQuery({
+ *   variables: {
+ *      address: // value for 'address'
+ *   },
+ * });
+ */
+export function useNativeRelatedAccountsQuery(baseOptions?: Apollo.QueryHookOptions<NativeRelatedAccountsQuery, NativeRelatedAccountsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<NativeRelatedAccountsQuery, NativeRelatedAccountsQueryVariables>(NativeRelatedAccountsDocument, options);
+      }
+export function useNativeRelatedAccountsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<NativeRelatedAccountsQuery, NativeRelatedAccountsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<NativeRelatedAccountsQuery, NativeRelatedAccountsQueryVariables>(NativeRelatedAccountsDocument, options);
+        }
+export type NativeRelatedAccountsQueryHookResult = ReturnType<typeof useNativeRelatedAccountsQuery>;
+export type NativeRelatedAccountsLazyQueryHookResult = ReturnType<typeof useNativeRelatedAccountsLazyQuery>;
+export type NativeRelatedAccountsQueryResult = Apollo.QueryResult<NativeRelatedAccountsQuery, NativeRelatedAccountsQueryVariables>;
+export const NativeAccountTokensDocument = gql`
+    query NativeAccountTokens($address: String) {
+  tokens: token_account_balance(where: {token_account: {owner: {_eq: $address}}}) {
+    balance
+    tokenAccount: token_account {
+      tokenUnit: token_unit {
+        unitName: unit_name
+        mint
+      }
+      tokenInfo: token_info {
+        decimals
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useNativeAccountTokensQuery__
+ *
+ * To run a query within a React component, call `useNativeAccountTokensQuery` and pass it any options that fit your needs.
+ * When your component renders, `useNativeAccountTokensQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useNativeAccountTokensQuery({
+ *   variables: {
+ *      address: // value for 'address'
+ *   },
+ * });
+ */
+export function useNativeAccountTokensQuery(baseOptions?: Apollo.QueryHookOptions<NativeAccountTokensQuery, NativeAccountTokensQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<NativeAccountTokensQuery, NativeAccountTokensQueryVariables>(NativeAccountTokensDocument, options);
+      }
+export function useNativeAccountTokensLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<NativeAccountTokensQuery, NativeAccountTokensQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<NativeAccountTokensQuery, NativeAccountTokensQueryVariables>(NativeAccountTokensDocument, options);
+        }
+export type NativeAccountTokensQueryHookResult = ReturnType<typeof useNativeAccountTokensQuery>;
+export type NativeAccountTokensLazyQueryHookResult = ReturnType<typeof useNativeAccountTokensLazyQuery>;
+export type NativeAccountTokensQueryResult = Apollo.QueryResult<NativeAccountTokensQuery, NativeAccountTokensQueryVariables>;
+export const TokenDetailsDocument = gql`
+    query TokenDetails($address: String!) {
+  tokenUnit: token_unit(where: {mint: {_eq: $address}}) {
+    mint
+    unitName: unit_name
+    logo: logo_uri
+    tokenPrice: token_price {
+      marketCap: market_cap
+      price
+    }
+  }
+  token(where: {mint: {_eq: $address}}) {
+    mint
+    freezeAuthority: freeze_authority
+    decimals
+    mintAuthority: mint_authority
+  }
+  tokenSupply: token_supply(where: {mint: {_eq: $address}}) {
+    supply
+  }
+  tokenAccountAggregate: token_account_aggregate(where: {mint: {_eq: $address}}) {
+    aggregate {
+      count
+    }
+  }
+}
+    `;
+
+/**
+ * __useTokenDetailsQuery__
+ *
+ * To run a query within a React component, call `useTokenDetailsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useTokenDetailsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useTokenDetailsQuery({
+ *   variables: {
+ *      address: // value for 'address'
+ *   },
+ * });
+ */
+export function useTokenDetailsQuery(baseOptions: Apollo.QueryHookOptions<TokenDetailsQuery, TokenDetailsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<TokenDetailsQuery, TokenDetailsQueryVariables>(TokenDetailsDocument, options);
+      }
+export function useTokenDetailsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<TokenDetailsQuery, TokenDetailsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<TokenDetailsQuery, TokenDetailsQueryVariables>(TokenDetailsDocument, options);
+        }
+export type TokenDetailsQueryHookResult = ReturnType<typeof useTokenDetailsQuery>;
+export type TokenDetailsLazyQueryHookResult = ReturnType<typeof useTokenDetailsLazyQuery>;
+export type TokenDetailsQueryResult = Apollo.QueryResult<TokenDetailsQuery, TokenDetailsQueryVariables>;
+export const TokenDetailsHoldersDocument = gql`
+    query TokenDetailsHolders($address: String!) {
+  tokenAccountBalance: token_account_balance(
+    where: {token_account: {mint: {_eq: $address}}}
+    limit: 10
+    order_by: {balance: desc}
+  ) {
+    balance
+    address
+  }
+  token(where: {mint: {_eq: $address}}) {
+    decimals
+  }
+}
+    `;
+
+/**
+ * __useTokenDetailsHoldersQuery__
+ *
+ * To run a query within a React component, call `useTokenDetailsHoldersQuery` and pass it any options that fit your needs.
+ * When your component renders, `useTokenDetailsHoldersQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useTokenDetailsHoldersQuery({
+ *   variables: {
+ *      address: // value for 'address'
+ *   },
+ * });
+ */
+export function useTokenDetailsHoldersQuery(baseOptions: Apollo.QueryHookOptions<TokenDetailsHoldersQuery, TokenDetailsHoldersQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<TokenDetailsHoldersQuery, TokenDetailsHoldersQueryVariables>(TokenDetailsHoldersDocument, options);
+      }
+export function useTokenDetailsHoldersLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<TokenDetailsHoldersQuery, TokenDetailsHoldersQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<TokenDetailsHoldersQuery, TokenDetailsHoldersQueryVariables>(TokenDetailsHoldersDocument, options);
+        }
+export type TokenDetailsHoldersQueryHookResult = ReturnType<typeof useTokenDetailsHoldersQuery>;
+export type TokenDetailsHoldersLazyQueryHookResult = ReturnType<typeof useTokenDetailsHoldersLazyQuery>;
+export type TokenDetailsHoldersQueryResult = Apollo.QueryResult<TokenDetailsHoldersQuery, TokenDetailsHoldersQueryVariables>;
 export const ActiveValidatorCountDocument = gql`
     query ActiveValidatorCount {
   activeTotal: validator_status_aggregate(where: {active: {_eq: true}}) {
@@ -6954,6 +7554,55 @@ export function useTokensLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<Tok
 export type TokensQueryHookResult = ReturnType<typeof useTokensQuery>;
 export type TokensLazyQueryHookResult = ReturnType<typeof useTokensLazyQuery>;
 export type TokensQueryResult = Apollo.QueryResult<TokensQuery, TokensQueryVariables>;
+export const TxByAddressDocument = gql`
+    query TxByAddress($address: _text) {
+  transactions: instructions_by_address_2_aggregate(
+    args: {addresses: $address, programs: "{}", limit: 10, offset: 0, amount: 100000}
+    where: {}
+    distinct_on: tx_signature
+  ) {
+    nodes {
+      transaction {
+        success
+        slot
+        signature
+        numInstructions: num_instructions
+        block {
+          timestamp
+        }
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useTxByAddressQuery__
+ *
+ * To run a query within a React component, call `useTxByAddressQuery` and pass it any options that fit your needs.
+ * When your component renders, `useTxByAddressQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useTxByAddressQuery({
+ *   variables: {
+ *      address: // value for 'address'
+ *   },
+ * });
+ */
+export function useTxByAddressQuery(baseOptions?: Apollo.QueryHookOptions<TxByAddressQuery, TxByAddressQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<TxByAddressQuery, TxByAddressQueryVariables>(TxByAddressDocument, options);
+      }
+export function useTxByAddressLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<TxByAddressQuery, TxByAddressQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<TxByAddressQuery, TxByAddressQueryVariables>(TxByAddressDocument, options);
+        }
+export type TxByAddressQueryHookResult = ReturnType<typeof useTxByAddressQuery>;
+export type TxByAddressLazyQueryHookResult = ReturnType<typeof useTxByAddressLazyQuery>;
+export type TxByAddressQueryResult = Apollo.QueryResult<TxByAddressQuery, TxByAddressQueryVariables>;
 export const TransactionDetailsDocument = gql`
     query TransactionDetails($signature: String) {
   transaction(where: {signature: {_eq: $signature}}, limit: 1) {
@@ -7004,6 +7653,46 @@ export function useTransactionDetailsLazyQuery(baseOptions?: Apollo.LazyQueryHoo
 export type TransactionDetailsQueryHookResult = ReturnType<typeof useTransactionDetailsQuery>;
 export type TransactionDetailsLazyQueryHookResult = ReturnType<typeof useTransactionDetailsLazyQuery>;
 export type TransactionDetailsQueryResult = Apollo.QueryResult<TransactionDetailsQuery, TransactionDetailsQueryVariables>;
+export const AccountWithdrawalAddressDocument = gql`
+    query AccountWithdrawalAddress($address: String!) {
+  tokenAccount: token_account(where: {address: {_eq: $address}}) {
+    tokenUnit: token_unit {
+      unitName: unit_name
+    }
+    tokenInfo: token_info {
+      decimals
+    }
+  }
+}
+    `;
+
+/**
+ * __useAccountWithdrawalAddressQuery__
+ *
+ * To run a query within a React component, call `useAccountWithdrawalAddressQuery` and pass it any options that fit your needs.
+ * When your component renders, `useAccountWithdrawalAddressQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useAccountWithdrawalAddressQuery({
+ *   variables: {
+ *      address: // value for 'address'
+ *   },
+ * });
+ */
+export function useAccountWithdrawalAddressQuery(baseOptions: Apollo.QueryHookOptions<AccountWithdrawalAddressQuery, AccountWithdrawalAddressQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<AccountWithdrawalAddressQuery, AccountWithdrawalAddressQueryVariables>(AccountWithdrawalAddressDocument, options);
+      }
+export function useAccountWithdrawalAddressLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<AccountWithdrawalAddressQuery, AccountWithdrawalAddressQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<AccountWithdrawalAddressQuery, AccountWithdrawalAddressQueryVariables>(AccountWithdrawalAddressDocument, options);
+        }
+export type AccountWithdrawalAddressQueryHookResult = ReturnType<typeof useAccountWithdrawalAddressQuery>;
+export type AccountWithdrawalAddressLazyQueryHookResult = ReturnType<typeof useAccountWithdrawalAddressLazyQuery>;
+export type AccountWithdrawalAddressQueryResult = Apollo.QueryResult<AccountWithdrawalAddressQuery, AccountWithdrawalAddressQueryVariables>;
 export const TransactionsListenerDocument = gql`
     subscription TransactionsListener($limit: Int = 7, $offset: Int = 0) {
   transactions: transaction(

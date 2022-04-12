@@ -3,66 +3,88 @@ import classnames from 'classnames';
 import {
   Box,
   TabPanel,
+  Loading,
 } from '@components';
 import { useAccountsHook } from './hooks';
 import {
   Tabs, List,
 } from './components';
-import { AccountsType } from './types';
 
-const Accounts: React.FC<AccountsType & ComponentDefault> = (props) => {
+const Accounts: React.FC<ComponentDefault> = (props) => {
   const {
     handleTabChange,
     tab,
+    state,
   } = useAccountsHook();
-  const tabs = [
-    {
-      id: 0,
+  const tabs = [];
+
+  if (state.stake.length) {
+    tabs.push({
+      id: tabs.length,
       key: 'accountStake',
-      data: props.stake,
-      count: props.stake.length,
-    },
-    {
-      id: 1,
+      data: state.stake,
+      count: state.stake.length,
+    });
+  }
+
+  if (state.vote.length) {
+    tabs.push({
+      id: tabs.length,
       key: 'accountVote',
-      data: props.vote,
-      count: props.vote.length,
-    },
-    {
-      id: 2,
+      data: state.vote,
+      count: state.vote.length,
+    });
+  }
+
+  if (state.nonce.length) {
+    tabs.push({
+      id: tabs.length,
       key: 'accountNonce',
-      data: props.nonce,
-      count: props.nonce.length,
-    },
-    {
-      id: 3,
+      data: state.nonce,
+      count: state.nonce.length,
+    });
+  }
+
+  if (state.token.length) {
+    tabs.push({
+      id: tabs.length,
       key: 'accountToken',
-      data: props.token,
-      count: props.token.length,
-    },
-  ];
+      data: state.token,
+      count: state.token.length,
+    });
+  }
+
+  if (!state.loading && !tabs.length) {
+    return null;
+  }
 
   return (
     <Box className={classnames(props.className)}>
-      <Tabs
-        tab={tab}
-        handleTabChange={handleTabChange}
-        tabs={tabs}
-      />
-      {tabs.map((x) => {
-        return (
-          <TabPanel
-            key={x.id}
-            index={x.id}
-            value={tab}
-          >
-            <List
-              data={x.data}
-              count={x.count}
-            />
-          </TabPanel>
-        );
-      })}
+      {state.loading ? (
+        <Loading />
+      ) : (
+        <>
+          <Tabs
+            tab={tab}
+            handleTabChange={handleTabChange}
+            tabs={tabs}
+          />
+          {tabs.map((x) => {
+            return (
+              <TabPanel
+                key={x.id}
+                index={x.id}
+                value={tab}
+              >
+                <List
+                  data={x.data}
+                  count={x.count}
+                />
+              </TabPanel>
+            );
+          })}
+        </>
+      )}
     </Box>
   );
 };

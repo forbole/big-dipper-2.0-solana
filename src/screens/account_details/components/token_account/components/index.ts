@@ -1,7 +1,11 @@
 import Overview from './overview';
-import Accounts from './accounts';
+import Market from './market';
+import Header from './header';
+import TopHolders from './top_holders';
 
 export {
   Overview,
-  Accounts,
+  Market,
+  Header,
+  TopHolders,
 };
