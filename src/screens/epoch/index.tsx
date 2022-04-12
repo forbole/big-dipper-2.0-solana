@@ -13,7 +13,7 @@ import {
 // import { useBlockDetails } from './hooks';
 
 const Epoch = () => {
-  const { t } = useTranslation('blocks');
+  const { t } = useTranslation('epoch');
   // const classes = useStyles();
   // const { state } = useBlockDetails();
   // const {
@@ -24,12 +24,12 @@ const Epoch = () => {
   return (
     <>
       <NextSeo
-        title={t('blockDetails')}
+        title={t('epoch')}
         openGraph={{
-          title: t('blockDetails'),
+          title: t('epoch'),
         }}
       />
-      <Layout navTitle={t('blockDetails')}>
+      <Layout navTitle={t('epoch')}>
         <LoadAndExist
           loading={false}
           exists
