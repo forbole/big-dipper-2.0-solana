@@ -1,9 +1,11 @@
 import React from 'react';
+import numeral from 'numeral';
 import classnames from 'classnames';
 import useTranslation from 'next-translate/useTranslation';
 import { Typography } from '@material-ui/core';
 import Link from 'next/link';
 import { getMiddleEllipsis } from '@utils/get_middle_ellipsis';
+import { formatNumber } from '@utils/format_token';
 import CopyIcon from '@assets/icon-copy.svg';
 import { BoxDetails } from '@components';
 import { ACCOUNT_DETAILS } from '@utils/go_to_page';
@@ -82,7 +84,7 @@ const Overview: React.FC<{overview: OverviewType} & ComponentDefault> = (props) 
       },
       {
         label: t('balance'),
-        detail: props.overview.balance.value,
+        detail: `${formatNumber(props.overview.balance.value, props.overview.balance.exponent)} ${props.overview.balance.displayDenom.toUpperCase()}`,
       },
       {
         label: t('blockhash'),
@@ -90,7 +92,7 @@ const Overview: React.FC<{overview: OverviewType} & ComponentDefault> = (props) 
       },
       {
         label: t('fee'),
-        detail: props.overview.fee,
+        detail: numeral(props.overview.fee).format('0,0'),
       },
     ],
   };
