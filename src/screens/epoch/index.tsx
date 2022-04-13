@@ -4,15 +4,18 @@ import { NextSeo } from 'next-seo';
 import {
   Layout,
   LoadAndExist,
+  Box,
 } from '@components';
 import {
   Inflation,
   InflationGovernor,
   EpochSchedule,
 } from './components';
+import { useStyles } from './styles';
 
 const Epoch = () => {
   const { t } = useTranslation('epoch');
+  const classes = useStyles();
 
   return (
     <>
@@ -22,14 +25,23 @@ const Epoch = () => {
           title: t('epoch'),
         }}
       />
-      <Layout navTitle={t('epoch')}>
+      <Layout
+        navTitle={t('epoch')}
+        className={classes.root}
+      >
         <LoadAndExist
           loading={false}
           exists
         >
-          <Inflation />
-          <InflationGovernor />
-          <EpochSchedule />
+          <Box className={classes.box}>
+            <Inflation />
+          </Box>
+          <Box className={classes.box}>
+            <InflationGovernor />
+          </Box>
+          <Box className={classes.box}>
+            <EpochSchedule />
+          </Box>
         </LoadAndExist>
       </Layout>
     </>
