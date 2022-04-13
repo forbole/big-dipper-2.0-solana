@@ -5,6 +5,11 @@ import {
   Layout,
   LoadAndExist,
 } from '@components';
+import {
+  Inflation,
+  InflationGovernor,
+  EpochSchedule,
+} from './components';
 
 const Epoch = () => {
   const { t } = useTranslation('epoch');
@@ -22,7 +27,9 @@ const Epoch = () => {
           loading={false}
           exists
         >
-          {}
+          <Inflation />
+          <InflationGovernor />
+          <EpochSchedule />
         </LoadAndExist>
       </Layout>
     </>
