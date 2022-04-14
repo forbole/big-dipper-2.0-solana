@@ -4,7 +4,6 @@ import { NextSeo } from 'next-seo';
 import {
   Layout,
   LoadAndExist,
-  Box,
 } from '@components';
 import {
   Inflation,
@@ -33,15 +32,11 @@ const Epoch = () => {
           loading={false}
           exists
         >
-          <Box className={classes.box}>
+          <span>
             <Inflation />
-          </Box>
-          <Box className={classes.box}>
             <InflationGovernor />
-          </Box>
-          <Box className={classes.box}>
             <EpochSchedule />
-          </Box>
+          </span>
         </LoadAndExist>
       </Layout>
     </>
