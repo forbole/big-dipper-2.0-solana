@@ -172,3 +172,17 @@ query TokenDetailsAccountDetails($address: String!) {
   }
 }
 `;
+
+// stake detail account
+export const StakeAccountDetailsDocument = /* GraphQL */`
+query StakeAccountDetails($address: String) {
+  stakeAccount: stake_account(where: {address: {_eq: $address}}) {
+    address
+    nativeBalance: native_balance {
+      balance
+    }
+    staker
+    withdrawer
+  }
+}
+`;
