@@ -48,10 +48,10 @@ export const useEpoch = () => {
 
   const formatInflationRate = (data: InflationRateQuery) => {
     return {
-      validator: data.ActionsInflationRate.validator,
-      foundation: data.ActionsInflationRate.foundation,
-      total: data.ActionsInflationRate.total,
-      epoch: data.ActionsInflationRate.epoch,
+      validator: data.inflationRate.validator,
+      foundation: data.inflationRate.foundation,
+      total: data.inflationRate.total,
+      epoch: data.inflationRate.epoch,
     };
   };
 
