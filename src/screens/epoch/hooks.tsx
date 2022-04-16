@@ -1,7 +1,4 @@
 import { useState } from 'react';
-import * as R from 'ramda';
-import numeral from 'numeral';
-import { chainConfig } from '@configs';
 import {
   useInflationRateQuery,
   InflationRateQuery,
@@ -13,24 +10,46 @@ import {
 
 export const useEpoch = () => {
   const [state, setState] = useState<{
-    latestSlot: number;
-    averageSlotTime: number;
-    price: number;
-    formatInflation: {
+    inflation: {
       validator: number,
       foundation: number,
       total: number,
       epoch: number,
+    };
+    inflationGovernor: {
+      initial: number,
+      terminal: number,
+      taper: number,
+      foundation: number,
+      foundationTerm: number,
+    };
+    epochSchedule: {
+      slotsPerEpoch: number,
+      leaderScheduleSlotOffset: number,
+      warmup: boolean,
+      firstNormalEpoch: number,
+      firstNormalSlot: number,
     }
   }>({
-    latestSlot: 0,
-    averageSlotTime: 0,
-    price: 0,
-    formatInflation: {
+    inflation: {
       validator: 0,
       foundation: 0,
       total: 0,
       epoch: 0,
+    },
+    inflationGovernor: {
+      initial: 0,
+      terminal: 0,
+      taper: 0,
+      foundation: 0,
+      foundationTerm: 0,
+    },
+    epochSchedule: {
+      slotsPerEpoch: 0,
+      leaderScheduleSlotOffset: 0,
+      warmup: false,
+      firstNormalEpoch: 0,
+      firstNormalSlot: 0,
     },
   });
 
@@ -41,7 +60,7 @@ export const useEpoch = () => {
     onCompleted: (data) => {
       setState((prevState) => ({
         ...prevState,
-        formatInflation: formatInflationRate(data),
+        inflation: formatInflationRate(data),
       }));
     },
   });
@@ -55,7 +74,49 @@ export const useEpoch = () => {
     };
   };
 
-  console.log('state', state);
+  // ====================================
+  // inflation governor
+  // ====================================
+  useInflationGovernorQuery({
+    onCompleted: (data) => {
+      setState((prevState) => ({
+        ...prevState,
+        inflationGovernor: formatInflationGovernor(data),
+      }));
+    },
+  });
+
+  const formatInflationGovernor = (data: InflationGovernorQuery) => {
+    return {
+      initial: data.inflationGovernor.initial,
+      terminal: data.inflationGovernor.terminal,
+      taper: data.inflationGovernor.taper,
+      foundation: data.inflationGovernor.foundation,
+      foundationTerm: data.inflationGovernor.foundationTerm,
+    };
+  };
+
+  // ====================================
+  // epoch schedule
+  // ====================================
+  useEpochScheduleQuery({
+    onCompleted: (data) => {
+      setState((prevState) => ({
+        ...prevState,
+        epochSchedule: formatEpochSchedule(data),
+      }));
+    },
+  });
+
+  const formatEpochSchedule = (data: EpochScheduleQuery) => {
+    return {
+      slotsPerEpoch: data.epochSchedule.slotsPerEpoch,
+      leaderScheduleSlotOffset: data.epochSchedule.leaderScheduleSlotOffset,
+      warmup: data.epochSchedule.warmup,
+      firstNormalEpoch: data.epochSchedule.firstNormalEpoch,
+      firstNormalSlot: data.epochSchedule.firstNormalSlot,
+    };
+  };
 
   return {
     state,
