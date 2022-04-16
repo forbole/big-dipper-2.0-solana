@@ -7,25 +7,31 @@ query Epoch {
   }
 }
 
-query ActionsInflationRate: actions_inflation_rate {
-  validator
-  foundation
-  total
-  epoch
+query InflationRate {
+  ActionsInflationRate: actions_inflation_rate {
+    validator
+    foundation
+    total
+    epoch
+  }
 }
 
-query ActionsInflationGovernor: actions_inflation_governor {
-  initial
-  terminal
-  taper
-  foundation
-  foundationTerm: foundation_term
+query InflationGovernor {
+  ActionsInflationGovernor: actions_inflation_governor {
+    initial
+    terminal
+    taper
+    foundation
+    foundationTerm: foundation_term
+  }
 }  
 
-query ActionsEpochSchedule: actions_epoch_schedule {
-  slotsPerEpoch: slots_per_epoch
-  leaderScheduleSlotOffset: leader_schedule_slot_offset
-  warmup
-  firstNormalEpoch: first_normal_epoch
-  firstNormalSlot: first_normal_slot
+query EpochSchedule {
+  ActionsEpochSchedule: actions_epoch_schedule {
+    slotsPerEpoch: slots_per_epoch
+    leaderScheduleSlotOffset: leader_schedule_slot_offset
+    warmup
+    firstNormalEpoch: first_normal_epoch
+    firstNormalSlot: first_normal_slot
+  }
 }
