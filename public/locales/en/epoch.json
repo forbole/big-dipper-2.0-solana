@@ -5,5 +5,12 @@
     "epochSchedule": "Epoch Schedule",
     "name": "Name",
     "value": "Value",
-    "detail": "Detail"
+    "detail": "Detail",
+    "totalInflation": "Total Inflation",
+    "validatorInflation": "Validator Inflation",
+    "foundationInflation": "Foundation Inflation",
+    "epochDetail": "Epoch for which these values are valid",
+    "totalInflationDetail": "Total Inflation",
+    "validatorInflationDetail": "Inflation allocated to validators",
+    "foundationInflationDetail": "Inflation allocated to the foundation"
   }
