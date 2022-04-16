@@ -22,5 +22,15 @@
     "terminaDetaill": "Terminal inflation percentage",
     "taperDetail": "Rate per year at which inflation is lowered. Rate reduction is derived using the target slot time in genesis config",
     "foundationDetail": "Percentage of total inflation allocated to the foundation",
-    "foundationTermDetail": "Duration of foundation pool inflation in years"
+    "foundationTermDetail": "Duration of foundation pool inflation in years",
+    "slotsPerEpoch": "Slots Per Epoch",
+    "leaderScheduleSlotOffset": "Leader Schedule Slot Offset",
+    "warmup": "Warmup",
+    "firstNormalEpoch": "First Normal Epoch",
+    "firstNormalSlot": "First Normal Slot",
+    "slotsPerEpochDetail": "The maximum number of slots in each epoch",
+    "leaderScheduleSlotOffsetDetail": "Rate per year at which inflation is lowered. Rate reduction is derived using the target slot time in genesis config",
+    "warmupDetail": "Whether epochs start short and grow",
+    "firstNormalEpochDetail": "First normal length epoch",
+    "firstNormalSlotDetail": "First slot"
   }
