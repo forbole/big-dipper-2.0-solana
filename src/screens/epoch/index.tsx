@@ -17,6 +17,7 @@ const Epoch = () => {
   const { t } = useTranslation('epoch');
   const classes = useStyles();
   const { state } = useEpoch();
+  console.log(state);
 
   return (
     <>
