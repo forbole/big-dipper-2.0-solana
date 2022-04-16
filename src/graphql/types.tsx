@@ -6512,7 +6512,7 @@ export type EpochQuery = { averageSlotTimePerHour: Array<(
 export type InflationRateQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type InflationRateQuery = { ActionsInflationRate: (
+export type InflationRateQuery = { inflationRate: (
     { __typename?: 'InflationRate' }
     & Pick<InflationRate, 'validator' | 'foundation' | 'total' | 'epoch'>
   ) };
@@ -6520,7 +6520,7 @@ export type InflationRateQuery = { ActionsInflationRate: (
 export type InflationGovernorQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type InflationGovernorQuery = { ActionsInflationGovernor: (
+export type InflationGovernorQuery = { inflationGovernor: (
     { __typename?: 'InflationGovernor' }
     & Pick<InflationGovernor, 'initial' | 'terminal' | 'taper' | 'foundation'>
     & { foundationTerm: InflationGovernor['foundation_term'] }
@@ -6529,7 +6529,7 @@ export type InflationGovernorQuery = { ActionsInflationGovernor: (
 export type EpochScheduleQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type EpochScheduleQuery = { ActionsEpochSchedule: (
+export type EpochScheduleQuery = { epochSchedule: (
     { __typename?: 'EpochSchedule' }
     & Pick<EpochSchedule, 'warmup'>
     & { slotsPerEpoch: EpochSchedule['slots_per_epoch'], leaderScheduleSlotOffset: EpochSchedule['leader_schedule_slot_offset'], firstNormalEpoch: EpochSchedule['first_normal_epoch'], firstNormalSlot: EpochSchedule['first_normal_slot'] }
@@ -7451,7 +7451,7 @@ export type EpochLazyQueryHookResult = ReturnType<typeof useEpochLazyQuery>;
 export type EpochQueryResult = Apollo.QueryResult<EpochQuery, EpochQueryVariables>;
 export const InflationRateDocument = gql`
     query InflationRate {
-  ActionsInflationRate: actions_inflation_rate {
+  inflationRate: actions_inflation_rate {
     validator
     foundation
     total
@@ -7488,7 +7488,7 @@ export type InflationRateLazyQueryHookResult = ReturnType<typeof useInflationRat
 export type InflationRateQueryResult = Apollo.QueryResult<InflationRateQuery, InflationRateQueryVariables>;
 export const InflationGovernorDocument = gql`
     query InflationGovernor {
-  ActionsInflationGovernor: actions_inflation_governor {
+  inflationGovernor: actions_inflation_governor {
     initial
     terminal
     taper
@@ -7526,7 +7526,7 @@ export type InflationGovernorLazyQueryHookResult = ReturnType<typeof useInflatio
 export type InflationGovernorQueryResult = Apollo.QueryResult<InflationGovernorQuery, InflationGovernorQueryVariables>;
 export const EpochScheduleDocument = gql`
     query EpochSchedule {
-  ActionsEpochSchedule: actions_epoch_schedule {
+  epochSchedule: actions_epoch_schedule {
     slotsPerEpoch: slots_per_epoch
     leaderScheduleSlotOffset: leader_schedule_slot_offset
     warmup

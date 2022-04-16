@@ -8,7 +8,7 @@ query Epoch {
 }
 
 query InflationRate {
-  ActionsInflationRate: actions_inflation_rate {
+  inflationRate: actions_inflation_rate {
     validator
     foundation
     total
@@ -17,7 +17,7 @@ query InflationRate {
 }
 
 query InflationGovernor {
-  ActionsInflationGovernor: actions_inflation_governor {
+  inflationGovernor: actions_inflation_governor {
     initial
     terminal
     taper
@@ -27,7 +27,7 @@ query InflationGovernor {
 }  
 
 query EpochSchedule {
-  ActionsEpochSchedule: actions_epoch_schedule {
+  epochSchedule: actions_epoch_schedule {
     slotsPerEpoch: slots_per_epoch
     leaderScheduleSlotOffset: leader_schedule_slot_offset
     warmup
