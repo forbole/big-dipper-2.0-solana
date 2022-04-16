@@ -17,5 +17,10 @@
     "terminal": "Terminal",
     "taper": "Taper",
     "foundation": "Foundation",
-    "foundationTerm": "Foundation Term"
+    "foundationTerm": "Foundation Term",
+    "initialDetail": "The initial inflation percentage from time 0",
+    "terminaDetaill": "Terminal inflation percentage",
+    "taperDetail": "Rate per year at which inflation is lowered. Rate reduction is derived using the target slot time in genesis config",
+    "foundationDetail": "Percentage of total inflation allocated to the foundation",
+    "foundationTermDetail": "Duration of foundation pool inflation in years"
   }
