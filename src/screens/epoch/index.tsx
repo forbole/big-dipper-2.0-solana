@@ -11,10 +11,13 @@ import {
   EpochSchedule,
 } from './components';
 import { useStyles } from './styles';
+import { useEpoch } from './hooks';
 
 const Epoch = () => {
   const { t } = useTranslation('epoch');
   const classes = useStyles();
+  const { state } = useEpoch();
+  console.log('state in index', state);
 
   return (
     <>
