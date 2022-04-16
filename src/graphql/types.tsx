@@ -1058,19 +1058,11 @@ export type Instruction_Variance_Order_By = {
   inner_index?: Maybe<Order_By>;
 };
 
-export type Instructions_By_Address_2_Args = {
-  addresses?: Maybe<Scalars['_text']>;
-  amount?: Maybe<Scalars['bigint']>;
-  limit?: Maybe<Scalars['bigint']>;
-  offset?: Maybe<Scalars['bigint']>;
-  programs?: Maybe<Scalars['_text']>;
-};
-
 export type Instructions_By_Address_Args = {
   addresses?: Maybe<Scalars['_text']>;
-  limit?: Maybe<Scalars['bigint']>;
-  offset?: Maybe<Scalars['bigint']>;
+  end_slot?: Maybe<Scalars['bigint']>;
   programs?: Maybe<Scalars['_text']>;
+  start_slot?: Maybe<Scalars['bigint']>;
 };
 
 
@@ -1618,10 +1610,6 @@ export type Query_Root = {
   instruction_aggregate: Instruction_Aggregate;
   /** execute function "instructions_by_address" which returns "instruction" */
   instructions_by_address: Array<Instruction>;
-  /** execute function "instructions_by_address_2" which returns "instruction" */
-  instructions_by_address_2: Array<Instruction>;
-  /** execute function "instructions_by_address_2" and query aggregates on result of table type "instruction" */
-  instructions_by_address_2_aggregate: Instruction_Aggregate;
   /** execute function "instructions_by_address" and query aggregates on result of table type "instruction" */
   instructions_by_address_aggregate: Instruction_Aggregate;
   /** fetch data from the table: "multisig" */
@@ -1873,26 +1861,6 @@ export type Query_RootInstruction_AggregateArgs = {
 
 export type Query_RootInstructions_By_AddressArgs = {
   args: Instructions_By_Address_Args;
-  distinct_on?: Maybe<Array<Instruction_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Instruction_Order_By>>;
-  where?: Maybe<Instruction_Bool_Exp>;
-};
-
-
-export type Query_RootInstructions_By_Address_2Args = {
-  args: Instructions_By_Address_2_Args;
-  distinct_on?: Maybe<Array<Instruction_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Instruction_Order_By>>;
-  where?: Maybe<Instruction_Bool_Exp>;
-};
-
-
-export type Query_RootInstructions_By_Address_2_AggregateArgs = {
-  args: Instructions_By_Address_2_Args;
   distinct_on?: Maybe<Array<Instruction_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
@@ -2845,10 +2813,6 @@ export type Subscription_Root = {
   instruction_aggregate: Instruction_Aggregate;
   /** execute function "instructions_by_address" which returns "instruction" */
   instructions_by_address: Array<Instruction>;
-  /** execute function "instructions_by_address_2" which returns "instruction" */
-  instructions_by_address_2: Array<Instruction>;
-  /** execute function "instructions_by_address_2" and query aggregates on result of table type "instruction" */
-  instructions_by_address_2_aggregate: Instruction_Aggregate;
   /** execute function "instructions_by_address" and query aggregates on result of table type "instruction" */
   instructions_by_address_aggregate: Instruction_Aggregate;
   /** fetch data from the table: "multisig" */
@@ -3084,26 +3048,6 @@ export type Subscription_RootInstruction_AggregateArgs = {
 
 export type Subscription_RootInstructions_By_AddressArgs = {
   args: Instructions_By_Address_Args;
-  distinct_on?: Maybe<Array<Instruction_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Instruction_Order_By>>;
-  where?: Maybe<Instruction_Bool_Exp>;
-};
-
-
-export type Subscription_RootInstructions_By_Address_2Args = {
-  args: Instructions_By_Address_2_Args;
-  distinct_on?: Maybe<Array<Instruction_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Instruction_Order_By>>;
-  where?: Maybe<Instruction_Bool_Exp>;
-};
-
-
-export type Subscription_RootInstructions_By_Address_2_AggregateArgs = {
-  args: Instructions_By_Address_2_Args;
   distinct_on?: Maybe<Array<Instruction_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
@@ -6565,6 +6509,32 @@ export type EpochQuery = { averageSlotTimePerHour: Array<(
     & Pick<Block, 'slot'>
   )> };
 
+export type InflationRateQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type InflationRateQuery = { ActionsInflationRate: (
+    { __typename?: 'InflationRate' }
+    & Pick<InflationRate, 'validator' | 'foundation' | 'total' | 'epoch'>
+  ) };
+
+export type InflationGovernorQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type InflationGovernorQuery = { ActionsInflationGovernor: (
+    { __typename?: 'InflationGovernor' }
+    & Pick<InflationGovernor, 'initial' | 'terminal' | 'taper' | 'foundation'>
+    & { foundationTerm: InflationGovernor['foundation_term'] }
+  ) };
+
+export type EpochScheduleQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type EpochScheduleQuery = { ActionsEpochSchedule: (
+    { __typename?: 'EpochSchedule' }
+    & Pick<EpochSchedule, 'warmup'>
+    & { slotsPerEpoch: EpochSchedule['slots_per_epoch'], leaderScheduleSlotOffset: EpochSchedule['leader_schedule_slot_offset'], firstNormalEpoch: EpochSchedule['first_normal_epoch'], firstNormalSlot: EpochSchedule['first_normal_slot'] }
+  ) };
+
 export type MarketDataQueryVariables = Exact<{
   denom?: Maybe<Scalars['String']>;
 }>;
@@ -7479,6 +7449,119 @@ export function useEpochLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<Epoc
 export type EpochQueryHookResult = ReturnType<typeof useEpochQuery>;
 export type EpochLazyQueryHookResult = ReturnType<typeof useEpochLazyQuery>;
 export type EpochQueryResult = Apollo.QueryResult<EpochQuery, EpochQueryVariables>;
+export const InflationRateDocument = gql`
+    query InflationRate {
+  ActionsInflationRate: actions_inflation_rate {
+    validator
+    foundation
+    total
+    epoch
+  }
+}
+    `;
+
+/**
+ * __useInflationRateQuery__
+ *
+ * To run a query within a React component, call `useInflationRateQuery` and pass it any options that fit your needs.
+ * When your component renders, `useInflationRateQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useInflationRateQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useInflationRateQuery(baseOptions?: Apollo.QueryHookOptions<InflationRateQuery, InflationRateQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<InflationRateQuery, InflationRateQueryVariables>(InflationRateDocument, options);
+      }
+export function useInflationRateLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<InflationRateQuery, InflationRateQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<InflationRateQuery, InflationRateQueryVariables>(InflationRateDocument, options);
+        }
+export type InflationRateQueryHookResult = ReturnType<typeof useInflationRateQuery>;
+export type InflationRateLazyQueryHookResult = ReturnType<typeof useInflationRateLazyQuery>;
+export type InflationRateQueryResult = Apollo.QueryResult<InflationRateQuery, InflationRateQueryVariables>;
+export const InflationGovernorDocument = gql`
+    query InflationGovernor {
+  ActionsInflationGovernor: actions_inflation_governor {
+    initial
+    terminal
+    taper
+    foundation
+    foundationTerm: foundation_term
+  }
+}
+    `;
+
+/**
+ * __useInflationGovernorQuery__
+ *
+ * To run a query within a React component, call `useInflationGovernorQuery` and pass it any options that fit your needs.
+ * When your component renders, `useInflationGovernorQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useInflationGovernorQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useInflationGovernorQuery(baseOptions?: Apollo.QueryHookOptions<InflationGovernorQuery, InflationGovernorQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<InflationGovernorQuery, InflationGovernorQueryVariables>(InflationGovernorDocument, options);
+      }
+export function useInflationGovernorLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<InflationGovernorQuery, InflationGovernorQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<InflationGovernorQuery, InflationGovernorQueryVariables>(InflationGovernorDocument, options);
+        }
+export type InflationGovernorQueryHookResult = ReturnType<typeof useInflationGovernorQuery>;
+export type InflationGovernorLazyQueryHookResult = ReturnType<typeof useInflationGovernorLazyQuery>;
+export type InflationGovernorQueryResult = Apollo.QueryResult<InflationGovernorQuery, InflationGovernorQueryVariables>;
+export const EpochScheduleDocument = gql`
+    query EpochSchedule {
+  ActionsEpochSchedule: actions_epoch_schedule {
+    slotsPerEpoch: slots_per_epoch
+    leaderScheduleSlotOffset: leader_schedule_slot_offset
+    warmup
+    firstNormalEpoch: first_normal_epoch
+    firstNormalSlot: first_normal_slot
+  }
+}
+    `;
+
+/**
+ * __useEpochScheduleQuery__
+ *
+ * To run a query within a React component, call `useEpochScheduleQuery` and pass it any options that fit your needs.
+ * When your component renders, `useEpochScheduleQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useEpochScheduleQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useEpochScheduleQuery(baseOptions?: Apollo.QueryHookOptions<EpochScheduleQuery, EpochScheduleQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<EpochScheduleQuery, EpochScheduleQueryVariables>(EpochScheduleDocument, options);
+      }
+export function useEpochScheduleLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<EpochScheduleQuery, EpochScheduleQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<EpochScheduleQuery, EpochScheduleQueryVariables>(EpochScheduleDocument, options);
+        }
+export type EpochScheduleQueryHookResult = ReturnType<typeof useEpochScheduleQuery>;
+export type EpochScheduleLazyQueryHookResult = ReturnType<typeof useEpochScheduleLazyQuery>;
+export type EpochScheduleQueryResult = Apollo.QueryResult<EpochScheduleQuery, EpochScheduleQueryVariables>;
 export const MarketDataDocument = gql`
     query MarketData($denom: String) {
   tokenPrice: token_price(where: {symbol: {_eq: $denom}}) {
@@ -7679,8 +7762,10 @@ export type TokensLazyQueryHookResult = ReturnType<typeof useTokensLazyQuery>;
 export type TokensQueryResult = Apollo.QueryResult<TokensQuery, TokensQueryVariables>;
 export const TxByAddressDocument = gql`
     query TxByAddress($address: _text) {
-  transactions: instructions_by_address_2_aggregate(
-    args: {addresses: $address, programs: "{}", limit: 10, offset: 0, amount: 100000}
+  transactions: instructions_by_address_aggregate(
+    args: {addresses: $address, programs: "{}"}
+    limit: 10
+    offset: 0
     where: {}
     distinct_on: tx_signature
   ) {
