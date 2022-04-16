@@ -6419,6 +6419,41 @@ export type TokenDetailsHoldersQuery = { tokenAccountBalance: Array<(
     & Pick<Token, 'decimals'>
   )> };
 
+export type NonceAccountDetailsQueryVariables = Exact<{
+  address: Scalars['String'];
+}>;
+
+
+export type NonceAccountDetailsQuery = { nonceAccount: Array<(
+    { __typename?: 'nonce_account' }
+    & Pick<Nonce_Account, 'address' | 'authority' | 'blockhash'>
+    & { lamportsPerSignature: Nonce_Account['lamports_per_signature'] }
+    & { nativeBalance?: Maybe<(
+      { __typename?: 'account_balance' }
+      & Pick<Account_Balance, 'balance'>
+    )> }
+  )> };
+
+export type TokenDetailsAccountDetailsQueryVariables = Exact<{
+  address: Scalars['String'];
+}>;
+
+
+export type TokenDetailsAccountDetailsQuery = { tokenAccount: Array<(
+    { __typename?: 'token_account' }
+    & Pick<Token_Account, 'address' | 'mint' | 'owner'>
+    & { tokenInfo?: Maybe<(
+      { __typename?: 'token' }
+      & Pick<Token, 'decimals'>
+    )>, tokenUnit?: Maybe<(
+      { __typename?: 'token_unit' }
+      & { unitName: Token_Unit['unit_name'], logoUrl: Token_Unit['logo_uri'] }
+    )> }
+  )>, tokenAccountBalance: Array<(
+    { __typename?: 'token_account_balance' }
+    & Pick<Token_Account_Balance, 'balance'>
+  )> };
+
 export type ActiveValidatorCountQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -7047,6 +7082,94 @@ export function useTokenDetailsHoldersLazyQuery(baseOptions?: Apollo.LazyQueryHo
 export type TokenDetailsHoldersQueryHookResult = ReturnType<typeof useTokenDetailsHoldersQuery>;
 export type TokenDetailsHoldersLazyQueryHookResult = ReturnType<typeof useTokenDetailsHoldersLazyQuery>;
 export type TokenDetailsHoldersQueryResult = Apollo.QueryResult<TokenDetailsHoldersQuery, TokenDetailsHoldersQueryVariables>;
+export const NonceAccountDetailsDocument = gql`
+    query NonceAccountDetails($address: String!) {
+  nonceAccount: nonce_account(where: {address: {_eq: $address}}) {
+    address
+    authority
+    lamportsPerSignature: lamports_per_signature
+    blockhash
+    nativeBalance: native_balance {
+      balance
+    }
+  }
+}
+    `;
+
+/**
+ * __useNonceAccountDetailsQuery__
+ *
+ * To run a query within a React component, call `useNonceAccountDetailsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useNonceAccountDetailsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useNonceAccountDetailsQuery({
+ *   variables: {
+ *      address: // value for 'address'
+ *   },
+ * });
+ */
+export function useNonceAccountDetailsQuery(baseOptions: Apollo.QueryHookOptions<NonceAccountDetailsQuery, NonceAccountDetailsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<NonceAccountDetailsQuery, NonceAccountDetailsQueryVariables>(NonceAccountDetailsDocument, options);
+      }
+export function useNonceAccountDetailsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<NonceAccountDetailsQuery, NonceAccountDetailsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<NonceAccountDetailsQuery, NonceAccountDetailsQueryVariables>(NonceAccountDetailsDocument, options);
+        }
+export type NonceAccountDetailsQueryHookResult = ReturnType<typeof useNonceAccountDetailsQuery>;
+export type NonceAccountDetailsLazyQueryHookResult = ReturnType<typeof useNonceAccountDetailsLazyQuery>;
+export type NonceAccountDetailsQueryResult = Apollo.QueryResult<NonceAccountDetailsQuery, NonceAccountDetailsQueryVariables>;
+export const TokenDetailsAccountDetailsDocument = gql`
+    query TokenDetailsAccountDetails($address: String!) {
+  tokenAccount: token_account(where: {address: {_eq: $address}}) {
+    address
+    mint
+    owner
+    tokenInfo: token_info {
+      decimals
+    }
+    tokenUnit: token_unit {
+      unitName: unit_name
+      logoUrl: logo_uri
+    }
+  }
+  tokenAccountBalance: token_account_balance(where: {address: {_eq: $address}}) {
+    balance
+  }
+}
+    `;
+
+/**
+ * __useTokenDetailsAccountDetailsQuery__
+ *
+ * To run a query within a React component, call `useTokenDetailsAccountDetailsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useTokenDetailsAccountDetailsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useTokenDetailsAccountDetailsQuery({
+ *   variables: {
+ *      address: // value for 'address'
+ *   },
+ * });
+ */
+export function useTokenDetailsAccountDetailsQuery(baseOptions: Apollo.QueryHookOptions<TokenDetailsAccountDetailsQuery, TokenDetailsAccountDetailsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<TokenDetailsAccountDetailsQuery, TokenDetailsAccountDetailsQueryVariables>(TokenDetailsAccountDetailsDocument, options);
+      }
+export function useTokenDetailsAccountDetailsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<TokenDetailsAccountDetailsQuery, TokenDetailsAccountDetailsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<TokenDetailsAccountDetailsQuery, TokenDetailsAccountDetailsQueryVariables>(TokenDetailsAccountDetailsDocument, options);
+        }
+export type TokenDetailsAccountDetailsQueryHookResult = ReturnType<typeof useTokenDetailsAccountDetailsQuery>;
+export type TokenDetailsAccountDetailsLazyQueryHookResult = ReturnType<typeof useTokenDetailsAccountDetailsLazyQuery>;
+export type TokenDetailsAccountDetailsQueryResult = Apollo.QueryResult<TokenDetailsAccountDetailsQuery, TokenDetailsAccountDetailsQueryVariables>;
 export const ActiveValidatorCountDocument = gql`
     query ActiveValidatorCount {
   activeTotal: validator_status_aggregate(where: {active: {_eq: true}}) {
