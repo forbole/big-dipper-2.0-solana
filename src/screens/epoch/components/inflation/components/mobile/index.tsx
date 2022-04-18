@@ -4,8 +4,9 @@ import { Typography } from '@material-ui/core';
 import useTranslation from 'next-translate/useTranslation';
 import { Box } from '@components';
 import { useStyles } from './styles';
+import { InflationType } from '../../../../types';
 
-const Desktop: React.FC<ComponentDefault> = ({
+const Mobile: React.FC<{inflation: InflationType } & ComponentDefault> = ({
   className,
 }) => {
   const { t } = useTranslation('epoch');
@@ -15,11 +16,11 @@ const Desktop: React.FC<ComponentDefault> = ({
     <Box className={classnames(className, classes.root)}>
       <div className={classes.root}>
         <Typography variant="h2">{t('inflation')}</Typography>
-        Desktop
+        Mobile
       </div>
     </Box>
 
   );
 };
 
-export default Desktop;
+export default Mobile;
