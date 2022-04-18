@@ -17,7 +17,6 @@ const Epoch = () => {
   const { t } = useTranslation('epoch');
   const classes = useStyles();
   const { state } = useEpoch();
-  console.log(state);
 
   return (
     <>
@@ -36,9 +35,9 @@ const Epoch = () => {
           exists
         >
           <span>
-            <Inflation />
-            <InflationGovernor />
-            <EpochSchedule />
+            <Inflation inflation={state.inflation} />
+            <InflationGovernor inflationGovernor={state.inflationGovernor} />
+            <EpochSchedule epochSchedule={state.epochSchedule} />
           </span>
         </LoadAndExist>
       </Layout>

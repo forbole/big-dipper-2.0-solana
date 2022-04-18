@@ -1,22 +1,29 @@
 import React from 'react';
-import classnames from 'classnames';
-import { Typography } from '@material-ui/core';
-import useTranslation from 'next-translate/useTranslation';
-import { Box } from '@components';
-import { useStyles } from './styles';
+import dynamic from 'next/dynamic';
+import { NoData } from '@components';
+import { useScreenSize } from '@hooks';
+import { InflationType } from '../../types';
 
-const Inflation: React.FC<ComponentDefault> = ({
-  className,
-}) => {
-  const { t } = useTranslation('epoch');
-  const classes = useStyles();
+const Desktop = dynamic(() => import('./components/desktop'));
+const Mobile = dynamic(() => import('./components/mobile'));
+
+const Inflation: React.FC<{inflation: InflationType } & ComponentDefault> = (props) => {
+  const { isDesktop } = useScreenSize();
+
+  if (!props.inflation) {
+    return (
+      <NoData />
+    );
+  }
 
   return (
-    <Box className={classnames(className, classes.root)}>
-      <div className={classes.header}>
-        <Typography variant="h2">{t('inflation')}</Typography>
-      </div>
-    </Box>
+    <>
+      {isDesktop ? (
+        <Desktop inflation={props.inflation} />
+      ) : (
+        <Mobile inflation={props.inflation} />
+      )}
+    </>
 
   );
 };
