@@ -805,6 +805,7 @@ export type Instruction = {
   involved_accounts: Scalars['_text'];
   program: Scalars['String'];
   raw_data: Scalars['String'];
+  slot: Scalars['bigint'];
   /** An object relationship */
   transaction?: Maybe<Transaction>;
   tx_signature: Scalars['String'];
@@ -868,12 +869,14 @@ export type Instruction_Avg_Fields = {
   __typename?: 'instruction_avg_fields';
   index?: Maybe<Scalars['Float']>;
   inner_index?: Maybe<Scalars['Float']>;
+  slot?: Maybe<Scalars['Float']>;
 };
 
 /** order by avg() on columns of table "instruction" */
 export type Instruction_Avg_Order_By = {
   index?: Maybe<Order_By>;
   inner_index?: Maybe<Order_By>;
+  slot?: Maybe<Order_By>;
 };
 
 /** Boolean expression to filter rows from the table "instruction". All fields are combined with a logical 'AND'. */
@@ -886,6 +889,7 @@ export type Instruction_Bool_Exp = {
   involved_accounts?: Maybe<_Text_Comparison_Exp>;
   program?: Maybe<String_Comparison_Exp>;
   raw_data?: Maybe<String_Comparison_Exp>;
+  slot?: Maybe<Bigint_Comparison_Exp>;
   transaction?: Maybe<Transaction_Bool_Exp>;
   tx_signature?: Maybe<String_Comparison_Exp>;
   type?: Maybe<String_Comparison_Exp>;
@@ -899,6 +903,7 @@ export type Instruction_Max_Fields = {
   inner_index?: Maybe<Scalars['Int']>;
   program?: Maybe<Scalars['String']>;
   raw_data?: Maybe<Scalars['String']>;
+  slot?: Maybe<Scalars['bigint']>;
   tx_signature?: Maybe<Scalars['String']>;
   type?: Maybe<Scalars['String']>;
 };
@@ -909,6 +914,7 @@ export type Instruction_Max_Order_By = {
   inner_index?: Maybe<Order_By>;
   program?: Maybe<Order_By>;
   raw_data?: Maybe<Order_By>;
+  slot?: Maybe<Order_By>;
   tx_signature?: Maybe<Order_By>;
   type?: Maybe<Order_By>;
 };
@@ -920,6 +926,7 @@ export type Instruction_Min_Fields = {
   inner_index?: Maybe<Scalars['Int']>;
   program?: Maybe<Scalars['String']>;
   raw_data?: Maybe<Scalars['String']>;
+  slot?: Maybe<Scalars['bigint']>;
   tx_signature?: Maybe<Scalars['String']>;
   type?: Maybe<Scalars['String']>;
 };
@@ -930,6 +937,7 @@ export type Instruction_Min_Order_By = {
   inner_index?: Maybe<Order_By>;
   program?: Maybe<Order_By>;
   raw_data?: Maybe<Order_By>;
+  slot?: Maybe<Order_By>;
   tx_signature?: Maybe<Order_By>;
   type?: Maybe<Order_By>;
 };
@@ -941,6 +949,7 @@ export type Instruction_Order_By = {
   involved_accounts?: Maybe<Order_By>;
   program?: Maybe<Order_By>;
   raw_data?: Maybe<Order_By>;
+  slot?: Maybe<Order_By>;
   transaction?: Maybe<Transaction_Order_By>;
   tx_signature?: Maybe<Order_By>;
   type?: Maybe<Order_By>;
@@ -960,6 +969,8 @@ export enum Instruction_Select_Column {
   /** column name */
   RawData = 'raw_data',
   /** column name */
+  Slot = 'slot',
+  /** column name */
   TxSignature = 'tx_signature',
   /** column name */
   Type = 'type',
@@ -972,12 +983,14 @@ export type Instruction_Stddev_Fields = {
   __typename?: 'instruction_stddev_fields';
   index?: Maybe<Scalars['Float']>;
   inner_index?: Maybe<Scalars['Float']>;
+  slot?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev() on columns of table "instruction" */
 export type Instruction_Stddev_Order_By = {
   index?: Maybe<Order_By>;
   inner_index?: Maybe<Order_By>;
+  slot?: Maybe<Order_By>;
 };
 
 /** aggregate stddev_pop on columns */
@@ -985,12 +998,14 @@ export type Instruction_Stddev_Pop_Fields = {
   __typename?: 'instruction_stddev_pop_fields';
   index?: Maybe<Scalars['Float']>;
   inner_index?: Maybe<Scalars['Float']>;
+  slot?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev_pop() on columns of table "instruction" */
 export type Instruction_Stddev_Pop_Order_By = {
   index?: Maybe<Order_By>;
   inner_index?: Maybe<Order_By>;
+  slot?: Maybe<Order_By>;
 };
 
 /** aggregate stddev_samp on columns */
@@ -998,12 +1013,14 @@ export type Instruction_Stddev_Samp_Fields = {
   __typename?: 'instruction_stddev_samp_fields';
   index?: Maybe<Scalars['Float']>;
   inner_index?: Maybe<Scalars['Float']>;
+  slot?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev_samp() on columns of table "instruction" */
 export type Instruction_Stddev_Samp_Order_By = {
   index?: Maybe<Order_By>;
   inner_index?: Maybe<Order_By>;
+  slot?: Maybe<Order_By>;
 };
 
 /** aggregate sum on columns */
@@ -1011,12 +1028,14 @@ export type Instruction_Sum_Fields = {
   __typename?: 'instruction_sum_fields';
   index?: Maybe<Scalars['Int']>;
   inner_index?: Maybe<Scalars['Int']>;
+  slot?: Maybe<Scalars['bigint']>;
 };
 
 /** order by sum() on columns of table "instruction" */
 export type Instruction_Sum_Order_By = {
   index?: Maybe<Order_By>;
   inner_index?: Maybe<Order_By>;
+  slot?: Maybe<Order_By>;
 };
 
 /** aggregate var_pop on columns */
@@ -1024,12 +1043,14 @@ export type Instruction_Var_Pop_Fields = {
   __typename?: 'instruction_var_pop_fields';
   index?: Maybe<Scalars['Float']>;
   inner_index?: Maybe<Scalars['Float']>;
+  slot?: Maybe<Scalars['Float']>;
 };
 
 /** order by var_pop() on columns of table "instruction" */
 export type Instruction_Var_Pop_Order_By = {
   index?: Maybe<Order_By>;
   inner_index?: Maybe<Order_By>;
+  slot?: Maybe<Order_By>;
 };
 
 /** aggregate var_samp on columns */
@@ -1037,12 +1058,14 @@ export type Instruction_Var_Samp_Fields = {
   __typename?: 'instruction_var_samp_fields';
   index?: Maybe<Scalars['Float']>;
   inner_index?: Maybe<Scalars['Float']>;
+  slot?: Maybe<Scalars['Float']>;
 };
 
 /** order by var_samp() on columns of table "instruction" */
 export type Instruction_Var_Samp_Order_By = {
   index?: Maybe<Order_By>;
   inner_index?: Maybe<Order_By>;
+  slot?: Maybe<Order_By>;
 };
 
 /** aggregate variance on columns */
@@ -1050,12 +1073,14 @@ export type Instruction_Variance_Fields = {
   __typename?: 'instruction_variance_fields';
   index?: Maybe<Scalars['Float']>;
   inner_index?: Maybe<Scalars['Float']>;
+  slot?: Maybe<Scalars['Float']>;
 };
 
 /** order by variance() on columns of table "instruction" */
 export type Instruction_Variance_Order_By = {
   index?: Maybe<Order_By>;
   inner_index?: Maybe<Order_By>;
+  slot?: Maybe<Order_By>;
 };
 
 export type Instructions_By_Address_Args = {
@@ -6578,6 +6603,41 @@ export type TokensQuery = { tokenUnit: Array<(
     )> }
   )> };
 
+export type TxByAddressQueryVariables = Exact<{
+  address?: Maybe<Scalars['_text']>;
+  endSlot?: Maybe<Scalars['bigint']>;
+  startSlot?: Maybe<Scalars['bigint']>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+}>;
+
+
+export type TxByAddressQuery = { instructions: (
+    { __typename?: 'instruction_aggregate' }
+    & { nodes: Array<(
+      { __typename?: 'instruction' }
+      & { transaction?: Maybe<(
+        { __typename?: 'transaction' }
+        & Pick<Transaction, 'signature' | 'slot' | 'success'>
+      )> }
+    )> }
+  ) };
+
+export type TxByAddressCountQueryVariables = Exact<{
+  address?: Maybe<Scalars['_text']>;
+  endSlot?: Maybe<Scalars['bigint']>;
+  startSlot?: Maybe<Scalars['bigint']>;
+}>;
+
+
+export type TxByAddressCountQuery = { txCount: (
+    { __typename?: 'instruction_aggregate' }
+    & { aggregate?: Maybe<(
+      { __typename?: 'instruction_aggregate_fields' }
+      & Pick<Instruction_Aggregate_Fields, 'count'>
+    )> }
+  ) };
+
 export type TransactionDetailsQueryVariables = Exact<{
   signature?: Maybe<Scalars['String']>;
 }>;
@@ -7600,6 +7660,99 @@ export function useTokensLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<Tok
 export type TokensQueryHookResult = ReturnType<typeof useTokensQuery>;
 export type TokensLazyQueryHookResult = ReturnType<typeof useTokensLazyQuery>;
 export type TokensQueryResult = Apollo.QueryResult<TokensQuery, TokensQueryVariables>;
+export const TxByAddressDocument = gql`
+    query TxByAddress($address: _text, $endSlot: bigint, $startSlot: bigint, $limit: Int = 50, $offset: Int = 0) {
+  instructions: instructions_by_address_aggregate(
+    args: {addresses: $address, programs: "{}", end_slot: $endSlot, start_slot: $startSlot}
+    limit: $limit
+    offset: $offset
+    order_by: {slot: desc, tx_signature: asc}
+    distinct_on: tx_signature
+  ) {
+    nodes {
+      transaction {
+        signature
+        slot
+        success
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useTxByAddressQuery__
+ *
+ * To run a query within a React component, call `useTxByAddressQuery` and pass it any options that fit your needs.
+ * When your component renders, `useTxByAddressQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useTxByAddressQuery({
+ *   variables: {
+ *      address: // value for 'address'
+ *      endSlot: // value for 'endSlot'
+ *      startSlot: // value for 'startSlot'
+ *      limit: // value for 'limit'
+ *      offset: // value for 'offset'
+ *   },
+ * });
+ */
+export function useTxByAddressQuery(baseOptions?: Apollo.QueryHookOptions<TxByAddressQuery, TxByAddressQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<TxByAddressQuery, TxByAddressQueryVariables>(TxByAddressDocument, options);
+      }
+export function useTxByAddressLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<TxByAddressQuery, TxByAddressQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<TxByAddressQuery, TxByAddressQueryVariables>(TxByAddressDocument, options);
+        }
+export type TxByAddressQueryHookResult = ReturnType<typeof useTxByAddressQuery>;
+export type TxByAddressLazyQueryHookResult = ReturnType<typeof useTxByAddressLazyQuery>;
+export type TxByAddressQueryResult = Apollo.QueryResult<TxByAddressQuery, TxByAddressQueryVariables>;
+export const TxByAddressCountDocument = gql`
+    query TxByAddressCount($address: _text, $endSlot: bigint, $startSlot: bigint) {
+  txCount: instructions_by_address_aggregate(
+    args: {addresses: $address, programs: "{}", end_slot: $endSlot, start_slot: $startSlot}
+    distinct_on: tx_signature
+  ) {
+    aggregate {
+      count
+    }
+  }
+}
+    `;
+
+/**
+ * __useTxByAddressCountQuery__
+ *
+ * To run a query within a React component, call `useTxByAddressCountQuery` and pass it any options that fit your needs.
+ * When your component renders, `useTxByAddressCountQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useTxByAddressCountQuery({
+ *   variables: {
+ *      address: // value for 'address'
+ *      endSlot: // value for 'endSlot'
+ *      startSlot: // value for 'startSlot'
+ *   },
+ * });
+ */
+export function useTxByAddressCountQuery(baseOptions?: Apollo.QueryHookOptions<TxByAddressCountQuery, TxByAddressCountQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<TxByAddressCountQuery, TxByAddressCountQueryVariables>(TxByAddressCountDocument, options);
+      }
+export function useTxByAddressCountLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<TxByAddressCountQuery, TxByAddressCountQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<TxByAddressCountQuery, TxByAddressCountQueryVariables>(TxByAddressCountDocument, options);
+        }
+export type TxByAddressCountQueryHookResult = ReturnType<typeof useTxByAddressCountQuery>;
+export type TxByAddressCountLazyQueryHookResult = ReturnType<typeof useTxByAddressCountLazyQuery>;
+export type TxByAddressCountQueryResult = Apollo.QueryResult<TxByAddressCountQuery, TxByAddressCountQueryVariables>;
 export const TransactionDetailsDocument = gql`
     query TransactionDetails($signature: String) {
   transaction(where: {signature: {_eq: $signature}}, limit: 1) {
