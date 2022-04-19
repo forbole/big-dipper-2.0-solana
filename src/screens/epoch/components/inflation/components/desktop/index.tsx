@@ -7,7 +7,6 @@ import {
   TableRow,
   TableCell,
   TableBody,
-  Typography,
 } from '@material-ui/core';
 import { columns } from './utils';
 import { useStyles } from './styles';
@@ -16,27 +15,26 @@ import { InflationType } from '../../../../types';
 const Desktop: React.FC<{inflation: InflationType } & ComponentDefault> = (props) => {
   const { t } = useTranslation('epoch');
   const classes = useStyles();
-  console.log(props.inflation);
 
   const formattedItems = [
     {
       name: t('epoch'),
-      value: 301,
+      value: props.inflation ? props.inflation.epoch : '',
       detail: t('epochDetail'),
     },
     {
       name: t('totalInflation'),
-      value: 0.06987850991688366,
+      value: props.inflation ? props.inflation.total : '',
       detail: t('totalInflationDetail'),
     },
     {
       name: t('validatorInflation'),
-      value: 0.06987850991688366,
+      value: props.inflation ? props.inflation.validator : '',
       detail: t('validatorInflationDetail'),
     },
     {
       name: t('foundationInflation'),
-      value: 0,
+      value: props.inflation ? props.inflation.foundation : '',
       detail: t('foundationInflationDetail'),
     },
   ];
