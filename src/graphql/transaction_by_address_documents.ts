@@ -12,6 +12,10 @@ export const TxByAddressDocument = /* GraphQL */`
           signature
           slot
           success
+          numInstructions: num_instructions
+          block {
+            timestamp
+          }
         }
       }
     }

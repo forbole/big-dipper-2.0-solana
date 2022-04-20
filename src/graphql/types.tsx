@@ -6463,6 +6463,26 @@ export type BlockDetailsQuery = { block: Array<(
     )> }
   )> };
 
+export type LatestBlockHeightListenerSubscriptionVariables = Exact<{
+  offset?: Maybe<Scalars['Int']>;
+}>;
+
+
+export type LatestBlockHeightListenerSubscription = { height: Array<(
+    { __typename?: 'block' }
+    & Pick<Block, 'slot'>
+  )> };
+
+export type LatestBlockHeightQueryVariables = Exact<{
+  offset?: Maybe<Scalars['Int']>;
+}>;
+
+
+export type LatestBlockHeightQuery = { height: Array<(
+    { __typename?: 'block' }
+    & Pick<Block, 'slot'>
+  )> };
+
 export type AverageBlockTimeQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -6609,6 +6629,11 @@ export type TxByAddressQuery = { instructions: (
       & { transaction?: Maybe<(
         { __typename?: 'transaction' }
         & Pick<Transaction, 'signature' | 'slot' | 'success'>
+        & { numInstructions: Transaction['num_instructions'] }
+        & { block?: Maybe<(
+          { __typename?: 'block' }
+          & Pick<Block, 'timestamp'>
+        )> }
       )> }
     )> }
   ) };
@@ -7234,6 +7259,71 @@ export function useBlockDetailsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptio
 export type BlockDetailsQueryHookResult = ReturnType<typeof useBlockDetailsQuery>;
 export type BlockDetailsLazyQueryHookResult = ReturnType<typeof useBlockDetailsLazyQuery>;
 export type BlockDetailsQueryResult = Apollo.QueryResult<BlockDetailsQuery, BlockDetailsQueryVariables>;
+export const LatestBlockHeightListenerDocument = gql`
+    subscription LatestBlockHeightListener($offset: Int = 0) {
+  height: block(order_by: {slot: desc}, limit: 1, offset: $offset) {
+    slot
+  }
+}
+    `;
+
+/**
+ * __useLatestBlockHeightListenerSubscription__
+ *
+ * To run a query within a React component, call `useLatestBlockHeightListenerSubscription` and pass it any options that fit your needs.
+ * When your component renders, `useLatestBlockHeightListenerSubscription` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the subscription, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useLatestBlockHeightListenerSubscription({
+ *   variables: {
+ *      offset: // value for 'offset'
+ *   },
+ * });
+ */
+export function useLatestBlockHeightListenerSubscription(baseOptions?: Apollo.SubscriptionHookOptions<LatestBlockHeightListenerSubscription, LatestBlockHeightListenerSubscriptionVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useSubscription<LatestBlockHeightListenerSubscription, LatestBlockHeightListenerSubscriptionVariables>(LatestBlockHeightListenerDocument, options);
+      }
+export type LatestBlockHeightListenerSubscriptionHookResult = ReturnType<typeof useLatestBlockHeightListenerSubscription>;
+export type LatestBlockHeightListenerSubscriptionResult = Apollo.SubscriptionResult<LatestBlockHeightListenerSubscription>;
+export const LatestBlockHeightDocument = gql`
+    query LatestBlockHeight($offset: Int = 0) {
+  height: block(order_by: {slot: desc}, limit: 1, offset: $offset) {
+    slot
+  }
+}
+    `;
+
+/**
+ * __useLatestBlockHeightQuery__
+ *
+ * To run a query within a React component, call `useLatestBlockHeightQuery` and pass it any options that fit your needs.
+ * When your component renders, `useLatestBlockHeightQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useLatestBlockHeightQuery({
+ *   variables: {
+ *      offset: // value for 'offset'
+ *   },
+ * });
+ */
+export function useLatestBlockHeightQuery(baseOptions?: Apollo.QueryHookOptions<LatestBlockHeightQuery, LatestBlockHeightQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<LatestBlockHeightQuery, LatestBlockHeightQueryVariables>(LatestBlockHeightDocument, options);
+      }
+export function useLatestBlockHeightLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<LatestBlockHeightQuery, LatestBlockHeightQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<LatestBlockHeightQuery, LatestBlockHeightQueryVariables>(LatestBlockHeightDocument, options);
+        }
+export type LatestBlockHeightQueryHookResult = ReturnType<typeof useLatestBlockHeightQuery>;
+export type LatestBlockHeightLazyQueryHookResult = ReturnType<typeof useLatestBlockHeightLazyQuery>;
+export type LatestBlockHeightQueryResult = Apollo.QueryResult<LatestBlockHeightQuery, LatestBlockHeightQueryVariables>;
 export const AverageBlockTimeDocument = gql`
     query AverageBlockTime {
   averageSlotTimePerHour: average_slot_time_per_hour(
@@ -7634,6 +7724,10 @@ export const TxByAddressDocument = gql`
         signature
         slot
         success
+        numInstructions: num_instructions
+        block {
+          timestamp
+        }
       }
     }
   }

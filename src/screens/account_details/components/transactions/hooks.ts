@@ -6,10 +6,6 @@ import { useRouter } from 'next/router';
 import { LatestBlockHeightDocument } from '@src/graphql/block_height_documents';
 import { TxByAddressDocument } from '@graphql/transaction_by_address_documents';
 import * as R from 'ramda';
-// import { useRouter } from 'next/router';
-// import {
-//   useTxByAddressQuery, TxByAddressQuery,
-// } from '@graphql/types';
 import { TransactionsState } from './types';
 
 export const useTransactions = () => {
@@ -61,35 +57,26 @@ export const useTransactions = () => {
       },
       query: TxByAddressDocument,
     });
-
-    console.log(data, 'data');
+    const transactions = R.pathOr([], ['data', 'instructions', 'nodes'], data);
+    const formatted = formatTransactions(transactions);
+    handleSetState({
+      loading: false,
+      transactions: formatted,
+    });
   };
 
-  // useTxByAddressQuery({
-  //   variables: {
-  //     address: `{${router.query.address}}`,
-  //   },
-  //   onCompleted: (data) => {
-  //     const transactions = formatTransactions(data);
-  //     handleSetState({
-  //       loading: false,
-  //       transactions,
-  //     });
-  //   },
-  // });
-
-  // const formatTransactions = (data: TxByAddressQuery) => {
-  //   return data.transactions.nodes.map((x) => {
-  //     const { transaction } = x;
-  //     return ({
-  //       slot: transaction.slot,
-  //       signature: transaction.signature,
-  //       success: transaction.success,
-  //       timestamp: R.pathOr('', ['block', 'timestamp'], transaction),
-  //       numInstructions: R.pathOr(0, ['numInstructions'], transaction),
-  //     });
-  //   });
-  // };
+  const formatTransactions = (data: any[]) => {
+    return data.map((x) => {
+      const { transaction } = x;
+      return ({
+        slot: transaction.slot,
+        signature: transaction.signature,
+        success: transaction.success,
+        timestamp: R.pathOr('', ['block', 'timestamp'], transaction),
+        numInstructions: R.pathOr(0, ['numInstructions'], transaction),
+      });
+    });
+  };
 
   return {
     state,
