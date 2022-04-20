@@ -34,11 +34,9 @@ const Epoch = () => {
           loading={false}
           exists
         >
-          <span>
-            <Inflation inflation={state.inflation} />
-            <InflationGovernor inflationGovernor={state.inflationGovernor} />
-            <EpochSchedule epochSchedule={state.epochSchedule} />
-          </span>
+          <Inflation inflation={state.inflation} />
+          <InflationGovernor inflationGovernor={state.inflationGovernor} />
+          <EpochSchedule epochSchedule={state.epochSchedule} />
         </LoadAndExist>
       </Layout>
     </>

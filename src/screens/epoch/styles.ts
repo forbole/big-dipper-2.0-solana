@@ -6,16 +6,22 @@ export const useStyles = () => {
       return ({
         root: {
           ...theme.mixins.layout,
+          display: 'grid',
+          gridGap: theme.spacing(1),
+          height: '100%',
           '& a': {
             color: theme.palette.custom.fonts.highlight,
           },
+          [theme.breakpoints.up('lg')]: {
+            gridGap: theme.spacing(2),
+          },
         },
         box: {
-          minHeight: '200px',
-          height: '20vh',
-          margin: '20px 0',
+          minHeight: '500px',
+          height: '50vh',
+          margin: '50px 0',
           [theme.breakpoints.up('lg')]: {
-            height: '40%',
+            height: '100%',
             minHeight: '30vh',
           },
         },
