@@ -6,31 +6,36 @@ import {
 } from '@material-ui/core';
 import useTranslation from 'next-translate/useTranslation';
 import { useStyles } from './styles';
-import { InflationType } from '../../../../types';
+import { InflationGovernorType } from '../../../../types';
 
-const Mobile: React.FC<{inflation: InflationType } & ComponentDefault> = (props) => {
+const Mobile: React.FC<{inflationGovernor: InflationGovernorType } & ComponentDefault> = (props) => {
   const { t } = useTranslation('epoch');
   const classes = useStyles();
 
   const items = [
     {
       name: t('epoch'),
-      value: props.inflation ? props.inflation.epoch : '',
+      value: props.inflationGovernor ? props.inflationGovernor.foundation : '',
       detail: t('epochDetail'),
     },
     {
       name: t('totalInflation'),
-      value: props.inflation ? props.inflation.total : '',
+      value: props.inflationGovernor ? props.inflationGovernor.foundationTerm : '',
       detail: t('totalInflationDetail'),
     },
     {
       name: t('validatorInflation'),
-      value: props.inflation ? props.inflation.validator : '',
+      value: props.inflationGovernor ? props.inflationGovernor.initial : '',
       detail: t('validatorInflationDetail'),
     },
     {
       name: t('foundationInflation'),
-      value: props.inflation ? props.inflation.foundation : '',
+      value: props.inflationGovernor ? props.inflationGovernor.taper : '',
+      detail: t('foundationInflationDetail'),
+    },
+    {
+      name: t('foundationInflation'),
+      value: props.inflationGovernor ? props.inflationGovernor.terminal : '',
       detail: t('foundationInflationDetail'),
     },
   ];

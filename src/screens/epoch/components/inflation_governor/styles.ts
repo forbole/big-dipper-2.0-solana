@@ -5,13 +5,10 @@ export const useStyles = () => {
     (theme) => {
       return ({
         root: {
-          minHeight: '200px',
-          height: '20vh',
+          minHeight: '50px',
+          height: '100%',
           display: 'flex',
           flexDirection: 'column',
-          [theme.breakpoints.up('lg')]: {
-            height: '40%',
-          },
         },
         header: {
           marginBottom: theme.spacing(2),
