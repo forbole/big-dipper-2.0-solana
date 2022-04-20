@@ -24,7 +24,7 @@ export const useTransactions = () => {
 
   useEffect(() => {
     init();
-  });
+  }, []);
 
   const handleSetState = (stateChange: any) => {
     setState((prevState) => R.mergeDeepLeft(stateChange, prevState));
@@ -36,15 +36,15 @@ export const useTransactions = () => {
       const { data } = await axios.post(process.env.NEXT_PUBLIC_GRAPHQL_URL, {
         query: LatestBlockHeightDocument,
       });
-      const startSlot = R.pathOr(0, ['data', 'height', 0, 'slot'], data);
-      const endSlot = startSlot + 10000; // recommended search interval
+      const endSlot = R.pathOr(0, ['data', 'height', 0, 'slot'], data);
+      const startSlot = endSlot - 10000; // recommended search interval
 
       handleSetState({
         startSlot,
         endSlot,
       });
 
-      getTransactions(startSlot, endSlot);
+      await getTransactions(startSlot, endSlot);
     } catch (error) {
       handleSetState({
         loading: false,
