@@ -13,7 +13,7 @@ import { useStyles } from './styles';
 const Desktop = dynamic(() => import('./components/desktop'));
 const Mobile = dynamic(() => import('./components/mobile'));
 
-const Inflation: React.FC<{inflation: InflationType } & ComponentDefault> = (props, classname) => {
+const Inflation: React.FC<{inflation: InflationType } & ComponentDefault> = (props) => {
   const { isDesktop } = useScreenSize();
   const { t } = useTranslation('epoch');
   const classes = useStyles();
