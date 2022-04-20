@@ -14,29 +14,29 @@ const Mobile: React.FC<{inflationGovernor: InflationGovernorType } & ComponentDe
 
   const items = [
     {
-      name: t('epoch'),
-      value: props.inflationGovernor ? props.inflationGovernor.foundation : '',
-      detail: t('epochDetail'),
-    },
-    {
-      name: t('totalInflation'),
-      value: props.inflationGovernor ? props.inflationGovernor.foundationTerm : '',
-      detail: t('totalInflationDetail'),
-    },
-    {
-      name: t('validatorInflation'),
+      name: t('initial'),
       value: props.inflationGovernor ? props.inflationGovernor.initial : '',
-      detail: t('validatorInflationDetail'),
+      detail: t('initialDetail'),
     },
     {
-      name: t('foundationInflation'),
-      value: props.inflationGovernor ? props.inflationGovernor.taper : '',
-      detail: t('foundationInflationDetail'),
-    },
-    {
-      name: t('foundationInflation'),
+      name: t('terminal'),
       value: props.inflationGovernor ? props.inflationGovernor.terminal : '',
-      detail: t('foundationInflationDetail'),
+      detail: t('terminalDetail'),
+    },
+    {
+      name: t('taper'),
+      value: props.inflationGovernor ? props.inflationGovernor.taper : '',
+      detail: t('taperDetail'),
+    },
+    {
+      name: t('foundation'),
+      value: props.inflationGovernor ? props.inflationGovernor.foundation : '',
+      detail: t('foundationDetail'),
+    },
+    {
+      name: t('foundationTerm'),
+      value: props.inflationGovernor ? props.inflationGovernor.foundationTerm : '',
+      detail: t('foundationTermDetail'),
     },
   ];
 
