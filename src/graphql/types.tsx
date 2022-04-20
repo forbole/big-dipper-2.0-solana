@@ -4216,7 +4216,7 @@ export type Token_Delegation = {
   delegate_address: Scalars['String'];
   source_address: Scalars['String'];
   /** An object relationship */
-  source_token_account?: Maybe<Token_Account>;
+  source_token_account: Token_Account;
 };
 
 /** aggregated selection of "token_delegation" */
@@ -6463,16 +6463,6 @@ export type BlockDetailsQuery = { block: Array<(
     )> }
   )> };
 
-export type LatestBlockHeightListenerSubscriptionVariables = Exact<{
-  offset?: Maybe<Scalars['Int']>;
-}>;
-
-
-export type LatestBlockHeightListenerSubscription = { height: Array<(
-    { __typename?: 'block' }
-    & Pick<Block, 'slot'>
-  )> };
-
 export type AverageBlockTimeQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -7244,36 +7234,6 @@ export function useBlockDetailsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptio
 export type BlockDetailsQueryHookResult = ReturnType<typeof useBlockDetailsQuery>;
 export type BlockDetailsLazyQueryHookResult = ReturnType<typeof useBlockDetailsLazyQuery>;
 export type BlockDetailsQueryResult = Apollo.QueryResult<BlockDetailsQuery, BlockDetailsQueryVariables>;
-export const LatestBlockHeightListenerDocument = gql`
-    subscription LatestBlockHeightListener($offset: Int = 0) {
-  height: block(order_by: {slot: desc}, limit: 1, offset: $offset) {
-    slot
-  }
-}
-    `;
-
-/**
- * __useLatestBlockHeightListenerSubscription__
- *
- * To run a query within a React component, call `useLatestBlockHeightListenerSubscription` and pass it any options that fit your needs.
- * When your component renders, `useLatestBlockHeightListenerSubscription` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the subscription, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useLatestBlockHeightListenerSubscription({
- *   variables: {
- *      offset: // value for 'offset'
- *   },
- * });
- */
-export function useLatestBlockHeightListenerSubscription(baseOptions?: Apollo.SubscriptionHookOptions<LatestBlockHeightListenerSubscription, LatestBlockHeightListenerSubscriptionVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useSubscription<LatestBlockHeightListenerSubscription, LatestBlockHeightListenerSubscriptionVariables>(LatestBlockHeightListenerDocument, options);
-      }
-export type LatestBlockHeightListenerSubscriptionHookResult = ReturnType<typeof useLatestBlockHeightListenerSubscription>;
-export type LatestBlockHeightListenerSubscriptionResult = Apollo.SubscriptionResult<LatestBlockHeightListenerSubscription>;
 export const AverageBlockTimeDocument = gql`
     query AverageBlockTime {
   averageSlotTimePerHour: average_slot_time_per_hour(
