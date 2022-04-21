@@ -26,6 +26,7 @@ const ACCOUNT_TYPE_MAP: {[key: string]: string} = {
   nonce_account: ACCOUNT_TYPES.NONCE_ACCOUNT,
   native_account: ACCOUNT_TYPES.NATIVE_ACCOUNT,
   stake_account: ACCOUNT_TYPES.STAKE_ACCOUNT,
+  vote_account: ACCOUNT_TYPES.VOTE_ACCOUNT,
 };
 
 export const useAccountDetails = () => {
