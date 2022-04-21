@@ -26,6 +26,12 @@ export const useTokenDetailAccount = () => {
       staker: '',
       withdrawer: '',
     },
+    stakeInfo: {
+      delegated: defaultTokenUnit,
+      voteAddress: '',
+      activationEpoch: 0,
+      deactivationEpoch: 0,
+    },
   });
 
   const handleSetState = (stateChange: any) => {
@@ -60,6 +66,22 @@ export const useTokenDetailAccount = () => {
       });
     };
     stateChange.overview = formatOverview();
+
+    // ==========================
+    // Stake info
+    // ==========================
+    const formatStakeInfo = () => {
+      return ({
+        delegated: formatToken(
+          R.pathOr(0, ['stakeAccount', 0, 'stakeDelegation', 'stake'], data),
+          chainConfig.primaryTokenUnit,
+        ),
+        voteAddress: R.pathOr('', ['stakeAccount', 0, 'stakeDelegation', 'voter'], data),
+        activationEpoch: R.pathOr('', ['stakeAccount', 0, 'stakeDelegation', 'activationEpoch'], data),
+        deactivationEpoch: R.pathOr('', ['stakeAccount', 0, 'stakeDelegation', 'deactivationEpoch'], data),
+      });
+    };
+    stateChange.stakeInfo = formatStakeInfo();
 
     return stateChange;
   };
