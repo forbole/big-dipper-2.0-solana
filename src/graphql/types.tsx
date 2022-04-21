@@ -6434,6 +6434,10 @@ export type StakeAccountDetailsQuery = { stakeAccount: Array<(
     & { nativeBalance?: Maybe<(
       { __typename?: 'account_balance' }
       & Pick<Account_Balance, 'balance'>
+    )>, stakeDelegation?: Maybe<(
+      { __typename?: 'stake_delegation' }
+      & Pick<Stake_Delegation, 'stake' | 'voter'>
+      & { activationEpoch: Stake_Delegation['activation_epoch'], deactivationEpoch: Stake_Delegation['deactivation_epoch'] }
     )> }
   )> };
 
@@ -7191,6 +7195,12 @@ export const StakeAccountDetailsDocument = gql`
     }
     staker
     withdrawer
+    stakeDelegation: stake_delegation {
+      stake
+      activationEpoch: activation_epoch
+      deactivationEpoch: deactivation_epoch
+      voter
+    }
   }
 }
     `;

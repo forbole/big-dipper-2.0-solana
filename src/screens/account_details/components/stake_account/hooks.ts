@@ -2,10 +2,11 @@ import { useState } from 'react';
 import * as R from 'ramda';
 import { useRouter } from 'next/router';
 import {
-  useTokenDetailsAccountDetailsQuery,
-  TokenDetailsAccountDetailsQuery,
+  useStakeAccountDetailsQuery,
+  StakeAccountDetailsQuery,
 } from '@graphql/types';
-import { formatTokenByExponent } from '@utils/format_token';
+import { chainConfig } from '@configs';
+import { formatToken } from '@utils/format_token';
 import { StakeAccountState } from './types';
 
 const defaultTokenUnit: TokenUnit = {
@@ -31,7 +32,7 @@ export const useTokenDetailAccount = () => {
     setState((prevState) => R.mergeDeepLeft(stateChange, prevState));
   };
 
-  useTokenDetailsAccountDetailsQuery({
+  useStakeAccountDetailsQuery({
     variables: {
       address: router.query.address as string,
     },
@@ -40,7 +41,7 @@ export const useTokenDetailAccount = () => {
     },
   });
 
-  const formatTokenAccounts = (data: TokenDetailsAccountDetailsQuery) => {
+  const formatTokenAccounts = (data: StakeAccountDetailsQuery) => {
     const stateChange: any = {
       loading: false,
     };
@@ -48,28 +49,14 @@ export const useTokenDetailAccount = () => {
     // Overview
     // ==========================
     const formatOverview = () => {
-      const decimals = R.pathOr(0, [
-        'tokenAccount',
-        0,
-        'tokenInfo',
-        'decimals',
-      ], data);
-
-      const balance = {
-        value: formatTokenByExponent(
-          R.pathOr(0, ['tokenAccountBalance', 0, 'balance'], data),
-          decimals,
-        ),
-        baseDenom: '',
-        displayDenom: R.pathOr('', ['tokenAccount', 0, 'tokenUnit', 'unitName'], data),
-        exponent: decimals,
-      };
       return ({
         address: router.query.address,
-        owner: R.pathOr('', ['tokenAccount', 0, 'owner'], data),
-        mint: R.pathOr('', ['tokenAccount', 0, 'mint'], data),
-        mintImageUrl: R.pathOr('', ['tokenAccount', 0, 'tokenUnit', 'logoUrl'], data),
-        balance,
+        staker: R.pathOr('', ['stakeAccount', 0, 'staker'], data),
+        withdrawer: R.pathOr('', ['stakeAccount', 0, 'withdrawer'], data),
+        balance: formatToken(
+          R.pathOr(0, ['stakeAccount', 0, 'nativeBalance', 'balance'], data),
+          chainConfig.primaryTokenUnit,
+        ),
       });
     };
     stateChange.overview = formatOverview();

@@ -71,5 +71,7 @@
   "topHolders": "Top Holders",
   "holder": "Holder",
   "rank": "Rank",
-  "owner": "Owner"
+  "owner": "Owner",
+  "staker": "Staker",
+  "withdrawer": "Withdrawer"
 }

@@ -183,6 +183,12 @@ query StakeAccountDetails($address: String) {
     }
     staker
     withdrawer
+    stakeDelegation: stake_delegation {
+      stake
+      activationEpoch: activation_epoch
+      deactivationEpoch: deactivation_epoch
+      voter
+    }
   }
 }
 `;
