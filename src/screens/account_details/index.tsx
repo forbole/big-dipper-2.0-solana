@@ -9,7 +9,7 @@ import {
 import {
   NativeAccount,
   NonceAccount,
-  // StakeAccount,
+  StakeAccount,
   TokenAccount,
   // VoteAccount,
   TokenDetailsAccount,
@@ -28,9 +28,9 @@ const AccountDetails = () => {
   if (state.accountType === ACCOUNT_TYPES.NONCE_ACCOUNT) { // done
     component = <NonceAccount />;
   }
-  // if (ACCOUNT_TYPE === 'stake') { // done
-  //   component = <StakeAccount />;
-  // }
+  if (state.accountType === ACCOUNT_TYPES.STAKE_ACCOUNT) {
+    component = <StakeAccount />;
+  }
   if (state.accountType === ACCOUNT_TYPES.TOKEN_ACCOUNT) {
     component = <TokenDetailsAccount />;
   }

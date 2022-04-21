@@ -5,26 +5,23 @@ import { Typography } from '@material-ui/core';
 import Link from 'next/link';
 import { getMiddleEllipsis } from '@utils/get_middle_ellipsis';
 import CopyIcon from '@assets/icon-copy.svg';
-import { useProfileRecoil } from '@recoil/profiles';
-import {
-  BoxDetails,
-  AvatarName,
-} from '@components';
+import { formatNumber } from '@utils/format_token';
+import { BoxDetails } from '@components';
 import { ACCOUNT_DETAILS } from '@utils/go_to_page';
 import { useScreenSize } from '@hooks';
 import StakeAccountLogo from '@assets/stake-account.svg';
 import { useStyles } from './styles';
 import { useOverview } from './hooks';
-import { OverviewType } from './types';
+import { OverviewType } from '../../types';
 
-const Overview: React.FC<OverviewType & ComponentDefault> = (props) => {
+const Overview: React.FC<{overview: OverviewType} & ComponentDefault> = (props) => {
   const { t } = useTranslation('accounts');
   const classes = useStyles();
   const { isMobile } = useScreenSize();
   const {
     handleCopyToClipboard,
   } = useOverview(t);
-  const validator = useProfileRecoil(props.validator);
+
   const data = {
     title: (
       <div className={classes.header}>
@@ -42,16 +39,16 @@ const Overview: React.FC<OverviewType & ComponentDefault> = (props) => {
           <>
             <CopyIcon
               className={classes.actionIcons}
-              onClick={() => handleCopyToClipboard(props.address)}
+              onClick={() => handleCopyToClipboard(props.overview.address)}
             />
             <Typography variant="body1" className="value">
               {
                 isMobile ? (
-                  getMiddleEllipsis(props.address, {
+                  getMiddleEllipsis(props.overview.address, {
                     beginning: 15, ending: 5,
                   })
                 ) : (
-                  props.address
+                  props.overview.address
                 )
               }
             </Typography>
@@ -59,80 +56,58 @@ const Overview: React.FC<OverviewType & ComponentDefault> = (props) => {
         ),
       },
       {
-        label: t('rentReserve'),
-        detail: props.rentReserve,
-      },
-      {
-        label: t('validator'),
-        detail: (
-          <AvatarName
-            address={props.validator}
-            imageUrl={validator.imageUrl}
-            name={validator.name}
-          />
-        ),
-      },
-      {
-        label: t('stakeAuthority'),
-        className: classes.copyText,
-        detail: (
-          <>
-            <CopyIcon
-              className={classes.actionIcons}
-              onClick={() => handleCopyToClipboard(props.stakeAuthority)}
-            />
-            <Link href={ACCOUNT_DETAILS(props.stakeAuthority)} passHref>
-              <Typography variant="body1" className="value" component="a">
-                {
-                isMobile ? (
-                  getMiddleEllipsis(props.stakeAuthority, {
-                    beginning: 15, ending: 5,
-                  })
-                ) : (
-                  props.stakeAuthority
-                )
-              }
-              </Typography>
-            </Link>
-          </>
-        ),
-      },
-      {
-        label: t('withdrawAuthority'),
-        className: classes.copyText,
-        detail: (
-          <>
-            <CopyIcon
-              className={classes.actionIcons}
-              onClick={() => handleCopyToClipboard(props.withdrawAuthority)}
-            />
-            <Link href={ACCOUNT_DETAILS(props.withdrawAuthority)} passHref>
-              <Typography variant="body1" className="value" component="a">
-                {
-                isMobile ? (
-                  getMiddleEllipsis(props.withdrawAuthority, {
-                    beginning: 15, ending: 5,
-                  })
-                ) : (
-                  props.withdrawAuthority
-                )
-              }
-              </Typography>
-            </Link>
-          </>
-        ),
-      },
-      {
-        label: t('delegated'),
-        detail: props.delegated,
-      },
-      {
-        label: t('rewards'),
-        detail: props.rewards,
-      },
-      {
         label: t('balance'),
-        detail: props.balance,
+        detail: `${formatNumber(props.overview.balance.value, props.overview.balance.exponent)} ${props.overview.balance.displayDenom.toUpperCase()}`,
+      },
+      {
+        label: t('withdrawer'),
+        className: classes.copyText,
+        detail: (
+          <>
+            <CopyIcon
+              className={classes.actionIcons}
+              onClick={() => handleCopyToClipboard(props.overview.withdrawer)}
+            />
+            <Link href={ACCOUNT_DETAILS(props.overview.withdrawer)} passHref>
+              <Typography variant="body1" className="value" component="a">
+                {
+                isMobile ? (
+                  getMiddleEllipsis(props.overview.withdrawer, {
+                    beginning: 15, ending: 5,
+                  })
+                ) : (
+                  props.overview.withdrawer
+                )
+              }
+              </Typography>
+            </Link>
+          </>
+        ),
+      },
+      {
+        label: t('staker'),
+        className: classes.copyText,
+        detail: (
+          <>
+            <CopyIcon
+              className={classes.actionIcons}
+              onClick={() => handleCopyToClipboard(props.overview.staker)}
+            />
+            <Link href={ACCOUNT_DETAILS(props.overview.staker)} passHref>
+              <Typography variant="body1" className="value" component="a">
+                {
+                isMobile ? (
+                  getMiddleEllipsis(props.overview.staker, {
+                    beginning: 15, ending: 5,
+                  })
+                ) : (
+                  props.overview.withdrawer
+                )
+              }
+              </Typography>
+            </Link>
+          </>
+        ),
       },
     ],
   };
