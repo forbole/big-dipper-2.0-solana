@@ -6,43 +6,14 @@ import {
 } from '@material-ui/core';
 import useTranslation from 'next-translate/useTranslation';
 import { useStyles } from './styles';
-import { EpochScheduleType } from '../../../../types';
 
-const Mobile: React.FC<{epochSchedule: EpochScheduleType } & ComponentDefault> = (props) => {
+const Mobile: React.FC<{epochDetail } & ComponentDefault> = (props) => {
   const { t } = useTranslation('epoch');
   const classes = useStyles();
 
-  const items = [
-    {
-      name: t('slotsPerEpoch'),
-      value: props.epochSchedule ? props.epochSchedule.slotsPerEpoch : '',
-      detail: t('slotsPerEpochDetail'),
-    },
-    {
-      name: t('leaderScheduleSlotOffset'),
-      value: props.epochSchedule ? props.epochSchedule.leaderScheduleSlotOffset : '',
-      detail: t('leaderScheduleSlotOffsetDetail'),
-    },
-    {
-      name: t('warmup'),
-      value: props.epochSchedule ? props.epochSchedule.warmup : '',
-      detail: t('warmupDetail'),
-    },
-    {
-      name: t('firstNormalEpoch'),
-      value: props.epochSchedule ? props.epochSchedule.firstNormalEpoch : '',
-      detail: t('firstNormalEpochDetail'),
-    },
-    {
-      name: t('firstNormalSlot'),
-      value: props.epochSchedule ? props.epochSchedule.firstNormalSlot : '',
-      detail: t('firstNormalSlotDetail'),
-    },
-  ];
-
   return (
     <div className={props.className}>
-      {items.map((x, i) => {
+      {props.epochDetail.map((x, i) => {
         return (
           <React.Fragment key={`${x.name}-${i}`}>
             <div className={classes.root}>
@@ -73,7 +44,7 @@ const Mobile: React.FC<{epochSchedule: EpochScheduleType } & ComponentDefault> =
                 </div>
               </div>
             </div>
-            {i !== items.length - 1 && <Divider />}
+            {i !== props.epochDetail.length - 1 && <Divider />}
           </React.Fragment>
         );
       })}

@@ -5,13 +5,12 @@ import { useScreenSize } from '@hooks';
 import classnames from 'classnames';
 import { Typography } from '@material-ui/core';
 import useTranslation from 'next-translate/useTranslation';
-import { EpochScheduleType } from '../../types';
 import { useStyles } from './styles';
 
 const Desktop = dynamic(() => import('./components/desktop'));
 const Mobile = dynamic(() => import('./components/mobile'));
 
-const EpochSchedule: React.FC<{epochSchedule: EpochScheduleType } & ComponentDefault> = (props) => {
+const EpochDetail: React.FC<{epochDetail } & ComponentDefault> = (props) => {
   const { isDesktop } = useScreenSize();
   const { t } = useTranslation('epoch');
   const classes = useStyles();
@@ -21,13 +20,13 @@ const EpochSchedule: React.FC<{epochSchedule: EpochScheduleType } & ComponentDef
       <div className={classes.root}>
         <Typography variant="h2">{t('epochSchedule')}</Typography>
         {isDesktop ? (
-          <Desktop epochSchedule={props.epochSchedule} />
+          <Desktop epochDetail={props.epochDetail} />
         ) : (
-          <Mobile epochSchedule={props.epochSchedule} />
+          <Mobile epochDetail={props.epochDetail} />
         )}
       </div>
     </Box>
   );
 };
 
-export default EpochSchedule;
+export default EpochDetail;
