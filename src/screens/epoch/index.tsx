@@ -5,12 +5,7 @@ import {
   Layout,
   LoadAndExist,
 } from '@components';
-import {
-  // Inflation,
-  // InflationGovernor,
-  // EpochSchedule,
-  EpochDetail,
-} from './components';
+import { EpochDetail } from './components';
 import { useStyles } from './styles';
 import { useEpoch } from './hooks';
 
@@ -114,12 +109,9 @@ const Epoch = () => {
           loading={false}
           exists
         >
-          {/* <Inflation inflation={state.inflation} />
-          <InflationGovernor inflationGovernor={state.inflationGovernor} />
-          <EpochSchedule epochSchedule={state.epochSchedule} /> */}
-          <EpochDetail epochDetail={inflationData} />
-          <EpochDetail epochDetail={inflationGovernorData} />
-          <EpochDetail epochDetail={epochScheduleData} />
+          <EpochDetail epochDetail={inflationData} title="inflation" />
+          <EpochDetail epochDetail={inflationGovernorData} title="inflationGovernor" />
+          <EpochDetail epochDetail={epochScheduleData} title="epochSchedule" />
         </LoadAndExist>
       </Layout>
     </>

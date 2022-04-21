@@ -11,7 +11,7 @@ import {
 import { columns } from './utils';
 import { useStyles } from './styles';
 
-const Desktop: React.FC<{epochDetail } & ComponentDefault> = (props) => {
+const Desktop: React.FC<{epochDetail} & ComponentDefault> = (props) => {
   const { t } = useTranslation('epoch');
   const classes = useStyles();
 
