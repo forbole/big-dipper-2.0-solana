@@ -1,7 +1,7 @@
 import Overview from './overview';
-import Delegation from './delegation';
+import StakeInfo from './stake_info';
 
 export {
   Overview,
-  Delegation,
+  StakeInfo,
 };

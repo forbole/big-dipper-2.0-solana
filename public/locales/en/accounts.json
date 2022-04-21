@@ -73,5 +73,15 @@
   "rank": "Rank",
   "owner": "Owner",
   "staker": "Staker",
-  "withdrawer": "Withdrawer"
+  "withdrawer": "Withdrawer",
+  "stake": "Stake",
+  "voter": "Voter",
+  "activationEpoch": "Activation Epoch",
+  "deactivationEpoch": "Deactivation Epoch",
+  "info": "Info",
+  "activating": "Activating",
+  "active": "Active",
+  "deactivating": "Deactivating",
+  "deactivated": "Deactivated",
+  "unknown": "Unknown"
 }

@@ -6428,7 +6428,10 @@ export type StakeAccountDetailsQueryVariables = Exact<{
 }>;
 
 
-export type StakeAccountDetailsQuery = { stakeAccount: Array<(
+export type StakeAccountDetailsQuery = { block: Array<(
+    { __typename?: 'block' }
+    & Pick<Block, 'slot'>
+  )>, stakeAccount: Array<(
     { __typename?: 'stake_account' }
     & Pick<Stake_Account, 'address' | 'staker' | 'withdrawer'>
     & { nativeBalance?: Maybe<(
@@ -7188,6 +7191,9 @@ export type TokenDetailsAccountDetailsLazyQueryHookResult = ReturnType<typeof us
 export type TokenDetailsAccountDetailsQueryResult = Apollo.QueryResult<TokenDetailsAccountDetailsQuery, TokenDetailsAccountDetailsQueryVariables>;
 export const StakeAccountDetailsDocument = gql`
     query StakeAccountDetails($address: String) {
+  block(order_by: {slot: desc}, limit: 1) {
+    slot
+  }
   stakeAccount: stake_account(where: {address: {_eq: $address}}) {
     address
     nativeBalance: native_balance {

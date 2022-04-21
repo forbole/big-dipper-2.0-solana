@@ -176,6 +176,9 @@ query TokenDetailsAccountDetails($address: String!) {
 // stake detail account
 export const StakeAccountDetailsDocument = /* GraphQL */`
 query StakeAccountDetails($address: String) {
+  block(order_by: {slot: desc}, limit: 1) {
+    slot
+  }
   stakeAccount: stake_account(where: {address: {_eq: $address}}) {
     address
     nativeBalance: native_balance {

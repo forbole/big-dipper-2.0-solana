@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import * as R from 'ramda';
+import Big from 'big.js';
 import { useRouter } from 'next/router';
 import {
   useStakeAccountDetailsQuery,
@@ -7,7 +8,9 @@ import {
 } from '@graphql/types';
 import { chainConfig } from '@configs';
 import { formatToken } from '@utils/format_token';
-import { StakeAccountState } from './types';
+import {
+  StakeAccountState, STAKE_STATUS,
+} from './types';
 
 const defaultTokenUnit: TokenUnit = {
   value: '0',
@@ -27,8 +30,9 @@ export const useTokenDetailAccount = () => {
       withdrawer: '',
     },
     stakeInfo: {
+      status: STAKE_STATUS.UNKNOWN,
       delegated: defaultTokenUnit,
-      voteAddress: '',
+      voter: '',
       activationEpoch: 0,
       deactivationEpoch: 0,
     },
@@ -71,14 +75,43 @@ export const useTokenDetailAccount = () => {
     // Stake info
     // ==========================
     const formatStakeInfo = () => {
+      const SLOTS_PER_EPOCH = 432000;
+      const MAX = 18446744073709552000;
+      const slot = R.pathOr(0, ['block', 0, 'slot'], data);
+      const currentEpoch = Big(slot).div(SLOTS_PER_EPOCH).toFixed(0, Big.roundDown);
+      const activationEpoch = R.pathOr(0, ['stakeAccount', 0, 'stakeDelegation', 'activationEpoch'], data);
+      const deactivationEpoch = R.pathOr(0, ['stakeAccount', 0, 'stakeDelegation', 'deactivationEpoch'], data);
+      let status = STAKE_STATUS.UNKNOWN;
+
+      const lessCheck = Big(activationEpoch).lt(currentEpoch);
+
+      if (Big(activationEpoch).gte(currentEpoch)) {
+        status = STAKE_STATUS.ACTIVATING;
+      } else if (lessCheck && deactivationEpoch === MAX) {
+        status = STAKE_STATUS.ACTIVE;
+      } else if (
+        lessCheck
+        && deactivationEpoch !== MAX
+        && deactivationEpoch > currentEpoch) {
+        status = STAKE_STATUS.DEACTIVATING;
+      } else if (
+        lessCheck
+        && deactivationEpoch !== MAX
+        && deactivationEpoch <= currentEpoch) {
+        status = STAKE_STATUS.DEACTIVATED;
+      } else {
+        status = STAKE_STATUS.UNKNOWN;
+      }
+
       return ({
+        status,
         delegated: formatToken(
           R.pathOr(0, ['stakeAccount', 0, 'stakeDelegation', 'stake'], data),
           chainConfig.primaryTokenUnit,
         ),
-        voteAddress: R.pathOr('', ['stakeAccount', 0, 'stakeDelegation', 'voter'], data),
-        activationEpoch: R.pathOr('', ['stakeAccount', 0, 'stakeDelegation', 'activationEpoch'], data),
-        deactivationEpoch: R.pathOr('', ['stakeAccount', 0, 'stakeDelegation', 'deactivationEpoch'], data),
+        voter: R.pathOr('', ['stakeAccount', 0, 'stakeDelegation', 'voter'], data),
+        activationEpoch,
+        deactivationEpoch,
       });
     };
     stateChange.stakeInfo = formatStakeInfo();

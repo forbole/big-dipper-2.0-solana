@@ -1,3 +1,11 @@
+export enum STAKE_STATUS {
+  ACTIVATING = 'activating',
+  ACTIVE = 'active',
+  DEACTIVATING = 'deactivating',
+  DEACTIVATED = 'deactivated',
+  UNKNOWN = 'unknown'
+}
+
 export type OverviewType = {
   address: string;
   balance: TokenUnit;
@@ -6,8 +14,9 @@ export type OverviewType = {
 }
 
 export type StakeInfoType = {
+  status: STAKE_STATUS;
   delegated: TokenUnit;
-  voteAddress: string;
+  voter: string;
   activationEpoch: number;
   deactivationEpoch: number;
 }
