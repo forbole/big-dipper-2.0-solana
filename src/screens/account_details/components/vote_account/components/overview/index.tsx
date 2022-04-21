@@ -1,4 +1,5 @@
 import React from 'react';
+import numeral from 'numeral';
 import { useRecoilValue } from 'recoil';
 import { readDate } from '@recoil/settings';
 import classnames from 'classnames';
@@ -6,13 +7,10 @@ import useTranslation from 'next-translate/useTranslation';
 import dayjs, { formatDayJs } from '@utils/dayjs';
 import { Typography } from '@material-ui/core';
 import Link from 'next/link';
+import { formatNumber } from '@utils/format_token';
 import { getMiddleEllipsis } from '@utils/get_middle_ellipsis';
 import CopyIcon from '@assets/icon-copy.svg';
-import { useProfileRecoil } from '@recoil/profiles';
-import {
-  BoxDetails,
-  AvatarName,
-} from '@components';
+import { BoxDetails } from '@components';
 import {
   ACCOUNT_DETAILS, BLOCK_DETAILS,
 } from '@utils/go_to_page';
@@ -20,9 +18,9 @@ import { useScreenSize } from '@hooks';
 import VoteAccountLogo from '@assets/vote-account.svg';
 import { useStyles } from './styles';
 import { useOverview } from './hooks';
-import { OverviewType } from './types';
+import { OverviewType } from '../../types';
 
-const Overview: React.FC<OverviewType & ComponentDefault> = (props) => {
+const Overview: React.FC<{overview: OverviewType} & ComponentDefault> = (props) => {
   const { t } = useTranslation('accounts');
   const classes = useStyles();
   const { isMobile } = useScreenSize();
@@ -30,7 +28,6 @@ const Overview: React.FC<OverviewType & ComponentDefault> = (props) => {
     handleCopyToClipboard,
   } = useOverview(t);
   const dateFormat = useRecoilValue(readDate);
-  const authorizedVoter = useProfileRecoil(props.authorizedVoter);
 
   const data = {
     title: (
@@ -49,16 +46,16 @@ const Overview: React.FC<OverviewType & ComponentDefault> = (props) => {
           <>
             <CopyIcon
               className={classes.actionIcons}
-              onClick={() => handleCopyToClipboard(props.address)}
+              onClick={() => handleCopyToClipboard(props.overview.address)}
             />
             <Typography variant="body1" className="value">
               {
                 isMobile ? (
-                  getMiddleEllipsis(props.address, {
+                  getMiddleEllipsis(props.overview.address, {
                     beginning: 15, ending: 5,
                   })
                 ) : (
-                  props.address
+                  props.overview.address
                 )
               }
             </Typography>
@@ -67,36 +64,49 @@ const Overview: React.FC<OverviewType & ComponentDefault> = (props) => {
       },
       {
         label: t('balance'),
-        detail: props.balance,
+        detail: `${formatNumber(props.overview.balance.value, props.overview.balance.exponent)} ${props.overview.balance.displayDenom.toUpperCase()}`,
       },
       {
-        label: t('authorizedVoter'),
-        detail: (
-          <AvatarName
-            address={props.authorizedVoter}
-            imageUrl={authorizedVoter.imageUrl}
-            name={authorizedVoter.name}
-          />
-        ),
-      },
-      {
-        label: t('authorizedWithdrawer'),
+        label: t('voter'),
         className: classes.copyText,
         detail: (
           <>
             <CopyIcon
               className={classes.actionIcons}
-              onClick={() => handleCopyToClipboard(props.authorizedWithdrawer)}
+              onClick={() => handleCopyToClipboard(props.overview.voter)}
             />
-            <Link href={ACCOUNT_DETAILS(props.authorizedWithdrawer)} passHref>
-              <Typography variant="body1" className="value" component="a">
-                {
+            <Typography variant="body1" className="value">
+              {
                 isMobile ? (
-                  getMiddleEllipsis(props.authorizedWithdrawer, {
+                  getMiddleEllipsis(props.overview.voter, {
                     beginning: 15, ending: 5,
                   })
                 ) : (
-                  props.authorizedWithdrawer
+                  props.overview.voter
+                )
+              }
+            </Typography>
+          </>
+        ),
+      },
+      {
+        label: t('withdrawer'),
+        className: classes.copyText,
+        detail: (
+          <>
+            <CopyIcon
+              className={classes.actionIcons}
+              onClick={() => handleCopyToClipboard(props.overview.withdrawer)}
+            />
+            <Link href={ACCOUNT_DETAILS(props.overview.withdrawer)} passHref>
+              <Typography variant="body1" className="value" component="a">
+                {
+                isMobile ? (
+                  getMiddleEllipsis(props.overview.withdrawer, {
+                    beginning: 15, ending: 5,
+                  })
+                ) : (
+                  props.overview.withdrawer
                 )
               }
               </Typography>
@@ -106,18 +116,18 @@ const Overview: React.FC<OverviewType & ComponentDefault> = (props) => {
       },
       {
         label: t('lastTimestamp'),
-        detail: formatDayJs(dayjs.utc(props.lastTimestamp), dateFormat),
+        detail: formatDayJs(dayjs.utc(props.overview.lastTimestamp), dateFormat),
       },
       {
         label: t('commission'),
-        detail: props.commission,
+        detail: `${props.overview.commission}%`,
       },
       {
         label: t('rootSlot'),
         detail: (
-          <Link href={BLOCK_DETAILS(props.rootSlot)} passHref>
+          <Link href={BLOCK_DETAILS(props.overview.rootSlot)} passHref>
             <Typography variant="body1" className="value" component="a">
-              {props.rootSlot}
+              {numeral(props.overview.rootSlot).format('0,0')}
             </Typography>
           </Link>
         ),

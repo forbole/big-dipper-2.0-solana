@@ -195,3 +195,21 @@ query StakeAccountDetails($address: String) {
   }
 }
 `;
+
+// vote detail account
+export const VoteAccountDetailsDocument = /* GraphQL */`
+query VoteAccountDetails($address: String) {
+  validator(where: {address: {_eq: $address}}) {
+    address
+    nativeBalance: native_balance {
+      balance
+    }
+    commission
+    voter
+    withdrawer
+    validatorStatus: validator_status {
+      rootSlot: root_slot
+    }
+  }
+}
+`;

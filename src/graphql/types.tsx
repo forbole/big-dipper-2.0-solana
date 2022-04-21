@@ -3810,6 +3810,8 @@ export type Token_Account = {
   mint: Scalars['String'];
   owner: Scalars['String'];
   /** An object relationship */
+  token_delegate?: Maybe<Token_Delegation>;
+  /** An object relationship */
   token_info?: Maybe<Token>;
   /** An object relationship */
   token_unit?: Maybe<Token_Unit>;
@@ -4107,6 +4109,7 @@ export type Token_Account_Bool_Exp = {
   address?: Maybe<String_Comparison_Exp>;
   mint?: Maybe<String_Comparison_Exp>;
   owner?: Maybe<String_Comparison_Exp>;
+  token_delegate?: Maybe<Token_Delegation_Bool_Exp>;
   token_info?: Maybe<Token_Bool_Exp>;
   token_unit?: Maybe<Token_Unit_Bool_Exp>;
 };
@@ -4146,6 +4149,7 @@ export type Token_Account_Order_By = {
   address?: Maybe<Order_By>;
   mint?: Maybe<Order_By>;
   owner?: Maybe<Order_By>;
+  token_delegate?: Maybe<Token_Delegation_Order_By>;
   token_info?: Maybe<Token_Order_By>;
   token_unit?: Maybe<Token_Unit_Order_By>;
 };
@@ -6444,6 +6448,23 @@ export type StakeAccountDetailsQuery = { block: Array<(
     )> }
   )> };
 
+export type VoteAccountDetailsQueryVariables = Exact<{
+  address?: Maybe<Scalars['String']>;
+}>;
+
+
+export type VoteAccountDetailsQuery = { validator: Array<(
+    { __typename?: 'validator' }
+    & Pick<Validator, 'address' | 'commission' | 'voter' | 'withdrawer'>
+    & { nativeBalance?: Maybe<(
+      { __typename?: 'account_balance' }
+      & Pick<Account_Balance, 'balance'>
+    )>, validatorStatus?: Maybe<(
+      { __typename?: 'validator_status' }
+      & { rootSlot: Validator_Status['root_slot'] }
+    )> }
+  )> };
+
 export type ActiveValidatorCountQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -7238,6 +7259,50 @@ export function useStakeAccountDetailsLazyQuery(baseOptions?: Apollo.LazyQueryHo
 export type StakeAccountDetailsQueryHookResult = ReturnType<typeof useStakeAccountDetailsQuery>;
 export type StakeAccountDetailsLazyQueryHookResult = ReturnType<typeof useStakeAccountDetailsLazyQuery>;
 export type StakeAccountDetailsQueryResult = Apollo.QueryResult<StakeAccountDetailsQuery, StakeAccountDetailsQueryVariables>;
+export const VoteAccountDetailsDocument = gql`
+    query VoteAccountDetails($address: String) {
+  validator(where: {address: {_eq: $address}}) {
+    address
+    nativeBalance: native_balance {
+      balance
+    }
+    commission
+    voter
+    withdrawer
+    validatorStatus: validator_status {
+      rootSlot: root_slot
+    }
+  }
+}
+    `;
+
+/**
+ * __useVoteAccountDetailsQuery__
+ *
+ * To run a query within a React component, call `useVoteAccountDetailsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useVoteAccountDetailsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useVoteAccountDetailsQuery({
+ *   variables: {
+ *      address: // value for 'address'
+ *   },
+ * });
+ */
+export function useVoteAccountDetailsQuery(baseOptions?: Apollo.QueryHookOptions<VoteAccountDetailsQuery, VoteAccountDetailsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<VoteAccountDetailsQuery, VoteAccountDetailsQueryVariables>(VoteAccountDetailsDocument, options);
+      }
+export function useVoteAccountDetailsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<VoteAccountDetailsQuery, VoteAccountDetailsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<VoteAccountDetailsQuery, VoteAccountDetailsQueryVariables>(VoteAccountDetailsDocument, options);
+        }
+export type VoteAccountDetailsQueryHookResult = ReturnType<typeof useVoteAccountDetailsQuery>;
+export type VoteAccountDetailsLazyQueryHookResult = ReturnType<typeof useVoteAccountDetailsLazyQuery>;
+export type VoteAccountDetailsQueryResult = Apollo.QueryResult<VoteAccountDetailsQuery, VoteAccountDetailsQueryVariables>;
 export const ActiveValidatorCountDocument = gql`
     query ActiveValidatorCount {
   activeTotal: validator_status_aggregate(where: {active: {_eq: true}}) {
