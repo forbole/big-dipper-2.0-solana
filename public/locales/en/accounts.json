@@ -56,7 +56,7 @@
   "voteAccount": "Vote Account",
   "authorizedVoter": "Authorized Voter",
   "authorizedWithdrawer": "Authorized Withdrawer",
-  "lastTimestamp": "Last Timestamp",
+  "lastVote": "Last Vote",
   "rootSlot": "Root Slot",
   "otherVoteAccounts": "Other Vote Accounts",
   "decimals": "Decimals",
@@ -83,5 +83,8 @@
   "active": "Active",
   "deactivating": "Deactivating",
   "deactivated": "Deactivated",
-  "unknown": "Unknown"
+  "unknown": "Unknown",
+  "website": "Website",
+  "delinquent": "Delinquent",
+  "skipRate": "Skip Rate"
 }

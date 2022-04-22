@@ -3,10 +3,6 @@ import {
   Overview,
 } from './components';
 import { useStyles } from './styles';
-import {
-  Tokens,
-  Transactions,
-} from '..';
 import { useNonceAccount } from './hooks';
 
 const NonceAccount = () => {
@@ -16,8 +12,6 @@ const NonceAccount = () => {
   return (
     <>
       <Overview className={classes.overview} overview={state.overview} />
-      <Tokens className={classes.tokens} />
-      <Transactions className={classes.transactions} />
     </>
   );
 };

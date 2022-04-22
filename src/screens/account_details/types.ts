@@ -4,6 +4,7 @@ export enum ACCOUNT_TYPES {
     NONCE_ACCOUNT = 'NONCE_ACCOUNT',
     NATIVE_ACCOUNT = 'NATIVE_ACCOUNT',
     STAKE_ACCOUNT = 'STAKE_ACCOUNT',
+    VOTE_ACCOUNT = 'VOTE_ACCOUNT',
 }
 
 export type AccountDetailState = {

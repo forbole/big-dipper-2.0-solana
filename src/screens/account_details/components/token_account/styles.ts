@@ -5,7 +5,7 @@ export const useStyles = () => {
     (theme) => {
       return ({
         root: {
-          gridColumn: '1 / 3',
+          gridColumn: '1 / 2',
           '& a': {
             color: theme.palette.custom.fonts.highlight,
           },
