@@ -7,29 +7,17 @@ import {
   useEpochScheduleQuery,
   EpochScheduleQuery,
 } from '@graphql/types';
+import {
+  InflationType,
+  InflationGovernorType,
+  EpochScheduleType,
+} from './types';
 
 export const useEpoch = () => {
   const [state, setState] = useState<{
-    inflation: {
-      validator: number,
-      foundation: number,
-      total: number,
-      epoch: number,
-    };
-    inflationGovernor: {
-      initial: number,
-      terminal: number,
-      taper: number,
-      foundation: number,
-      foundationTerm: number,
-    };
-    epochSchedule: {
-      slotsPerEpoch: number,
-      leaderScheduleSlotOffset: number,
-      warmup: boolean,
-      firstNormalEpoch: number,
-      firstNormalSlot: number,
-    }
+    inflation: InflationType;
+    inflationGovernor: InflationGovernorType;
+    epochSchedule: EpochScheduleType;
   }>({
     inflation: {
       validator: 0,
