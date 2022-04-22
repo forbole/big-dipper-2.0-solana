@@ -16,15 +16,15 @@ export const useStyles = () => {
             gridGap: theme.spacing(2),
           },
         },
-        box: {
-          minHeight: '500px',
-          height: '50vh',
-          margin: '50px 0',
-          [theme.breakpoints.up('lg')]: {
-            height: '100%',
-            minHeight: '30vh',
-          },
-        },
+        // box: {
+        //   minHeight: '500px',
+        //   height: '50vh',
+        //   margin: '50px 0',
+        //   [theme.breakpoints.up('lg')]: {
+        //     height: '100%',
+        //     minHeight: '30vh',
+        //   },
+        // },
       });
     },
   )();

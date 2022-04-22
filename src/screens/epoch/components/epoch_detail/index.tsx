@@ -21,14 +21,12 @@ const EpochDetail: React.FC<{
 
   return (
     <Box className={classnames(props.className, classes.root)}>
-      <div className={classes.root}>
-        <Typography variant="h2">{t(props.title)}</Typography>
-        {isDesktop ? (
-          <Desktop epochDetail={props.epochDetail} />
-        ) : (
-          <Mobile epochDetail={props.epochDetail} />
-        )}
-      </div>
+      <Typography variant="h2">{t(props.title)}</Typography>
+      {isDesktop ? (
+        <Desktop epochDetail={props.epochDetail} />
+      ) : (
+        <Mobile epochDetail={props.epochDetail} />
+      )}
     </Box>
   );
 };

@@ -24,7 +24,9 @@ const Mobile: React.FC<{epochDetail:EpochDetailType[] } & ComponentDefault> = (p
                     <Typography variant="h4" className="label">
                       {t('name')}
                     </Typography>
-                    {x.name}
+                    <Typography variant="body1" className="value">
+                      {x.name}
+                    </Typography>
                   </div>
                   <div className={classes.item}>
                     <Typography variant="h4" className="label">
