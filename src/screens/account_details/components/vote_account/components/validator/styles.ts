@@ -4,8 +4,27 @@ export const useStyles = () => {
   const styles = makeStyles(
     (theme) => {
       return ({
-        root: {
-
+        statusWrapper: {
+          position: 'relative',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'flex-end',
+          marginBottom: theme.spacing(2),
+          [theme.breakpoints.up('md')]: {
+            display: 'block',
+            marginBottom: 0,
+          },
+        },
+        status: {
+          [theme.breakpoints.up('md')]: {
+            position: 'absolute',
+            right: theme.spacing(0),
+            top: theme.spacing(0),
+            padding: theme.spacing(0.25, 1),
+            '&:not(:last-child)': {
+              marginRight: 0,
+            },
+          },
         },
         tag: {
           '& .MuiTypography-body1': {
@@ -82,7 +101,7 @@ export const useStyles = () => {
         divider: {
           margin: theme.spacing(2, 0),
           [theme.breakpoints.up('lg')]: {
-            margin: theme.spacing(4, 0),
+            margin: theme.spacing(3, 0),
           },
         },
         item: {

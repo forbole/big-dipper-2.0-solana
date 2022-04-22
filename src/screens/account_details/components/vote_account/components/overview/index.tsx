@@ -9,7 +9,6 @@ import CopyIcon from '@assets/icon-copy.svg';
 import { BoxDetails } from '@components';
 import { ACCOUNT_DETAILS } from '@utils/go_to_page';
 import { useScreenSize } from '@hooks';
-import VoteAccountLogo from '@assets/vote-account.svg';
 import { useStyles } from './styles';
 import { useOverview } from './hooks';
 import { OverviewType } from '../../types';
@@ -23,14 +22,7 @@ const Overview: React.FC<{overview: OverviewType} & ComponentDefault> = (props) 
   } = useOverview(t);
 
   const data = {
-    title: (
-      <div className={classes.header}>
-        <VoteAccountLogo />
-        <Typography variant="h2">
-          {t('voteAccount')}
-        </Typography>
-      </div>
-    ),
+    title: t('overview'),
     details: [
       {
         label: t('address'),

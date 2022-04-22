@@ -12,6 +12,7 @@ import {
   Box,
   Avatar,
   Markdown,
+  Tag,
 } from '@components';
 import { useStyles } from './styles';
 import { ValidatorProfileType } from '../../types';
@@ -19,9 +20,14 @@ import { ValidatorProfileType } from '../../types';
 const Validator: React.FC<{validator: ValidatorProfileType} & ComponentDefault> = (props) => {
   const classes = useStyles();
   const { t } = useTranslation('accounts');
+  const status = props.validator.active ? 'active' : 'delinquent';
+  const theme = props.validator.active ? 'two' : 'five';
 
   return (
     <Box className={classnames(props.className)}>
+      <div className={classes.statusWrapper}>
+        <Tag className={classes.status} value={t(status)} theme={theme} />
+      </div>
       <div className={classes.bio}>
         <Avatar
           address={props.validator.address}
