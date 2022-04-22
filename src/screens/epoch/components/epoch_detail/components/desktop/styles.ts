@@ -6,7 +6,7 @@ export const useStyles = () => {
       return ({
         root: {
           '& .MuiTableCell-root': {
-            whiteSpace: 'nowrap',
+            overflow: 'auto',
           },
           '& .memo': {
             alignItems: 'flex-start',
