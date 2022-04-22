@@ -12,7 +12,7 @@ export const useStyles = () => {
           display: 'flex',
           alignItems: 'center',
           '& .MuiTypography-h2': {
-            marginLeft: theme.spacing(2),
+            // marginLeft: theme.spacing(2),
           },
         },
         icons: {

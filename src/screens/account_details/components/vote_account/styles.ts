@@ -4,6 +4,11 @@ export const useStyles = () => {
   const styles = makeStyles(
     (theme) => {
       return ({
+        validator: {
+          [theme.breakpoints.up('lg')]: {
+            gridColumn: '1 / 3',
+          },
+        },
         overview: {
           [theme.breakpoints.up('lg')]: {
             gridColumn: '1 / 3',

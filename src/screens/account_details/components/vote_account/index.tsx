@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   Overview,
+  Validator,
 } from './components';
 import {
   Transactions,
@@ -14,6 +15,7 @@ const VoteAccount = () => {
 
   return (
     <>
+      <Validator className={classes.validator} validator={state.validatorProfile} />
       <Overview className={classes.overview} overview={state.overview} />
       <Transactions className={classes.transactions} />
     </>

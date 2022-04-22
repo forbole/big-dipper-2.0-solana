@@ -209,6 +209,14 @@ query VoteAccountDetails($address: String) {
     withdrawer
     validatorStatus: validator_status {
       rootSlot: root_slot
+      lastVote: last_vote
+      active
+    }
+    validatorConfig: validator_config {
+      details
+      avatarUrl: avatar_url
+      name
+      website
     }
   }
 }

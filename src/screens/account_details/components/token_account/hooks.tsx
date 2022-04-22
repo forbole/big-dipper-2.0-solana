@@ -80,11 +80,6 @@ export const useTokenAccount = () => {
     const stateChange: any = {
       loading: false,
     };
-    // ryuash come back to this later
-    // if (!data.tokenUnit.length && ) {
-    //   stateChange.exists = false;
-    //   return stateChange;
-    // }
 
     // header
     const formatHeader = () => {

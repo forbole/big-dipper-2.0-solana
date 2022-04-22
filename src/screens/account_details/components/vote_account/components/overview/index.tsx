@@ -1,21 +1,14 @@
 import React from 'react';
-import numeral from 'numeral';
-import { useRecoilValue } from 'recoil';
-import { readDate } from '@recoil/settings';
 import classnames from 'classnames';
 import useTranslation from 'next-translate/useTranslation';
-import dayjs, { formatDayJs } from '@utils/dayjs';
 import { Typography } from '@material-ui/core';
 import Link from 'next/link';
 import { formatNumber } from '@utils/format_token';
 import { getMiddleEllipsis } from '@utils/get_middle_ellipsis';
 import CopyIcon from '@assets/icon-copy.svg';
 import { BoxDetails } from '@components';
-import {
-  ACCOUNT_DETAILS, BLOCK_DETAILS,
-} from '@utils/go_to_page';
+import { ACCOUNT_DETAILS } from '@utils/go_to_page';
 import { useScreenSize } from '@hooks';
-import VoteAccountLogo from '@assets/vote-account.svg';
 import { useStyles } from './styles';
 import { useOverview } from './hooks';
 import { OverviewType } from '../../types';
@@ -27,17 +20,9 @@ const Overview: React.FC<{overview: OverviewType} & ComponentDefault> = (props) 
   const {
     handleCopyToClipboard,
   } = useOverview(t);
-  const dateFormat = useRecoilValue(readDate);
 
   const data = {
-    title: (
-      <div className={classes.header}>
-        <VoteAccountLogo />
-        <Typography variant="h2">
-          {t('voteAccount')}
-        </Typography>
-      </div>
-    ),
+    title: t('overview'),
     details: [
       {
         label: t('address'),
@@ -75,8 +60,9 @@ const Overview: React.FC<{overview: OverviewType} & ComponentDefault> = (props) 
               className={classes.actionIcons}
               onClick={() => handleCopyToClipboard(props.overview.voter)}
             />
-            <Typography variant="body1" className="value">
-              {
+            <Link href={ACCOUNT_DETAILS(props.overview.voter)} passHref>
+              <Typography variant="body1" className="value" component="a">
+                {
                 isMobile ? (
                   getMiddleEllipsis(props.overview.voter, {
                     beginning: 15, ending: 5,
@@ -85,7 +71,8 @@ const Overview: React.FC<{overview: OverviewType} & ComponentDefault> = (props) 
                   props.overview.voter
                 )
               }
-            </Typography>
+              </Typography>
+            </Link>
           </>
         ),
       },
@@ -112,24 +99,6 @@ const Overview: React.FC<{overview: OverviewType} & ComponentDefault> = (props) 
               </Typography>
             </Link>
           </>
-        ),
-      },
-      {
-        label: t('lastTimestamp'),
-        detail: formatDayJs(dayjs.utc(props.overview.lastTimestamp), dateFormat),
-      },
-      {
-        label: t('commission'),
-        detail: `${props.overview.commission}%`,
-      },
-      {
-        label: t('rootSlot'),
-        detail: (
-          <Link href={BLOCK_DETAILS(props.overview.rootSlot)} passHref>
-            <Typography variant="body1" className="value" component="a">
-              {numeral(props.overview.rootSlot).format('0,0')}
-            </Typography>
-          </Link>
         ),
       },
     ],
