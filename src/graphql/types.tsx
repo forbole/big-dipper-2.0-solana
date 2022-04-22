@@ -6461,7 +6461,12 @@ export type VoteAccountDetailsQuery = { validator: Array<(
       & Pick<Account_Balance, 'balance'>
     )>, validatorStatus?: Maybe<(
       { __typename?: 'validator_status' }
+      & Pick<Validator_Status, 'active'>
       & { rootSlot: Validator_Status['root_slot'], lastVote: Validator_Status['last_vote'] }
+    )>, validatorConfig?: Maybe<(
+      { __typename?: 'validator_config' }
+      & Pick<Validator_Config, 'details' | 'name' | 'website'>
+      & { avatarUrl: Validator_Config['avatar_url'] }
     )> }
   )> };
 
@@ -7272,6 +7277,13 @@ export const VoteAccountDetailsDocument = gql`
     validatorStatus: validator_status {
       rootSlot: root_slot
       lastVote: last_vote
+      active
+    }
+    validatorConfig: validator_config {
+      details
+      avatarUrl: avatar_url
+      name
+      website
     }
   }
 }

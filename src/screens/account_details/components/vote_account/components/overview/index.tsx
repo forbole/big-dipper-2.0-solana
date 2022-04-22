@@ -1,5 +1,4 @@
 import React from 'react';
-import numeral from 'numeral';
 import classnames from 'classnames';
 import useTranslation from 'next-translate/useTranslation';
 import { Typography } from '@material-ui/core';
@@ -8,9 +7,7 @@ import { formatNumber } from '@utils/format_token';
 import { getMiddleEllipsis } from '@utils/get_middle_ellipsis';
 import CopyIcon from '@assets/icon-copy.svg';
 import { BoxDetails } from '@components';
-import {
-  ACCOUNT_DETAILS, BLOCK_DETAILS,
-} from '@utils/go_to_page';
+import { ACCOUNT_DETAILS } from '@utils/go_to_page';
 import { useScreenSize } from '@hooks';
 import VoteAccountLogo from '@assets/vote-account.svg';
 import { useStyles } from './styles';
@@ -62,10 +59,6 @@ const Overview: React.FC<{overview: OverviewType} & ComponentDefault> = (props) 
         label: t('balance'),
         detail: `${formatNumber(props.overview.balance.value, props.overview.balance.exponent)} ${props.overview.balance.displayDenom.toUpperCase()}`,
       },
-      // {
-      //   label: t('commission'),
-      //   detail: `${props.overview.commission}%`,
-      // },
       {
         label: t('voter'),
         className: classes.copyText,
@@ -116,26 +109,6 @@ const Overview: React.FC<{overview: OverviewType} & ComponentDefault> = (props) 
           </>
         ),
       },
-      // {
-      //   label: t('lastVote'),
-      //   detail: (
-      //     <Link href={BLOCK_DETAILS(props.overview.lastVote)} passHref>
-      //       <Typography variant="body1" className="value" component="a">
-      //         {numeral(props.overview.lastVote).format('0,0')}
-      //       </Typography>
-      //     </Link>
-      //   ),
-      // },
-      // {
-      //   label: t('rootSlot'),
-      //   detail: (
-      //     <Link href={BLOCK_DETAILS(props.overview.rootSlot)} passHref>
-      //       <Typography variant="body1" className="value" component="a">
-      //         {numeral(props.overview.rootSlot).format('0,0')}
-      //       </Typography>
-      //     </Link>
-      //   ),
-      // },
     ],
   };
 

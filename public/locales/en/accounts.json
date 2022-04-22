@@ -83,5 +83,6 @@
   "active": "Active",
   "deactivating": "Deactivating",
   "deactivated": "Deactivated",
-  "unknown": "Unknown"
+  "unknown": "Unknown",
+  "website": "Website"
 }

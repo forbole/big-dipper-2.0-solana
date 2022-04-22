@@ -27,6 +27,8 @@ export const useVoteAccount = () => {
       withdrawer: '',
     },
     validatorProfile: {
+      name: '',
+      address: '',
       description: '',
       imageUrl: '',
       website: '',
@@ -51,6 +53,7 @@ export const useVoteAccount = () => {
   });
 
   const formatNonceAccounts = (data: VoteAccountDetailsQuery) => {
+    const { address } = router.query;
     const stateChange: any = {
       loading: false,
     };
@@ -59,19 +62,34 @@ export const useVoteAccount = () => {
     // ==========================
     const formatOverview = () => {
       return ({
-        address: router.query.address,
+        address,
         balance: formatToken(
           R.pathOr(0, ['validator', 0, 'nativeBalance', 'balance'], data),
           chainConfig.primaryTokenUnit,
         ),
         voter: R.pathOr('', ['validator', 0, 'voter'], data),
         withdrawer: R.pathOr('', ['validator', 0, 'withdrawer'], data),
+      });
+    };
+    stateChange.overview = formatOverview();
+
+    // ==========================
+    // Validator Profile
+    // ==========================
+    const formatValidatorProfile = () => {
+      return ({
+        address,
         lastVote: R.pathOr(0, ['validator', 0, 'validatorStatus', 'lastVote'], data),
+        description: R.pathOr('', ['validator', 0, 'validatorConfig', 'details'], data),
+        website: R.pathOr('', ['validator', 0, 'validatorConfig', 'website'], data),
+        name: R.pathOr(address, ['validator', 0, 'validatorConfig', 'name'], data),
+        imageUrl: R.pathOr('', ['validator', 0, 'validatorConfig', 'avatarUrl'], data),
+        active: R.pathOr(false, ['validator', 0, 'validatorStatus', 'active'], data),
         commission: R.pathOr(0, ['validator', 0, 'commission'], data),
         rootSlot: R.pathOr(0, ['validator', 0, 'validatorStatus', 'rootSlot'], data),
       });
     };
-    stateChange.overview = formatOverview();
+    stateChange.validatorProfile = formatValidatorProfile();
 
     return stateChange;
   };

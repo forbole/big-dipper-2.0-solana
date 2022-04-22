@@ -5,7 +5,9 @@ export type OverviewType = {
   withdrawer: string;
 }
 
-export type ValidatorProfile = {
+export type ValidatorProfileType = {
+  address: string;
+  name: string;
   description: string;
   website: string;
   imageUrl: string;
@@ -18,5 +20,5 @@ export type ValidatorProfile = {
 export type VoteAccountState = {
   loading: boolean;
   overview: OverviewType;
-  validatorProfile: ValidatorProfile;
+  validatorProfile: ValidatorProfileType;
 }
