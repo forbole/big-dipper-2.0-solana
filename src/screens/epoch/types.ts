@@ -21,4 +21,8 @@ export type EpochScheduleType = {
   firstNormalSlot: number;
 }
 
-export type EpochDetailType = InflationType | InflationGovernorType | EpochScheduleType;
+export type EpochDetailType = {
+  name: string;
+  value: number | string;
+  detail: string;
+}

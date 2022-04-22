@@ -12,7 +12,7 @@ const Desktop = dynamic(() => import('./components/desktop'));
 const Mobile = dynamic(() => import('./components/mobile'));
 
 const EpochDetail: React.FC<{
-  epochDetail:EpochDetailType;
+  epochDetail:EpochDetailType[];
   title:string;
 } & ComponentDefault> = (props) => {
   const { isDesktop } = useScreenSize();
