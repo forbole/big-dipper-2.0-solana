@@ -3,12 +3,20 @@ export type OverviewType = {
   balance: TokenUnit;
   voter: string;
   withdrawer: string;
-  lastVote: number;
+}
+
+export type ValidatorProfile = {
+  description: string;
+  website: string;
+  imageUrl: string;
+  active: boolean;
   commission: number;
+  lastVote: number;
   rootSlot: number;
 }
 
 export type VoteAccountState = {
   loading: boolean;
   overview: OverviewType;
+  validatorProfile: ValidatorProfile;
 }

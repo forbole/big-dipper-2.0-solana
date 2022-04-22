@@ -25,6 +25,12 @@ export const useVoteAccount = () => {
       balance: defaultTokenUnit,
       voter: '',
       withdrawer: '',
+    },
+    validatorProfile: {
+      description: '',
+      imageUrl: '',
+      website: '',
+      active: false,
       lastVote: 0,
       commission: 0,
       rootSlot: 0,

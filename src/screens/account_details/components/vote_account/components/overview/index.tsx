@@ -62,10 +62,10 @@ const Overview: React.FC<{overview: OverviewType} & ComponentDefault> = (props) 
         label: t('balance'),
         detail: `${formatNumber(props.overview.balance.value, props.overview.balance.exponent)} ${props.overview.balance.displayDenom.toUpperCase()}`,
       },
-      {
-        label: t('commission'),
-        detail: `${props.overview.commission}%`,
-      },
+      // {
+      //   label: t('commission'),
+      //   detail: `${props.overview.commission}%`,
+      // },
       {
         label: t('voter'),
         className: classes.copyText,
@@ -116,26 +116,26 @@ const Overview: React.FC<{overview: OverviewType} & ComponentDefault> = (props) 
           </>
         ),
       },
-      {
-        label: t('lastVote'),
-        detail: (
-          <Link href={BLOCK_DETAILS(props.overview.lastVote)} passHref>
-            <Typography variant="body1" className="value" component="a">
-              {numeral(props.overview.lastVote).format('0,0')}
-            </Typography>
-          </Link>
-        ),
-      },
-      {
-        label: t('rootSlot'),
-        detail: (
-          <Link href={BLOCK_DETAILS(props.overview.rootSlot)} passHref>
-            <Typography variant="body1" className="value" component="a">
-              {numeral(props.overview.rootSlot).format('0,0')}
-            </Typography>
-          </Link>
-        ),
-      },
+      // {
+      //   label: t('lastVote'),
+      //   detail: (
+      //     <Link href={BLOCK_DETAILS(props.overview.lastVote)} passHref>
+      //       <Typography variant="body1" className="value" component="a">
+      //         {numeral(props.overview.lastVote).format('0,0')}
+      //       </Typography>
+      //     </Link>
+      //   ),
+      // },
+      // {
+      //   label: t('rootSlot'),
+      //   detail: (
+      //     <Link href={BLOCK_DETAILS(props.overview.rootSlot)} passHref>
+      //       <Typography variant="body1" className="value" component="a">
+      //         {numeral(props.overview.rootSlot).format('0,0')}
+      //       </Typography>
+      //     </Link>
+      //   ),
+      // },
     ],
   };
 
