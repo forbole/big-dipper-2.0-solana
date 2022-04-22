@@ -17,8 +17,16 @@ export type ValidatorProfileType = {
   rootSlot: number;
 }
 
+export type SkipRateType = {
+  epoch: number;
+  skip: number;
+  skipRate: number;
+  total: number;
+}
+
 export type VoteAccountState = {
   loading: boolean;
   overview: OverviewType;
   validatorProfile: ValidatorProfileType;
+  skipRate: SkipRateType;
 }

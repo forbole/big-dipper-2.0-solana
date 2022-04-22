@@ -85,5 +85,6 @@
   "deactivated": "Deactivated",
   "unknown": "Unknown",
   "website": "Website",
-  "delinquent": "Delinquent"
+  "delinquent": "Delinquent",
+  "skipRate": "Skip Rate"
 }

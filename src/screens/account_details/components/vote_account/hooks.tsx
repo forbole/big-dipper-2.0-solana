@@ -37,6 +37,12 @@ export const useVoteAccount = () => {
       commission: 0,
       rootSlot: 0,
     },
+    skipRate: {
+      epoch: 0,
+      skip: 0,
+      skipRate: 0,
+      total: 0,
+    },
   });
 
   const handleSetState = (stateChange: any) => {
@@ -90,6 +96,19 @@ export const useVoteAccount = () => {
       });
     };
     stateChange.validatorProfile = formatValidatorProfile();
+
+    // ==========================
+    // Skip Rate
+    // ==========================
+    const formatSkipRate = () => {
+      return ({
+        epoch: R.pathOr(0, ['validator', 0, 'validatorSkipRate', 'epoch'], data),
+        skip: R.pathOr(0, ['validator', 0, 'validatorSkipRate', 'skip'], data),
+        skipRate: R.pathOr(0, ['validator', 0, 'validatorSkipRate', 'skipRate'], data),
+        total: R.pathOr(0, ['validator', 0, 'validatorSkipRate', 'total'], data),
+      });
+    };
+    stateChange.skipRate = formatSkipRate();
 
     return stateChange;
   };

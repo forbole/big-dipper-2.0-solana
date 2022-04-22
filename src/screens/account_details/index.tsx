@@ -23,22 +23,26 @@ const AccountDetails = () => {
   const classes = useStyles();
   const { state } = useAccountDetails();
 
-  let component = <NativeAccount />; // default
+  let component = null;
 
-  if (state.accountType === ACCOUNT_TYPES.NONCE_ACCOUNT) { // done
-    component = <NonceAccount />;
-  }
-  if (state.accountType === ACCOUNT_TYPES.STAKE_ACCOUNT) {
-    component = <StakeAccount />;
-  }
-  if (state.accountType === ACCOUNT_TYPES.TOKEN_ACCOUNT) {
-    component = <TokenDetailsAccount />;
-  }
-  if (state.accountType === ACCOUNT_TYPES.VOTE_ACCOUNT) {
-    component = <VoteAccount />;
-  }
-  if (state.accountType === ACCOUNT_TYPES.TOKEN) {
-    component = <TokenAccount />;
+  if (state.exists && !state.loading) {
+    component = <NativeAccount />; // default
+
+    if (state.accountType === ACCOUNT_TYPES.NONCE_ACCOUNT) { // done
+      component = <NonceAccount />;
+    }
+    if (state.accountType === ACCOUNT_TYPES.STAKE_ACCOUNT) {
+      component = <StakeAccount />;
+    }
+    if (state.accountType === ACCOUNT_TYPES.TOKEN_ACCOUNT) {
+      component = <TokenDetailsAccount />;
+    }
+    if (state.accountType === ACCOUNT_TYPES.VOTE_ACCOUNT) {
+      component = <VoteAccount />;
+    }
+    if (state.accountType === ACCOUNT_TYPES.TOKEN) {
+      component = <TokenAccount />;
+    }
   }
 
   return (

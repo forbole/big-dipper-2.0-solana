@@ -19,7 +19,11 @@ export const useTransactions = () => {
   });
 
   useEffect(() => {
-    init();
+    let unmounted = false;
+    if (!unmounted) {
+      init();
+    }
+    return () => { unmounted = true; };
   }, []);
 
   const handleSetState = (stateChange: any) => {
@@ -35,12 +39,14 @@ export const useTransactions = () => {
       const endSlot = R.pathOr(0, ['data', 'height', 0, 'slot'], data);
       const startSlot = endSlot - 10000; // recommended search interval
 
+      const transactions = await getTransactions(startSlot, endSlot);
+
       handleSetState({
+        loading: false,
+        transactions,
         startSlot,
         endSlot,
       });
-
-      await getTransactions(startSlot, endSlot);
     } catch (error) {
       handleSetState({
         loading: false,
@@ -58,11 +64,7 @@ export const useTransactions = () => {
       query: TxByAddressDocument,
     });
     const transactions = R.pathOr([], ['data', 'instructions', 'nodes'], data);
-    const formatted = formatTransactions(transactions);
-    handleSetState({
-      loading: false,
-      transactions: formatted,
-    });
+    return formatTransactions(transactions);
   };
 
   const formatTransactions = (data: any[]) => {
