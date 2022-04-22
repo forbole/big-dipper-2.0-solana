@@ -4,9 +4,6 @@ import {
   Validator,
   SkipRate,
 } from './components';
-import {
-  Transactions,
-} from '..';
 import { useStyles } from './styles';
 import { useVoteAccount } from './hooks';
 
@@ -19,7 +16,6 @@ const VoteAccount = () => {
       <Validator className={classes.validator} validator={state.validatorProfile} />
       <Overview className={classes.overview} overview={state.overview} />
       <SkipRate className={classes.skipRate} skipRate={state.skipRate} />
-      <Transactions className={classes.transactions} />
     </>
   );
 };

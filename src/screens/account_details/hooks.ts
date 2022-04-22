@@ -73,6 +73,10 @@ export const useAccountDetails = () => {
         },
         query: AccountTypeDocument,
       });
+      if (data.errors) {
+        throw Error();
+      }
+
       const accountType = R.pathOr(
         'native_account',
         ['data', 'actionsAccountInfo', 'parsed', 'type'],
