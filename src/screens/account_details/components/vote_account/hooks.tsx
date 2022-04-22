@@ -25,7 +25,7 @@ export const useVoteAccount = () => {
       balance: defaultTokenUnit,
       voter: '',
       withdrawer: '',
-      lastTimestamp: '',
+      lastVote: 0,
       commission: 0,
       rootSlot: 0,
     },
@@ -60,7 +60,7 @@ export const useVoteAccount = () => {
         ),
         voter: R.pathOr('', ['validator', 0, 'voter'], data),
         withdrawer: R.pathOr('', ['validator', 0, 'withdrawer'], data),
-        lastTimestamp: R.pathOr('', ['validator', 0, 'lastTimestamp'], data),
+        lastVote: R.pathOr(0, ['validator', 0, 'validatorStatus', 'lastVote'], data),
         commission: R.pathOr(0, ['validator', 0, 'commission'], data),
         rootSlot: R.pathOr(0, ['validator', 0, 'validatorStatus', 'rootSlot'], data),
       });

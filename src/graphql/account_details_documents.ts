@@ -199,7 +199,7 @@ query StakeAccountDetails($address: String) {
 // vote detail account
 export const VoteAccountDetailsDocument = /* GraphQL */`
 query VoteAccountDetails($address: String) {
-  validator(where: {address: {_eq: $address}}) {
+validator(where: {address: {_eq: $address}}) {
     address
     nativeBalance: native_balance {
       balance
@@ -209,6 +209,7 @@ query VoteAccountDetails($address: String) {
     withdrawer
     validatorStatus: validator_status {
       rootSlot: root_slot
+      lastVote: last_vote
     }
   }
 }

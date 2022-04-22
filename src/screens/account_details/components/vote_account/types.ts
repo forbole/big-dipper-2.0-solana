@@ -3,7 +3,7 @@ export type OverviewType = {
   balance: TokenUnit;
   voter: string;
   withdrawer: string;
-  lastTimestamp: string;
+  lastVote: number;
   commission: number;
   rootSlot: number;
 }
