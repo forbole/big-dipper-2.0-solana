@@ -6467,6 +6467,10 @@ export type VoteAccountDetailsQuery = { validator: Array<(
       { __typename?: 'validator_config' }
       & Pick<Validator_Config, 'details' | 'name' | 'website'>
       & { avatarUrl: Validator_Config['avatar_url'] }
+    )>, validatorSkipRate?: Maybe<(
+      { __typename?: 'validator_skip_rate' }
+      & Pick<Validator_Skip_Rate, 'epoch' | 'skip' | 'total'>
+      & { skipRate: Validator_Skip_Rate['skip_rate'] }
     )> }
   )> };
 
@@ -7284,6 +7288,12 @@ export const VoteAccountDetailsDocument = gql`
       avatarUrl: avatar_url
       name
       website
+    }
+    validatorSkipRate: validator_skip_rate {
+      epoch
+      skip
+      skipRate: skip_rate
+      total
     }
   }
 }

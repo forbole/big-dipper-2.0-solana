@@ -9,6 +9,7 @@ export const useStyles = () => {
           display: 'grid',
           gridGap: theme.spacing(1),
           height: '100%',
+          gridTemplateColumns: '1fr',
           '& a': {
             color: theme.palette.custom.fonts.highlight,
           },

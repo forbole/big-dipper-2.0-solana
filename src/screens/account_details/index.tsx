@@ -4,7 +4,7 @@ import { NextSeo } from 'next-seo';
 import {
   Layout,
   LoadAndExist,
-  DesmosProfile,
+  // DesmosProfile,
 } from '@components';
 import {
   NativeAccount,
@@ -13,6 +13,7 @@ import {
   TokenAccount,
   VoteAccount,
   TokenDetailsAccount,
+  Transactions,
 } from './components';
 import { useStyles } from './styles';
 import { ACCOUNT_TYPES } from './types';
@@ -23,22 +24,24 @@ const AccountDetails = () => {
   const classes = useStyles();
   const { state } = useAccountDetails();
 
-  let component = <NativeAccount />; // default
-
-  if (state.accountType === ACCOUNT_TYPES.NONCE_ACCOUNT) { // done
-    component = <NonceAccount />;
-  }
-  if (state.accountType === ACCOUNT_TYPES.STAKE_ACCOUNT) {
-    component = <StakeAccount />;
-  }
-  if (state.accountType === ACCOUNT_TYPES.TOKEN_ACCOUNT) {
-    component = <TokenDetailsAccount />;
-  }
-  if (state.accountType === ACCOUNT_TYPES.VOTE_ACCOUNT) {
-    component = <VoteAccount />;
-  }
-  if (state.accountType === ACCOUNT_TYPES.TOKEN) {
-    component = <TokenAccount />;
+  let component = null;
+  if (state.loading === false) {
+    component = <NativeAccount />; // default
+    if (state.accountType === ACCOUNT_TYPES.NONCE_ACCOUNT) { // done
+      component = <NonceAccount />;
+    }
+    if (state.accountType === ACCOUNT_TYPES.STAKE_ACCOUNT) {
+      component = <StakeAccount />;
+    }
+    if (state.accountType === ACCOUNT_TYPES.TOKEN_ACCOUNT) {
+      component = <TokenDetailsAccount />;
+    }
+    if (state.accountType === ACCOUNT_TYPES.VOTE_ACCOUNT) {
+      component = <VoteAccount />;
+    }
+    if (state.accountType === ACCOUNT_TYPES.TOKEN) {
+      component = <TokenAccount />;
+    }
   }
 
   return (
@@ -54,8 +57,8 @@ const AccountDetails = () => {
           loading={state.loading}
           exists={state.exists}
         >
-          <span className={classes.root}>
-            {(!!state.desmosProfile && state.accountType === ACCOUNT_TYPES.NATIVE_ACCOUNT) && (
+          <div className={classes.root}>
+            {/* {(!!state.desmosProfile && state.accountType === ACCOUNT_TYPES.NATIVE_ACCOUNT) && (
             <DesmosProfile
               dtag={state.desmosProfile.dtag}
               nickname={state.desmosProfile.nickname}
@@ -64,9 +67,10 @@ const AccountDetails = () => {
               connections={state.desmosProfile.connections}
               coverUrl={state.desmosProfile.coverUrl}
             />
-            )}
+            )} */}
             {component}
-          </span>
+            <Transactions />
+          </div>
         </LoadAndExist>
       </Layout>
     </>

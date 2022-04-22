@@ -2,10 +2,8 @@ import React from 'react';
 import {
   Overview,
   Validator,
+  SkipRate,
 } from './components';
-import {
-  Transactions,
-} from '..';
 import { useStyles } from './styles';
 import { useVoteAccount } from './hooks';
 
@@ -17,7 +15,7 @@ const VoteAccount = () => {
     <>
       <Validator className={classes.validator} validator={state.validatorProfile} />
       <Overview className={classes.overview} overview={state.overview} />
-      <Transactions className={classes.transactions} />
+      <SkipRate className={classes.skipRate} skipRate={state.skipRate} />
     </>
   );
 };

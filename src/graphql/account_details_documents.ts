@@ -218,6 +218,12 @@ query VoteAccountDetails($address: String) {
       name
       website
     }
+    validatorSkipRate: validator_skip_rate {
+      epoch
+      skip
+      skipRate: skip_rate
+      total
+    }
   }
 }
 `;
