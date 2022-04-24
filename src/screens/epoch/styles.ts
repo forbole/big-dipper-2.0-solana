@@ -9,22 +9,10 @@ export const useStyles = () => {
           display: 'grid',
           gridGap: theme.spacing(1),
           height: '100%',
-          '& a': {
-            color: theme.palette.custom.fonts.highlight,
-          },
           [theme.breakpoints.up('lg')]: {
             gridGap: theme.spacing(2),
           },
         },
-        // box: {
-        //   minHeight: '500px',
-        //   height: '50vh',
-        //   margin: '50px 0',
-        //   [theme.breakpoints.up('lg')]: {
-        //     height: '100%',
-        //     minHeight: '30vh',
-        //   },
-        // },
       });
     },
   )();

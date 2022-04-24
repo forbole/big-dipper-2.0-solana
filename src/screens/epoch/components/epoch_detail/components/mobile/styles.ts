@@ -20,9 +20,6 @@ export const useStyles = () => {
           '& p.value': {
             color: theme.palette.custom.fonts.fontTwo,
           },
-          '& a': {
-            color: theme.palette.custom.fonts.highlight,
-          },
         },
         flex: {
           display: 'flex',
