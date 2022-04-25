@@ -5,15 +5,12 @@ import { VariableSizeList as List } from 'react-window';
 import AutoSizer from 'react-virtualized-auto-sizer';
 import { Divider } from '@material-ui/core';
 import { AvatarName } from '@components';
-// import { getValidatorConditionClass } from '@utils/get_validator_condition';
 import {
   useList,
   useListRow,
 } from '@hooks';
 import { SingleValidator } from './component';
-// import {
-//   Condition, SkipRate,
-// } from '..';
+import { SkipRate } from '..';
 import { ItemType } from '../../types';
 import { useMobile } from './hooks';
 
@@ -31,7 +28,6 @@ const Mobile: React.FC<{
   } = useList();
 
   const formattedItems = items.map((x, i) => {
-    // const condition = x.status === 3 ? getValidatorConditionClass(x.condition) : undefined;
     return ({
       idx: `#${i + 1}`,
       stake: `${numeral(x.stake).format('0,0')} (${numeral(x.stakePercent).format('0,0.00')}%)`,
@@ -44,15 +40,11 @@ const Mobile: React.FC<{
           name={x.validator.name}
         />
       ),
-      // condition: (
-      //   <Condition className={condition} />
-      // ),
-      // skipRate: (
-      //   <SkipRate
-      //     percentage={x.skipPercent}
-      //     content={`${x.skipRate} / ${x.skipTotal}`}
-      //   />
-      // ),
+      skipRate: (
+        <SkipRate
+          skipRate={x.skipRate}
+        />
+      ),
     });
   });
 
