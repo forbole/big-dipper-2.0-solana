@@ -172,3 +172,58 @@ query TokenDetailsAccountDetails($address: String!) {
   }
 }
 `;
+
+// stake detail account
+export const StakeAccountDetailsDocument = /* GraphQL */`
+query StakeAccountDetails($address: String) {
+  block(order_by: {slot: desc}, limit: 1) {
+    slot
+  }
+  stakeAccount: stake_account(where: {address: {_eq: $address}}) {
+    address
+    nativeBalance: native_balance {
+      balance
+    }
+    staker
+    withdrawer
+    stakeDelegation: stake_delegation {
+      stake
+      activationEpoch: activation_epoch
+      deactivationEpoch: deactivation_epoch
+      voter
+    }
+  }
+}
+`;
+
+// vote detail account
+export const VoteAccountDetailsDocument = /* GraphQL */`
+query VoteAccountDetails($address: String) {
+  validator(where: {address: {_eq: $address}}) {
+    address
+    nativeBalance: native_balance {
+      balance
+    }
+    commission
+    voter
+    withdrawer
+    validatorStatus: validator_status {
+      rootSlot: root_slot
+      lastVote: last_vote
+      active
+    }
+    validatorConfig: validator_config {
+      details
+      avatarUrl: avatar_url
+      name
+      website
+    }
+    validatorSkipRate: validator_skip_rate {
+      epoch
+      skip
+      skipRate: skip_rate
+      total
+    }
+  }
+}
+`;

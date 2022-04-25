@@ -805,6 +805,7 @@ export type Instruction = {
   involved_accounts: Scalars['_text'];
   program: Scalars['String'];
   raw_data: Scalars['String'];
+  slot: Scalars['bigint'];
   /** An object relationship */
   transaction?: Maybe<Transaction>;
   tx_signature: Scalars['String'];
@@ -868,12 +869,14 @@ export type Instruction_Avg_Fields = {
   __typename?: 'instruction_avg_fields';
   index?: Maybe<Scalars['Float']>;
   inner_index?: Maybe<Scalars['Float']>;
+  slot?: Maybe<Scalars['Float']>;
 };
 
 /** order by avg() on columns of table "instruction" */
 export type Instruction_Avg_Order_By = {
   index?: Maybe<Order_By>;
   inner_index?: Maybe<Order_By>;
+  slot?: Maybe<Order_By>;
 };
 
 /** Boolean expression to filter rows from the table "instruction". All fields are combined with a logical 'AND'. */
@@ -886,6 +889,7 @@ export type Instruction_Bool_Exp = {
   involved_accounts?: Maybe<_Text_Comparison_Exp>;
   program?: Maybe<String_Comparison_Exp>;
   raw_data?: Maybe<String_Comparison_Exp>;
+  slot?: Maybe<Bigint_Comparison_Exp>;
   transaction?: Maybe<Transaction_Bool_Exp>;
   tx_signature?: Maybe<String_Comparison_Exp>;
   type?: Maybe<String_Comparison_Exp>;
@@ -899,6 +903,7 @@ export type Instruction_Max_Fields = {
   inner_index?: Maybe<Scalars['Int']>;
   program?: Maybe<Scalars['String']>;
   raw_data?: Maybe<Scalars['String']>;
+  slot?: Maybe<Scalars['bigint']>;
   tx_signature?: Maybe<Scalars['String']>;
   type?: Maybe<Scalars['String']>;
 };
@@ -909,6 +914,7 @@ export type Instruction_Max_Order_By = {
   inner_index?: Maybe<Order_By>;
   program?: Maybe<Order_By>;
   raw_data?: Maybe<Order_By>;
+  slot?: Maybe<Order_By>;
   tx_signature?: Maybe<Order_By>;
   type?: Maybe<Order_By>;
 };
@@ -920,6 +926,7 @@ export type Instruction_Min_Fields = {
   inner_index?: Maybe<Scalars['Int']>;
   program?: Maybe<Scalars['String']>;
   raw_data?: Maybe<Scalars['String']>;
+  slot?: Maybe<Scalars['bigint']>;
   tx_signature?: Maybe<Scalars['String']>;
   type?: Maybe<Scalars['String']>;
 };
@@ -930,6 +937,7 @@ export type Instruction_Min_Order_By = {
   inner_index?: Maybe<Order_By>;
   program?: Maybe<Order_By>;
   raw_data?: Maybe<Order_By>;
+  slot?: Maybe<Order_By>;
   tx_signature?: Maybe<Order_By>;
   type?: Maybe<Order_By>;
 };
@@ -941,6 +949,7 @@ export type Instruction_Order_By = {
   involved_accounts?: Maybe<Order_By>;
   program?: Maybe<Order_By>;
   raw_data?: Maybe<Order_By>;
+  slot?: Maybe<Order_By>;
   transaction?: Maybe<Transaction_Order_By>;
   tx_signature?: Maybe<Order_By>;
   type?: Maybe<Order_By>;
@@ -960,6 +969,8 @@ export enum Instruction_Select_Column {
   /** column name */
   RawData = 'raw_data',
   /** column name */
+  Slot = 'slot',
+  /** column name */
   TxSignature = 'tx_signature',
   /** column name */
   Type = 'type',
@@ -972,12 +983,14 @@ export type Instruction_Stddev_Fields = {
   __typename?: 'instruction_stddev_fields';
   index?: Maybe<Scalars['Float']>;
   inner_index?: Maybe<Scalars['Float']>;
+  slot?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev() on columns of table "instruction" */
 export type Instruction_Stddev_Order_By = {
   index?: Maybe<Order_By>;
   inner_index?: Maybe<Order_By>;
+  slot?: Maybe<Order_By>;
 };
 
 /** aggregate stddev_pop on columns */
@@ -985,12 +998,14 @@ export type Instruction_Stddev_Pop_Fields = {
   __typename?: 'instruction_stddev_pop_fields';
   index?: Maybe<Scalars['Float']>;
   inner_index?: Maybe<Scalars['Float']>;
+  slot?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev_pop() on columns of table "instruction" */
 export type Instruction_Stddev_Pop_Order_By = {
   index?: Maybe<Order_By>;
   inner_index?: Maybe<Order_By>;
+  slot?: Maybe<Order_By>;
 };
 
 /** aggregate stddev_samp on columns */
@@ -998,12 +1013,14 @@ export type Instruction_Stddev_Samp_Fields = {
   __typename?: 'instruction_stddev_samp_fields';
   index?: Maybe<Scalars['Float']>;
   inner_index?: Maybe<Scalars['Float']>;
+  slot?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev_samp() on columns of table "instruction" */
 export type Instruction_Stddev_Samp_Order_By = {
   index?: Maybe<Order_By>;
   inner_index?: Maybe<Order_By>;
+  slot?: Maybe<Order_By>;
 };
 
 /** aggregate sum on columns */
@@ -1011,12 +1028,14 @@ export type Instruction_Sum_Fields = {
   __typename?: 'instruction_sum_fields';
   index?: Maybe<Scalars['Int']>;
   inner_index?: Maybe<Scalars['Int']>;
+  slot?: Maybe<Scalars['bigint']>;
 };
 
 /** order by sum() on columns of table "instruction" */
 export type Instruction_Sum_Order_By = {
   index?: Maybe<Order_By>;
   inner_index?: Maybe<Order_By>;
+  slot?: Maybe<Order_By>;
 };
 
 /** aggregate var_pop on columns */
@@ -1024,12 +1043,14 @@ export type Instruction_Var_Pop_Fields = {
   __typename?: 'instruction_var_pop_fields';
   index?: Maybe<Scalars['Float']>;
   inner_index?: Maybe<Scalars['Float']>;
+  slot?: Maybe<Scalars['Float']>;
 };
 
 /** order by var_pop() on columns of table "instruction" */
 export type Instruction_Var_Pop_Order_By = {
   index?: Maybe<Order_By>;
   inner_index?: Maybe<Order_By>;
+  slot?: Maybe<Order_By>;
 };
 
 /** aggregate var_samp on columns */
@@ -1037,12 +1058,14 @@ export type Instruction_Var_Samp_Fields = {
   __typename?: 'instruction_var_samp_fields';
   index?: Maybe<Scalars['Float']>;
   inner_index?: Maybe<Scalars['Float']>;
+  slot?: Maybe<Scalars['Float']>;
 };
 
 /** order by var_samp() on columns of table "instruction" */
 export type Instruction_Var_Samp_Order_By = {
   index?: Maybe<Order_By>;
   inner_index?: Maybe<Order_By>;
+  slot?: Maybe<Order_By>;
 };
 
 /** aggregate variance on columns */
@@ -1050,12 +1073,14 @@ export type Instruction_Variance_Fields = {
   __typename?: 'instruction_variance_fields';
   index?: Maybe<Scalars['Float']>;
   inner_index?: Maybe<Scalars['Float']>;
+  slot?: Maybe<Scalars['Float']>;
 };
 
 /** order by variance() on columns of table "instruction" */
 export type Instruction_Variance_Order_By = {
   index?: Maybe<Order_By>;
   inner_index?: Maybe<Order_By>;
+  slot?: Maybe<Order_By>;
 };
 
 export type Instructions_By_Address_Args = {
@@ -3785,6 +3810,8 @@ export type Token_Account = {
   mint: Scalars['String'];
   owner: Scalars['String'];
   /** An object relationship */
+  token_delegate?: Maybe<Token_Delegation>;
+  /** An object relationship */
   token_info?: Maybe<Token>;
   /** An object relationship */
   token_unit?: Maybe<Token_Unit>;
@@ -4082,6 +4109,7 @@ export type Token_Account_Bool_Exp = {
   address?: Maybe<String_Comparison_Exp>;
   mint?: Maybe<String_Comparison_Exp>;
   owner?: Maybe<String_Comparison_Exp>;
+  token_delegate?: Maybe<Token_Delegation_Bool_Exp>;
   token_info?: Maybe<Token_Bool_Exp>;
   token_unit?: Maybe<Token_Unit_Bool_Exp>;
 };
@@ -4121,6 +4149,7 @@ export type Token_Account_Order_By = {
   address?: Maybe<Order_By>;
   mint?: Maybe<Order_By>;
   owner?: Maybe<Order_By>;
+  token_delegate?: Maybe<Token_Delegation_Order_By>;
   token_info?: Maybe<Token_Order_By>;
   token_unit?: Maybe<Token_Unit_Order_By>;
 };
@@ -4191,7 +4220,7 @@ export type Token_Delegation = {
   delegate_address: Scalars['String'];
   source_address: Scalars['String'];
   /** An object relationship */
-  source_token_account?: Maybe<Token_Account>;
+  source_token_account: Token_Account;
 };
 
 /** aggregated selection of "token_delegation" */
@@ -6398,6 +6427,53 @@ export type TokenDetailsAccountDetailsQuery = { tokenAccount: Array<(
     & Pick<Token_Account_Balance, 'balance'>
   )> };
 
+export type StakeAccountDetailsQueryVariables = Exact<{
+  address?: Maybe<Scalars['String']>;
+}>;
+
+
+export type StakeAccountDetailsQuery = { block: Array<(
+    { __typename?: 'block' }
+    & Pick<Block, 'slot'>
+  )>, stakeAccount: Array<(
+    { __typename?: 'stake_account' }
+    & Pick<Stake_Account, 'address' | 'staker' | 'withdrawer'>
+    & { nativeBalance?: Maybe<(
+      { __typename?: 'account_balance' }
+      & Pick<Account_Balance, 'balance'>
+    )>, stakeDelegation?: Maybe<(
+      { __typename?: 'stake_delegation' }
+      & Pick<Stake_Delegation, 'stake' | 'voter'>
+      & { activationEpoch: Stake_Delegation['activation_epoch'], deactivationEpoch: Stake_Delegation['deactivation_epoch'] }
+    )> }
+  )> };
+
+export type VoteAccountDetailsQueryVariables = Exact<{
+  address?: Maybe<Scalars['String']>;
+}>;
+
+
+export type VoteAccountDetailsQuery = { validator: Array<(
+    { __typename?: 'validator' }
+    & Pick<Validator, 'address' | 'commission' | 'voter' | 'withdrawer'>
+    & { nativeBalance?: Maybe<(
+      { __typename?: 'account_balance' }
+      & Pick<Account_Balance, 'balance'>
+    )>, validatorStatus?: Maybe<(
+      { __typename?: 'validator_status' }
+      & Pick<Validator_Status, 'active'>
+      & { rootSlot: Validator_Status['root_slot'], lastVote: Validator_Status['last_vote'] }
+    )>, validatorConfig?: Maybe<(
+      { __typename?: 'validator_config' }
+      & Pick<Validator_Config, 'details' | 'name' | 'website'>
+      & { avatarUrl: Validator_Config['avatar_url'] }
+    )>, validatorSkipRate?: Maybe<(
+      { __typename?: 'validator_skip_rate' }
+      & Pick<Validator_Skip_Rate, 'epoch' | 'skip' | 'total'>
+      & { skipRate: Validator_Skip_Rate['skip_rate'] }
+    )> }
+  )> };
+
 export type ActiveValidatorCountQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -6444,6 +6520,16 @@ export type LatestBlockHeightListenerSubscriptionVariables = Exact<{
 
 
 export type LatestBlockHeightListenerSubscription = { height: Array<(
+    { __typename?: 'block' }
+    & Pick<Block, 'slot'>
+  )> };
+
+export type LatestBlockHeightQueryVariables = Exact<{
+  offset?: Maybe<Scalars['Int']>;
+}>;
+
+
+export type LatestBlockHeightQuery = { height: Array<(
     { __typename?: 'block' }
     & Pick<Block, 'slot'>
   )> };
@@ -6606,22 +6692,41 @@ export type TokensQuery = { tokenUnit: Array<(
 
 export type TxByAddressQueryVariables = Exact<{
   address?: Maybe<Scalars['_text']>;
+  endSlot?: Maybe<Scalars['bigint']>;
+  startSlot?: Maybe<Scalars['bigint']>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
 }>;
 
 
-export type TxByAddressQuery = { transactions: (
+export type TxByAddressQuery = { instructions: (
     { __typename?: 'instruction_aggregate' }
     & { nodes: Array<(
       { __typename?: 'instruction' }
       & { transaction?: Maybe<(
         { __typename?: 'transaction' }
-        & Pick<Transaction, 'success' | 'slot' | 'signature'>
+        & Pick<Transaction, 'signature' | 'slot' | 'success'>
         & { numInstructions: Transaction['num_instructions'] }
         & { block?: Maybe<(
           { __typename?: 'block' }
           & Pick<Block, 'timestamp'>
         )> }
       )> }
+    )> }
+  ) };
+
+export type TxByAddressCountQueryVariables = Exact<{
+  address?: Maybe<Scalars['_text']>;
+  endSlot?: Maybe<Scalars['bigint']>;
+  startSlot?: Maybe<Scalars['bigint']>;
+}>;
+
+
+export type TxByAddressCountQuery = { txCount: (
+    { __typename?: 'instruction_aggregate' }
+    & { aggregate?: Maybe<(
+      { __typename?: 'instruction_aggregate_fields' }
+      & Pick<Instruction_Aggregate_Fields, 'count'>
     )> }
   ) };
 
@@ -7140,6 +7245,113 @@ export function useTokenDetailsAccountDetailsLazyQuery(baseOptions?: Apollo.Lazy
 export type TokenDetailsAccountDetailsQueryHookResult = ReturnType<typeof useTokenDetailsAccountDetailsQuery>;
 export type TokenDetailsAccountDetailsLazyQueryHookResult = ReturnType<typeof useTokenDetailsAccountDetailsLazyQuery>;
 export type TokenDetailsAccountDetailsQueryResult = Apollo.QueryResult<TokenDetailsAccountDetailsQuery, TokenDetailsAccountDetailsQueryVariables>;
+export const StakeAccountDetailsDocument = gql`
+    query StakeAccountDetails($address: String) {
+  block(order_by: {slot: desc}, limit: 1) {
+    slot
+  }
+  stakeAccount: stake_account(where: {address: {_eq: $address}}) {
+    address
+    nativeBalance: native_balance {
+      balance
+    }
+    staker
+    withdrawer
+    stakeDelegation: stake_delegation {
+      stake
+      activationEpoch: activation_epoch
+      deactivationEpoch: deactivation_epoch
+      voter
+    }
+  }
+}
+    `;
+
+/**
+ * __useStakeAccountDetailsQuery__
+ *
+ * To run a query within a React component, call `useStakeAccountDetailsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useStakeAccountDetailsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useStakeAccountDetailsQuery({
+ *   variables: {
+ *      address: // value for 'address'
+ *   },
+ * });
+ */
+export function useStakeAccountDetailsQuery(baseOptions?: Apollo.QueryHookOptions<StakeAccountDetailsQuery, StakeAccountDetailsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<StakeAccountDetailsQuery, StakeAccountDetailsQueryVariables>(StakeAccountDetailsDocument, options);
+      }
+export function useStakeAccountDetailsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<StakeAccountDetailsQuery, StakeAccountDetailsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<StakeAccountDetailsQuery, StakeAccountDetailsQueryVariables>(StakeAccountDetailsDocument, options);
+        }
+export type StakeAccountDetailsQueryHookResult = ReturnType<typeof useStakeAccountDetailsQuery>;
+export type StakeAccountDetailsLazyQueryHookResult = ReturnType<typeof useStakeAccountDetailsLazyQuery>;
+export type StakeAccountDetailsQueryResult = Apollo.QueryResult<StakeAccountDetailsQuery, StakeAccountDetailsQueryVariables>;
+export const VoteAccountDetailsDocument = gql`
+    query VoteAccountDetails($address: String) {
+  validator(where: {address: {_eq: $address}}) {
+    address
+    nativeBalance: native_balance {
+      balance
+    }
+    commission
+    voter
+    withdrawer
+    validatorStatus: validator_status {
+      rootSlot: root_slot
+      lastVote: last_vote
+      active
+    }
+    validatorConfig: validator_config {
+      details
+      avatarUrl: avatar_url
+      name
+      website
+    }
+    validatorSkipRate: validator_skip_rate {
+      epoch
+      skip
+      skipRate: skip_rate
+      total
+    }
+  }
+}
+    `;
+
+/**
+ * __useVoteAccountDetailsQuery__
+ *
+ * To run a query within a React component, call `useVoteAccountDetailsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useVoteAccountDetailsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useVoteAccountDetailsQuery({
+ *   variables: {
+ *      address: // value for 'address'
+ *   },
+ * });
+ */
+export function useVoteAccountDetailsQuery(baseOptions?: Apollo.QueryHookOptions<VoteAccountDetailsQuery, VoteAccountDetailsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<VoteAccountDetailsQuery, VoteAccountDetailsQueryVariables>(VoteAccountDetailsDocument, options);
+      }
+export function useVoteAccountDetailsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<VoteAccountDetailsQuery, VoteAccountDetailsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<VoteAccountDetailsQuery, VoteAccountDetailsQueryVariables>(VoteAccountDetailsDocument, options);
+        }
+export type VoteAccountDetailsQueryHookResult = ReturnType<typeof useVoteAccountDetailsQuery>;
+export type VoteAccountDetailsLazyQueryHookResult = ReturnType<typeof useVoteAccountDetailsLazyQuery>;
+export type VoteAccountDetailsQueryResult = Apollo.QueryResult<VoteAccountDetailsQuery, VoteAccountDetailsQueryVariables>;
 export const ActiveValidatorCountDocument = gql`
     query ActiveValidatorCount {
   activeTotal: validator_status_aggregate(where: {active: {_eq: true}}) {
@@ -7261,6 +7473,41 @@ export function useLatestBlockHeightListenerSubscription(baseOptions?: Apollo.Su
       }
 export type LatestBlockHeightListenerSubscriptionHookResult = ReturnType<typeof useLatestBlockHeightListenerSubscription>;
 export type LatestBlockHeightListenerSubscriptionResult = Apollo.SubscriptionResult<LatestBlockHeightListenerSubscription>;
+export const LatestBlockHeightDocument = gql`
+    query LatestBlockHeight($offset: Int = 0) {
+  height: block(order_by: {slot: desc}, limit: 1, offset: $offset) {
+    slot
+  }
+}
+    `;
+
+/**
+ * __useLatestBlockHeightQuery__
+ *
+ * To run a query within a React component, call `useLatestBlockHeightQuery` and pass it any options that fit your needs.
+ * When your component renders, `useLatestBlockHeightQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useLatestBlockHeightQuery({
+ *   variables: {
+ *      offset: // value for 'offset'
+ *   },
+ * });
+ */
+export function useLatestBlockHeightQuery(baseOptions?: Apollo.QueryHookOptions<LatestBlockHeightQuery, LatestBlockHeightQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<LatestBlockHeightQuery, LatestBlockHeightQueryVariables>(LatestBlockHeightDocument, options);
+      }
+export function useLatestBlockHeightLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<LatestBlockHeightQuery, LatestBlockHeightQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<LatestBlockHeightQuery, LatestBlockHeightQueryVariables>(LatestBlockHeightDocument, options);
+        }
+export type LatestBlockHeightQueryHookResult = ReturnType<typeof useLatestBlockHeightQuery>;
+export type LatestBlockHeightLazyQueryHookResult = ReturnType<typeof useLatestBlockHeightLazyQuery>;
+export type LatestBlockHeightQueryResult = Apollo.QueryResult<LatestBlockHeightQuery, LatestBlockHeightQueryVariables>;
 export const AverageBlockTimeDocument = gql`
     query AverageBlockTime {
   averageSlotTimePerHour: average_slot_time_per_hour(
@@ -7761,19 +8008,19 @@ export type TokensQueryHookResult = ReturnType<typeof useTokensQuery>;
 export type TokensLazyQueryHookResult = ReturnType<typeof useTokensLazyQuery>;
 export type TokensQueryResult = Apollo.QueryResult<TokensQuery, TokensQueryVariables>;
 export const TxByAddressDocument = gql`
-    query TxByAddress($address: _text) {
-  transactions: instructions_by_address_aggregate(
-    args: {addresses: $address, programs: "{}"}
-    limit: 10
-    offset: 0
-    where: {}
+    query TxByAddress($address: _text, $endSlot: bigint, $startSlot: bigint, $limit: Int = 50, $offset: Int = 0) {
+  instructions: instructions_by_address_aggregate(
+    args: {addresses: $address, programs: "{}", end_slot: $endSlot, start_slot: $startSlot}
+    limit: $limit
+    offset: $offset
+    order_by: {slot: desc, tx_signature: asc}
     distinct_on: tx_signature
   ) {
     nodes {
       transaction {
-        success
-        slot
         signature
+        slot
+        success
         numInstructions: num_instructions
         block {
           timestamp
@@ -7797,6 +8044,10 @@ export const TxByAddressDocument = gql`
  * const { data, loading, error } = useTxByAddressQuery({
  *   variables: {
  *      address: // value for 'address'
+ *      endSlot: // value for 'endSlot'
+ *      startSlot: // value for 'startSlot'
+ *      limit: // value for 'limit'
+ *      offset: // value for 'offset'
  *   },
  * });
  */
@@ -7811,6 +8062,48 @@ export function useTxByAddressLazyQuery(baseOptions?: Apollo.LazyQueryHookOption
 export type TxByAddressQueryHookResult = ReturnType<typeof useTxByAddressQuery>;
 export type TxByAddressLazyQueryHookResult = ReturnType<typeof useTxByAddressLazyQuery>;
 export type TxByAddressQueryResult = Apollo.QueryResult<TxByAddressQuery, TxByAddressQueryVariables>;
+export const TxByAddressCountDocument = gql`
+    query TxByAddressCount($address: _text, $endSlot: bigint, $startSlot: bigint) {
+  txCount: instructions_by_address_aggregate(
+    args: {addresses: $address, programs: "{}", end_slot: $endSlot, start_slot: $startSlot}
+    distinct_on: tx_signature
+  ) {
+    aggregate {
+      count
+    }
+  }
+}
+    `;
+
+/**
+ * __useTxByAddressCountQuery__
+ *
+ * To run a query within a React component, call `useTxByAddressCountQuery` and pass it any options that fit your needs.
+ * When your component renders, `useTxByAddressCountQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useTxByAddressCountQuery({
+ *   variables: {
+ *      address: // value for 'address'
+ *      endSlot: // value for 'endSlot'
+ *      startSlot: // value for 'startSlot'
+ *   },
+ * });
+ */
+export function useTxByAddressCountQuery(baseOptions?: Apollo.QueryHookOptions<TxByAddressCountQuery, TxByAddressCountQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<TxByAddressCountQuery, TxByAddressCountQueryVariables>(TxByAddressCountDocument, options);
+      }
+export function useTxByAddressCountLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<TxByAddressCountQuery, TxByAddressCountQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<TxByAddressCountQuery, TxByAddressCountQueryVariables>(TxByAddressCountDocument, options);
+        }
+export type TxByAddressCountQueryHookResult = ReturnType<typeof useTxByAddressCountQuery>;
+export type TxByAddressCountLazyQueryHookResult = ReturnType<typeof useTxByAddressCountLazyQuery>;
+export type TxByAddressCountQueryResult = Apollo.QueryResult<TxByAddressCountQuery, TxByAddressCountQueryVariables>;
 export const TransactionDetailsDocument = gql`
     query TransactionDetails($signature: String) {
   transaction(where: {signature: {_eq: $signature}}, limit: 1) {

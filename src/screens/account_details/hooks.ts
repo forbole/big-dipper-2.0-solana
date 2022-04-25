@@ -25,6 +25,8 @@ const ACCOUNT_TYPE_MAP: {[key: string]: string} = {
   token_account: ACCOUNT_TYPES.TOKEN_ACCOUNT,
   nonce_account: ACCOUNT_TYPES.NONCE_ACCOUNT,
   native_account: ACCOUNT_TYPES.NATIVE_ACCOUNT,
+  stake_account: ACCOUNT_TYPES.STAKE_ACCOUNT,
+  vote_account: ACCOUNT_TYPES.VOTE_ACCOUNT,
 };
 
 export const useAccountDetails = () => {
@@ -71,6 +73,10 @@ export const useAccountDetails = () => {
         },
         query: AccountTypeDocument,
       });
+      if (data.errors) {
+        throw Error();
+      }
+
       const accountType = R.pathOr(
         'native_account',
         ['data', 'actionsAccountInfo', 'parsed', 'type'],

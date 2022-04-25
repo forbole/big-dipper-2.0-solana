@@ -19,20 +19,10 @@ exports[`screen: Transactions/List matches snapshot 1`] = `
       id="TransactionsList"
       isItemLoaded={[Function]}
       isNextPageLoading={false}
-      itemCount={1}
+      itemCount={0}
       loadMoreItems={[Function]}
       loadNextPage={[Function]}
-      transactions={
-        Array [
-          Object {
-            "numInstructions": 1,
-            "signature": "3yaQVjLkbCaC3eVVSSLCP3R73Rpyzz96PDyDopiYce7EvKBcTDQbfL8mtoAL69tUaK7E29yndHGcXsGUJNQNqvGz",
-            "slot": 128404067,
-            "success": false,
-            "timestamp": "2022-04-05T23:26:03",
-          },
-        ]
-      }
+      transactions={Array []}
     />
   </div>
 </div>

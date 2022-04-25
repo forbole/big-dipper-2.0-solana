@@ -28,4 +28,6 @@
 - Add native account details page
 - Add nonce account details page
 - Add token details account page
+- Add stake details account page
+- Add vote details account page
 

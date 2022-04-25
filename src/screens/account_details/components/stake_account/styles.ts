@@ -6,32 +6,32 @@ export const useStyles = () => {
       return ({
         overview: {
           [theme.breakpoints.up('lg')]: {
-            gridColumn: '1 / 3',
+            gridColumn: '1 / 2',
           },
         },
         balance: {
           [theme.breakpoints.up('lg')]: {
-            gridColumn: '1 / 3',
+            gridColumn: '1 / 2',
           },
         },
         delegation: {
           [theme.breakpoints.up('lg')]: {
-            gridColumn: '1 / 3',
+            gridColumn: '1 / 2',
           },
         },
         accounts: {
           [theme.breakpoints.up('lg')]: {
-            gridColumn: '1 / 3',
+            gridColumn: '1 / 2',
           },
         },
         tokens: {
           [theme.breakpoints.up('lg')]: {
-            gridColumn: '1 / 3',
+            gridColumn: '1 / 2',
           },
         },
         transactions: {
           [theme.breakpoints.up('lg')]: {
-            gridColumn: '1 / 3',
+            gridColumn: '1 / 2',
           },
         },
       });
