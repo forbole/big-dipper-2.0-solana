@@ -10,14 +10,11 @@ import {
   SortArrows,
   AvatarName,
 } from '@components';
-// import { getValidatorConditionClass } from '@utils/get_validator_condition';
+import { SkipRate } from '..';
 import { useStyles } from './styles';
 import { fetchColumns } from './utils';
 import { ItemType } from '../../types';
 import { useDesktop } from './hooks';
-// import {
-//   Condition, SkipRate,
-// } from '..';
 
 const Desktop: React.FC<{
   className?: string;
@@ -40,7 +37,6 @@ const Desktop: React.FC<{
   } = useGrid(columns);
 
   const formattedItems = props.items.map((x, i) => {
-    // const condition = x.status === 3 ? getValidatorConditionClass(x.condition) : undefined;
     return ({
       idx: `#${i + 1}`,
       validator: (
@@ -53,15 +49,11 @@ const Desktop: React.FC<{
       stake: `${numeral(x.stake).format('0,0')} (${numeral(x.stakePercent).format('0,0.00')}%)`,
       commission: `${x.commission}%`,
       lastVote: numeral(x.lastVote).format('0,0'),
-      // skipRate: (
-      //   <SkipRate
-      //     percentage={x.skipPercent}
-      //     content={`${x.skipRate} / ${x.skipTotal}`}
-      //   />
-      // ),
-      // condition: (
-      //   <Condition className={condition} />
-      // ),
+      skipRate: (
+        <SkipRate
+          skipRate={x.skipRate}
+        />
+      ),
     });
   });
 

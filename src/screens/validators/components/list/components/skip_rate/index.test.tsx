@@ -15,8 +15,11 @@ describe('screen: Validators/SkipRate', () => {
     const component = renderer.create(
       <MockTheme>
         <SkipRate
-          content="content"
-          percentage={30}
+          skipRate={{
+            rate: 0.4,
+            skip: 100,
+            total: 200,
+          }}
         />
       </MockTheme>,
     );
