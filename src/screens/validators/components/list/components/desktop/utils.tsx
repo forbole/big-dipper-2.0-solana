@@ -21,7 +21,7 @@ export const fetchColumns = (_t): {
     },
     {
       key: 'skipRate',
-      sortKey: 'skipRate',
+      sortKey: 'skipRate.rate',
       align: 'right',
       width: 20,
       sort: true,
