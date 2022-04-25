@@ -10,12 +10,12 @@ exports[`screen: Validators/SkipRate matches snapshot 1`] = `
     <p
       className="MuiTypography-root MuiTypography-body1"
     >
-      content
+      100 / 200
     </p>
     <p
       className="MuiTypography-root percentage MuiTypography-body1"
     >
-      30
+      40.00
       %
     </p>
   </div>

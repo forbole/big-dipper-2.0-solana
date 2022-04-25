@@ -16,14 +16,14 @@ export const fetchColumns = (_t): {
     {
       key: 'validator',
       sortKey: 'validator.name',
-      width: 30,
+      width: 25,
       sort: true,
     },
     {
       key: 'skipRate',
       sortKey: 'skipRate.rate',
       align: 'right',
-      width: 20,
+      width: 25,
       sort: true,
     },
     {
