@@ -15,10 +15,14 @@ import {
 
 export const useEpoch = () => {
   const [state, setState] = useState<{
+    exists: boolean,
+    loading: boolean,
     inflation: InflationType;
     inflationGovernor: InflationGovernorType;
     epochSchedule: EpochScheduleType;
   }>({
+    exists: true,
+    loading: false,
     inflation: {
       validator: 0,
       foundation: 0,

@@ -37,8 +37,8 @@ const Epoch = () => {
         className={classes.root}
       >
         <LoadAndExist
-          loading={false}
-          exists
+          loading={state.loading}
+          exists={state.exists}
         >
           <EpochDetail epochDetail={inflation} title="inflation" />
           <EpochDetail epochDetail={inflationGovernor} title="inflationGovernor" />
