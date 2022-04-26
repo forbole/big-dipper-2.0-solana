@@ -4,19 +4,11 @@ import {
   EpochDetailsQuery,
 } from '@graphql/types';
 import {
-  InflationType,
-  InflationGovernorType,
-  EpochScheduleType,
+  EpochState,
 } from './types';
 
 export const useEpoch = () => {
-  const [state, setState] = useState<{
-    exists: boolean,
-    loading: boolean,
-    inflation: InflationType;
-    inflationGovernor: InflationGovernorType;
-    epochSchedule: EpochScheduleType;
-  }>({
+  const [state, setState] = useState<EpochState>({
     exists: true,
     loading: false,
     inflation: {

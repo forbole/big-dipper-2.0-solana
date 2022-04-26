@@ -20,3 +20,11 @@ export type EpochScheduleType = {
   firstNormalEpoch: number;
   firstNormalSlot: number;
 }
+
+export type EpochState = {
+  loading: boolean;
+  exists: boolean;
+  inflation: InflationType;
+  inflationGovernor: InflationGovernorType;
+  epochSchedule: EpochScheduleType;
+}
