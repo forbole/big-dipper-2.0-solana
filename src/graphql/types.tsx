@@ -1737,6 +1737,10 @@ export type Query_Root = {
   transaction: Array<Transaction>;
   /** fetch aggregated fields from the table: "transaction" */
   transaction_aggregate: Transaction_Aggregate;
+  /** execute function "transactions_by_address" which returns "transaction" */
+  transactions_by_address: Array<Transaction>;
+  /** execute function "transactions_by_address" and query aggregates on result of table type "transaction" */
+  transactions_by_address_aggregate: Transaction_Aggregate;
   /** An array relationship */
   validator: Array<Validator>;
   /** An aggregate relationship */
@@ -2290,6 +2294,26 @@ export type Query_RootTransactionArgs = {
 
 
 export type Query_RootTransaction_AggregateArgs = {
+  distinct_on?: Maybe<Array<Transaction_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Transaction_Order_By>>;
+  where?: Maybe<Transaction_Bool_Exp>;
+};
+
+
+export type Query_RootTransactions_By_AddressArgs = {
+  args: Transactions_By_Address_Args;
+  distinct_on?: Maybe<Array<Transaction_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Transaction_Order_By>>;
+  where?: Maybe<Transaction_Bool_Exp>;
+};
+
+
+export type Query_RootTransactions_By_Address_AggregateArgs = {
+  args: Transactions_By_Address_Args;
   distinct_on?: Maybe<Array<Transaction_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
@@ -2940,6 +2964,10 @@ export type Subscription_Root = {
   transaction: Array<Transaction>;
   /** fetch aggregated fields from the table: "transaction" */
   transaction_aggregate: Transaction_Aggregate;
+  /** execute function "transactions_by_address" which returns "transaction" */
+  transactions_by_address: Array<Transaction>;
+  /** execute function "transactions_by_address" and query aggregates on result of table type "transaction" */
+  transactions_by_address_aggregate: Transaction_Aggregate;
   /** An array relationship */
   validator: Array<Validator>;
   /** An aggregate relationship */
@@ -3477,6 +3505,26 @@ export type Subscription_RootTransactionArgs = {
 
 
 export type Subscription_RootTransaction_AggregateArgs = {
+  distinct_on?: Maybe<Array<Transaction_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Transaction_Order_By>>;
+  where?: Maybe<Transaction_Bool_Exp>;
+};
+
+
+export type Subscription_RootTransactions_By_AddressArgs = {
+  args: Transactions_By_Address_Args;
+  distinct_on?: Maybe<Array<Transaction_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Transaction_Order_By>>;
+  where?: Maybe<Transaction_Bool_Exp>;
+};
+
+
+export type Subscription_RootTransactions_By_Address_AggregateArgs = {
+  args: Transactions_By_Address_Args;
   distinct_on?: Maybe<Array<Transaction_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
@@ -5119,6 +5167,7 @@ export type Transaction = {
   instructions: Array<Instruction>;
   /** An aggregate relationship */
   instructions_aggregate: Instruction_Aggregate;
+  involved_accounts: Scalars['_text'];
   logs?: Maybe<Scalars['_text']>;
   num_instructions: Scalars['Int'];
   signature: Scalars['String'];
@@ -5214,6 +5263,7 @@ export type Transaction_Bool_Exp = {
   block?: Maybe<Block_Bool_Exp>;
   fee?: Maybe<Int_Comparison_Exp>;
   instructions?: Maybe<Instruction_Bool_Exp>;
+  involved_accounts?: Maybe<_Text_Comparison_Exp>;
   logs?: Maybe<_Text_Comparison_Exp>;
   num_instructions?: Maybe<Int_Comparison_Exp>;
   signature?: Maybe<String_Comparison_Exp>;
@@ -5260,6 +5310,7 @@ export type Transaction_Order_By = {
   block?: Maybe<Block_Order_By>;
   fee?: Maybe<Order_By>;
   instructions_aggregate?: Maybe<Instruction_Aggregate_Order_By>;
+  involved_accounts?: Maybe<Order_By>;
   logs?: Maybe<Order_By>;
   num_instructions?: Maybe<Order_By>;
   signature?: Maybe<Order_By>;
@@ -5271,6 +5322,8 @@ export type Transaction_Order_By = {
 export enum Transaction_Select_Column {
   /** column name */
   Fee = 'fee',
+  /** column name */
+  InvolvedAccounts = 'involved_accounts',
   /** column name */
   Logs = 'logs',
   /** column name */
@@ -5386,6 +5439,12 @@ export type Transaction_Variance_Order_By = {
   fee?: Maybe<Order_By>;
   num_instructions?: Maybe<Order_By>;
   slot?: Maybe<Order_By>;
+};
+
+export type Transactions_By_Address_Args = {
+  addresses?: Maybe<Scalars['_text']>;
+  end_slot?: Maybe<Scalars['bigint']>;
+  start_slot?: Maybe<Scalars['bigint']>;
 };
 
 /** columns and relationships of "validator" */
@@ -6595,27 +6654,17 @@ export type EpochQuery = { averageSlotTimePerHour: Array<(
     & Pick<Block, 'slot'>
   )> };
 
-export type InflationRateQueryVariables = Exact<{ [key: string]: never; }>;
+export type EpochDetailsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type InflationRateQuery = { inflationRate: (
+export type EpochDetailsQuery = { inflationRate: (
     { __typename?: 'InflationRate' }
     & Pick<InflationRate, 'validator' | 'foundation' | 'total' | 'epoch'>
-  ) };
-
-export type InflationGovernorQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type InflationGovernorQuery = { inflationGovernor: (
+  ), inflationGovernor: (
     { __typename?: 'InflationGovernor' }
     & Pick<InflationGovernor, 'initial' | 'terminal' | 'taper' | 'foundation'>
     & { foundationTerm: InflationGovernor['foundation_term'] }
-  ) };
-
-export type EpochScheduleQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type EpochScheduleQuery = { epochSchedule: (
+  ), epochSchedule: (
     { __typename?: 'EpochSchedule' }
     & Pick<EpochSchedule, 'warmup'>
     & { slotsPerEpoch: EpochSchedule['slots_per_epoch'], leaderScheduleSlotOffset: EpochSchedule['leader_schedule_slot_offset'], firstNormalEpoch: EpochSchedule['first_normal_epoch'], firstNormalSlot: EpochSchedule['first_normal_slot'] }
@@ -7696,45 +7745,14 @@ export function useEpochLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<Epoc
 export type EpochQueryHookResult = ReturnType<typeof useEpochQuery>;
 export type EpochLazyQueryHookResult = ReturnType<typeof useEpochLazyQuery>;
 export type EpochQueryResult = Apollo.QueryResult<EpochQuery, EpochQueryVariables>;
-export const InflationRateDocument = gql`
-    query InflationRate {
+export const EpochDetailsDocument = gql`
+    query EpochDetails {
   inflationRate: actions_inflation_rate {
     validator
     foundation
     total
     epoch
   }
-}
-    `;
-
-/**
- * __useInflationRateQuery__
- *
- * To run a query within a React component, call `useInflationRateQuery` and pass it any options that fit your needs.
- * When your component renders, `useInflationRateQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useInflationRateQuery({
- *   variables: {
- *   },
- * });
- */
-export function useInflationRateQuery(baseOptions?: Apollo.QueryHookOptions<InflationRateQuery, InflationRateQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<InflationRateQuery, InflationRateQueryVariables>(InflationRateDocument, options);
-      }
-export function useInflationRateLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<InflationRateQuery, InflationRateQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<InflationRateQuery, InflationRateQueryVariables>(InflationRateDocument, options);
-        }
-export type InflationRateQueryHookResult = ReturnType<typeof useInflationRateQuery>;
-export type InflationRateLazyQueryHookResult = ReturnType<typeof useInflationRateLazyQuery>;
-export type InflationRateQueryResult = Apollo.QueryResult<InflationRateQuery, InflationRateQueryVariables>;
-export const InflationGovernorDocument = gql`
-    query InflationGovernor {
   inflationGovernor: actions_inflation_governor {
     initial
     terminal
@@ -7742,37 +7760,6 @@ export const InflationGovernorDocument = gql`
     foundation
     foundationTerm: foundation_term
   }
-}
-    `;
-
-/**
- * __useInflationGovernorQuery__
- *
- * To run a query within a React component, call `useInflationGovernorQuery` and pass it any options that fit your needs.
- * When your component renders, `useInflationGovernorQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useInflationGovernorQuery({
- *   variables: {
- *   },
- * });
- */
-export function useInflationGovernorQuery(baseOptions?: Apollo.QueryHookOptions<InflationGovernorQuery, InflationGovernorQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<InflationGovernorQuery, InflationGovernorQueryVariables>(InflationGovernorDocument, options);
-      }
-export function useInflationGovernorLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<InflationGovernorQuery, InflationGovernorQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<InflationGovernorQuery, InflationGovernorQueryVariables>(InflationGovernorDocument, options);
-        }
-export type InflationGovernorQueryHookResult = ReturnType<typeof useInflationGovernorQuery>;
-export type InflationGovernorLazyQueryHookResult = ReturnType<typeof useInflationGovernorLazyQuery>;
-export type InflationGovernorQueryResult = Apollo.QueryResult<InflationGovernorQuery, InflationGovernorQueryVariables>;
-export const EpochScheduleDocument = gql`
-    query EpochSchedule {
   epochSchedule: actions_epoch_schedule {
     slotsPerEpoch: slots_per_epoch
     leaderScheduleSlotOffset: leader_schedule_slot_offset
@@ -7784,31 +7771,31 @@ export const EpochScheduleDocument = gql`
     `;
 
 /**
- * __useEpochScheduleQuery__
+ * __useEpochDetailsQuery__
  *
- * To run a query within a React component, call `useEpochScheduleQuery` and pass it any options that fit your needs.
- * When your component renders, `useEpochScheduleQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useEpochDetailsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useEpochDetailsQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useEpochScheduleQuery({
+ * const { data, loading, error } = useEpochDetailsQuery({
  *   variables: {
  *   },
  * });
  */
-export function useEpochScheduleQuery(baseOptions?: Apollo.QueryHookOptions<EpochScheduleQuery, EpochScheduleQueryVariables>) {
+export function useEpochDetailsQuery(baseOptions?: Apollo.QueryHookOptions<EpochDetailsQuery, EpochDetailsQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<EpochScheduleQuery, EpochScheduleQueryVariables>(EpochScheduleDocument, options);
+        return Apollo.useQuery<EpochDetailsQuery, EpochDetailsQueryVariables>(EpochDetailsDocument, options);
       }
-export function useEpochScheduleLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<EpochScheduleQuery, EpochScheduleQueryVariables>) {
+export function useEpochDetailsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<EpochDetailsQuery, EpochDetailsQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<EpochScheduleQuery, EpochScheduleQueryVariables>(EpochScheduleDocument, options);
+          return Apollo.useLazyQuery<EpochDetailsQuery, EpochDetailsQueryVariables>(EpochDetailsDocument, options);
         }
-export type EpochScheduleQueryHookResult = ReturnType<typeof useEpochScheduleQuery>;
-export type EpochScheduleLazyQueryHookResult = ReturnType<typeof useEpochScheduleLazyQuery>;
-export type EpochScheduleQueryResult = Apollo.QueryResult<EpochScheduleQuery, EpochScheduleQueryVariables>;
+export type EpochDetailsQueryHookResult = ReturnType<typeof useEpochDetailsQuery>;
+export type EpochDetailsLazyQueryHookResult = ReturnType<typeof useEpochDetailsLazyQuery>;
+export type EpochDetailsQueryResult = Apollo.QueryResult<EpochDetailsQuery, EpochDetailsQueryVariables>;
 export const MarketDataDocument = gql`
     query MarketData($denom: String) {
   tokenPrice: token_price(where: {symbol: {_eq: $denom}}) {

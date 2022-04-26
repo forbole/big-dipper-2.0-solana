@@ -7,16 +7,13 @@ query Epoch {
   }
 }
 
-query InflationRate {
+query EpochDetails {
   inflationRate: actions_inflation_rate {
     validator
     foundation
     total
     epoch
   }
-}
-
-query InflationGovernor {
   inflationGovernor: actions_inflation_governor {
     initial
     terminal
@@ -24,9 +21,6 @@ query InflationGovernor {
     foundation
     foundationTerm: foundation_term
   }
-}  
-
-query EpochSchedule {
   epochSchedule: actions_epoch_schedule {
     slotsPerEpoch: slots_per_epoch
     leaderScheduleSlotOffset: leader_schedule_slot_offset
@@ -35,3 +29,5 @@ query EpochSchedule {
     firstNormalSlot: first_normal_slot
   }
 }
+
+

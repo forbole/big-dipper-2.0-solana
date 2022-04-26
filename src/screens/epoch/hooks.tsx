@@ -1,11 +1,7 @@
 import { useState } from 'react';
 import {
-  useInflationRateQuery,
-  InflationRateQuery,
-  useInflationGovernorQuery,
-  InflationGovernorQuery,
-  useEpochScheduleQuery,
-  EpochScheduleQuery,
+  useEpochDetailsQuery,
+  EpochDetailsQuery,
 } from '@graphql/types';
 import {
   InflationType,
@@ -45,19 +41,21 @@ export const useEpoch = () => {
     },
   });
 
-  // ====================================
-  // inflation rate
-  // ====================================
-  useInflationRateQuery({
+  useEpochDetailsQuery({
     onCompleted: (data) => {
       setState((prevState) => ({
         ...prevState,
         inflation: formatInflationRate(data),
+        inflationGovernor: formatInflationGovernor(data),
+        epochSchedule: formatEpochSchedule(data),
       }));
     },
   });
 
-  const formatInflationRate = (data: InflationRateQuery) => {
+  // ====================================
+  // inflation rate
+  // ====================================
+  const formatInflationRate = (data: EpochDetailsQuery) => {
     return {
       validator: data.inflationRate.validator,
       foundation: data.inflationRate.foundation,
@@ -69,16 +67,7 @@ export const useEpoch = () => {
   // ====================================
   // inflation governor
   // ====================================
-  useInflationGovernorQuery({
-    onCompleted: (data) => {
-      setState((prevState) => ({
-        ...prevState,
-        inflationGovernor: formatInflationGovernor(data),
-      }));
-    },
-  });
-
-  const formatInflationGovernor = (data: InflationGovernorQuery) => {
+  const formatInflationGovernor = (data: EpochDetailsQuery) => {
     return {
       initial: data.inflationGovernor.initial,
       terminal: data.inflationGovernor.terminal,
@@ -91,16 +80,7 @@ export const useEpoch = () => {
   // ====================================
   // epoch schedule
   // ====================================
-  useEpochScheduleQuery({
-    onCompleted: (data) => {
-      setState((prevState) => ({
-        ...prevState,
-        epochSchedule: formatEpochSchedule(data),
-      }));
-    },
-  });
-
-  const formatEpochSchedule = (data: EpochScheduleQuery) => {
+  const formatEpochSchedule = (data: EpochDetailsQuery) => {
     return {
       slotsPerEpoch: data.epochSchedule.slotsPerEpoch,
       leaderScheduleSlotOffset: data.epochSchedule.leaderScheduleSlotOffset,
