@@ -20,9 +20,3 @@ export type EpochScheduleType = {
   firstNormalEpoch: number;
   firstNormalSlot: number;
 }
-
-export type EpochDetailType = {
-  name: string;
-  value: number | string;
-  detail: string;
-}
