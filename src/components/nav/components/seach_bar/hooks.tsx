@@ -13,19 +13,26 @@ import {
 export const useSearchBar = () => {
   const router = useRouter();
 
-  const handleOnSubmit = useRecoilCallback(() => (
-    async (value: string, clear?: () => void) => {
-      // account check
+  const isAccount = (value: string): boolean => {
+    try {
       const decoded = bs58.decode(value);
       const bytes = Buffer.byteLength(decoded);
+      return bytes === 32;
+    } catch {
+      return false;
+    }
+  };
 
-      // block check
-      const parsedValue = value.replace(/\s+/g, '');
+  const isBlock = (value: string): boolean => {
+    return /^-?\d+$/.test(numeral(value).value());
+  };
 
-      if (bytes === 32) {
+  const handleOnSubmit = useRecoilCallback(() => (
+    async (value: string, clear?: () => void) => {
+      if (isAccount(value)) {
         router.push(ACCOUNT_DETAILS(value));
-      } else if (/^-?\d+$/.test(numeral(parsedValue).value())) {
-        router.push(BLOCK_DETAILS(numeral(parsedValue).value()));
+      } else if (isBlock(value)) {
+        router.push(BLOCK_DETAILS(numeral(value).value()));
       } else {
         router.push(TRANSACTION_DETAILS(value));
       }

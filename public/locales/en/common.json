@@ -23,7 +23,7 @@
   "validators": "Validators",
   "transactions": "Transactions",
   "tokens": "Tokens",
-  "searchBarPlaceholder": "Search for validator / transactions / blocks / accounts / tokens / programs",
+  "searchBarPlaceholder": "Search for accounts / blocks / transactions",
   "marketCap": "Market Cap",
   "maxSupply": "Max Supply",
   "price": "Price",
