@@ -19,10 +19,9 @@ const Epoch = () => {
   const classes = useStyles();
   const { state } = useEpoch();
 
-  const inflation = state.inflation ? inflationData(state.inflation, t) : null;
-  const inflationGovernor = state.inflationGovernor
-    ? inflationGovernorData(state.inflationGovernor, t) : null;
-  const epochSchedule = state.epochSchedule ? epochScheduleData(state.epochSchedule, t) : null;
+  const inflation = inflationData(state.inflation, t);
+  const inflationGovernor = inflationGovernorData(state.inflationGovernor, t);
+  const epochSchedule = epochScheduleData(state.epochSchedule, t);
 
   return (
     <>
