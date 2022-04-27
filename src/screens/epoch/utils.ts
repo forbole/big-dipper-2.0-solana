@@ -64,12 +64,12 @@ export const epochScheduleData = (data: EpochScheduleType, t: any) => {
   return ([
     {
       name: t('slotsPerEpoch'),
-      value: data.slotsPerEpoch,
+      value: numeral(data.slotsPerEpoch).format('0,0'),
       detail: t('slotsPerEpochDetail'),
     },
     {
       name: t('leaderScheduleSlotOffset'),
-      value: data.leaderScheduleSlotOffset,
+      value: numeral(data.leaderScheduleSlotOffset).format('0,0'),
       detail: t('leaderScheduleSlotOffsetDetail'),
     },
     {
