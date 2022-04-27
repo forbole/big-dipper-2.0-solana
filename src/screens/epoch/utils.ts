@@ -74,7 +74,7 @@ export const epochScheduleData = (data: EpochScheduleType, t: any) => {
     },
     {
       name: t('warmup'),
-      value: `${data.warmup}`,
+      value: `${data.warmup}`.toUpperCase(),
       detail: t('warmupDetail'),
     },
     {
