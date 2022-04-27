@@ -10,7 +10,7 @@ import {
 export const useEpoch = () => {
   const [state, setState] = useState<EpochState>({
     exists: true,
-    loading: false,
+    loading: true,
     inflation: {
       validator: 0,
       foundation: 0,
@@ -37,9 +37,16 @@ export const useEpoch = () => {
     onCompleted: (data) => {
       setState((prevState) => ({
         ...prevState,
+        loading: false,
         inflation: formatInflationRate(data),
         inflationGovernor: formatInflationGovernor(data),
         epochSchedule: formatEpochSchedule(data),
+      }));
+    },
+    onError: () => {
+      setState((prevState) => ({
+        ...prevState,
+        loading: false,
       }));
     },
   });
