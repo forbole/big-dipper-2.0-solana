@@ -9,7 +9,7 @@ export const inflationData = (data: InflationType, t: any) => {
   return ([
     {
       name: t('epoch'),
-      value: data.epoch,
+      value: numeral(data.epoch).format('0,0'),
       detail: t('epochDetail'),
     },
     {
@@ -54,7 +54,7 @@ export const inflationGovernorData = (data: InflationGovernorType, t: any) => {
     },
     {
       name: t('foundationTerm'),
-      value: data.foundationTerm,
+      value: numeral(data.foundationTerm).format('0,0'),
       detail: t('foundationTermDetail'),
     },
   ]);
@@ -79,12 +79,12 @@ export const epochScheduleData = (data: EpochScheduleType, t: any) => {
     },
     {
       name: t('firstNormalEpoch'),
-      value: data.firstNormalEpoch,
+      value: numeral(data.firstNormalEpoch).format('0,0'),
       detail: t('firstNormalEpochDetail'),
     },
     {
       name: t('firstNormalSlot'),
-      value: data.firstNormalSlot,
+      value: numeral(data.firstNormalSlot).format('0,0'),
       detail: t('firstNormalSlotDetail'),
     },
   ]);
