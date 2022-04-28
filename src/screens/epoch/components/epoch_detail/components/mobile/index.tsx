@@ -17,34 +17,32 @@ const Mobile: React.FC<{epochDetail:EpochDetailType[] } & ComponentDefault> = (p
       {props.epochDetail.map((x, i) => {
         return (
           <React.Fragment key={`${x.name}-${i}`}>
-            <div className={classes.root}>
-              <div className={classnames(props.className, classes.root)}>
-                <div className={classes.flex}>
-                  <div className={classes.item}>
-                    <Typography variant="h4" className="label">
-                      {t('name')}
-                    </Typography>
-                    <Typography variant="body1" className="value">
-                      {x.name}
-                    </Typography>
-                  </div>
-                  <div className={classes.item}>
-                    <Typography variant="h4" className="label">
-                      {t('value')}
-                    </Typography>
-                    <Typography variant="body1" className="value">
-                      {x.value}
-                    </Typography>
-                  </div>
+            <div className={classnames(props.className, classes.root)}>
+              <div className={classes.flex}>
+                <div className={classes.item}>
+                  <Typography variant="h4" className="label">
+                    {t('name')}
+                  </Typography>
+                  <Typography variant="body1" className="value">
+                    {x.name}
+                  </Typography>
                 </div>
                 <div className={classes.item}>
                   <Typography variant="h4" className="label">
-                    {t('detail')}
+                    {t('value')}
                   </Typography>
                   <Typography variant="body1" className="value">
-                    {x.detail}
+                    {x.value}
                   </Typography>
                 </div>
+              </div>
+              <div className={classes.item}>
+                <Typography variant="h4" className="label">
+                  {t('detail')}
+                </Typography>
+                <Typography variant="body1" className="value">
+                  {x.detail}
+                </Typography>
               </div>
             </div>
             {i !== props.epochDetail.length - 1 && <Divider />}

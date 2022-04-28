@@ -5,9 +5,6 @@ export const useStyles = () => {
     (theme) => {
       return ({
         root: {
-          '& .MuiTableCell-root': {
-            overflow: 'auto',
-          },
           marginBottom: theme.spacing(2),
           marginTop: theme.spacing(2),
         },
