@@ -5,7 +5,6 @@ import { useScreenSize } from '@hooks';
 import classnames from 'classnames';
 import { Typography } from '@material-ui/core';
 import useTranslation from 'next-translate/useTranslation';
-import { useStyles } from './styles';
 import { EpochDetailType } from './types';
 
 const Desktop = dynamic(() => import('./components/desktop'));
@@ -17,10 +16,9 @@ const EpochDetail: React.FC<{
 } & ComponentDefault> = (props) => {
   const { isDesktop } = useScreenSize();
   const { t } = useTranslation('epoch');
-  const classes = useStyles();
 
   return (
-    <Box className={classnames(props.className, classes.root)}>
+    <Box className={classnames(props.className)}>
       <Typography variant="h2">{t(props.title)}</Typography>
       {isDesktop ? (
         <Desktop epochDetail={props.epochDetail} />
