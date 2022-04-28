@@ -14,17 +14,17 @@ export const inflationData = (data: InflationType, t: any) => {
     },
     {
       name: t('totalInflation'),
-      value: numeral(data.total).format('0.0[000]'),
+      value: `${numeral(data.total * 100).format('0.[00]')}%`,
       detail: t('totalInflationDetail'),
     },
     {
       name: t('validatorInflation'),
-      value: numeral(data.validator).format('0.0[000]'),
+      value: `${numeral(data.validator * 100).format('0.[00]')}%`,
       detail: t('validatorInflationDetail'),
     },
     {
       name: t('foundationInflation'),
-      value: numeral(data.foundation).format('0.0[000]'),
+      value: `${numeral(data.foundation * 100).format('0.[00]')}%`,
       detail: t('foundationInflationDetail'),
     },
   ]);
@@ -34,22 +34,22 @@ export const inflationGovernorData = (data: InflationGovernorType, t: any) => {
   return ([
     {
       name: t('initial'),
-      value: data.initial,
+      value: `${numeral(data.initial * 100).format('0.[00]')}%`,
       detail: t('initialDetail'),
     },
     {
       name: t('terminal'),
-      value: data.terminal,
+      value: `${numeral(data.terminal * 100).format('0.[00]')}%`,
       detail: t('terminalDetail'),
     },
     {
       name: t('taper'),
-      value: data.taper,
+      value: `${numeral(data.taper * 100).format('0.[00]')}%`,
       detail: t('taperDetail'),
     },
     {
       name: t('foundation'),
-      value: data.foundation,
+      value: `${numeral(data.foundation * 100).format('0.[00]')}%`,
       detail: t('foundationDetail'),
     },
     {
