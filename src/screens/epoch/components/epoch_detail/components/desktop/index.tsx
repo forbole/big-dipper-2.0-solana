@@ -10,7 +10,7 @@ import {
 } from '@material-ui/core';
 import { columns } from './utils';
 import { useStyles } from './styles';
-import { EpochDetailType } from '../../../../types';
+import { EpochDetailType } from '../../types';
 
 const Desktop: React.FC<{epochDetail:EpochDetailType[] } & ComponentDefault> = (props) => {
   const { t } = useTranslation('epoch');

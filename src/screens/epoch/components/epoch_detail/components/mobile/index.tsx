@@ -5,7 +5,7 @@ import {
   Divider,
 } from '@material-ui/core';
 import useTranslation from 'next-translate/useTranslation';
-import { EpochDetailType } from '../../../../types';
+import { EpochDetailType } from '../../types';
 import { useStyles } from './styles';
 
 const Mobile: React.FC<{epochDetail:EpochDetailType[] } & ComponentDefault> = (props) => {
