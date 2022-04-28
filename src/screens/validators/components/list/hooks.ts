@@ -70,6 +70,11 @@ export const useValidators = () => {
         stakePercent: status ? stakePercent : 0,
         lastVote: R.pathOr(0, ['validatorStatus', 'lastVote'], x),
         status,
+        skipRate: {
+          skip: R.pathOr(0, ['validatorSkipRate', 'skip'], x),
+          rate: R.pathOr(0, ['validatorSkipRate', 'skipRate'], x),
+          total: R.pathOr(0, ['validatorSkipRate', 'total'], x),
+        },
       });
     });
 

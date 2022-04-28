@@ -1,3 +1,9 @@
+export type SkipRateType = {
+  skip: number;
+  rate: number;
+  total: number;
+}
+
 export type ValidatorType = {
   validator: string;
   commission: number;
@@ -5,6 +11,7 @@ export type ValidatorType = {
   stakePercent: number;
   lastVote: number;
   status: boolean;
+  skipRate: SkipRateType;
 }
 
 export type ValidatorsState = {

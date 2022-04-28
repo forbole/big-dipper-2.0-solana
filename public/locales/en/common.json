@@ -24,7 +24,7 @@
   "transactions": "Transactions",
   "tokens": "Tokens",
   "epoch": "Epoch",
-  "searchBarPlaceholder": "Search for validator / transactions / blocks / accounts / tokens / programs",
+  "searchBarPlaceholder": "Search for accounts / blocks / transactions",
   "marketCap": "Market Cap",
   "maxSupply": "Max Supply",
   "price": "Price",

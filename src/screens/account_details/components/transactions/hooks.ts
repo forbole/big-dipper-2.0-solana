@@ -10,7 +10,6 @@ import { TransactionsState } from './types';
 
 export const useTransactions = () => {
   const router = useRouter();
-  const [isMounted, setMounted] = useState(true);
   const [state, setState] = useState<TransactionsState>({
     loading: true,
     transactions: [],
@@ -20,22 +19,11 @@ export const useTransactions = () => {
   });
 
   useEffect(() => {
-    if (isMounted) {
-      init();
-    }
-    // let unmounted = false;
-    // if (!unmounted) {
-    //   init();
-    // }
-    return () => {
-      setMounted(false);
-    };
+    init();
   }, []);
 
   const handleSetState = (stateChange: any) => {
-    if (isMounted) {
-      setState((prevState) => R.mergeDeepLeft(stateChange, prevState));
-    }
+    setState((prevState) => R.mergeDeepLeft(stateChange, prevState));
   };
 
   // get latest block height

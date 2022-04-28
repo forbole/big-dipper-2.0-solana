@@ -7,14 +7,14 @@ import axios from 'axios';
 import {
   AccountTypeDocument,
 } from '@src/graphql/account_details_documents';
-import { chainConfig } from '@src/configs';
-import { useDesmosProfile } from '@hooks';
+// import { chainConfig } from '@src/configs';
+// import { useDesmosProfile } from '@hooks';
 import {
   AccountDetailState, ACCOUNT_TYPES,
 } from './types';
 
 const initialState: AccountDetailState = {
-  loading: false,
+  loading: true,
   exists: true,
   desmosProfile: null,
   accountType: '',
@@ -40,23 +40,23 @@ export const useAccountDetails = () => {
   // ==========================
   // Desmos Profile
   // ==========================
-  const {
-    fetchDesmosProfile, formatDesmosProfile,
-  } = useDesmosProfile({
-    onComplete: (data) => {
-      handleSetState({
-        desmosProfile: formatDesmosProfile(data),
-      });
-    },
-  });
+  // const {
+  //   fetchDesmosProfile, formatDesmosProfile,
+  // } = useDesmosProfile({
+  //   onComplete: (data) => {
+  //     handleSetState({
+  //       desmosProfile: formatDesmosProfile(data),
+  //     });
+  //   },
+  // });
 
-  useEffect(() => {
-    handleSetState(initialState);
-    if (chainConfig.extra.profile) {
-      fetchDesmosProfile(R.pathOr('', ['query', 'address'], router));
-    }
-  },
-  [R.pathOr('', ['query', 'address'], router)]);
+  // useEffect(() => {
+  //   handleSetState(initialState);
+  //   if (chainConfig.extra.profile) {
+  //     fetchDesmosProfile(R.pathOr('', ['query', 'address'], router));
+  //   }
+  // },
+  // [R.pathOr('', ['query', 'address'], router)]);
 
   // ==========================
   // Fetch Data
@@ -83,6 +83,7 @@ export const useAccountDetails = () => {
         data,
       );
       handleSetState({
+        loading: false,
         accountType: ACCOUNT_TYPE_MAP[accountType] || '',
       });
     } catch (error) {

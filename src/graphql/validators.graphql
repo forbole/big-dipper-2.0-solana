@@ -7,5 +7,10 @@ query Validators {
       activatedStake: activated_stake
       lastVote: last_vote
     }
+    validatorSkipRate: validator_skip_rate {
+      skip
+      skipRate: skip_rate
+      total
+    }
   }
 }

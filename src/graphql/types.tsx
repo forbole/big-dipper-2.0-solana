@@ -6855,6 +6855,10 @@ export type ValidatorsQuery = { validator: Array<(
       { __typename?: 'validator_status' }
       & Pick<Validator_Status, 'active'>
       & { activatedStake: Validator_Status['activated_stake'], lastVote: Validator_Status['last_vote'] }
+    )>, validatorSkipRate?: Maybe<(
+      { __typename?: 'validator_skip_rate' }
+      & Pick<Validator_Skip_Rate, 'skip' | 'total'>
+      & { skipRate: Validator_Skip_Rate['skip_rate'] }
     )> }
   )> };
 
@@ -8277,6 +8281,11 @@ export const ValidatorsDocument = gql`
       active
       activatedStake: activated_stake
       lastVote: last_vote
+    }
+    validatorSkipRate: validator_skip_rate {
+      skip
+      skipRate: skip_rate
+      total
     }
   }
 }
