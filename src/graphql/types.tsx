@@ -1737,6 +1737,14 @@ export type Query_Root = {
   transaction: Array<Transaction>;
   /** fetch aggregated fields from the table: "transaction" */
   transaction_aggregate: Transaction_Aggregate;
+  /** execute function "transactions_by_address" which returns "transaction" */
+  transactions_by_address: Array<Transaction>;
+  /** execute function "transactions_by_address_2" which returns "transaction" */
+  transactions_by_address_2: Array<Transaction>;
+  /** execute function "transactions_by_address_2" and query aggregates on result of table type "transaction" */
+  transactions_by_address_2_aggregate: Transaction_Aggregate;
+  /** execute function "transactions_by_address" and query aggregates on result of table type "transaction" */
+  transactions_by_address_aggregate: Transaction_Aggregate;
   /** An array relationship */
   validator: Array<Validator>;
   /** An aggregate relationship */
@@ -2290,6 +2298,46 @@ export type Query_RootTransactionArgs = {
 
 
 export type Query_RootTransaction_AggregateArgs = {
+  distinct_on?: Maybe<Array<Transaction_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Transaction_Order_By>>;
+  where?: Maybe<Transaction_Bool_Exp>;
+};
+
+
+export type Query_RootTransactions_By_AddressArgs = {
+  args: Transactions_By_Address_Args;
+  distinct_on?: Maybe<Array<Transaction_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Transaction_Order_By>>;
+  where?: Maybe<Transaction_Bool_Exp>;
+};
+
+
+export type Query_RootTransactions_By_Address_2Args = {
+  args: Transactions_By_Address_2_Args;
+  distinct_on?: Maybe<Array<Transaction_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Transaction_Order_By>>;
+  where?: Maybe<Transaction_Bool_Exp>;
+};
+
+
+export type Query_RootTransactions_By_Address_2_AggregateArgs = {
+  args: Transactions_By_Address_2_Args;
+  distinct_on?: Maybe<Array<Transaction_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Transaction_Order_By>>;
+  where?: Maybe<Transaction_Bool_Exp>;
+};
+
+
+export type Query_RootTransactions_By_Address_AggregateArgs = {
+  args: Transactions_By_Address_Args;
   distinct_on?: Maybe<Array<Transaction_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
@@ -2940,6 +2988,14 @@ export type Subscription_Root = {
   transaction: Array<Transaction>;
   /** fetch aggregated fields from the table: "transaction" */
   transaction_aggregate: Transaction_Aggregate;
+  /** execute function "transactions_by_address" which returns "transaction" */
+  transactions_by_address: Array<Transaction>;
+  /** execute function "transactions_by_address_2" which returns "transaction" */
+  transactions_by_address_2: Array<Transaction>;
+  /** execute function "transactions_by_address_2" and query aggregates on result of table type "transaction" */
+  transactions_by_address_2_aggregate: Transaction_Aggregate;
+  /** execute function "transactions_by_address" and query aggregates on result of table type "transaction" */
+  transactions_by_address_aggregate: Transaction_Aggregate;
   /** An array relationship */
   validator: Array<Validator>;
   /** An aggregate relationship */
@@ -3477,6 +3533,46 @@ export type Subscription_RootTransactionArgs = {
 
 
 export type Subscription_RootTransaction_AggregateArgs = {
+  distinct_on?: Maybe<Array<Transaction_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Transaction_Order_By>>;
+  where?: Maybe<Transaction_Bool_Exp>;
+};
+
+
+export type Subscription_RootTransactions_By_AddressArgs = {
+  args: Transactions_By_Address_Args;
+  distinct_on?: Maybe<Array<Transaction_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Transaction_Order_By>>;
+  where?: Maybe<Transaction_Bool_Exp>;
+};
+
+
+export type Subscription_RootTransactions_By_Address_2Args = {
+  args: Transactions_By_Address_2_Args;
+  distinct_on?: Maybe<Array<Transaction_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Transaction_Order_By>>;
+  where?: Maybe<Transaction_Bool_Exp>;
+};
+
+
+export type Subscription_RootTransactions_By_Address_2_AggregateArgs = {
+  args: Transactions_By_Address_2_Args;
+  distinct_on?: Maybe<Array<Transaction_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Transaction_Order_By>>;
+  where?: Maybe<Transaction_Bool_Exp>;
+};
+
+
+export type Subscription_RootTransactions_By_Address_AggregateArgs = {
+  args: Transactions_By_Address_Args;
   distinct_on?: Maybe<Array<Transaction_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
@@ -5115,10 +5211,12 @@ export type Transaction = {
   /** An object relationship */
   block?: Maybe<Block>;
   fee: Scalars['Int'];
+  index: Scalars['Int'];
   /** An array relationship */
   instructions: Array<Instruction>;
   /** An aggregate relationship */
   instructions_aggregate: Instruction_Aggregate;
+  involved_accounts: Scalars['_text'];
   logs?: Maybe<Scalars['_text']>;
   num_instructions: Scalars['Int'];
   signature: Scalars['String'];
@@ -5195,6 +5293,7 @@ export type Transaction_Aggregate_Order_By = {
 export type Transaction_Avg_Fields = {
   __typename?: 'transaction_avg_fields';
   fee?: Maybe<Scalars['Float']>;
+  index?: Maybe<Scalars['Float']>;
   num_instructions?: Maybe<Scalars['Float']>;
   slot?: Maybe<Scalars['Float']>;
 };
@@ -5202,6 +5301,7 @@ export type Transaction_Avg_Fields = {
 /** order by avg() on columns of table "transaction" */
 export type Transaction_Avg_Order_By = {
   fee?: Maybe<Order_By>;
+  index?: Maybe<Order_By>;
   num_instructions?: Maybe<Order_By>;
   slot?: Maybe<Order_By>;
 };
@@ -5213,7 +5313,9 @@ export type Transaction_Bool_Exp = {
   _or?: Maybe<Array<Transaction_Bool_Exp>>;
   block?: Maybe<Block_Bool_Exp>;
   fee?: Maybe<Int_Comparison_Exp>;
+  index?: Maybe<Int_Comparison_Exp>;
   instructions?: Maybe<Instruction_Bool_Exp>;
+  involved_accounts?: Maybe<_Text_Comparison_Exp>;
   logs?: Maybe<_Text_Comparison_Exp>;
   num_instructions?: Maybe<Int_Comparison_Exp>;
   signature?: Maybe<String_Comparison_Exp>;
@@ -5225,6 +5327,7 @@ export type Transaction_Bool_Exp = {
 export type Transaction_Max_Fields = {
   __typename?: 'transaction_max_fields';
   fee?: Maybe<Scalars['Int']>;
+  index?: Maybe<Scalars['Int']>;
   num_instructions?: Maybe<Scalars['Int']>;
   signature?: Maybe<Scalars['String']>;
   slot?: Maybe<Scalars['bigint']>;
@@ -5233,6 +5336,7 @@ export type Transaction_Max_Fields = {
 /** order by max() on columns of table "transaction" */
 export type Transaction_Max_Order_By = {
   fee?: Maybe<Order_By>;
+  index?: Maybe<Order_By>;
   num_instructions?: Maybe<Order_By>;
   signature?: Maybe<Order_By>;
   slot?: Maybe<Order_By>;
@@ -5242,6 +5346,7 @@ export type Transaction_Max_Order_By = {
 export type Transaction_Min_Fields = {
   __typename?: 'transaction_min_fields';
   fee?: Maybe<Scalars['Int']>;
+  index?: Maybe<Scalars['Int']>;
   num_instructions?: Maybe<Scalars['Int']>;
   signature?: Maybe<Scalars['String']>;
   slot?: Maybe<Scalars['bigint']>;
@@ -5250,6 +5355,7 @@ export type Transaction_Min_Fields = {
 /** order by min() on columns of table "transaction" */
 export type Transaction_Min_Order_By = {
   fee?: Maybe<Order_By>;
+  index?: Maybe<Order_By>;
   num_instructions?: Maybe<Order_By>;
   signature?: Maybe<Order_By>;
   slot?: Maybe<Order_By>;
@@ -5259,7 +5365,9 @@ export type Transaction_Min_Order_By = {
 export type Transaction_Order_By = {
   block?: Maybe<Block_Order_By>;
   fee?: Maybe<Order_By>;
+  index?: Maybe<Order_By>;
   instructions_aggregate?: Maybe<Instruction_Aggregate_Order_By>;
+  involved_accounts?: Maybe<Order_By>;
   logs?: Maybe<Order_By>;
   num_instructions?: Maybe<Order_By>;
   signature?: Maybe<Order_By>;
@@ -5271,6 +5379,10 @@ export type Transaction_Order_By = {
 export enum Transaction_Select_Column {
   /** column name */
   Fee = 'fee',
+  /** column name */
+  Index = 'index',
+  /** column name */
+  InvolvedAccounts = 'involved_accounts',
   /** column name */
   Logs = 'logs',
   /** column name */
@@ -5287,6 +5399,7 @@ export enum Transaction_Select_Column {
 export type Transaction_Stddev_Fields = {
   __typename?: 'transaction_stddev_fields';
   fee?: Maybe<Scalars['Float']>;
+  index?: Maybe<Scalars['Float']>;
   num_instructions?: Maybe<Scalars['Float']>;
   slot?: Maybe<Scalars['Float']>;
 };
@@ -5294,6 +5407,7 @@ export type Transaction_Stddev_Fields = {
 /** order by stddev() on columns of table "transaction" */
 export type Transaction_Stddev_Order_By = {
   fee?: Maybe<Order_By>;
+  index?: Maybe<Order_By>;
   num_instructions?: Maybe<Order_By>;
   slot?: Maybe<Order_By>;
 };
@@ -5302,6 +5416,7 @@ export type Transaction_Stddev_Order_By = {
 export type Transaction_Stddev_Pop_Fields = {
   __typename?: 'transaction_stddev_pop_fields';
   fee?: Maybe<Scalars['Float']>;
+  index?: Maybe<Scalars['Float']>;
   num_instructions?: Maybe<Scalars['Float']>;
   slot?: Maybe<Scalars['Float']>;
 };
@@ -5309,6 +5424,7 @@ export type Transaction_Stddev_Pop_Fields = {
 /** order by stddev_pop() on columns of table "transaction" */
 export type Transaction_Stddev_Pop_Order_By = {
   fee?: Maybe<Order_By>;
+  index?: Maybe<Order_By>;
   num_instructions?: Maybe<Order_By>;
   slot?: Maybe<Order_By>;
 };
@@ -5317,6 +5433,7 @@ export type Transaction_Stddev_Pop_Order_By = {
 export type Transaction_Stddev_Samp_Fields = {
   __typename?: 'transaction_stddev_samp_fields';
   fee?: Maybe<Scalars['Float']>;
+  index?: Maybe<Scalars['Float']>;
   num_instructions?: Maybe<Scalars['Float']>;
   slot?: Maybe<Scalars['Float']>;
 };
@@ -5324,6 +5441,7 @@ export type Transaction_Stddev_Samp_Fields = {
 /** order by stddev_samp() on columns of table "transaction" */
 export type Transaction_Stddev_Samp_Order_By = {
   fee?: Maybe<Order_By>;
+  index?: Maybe<Order_By>;
   num_instructions?: Maybe<Order_By>;
   slot?: Maybe<Order_By>;
 };
@@ -5332,6 +5450,7 @@ export type Transaction_Stddev_Samp_Order_By = {
 export type Transaction_Sum_Fields = {
   __typename?: 'transaction_sum_fields';
   fee?: Maybe<Scalars['Int']>;
+  index?: Maybe<Scalars['Int']>;
   num_instructions?: Maybe<Scalars['Int']>;
   slot?: Maybe<Scalars['bigint']>;
 };
@@ -5339,6 +5458,7 @@ export type Transaction_Sum_Fields = {
 /** order by sum() on columns of table "transaction" */
 export type Transaction_Sum_Order_By = {
   fee?: Maybe<Order_By>;
+  index?: Maybe<Order_By>;
   num_instructions?: Maybe<Order_By>;
   slot?: Maybe<Order_By>;
 };
@@ -5347,6 +5467,7 @@ export type Transaction_Sum_Order_By = {
 export type Transaction_Var_Pop_Fields = {
   __typename?: 'transaction_var_pop_fields';
   fee?: Maybe<Scalars['Float']>;
+  index?: Maybe<Scalars['Float']>;
   num_instructions?: Maybe<Scalars['Float']>;
   slot?: Maybe<Scalars['Float']>;
 };
@@ -5354,6 +5475,7 @@ export type Transaction_Var_Pop_Fields = {
 /** order by var_pop() on columns of table "transaction" */
 export type Transaction_Var_Pop_Order_By = {
   fee?: Maybe<Order_By>;
+  index?: Maybe<Order_By>;
   num_instructions?: Maybe<Order_By>;
   slot?: Maybe<Order_By>;
 };
@@ -5362,6 +5484,7 @@ export type Transaction_Var_Pop_Order_By = {
 export type Transaction_Var_Samp_Fields = {
   __typename?: 'transaction_var_samp_fields';
   fee?: Maybe<Scalars['Float']>;
+  index?: Maybe<Scalars['Float']>;
   num_instructions?: Maybe<Scalars['Float']>;
   slot?: Maybe<Scalars['Float']>;
 };
@@ -5369,6 +5492,7 @@ export type Transaction_Var_Samp_Fields = {
 /** order by var_samp() on columns of table "transaction" */
 export type Transaction_Var_Samp_Order_By = {
   fee?: Maybe<Order_By>;
+  index?: Maybe<Order_By>;
   num_instructions?: Maybe<Order_By>;
   slot?: Maybe<Order_By>;
 };
@@ -5377,6 +5501,7 @@ export type Transaction_Var_Samp_Order_By = {
 export type Transaction_Variance_Fields = {
   __typename?: 'transaction_variance_fields';
   fee?: Maybe<Scalars['Float']>;
+  index?: Maybe<Scalars['Float']>;
   num_instructions?: Maybe<Scalars['Float']>;
   slot?: Maybe<Scalars['Float']>;
 };
@@ -5384,8 +5509,21 @@ export type Transaction_Variance_Fields = {
 /** order by variance() on columns of table "transaction" */
 export type Transaction_Variance_Order_By = {
   fee?: Maybe<Order_By>;
+  index?: Maybe<Order_By>;
   num_instructions?: Maybe<Order_By>;
   slot?: Maybe<Order_By>;
+};
+
+export type Transactions_By_Address_2_Args = {
+  current?: Maybe<Scalars['String']>;
+  limit?: Maybe<Scalars['Int']>;
+  target?: Maybe<Scalars['String']>;
+};
+
+export type Transactions_By_Address_Args = {
+  addresses?: Maybe<Scalars['_text']>;
+  end_slot?: Maybe<Scalars['bigint']>;
+  start_slot?: Maybe<Scalars['bigint']>;
 };
 
 /** columns and relationships of "validator" */
@@ -6665,29 +6803,21 @@ export type TokensQuery = { tokenUnit: Array<(
   )> };
 
 export type TxByAddressQueryVariables = Exact<{
-  address?: Maybe<Scalars['_text']>;
-  endSlot?: Maybe<Scalars['bigint']>;
-  startSlot?: Maybe<Scalars['bigint']>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
+  address: Scalars['String'];
+  current?: Scalars['String'];
+  limit?: Scalars['Int'];
 }>;
 
 
-export type TxByAddressQuery = { instructions: (
-    { __typename?: 'instruction_aggregate' }
-    & { nodes: Array<(
-      { __typename?: 'instruction' }
-      & { transaction?: Maybe<(
-        { __typename?: 'transaction' }
-        & Pick<Transaction, 'signature' | 'slot' | 'success'>
-        & { numInstructions: Transaction['num_instructions'] }
-        & { block?: Maybe<(
-          { __typename?: 'block' }
-          & Pick<Block, 'timestamp'>
-        )> }
-      )> }
+export type TxByAddressQuery = { transactionsByAddress: Array<(
+    { __typename?: 'transaction' }
+    & Pick<Transaction, 'signature' | 'slot' | 'success'>
+    & { numInstructions: Transaction['num_instructions'] }
+    & { block?: Maybe<(
+      { __typename?: 'block' }
+      & Pick<Block, 'timestamp'>
     )> }
-  ) };
+  )> };
 
 export type TxByAddressCountQueryVariables = Exact<{
   address?: Maybe<Scalars['_text']>;
@@ -7873,24 +8003,17 @@ export type TokensQueryHookResult = ReturnType<typeof useTokensQuery>;
 export type TokensLazyQueryHookResult = ReturnType<typeof useTokensLazyQuery>;
 export type TokensQueryResult = Apollo.QueryResult<TokensQuery, TokensQueryVariables>;
 export const TxByAddressDocument = gql`
-    query TxByAddress($address: _text, $endSlot: bigint, $startSlot: bigint, $limit: Int = 50, $offset: Int = 0) {
-  instructions: instructions_by_address_aggregate(
-    args: {addresses: $address, programs: "{}", end_slot: $endSlot, start_slot: $startSlot}
-    limit: $limit
-    offset: $offset
-    order_by: {slot: desc, tx_signature: asc}
-    distinct_on: tx_signature
+    query TxByAddress($address: String!, $current: String! = "", $limit: Int! = 50) {
+  transactionsByAddress: transactions_by_address_2(
+    args: {target: $address, current: $current, limit: $limit}
+    order_by: {slot: desc, index: desc}
   ) {
-    nodes {
-      transaction {
-        signature
-        slot
-        success
-        numInstructions: num_instructions
-        block {
-          timestamp
-        }
-      }
+    signature
+    slot
+    success
+    numInstructions: num_instructions
+    block {
+      timestamp
     }
   }
 }
@@ -7909,14 +8032,12 @@ export const TxByAddressDocument = gql`
  * const { data, loading, error } = useTxByAddressQuery({
  *   variables: {
  *      address: // value for 'address'
- *      endSlot: // value for 'endSlot'
- *      startSlot: // value for 'startSlot'
+ *      current: // value for 'current'
  *      limit: // value for 'limit'
- *      offset: // value for 'offset'
  *   },
  * });
  */
-export function useTxByAddressQuery(baseOptions?: Apollo.QueryHookOptions<TxByAddressQuery, TxByAddressQueryVariables>) {
+export function useTxByAddressQuery(baseOptions: Apollo.QueryHookOptions<TxByAddressQuery, TxByAddressQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useQuery<TxByAddressQuery, TxByAddressQueryVariables>(TxByAddressDocument, options);
       }
