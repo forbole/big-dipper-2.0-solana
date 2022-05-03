@@ -16,7 +16,7 @@ exports[`screen: Epoch/EpochDetail/Mobile matches snapshot 1`] = `
           id="Typography"
           variant="h4"
         >
-          epoch:name
+          name
         </div>
         <div
           className="value"
@@ -34,7 +34,7 @@ exports[`screen: Epoch/EpochDetail/Mobile matches snapshot 1`] = `
           id="Typography"
           variant="h4"
         >
-          epoch:value
+          value
         </div>
         <div
           className="value"
@@ -53,7 +53,7 @@ exports[`screen: Epoch/EpochDetail/Mobile matches snapshot 1`] = `
         id="Typography"
         variant="h4"
       >
-        epoch:detail
+        detail
       </div>
       <div
         className="value"
@@ -81,7 +81,7 @@ exports[`screen: Epoch/EpochDetail/Mobile matches snapshot 1`] = `
           id="Typography"
           variant="h4"
         >
-          epoch:name
+          name
         </div>
         <div
           className="value"
@@ -99,7 +99,7 @@ exports[`screen: Epoch/EpochDetail/Mobile matches snapshot 1`] = `
           id="Typography"
           variant="h4"
         >
-          epoch:value
+          value
         </div>
         <div
           className="value"
@@ -118,7 +118,7 @@ exports[`screen: Epoch/EpochDetail/Mobile matches snapshot 1`] = `
         id="Typography"
         variant="h4"
       >
-        epoch:detail
+        detail
       </div>
       <div
         className="value"
@@ -146,7 +146,7 @@ exports[`screen: Epoch/EpochDetail/Mobile matches snapshot 1`] = `
           id="Typography"
           variant="h4"
         >
-          epoch:name
+          name
         </div>
         <div
           className="value"
@@ -164,7 +164,7 @@ exports[`screen: Epoch/EpochDetail/Mobile matches snapshot 1`] = `
           id="Typography"
           variant="h4"
         >
-          epoch:value
+          value
         </div>
         <div
           className="value"
@@ -183,7 +183,7 @@ exports[`screen: Epoch/EpochDetail/Mobile matches snapshot 1`] = `
         id="Typography"
         variant="h4"
       >
-        epoch:detail
+        detail
       </div>
       <div
         className="value"
@@ -211,7 +211,7 @@ exports[`screen: Epoch/EpochDetail/Mobile matches snapshot 1`] = `
           id="Typography"
           variant="h4"
         >
-          epoch:name
+          name
         </div>
         <div
           className="value"
@@ -229,7 +229,7 @@ exports[`screen: Epoch/EpochDetail/Mobile matches snapshot 1`] = `
           id="Typography"
           variant="h4"
         >
-          epoch:value
+          value
         </div>
         <div
           className="value"
@@ -248,7 +248,7 @@ exports[`screen: Epoch/EpochDetail/Mobile matches snapshot 1`] = `
         id="Typography"
         variant="h4"
       >
-        epoch:detail
+        detail
       </div>
       <div
         className="value"
@@ -276,7 +276,7 @@ exports[`screen: Epoch/EpochDetail/Mobile matches snapshot 1`] = `
           id="Typography"
           variant="h4"
         >
-          epoch:name
+          name
         </div>
         <div
           className="value"
@@ -294,7 +294,7 @@ exports[`screen: Epoch/EpochDetail/Mobile matches snapshot 1`] = `
           id="Typography"
           variant="h4"
         >
-          epoch:value
+          value
         </div>
         <div
           className="value"
@@ -313,7 +313,7 @@ exports[`screen: Epoch/EpochDetail/Mobile matches snapshot 1`] = `
         id="Typography"
         variant="h4"
       >
-        epoch:detail
+        detail
       </div>
       <div
         className="value"

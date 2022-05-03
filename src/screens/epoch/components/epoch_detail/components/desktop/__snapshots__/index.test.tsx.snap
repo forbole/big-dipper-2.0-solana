@@ -21,7 +21,7 @@ exports[`screen: Epoch/EpochDetail/Desktop matches snapshot 1`] = `
             }
           }
         >
-          epoch:name
+          name
         </div>
         <div
           id="TableCell"
@@ -31,7 +31,7 @@ exports[`screen: Epoch/EpochDetail/Desktop matches snapshot 1`] = `
             }
           }
         >
-          epoch:value
+          value
         </div>
         <div
           id="TableCell"
@@ -41,7 +41,7 @@ exports[`screen: Epoch/EpochDetail/Desktop matches snapshot 1`] = `
             }
           }
         >
-          epoch:detail
+          detail
         </div>
       </div>
     </div>

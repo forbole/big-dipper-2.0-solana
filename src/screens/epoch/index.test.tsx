@@ -12,6 +12,11 @@ import Epoch from '.';
 // ==================================
 // mocks
 // ==================================
+const mockI18n = {
+  t: (key: string) => key,
+  lang: 'en',
+};
+jest.mock('next-translate/useTranslation', () => () => mockI18n);
 jest.mock('@components', () => ({
   Layout: (props) => <div id="Layout" {...props} />,
   LoadAndExist: (props) => <div id="LoadAndExist" {...props} />,

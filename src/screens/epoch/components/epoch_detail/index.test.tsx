@@ -9,17 +9,23 @@ import EpochDetail from '.';
 // ==================================
 // mocks
 // ==================================
+const mockI18n = {
+  t: (key: string) => key,
+  lang: 'en',
+};
+jest.mock('next-translate/useTranslation', () => () => mockI18n);
+
 jest.mock('@components', () => ({
   Box: (props) => <div id="Box" {...props} />,
 }));
 
 jest.mock('./components', () => ({
-  Mobile: (props) => <div id="Mobile" {...props} />,
   Desktop: (props) => <div id="Desktop" {...props} />,
+  Mobile: (props) => <div id="Mobile" {...props} />,
 }));
 
 jest.mock('@material-ui/core', () => ({
-    Typography: (props) => <div id="Typography" {...props} />,
+  Typography: (props) => <div id="Typography" {...props} />,
 }));
 
 

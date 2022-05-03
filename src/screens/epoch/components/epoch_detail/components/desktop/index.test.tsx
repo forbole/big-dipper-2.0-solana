@@ -6,6 +6,11 @@ import Desktop from '.';
 // ==================================
 // mocks
 // ==================================
+const mockI18n = {
+  t: (key: string) => key,
+  lang: 'en',
+};
+jest.mock('next-translate/useTranslation', () => () => mockI18n);
 jest.mock('@material-ui/core', () => ({
   Table: (props) => <div id="Table" {...props} />,
   TableHead: (props) => <div id="TableHead" {...props} />,

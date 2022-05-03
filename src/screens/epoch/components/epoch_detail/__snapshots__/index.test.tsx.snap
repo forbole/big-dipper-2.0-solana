@@ -9,7 +9,7 @@ exports[`screen: Epoch/EpochDetail matches snapshot 1`] = `
     id="Typography"
     variant="h2"
   >
-    epoch:inflationGovernor
+    inflationGovernor
   </div>
 </div>
 `;

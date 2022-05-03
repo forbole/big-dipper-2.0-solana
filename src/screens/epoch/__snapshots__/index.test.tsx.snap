@@ -4,7 +4,7 @@ exports[`screen: Epoch matches snapshot 1`] = `
 <div
   className="makeStyles-root"
   id="Layout"
-  navTitle="epoch:epoch"
+  navTitle="epoch"
 >
   <div
     exists={true}
@@ -15,23 +15,23 @@ exports[`screen: Epoch matches snapshot 1`] = `
       epochDetail={
         Array [
           Object {
-            "detail": "epoch:epochDetail",
-            "name": "epoch:epoch",
+            "detail": "epochDetail",
+            "name": "epoch",
             "value": "305",
           },
           Object {
-            "detail": "epoch:totalInflationDetail",
-            "name": "epoch:totalInflation",
+            "detail": "totalInflationDetail",
+            "name": "totalInflation",
             "value": "6.96%",
           },
           Object {
-            "detail": "epoch:validatorInflationDetail",
-            "name": "epoch:validatorInflation",
+            "detail": "validatorInflationDetail",
+            "name": "validatorInflation",
             "value": "6.96%",
           },
           Object {
-            "detail": "epoch:foundationInflationDetail",
-            "name": "epoch:foundationInflation",
+            "detail": "foundationInflationDetail",
+            "name": "foundationInflation",
             "value": "0%",
           },
         ]
@@ -43,28 +43,28 @@ exports[`screen: Epoch matches snapshot 1`] = `
       epochDetail={
         Array [
           Object {
-            "detail": "epoch:initialDetail",
-            "name": "epoch:initial",
+            "detail": "initialDetail",
+            "name": "initial",
             "value": "8%",
           },
           Object {
-            "detail": "epoch:terminalDetail",
-            "name": "epoch:terminal",
+            "detail": "terminalDetail",
+            "name": "terminal",
             "value": "1.5%",
           },
           Object {
-            "detail": "epoch:taperDetail",
-            "name": "epoch:taper",
+            "detail": "taperDetail",
+            "name": "taper",
             "value": "15%",
           },
           Object {
-            "detail": "epoch:foundationDetail",
-            "name": "epoch:foundation",
+            "detail": "foundationDetail",
+            "name": "foundation",
             "value": "0%",
           },
           Object {
-            "detail": "epoch:foundationTermDetail",
-            "name": "epoch:foundationTerm",
+            "detail": "foundationTermDetail",
+            "name": "foundationTerm",
             "value": "0",
           },
         ]
@@ -76,28 +76,28 @@ exports[`screen: Epoch matches snapshot 1`] = `
       epochDetail={
         Array [
           Object {
-            "detail": "epoch:slotsPerEpochDetail",
-            "name": "epoch:slotsPerEpoch",
+            "detail": "slotsPerEpochDetail",
+            "name": "slotsPerEpoch",
             "value": "432,000",
           },
           Object {
-            "detail": "epoch:leaderScheduleSlotOffsetDetail",
-            "name": "epoch:leaderScheduleSlotOffset",
+            "detail": "leaderScheduleSlotOffsetDetail",
+            "name": "leaderScheduleSlotOffset",
             "value": "432,000",
           },
           Object {
-            "detail": "epoch:warmupDetail",
-            "name": "epoch:warmup",
+            "detail": "warmupDetail",
+            "name": "warmup",
             "value": "FALSE",
           },
           Object {
-            "detail": "epoch:firstNormalEpochDetail",
-            "name": "epoch:firstNormalEpoch",
+            "detail": "firstNormalEpochDetail",
+            "name": "firstNormalEpoch",
             "value": "0",
           },
           Object {
-            "detail": "epoch:firstNormalSlotDetail",
-            "name": "epoch:firstNormalSlot",
+            "detail": "firstNormalSlotDetail",
+            "name": "firstNormalSlot",
             "value": "0",
           },
         ]
