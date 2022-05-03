@@ -12,7 +12,12 @@ import { useStyles } from './styles';
 const Transactions: React.FC<ComponentDefault> = (props) => {
   const classes = useStyles();
   const { t } = useTranslation('accounts');
-  const { state } = useTransactions();
+  const {
+    state, loadNextPage,
+  } = useTransactions();
+  const loadMoreItems = state.isNextPageLoading ? () => null : loadNextPage;
+  const isItemLoaded = (index) => !state.hasNextPage || index < state.transactions.length;
+  const itemCount = state.hasNextPage ? state.transactions.length + 1 : state.transactions.length;
 
   return (
     <Box className={classnames(props.className, classes.root)}>
@@ -22,13 +27,13 @@ const Transactions: React.FC<ComponentDefault> = (props) => {
       <div className={classes.list}>
         <TransactionsList
           transactions={state.transactions}
-          itemCount={state.transactions.length}
+          itemCount={itemCount}
           className={classes.list}
-          hasNextPage={false}
-          isNextPageLoading={false}
-          loadNextPage={() => null}
-          loadMoreItems={() => null}
-          isItemLoaded={() => true}
+          hasNextPage={state.hasNextPage}
+          isNextPageLoading={state.isNextPageLoading}
+          loadNextPage={loadNextPage}
+          loadMoreItems={loadMoreItems}
+          isItemLoaded={isItemLoaded}
         />
       </div>
     </Box>

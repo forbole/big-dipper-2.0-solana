@@ -6,22 +6,22 @@ export const useStyles = () => {
       return ({
         validator: {
           [theme.breakpoints.up('lg')]: {
-            gridColumn: '1 / 3',
+            gridColumn: '1 / 2',
           },
         },
         overview: {
           [theme.breakpoints.up('lg')]: {
-            gridColumn: '1 / 3',
+            gridColumn: '1 / 2',
           },
         },
         skipRate: {
           [theme.breakpoints.up('lg')]: {
-            gridColumn: '1 / 3',
+            gridColumn: '1 / 2',
           },
         },
         transactions: {
           [theme.breakpoints.up('lg')]: {
-            gridColumn: '1 / 3',
+            gridColumn: '1 / 2',
           },
         },
       });
