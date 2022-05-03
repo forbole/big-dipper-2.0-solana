@@ -6733,6 +6733,22 @@ export type EpochQuery = { averageSlotTimePerHour: Array<(
     & Pick<Block, 'slot'>
   )> };
 
+export type EpochDetailsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type EpochDetailsQuery = { inflationRate: (
+    { __typename?: 'InflationRate' }
+    & Pick<InflationRate, 'validator' | 'foundation' | 'total' | 'epoch'>
+  ), inflationGovernor: (
+    { __typename?: 'InflationGovernor' }
+    & Pick<InflationGovernor, 'initial' | 'terminal' | 'taper' | 'foundation'>
+    & { foundationTerm: InflationGovernor['foundation_term'] }
+  ), epochSchedule: (
+    { __typename?: 'EpochSchedule' }
+    & Pick<EpochSchedule, 'warmup'>
+    & { slotsPerEpoch: EpochSchedule['slots_per_epoch'], leaderScheduleSlotOffset: EpochSchedule['leader_schedule_slot_offset'], firstNormalEpoch: EpochSchedule['first_normal_epoch'], firstNormalSlot: EpochSchedule['first_normal_slot'] }
+  ) };
+
 export type MarketDataQueryVariables = Exact<{
   denom?: Maybe<Scalars['String']>;
 }>;
@@ -7804,6 +7820,57 @@ export function useEpochLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<Epoc
 export type EpochQueryHookResult = ReturnType<typeof useEpochQuery>;
 export type EpochLazyQueryHookResult = ReturnType<typeof useEpochLazyQuery>;
 export type EpochQueryResult = Apollo.QueryResult<EpochQuery, EpochQueryVariables>;
+export const EpochDetailsDocument = gql`
+    query EpochDetails {
+  inflationRate: actions_inflation_rate {
+    validator
+    foundation
+    total
+    epoch
+  }
+  inflationGovernor: actions_inflation_governor {
+    initial
+    terminal
+    taper
+    foundation
+    foundationTerm: foundation_term
+  }
+  epochSchedule: actions_epoch_schedule {
+    slotsPerEpoch: slots_per_epoch
+    leaderScheduleSlotOffset: leader_schedule_slot_offset
+    warmup
+    firstNormalEpoch: first_normal_epoch
+    firstNormalSlot: first_normal_slot
+  }
+}
+    `;
+
+/**
+ * __useEpochDetailsQuery__
+ *
+ * To run a query within a React component, call `useEpochDetailsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useEpochDetailsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useEpochDetailsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useEpochDetailsQuery(baseOptions?: Apollo.QueryHookOptions<EpochDetailsQuery, EpochDetailsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<EpochDetailsQuery, EpochDetailsQueryVariables>(EpochDetailsDocument, options);
+      }
+export function useEpochDetailsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<EpochDetailsQuery, EpochDetailsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<EpochDetailsQuery, EpochDetailsQueryVariables>(EpochDetailsDocument, options);
+        }
+export type EpochDetailsQueryHookResult = ReturnType<typeof useEpochDetailsQuery>;
+export type EpochDetailsLazyQueryHookResult = ReturnType<typeof useEpochDetailsLazyQuery>;
+export type EpochDetailsQueryResult = Apollo.QueryResult<EpochDetailsQuery, EpochDetailsQueryVariables>;
 export const MarketDataDocument = gql`
     query MarketData($denom: String) {
   tokenPrice: token_price(where: {symbol: {_eq: $denom}}) {

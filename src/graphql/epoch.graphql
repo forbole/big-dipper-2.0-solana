@@ -6,3 +6,28 @@ query Epoch {
     slot
   }
 }
+
+query EpochDetails {
+  inflationRate: actions_inflation_rate {
+    validator
+    foundation
+    total
+    epoch
+  }
+  inflationGovernor: actions_inflation_governor {
+    initial
+    terminal
+    taper
+    foundation
+    foundationTerm: foundation_term
+  }
+  epochSchedule: actions_epoch_schedule {
+    slotsPerEpoch: slots_per_epoch
+    leaderScheduleSlotOffset: leader_schedule_slot_offset
+    warmup
+    firstNormalEpoch: first_normal_epoch
+    firstNormalSlot: first_normal_slot
+  }
+}
+
+

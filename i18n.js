@@ -8,6 +8,7 @@ module.exports = {
     'rgx:^/blocks': ['blocks', 'transactions'],
     'rgx:^/transactions': ['transactions', 'instructions'],
     'rgx:^/tokens': ['tokens', 'transactions'],
+    'rgx:^/epoch': ['epoch'],
     'rgx:^/validators': ['validators', 'transactions', 'accounts'],
     'rgx:^/accounts': ['accounts', 'transactions', 'validators'],
     'rgx:^/params': ['params'],

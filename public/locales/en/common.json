@@ -23,6 +23,7 @@
   "validators": "Validators",
   "transactions": "Transactions",
   "tokens": "Tokens",
+  "epoch": "Epoch",
   "searchBarPlaceholder": "Search for accounts / blocks / transactions",
   "marketCap": "Market Cap",
   "maxSupply": "Max Supply",
