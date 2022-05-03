@@ -5,10 +5,11 @@ exports[`screen: Epoch/EpochDetail matches snapshot 1`] = `
   className=""
   id="Box"
 >
-  <h2
-    className="MuiTypography-root MuiTypography-h2"
+  <div
+    id="Typography"
+    variant="h2"
   >
     epoch:inflationGovernor
-  </h2>
+  </div>
 </div>
 `;

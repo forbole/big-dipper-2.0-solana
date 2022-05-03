@@ -18,6 +18,10 @@ jest.mock('./components', () => ({
   Desktop: (props) => <div id="Desktop" {...props} />,
 }));
 
+jest.mock('@material-ui/core', () => ({
+    Typography: (props) => <div id="Typography" {...props} />,
+}));
+
 
 // ==================================
 // unit tests
