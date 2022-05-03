@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`screen: Epoch/EpochDetail matches snapshot 1`] = `
+<div
+  className=""
+  id="Box"
+>
+  <h2
+    className="MuiTypography-root MuiTypography-h2"
+  >
+    epoch:inflationGovernor
+  </h2>
+</div>
+`;
