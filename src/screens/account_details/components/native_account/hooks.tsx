@@ -74,7 +74,7 @@ export const useNativeAccount = () => {
       const nonceReduced: string = nonces.reduce((a, b) => {
         return Big(a).add(R.pathOr(0, ['nativeBalance', 'balance'], b)).toString();
       }, 0);
-      const votes = R.pathOr([], ['nonce', 'validator'], data);
+      const votes = R.pathOr([], ['validator', 'nodes'], data);
       const voteReduced: string = votes.reduce((a, b) => {
         return Big(a).add(R.pathOr(0, ['nativeBalance', 'balance'], b)).toString();
       }, 0);
