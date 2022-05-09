@@ -7051,8 +7051,8 @@ export type ValidatorsQuery = { validator: Array<(
     & Pick<Validator, 'address' | 'commission'>
     & { validatorStatus?: Maybe<(
       { __typename?: 'validator_status' }
-      & Pick<Validator_Status, 'active'>
-      & { activatedStake: Validator_Status['activated_stake'], lastVote: Validator_Status['last_vote'] }
+      & Pick<Validator_Status, 'active' | 'slot'>
+      & { activatedStake: Validator_Status['activated_stake'], lastVote: Validator_Status['last_vote'], rootSlot: Validator_Status['root_slot'] }
     )>, validatorSkipRate?: Maybe<(
       { __typename?: 'validator_skip_rate' }
       & Pick<Validator_Skip_Rate, 'skip' | 'total'>
@@ -8471,6 +8471,8 @@ export const ValidatorsDocument = gql`
       active
       activatedStake: activated_stake
       lastVote: last_vote
+      rootSlot: root_slot
+      slot
     }
     validatorSkipRate: validator_skip_rate {
       skip

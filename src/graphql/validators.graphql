@@ -6,6 +6,8 @@ query Validators {
       active
       activatedStake: activated_stake
       lastVote: last_vote
+      rootSlot: root_slot
+      slot
     }
     validatorSkipRate: validator_skip_rate {
       skip

@@ -32,7 +32,8 @@ const Mobile: React.FC<{
       idx: `#${i + 1}`,
       stake: `${numeral(x.stake).format('0,0')} (${numeral(x.stakePercent).format('0,0.00')}%)`,
       commission: `${x.commission}%`,
-      lastVote: numeral(x.lastVote).format('0,0'),
+      rootDistance: numeral(x.rootDistance).format('0,0'),
+      voteDistance: numeral(x.voteDistance).format('0,0'),
       validator: (
         <AvatarName
           address={x.validator.address}

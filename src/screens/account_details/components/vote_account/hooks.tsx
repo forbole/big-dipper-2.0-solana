@@ -7,7 +7,6 @@ import {
 } from '@graphql/types';
 import { chainConfig } from '@configs';
 import { formatToken } from '@utils/format_token';
-import { RoomServiceTwoTone } from '@material-ui/icons';
 import { VoteAccountState } from './types';
 
 const defaultTokenUnit: TokenUnit = {

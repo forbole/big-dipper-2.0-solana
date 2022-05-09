@@ -65,5 +65,7 @@
   "deactiveStake": "Deactive Stake",
   "activationEpoch": "Activation Epoch",
   "lastEpoch": "Last Epoch",
-  "numEpoch": "{{num}} Epochs"
+  "numEpoch": "{{num}} Epochs",
+  "voteDistance": "Vote Distance",
+  "rootDistance": "Root Distance"
 }

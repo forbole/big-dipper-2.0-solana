@@ -1,13 +1,11 @@
 import React from 'react';
 import classnames from 'classnames';
 import numeral from 'numeral';
-import Link from 'next/link';
 import {
   Typography,
   Divider,
 } from '@material-ui/core';
 import useTranslation from 'next-translate/useTranslation';
-import { BLOCK_DETAILS } from '@utils/go_to_page';
 import {
   Box,
   Avatar,
@@ -83,7 +81,7 @@ const Validator: React.FC<{validator: ValidatorProfileType} & ComponentDefault> 
         </div>
         <div className={classes.item}>
           <Typography variant="h4" className="label">
-            {t('lastVote')}
+            {t('voteDistance')}
           </Typography>
           <Typography variant="body1" className="value">
             {numeral(props.validator.voteDistance).format('0,0')}
@@ -91,7 +89,7 @@ const Validator: React.FC<{validator: ValidatorProfileType} & ComponentDefault> 
         </div>
         <div className={classes.item}>
           <Typography variant="h4" className="label">
-            {t('rootSlot')}
+            {t('rootDistance')}
           </Typography>
           <Typography variant="body1" className="value">
             {numeral(props.validator.rootDistance).format('0,0')}

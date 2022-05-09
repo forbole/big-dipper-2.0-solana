@@ -9,9 +9,10 @@ export type ValidatorType = {
   commission: number;
   stake: number;
   stakePercent: number;
-  lastVote: number;
   status: boolean;
   skipRate: SkipRateType;
+  voteDistance: number;
+  rootDistance: number;
 }
 
 export type ValidatorsState = {

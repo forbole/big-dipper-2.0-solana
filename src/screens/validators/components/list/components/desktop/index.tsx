@@ -48,7 +48,8 @@ const Desktop: React.FC<{
       ),
       stake: `${numeral(x.stake).format('0,0')} (${numeral(x.stakePercent).format('0,0.00')}%)`,
       commission: `${x.commission}%`,
-      lastVote: numeral(x.lastVote).format('0,0'),
+      rootDistance: numeral(x.rootDistance).format('0,0'),
+      voteDistance: numeral(x.voteDistance).format('0,0'),
       skipRate: (
         <SkipRate
           skipRate={x.skipRate}
