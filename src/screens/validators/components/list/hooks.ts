@@ -60,6 +60,10 @@ export const useValidators = () => {
 
       const status = R.pathOr(false, ['validatorStatus', 'active'], x);
 
+      const lastVote = R.pathOr(0, ['validatorStatus', 'lastVote'], x);
+      const rootSlot = R.pathOr(0, ['validatorStatus', 'rootSlot'], x);
+      const slot = R.pathOr(0, ['validatorStatus', 'slot'], x);
+
       return ({
         validator: x.address,
         commission: x.commission,
@@ -68,7 +72,8 @@ export const useValidators = () => {
           chainConfig.primaryTokenUnit,
         ).value).value(),
         stakePercent: status ? stakePercent : 0,
-        lastVote: R.pathOr(0, ['validatorStatus', 'lastVote'], x),
+        voteDistance: slot - lastVote,
+        rootDistance: slot - rootSlot,
         status,
         skipRate: {
           skip: R.pathOr(0, ['validatorSkipRate', 'skip'], x),

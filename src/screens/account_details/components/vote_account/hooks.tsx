@@ -33,9 +33,9 @@ export const useVoteAccount = () => {
       imageUrl: '',
       website: '',
       active: false,
-      lastVote: 0,
+      voteDistance: 0,
       commission: 0,
-      rootSlot: 0,
+      rootDistance: 0,
     },
     skipRate: {
       epoch: 0,
@@ -83,16 +83,19 @@ export const useVoteAccount = () => {
     // Validator Profile
     // ==========================
     const formatValidatorProfile = () => {
+      const lastVote = R.pathOr(0, ['validator', 0, 'validatorStatus', 'lastVote'], data);
+      const rootSlot = R.pathOr(0, ['validator', 0, 'validatorStatus', 'rootSlot'], data);
+      const slot = R.pathOr(0, ['validator', 0, 'validatorStatus', 'slot'], data);
       return ({
         address,
-        lastVote: R.pathOr(0, ['validator', 0, 'validatorStatus', 'lastVote'], data),
         description: R.pathOr('', ['validator', 0, 'validatorConfig', 'details'], data),
         website: R.pathOr('', ['validator', 0, 'validatorConfig', 'website'], data),
         name: R.pathOr(address, ['validator', 0, 'validatorConfig', 'name'], data),
         imageUrl: R.pathOr('', ['validator', 0, 'validatorConfig', 'avatarUrl'], data),
         active: R.pathOr(false, ['validator', 0, 'validatorStatus', 'active'], data),
         commission: R.pathOr(0, ['validator', 0, 'commission'], data),
-        rootSlot: R.pathOr(0, ['validator', 0, 'validatorStatus', 'rootSlot'], data),
+        voteDistance: slot - lastVote,
+        rootDistance: slot - rootSlot,
       });
     };
     stateChange.validatorProfile = formatValidatorProfile();

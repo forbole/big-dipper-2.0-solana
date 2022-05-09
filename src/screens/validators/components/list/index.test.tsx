@@ -34,7 +34,9 @@ const mockValidatorsDocument = jest.fn().mockResolvedValue({
         "validatorStatus": {
           "active": true,
           "activatedStake": 96138469659982,
-          "lastVote": 115025839
+          "lastVote": 133152621,
+          "rootSlot": 133152575,
+          "slot": 133152624,
         },
         "validatorSkipRate": {
           "skip": 5,

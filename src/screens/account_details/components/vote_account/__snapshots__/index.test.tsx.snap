@@ -12,9 +12,9 @@ Array [
         "commission": 100,
         "description": "",
         "imageUrl": "",
-        "lastVote": 0,
         "name": "9XfsbcUJ8qM4esLtMocrMGLqRPkgYNbcmKLebtBzSjjZ",
-        "rootSlot": 0,
+        "rootDistance": 0,
+        "voteDistance": 0,
         "website": "",
       }
     }

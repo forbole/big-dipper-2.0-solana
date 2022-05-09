@@ -82,16 +82,13 @@ exports[`screen: ValidatorDetails/Profile matches snapshot 1`] = `
       <h4
         className="MuiTypography-root label MuiTypography-h4"
       >
-        accounts:lastVote
+        accounts:voteDistance
       </h4>
-      <a
+      <p
         className="MuiTypography-root value MuiTypography-body1"
-        href="/blocks/undefined"
-        onClick={[Function]}
-        onMouseEnter={[Function]}
       >
         0
-      </a>
+      </p>
     </div>
     <div
       className="makeStyles-item"
@@ -99,16 +96,13 @@ exports[`screen: ValidatorDetails/Profile matches snapshot 1`] = `
       <h4
         className="MuiTypography-root label MuiTypography-h4"
       >
-        accounts:rootSlot
+        accounts:rootDistance
       </h4>
-      <a
+      <p
         className="MuiTypography-root value MuiTypography-body1"
-        href="/blocks/undefined"
-        onClick={[Function]}
-        onMouseEnter={[Function]}
       >
         0
-      </a>
+      </p>
     </div>
   </div>
 </div>

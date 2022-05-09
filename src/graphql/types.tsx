@@ -1699,6 +1699,10 @@ export type Query_Root = {
   token_account_balance_history: Array<Token_Account_Balance_History>;
   /** fetch aggregated fields from the table: "token_account_balance_history" */
   token_account_balance_history_aggregate: Token_Account_Balance_History_Aggregate;
+  /** fetch data from the table: "token_account_balance_ordering" */
+  token_account_balance_ordering: Array<Token_Account_Balance_Ordering>;
+  /** fetch aggregated fields from the table: "token_account_balance_ordering" */
+  token_account_balance_ordering_aggregate: Token_Account_Balance_Ordering_Aggregate;
   /** fetch data from the table: "token_account" using primary key columns */
   token_account_by_pk?: Maybe<Token_Account>;
   /** fetch aggregated fields from the table: "token" */
@@ -1737,14 +1741,10 @@ export type Query_Root = {
   transaction: Array<Transaction>;
   /** fetch aggregated fields from the table: "transaction" */
   transaction_aggregate: Transaction_Aggregate;
-  /** execute function "transactions_by_address" which returns "transaction" */
-  transactions_by_address: Array<Transaction>;
   /** execute function "transactions_by_address_2" which returns "transaction" */
   transactions_by_address_2: Array<Transaction>;
   /** execute function "transactions_by_address_2" and query aggregates on result of table type "transaction" */
   transactions_by_address_2_aggregate: Transaction_Aggregate;
-  /** execute function "transactions_by_address" and query aggregates on result of table type "transaction" */
-  transactions_by_address_aggregate: Transaction_Aggregate;
   /** An array relationship */
   validator: Array<Validator>;
   /** An aggregate relationship */
@@ -2159,6 +2159,24 @@ export type Query_RootToken_Account_Balance_History_AggregateArgs = {
 };
 
 
+export type Query_RootToken_Account_Balance_OrderingArgs = {
+  distinct_on?: Maybe<Array<Token_Account_Balance_Ordering_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Token_Account_Balance_Ordering_Order_By>>;
+  where?: Maybe<Token_Account_Balance_Ordering_Bool_Exp>;
+};
+
+
+export type Query_RootToken_Account_Balance_Ordering_AggregateArgs = {
+  distinct_on?: Maybe<Array<Token_Account_Balance_Ordering_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Token_Account_Balance_Ordering_Order_By>>;
+  where?: Maybe<Token_Account_Balance_Ordering_Bool_Exp>;
+};
+
+
 export type Query_RootToken_Account_By_PkArgs = {
   address: Scalars['String'];
 };
@@ -2306,16 +2324,6 @@ export type Query_RootTransaction_AggregateArgs = {
 };
 
 
-export type Query_RootTransactions_By_AddressArgs = {
-  args: Transactions_By_Address_Args;
-  distinct_on?: Maybe<Array<Transaction_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Transaction_Order_By>>;
-  where?: Maybe<Transaction_Bool_Exp>;
-};
-
-
 export type Query_RootTransactions_By_Address_2Args = {
   args: Transactions_By_Address_2_Args;
   distinct_on?: Maybe<Array<Transaction_Select_Column>>;
@@ -2328,16 +2336,6 @@ export type Query_RootTransactions_By_Address_2Args = {
 
 export type Query_RootTransactions_By_Address_2_AggregateArgs = {
   args: Transactions_By_Address_2_Args;
-  distinct_on?: Maybe<Array<Transaction_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Transaction_Order_By>>;
-  where?: Maybe<Transaction_Bool_Exp>;
-};
-
-
-export type Query_RootTransactions_By_Address_AggregateArgs = {
-  args: Transactions_By_Address_Args;
   distinct_on?: Maybe<Array<Transaction_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
@@ -2950,6 +2948,10 @@ export type Subscription_Root = {
   token_account_balance_history: Array<Token_Account_Balance_History>;
   /** fetch aggregated fields from the table: "token_account_balance_history" */
   token_account_balance_history_aggregate: Token_Account_Balance_History_Aggregate;
+  /** fetch data from the table: "token_account_balance_ordering" */
+  token_account_balance_ordering: Array<Token_Account_Balance_Ordering>;
+  /** fetch aggregated fields from the table: "token_account_balance_ordering" */
+  token_account_balance_ordering_aggregate: Token_Account_Balance_Ordering_Aggregate;
   /** fetch data from the table: "token_account" using primary key columns */
   token_account_by_pk?: Maybe<Token_Account>;
   /** fetch aggregated fields from the table: "token" */
@@ -2988,14 +2990,10 @@ export type Subscription_Root = {
   transaction: Array<Transaction>;
   /** fetch aggregated fields from the table: "transaction" */
   transaction_aggregate: Transaction_Aggregate;
-  /** execute function "transactions_by_address" which returns "transaction" */
-  transactions_by_address: Array<Transaction>;
   /** execute function "transactions_by_address_2" which returns "transaction" */
   transactions_by_address_2: Array<Transaction>;
   /** execute function "transactions_by_address_2" and query aggregates on result of table type "transaction" */
   transactions_by_address_2_aggregate: Transaction_Aggregate;
-  /** execute function "transactions_by_address" and query aggregates on result of table type "transaction" */
-  transactions_by_address_aggregate: Transaction_Aggregate;
   /** An array relationship */
   validator: Array<Validator>;
   /** An aggregate relationship */
@@ -3394,6 +3392,24 @@ export type Subscription_RootToken_Account_Balance_History_AggregateArgs = {
 };
 
 
+export type Subscription_RootToken_Account_Balance_OrderingArgs = {
+  distinct_on?: Maybe<Array<Token_Account_Balance_Ordering_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Token_Account_Balance_Ordering_Order_By>>;
+  where?: Maybe<Token_Account_Balance_Ordering_Bool_Exp>;
+};
+
+
+export type Subscription_RootToken_Account_Balance_Ordering_AggregateArgs = {
+  distinct_on?: Maybe<Array<Token_Account_Balance_Ordering_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Token_Account_Balance_Ordering_Order_By>>;
+  where?: Maybe<Token_Account_Balance_Ordering_Bool_Exp>;
+};
+
+
 export type Subscription_RootToken_Account_By_PkArgs = {
   address: Scalars['String'];
 };
@@ -3541,16 +3557,6 @@ export type Subscription_RootTransaction_AggregateArgs = {
 };
 
 
-export type Subscription_RootTransactions_By_AddressArgs = {
-  args: Transactions_By_Address_Args;
-  distinct_on?: Maybe<Array<Transaction_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Transaction_Order_By>>;
-  where?: Maybe<Transaction_Bool_Exp>;
-};
-
-
 export type Subscription_RootTransactions_By_Address_2Args = {
   args: Transactions_By_Address_2_Args;
   distinct_on?: Maybe<Array<Transaction_Select_Column>>;
@@ -3563,16 +3569,6 @@ export type Subscription_RootTransactions_By_Address_2Args = {
 
 export type Subscription_RootTransactions_By_Address_2_AggregateArgs = {
   args: Transactions_By_Address_2_Args;
-  distinct_on?: Maybe<Array<Transaction_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Transaction_Order_By>>;
-  where?: Maybe<Transaction_Bool_Exp>;
-};
-
-
-export type Subscription_RootTransactions_By_Address_AggregateArgs = {
-  args: Transactions_By_Address_Args;
   distinct_on?: Maybe<Array<Transaction_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
@@ -3906,6 +3902,8 @@ export type Token_Account = {
   mint: Scalars['String'];
   owner: Scalars['String'];
   /** An object relationship */
+  token_balance?: Maybe<Token_Account_Balance>;
+  /** An object relationship */
   token_delegate?: Maybe<Token_Delegation>;
   /** An object relationship */
   token_info?: Maybe<Token>;
@@ -4147,6 +4145,139 @@ export type Token_Account_Balance_Order_By = {
   token_account?: Maybe<Token_Account_Order_By>;
 };
 
+/** columns and relationships of "token_account_balance_ordering" */
+export type Token_Account_Balance_Ordering = {
+  __typename?: 'token_account_balance_ordering';
+  address?: Maybe<Scalars['String']>;
+  balance?: Maybe<Scalars['numeric']>;
+  mint?: Maybe<Scalars['String']>;
+  /** An object relationship */
+  token_account?: Maybe<Token_Account>;
+};
+
+/** aggregated selection of "token_account_balance_ordering" */
+export type Token_Account_Balance_Ordering_Aggregate = {
+  __typename?: 'token_account_balance_ordering_aggregate';
+  aggregate?: Maybe<Token_Account_Balance_Ordering_Aggregate_Fields>;
+  nodes: Array<Token_Account_Balance_Ordering>;
+};
+
+/** aggregate fields of "token_account_balance_ordering" */
+export type Token_Account_Balance_Ordering_Aggregate_Fields = {
+  __typename?: 'token_account_balance_ordering_aggregate_fields';
+  avg?: Maybe<Token_Account_Balance_Ordering_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<Token_Account_Balance_Ordering_Max_Fields>;
+  min?: Maybe<Token_Account_Balance_Ordering_Min_Fields>;
+  stddev?: Maybe<Token_Account_Balance_Ordering_Stddev_Fields>;
+  stddev_pop?: Maybe<Token_Account_Balance_Ordering_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Token_Account_Balance_Ordering_Stddev_Samp_Fields>;
+  sum?: Maybe<Token_Account_Balance_Ordering_Sum_Fields>;
+  var_pop?: Maybe<Token_Account_Balance_Ordering_Var_Pop_Fields>;
+  var_samp?: Maybe<Token_Account_Balance_Ordering_Var_Samp_Fields>;
+  variance?: Maybe<Token_Account_Balance_Ordering_Variance_Fields>;
+};
+
+
+/** aggregate fields of "token_account_balance_ordering" */
+export type Token_Account_Balance_Ordering_Aggregate_FieldsCountArgs = {
+  columns?: Maybe<Array<Token_Account_Balance_Ordering_Select_Column>>;
+  distinct?: Maybe<Scalars['Boolean']>;
+};
+
+/** aggregate avg on columns */
+export type Token_Account_Balance_Ordering_Avg_Fields = {
+  __typename?: 'token_account_balance_ordering_avg_fields';
+  balance?: Maybe<Scalars['Float']>;
+};
+
+/** Boolean expression to filter rows from the table "token_account_balance_ordering". All fields are combined with a logical 'AND'. */
+export type Token_Account_Balance_Ordering_Bool_Exp = {
+  _and?: Maybe<Array<Token_Account_Balance_Ordering_Bool_Exp>>;
+  _not?: Maybe<Token_Account_Balance_Ordering_Bool_Exp>;
+  _or?: Maybe<Array<Token_Account_Balance_Ordering_Bool_Exp>>;
+  address?: Maybe<String_Comparison_Exp>;
+  balance?: Maybe<Numeric_Comparison_Exp>;
+  mint?: Maybe<String_Comparison_Exp>;
+  token_account?: Maybe<Token_Account_Bool_Exp>;
+};
+
+/** aggregate max on columns */
+export type Token_Account_Balance_Ordering_Max_Fields = {
+  __typename?: 'token_account_balance_ordering_max_fields';
+  address?: Maybe<Scalars['String']>;
+  balance?: Maybe<Scalars['numeric']>;
+  mint?: Maybe<Scalars['String']>;
+};
+
+/** aggregate min on columns */
+export type Token_Account_Balance_Ordering_Min_Fields = {
+  __typename?: 'token_account_balance_ordering_min_fields';
+  address?: Maybe<Scalars['String']>;
+  balance?: Maybe<Scalars['numeric']>;
+  mint?: Maybe<Scalars['String']>;
+};
+
+/** Ordering options when selecting data from "token_account_balance_ordering". */
+export type Token_Account_Balance_Ordering_Order_By = {
+  address?: Maybe<Order_By>;
+  balance?: Maybe<Order_By>;
+  mint?: Maybe<Order_By>;
+  token_account?: Maybe<Token_Account_Order_By>;
+};
+
+/** select columns of table "token_account_balance_ordering" */
+export enum Token_Account_Balance_Ordering_Select_Column {
+  /** column name */
+  Address = 'address',
+  /** column name */
+  Balance = 'balance',
+  /** column name */
+  Mint = 'mint'
+}
+
+/** aggregate stddev on columns */
+export type Token_Account_Balance_Ordering_Stddev_Fields = {
+  __typename?: 'token_account_balance_ordering_stddev_fields';
+  balance?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Token_Account_Balance_Ordering_Stddev_Pop_Fields = {
+  __typename?: 'token_account_balance_ordering_stddev_pop_fields';
+  balance?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Token_Account_Balance_Ordering_Stddev_Samp_Fields = {
+  __typename?: 'token_account_balance_ordering_stddev_samp_fields';
+  balance?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate sum on columns */
+export type Token_Account_Balance_Ordering_Sum_Fields = {
+  __typename?: 'token_account_balance_ordering_sum_fields';
+  balance?: Maybe<Scalars['numeric']>;
+};
+
+/** aggregate var_pop on columns */
+export type Token_Account_Balance_Ordering_Var_Pop_Fields = {
+  __typename?: 'token_account_balance_ordering_var_pop_fields';
+  balance?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate var_samp on columns */
+export type Token_Account_Balance_Ordering_Var_Samp_Fields = {
+  __typename?: 'token_account_balance_ordering_var_samp_fields';
+  balance?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate variance on columns */
+export type Token_Account_Balance_Ordering_Variance_Fields = {
+  __typename?: 'token_account_balance_ordering_variance_fields';
+  balance?: Maybe<Scalars['Float']>;
+};
+
 /** select columns of table "token_account_balance" */
 export enum Token_Account_Balance_Select_Column {
   /** column name */
@@ -4205,6 +4336,7 @@ export type Token_Account_Bool_Exp = {
   address?: Maybe<String_Comparison_Exp>;
   mint?: Maybe<String_Comparison_Exp>;
   owner?: Maybe<String_Comparison_Exp>;
+  token_balance?: Maybe<Token_Account_Balance_Bool_Exp>;
   token_delegate?: Maybe<Token_Delegation_Bool_Exp>;
   token_info?: Maybe<Token_Bool_Exp>;
   token_unit?: Maybe<Token_Unit_Bool_Exp>;
@@ -4245,6 +4377,7 @@ export type Token_Account_Order_By = {
   address?: Maybe<Order_By>;
   mint?: Maybe<Order_By>;
   owner?: Maybe<Order_By>;
+  token_balance?: Maybe<Token_Account_Balance_Order_By>;
   token_delegate?: Maybe<Token_Delegation_Order_By>;
   token_info?: Maybe<Token_Order_By>;
   token_unit?: Maybe<Token_Unit_Order_By>;
@@ -5520,12 +5653,6 @@ export type Transactions_By_Address_2_Args = {
   target?: Maybe<Scalars['String']>;
 };
 
-export type Transactions_By_Address_Args = {
-  addresses?: Maybe<Scalars['_text']>;
-  end_slot?: Maybe<Scalars['bigint']>;
-  start_slot?: Maybe<Scalars['bigint']>;
-};
-
 /** columns and relationships of "validator" */
 export type Validator = {
   __typename?: 'validator';
@@ -6523,8 +6650,8 @@ export type TokenDetailsHoldersQueryVariables = Exact<{
 
 
 export type TokenDetailsHoldersQuery = { tokenAccountBalance: Array<(
-    { __typename?: 'token_account_balance' }
-    & Pick<Token_Account_Balance, 'balance' | 'address'>
+    { __typename?: 'token_account_balance_ordering' }
+    & Pick<Token_Account_Balance_Ordering, 'address' | 'balance'>
   )>, token: Array<(
     { __typename?: 'token' }
     & Pick<Token, 'decimals'>
@@ -6599,7 +6726,7 @@ export type VoteAccountDetailsQuery = { validator: Array<(
       & Pick<Account_Balance, 'balance'>
     )>, validatorStatus?: Maybe<(
       { __typename?: 'validator_status' }
-      & Pick<Validator_Status, 'active'>
+      & Pick<Validator_Status, 'slot' | 'active'>
       & { rootSlot: Validator_Status['root_slot'], lastVote: Validator_Status['last_vote'] }
     )>, validatorConfig?: Maybe<(
       { __typename?: 'validator_config' }
@@ -6924,8 +7051,8 @@ export type ValidatorsQuery = { validator: Array<(
     & Pick<Validator, 'address' | 'commission'>
     & { validatorStatus?: Maybe<(
       { __typename?: 'validator_status' }
-      & Pick<Validator_Status, 'active'>
-      & { activatedStake: Validator_Status['activated_stake'], lastVote: Validator_Status['last_vote'] }
+      & Pick<Validator_Status, 'active' | 'slot'>
+      & { activatedStake: Validator_Status['activated_stake'], lastVote: Validator_Status['last_vote'], rootSlot: Validator_Status['root_slot'] }
     )>, validatorSkipRate?: Maybe<(
       { __typename?: 'validator_skip_rate' }
       & Pick<Validator_Skip_Rate, 'skip' | 'total'>
@@ -7240,13 +7367,13 @@ export type TokenDetailsLazyQueryHookResult = ReturnType<typeof useTokenDetailsL
 export type TokenDetailsQueryResult = Apollo.QueryResult<TokenDetailsQuery, TokenDetailsQueryVariables>;
 export const TokenDetailsHoldersDocument = gql`
     query TokenDetailsHolders($address: String!) {
-  tokenAccountBalance: token_account_balance(
-    where: {token_account: {mint: {_eq: $address}}}
+  tokenAccountBalance: token_account_balance_ordering(
+    where: {mint: {_eq: $address}, balance: {_gt: "0"}}
+    order_by: {balance: desc}
     limit: 10
-    order_by: {balance: desc_nulls_last}
   ) {
-    balance
     address
+    balance
   }
   token(where: {mint: {_eq: $address}}) {
     decimals
@@ -7429,6 +7556,7 @@ export const VoteAccountDetailsDocument = gql`
     voter
     withdrawer
     validatorStatus: validator_status {
+      slot
       rootSlot: root_slot
       lastVote: last_vote
       active
@@ -8343,6 +8471,8 @@ export const ValidatorsDocument = gql`
       active
       activatedStake: activated_stake
       lastVote: last_vote
+      rootSlot: root_slot
+      slot
     }
     validatorSkipRate: validator_skip_rate {
       skip
