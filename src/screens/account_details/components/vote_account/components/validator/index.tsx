@@ -85,21 +85,17 @@ const Validator: React.FC<{validator: ValidatorProfileType} & ComponentDefault> 
           <Typography variant="h4" className="label">
             {t('lastVote')}
           </Typography>
-          <Link href={BLOCK_DETAILS(props.validator.lastVote)} passHref>
-            <Typography variant="body1" className="value" component="a">
-              {numeral(props.validator.lastVote).format('0,0')}
-            </Typography>
-          </Link>
+          <Typography variant="body1" className="value">
+            {numeral(props.validator.voteDistance).format('0,0')}
+          </Typography>
         </div>
         <div className={classes.item}>
           <Typography variant="h4" className="label">
             {t('rootSlot')}
           </Typography>
-          <Link href={BLOCK_DETAILS(props.validator.rootSlot)} passHref>
-            <Typography variant="body1" className="value" component="a">
-              {numeral(props.validator.rootSlot).format('0,0')}
-            </Typography>
-          </Link>
+          <Typography variant="body1" className="value">
+            {numeral(props.validator.rootDistance).format('0,0')}
+          </Typography>
         </div>
       </div>
     </Box>

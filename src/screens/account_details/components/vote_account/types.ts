@@ -13,8 +13,8 @@ export type ValidatorProfileType = {
   imageUrl: string;
   active: boolean;
   commission: number;
-  lastVote: number;
-  rootSlot: number;
+  voteDistance: number;
+  rootDistance: number;
 }
 
 export type SkipRateType = {

@@ -6726,7 +6726,7 @@ export type VoteAccountDetailsQuery = { validator: Array<(
       & Pick<Account_Balance, 'balance'>
     )>, validatorStatus?: Maybe<(
       { __typename?: 'validator_status' }
-      & Pick<Validator_Status, 'active'>
+      & Pick<Validator_Status, 'slot' | 'active'>
       & { rootSlot: Validator_Status['root_slot'], lastVote: Validator_Status['last_vote'] }
     )>, validatorConfig?: Maybe<(
       { __typename?: 'validator_config' }
@@ -7556,6 +7556,7 @@ export const VoteAccountDetailsDocument = gql`
     voter
     withdrawer
     validatorStatus: validator_status {
+      slot
       rootSlot: root_slot
       lastVote: last_vote
       active

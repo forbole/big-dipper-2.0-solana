@@ -208,6 +208,7 @@ query VoteAccountDetails($address: String) {
     voter
     withdrawer
     validatorStatus: validator_status {
+      slot
       rootSlot: root_slot
       lastVote: last_vote
       active
