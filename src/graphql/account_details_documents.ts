@@ -127,9 +127,9 @@ query TokenDetails($address: String!) {
 
 export const TokenAccountDetailsHoldersDocument = /* GraphQL */`
 query TokenDetailsHolders($address: String!) {
-  tokenAccountBalance: token_account_balance(where: {token_account: {mint: {_eq: $address}}}, limit: 10, order_by: {balance: desc_nulls_last}) {
-    balance
+  tokenAccountBalance: token_account_balance_ordering(where: {mint: {_eq: $address}, balance: {_gt: "0"}}, order_by: {balance: desc}, limit: 10) {
     address
+    balance
   }
   token(where: {mint: {_eq: $address}}) {
     decimals
