@@ -18,8 +18,8 @@ export const useChainHealthCheck = () => {
       const timestamp = dayjs.utc(R.pathOr('', ['block', 0, 'timestamp'], data));
       const timeNow = dayjs.utc();
       const timeDifference = timeNow.diff(timestamp, 's');
-      // if latest block has been over a minute ago
-      if (timeDifference > 60 && chainActive) {
+      // if latest block has been over 15 minute ago
+      if (timeDifference > 900 && chainActive) {
         toast.error(t('blockTimeAgo', {
           time: dayjs.utc(timestamp).fromNow(),
         }), {
