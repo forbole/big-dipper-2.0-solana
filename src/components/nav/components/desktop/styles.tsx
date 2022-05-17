@@ -66,6 +66,15 @@ export const useStyles = () => {
           overflowX: 'hidden',
           width: CLOSED_DRAWER_WIDTH,
         },
+        beta: {
+          display: 'block',
+          width: '30px',
+          marginLeft: '1rem',
+          transition: '0.3s',
+          '&.open': {
+            marginLeft: '3.8rem',
+          },
+        },
       });
     },
   )();

@@ -5,10 +5,8 @@ import {
   AppBar,
   ClickAwayListener,
 } from '@material-ui/core';
-import { useRecoilValue } from 'recoil';
-import { readTheme } from '@recoil/settings/selectors';
-import BigDipperLogoWhite from '@assets/big-dipper-white.svg';
 import BigDipperLogoRed from '@assets/big-dipper-red.svg';
+import { generalConfig } from '@configs';
 import { useStyles } from './styles';
 import { useDesktop } from './hooks';
 import {
@@ -24,7 +22,6 @@ const Desktop: React.FC<{
   className, title,
 }) => {
   const classes = useStyles();
-  const theme = useRecoilValue(readTheme);
   const {
     isMenu,
     toggleMenu,
@@ -66,17 +63,18 @@ const Desktop: React.FC<{
             }),
           }}
         >
-          {theme === 'light' ? (
-            <BigDipperLogoRed
-              className={classes.logo}
-              onClick={toggleMenu}
-              role="button"
-            />
-          ) : (
-            <BigDipperLogoWhite
-              className={classes.logo}
-              onClick={toggleMenu}
-              role="button"
+          <BigDipperLogoRed
+            className={classes.logo}
+            onClick={toggleMenu}
+            role="button"
+          />
+          {!!generalConfig.version.includes('beta') && (
+            <img
+              className={classnames(classes.beta, {
+                open: isMenu,
+              })}
+              src="/images/beta.svg"
+              alt="beta logo"
             />
           )}
           <MenuItems />
