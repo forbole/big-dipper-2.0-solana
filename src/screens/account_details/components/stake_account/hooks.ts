@@ -93,12 +93,12 @@ export const useTokenDetailAccount = () => {
         lessCheck
         && deactivationEpoch !== MAX
         && deactivationEpoch > currentEpoch) {
-        status = STAKE_STATUS.DEACTIVATING;
+        status = STAKE_STATUS.DEACTIVATED;
       } else if (
         lessCheck
         && deactivationEpoch !== MAX
         && deactivationEpoch <= currentEpoch) {
-        status = STAKE_STATUS.DEACTIVATED;
+        status = STAKE_STATUS.DEACTIVATING;
       } else {
         status = STAKE_STATUS.UNKNOWN;
       }
