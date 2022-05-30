@@ -1,4 +1,9 @@
-# Unreleased
+# v0.1.1-beta - 2021-05-30
+
+## Changes
+- Removed timer warning as time is inconsistent
+
+# v0.1.0-beta - 2021-05-25
 
 ## Changes
 - Add epoch UI (home) ([\#19](https://github.com/forbole/big-dipper-2.0-solana/issues/19))

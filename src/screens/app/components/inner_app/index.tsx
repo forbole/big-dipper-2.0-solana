@@ -1,12 +1,12 @@
 import React from 'react';
 import { AppProps } from 'next/app';
 // import InitialLoad from '@screens/initial_load';
-import { useChainHealthCheck } from './hooks';
+// import { useChainHealthCheck } from './hooks';
 
 function InnerApp({
   Component, pageProps,
 }: AppProps) {
-  useChainHealthCheck();
+  // useChainHealthCheck();
   return (
     <Component {...pageProps} />
   );
